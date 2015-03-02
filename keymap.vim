@@ -74,12 +74,12 @@ vnoremap <Space>wg :OverCommandLine<CR>s/\%V<C-r><C-w>//g<LEFT><LEFT>
 
 nnoremap <Space>j <C-D>
 nnoremap <Space>k <C-U>
-nnoremap <Space>h 0
+nnoremap <Space>h ^
 nnoremap <Space>l $
 
 vnoremap <Space>j <C-D>
 vnoremap <Space>k <C-U>
-vnoremap <Space>h 0
+vnoremap <Space>h ^
 vnoremap <Space>l $
 
 nnoremap <silent> <Space> <Nop>
