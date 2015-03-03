@@ -60,6 +60,7 @@ vnoremap = =
 " 現在の位置に空行を挿入
 nnoremap <silent> <Space><CR> <S-O><ESC>
 nnoremap <silent> <Space>n :noh<CR>
+vnoremap <Space>n :normal 
 
 "gシリーズはいらないかも cもgも自分でつければ平気
 nnoremap <Space>ss :OverCommandLine<CR>%s/
