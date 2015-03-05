@@ -37,7 +37,7 @@ NeoBundle 'osyo-manga/unite-quickfix'	" uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'		" 汎用的なquickrun-hook
 
 NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet.vim'
+" NeoBundle 'Shougo/neosnippet.vim'
 NeoBundleLazy 'Rip-Rip/clang_complete',  {'autoload' :{'filetype' :['c','cpp']}}
 
 "includeをファイル先頭に追加
@@ -70,47 +70,6 @@ let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
 let g:syntastic_check_on_open=1
 
 
-" Complete
-	" menu		候補が2つ以上あるときメニューを表示する
-	" longest	候補が共通部分だけを挿入する
-	" preview	付加的な情報を表示
-set completeopt=menu,longest,preview
-
-hi Pmenu	ctermbg=0
-hi Pmenu	ctermbg=242
-hi PmenuSel ctermbg=6	ctermfg=40
-"hi PmenuSel ctermbg=70 ctermfg=129
-
-
-set path+=/usr/include/c++/4.9.1
-
-" neocomplete
-let g:neocomplete#enable_at_startup	= 1
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-
-let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::' 
-
-inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
-" clang_complete
-let g:clang_complete_auto		= 0
-"let g:clang_auto_select			= 0
-let g:clang_periodic_quickfix	= 0
-let g:clang_complete_copen		= 1
-let g:clang_use_library			= 1
-let g:clang_library_path  =  '/usr/lib/llvm-3.5/lib'
-let g:clang_user_options  =  '-std=c++1z -stdlib=libc++'
-
-
 
 " ###Quickrun
 let g:quickrun_config = get(g:, 'quickrun_config', {})
@@ -133,6 +92,7 @@ let g:quickrun_config.c = {
 			\ 'command' : '/usr/bin/clang',
 			\ 'cmdopt'  : $C_COMP_OPT
 			\}
+
 
 " yankround 
 nmap p <Plug>(yankround-p)
@@ -160,6 +120,8 @@ let g:over_command_line_prompt = "> "
 "検索で補完を効かせる　	アクセス制限がなくなるかも
 " source ~/.vim/self/SearchComplete.vim "すっげーチカチカするしいまいち使いづらい
 
+" ##neocomplete, clang_complete and etc...
+source ~/.vim/complete_config.vim
 
 "Reauired
 filetype plugin indent on

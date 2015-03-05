@@ -10,6 +10,7 @@ set nocompatible
 set cpo&vim
 filetype plugin indent on
 filetype plugin on
+set path+=/usr/include/c++/4.9.1
 
 	"------------"
 	"    Look    "
