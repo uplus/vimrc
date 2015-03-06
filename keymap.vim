@@ -58,7 +58,7 @@ vnoremap = =
 
 "######<Space> family######
 " 現在の位置に空行を挿入
-nnoremap <silent> <Space><CR> <S-O><ESC>
+nnoremap <silent> <Space><CR> <S-O><ESC>x
 nnoremap <silent> <Space>n :noh<CR>
 vnoremap <Space>n :normal 
 

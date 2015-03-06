@@ -61,7 +61,7 @@ set wrapscan	"最後尾まで検索を終えたら次の検索で先頭に戻る
 set tabstop=4		"Tab表示幅
 set softtabstop=4	"Tab押下時のカーソル移動量	
 set shiftwidth=4	"インデント幅
-"set expandtab		"Tabキーでスペース挿入
+set expandtab		"Tabキーでスペース挿入
 
 set autoindent
 set smartindent

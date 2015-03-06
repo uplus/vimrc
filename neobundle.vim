@@ -36,12 +36,14 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix'	" uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'		" 汎用的なquickrun-hook
 
-NeoBundle 'Shougo/neocomplete'
+ NeoBundle 'Shougo/neocomplete'
 " NeoBundle 'Shougo/neosnippet.vim'
-NeoBundleLazy 'Rip-Rip/clang_complete',  {'autoload' :{'filetype' :['c','cpp']}}
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+            \ 'autoload' : {'filetypes' : ['c', 'cpp']}
+            \ }
 
 "includeをファイル先頭に追加
-NeoBundleLazy 'osyo-manga/vim-stargate', {'autoload' :{'filetype' :['c','cpp']}}
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetype' : ['c','cpp'] } }
 
 call neobundle#end()
 " n や N の代わりに使用します。
@@ -68,7 +70,6 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
 "let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
-
 
 
 " ###Quickrun
