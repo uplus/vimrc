@@ -61,6 +61,10 @@ vnoremap = =
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 nnoremap <silent> <Space>n :noh<CR>
 vnoremap <Space>n :normal 
+nnoremap <Space>r r
+" do to end
+nnoremap <Space>t %
+nnoremap <Space>v <C-v>
 
 "gシリーズはいらないかも cもgも自分でつければ平気
 nnoremap <Space>ss :OverCommandLine<CR>%s/
