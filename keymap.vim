@@ -6,6 +6,7 @@ set cpo&vim
 "Ctrl-M は<CR>
 "Ctrl-[ は<ESC>
 "Ctrl-i は<TAB>
+"<CR>のマッピングは <expr>の結果として使えば行ける
 "insert-mode でのESCのマッピングは良くない
 "Normal modeは <Space>
 ":Errors :nohのマップ
@@ -24,8 +25,8 @@ command WriteSudo w !sudo tee % > /dev/null
 vnoremap <BS> d
 
 "ins)C-O rでredo
-nnoremap r <C-R>
-nnoremap <C-R> r
+" nnoremap r <C-R>
+" nnoremap <C-R> r
 "complite
 "inoremap <C-U> <C-Y>
 
@@ -61,7 +62,7 @@ vnoremap = =
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 nnoremap <silent> <Space>n :noh<CR>
 vnoremap <Space>n :normal 
-nnoremap <Space>r r
+" nnoremap <Space>r r
 " do to end
 nnoremap <Space>t %
 nnoremap <Space>v <C-v>
