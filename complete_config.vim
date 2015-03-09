@@ -10,14 +10,14 @@ hi PmenuSel ctermbg=6	ctermfg=40
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_ignore_case = 1
+let g:neocomplete#enable_ignore_case = 1
 let g:neocomplete#enable_smart_case = 1		"曖昧ですれば_と大文字ができる"
 let g:neocomplete#enable_camel_case = 1
 
 " <TAB>: completion.
-inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
+" inoremap <expr> <CR> pumvisible()? "\<C-y><CR>" : "\<CR>"
 let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 "let g:neocomplete#enable_insert_char_pre = 1
