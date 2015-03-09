@@ -1,5 +1,5 @@
 "Display Tab 
-autocmd FileType c,cpp,ruby set list
+autocmd FileType c,cpp,ruby,erb,html,css,sass set list
 set listchars=tab:__
 highlight SpecialKey ctermfg=161 ctermbg=234  
 

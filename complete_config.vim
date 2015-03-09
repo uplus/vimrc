@@ -10,7 +10,7 @@ hi PmenuSel ctermbg=6	ctermfg=40
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_ignore_case = 1
+" let g:neocomplete#enable_ignore_case = 1
 let g:neocomplete#enable_smart_case = 1		"曖昧ですれば_と大文字ができる"
 let g:neocomplete#enable_camel_case = 1
 

@@ -20,12 +20,12 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'			" vimに独自のモードを作成できる
 NeoBundle 'osyo-manga/vim-over'			" タブ補完が効く置き換えモード
 
-
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'LeafCage/yankround.vim'		" round the yank history 
 NeoBundle 'osyo-manga/vim-anzu'			" show search point to command line
 
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'tpope/vim-surround'			" 囲んでるものに対しての処理
