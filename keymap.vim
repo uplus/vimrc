@@ -134,14 +134,14 @@ call submode#map('winsize', 'i', '', '-', '<C-O><C-w>-')
 
 "######Ctrl+S family######
 " quit vim
-nnoremap <C-S>q	:q<CR>
-nnoremap <C-S>aq	:qa<CR>
-inoremap <C-S>q	<ESC>:q<CR>
-inoremap <C-S>aq	<ESC>:qa<CR>
+nnoremap <C-S>q :q<CR>
+nnoremap <C-S>aq :qa<CR>
+inoremap <C-S>q <ESC>:q<CR>
+inoremap <C-S>aq <ESC>:qa<CR>
 
 " buffer delete
-nnoremap <C-S>d	:bd<CR>
-inoremap <C-S>d	<ESC>:bd<CR>
+nnoremap <C-S>d :bd<CR>
+inoremap <C-S>d <ESC>:bd<CR>
 
 " exit
 nnoremap <C-S>e :q!<CR>

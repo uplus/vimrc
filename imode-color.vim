@@ -1,7 +1,7 @@
 	"-------------------------------------------"
 	"When insert mode, change status line's color
 	"------------------------------------------"
-let g:hi_insert = 'highlight StatusLine guifg=blue guibg=darkyellow gui=none ctermfg=green ctermbg=blue  cterm=none'
+let g:hi_insert = 'highlight StatusLine guifg=blue guibg=darkyellow gui=none ctermfg=48 ctermbg=21  cterm=none'
 
 if has('syntax')
 	augroup InsertHook
