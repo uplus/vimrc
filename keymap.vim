@@ -95,24 +95,24 @@ vnoremap <silent> <Space> <Nop>
 "######Ctrl+W family######
 "NERDTree
 nnoremap <silent> <C-W>e :NERDTree<CR>
-inoremap <silent> <C-W>e <ESC>:NERDTree<CR>
+" inoremap <silent> <C-W>e <ESC>:NERDTree<CR>
 
 "Window control
 nnoremap <C-W>q :bdelete<CR>
-inoremap <C-W>q <C-O>:bdelete<CR>
+" inoremap <C-W>q <C-O>:bdelete<CR>
 
 "Tab control
 nnoremap <C-W>p gt
 nnoremap <C-W>n gT
-inoremap <C-W>p <C-O>gt
-inoremap <C-W>n <C-O>gT
+" inoremap <C-W>p <C-O>gt
+" inoremap <C-W>n <C-O>gT
 
 "file open
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
 "C-W shortcut
-inoremap <C-W> <C-O><C-W>
+" inoremap <C-W> <C-O><C-W>
 
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
@@ -123,14 +123,14 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
-call submode#enter_with('winsize', 'i', '', '<C-w>>', '<C-O><C-w>>')
-call submode#enter_with('winsize', 'i', '', '<C-w><', '<C-O><C-w><')
-call submode#enter_with('winsize', 'i', '', '<C-w>+', '<C-O><C-w>+')
-call submode#enter_with('winsize', 'i', '', '<C-w>-', '<C-O><C-w>-')
-call submode#map('winsize', 'i', '', '>', '<C-O><C-w>>')
-call submode#map('winsize', 'i', '', '<', '<C-O><C-w><')
-call submode#map('winsize', 'i', '', '+', '<C-O><C-w>+')
-call submode#map('winsize', 'i', '', '-', '<C-O><C-w>-')
+" call submode#enter_with('winsize', 'i', '', '<C-w>>', '<C-O><C-w>>')
+" call submode#enter_with('winsize', 'i', '', '<C-w><', '<C-O><C-w><')
+" call submode#enter_with('winsize', 'i', '', '<C-w>+', '<C-O><C-w>+')
+" call submode#enter_with('winsize', 'i', '', '<C-w>-', '<C-O><C-w>-')
+" call submode#map('winsize', 'i', '', '>', '<C-O><C-w>>')
+" call submode#map('winsize', 'i', '', '<', '<C-O><C-w><')
+" call submode#map('winsize', 'i', '', '+', '<C-O><C-w>+')
+" call submode#map('winsize', 'i', '', '-', '<C-O><C-w>-')
 
 "######Ctrl+S family######
 " quit vim
