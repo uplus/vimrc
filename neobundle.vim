@@ -36,7 +36,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 
- NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neocomplete'
 " NeoBundle 'Shougo/neosnippet.vim'
 NeoBundleLazy 'Rip-Rip/clang_complete', {
             \ 'autoload' : {'filetypes' : ['c', 'cpp']}
