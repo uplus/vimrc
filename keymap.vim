@@ -94,8 +94,8 @@ vnoremap <silent> <Space> <Nop>
 
 "######Ctrl+W family######
 "NERDTree
-nnoremap <silent> <C-W>e :NERDTree<CR>
-inoremap <silent> <C-W>e <ESC>:NERDTree<CR>
+nnoremap <silent> <C-W>e :NERDTreeFocus<CR>
+inoremap <silent> <C-W>e <ESC>:NERDTreeFocus<CR>
 
 "Window control
 nnoremap <C-W>q :bdelete<CR>
