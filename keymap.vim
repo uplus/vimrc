@@ -21,8 +21,9 @@ nnoremap V v
 
 " ex mode はいらない
 nnoremap Q <Nop>
-command WriteSudo w !sudo tee % > /dev/null
+command SudoWrite w !sudo tee % > /dev/null
 vnoremap <BS> d
+command Q :q!
 
 "ins)C-O rでredo
 " nnoremap r <C-R>
@@ -62,12 +63,10 @@ vnoremap = =
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 nnoremap <silent> <Space>n :noh<CR>
 vnoremap <Space>n :normal 
-" nnoremap <Space>r r
 " do to end
 nnoremap <Space>t %
 nnoremap <Space>v <C-v>
 
-"gシリーズはいらないかも cもgも自分でつければ平気
 nnoremap <Space>ss :OverCommandLine<CR>%s/
 nnoremap <Space>sg :OverCommandLine<CR>%s//g<LEFT><LEFT>
 nnoremap <Space>ws :OverCommandLine<CR>%s/<C-r><C-w>/
@@ -168,10 +167,6 @@ inoremap <silent> <C-S> <C-O>:update<CR>
 "######Move######
 nnoremap <UP> gk
 nnoremap <DOWN> gj
-nnoremap <C-j> gj
-nnoremap <C-k> gk
-nnoremap <C-h> h
-nnoremap <C-l> l
 nnoremap k gk
 nnoremap j gj
 nnoremap gk k
@@ -179,23 +174,14 @@ nnoremap gj j
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
-inoremap <C-j> <C-O>gj
-inoremap <C-k> <C-O>gk
-inoremap <C-h> <C-O>h
-inoremap <C-l> <C-O>l
-inoremap <C-f> <Home>
-inoremap <C-g> <End>
+inoremap <C-K> <C-O>d$
+inoremap <C-A> <C-O>^
+inoremap <C-E> <C-O>$
 
 vnoremap <UP> gk
 vnoremap <DOWN> gj
 vnoremap <LEFT> h
 vnoremap <RIGHT> l
-vnoremap <C-j> gj
-vnoremap <C-k> gk
-vnoremap <C-h> h
-vnoremap <C-l> l
-vnoremap <C-f> 0
-vnoremap <C-g> $
 vnoremap k gk
 vnoremap j gj
 vnoremap gk k

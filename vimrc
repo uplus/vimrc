@@ -6,7 +6,7 @@
 "タブ移動をdじゃなくてuに変える
 "NERDTreeのEnterとかの動作を変える
 
-set nocompatible
+" set nocompatible
 set cpo&vim
 filetype plugin indent on
 filetype plugin on

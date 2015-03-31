@@ -60,7 +60,7 @@ nmap # <Plug>(anzu-sharp-with-echo)
 
 
 "0ならそのまま開いとく, 1なら閉じる
-"let g:NERDTreeQuitOnOpen=0 "//defo 0
+" let g:NERDTreeQuitOnOpen=0 "//defo 0
 "let g:NERDTreeShowHidden=0 "//defo 0
 let g:NERDTreeWinSize=26  "//defo 31
 
