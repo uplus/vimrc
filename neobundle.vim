@@ -3,7 +3,7 @@
 ";とか押した時整形されるようにする
 "syntasticをquickfixに出す
 " 保存した時に随時更新されるようにする
-  "------------------" 
+  "------------------"
   "Neobundle Settings"
   "------------------"
 filetype plugin indent off
@@ -21,11 +21,9 @@ NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'LeafCage/yankround.vim'  " round the yank history 
+NeoBundle 'LeafCage/yankround.vim'  " round the yank history
 NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
-" Plugin 'haya14busa/incsearch.vim'
-" Plug 'haya14busa/incsearch.vim'
 
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
@@ -99,8 +97,7 @@ let g:quickrun_config.c = {
       \ 'cmdopt'  : $C_COMP_OPT
       \}
 
-
-" yankround 
+" yankround
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -119,18 +116,10 @@ let g:yankround_dir = "~/.vim/tmp/"
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
 
-
-""履歴一覧(kien/ctrlp.vim)
-"nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
-
-" ###自己管理の外部プラグイン
-"検索で補完を効かせる　 アクセス制限がなくなるかも
-" source ~/.vim/self/SearchComplete.vim "すっげーチカチカするしいまいち使いづらい
-
 " ##neocomplete, clang_complete and etc...
 source ~/.vim/complete_config.vim
 
-"Reauired
+" Required
 filetype plugin indent on
 if !exists('loaded_matchit')
   runtime macros/matchit.vim

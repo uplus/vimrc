@@ -62,9 +62,6 @@ set matchtime=1
 "#Neobundle
 source ~/.vim/neobundle.vim
 
-"#run easy
-source ~/.vim/easy-run.vim
-
 "#When insert mode, change status line's color
 source ~/.vim/imode-color.vim
 
