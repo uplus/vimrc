@@ -23,6 +23,9 @@ NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'LeafCage/yankround.vim'  " round the yank history 
 NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
+NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
+" Plugin 'haya14busa/incsearch.vim'
+" Plug 'haya14busa/incsearch.vim'
 
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
@@ -44,21 +47,23 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
 
 "includeをファイル先頭に追加
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetype' : ['c','cpp'] } }
-
 call neobundle#end()
-" n や N の代わりに使用します。
-"nmap n <Plug>(anzu-n)
-"nmap N <Plug>(anzu-N)
-"nmap * <Plug>(anzu-star)
-"nmap # <Plug>(anzu-sharp)
-"set statusline=%{anzu#search_status()}
 
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
+"# anzu&incsearch マッチした数&自動ハイライト&オフ
+let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map  n <Plug>(incsearch-nohl-n)
+map  N <Plug>(incsearch-nohl-N)
+nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
-
+"# NERDTree
 "0ならそのまま開いとく, 1なら閉じる
 " let g:NERDTreeQuitOnOpen=0 "//defo 0
 "let g:NERDTreeShowHidden=0 "//defo 0
@@ -113,6 +118,7 @@ let g:yankround_dir = "~/.vim/tmp/"
 
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
+
 
 ""履歴一覧(kien/ctrlp.vim)
 "nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
