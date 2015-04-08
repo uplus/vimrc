@@ -71,8 +71,8 @@ vnoremap <Space>k <C-U>
 vnoremap <Space>h ^
 vnoremap <Space>l $
 
-nnoremap <Space>p op
-nnoremap <Space>p oP
+nnoremap <Space>p o<ESC>p
+nnoremap <Space>P o<ESC>P
 
 nnoremap <silent> <Space> <Nop>
 vnoremap <silent> <Space> <Nop>
