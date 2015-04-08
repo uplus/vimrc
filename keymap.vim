@@ -71,6 +71,9 @@ vnoremap <Space>k <C-U>
 vnoremap <Space>h ^
 vnoremap <Space>l $
 
+nnoremap <Space>p op
+nnoremap <Space>p oP
+
 nnoremap <silent> <Space> <Nop>
 vnoremap <silent> <Space> <Nop>
 
@@ -129,7 +132,6 @@ nnoremap <C-S>e :q!<CR>
 nnoremap <C-S>ae :qa!<CR>
 inoremap <C-S>e <ESC>:q!<CR>
 inoremap <C-S>ae <ESC>:qa!<CR>
-
 
 " save and quit
 nnoremap <C-S>z :wq<CR>
