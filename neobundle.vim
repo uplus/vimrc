@@ -19,13 +19,25 @@ if has('vim_starting')
 endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc', { 'build' : {
+                            \     'mac'  : 'make -f make_mac.mak',
+                            \     'unix' : 'make -f make_unix.mak',
+                            \}, }
+NeoBundle 'Shougo/vimshell'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
+NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
+NeoBundle 'vim-scripts/AnsiEsc.vim' " ANSIカラー情報を反映して表示する
 
-NeoBundle 'Shougo/unite.vim'
+" Rails
+NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
+NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
+
+" NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'LeafCage/yankround.vim'  " round the yank history
 NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
@@ -36,11 +48,6 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 
-NeoBundle 'Shougo/vimproc', { 'build' : {
-                            \     'mac'  : 'make -f make_mac.mak',
-                            \     'unix' : 'make -f make_unix.mak',
-                            \}, }
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
