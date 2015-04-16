@@ -9,18 +9,14 @@ set cpo&vim
 " inoremap <C-Space>を　状況によって <C-Y>に割り当てる
 "nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
 
-"line selectの方が使うこと多いし、visualは短形で同じ事ができる
 nnoremap v V
 nnoremap V v
 
 " ex mode はいらない
 nnoremap Q <Nop>
-command SudoWrite w !sudo tee % > /dev/null
 vnoremap <BS> d
+command SudoWrite w !sudo tee % > /dev/null
 command Q :q!
-
-"complite
-"inoremap <C-U> <C-Y>
 
 "Spaceとつなげれば平気
 "@@@###buffer###@@@
@@ -31,8 +27,7 @@ command Q :q!
 " これをマップすると:bのときの動作が重く感じる(感じるだけ?)
 "cnoremap bb b#
 
-"@@@###apply speed up###@@@
-"いらないかも
+"######apply speed up######
 nnoremap u u
 inoremap <C-C> <ESC>
 vnoremap d d
