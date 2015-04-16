@@ -23,6 +23,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
+NeoBundle 'kannokanno/previm'       " Markdown Previewer
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'LeafCage/yankround.vim'  " round the yank history
