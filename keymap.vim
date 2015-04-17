@@ -10,6 +10,9 @@ set cpo&vim
 "nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
 "nnoremap ,irb とかでマップできる
 
+command VS :tabedit<CR>:VimShell<CR>
+nnoremap <silent> ycc yy:TComment<CR>
+
 nnoremap v V
 nnoremap V v
 
@@ -27,9 +30,6 @@ command Q :q!
 "nnoremap bd :bd<CR>
 " これをマップすると:bのときの動作が重く感じる(感じるだけ?)
 "cnoremap bb b#
-
-command VS :tabedit<CR>:VimShell<CR>
-
 
 "######apply speed up######
 nnoremap u u
