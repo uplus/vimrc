@@ -1,34 +1,3 @@
-" ####################################### "
-" I edited this /\/\/\/\/\(^[]^)/\/\/\/\/ "
-" ####################################### "
-
-" Vim color scheme
-"
-" Name:         railscasts.vim
-" Maintainer:   Nick Moffitt <nick@zork.net>
-" Version:      2.1
-"
-" To use for gvim:
-" 1: install this file as ~/.vim/colors/railscasts.vim
-" 2: put "colorscheme railscasts" in your .gvimrc
-"
-" If you are using Ubuntu, you can get the benefit of this in your
-" terminals using ordinary vim by taking the following steps:
-"
-" 1: sudo apt-get install ncurses-term
-" 2: put the following in your .vimrc
-"     if $COLORTERM == 'gnome-terminal'
-"         set term=gnome-256color
-"         colorscheme railscasts
-"     else
-"         colorscheme default
-"     endif
-" 3: if you wish to use this with screen, add the following to your .screenrc:
-"     attrcolor b ".I"
-"     termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-"     defbce "on"
-"     term screen-256color-bce
-
 if $COLORTERM == 'gnome-terminal'
 	set term=xterm-256color
 endif
@@ -46,8 +15,8 @@ hi link htmlTag                     xmlTag
 hi link htmlTagName                 xmlTagName
 hi link htmlEndTag                  xmlEndTag
 
-highlight Normal                    guifg=#E6E1DC guibg=#111111 
-highlight Cursor                    guifg=#000000 ctermfg=0 guibg=#FFFFFF ctermbg=15	
+highlight Normal                    guifg=#E6E1DC guibg=#111111
+highlight Cursor                    guifg=#000000 ctermfg=0 guibg=#FFFFFF ctermbg=15
 highlight CursorLine                guibg=#000000 ctermbg=233 cterm=NONE
 
 highlight Comment                   guifg=#BC9458 ctermfg=180 gui=italic
@@ -71,11 +40,11 @@ highlight Visual                    guibg=#5A647E ctermbg=60
 
 highlight DiffAdd                   guifg=#E6E1DC ctermfg=7 guibg=#519F50 ctermbg=71
 highlight DiffDelete                guifg=#E6E1DC ctermfg=7 guibg=#660000 ctermbg=52
-highlight Special                   guifg=#DA4939 ctermfg=167 
+highlight Special                   guifg=#DA4939 ctermfg=167
 
 highlight pythonBuiltin             guifg=#6D9CBE ctermfg=73 gui=NONE cterm=NONE
 highlight rubyBlockParameter        guifg=#FFFFFF ctermfg=15
-highlight rubyClass                 guifg=#CC7833 ctermfg=161 
+highlight rubyClass                 guifg=#CC7833 ctermfg=161
 highlight rubyConstant              guifg=#DA4939 ctermfg=167
 highlight rubyInstanceVariable      guifg=#D0D0FF ctermfg=189
 highlight rubyInterpolation         guifg=#519F50 ctermfg=107
