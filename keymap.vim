@@ -12,6 +12,7 @@ set cpo&vim
 
 command! VS :tabedit | VimShell
 nnoremap <silent> ycc yy:TComment<CR>
+vnoremap <silent> ycc ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>
 
