@@ -55,7 +55,10 @@ set matchtime=1
 " 前回の一を記憶
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  au BufWritePre * :%s/^\s\+$//ge
+  au BufWritePre * :%s/\s\+$//ge
 endif
+
 
   "==============="
   "   Dark vim?   "
