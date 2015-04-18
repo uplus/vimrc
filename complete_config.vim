@@ -1,9 +1,8 @@
 " Complete
 set completeopt=menu,longest,preview
-hi Pmenu	ctermbg=0
-hi Pmenu	ctermbg=242
+hi Pmenu	ctermbg=243 ctermfg=17
 hi PmenuSel ctermbg=6	ctermfg=40
-"hi PmenuSel ctermbg=70 ctermfg=129
+" hi PmenuSel ctermbg=70 ctermfg=129
 
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
@@ -34,10 +33,7 @@ let g:neocomplete#auto_completion_start_length = 1  "補完が自動で開始さ
 " <TAB>: completion.
 inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" inoremap <expr> <CR> pumvisible()? "\<C-y><CR>" : "\<CR>"
-
-" let g:neocomplete#enable_cursor_hold_i = 1
-" let g:neocomplete#enable_insert_char_pre = 1
+inoremap <expr> <CR> pumvisible()? "\<C-y><CR>" : "\<CR>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

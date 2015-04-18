@@ -8,9 +8,11 @@ set cpo&vim
 ":Errors :nohのマップ
 " inoremap <C-Space>を　状況によって <C-Y>に割り当てる
 "nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
-"nnoremap ,irb とかでマップできる
+"nnoremap , コロンにマップできる
 
 command! VS :tabedit | VimShell
+command! Reload :source $MYVIMRC
+
 nnoremap <silent> ycc yy:TComment<CR>
 vnoremap <silent> ycc ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
