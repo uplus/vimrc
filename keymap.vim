@@ -10,7 +10,7 @@ set cpo&vim
 "nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
 "nnoremap ,irb とかでマップできる
 
-command VS :tabedit | VimShell
+command! VS :tabedit | VimShell
 nnoremap <silent> ycc yy:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>
@@ -21,8 +21,8 @@ nnoremap V v
 " ex mode はいらない
 nnoremap Q <Nop>
 vnoremap <BS> d
-command SudoWrite w !sudo tee % > /dev/null
-command Q :q!
+command! SudoWrite w !sudo tee % > /dev/null
+command! Q :q!
 
 "Spaceとつなげれば平気
 "@@@###buffer###@@@
