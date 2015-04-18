@@ -10,7 +10,7 @@ set cpo&vim
 "nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
 "nnoremap ,irb とかでマップできる
 
-command VS :tabedit<CR>:VimShell<CR>
+command VS :tabedit | VimShell
 nnoremap <silent> ycc yy:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>

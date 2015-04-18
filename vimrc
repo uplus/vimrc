@@ -52,11 +52,19 @@ set smartindent
 set showcmd
 set matchtime=1
 
-" 前回の一を記憶
+function! EraceSpace_func()
+  if &filetype != 'markdown'
+    %s/^\s\+$//e
+    %s/\s\+$//e
+  endif
+endfunction
+command! EraceSpace :call EraceSpace_func()
+
+
 if has("autocmd")
+  " 前回の一を記憶
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  au BufWritePre * :%s/^\s\+$//ge
-  au BufWritePre * :%s/\s\+$//ge
+  au BufWritePre * EraceSpace
 endif
 
 
