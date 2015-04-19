@@ -33,7 +33,16 @@ let g:neocomplete#auto_completion_start_length = 1  "補完が自動で開始さ
 " <TAB>: completion.
 inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" inoremap <expr> <CR> pumvisible()? "\<C-y><CR>" : "\<CR>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  if pumvisible()
+    return "\<C-y>" . "\<CR>"
+  else
+    return neocomplete#smart_close_popup() . "\<CR>"
+  endif
+endfunction
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
