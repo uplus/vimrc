@@ -33,7 +33,7 @@ set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,~
 "set virtualedit=onemore
 set wildmenu
-set wildmode=list:full  "cmodeでの補完
+set wildmode=list:longest,full "cmodeでの補完 ,で区切るとTABの回数で変化"
 set incsearch
 set hlsearch            "検索候補をハイライト :noh でハイライトを消す
 set scrolloff=10
