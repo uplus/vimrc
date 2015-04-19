@@ -33,7 +33,7 @@ let g:neocomplete#auto_completion_start_length = 1  "補完が自動で開始さ
 " <TAB>: completion.
 inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr> <CR> pumvisible()? "\<C-y><CR>" : "\<CR>"
+" inoremap <expr> <CR> pumvisible()? "\<C-y><CR>" : "\<CR>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
