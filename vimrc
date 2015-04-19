@@ -7,7 +7,7 @@ if &compatible
 endif
 
 filetype off
-filetype plugin indent on
+filetype plugin indent off
 set path+=/usr/include/c++/4.9.1,/usr/include/linux
 set viminfo+=n~/.vim/tmp/info.txt
 
@@ -83,6 +83,7 @@ source ~/.vim/keymap.vim
 "#Programing
 source ~/.vim/filetype.vim
 
+filetype plugin indent on
 
 "######################
 "######################
@@ -96,8 +97,6 @@ source ~/.vim/filetype.vim
 "set term=screen-256color-bce
   "set <xHome>=OH
   "set <xEnd>=OF
-
-"set listchars=tab:\ \  "としたら空白になった
 
   "-------------"
   "    Trash    "
