@@ -35,11 +35,13 @@ inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
+inoremap <silent><CR> <C-r>=<SID>cr_comp()<CR>
+function! s:cr_comp()
   if pumvisible()
+    echo ""
     return "\<C-y>" . "\<CR>"
   else
+    echo ""
     return neocomplete#smart_close_popup() . "\<CR>"
   endif
 endfunction
