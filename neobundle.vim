@@ -1,11 +1,10 @@
-" UP DOWNで保管しないようにする
-" C-Hが上書きされるのを何とかする
 ";とか押した時整形されるようにする
 "syntasticをquickfixに出す
 " 保存した時に随時更新されるようにする
   "------------------"
   "Neobundle Settings"
   "------------------"
+filetype off
 filetype plugin indent off
 
 function! s:meet_neocomplete_requirements()
@@ -15,8 +14,8 @@ endfunction
 if has('vim_starting')
   "Set the directory to be managed by the bundle
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle'))
 endif
+call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
@@ -60,9 +59,9 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
             \ 'autoload' : {'filetypes' : ['c', 'cpp']}
             \ }
 
-"includeをファイル先頭に追加
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetype' : ['c','cpp'] } }
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 call neobundle#end()
+filetype plugin indent on " Required
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
 let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
@@ -133,12 +132,10 @@ let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
 
 " ##neocomplete, clang_complete and etc...
-if s:meet_neocomplete_requirements() 
+if s:meet_neocomplete_requirements()
   source ~/.vim/complete_config.vim
 endif
 
-" Required
-filetype plugin indent on
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif

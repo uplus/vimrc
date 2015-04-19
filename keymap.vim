@@ -1,5 +1,3 @@
-set cpo&vim
-
 "commandモードでのマップは文字入力に影響がある
 "Ctrl-M は<CR>
 "Ctrl-[ は<ESC>
