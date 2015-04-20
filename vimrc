@@ -60,7 +60,9 @@ function! EraseSpace_func()
     call setpos(".", s:cursor)
   endif
 endfunction
+
 command! EraseSpace :call EraseSpace_func()
+command! NoEraseSpace :au! BufWritePre
 
 
 if has("autocmd")
