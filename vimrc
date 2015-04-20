@@ -40,6 +40,7 @@ set scrolloff=10
 set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
 "set confirm  "未保存のファイルがあるときは終了前に確認
 "set autoread "外部でファイルが変更された時読みなおす
+set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 
 set tabstop=2               "Tab表示幅
 let &softtabstop = &tabstop "Tab押下時のカーソル移動量
