@@ -23,7 +23,7 @@ colorscheme railscasts-yuuto  "内部でtermの設定もしている
 
 set timeout
 set ttimeout          " なくても同じ
-set timeoutlen=2500
+set timeoutlen=3000
 set ttimeoutlen=100
 set nobackup
 set mouse=a
