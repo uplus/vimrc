@@ -18,14 +18,15 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc', { 'build' : {
-                            \     'mac'  : 'make -f make_mac.mak',
-                            \     'unix' : 'make -f make_unix.mak',
+NeoBundle 'Shougo/vimproc.vim', { 'build' : {
+                            \   'mac'   : 'make -f make_mac.mak',
+                            \   'linux' : 'make',
+                            \   'unix'  : 'make -f make_unix.mak',
                             \}, }
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
