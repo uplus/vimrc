@@ -18,7 +18,6 @@ set cursorline
 set showmatch       " Show matching brackets.
 set laststatus=2
 set cmdheight=2
-set nottybuiltin    " termの探索順序を 外部->組み込み にする
 colorscheme railscasts-yuuto  "内部でtermの設定もしている
 
 set timeout
