@@ -1,7 +1,3 @@
-"自動インデントで何も入力しないとインデントがなくなるのを何とかする
-"visualモードでの:normalのショートカットを探す、または作る
-"cindentに切り替えるモード、cppindentなるものも見つけた?
-
 if &compatible
   set nocompatible
 endif
@@ -11,14 +7,12 @@ filetype plugin indent off
 set path+=/usr/include/c++/4.9.1,/usr/include/linux
 set viminfo+=n~/.vim/tmp/info.txt
 
-syntax enable
 set enc=utf-8
 set number
 set cursorline
 set showmatch       " Show matching brackets.
 set laststatus=2
 set cmdheight=2
-colorscheme railscasts-yuuto  "内部でtermの設定もしている
 
 set timeout
 set ttimeout          " なくても同じ
@@ -66,7 +60,7 @@ command! NoEraseSpace :au! BufWritePre
 
 
 if has("autocmd")
-  " 前回の一を記憶
+  " Remenber position
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au BufWritePre * EraseSpace
 endif
@@ -84,10 +78,13 @@ source ~/.vim/imode-color.vim
 "#Keymap
 source ~/.vim/keymap.vim
 
-"#Programing
+"#Filetype
 source ~/.vim/filetype.vim
 
 filetype plugin indent on
+syntax enable
+set t_Co=256    " 色を256にしてくれる
+
 
 "######################
 "######################

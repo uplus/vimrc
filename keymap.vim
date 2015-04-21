@@ -10,6 +10,7 @@
 
 command! VS :tabedit | VimShell
 command! Reload :source $MYVIMRC
+command! Colors :Unite colorscheme -auto-preview
 
 nnoremap <silent> gyy yy:TComment<CR>
 vnoremap <silent> gy ygv:TComment<CR>

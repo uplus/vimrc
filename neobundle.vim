@@ -65,6 +65,8 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
             \ }
 
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+
+source ~/.vim/colors.vim "Colors
 call neobundle#end()
 filetype plugin indent on " Required
 
