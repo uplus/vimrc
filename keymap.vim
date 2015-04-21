@@ -12,8 +12,8 @@ command! VS :tabedit | VimShell
 command! Reload :source $MYVIMRC
 cnoremap Include StargateInclude
 
-nnoremap <silent> ycc yy:TComment<CR>
-vnoremap <silent> ycc ygv:TComment<CR>
+nnoremap <silent> gyy yy:TComment<CR>
+vnoremap <silent> gy ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>
 
