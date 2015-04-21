@@ -1,9 +1,5 @@
-if $COLORTERM == 'gnome-terminal'
-	set term=xterm-256color
-endif
-
-
 set background=dark
+set t_Co=256
 hi clear
 if exists("syntax_on")
   syntax reset
