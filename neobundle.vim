@@ -31,6 +31,9 @@ NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 NeoBundle 'vim-scripts/AnsiEsc.vim' " ANSIカラー情報を反映して表示する
+NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
+" NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
+" NeoBundle 'deris/clever-f.vim'      " ftFTで検索後ftで次へ移動できる
 
 " Rails
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
