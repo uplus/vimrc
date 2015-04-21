@@ -25,6 +25,7 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \}, }
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
@@ -91,7 +92,7 @@ let g:NERDTreeWinSize=26  "//defo 31
 " syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-"let g:syntastic_always_populate_loc_list=1
+let g:syntastic_always_populate_loc_list=1  " quickfixの表示を更新する
 let g:syntastic_check_on_open=1
 
 " ###Quickrun
