@@ -54,7 +54,6 @@ nnoremap <silent> <Space>n :noh<CR>
 vnoremap <Space>n :normal
 " do to end
 nnoremap <Space>t %
-nnoremap <Space>v <C-v>
 
 nnoremap <Space>ss :OverCommandLine<CR>%s/
 nnoremap <Space>sg :OverCommandLine<CR>%s//g<LEFT><LEFT>
