@@ -1,16 +1,20 @@
-" mustang カラースキーム
+" mustang
 NeoBundle 'croaker/mustang-vim'
-" lucius カラースキーム background=lightにするといい?
+" lucius
 NeoBundle 'vim-scripts/Lucius'
-" mrkn256 カラースキーム
+" mrkn256
 NeoBundle 'mrkn/mrkn256.vim'
-" molokai カラースキーム
+" molokai
 NeoBundle 'tomasr/molokai'
+" mirodark
+NeoBundle 'djjcast/mirodark'
+" BusyBee
+NeoBundle 'vim-scripts/BusyBee'
+
 
 " この変数に値を入れればOK
 let g:colors_name='molokai'
-" let g:colors_name='mrkn256'
-" midnight c++ でみたらよかった
+" midnight2 c++ でみたらよかった
 
 " railscasts   'jpo/vim-railscasts-theme'
 " jellybeans   'nanotech/jellybeans.vim'
