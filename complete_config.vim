@@ -67,10 +67,10 @@ let g:clang_complete_auto = 0
 let g:clang_auto_select   = 0
 let g:clang_use_library	  = 1
 let g:clang_user_options  = '-std=c++14 -stdlib=libc++'
-if has('mac')
+if IsMac()
   " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
   let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
-elseif
+else
   let g:clang_library_path =  '/usr/lib/llvm-3.5/lib'
 endif
 

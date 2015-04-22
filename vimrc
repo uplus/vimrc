@@ -69,10 +69,6 @@ function! IsMac()
   return has('mac') || has('macunix') || has('gui_mac')
 endfunction
 
-function! IsLinux()
-  return has('linux')
-endfunction
-
   "==============="
   "   Dark vim?   "
   "==============="
