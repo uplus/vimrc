@@ -18,13 +18,13 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \   'mac'   : 'make -f make_mac.mak',
                             \   'linux' : 'make',
                             \   'unix'  : 'make -f make_unix.mak',
                             \}, }
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'

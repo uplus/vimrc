@@ -84,21 +84,3 @@ source ~/.vim/filetype.vim
 filetype plugin indent on
 syntax enable
 set t_Co=256    " 色を256にしてくれる
-
-
-"######################
-"######################
-  "------------"
-  "    Keep    "
-  "------------"
-"set term=gnome-256color
-"set term=xterm-256color  "execute in the railscasts-yuuto
-
-"set term=screen-256color "あってもなくても動作は変わらなかった
-"set term=screen-256color-bce
-  "set <xHome>=OH
-  "set <xEnd>=OF
-
-  "-------------"
-  "    Trash    "
-  "-------------"
