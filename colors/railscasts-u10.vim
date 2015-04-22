@@ -5,7 +5,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "railscasts"
+let g:colors_name = "railscasts-u10"
 
 hi link htmlTag                     xmlTag
 hi link htmlTagName                 xmlTagName

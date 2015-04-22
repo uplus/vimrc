@@ -16,6 +16,8 @@ NeoBundle 'vim-scripts/BusyBee'
 let g:colors_name='molokai'
 " midnight2 c++ でみたらよかった
 
+autocmd FileType ruby,gitcommit colorscheme railscasts-u10
+
 " railscasts   'jpo/vim-railscasts-theme'
 " jellybeans   'nanotech/jellybeans.vim'
 " zenburn      'vim-scripts/Zenburn'
