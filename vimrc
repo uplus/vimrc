@@ -4,8 +4,8 @@ endif
 
 filetype off
 filetype plugin indent off
-set path+=/usr/include/c++/4.9.1,/usr/include/linux
 set viminfo+=n~/.vim/tmp/info.txt
+set path+=/usr/include/c++/HEAD/
 
 set enc=utf-8
 set number
@@ -65,6 +65,13 @@ if has("autocmd")
   au BufWritePre * EraseSpace
 endif
 
+function! IsMac()
+  return has('mac') || has('macunix') || has('gui_mac')
+endfunction
+
+function! IsLinux()
+  return has('linux')
+endfunction
 
   "==============="
   "   Dark vim?   "
