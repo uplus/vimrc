@@ -11,17 +11,5 @@ NeoBundle 'djjcast/mirodark'
 " BusyBee
 NeoBundle 'vim-scripts/BusyBee'
 
-
-" この変数に値を入れればOK
 let g:colors_name='molokai'
-" midnight2 c++ でみたらよかった
-
-autocmd FileType ruby,gitcommit colorscheme railscasts-u10
-
-" railscasts   'jpo/vim-railscasts-theme'
-" jellybeans   'nanotech/jellybeans.vim'
-" zenburn      'vim-scripts/Zenburn'
-" solarized    'altercation/vim-colors-solarized'
-" wombat       'jeffreyiacono/vim-colors-wombat'
-" pyte         'therubymug/vim-pyte'
-" moria        'NeoBundle 'vim-scripts/moria'
+autocmd FileType ruby,gitcommit colorscheme railscasts_u10
