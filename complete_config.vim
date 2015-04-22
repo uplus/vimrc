@@ -1,8 +1,5 @@
 " Complete
 set completeopt=menu,longest,preview
-hi Pmenu	ctermbg=243 ctermfg=17
-hi PmenuSel ctermbg=6	ctermfg=40
-" hi PmenuSel ctermbg=70 ctermfg=129
 
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
