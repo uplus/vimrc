@@ -2,6 +2,10 @@ if &compatible
   set nocompatible
 endif
 
+function! Source_rc(path)
+  execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
+endfunction
+
 filetype off
 filetype plugin indent off
 set viminfo+=n~/.vim/tmp/info.txt

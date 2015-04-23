@@ -92,35 +92,7 @@ map g# <Plug>(incsearch-nohl-g#)
 "let g:NERDTreeShowHidden=0 "//defo 0
 let g:NERDTreeWinSize=26  "//defo 31
 
-" switch.vim
-nnoremap ! :Switch<CR>
-let s:switch_definition = {
-      \ '*': [
-      \   ['is', 'are']
-      \ ],
-      \ 'ruby,eruby,haml' : [
-      \   ['if', 'unless'],
-      \   ['while', 'until'],
-      \   ['.blank?', '.present?'],
-      \   ['include', 'extend'],
-      \   ['class', 'module'],
-      \   ['.inject', '.delete_if'],
-      \   ['.map', '.map!'],
-      \   ['attr_accessor', 'attr_reader', 'attr_writer'],
-      \ ],
-      \ 'Gemfile,Berksfile' : [
-      \   ['=', '<', '<=', '>', '>=', '~>'],
-      \ ],
-      \ 'ruby.application_template' : [
-      \   ['yes?', 'no?'],
-      \   ['lib', 'initializer', 'file', 'vendor', 'rakefile'],
-      \   ['controller', 'model', 'view', 'migration', 'scaffold'],
-      \ ],
-      \ 'erb,html,php' : [
-      \   { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' },
-      \ ]
-      \ }
-
+call Source_rc('switch.rc.vim')
 
 " syntastic
 let g:syntastic_cpp_compiler = 'clang++'
@@ -171,7 +143,7 @@ let g:over_command_line_prompt = "> "
 
 " ##neocomplete, clang_complete and etc...
 if s:meet_neocomplete_requirements()
-  source ~/.vim/complete_config.vim
+  call Source_rc('complete.rc.vim')
 endif
 
 if !exists('loaded_matchit')
