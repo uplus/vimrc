@@ -26,6 +26,7 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \}, }
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'troydm/easybuffer.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
@@ -51,6 +52,7 @@ NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
+NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
@@ -89,6 +91,35 @@ map g# <Plug>(incsearch-nohl-g#)
 " let g:NERDTreeQuitOnOpen=0 "//defo 0
 "let g:NERDTreeShowHidden=0 "//defo 0
 let g:NERDTreeWinSize=26  "//defo 31
+
+" switch.vim
+nnoremap ! :Switch<CR>
+let s:switch_definition = {
+      \ '*': [
+      \   ['is', 'are']
+      \ ],
+      \ 'ruby,eruby,haml' : [
+      \   ['if', 'unless'],
+      \   ['while', 'until'],
+      \   ['.blank?', '.present?'],
+      \   ['include', 'extend'],
+      \   ['class', 'module'],
+      \   ['.inject', '.delete_if'],
+      \   ['.map', '.map!'],
+      \   ['attr_accessor', 'attr_reader', 'attr_writer'],
+      \ ],
+      \ 'Gemfile,Berksfile' : [
+      \   ['=', '<', '<=', '>', '>=', '~>'],
+      \ ],
+      \ 'ruby.application_template' : [
+      \   ['yes?', 'no?'],
+      \   ['lib', 'initializer', 'file', 'vendor', 'rakefile'],
+      \   ['controller', 'model', 'view', 'migration', 'scaffold'],
+      \ ],
+      \ 'erb,html,php' : [
+      \   { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' },
+      \ ]
+      \ }
 
 
 " syntastic
