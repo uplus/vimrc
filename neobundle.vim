@@ -122,7 +122,7 @@ let g:quickrun_config.c = {
       \ 'cmdopt'  : $C_COMP_OPT
       \}
 
-" yankround
+" ##yankround
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -131,13 +131,12 @@ xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
-
-" yankround
 " round対象のうちはハイライトする
-let g:yankround_use_region_hl = 0
+let g:yankround_use_region_hl = 1
 let g:yankround_max_history = 50
 let g:yankround_dir = "~/.vim/tmp/"
 
+" ##over
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
 
