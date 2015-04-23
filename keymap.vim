@@ -28,15 +28,6 @@ vnoremap <BS> d
 command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
 
-"Spaceとつなげれば平気
-"@@@###buffer###@@@
-"nnoremap bb :b#<CR>
-"nnoremap bp :bp<CR>
-"nnoremap bn :bn<CR>
-"nnoremap bd :bd<CR>
-" これをマップすると:bのときの動作が重く感じる(感じるだけ?)
-"cnoremap bb b#
-
 "######apply speed up######
 nnoremap u u
 inoremap <C-C> <ESC>
@@ -78,8 +69,15 @@ vnoremap <Space>l $
 nnoremap <Space>p o<ESC>p
 nnoremap <Space>P o<ESC>P
 
+" buffer
+nnoremap <Space>bb :b#<CR>
+nnoremap <Space>bp :bp<CR>
+nnoremap <Space>bn :bn<CR>
+nnoremap <Space>bd :bd<CR>
+
 nnoremap <silent> <Space> <Nop>
 vnoremap <silent> <Space> <Nop>
+
 
 "######Ctrl+W family######
 "NERDTree
