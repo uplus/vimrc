@@ -27,8 +27,6 @@ nnoremap q: <Nop>
 vnoremap <BS> d
 command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
-" AsciEscのプラグインで\rwpをマップしてあるのを無効にする
-nnoremap <Leader><Leader><Leader> <Plug>RestoreWinPosn
 
 "######apply speed up######
 nnoremap u u

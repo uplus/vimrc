@@ -33,10 +33,11 @@ NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
-NeoBundle 'vim-scripts/AnsiEsc.vim' " ANSIカラー情報を反映して表示する
+NeoBundle 'powerman/vim-plugin-AnsiEsc' " ANSIカラー情報を反映して表示する
 NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 " NeoBundle 'deris/clever-f.vim'      " ftFTで検索後ftで次へ移動できる
+" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
 
 " Rails
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
@@ -72,6 +73,9 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 source ~/.vim/colors.vim "Colors
 call neobundle#end()
 filetype plugin indent on " Required
+
+" AnsiEsc の中で変なマッピングをしないようにする
+let g:no_cecutil_maps=1
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
 let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
