@@ -41,6 +41,7 @@ NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示�
 " Rails
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
+NeoBundle 'tpope/vim-fugitive'
 
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'LeafCage/yankround.vim'  " round the yank history
