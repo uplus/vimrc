@@ -19,6 +19,8 @@ vnoremap <silent> gy ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>
 
+nnoremap <C-J> ddpkJ
+
 nnoremap v V
 nnoremap V v
 
