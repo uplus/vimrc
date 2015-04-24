@@ -6,6 +6,10 @@ function! Source_rc(path)
   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
 endfunction
 
+function! IsMac()
+  return has('mac') || has('macunix') || has('gui_mac')
+endfunction
+
 filetype off
 filetype plugin indent off
 set viminfo+=n~/.vim/tmp/info.txt
@@ -69,9 +73,6 @@ if has("autocmd")
   au BufWritePre * EraseSpace
 endif
 
-function! IsMac()
-  return has('mac') || has('macunix') || has('gui_mac')
-endfunction
 
   "==============="
   "   Dark vim?   "
