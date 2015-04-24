@@ -29,7 +29,6 @@ set ttimeoutlen=100
 set nobackup
 set mouse=a
 set nohidden
-set clipboard=unnamedplus   "この形なら動作した
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,~
 "set virtualedit=onemore
@@ -49,6 +48,12 @@ let &shiftwidth  = &tabstop "インデント幅
 set expandtab     "Tabキーでスペース挿入
 set autoindent
 set smartindent
+
+if IsMac()
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplus
+endif
 
 "ここらへんの意味がわからない
 set showcmd
