@@ -20,6 +20,8 @@ nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>
 
 nnoremap <C-J> ddpkJ
+nnoremap mj ddp
+nnoremap mk ddkP
 
 nnoremap v V
 nnoremap V v
