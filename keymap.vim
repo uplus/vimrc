@@ -11,6 +11,8 @@
 command! VS :tabedit | VimShell
 command! Reload :source $MYVIMRC
 command! Colors :Unite colorscheme -auto-preview
+command! SudoWrite w !sudo tee % > /dev/null
+command! Q :q!
 
 nnoremap <silent> gyy yy:TComment<CR>
 vnoremap <silent> gy ygv:TComment<CR>
@@ -25,8 +27,6 @@ nnoremap Q <Nop>
 " 履歴誤爆防止
 nnoremap q: <Nop>
 vnoremap <BS> d
-command! SudoWrite w !sudo tee % > /dev/null
-command! Q :q!
 
 "######apply speed up######
 nnoremap u u
