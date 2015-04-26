@@ -45,11 +45,7 @@ NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'qtmplsel.vim'            " テンプレートを挿入 バグる
 
-" textobj operator
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-operator-user'
-
-" rails
+" rails and ruby
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
 

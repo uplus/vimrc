@@ -78,7 +78,6 @@ if has("autocmd")
   au BufWritePre * EraseSpace
 endif
 
-
   "==============="
   "   Dark vim?   "
   "==============="

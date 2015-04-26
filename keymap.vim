@@ -17,17 +17,24 @@ command! Q :q!
 nnoremap <silent> gyy yy:TComment<CR>
 nnoremap <silent> gyj 2yy:.,+1TComment<CR>
 nnoremap <silent> gyk k2yy:.,+1TComment<CR>j
+nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
+nnoremap <silent> gyG yG:.,$TComment<CR>
+nnoremap <silent> gyp :%y<CR>:%TComment<CR>
 vnoremap <silent> gy ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
+nnoremap <silent> gcp :%TComment<CR>
 
 nnoremap <silent> y% :%y<CR>
 nnoremap <silent> d% :%d<CR>
+nnoremap <silent> yp :%y<CR>
+nnoremap <silent> dp :%d<CR>
 
 nnoremap <C-J> ddpkJ
 nnoremap mj ddp
 nnoremap mk ddkP
 nnoremap <Space>z za
+nmap zp zf%
 
 nnoremap v V
 nnoremap V v
@@ -55,6 +62,7 @@ vnoremap = =
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 " do to end
 nmap <Space>t %
+"vmapはpを%にマップしても飯井かもしれない
 vmap <Space>t %
 
 nnoremap <Space>ss :OverCommandLine<CR>%s/
