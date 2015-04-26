@@ -1,5 +1,5 @@
 "commandモードでのマップは文字入力に影響がある
-"Ctrl-M は<CR>
+" Ctrl-M は<CR>
 "Ctrl-[ は<ESC>
 "Ctrl-i は<TAB>
 "<CR>のマッピングは <expr>の結果として使えば行ける?
@@ -15,9 +15,12 @@ command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
 
 nnoremap <silent> gyy yy:TComment<CR>
+nnoremap <silent> gyj 2yy:.,+1TComment<CR>
+nnoremap <silent> gyk k2yy:.,+1TComment<CR>j
 vnoremap <silent> gy ygv:TComment<CR>
-nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
-nnoremap <silent> gck :TComment<CR>k:TComment<CR>
+nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
+nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
+
 nnoremap <silent> y% :%y<CR>
 nnoremap <silent> d% :%d<CR>
 
