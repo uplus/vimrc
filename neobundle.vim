@@ -66,9 +66,9 @@ NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 
 " Move
 NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
-NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
+" NeoBundle 'Lokaltog/vim-easymotion'
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
-" NeoBundle 'deris/clever-f.vim'      " ftFTで検索後ftで次へ移動できる
+NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
 
 " QuickRun
@@ -116,6 +116,47 @@ map g# <Plug>(incsearch-nohl-g#)
 let g:NERDTreeWinSize=26  "//defo 31
 
 call Source_rc('switch.rc.vim')
+
+" #clever-f
+let g:clever_f_smart_case = 1
+let g:clever_f_across_no_line = 1 " 行をまたいで検索しない
+let g:clever_f_fix_key_direction = 1 " fは右方向 Fは左方向に移動を固定
+
+" 移動先に色をつける
+" let g:clever_f_char = 1
+" let g:clever_f_mark_char_color = "Statement"
+
+" <Plug>(clever-f-f)                    *<Plug>(clever-f-f)*
+" <Plug>(clever-f-F)                    *<Plug>(clever-f-F)*
+" <Plug>(clever-f-t)                    *<Plug>(clever-f-t)*
+" <Plug>(clever-f-T)                    *<Plug>(clever-f-T)*
+" <Plug>(clever-f-reset)                *<Plug>(clever-f-reset)*
+" <Plug>(clever-f-repeat-forward)       *<Plug>(clever-f-repeat-forward)*
+" <Plug>(clever-f-repeat-back)          *<Plug>(clever-f-repeat-back)*
+
+nmap f  <Plug>(shot-f-f)<Plug>(clever-f-f)
+nmap F  <Plug>(shot-f-F)<Plug>(clever-f-F)
+nmap t  <Plug>(shot-f-t)<Plug>(clever-f-t)
+nmap T  <Plug>(shot-f-T)<Plug>(clever-f-T)
+" xmap f  <Plug>(shot-f-f)
+" xmap F  <Plug>(shot-f-F)
+" xmap t  <Plug>(shot-f-t)
+" xmap T  <Plug>(shot-f-T)
+" omap f  <Plug>(shot-f-f)
+" omap F  <Plug>(shot-f-F)
+" omap t  <Plug>(shot-f-t)
+" omap T  <Plug>(shot-f-T)
+
+" #easymotion
+" ホームポジションに近いキーを使う
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+" 「;」 + 何かにマッピング
+let g:EasyMotion_leader_key=";"
+" 1 ストローク選択を優先する
+let g:EasyMotion_grouping=1
+" カラー設定変更
+" hi EasyMotionTarget ctermbg=none ctermfg=red
+" hi EasyMotionShade  ctermbg=none ctermfg=blue
 
 " syntastic
 let g:syntastic_cpp_compiler = 'clang++'
@@ -171,3 +212,5 @@ endif
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif
+
+NeoBundleCheck
