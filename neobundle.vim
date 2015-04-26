@@ -20,6 +20,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'tacroe/unite-mark'
 
 NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \   'mac'   : 'make -f make_mac.mak',
@@ -32,12 +33,18 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 NeoBundle 'powerman/vim-plugin-AnsiEsc' " ANSIカラー情報を反映して表示する
 " NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'vim-scripts/Visual-Mark'
+
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 NeoBundle 'troydm/easybuffer.vim'   " :EasyBufferでバッファ一覧
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
+
+" textobj operator
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-operator-user'
 
 " Rails
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
