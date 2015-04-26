@@ -70,11 +70,49 @@ NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
 " NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 
-
 " QuickRun
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
+
+" textobj operator
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'emonkak/vim-operator-comment'
+" NoeBundle 'tyru/operator-camelize.vim'  " CamelCaseとsnake_caseを相互変換
+NeoBundle 'emonkak/vim-operator-sort'
+NeoBundle 'kana/vim-textobj-entire' " ae ie(先頭、末尾の空行なし)
+NeoBundle 'kana/vim-textobj-syntax' " ay iy
+NeoBundle 'kana/vim-textobj-line'   " al, il
+NeoBundle 'kana/vim-textobj-function' " af, if
+NeoBundle 'kana/vim-textobj-indent' " al, il カーソル位置と同じインデント
+NeoBundle 'kana/vim-textobj-fold' " az, iz
+NeoBundle 'thinca/vim-textobj-between' " af, if 任意の区切り文字
+NeoBundle 'thinca/vim-textobj-comment' " ac, ic コメント
+NeoBundle 'rhysd/vim-textobj-ruby' " arr, brr Ruby のブロック
+
+NeoBundle 'thinca/vim-textobj-function-javascript'  " af, if JavaScript の関数内
+NeoBundle 'rhysd/vim-textobj-continuous-line' " av, iv 行継続を用いている行
+NeoBundle 'osyo-manga/vim-textobj-multiblock' " asb, isb 任意の複数の括弧のいずれか
+NeoBundle 'thinca/vim-textobj-function-perl'  " af, if Perl の関数内
+NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa, ixa XML の属性
+NeoBundle 'deris/vim-textobj-enclosedsyntax'  " aq, iq Perl や Ruby の正規表現
+NeoBundle 'deris/vim-textobj-headwordofline'  " ah, ih 行の先頭の word
+NeoBundle 'anyakichi/vim-textobj-xbrackets' " axb, ixb x() や x<> など
+NeoBundle 'hchbaw/textobj-motionmotion.vim' " am, im 任意の2つの motion の間
+NeoBundle 'saihoooooooo/vim-textobj-space'  " aS, iS 連続したスペース
+NeoBundle 'rhysd/vim-textobj-lastinserted'  " au, iu テキストオブジェクトとして最後に挿入された範囲
+NeoBundle 'osyo-manga/vim-textobj-context'  " icx 別の filetype のコンテキスト
+NeoBundle 'deton/textobj-mbboundary.vim'    " am, im ASCII文字とマルチバイト文字の境界を区切り
+NeoBundle 'gilligan/textobj-lastpaste'  " ip 直前に変更またはヤンクされたテキスト 標準である?
+NeoBundle 'mjbrownie/html-textobjects'  " ahf, ihf HTML
+NeoBundle 'sgur/vim-textobj-parameter'  " a, i, 関数の引数
+NeoBundle 'glts/vim-textobj-indblock'   " ao, io インデントの空白行
+NeoBundle 'akiyan/vim-textobj-php'  " aP, iP phpタグに囲まれた部分
+NeoBundle 'mattn/vim-textobj-cell'  " ac, ic 前後のスペースを取り除いたカーソル行
+NeoBundle 'bps/vim-textobj-python'  " af, if Python
+NeoBundle 'mattn/vim-textobj-url'   " au, iu URL
+NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上の word
 
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
