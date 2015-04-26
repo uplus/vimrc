@@ -114,6 +114,9 @@ NeoBundle 'bps/vim-textobj-python'  " af, if Python
 NeoBundle 'mattn/vim-textobj-url'   " au, iu URL
 NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上の word
 
+NeoBundle 'rhysd/vim-operator-trailingspace-killer'  " textobjの末尾のホワイトスペースを削除
+NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式として評価する
+
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
 endif
@@ -137,14 +140,22 @@ let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+" TODO ここおかしい?
 map  n <Plug>(incsearch-nohl-n)
 map  N <Plug>(incsearch-nohl-N)
 nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
 nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+
 map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+"# operators
+" つかいずらい ocjとか行の先頭からやってくれない
+" トグルできないのは面倒くさい
+" map oc <Plug>(operator-comment)
+" map ou <Plug>(operator-comment)
 
 "# NERDTree
 "0ならそのまま開いとく, 1なら閉じる
