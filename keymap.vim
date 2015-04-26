@@ -18,10 +18,13 @@ nnoremap <silent> gyy yy:TComment<CR>
 vnoremap <silent> gy ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>
+nnoremap <silent> y% :%y<CR>
+nnoremap <silent> d% :%d<CR>
 
 nnoremap <C-J> ddpkJ
 nnoremap mj ddp
 nnoremap mk ddkP
+nnoremap <Space>z za
 
 nnoremap v V
 nnoremap V v
@@ -48,7 +51,8 @@ vnoremap = =
 " 現在の位置に空行を挿入
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 " do to end
-nnoremap <Space>t %
+nmap <Space>t %
+vmap <Space>t %
 
 nnoremap <Space>ss :OverCommandLine<CR>%s/
 nnoremap <Space>sg :OverCommandLine<CR>%s//g<LEFT><LEFT>
