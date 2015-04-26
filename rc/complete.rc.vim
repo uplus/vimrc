@@ -80,7 +80,7 @@ if IsMac()
   " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
   let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 else
-  let g:clang_library_path =  '/usr/lib/llvm-3.5/lib'
+  let g:clang_library_path =  '/usr/lib/llvm-3.6/lib'
 endif
 
 

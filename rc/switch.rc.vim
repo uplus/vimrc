@@ -1,5 +1,5 @@
 " switch.vim
-nnoremap ! :Switch<CR>
+nnoremap <silent>! :Switch<CR>
 let s:switch_definition = {
       \ '*': [
       \   ['is', 'are']

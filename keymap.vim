@@ -31,8 +31,8 @@ nnoremap V v
 
 " ex mode はいらない
 nnoremap Q <Nop>
-" 履歴誤爆防止
-nnoremap q: <Nop>
+" 履歴誤爆防止 これがあるとNERDTreeがqで終了できない
+" nnoremap q: <Nop>
 vnoremap <BS> d
 
 "######apply speed up######
