@@ -31,22 +31,25 @@ NeoBundle 'Shougo/vimshell'
 
 " View
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
-NeoBundle 'powerman/vim-plugin-AnsiEsc' " ANSIカラー情報を反映して表示する
+NeoBundle 'powerman/vim-plugin-AnsiEsc'     " ANSIカラー情報を反映して表示する
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-scripts/Visual-Mark'
 
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
+" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
 NeoBundle 'troydm/easybuffer.vim'   " :EasyBufferでバッファ一覧
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
+NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'qtmplsel.vim'            " テンプレートを挿入 バグる
 
 " textobj operator
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-operator-user'
 
-" Rails
+" rails
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
 
@@ -58,12 +61,11 @@ NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 
-NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
-" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
 
 " Move
 NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
@@ -94,8 +96,7 @@ NeoBundleCheck
 call neobundle#end()
 filetype plugin indent on " Required
 
-" AnsiEsc の中で変なマッピングをしないようにする
-let g:no_cecutil_maps=1
+let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
 let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
