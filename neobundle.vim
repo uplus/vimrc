@@ -19,43 +19,52 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+
 NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \   'mac'   : 'make -f make_mac.mak',
                             \   'linux' : 'make',
                             \   'unix'  : 'make -f make_unix.mak',
                             \}, }
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'troydm/easybuffer.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
-NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
-NeoBundle 'kannokanno/previm'       " Markdown Previewer
+
+" View
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 NeoBundle 'powerman/vim-plugin-AnsiEsc' " ANSIカラー情報を反映して表示する
-NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
-" NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
-" NeoBundle 'deris/clever-f.vim'      " ftFTで検索後ftで次へ移動できる
-" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
+" NeoBundle 'nathanaelkane/vim-indent-guides'
+
+NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
+NeoBundle 'troydm/easybuffer.vim'   " :EasyBufferでバッファ一覧
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'kannokanno/previm'       " Markdown Previewer
 
 " Rails
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
-NeoBundle 'tpope/vim-fugitive'
 
-" NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'tpope/vim-fugitive'      " git
 NeoBundle 'LeafCage/yankround.vim'  " round the yank history
+
+" search and replace
+NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 
+" Move
+NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
+NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
+" NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
+" NeoBundle 'deris/clever-f.vim'      " ftFTで検索後ftで次へ移動できる
+" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
+
+" QuickRun
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
@@ -71,6 +80,8 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 source ~/.vim/colors.vim "Colors
+
+NeoBundleCheck
 call neobundle#end()
 filetype plugin indent on " Required
 
