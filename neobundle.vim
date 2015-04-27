@@ -154,24 +154,22 @@ source ~/.vim/colors.vim "Colors
 call neobundle#end()
 filetype plugin indent on " Required
 
+"# Plugin configs
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
+" ..-nohl-* は*を呼び出す
 let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-" TODO ここおかしい?
-map  n <Plug>(incsearch-nohl-n)
-map  N <Plug>(incsearch-nohl-N)
-nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
-nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
-
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+map n <Plug>(incsearch-nohl)<Plug>(anzu-mode-n)
+map N <Plug>(incsearch-nohl)<Plug>(anzu-mode-N)
+map * <Plug>(anzu-mode-n)
+map # <Plug>(anzu-mode-N)
+map * <Plug>(incsearch-nohl-*)
+map # <Plug>(incsearch-nohl-#)
 
 " #operators
 " つかいずらい ocjとか行の先頭からやってくれない
