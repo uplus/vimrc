@@ -27,8 +27,6 @@ nnoremap <silent> gcp :%TComment<CR>
 
 nnoremap <silent> y% :%y<CR>
 nnoremap <silent> d% :%d<CR>
-nnoremap <silent> yp :%y<CR>
-nnoremap <silent> dp :%d<CR>
 
 nnoremap <C-J> ddpkJ
 nnoremap mj ddp
@@ -41,8 +39,7 @@ nnoremap V v
 
 " ex mode はいらない
 nnoremap Q <Nop>
-" 履歴誤爆防止 これがあるとNERDTreeがqで終了できない
-" nnoremap q: <Nop>
+nnoremap <buffer>q: <Nop>
 vnoremap <BS> d
 inoremap <C-C> <ESC>
 
@@ -54,24 +51,16 @@ inoremap <C-C> <ESC>
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 " do to end
 nmap <Space>t %
-"vmapはpを%にマップしても飯井かもしれない
+"vmapはpを%にマップしてもいいかもしれない
 vmap <Space>t %
 
 nnoremap <Space>ss :OverCommandLine<CR>%s/
 nnoremap <Space>sg :OverCommandLine<CR>%s//g<LEFT><LEFT>
-nnoremap <Space>ws :OverCommandLine<CR>%s/<C-r><C-w>/
-nnoremap <Space>wg :OverCommandLine<CR>%s/<C-r><C-w>//g<LEFT><LEFT>
 vnoremap <Space>ss :OverCommandLine<CR>s/\%V
 vnoremap <Space>sg :OverCommandLine<CR>s/\%V/g<LEFT><LEFT>
-vnoremap <Space>ws :OverCommandLine<CR>s/\%V<C-r><C-w>/
-vnoremap <Space>wg :OverCommandLine<CR>s/\%V<C-r><C-w>//g<LEFT><LEFT>
 
-nnoremap <Space>j <C-D>
-nnoremap <Space>k <C-U>
 nnoremap <Space>h ^
 nnoremap <Space>l $
-vnoremap <Space>j <C-D>
-vnoremap <Space>k <C-U>
 vnoremap <Space>h ^
 vnoremap <Space>l $
 
