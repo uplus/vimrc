@@ -44,15 +44,7 @@ nnoremap Q <Nop>
 " 履歴誤爆防止 これがあるとNERDTreeがqで終了できない
 " nnoremap q: <Nop>
 vnoremap <BS> d
-
-"######apply speed up######
-nnoremap u u
 inoremap <C-C> <ESC>
-vnoremap d d
-vnoremap y y
-vnoremap > >
-vnoremap < <
-vnoremap = =
 
 
 "######Ctrl+@ family######

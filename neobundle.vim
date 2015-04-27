@@ -202,7 +202,7 @@ let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
 let g:syntastic_always_populate_loc_list=1  " quickfixの表示を更新する
 let g:syntastic_check_on_open=1
 
-" ###Quickrun
+" #Quickrun
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 " vimprocを使用して非同期実行し、結果をquickfixに出力する
 let g:quickrun_config._ = {
@@ -224,7 +224,7 @@ let g:quickrun_config.c = {
       \ 'cmdopt'  : $C_COMP_OPT
       \}
 
-" ##yankround
+" #yankround
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -238,11 +238,11 @@ let g:yankround_use_region_hl = 1
 let g:yankround_max_history = 50
 let g:yankround_dir = "~/.vim/tmp/"
 
-" ##over
+" #over
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
 
-" ##neocomplete, clang_complete and etc...
+" #neocomplete, clang_complete and etc...
 if s:meet_neocomplete_requirements()
   call Source_rc('complete.rc.vim')
 endif
