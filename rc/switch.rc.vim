@@ -1,29 +1,19 @@
 " switch.vim
 nnoremap <silent>! :Switch<CR>
-let s:switch_definition = {
-      \ '*': [
-      \   ['is', 'are']
-      \ ],
-      \ 'ruby,eruby,haml' : [
-      \   ['if', 'unless'],
-      \   ['while', 'until'],
-      \   ['.blank?', '.present?'],
-      \   ['include', 'extend'],
-      \   ['class', 'module'],
-      \   ['.inject', '.delete_if'],
-      \   ['.map', '.map!'],
-      \   ['attr_accessor', 'attr_reader', 'attr_writer'],
-      \ ],
-      \ 'Gemfile,Berksfile' : [
-      \   ['=', '<', '<=', '>', '>=', '~>'],
-      \ ],
-      \ 'ruby.application_template' : [
-      \   ['yes?', 'no?'],
-      \   ['lib', 'initializer', 'file', 'vendor', 'rakefile'],
-      \   ['controller', 'model', 'view', 'migration', 'scaffold'],
-      \ ],
-      \ 'erb,html,php' : [
-      \   { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' },
-      \ ]
-      \ }
 
+let b:switch_custom_definitions = []
+au FileType ruby,eruby let b:switch_custom_definitions +=
+      \ [
+      \   [ 'if', 'unless' ],
+      \   [ 'while', 'until' ],
+      \   [ '.blank?', '.present?' ],
+      \   [ 'include', 'extend' ],
+      \   [ 'class', 'module' ],
+      \   [ '.inject', '.reject' ],
+      \   [ '.map', '.map!' ],
+      \   [ 'attr_accessor', 'attr_reader', 'attr_writer' ],
+      \ ]
+
+au FileType markdown let b:switch_custom_definitions += [[ '[ ]', '[x]' ]]
+
+au FileType erb,html,php let b:switch_custom_definitions += [ { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' } ]
