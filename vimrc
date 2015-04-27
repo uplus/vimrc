@@ -49,6 +49,7 @@ set expandtab     "Tabキーでスペース挿入
 
 set autoindent
 set smartindent
+set foldmethod=marker
 
 if IsMac()
   set clipboard=unnamed

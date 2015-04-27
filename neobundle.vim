@@ -180,13 +180,13 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-"# operators
+" #operators
 " つかいずらい ocjとか行の先頭からやってくれない
 " トグルできないのは面倒くさい
 " map oc <Plug>(operator-comment)
 " map ou <Plug>(operator-comment)
 
-"# NERDTree
+" #nerdtree
 "0ならそのまま開いとく, 1なら閉じる
 " let g:NERDTreeQuitOnOpen=0 "//defo 0
 "let g:NERDTreeShowHidden=0 "//defo 0
@@ -209,7 +209,7 @@ let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
 let g:syntastic_always_populate_loc_list=1  " quickfixの表示を更新する
 let g:syntastic_check_on_open=1
 
-" #Quickrun
+" #quickrun
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 " vimprocを使用して非同期実行し、結果をquickfixに出力する
 let g:quickrun_config._ = {
@@ -256,7 +256,4 @@ if s:meet_neocomplete_requirements()
   call Source_rc('complete.rc.vim')
 endif
 
-if !exists('loaded_matchit')
-  runtime macros/matchit.vim
-endif
 NeoBundleCheck
