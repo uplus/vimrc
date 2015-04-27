@@ -1,12 +1,11 @@
-"commandモードでのマップは文字入力に影響がある
-" Ctrl-M は<CR>
+"Ctrl-M は<CR>
 "Ctrl-[ は<ESC>
 "Ctrl-i は<TAB>
 "<CR>のマッピングは <expr>の結果として使えば行ける?
 ":Errors :nohのマップ
 " inoremap <C-Space>を　状況によって <C-Y>に割り当てる
 "nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
-"nnoremap , コロンにマップできる
+"nnoremap , コロンにマップできる :s がマップできるらしい　mはマークにマップされてる
 
 command! VS :tabedit | VimShell
 command! Reload :source $MYVIMRC
@@ -25,34 +24,26 @@ nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
 
-nnoremap <silent> y% :%y<CR>
-nnoremap <silent> d% :%d<CR>
-
 nnoremap <C-J> ddpkJ
 nnoremap mj ddp
 nnoremap mk ddkP
 nnoremap <Space>z za
-nmap zp zf%
+nmap zp v%zf
 
 nnoremap v V
 nnoremap V v
 
 " ex mode はいらない
 nnoremap Q <Nop>
-" nnoremap <buffer>q: <Nop> " コマンドモードになる(over.vimで使う?)
-vnoremap <BS> d
 inoremap <C-C> <ESC>
-
-
-"######Ctrl+@ family######
 
 "######<Space> family######
 " 現在の位置に空行を挿入
 nnoremap <silent> <Space><CR> <S-O><ESC>x
 " do to end
-nmap <Space>t %
+nmap <Space>p %
 "vmapはpを%にマップしてもいいかもしれない
-vmap <Space>t %
+vmap <Space>p %
 
 nnoremap <Space>ss :OverCommandLine<CR>%s/
 nnoremap <Space>sg :OverCommandLine<CR>%s//g<LEFT><LEFT>
