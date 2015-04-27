@@ -39,16 +39,12 @@ let g:neocomplete#enable_auto_close_preview = 1
 inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-" <CR>: close popup and save indent.
-inoremap <silent><CR> <C-r>=<SID>cr_comp()<CR>
-function! s:cr_comp()
-  echo ""
-  if pumvisible()
-    return "\<C-y>" . "\<CR>"
-  else
-    return neocomplete#smart_close_popup() . "\<CR>"
-  endif
-endfunction
+" let g:endwise_no_mappings = 1
+call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
+imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
+      \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+      \ neocomplete#close_popup()
+
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

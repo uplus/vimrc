@@ -34,6 +34,7 @@ NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハ�
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " ANSIカラー情報を反映して表示する
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-scripts/Visual-Mark'
+NeoBundle 'itchyny/lightline.vim'
 
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
@@ -60,11 +61,36 @@ NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
+NeoBundle 'cohama/vim-smartinput-endwise'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 
+if neobundle#tap('vim-smartinput')
+  call neobundle#config({
+        \   'autoload' : {
+        \     'insert' : 1
+        \   }
+        \ })
+
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    call smartinput_endwise#define_default_rules()
+  endfunction
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-smartinput-endwise')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    " neosnippet and neocomplete compatible
+    call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
+    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
+          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+          \ neocomplete#close_popup()
+  endfunction
+  call neobundle#untap()
+endif
+
 " Move
-NeoBundle 'tpope/vim-endwise'       " do に対してのendなどを自動入力
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
 " NeoBundle 'Lokaltog/vim-easymotion'
@@ -120,7 +146,7 @@ NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式とし
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
 endif
-" NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundleLazy 'Rip-Rip/clang_complete', {
             \ 'autoload' : {'filetypes' : ['c', 'cpp']}
             \ }
@@ -133,6 +159,7 @@ NeoBundleCheck
 call neobundle#end()
 filetype plugin indent on " Required
 
+call smartinput_endwise#define_default_rules()
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
