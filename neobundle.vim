@@ -64,31 +64,6 @@ NeoBundle 'cohama/vim-smartinput-endwise'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 
-if neobundle#tap('vim-smartinput')
-  call neobundle#config({
-        \   'autoload' : {
-        \     'insert' : 1
-        \   }
-        \ })
-
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    call smartinput_endwise#define_default_rules()
-  endfunction
-
-  call neobundle#untap()
-endif
-
-if neobundle#tap('vim-smartinput-endwise')
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    " neosnippet and neocomplete compatible
-    call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
-    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
-          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-          \ neocomplete#close_popup()
-  endfunction
-  call neobundle#untap()
-endif
-
 " Move
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
@@ -152,12 +127,32 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
 
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
+
+if neobundle#tap('vim-smartinput')
+  call neobundle#config({ 'autoload' : { 'insert' : 1 }})
+
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    call smartinput_endwise#define_default_rules()
+  endfunction
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-smartinput-endwise')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    " neosnippet and neocomplete compatible
+    call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
+    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
+          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+          \ neocomplete#close_popup()
+  endfunction
+  call neobundle#untap()
+endif
+
 source ~/.vim/colors.vim "Colors
 
 call neobundle#end()
 filetype plugin indent on " Required
-
-call smartinput_endwise#define_default_rules()
 
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
