@@ -256,4 +256,7 @@ if s:meet_neocomplete_requirements()
   call Source_rc('complete.rc.vim')
 endif
 
+if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
+  runtime macros/matchit.vim
+endif
 NeoBundleCheck
