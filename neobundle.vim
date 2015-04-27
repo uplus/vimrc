@@ -148,14 +148,12 @@ if s:meet_neocomplete_requirements()
 endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundleLazy 'Rip-Rip/clang_complete', {
-            \ 'autoload' : {'filetypes' : ['c', 'cpp']}
-            \ }
+            \ 'autoload' : {'filetypes' : ['c', 'cpp']} }
 
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 source ~/.vim/colors.vim "Colors
 
-NeoBundleCheck
 call neobundle#end()
 filetype plugin indent on " Required
 
@@ -195,10 +193,8 @@ let g:NERDTreeWinSize=26  "//defo 31
 " #easymotion
 " ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
-" 「;」 + 何かにマッピング
-let g:EasyMotion_leader_key=";"
-" 1 ストローク選択を優先する
-let g:EasyMotion_grouping=1
+let g:EasyMotion_leader_key=";"   " 「;」 + 何かにマッピング
+let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 " カラー設定変更
 " hi EasyMotionTarget ctermbg=none ctermfg=red
 " hi EasyMotionShade  ctermbg=none ctermfg=blue
@@ -251,11 +247,9 @@ let g:over_command_line_prompt = "> "
 
 
 call Source_rc('switch.rc.vim')
-" #neocomplete, clang_complete and etc...
 if s:meet_neocomplete_requirements()
   call Source_rc('complete.rc.vim')
 endif
-
 if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
   runtime macros/matchit.vim
 endif
