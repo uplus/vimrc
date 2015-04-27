@@ -34,6 +34,8 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc'     " ANSIカラー情報を反映して
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'AndrewRadev/linediff.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる

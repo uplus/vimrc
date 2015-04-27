@@ -39,7 +39,7 @@ nnoremap V v
 
 " ex mode はいらない
 nnoremap Q <Nop>
-nnoremap <buffer>q: <Nop>
+" nnoremap <buffer>q: <Nop> " コマンドモードになる(over.vimで使う?)
 vnoremap <BS> d
 inoremap <C-C> <ESC>
 
