@@ -11,8 +11,7 @@ function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
 
-if has('vim_starting')
-  "Set the directory to be managed by the bundle
+if has('vim_starting') "set the directory to be managed by the bundle
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
@@ -101,7 +100,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 
-" textobj operator
+" textobj operator {{{
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'emonkak/vim-operator-comment'
@@ -127,9 +126,9 @@ NeoBundle 'deris/vim-textobj-headwordofline'  " ah, ih 行の先頭の word
 NeoBundle 'anyakichi/vim-textobj-xbrackets' " axb, ixb x() や x<> など
 NeoBundle 'hchbaw/textobj-motionmotion.vim' " am, im 任意の2つの motion の間
 NeoBundle 'saihoooooooo/vim-textobj-space'  " aS, iS 連続したスペース
-NeoBundle 'rhysd/vim-textobj-lastinserted'  " au, iu テキストオブジェクトとして最後に挿入された範囲
-NeoBundle 'osyo-manga/vim-textobj-context'  " icx 別の filetype のコンテキスト
-NeoBundle 'deton/textobj-mbboundary.vim'    " am, im ASCII文字とマルチバイト文字の境界を区切り
+NeoBundle 'rhysd/vim-textobj-lastinserted'  " au, iu textobjとして最後に挿入された範囲
+NeoBundle 'osyo-manga/vim-textobj-context'  " icx 別のfiletype のコンテキスト
+NeoBundle 'deton/textobj-mbboundary.vim'    " am, im ASCIIとmultibyte文字の境界を区切り
 NeoBundle 'gilligan/textobj-lastpaste'  " ip 直前に変更またはヤンクされたテキスト 標準である?
 NeoBundle 'mjbrownie/html-textobjects'  " ahf, ihf HTML
 NeoBundle 'sgur/vim-textobj-parameter'  " a, i, 関数の引数
@@ -142,6 +141,7 @@ NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上の word
 
 NeoBundle 'rhysd/vim-operator-trailingspace-killer'  " textobjの末尾のホワイトスペースを削除
 NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式として評価する
+" }}}
 
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
@@ -160,6 +160,8 @@ call neobundle#end()
 filetype plugin indent on " Required
 
 call smartinput_endwise#define_default_rules()
+
+
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
@@ -189,28 +191,6 @@ map g# <Plug>(incsearch-nohl-g#)
 " let g:NERDTreeQuitOnOpen=0 "//defo 0
 "let g:NERDTreeShowHidden=0 "//defo 0
 let g:NERDTreeWinSize=26  "//defo 31
-
-call Source_rc('switch.rc.vim')
-
-" #clever-f
-" let g:clever_f_smart_case = 1
-" let g:clever_f_across_no_line = 1 " 行をまたいで検索しない
-" let g:clever_f_fix_key_direction = 1 " fは右方向 Fは左方向に移動を固定
-" let g:clever_f_char = 1
-" let g:clever_f_mark_char_color = "Statement"
-
-" nmap f  <Plug>(shot-f-f)
-" nmap F  <Plug>(shot-f-F)
-" nmap t  <Plug>(shot-f-t)
-" nmap T  <Plug>(shot-f-T)
-" xmap f  <Plug>(shot-f-f)
-" xmap F  <Plug>(shot-f-F)
-" xmap t  <Plug>(shot-f-t)
-" xmap T  <Plug>(shot-f-T)
-" omap f  <Plug>(shot-f-f)
-" omap F  <Plug>(shot-f-F)
-" omap t  <Plug>(shot-f-t)
-" omap T  <Plug>(shot-f-T)
 
 " #easymotion
 " ホームポジションに近いキーを使う
@@ -269,6 +249,8 @@ let g:yankround_dir = "~/.vim/tmp/"
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
 
+
+call Source_rc('switch.rc.vim')
 " #neocomplete, clang_complete and etc...
 if s:meet_neocomplete_requirements()
   call Source_rc('complete.rc.vim')
@@ -277,5 +259,4 @@ endif
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif
-
 NeoBundleCheck

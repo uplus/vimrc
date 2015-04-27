@@ -46,6 +46,7 @@ set tabstop=2               "Tab表示幅
 let &softtabstop = &tabstop "Tab押下時のカーソル移動量
 let &shiftwidth  = &tabstop "インデント幅
 set expandtab     "Tabキーでスペース挿入
+
 set autoindent
 set smartindent
 
@@ -73,7 +74,6 @@ command! NoEraseSpace :au! BufWritePre
 
 
 if has("autocmd")
-  " Remenber position
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au BufWritePre * EraseSpace
 endif
@@ -81,16 +81,9 @@ endif
   "==============="
   "   Dark vim?   "
   "==============="
-"#Neobundle
 source ~/.vim/neobundle.vim
-
-"#When insert mode, change status line's color
 source ~/.vim/imode-color.vim
-
-"#Keymap
 source ~/.vim/keymap.vim
-
-"#Filetype
 source ~/.vim/filetype.vim
 
 filetype plugin indent on
