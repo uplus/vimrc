@@ -120,6 +120,15 @@ NeoBundle 'rhysd/vim-operator-trailingspace-killer'  " textobjの末尾のホワ
 NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式として評価する
 " }}}
 
+" colorscheme"{{{
+NeoBundle 'croaker/mustang-vim'
+NeoBundle 'vim-scripts/Lucius'
+NeoBundle 'mrkn/mrkn256.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'djjcast/mirodark'
+NeoBundle 'vim-scripts/BusyBee'
+"}}}
+
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
 endif
@@ -151,14 +160,15 @@ if neobundle#tap('vim-smartinput-endwise')
   call neobundle#untap()
 endif
 
-source ~/.vim/colors.vim "Colors
-
 call neobundle#end()
 filetype plugin indent on " Required
-
 "# Plugin configs
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
+
+" colorscheme config
+let g:colors_name='molokai'
+autocmd FileType ruby,gitcommit colorscheme railscasts_u10
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
 " ..-nohl-* は*を呼び出す

@@ -90,3 +90,4 @@ source ~/.vim/filetype.vim
 filetype plugin indent on
 syntax enable
 set t_Co=256    " 色を256にしてくれる
+set background=dark
