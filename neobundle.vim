@@ -69,7 +69,7 @@ NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 " Move
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
-" NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 
 " QuickRun
@@ -149,9 +149,9 @@ if neobundle#tap('vim-smartinput')
   call neobundle#untap()
 endif
 
+" neosnippet and neocomplete compatible
 if neobundle#tap('vim-smartinput-endwise')
   function! neobundle#tapped.hooks.on_post_source(bundle)
-    " neosnippet and neocomplete compatible
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
     imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
           \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
@@ -196,13 +196,9 @@ map # <Plug>(incsearch-nohl-#)
 let g:NERDTreeWinSize=26  "//defo 31
 
 " #easymotion
-" ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
-let g:EasyMotion_leader_key=";"   " 「;」 + 何かにマッピング
+let g:EasyMotion_leader_key="mm"
 let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-" カラー設定変更
-" hi EasyMotionTarget ctermbg=none ctermfg=red
-" hi EasyMotionShade  ctermbg=none ctermfg=blue
 
 " syntastic
 let g:syntastic_cpp_compiler = 'clang++'
@@ -249,7 +245,6 @@ let g:yankround_dir = "~/.vim/tmp/"
 " #over
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
-
 
 call Source_rc('switch.rc.vim')
 if s:meet_neocomplete_requirements()
