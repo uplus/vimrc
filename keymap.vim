@@ -8,6 +8,7 @@
 "nnoremap , コロンにマップできる :s がマップできるらしい　mはマークにマップされてる
 
 command! VS :tabedit | VimShell
+command! UB :Unite buffer
 command! Reload :source $MYVIMRC
 command! Colors :Unite colorscheme -auto-preview
 command! SudoWrite w !sudo tee % > /dev/null

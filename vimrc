@@ -34,8 +34,6 @@ set whichwrap=b,s,[,],<,>,~
 "set virtualedit=onemore
 set wildmenu
 set wildmode=longest:full,full
-set incsearch
-set hlsearch            "検索候補をハイライト :noh でハイライトを消す
 set scrolloff=10
 set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
 "set confirm  "未保存のファイルがあるときは終了前に確認

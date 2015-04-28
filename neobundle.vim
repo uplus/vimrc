@@ -26,6 +26,7 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \   'linux' : 'make',
                             \   'unix'  : 'make -f make_unix.mak',
                             \}, }
+
 NeoBundle 'Shougo/vimshell'
 
 " View
@@ -40,7 +41,6 @@ NeoBundle 'terryma/vim-multiple-cursors'
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
-NeoBundle 'troydm/easybuffer.vim'   " :EasyBufferでバッファ一覧
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
@@ -134,9 +134,10 @@ if s:meet_neocomplete_requirements()
 endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundleLazy 'Rip-Rip/clang_complete', {
-            \ 'autoload' : {'filetypes' : ['c', 'cpp']} }
+      \ 'autoload' : {'filetypes' : ['c', 'cpp']} }
 
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+NeoBundleLazy 'osyo-manga/vim-stargate', {
+      \ 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 
 if neobundle#tap('vim-smartinput')
@@ -150,6 +151,7 @@ if neobundle#tap('vim-smartinput')
 endif
 
 " neosnippet and neocomplete compatible
+" C-r=のマップでもimapにすれば平気かも
 if neobundle#tap('vim-smartinput-endwise')
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
@@ -162,7 +164,7 @@ endif
 
 call neobundle#end()
 filetype plugin indent on " Required
-"# Plugin configs
+"###################### plugin config ############################"
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
@@ -170,8 +172,16 @@ let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないよ�
 let g:colors_name='molokai'
 autocmd FileType ruby,gitcommit colorscheme railscasts_u10
 
+" #over
+let g:over#command_line#enable_move_cursor = 1
+let g:over_command_line_prompt = "> "
+" let g:over_enable_auto_nohlsearch = 1
+" let g:over_enable_cmd_window = 1
+" let g:over#command_line#search#enable_incsearch = 1
+" let g:over#command_line#search#enable_move_cursor = 1
+
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
-" ..-nohl-* は*を呼び出す
+" set incsearch set hlsearchいらない
 let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
@@ -200,13 +210,13 @@ let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_leader_key="mm"
 let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 
-" syntastic
+" #syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
 let g:syntastic_always_populate_loc_list=1  " quickfixの表示を更新する
 let g:syntastic_check_on_open=1
 
-" #quickrun
+" #quickrun"{{{
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 " vimprocを使用して非同期実行し、結果をquickfixに出力する
 let g:quickrun_config._ = {
@@ -227,6 +237,7 @@ let g:quickrun_config.c = {
       \ 'command' : '/usr/bin/clang',
       \ 'cmdopt'  : $C_COMP_OPT
       \}
+"}}}
 
 " #yankround
 nmap p <Plug>(yankround-p)
@@ -242,9 +253,6 @@ let g:yankround_use_region_hl = 1
 let g:yankround_max_history = 50
 let g:yankround_dir = "~/.vim/tmp/"
 
-" #over
-let g:over#command_line#enable_move_cursor = 1
-let g:over_command_line_prompt = "> "
 
 call Source_rc('switch.rc.vim')
 if s:meet_neocomplete_requirements()
