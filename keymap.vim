@@ -15,8 +15,8 @@ command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
 
 nnoremap <silent> gyy yy:TComment<CR>
-nnoremap <silent> gyj 2yy:.,+1TComment<CR>
-nnoremap <silent> gyk k2yy:.,+1TComment<CR>j
+nnoremap <silent> gyj yj:.,+1TComment<CR>
+nnoremap <silent> gyk yk:.,+1TComment<CR>j
 nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
 nnoremap <silent> gyG yG:.,$TComment<CR>
 nnoremap <silent> gyp :%y<CR>:%TComment<CR>
@@ -25,26 +25,35 @@ nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
 
-nnoremap <C-J> ddpkJ
+nnoremap gJ kddpkJ
 nnoremap mj ddp
 nnoremap mk ddkP
 nnoremap <Space>z za
 nmap zp v%zf
 
+" do to end
+nmap mp %
+vmap mp %
+
 nnoremap v V
 nnoremap V v
 
-" ex mode はいらない
+" ex-modeいらない
 nnoremap Q <Nop>
 inoremap <C-C> <ESC>
+
+" buffer
+nnoremap <silent> [b :bpreviou<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+nnoremap <Space>bb :b#<CR>
+nnoremap <Space>bd :bd<CR>
+
 
 "######<Space> family######
 " 現在の位置に空行を挿入
 nnoremap <silent> <Space><CR> <S-O><ESC>x
-" do to end
-nmap <Space>p %
-"vmapはpを%にマップしてもいいかもしれない
-vmap <Space>p %
 
 nnoremap <Space>ss q:i%s/
 xnoremap <Space>ss q:i%s/\%V
@@ -60,12 +69,6 @@ vnoremap <Space>l $
 
 nnoremap <Space>p o<ESC>p
 nnoremap <Space>P o<ESC>P
-
-" buffer
-nnoremap <Space>bb :b#<CR>
-nnoremap <Space>bp :bp<CR>
-nnoremap <Space>bn :bn<CR>
-nnoremap <Space>bd :bd<CR>
 
 nnoremap <silent> <Space> <Nop>
 vnoremap <silent> <Space> <Nop>
@@ -149,11 +152,3 @@ vnoremap k gk
 vnoremap j gj
 vnoremap gk k
 vnoremap gj j
-
-"######Trash######
-"すでに前の行の先頭　にマップされている
-" 0 == ^ - == $
-"nnoremap - $
-
-"なんかいろいろすごいけど・・・
-"cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
