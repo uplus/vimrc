@@ -36,7 +36,6 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc'     " ANSIカラー情報を反映して
 NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
 
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
@@ -192,12 +191,6 @@ map * <Plug>(anzu-mode-n)
 map # <Plug>(anzu-mode-N)
 map * <Plug>(incsearch-nohl-*)
 map # <Plug>(incsearch-nohl-#)
-
-" #operators
-" つかいずらい ocjとか行の先頭からやってくれない
-" トグルできないのは面倒くさい
-" map oc <Plug>(operator-comment)
-" map ou <Plug>(operator-comment)
 
 " #nerdtree
 "0ならそのまま開いとく, 1なら閉じる
