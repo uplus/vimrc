@@ -131,13 +131,11 @@ if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
 endif
 NeoBundle 'Shougo/neosnippet.vim'
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-      \ 'autoload' : {'filetypes' : ['c', 'cpp']} }
-
+NeoBundle 'Rip-Rip/clang_complete'
 NeoBundleLazy 'osyo-manga/vim-stargate', {
       \ 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
-
+" <CR> config "{{{
 if neobundle#tap('vim-smartinput')
   call neobundle#config({ 'autoload' : { 'insert' : 1 }})
 
@@ -159,6 +157,7 @@ if neobundle#tap('vim-smartinput-endwise')
   endfunction
   call neobundle#untap()
 endif
+"}}}
 
 call neobundle#end()
 filetype plugin indent on " Required
