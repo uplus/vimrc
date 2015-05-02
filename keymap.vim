@@ -19,7 +19,7 @@ nnoremap <silent> gyk yk:.,+1TComment<CR>j
 nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
 nnoremap <silent> gyG yG:.,$TComment<CR>
 nnoremap <silent> gyp :%y<CR>:%TComment<CR>
-vnoremap <silent> gy ygv:TComment<CR>
+xnoremap <silent> gy ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
@@ -65,14 +65,14 @@ xnoremap <Space>ss q:i%s/\%V
 
 nnoremap <Space>h ^
 nnoremap <Space>l $
-vnoremap <Space>h ^
-vnoremap <Space>l $
+xnoremap <Space>h ^
+xnoremap <Space>l $
 
 nnoremap <Space>p o<ESC>p
 nnoremap <Space>P o<ESC>P
 
 nnoremap <silent> <Space> <Nop>
-vnoremap <silent> <Space> <Nop>
+xnoremap <silent> <Space> <Nop>
 
 
 "######Ctrl+W family######
@@ -145,11 +145,11 @@ inoremap <C-K> <C-O>d$
 inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
 
-vnoremap <UP> gk
-vnoremap <DOWN> gj
-vnoremap <LEFT> h
-vnoremap <RIGHT> l
-vnoremap k gk
-vnoremap j gj
-vnoremap gk k
-vnoremap gj j
+xnoremap <UP> gk
+xnoremap <DOWN> gj
+xnoremap <LEFT> h
+xnoremap <RIGHT> l
+xnoremap k gk
+xnoremap j gj
+xnoremap gk k
+xnoremap gj j
