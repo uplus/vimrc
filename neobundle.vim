@@ -129,6 +129,7 @@ NeoBundle 'mrkn/mrkn256.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'djjcast/mirodark'
 NeoBundle 'vim-scripts/BusyBee'
+NeoBundle '1player/lettuce.vim'
 "}}}
 
 if s:meet_neocomplete_requirements()
@@ -172,6 +173,7 @@ let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないよ�
 " colorscheme config
 let g:colors_name='molokai'
 autocmd FileType ruby,gitcommit colorscheme railscasts_u10
+autocmd FileType c,cpp colorscheme lettuce
 
 " #over
 let g:over#command_line#enable_move_cursor = 1
