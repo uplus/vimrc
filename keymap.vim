@@ -8,7 +8,6 @@
 "nnoremap , コロンにマップできる :s がマップできるらしい　mはマークにマップされてる
 
 command! VS :tabedit | VimShell
-command! UB :Unite buffer
 command! Reload :source $MYVIMRC
 command! Colors :Unite colorscheme -auto-preview
 command! SudoWrite w !sudo tee % > /dev/null
@@ -50,6 +49,11 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap <Space>bb :b#<CR>
 nnoremap <Space>bd :bd<CR>
 
+"######<Leader> family######
+nnoremap <Leader>r :QuickRun -mode n<CR>
+xnoremap <Leader>r :QuickRun -mode v<CR>
+nnoremap <Leader>m :Unite mark<CR>
+nnoremap <Leader>b :Unite buffer<CR>
 
 "######<Space> family######
 " 現在の位置に空行を挿入
