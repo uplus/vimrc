@@ -100,36 +100,9 @@ call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
 "######Ctrl+S family######
-" quit vim
-nnoremap <C-S>q :q<CR>
-nnoremap <C-S>aq :qa<CR>
-inoremap <C-S>q <ESC>:q<CR>
-inoremap <C-S>aq <ESC>:qa<CR>
-
-" buffer delete
-nnoremap <C-S>d :bd<CR>
-inoremap <C-S>d <ESC>:bd<CR>
-
-" exit
-nnoremap <C-S>e :q!<CR>
-nnoremap <C-S>ae :qa!<CR>
-inoremap <C-S>e <ESC>:q!<CR>
-inoremap <C-S>ae <ESC>:qa!<CR>
-
-" save and quit
-nnoremap <C-S>z :wq<CR>
-nnoremap <C-S>az :wqa<CR>
-inoremap <C-S>z <ESC>:wq<CR>
-inoremap <C-S>az <ESC>:wqa<CR>
-
-
 " Save need #stty -ixon -ixoff
-noremap  <silent> <C-S>s :update<CR>
-inoremap <silent> <C-S>s <C-O>:update<CR>
-
-" Save single C-S version
-noremap  <silent> <C-S> :update<CR>
-inoremap <silent> <C-S> <C-O>:update<CR>
+noremap  <silent> <C-S> :w<CR>
+inoremap <silent> <C-S> <C-O>:w<CR>
 
 "######Move######
 nnoremap <UP> gk
