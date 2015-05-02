@@ -210,15 +210,19 @@ let g:syntastic_check_on_open=1
 
 " #quickrun"{{{
 let g:quickrun_config = get(g:, 'quickrun_config', {})
-" vimprocを使用して非同期実行し、結果をquickfixに出力する
 let g:quickrun_config._ = {
-      \ 'outputter/buffer/split'  : ':botright 8sp',
-      \ 'runner'    : 'vimproc',
-      \ 'runner/vimproc/updatetime' : 40,
+      \ 'hook/close_unite_quickfix/enable_hook_loaded' : 1,
+      \ 'hook/unite_quickfix/enable_failure' : 1,
+      \ 'hook/close_quickfix/enable_exit' : 1,
+      \ 'hook/close_buffer/enable_failure' : 1,
+      \ 'hook/close_buffer/enable_empty_data' : 1,
       \ 'outputter' : 'multi:buffer:quickfix',
-      \ 'hook/time/enable' : 1,
-      \ 'outputter/buffer/close_on_empty' : 1
-      \}
+      \ 'hook/shabadoubi_touch_henshin/enable' : 1,
+      \ 'hook/shabadoubi_touch_henshin/wait' : 20,
+      \ 'outputter/buffer/split' : ':botright 8sp',
+      \ 'runner' : "vimproc",
+      \ 'runner/vimproc/updatetime' : 40,
+      \ }
 
 let g:quickrun_config.cpp = {
       \ 'command' : '/usr/bin/clang++',
@@ -229,6 +233,13 @@ let g:quickrun_config.c = {
       \ 'command' : '/usr/bin/clang',
       \ 'cmdopt'  : $C_COMP_OPT
       \ }
+let g:quickrun_config.markdown = {
+      \ 'type': 'markdown/pandoc',
+      \ 'cmdopt': '-s',
+      \ 'outputter': 'browser'
+      \ }
+
+let g:quickrun_no_default_key_mappings = 1
 "}}}
 
 " #yankround
