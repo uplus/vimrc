@@ -205,6 +205,9 @@ let g:NERDTreeWinSize=26  "//defo 31
 " #easymotion
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_leader_key="mm"
+nmap <Space>j <Plug>(easymotion-j)
+nmap <Space>k <Plug>(easymotion-k)
+
 let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 
 " #syntastic
