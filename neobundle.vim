@@ -205,8 +205,10 @@ let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 " #syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-let g:syntastic_always_populate_loc_list=1  " quickfixの表示を更新する
-let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " #quickrun"{{{
 let g:quickrun_config = get(g:, 'quickrun_config', {})
