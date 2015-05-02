@@ -58,6 +58,7 @@ nnoremap <Leader>b :Unite buffer<CR>
 "######<Space> family######
 " 現在の位置に空行を挿入
 nnoremap <silent> <Space><CR> <S-O><ESC>x
+xnoremap <Space>n :normal<Space>
 
 nnoremap <Space>ss q:i%s/
 xnoremap <Space>ss q:i%s/\%V
