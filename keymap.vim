@@ -61,10 +61,6 @@ nnoremap <silent> <Space><CR> <S-O><ESC>x
 
 nnoremap <Space>ss q:i%s/
 xnoremap <Space>ss q:i%s/\%V
-" nnoremap <Space>ss :OverCommandLine<CR>%s/
-" nnoremap <Space>sg :OverCommandLine<CR>%s//g<LEFT><LEFT>
-" vnoremap <Space>ss :OverCommandLine<CR>s/\%V
-" vnoremap <Space>sg :OverCommandLine<CR>s/\%V/g<LEFT><LEFT>
 
 nnoremap <Space>h ^
 nnoremap <Space>l $

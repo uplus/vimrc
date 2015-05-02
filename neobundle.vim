@@ -106,7 +106,6 @@ NeoBundle 'rhysd/vim-textobj-lastinserted'  " au, iu textobjとして最後に�
 NeoBundle 'osyo-manga/vim-textobj-context'  " icx 別のfiletype のコンテキスト
 NeoBundle 'deton/textobj-mbboundary.vim'    " am, im ASCIIとmultibyte文字の境界を区切り
 NeoBundle 'gilligan/textobj-lastpaste'  " ip 直前に変更またはヤンクされたテキスト 標準である?
-NeoBundle 'mjbrownie/html-textobjects'  " ahf, ihf HTML
 NeoBundle 'sgur/vim-textobj-parameter'  " a, i, 関数の引数
 NeoBundle 'glts/vim-textobj-indblock'   " ao, io インデントの空白行
 NeoBundle 'akiyan/vim-textobj-php'  " aP, iP phpタグに囲まれた部分
@@ -224,12 +223,12 @@ let g:quickrun_config._ = {
 let g:quickrun_config.cpp = {
       \ 'command' : '/usr/bin/clang++',
       \ 'cmdopt'  : $CPP_COMP_OPT
-      \}
+      \ }
 
 let g:quickrun_config.c = {
       \ 'command' : '/usr/bin/clang',
       \ 'cmdopt'  : $C_COMP_OPT
-      \}
+      \ }
 "}}}
 
 " #yankround
