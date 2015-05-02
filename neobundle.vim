@@ -42,6 +42,10 @@ NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
+" NeoBundle 'osyo-manga/vim-watchdogs'
+" NeoBundle 'dannyob/quickfixstatus'
+" NeoBundle 'jceb/vim-hier'
+
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'qtmplsel.vim'            " テンプレートを挿入 バグる
@@ -208,6 +212,7 @@ let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" let g:syntastic_debug = 1
 
 " #quickrun"{{{
 let g:quickrun_config = get(g:, 'quickrun_config', {})
