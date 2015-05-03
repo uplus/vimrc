@@ -205,10 +205,9 @@ let g:NERDTreeWinSize=26  "//defo 31
 " #easymotion
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_leader_key="mm"
+let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 nmap <Space>j mmj
 nmap <Space>k mmk
-
-let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 
 " #syntastic
 let g:syntastic_cpp_compiler = 'clang++'
@@ -232,7 +231,7 @@ let g:quickrun_config._ = {
       \ 'hook/shabadoubi_touch_henshin/enable' : 1,
       \ 'hook/shabadoubi_touch_henshin/wait' : 20,
       \ 'outputter/buffer/split' : ':botright 8sp',
-      \ 'runner' : "vimproc",
+      \ 'runner' : 'vimproc',
       \ 'runner/vimproc/updatetime' : 40,
       \ }
 
