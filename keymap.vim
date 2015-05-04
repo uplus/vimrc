@@ -12,6 +12,7 @@ command! Reload :source $MYVIMRC
 command! Colors :Unite colorscheme -auto-preview
 command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
+command! QuickRunStop call quickrun#sweep_sessions()
 
 nnoremap <silent> gyy yy:TComment<CR>
 nnoremap <silent> gyj yj:.,+1TComment<CR>
