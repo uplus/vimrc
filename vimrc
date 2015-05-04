@@ -72,11 +72,10 @@ endfunction
 command! EraseSpace :call EraseSpace_func()
 command! NoEraseSpace :au! BufWritePre
 
-
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au BufWritePre * EraseSpace
-  au VimEnter * lcd %:h
+  au BufEnter * lcd %:p:h
 endif
 
   "==============="
