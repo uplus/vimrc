@@ -61,7 +61,7 @@ nnoremap <silent> <Space><CR> <S-O><ESC>x
 xnoremap <Space>n :normal<Space>
 
 nnoremap <Space>ss q:i%s/
-xnoremap <Space>ss q:i%s/\%V
+xnoremap <Space>ss q:is/
 
 nnoremap <Space>h ^
 nnoremap <Space>l $

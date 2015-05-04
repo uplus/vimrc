@@ -181,7 +181,7 @@ function s:set_colorscheme()
     colorscheme molokai
   endif
 endfunction
-au FileType * call s:set_colorscheme()
+au VimEnter * call s:set_colorscheme()
 
 " #over
 let g:over#command_line#enable_move_cursor = 1
