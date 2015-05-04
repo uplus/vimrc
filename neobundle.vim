@@ -136,6 +136,7 @@ if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
 endif
 NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundleLazy 'osyo-manga/vim-stargate', {
       \ 'autoload' : {'filetypes' : ['c', 'cpp'] } }
