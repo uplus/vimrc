@@ -184,7 +184,7 @@ let g:over_command_line_prompt = "> "
 " let g:over#command_line#search#enable_move_cursor = 1
 
 "# anzu&incsearch マッチした数&自動ハイライト&オフ
-" set incsearch set hlsearchいらない
+set hlsearch
 let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
