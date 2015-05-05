@@ -171,17 +171,9 @@ filetype plugin indent on " Required
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
-" colorscheme config
-function s:set_colorscheme()
-  if &filetype == 'cpp' || &filetype == 'c'
-    colorscheme lettuce
-  elseif &filetype == 'ruby' || &filetype == 'gitcommit'
-    colorscheme railscasts_u10
-  else
-    colorscheme molokai
-  endif
-endfunction
-au VimEnter * call s:set_colorscheme()
+au FileType c,cpp set background=dark | colorscheme lettuce
+au FileType ruby,gitcommit set background=dark | colorscheme railscasts_u10
+colorscheme molokai
 
 " #over
 let g:over#command_line#enable_move_cursor = 1
