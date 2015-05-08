@@ -78,9 +78,7 @@ if has("autocmd")
   au BufEnter * lcd %:p:h
 endif
 
-  "==============="
-  "   Dark vim?   "
-  "==============="
+
 source ~/.vim/neobundle.vim
 source ~/.vim/imode-color.vim
 source ~/.vim/keymap.vim
