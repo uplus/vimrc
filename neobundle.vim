@@ -168,10 +168,6 @@ filetype plugin indent on " Required
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
-au FileType c,cpp set background=dark | colorscheme lettuce
-au FileType ruby,gitcommit set background=dark | colorscheme railscasts_u10
-colorscheme molokai
-
 " #over
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "

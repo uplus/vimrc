@@ -88,3 +88,19 @@ filetype plugin indent on
 syntax enable
 set t_Co=256    " 色を256にしてくれる
 set background=dark
+
+function s:set_colors()
+  if exists("g:set_colors")
+    return 0
+  elseif &filetype == 'cpp' || &filetype == 'c'
+    colorscheme lettuce
+  elseif &filetype == 'ruby' || &filetype == 'gitcommit'
+    colorscheme railscasts_u10
+  else
+    colorscheme molokai
+  endif
+
+  let g:set_colors = 1
+endfunction
+
+au FileType * call s:set_colors()
