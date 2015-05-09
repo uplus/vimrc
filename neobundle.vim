@@ -73,6 +73,7 @@ NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
+NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 [p ]q
 
 " #quickrun
 NeoBundle 'thinca/vim-quickrun'

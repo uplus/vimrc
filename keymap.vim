@@ -45,8 +45,6 @@ nnoremap Q <Nop>
 inoremap <C-C> <ESC>
 
 " buffer
-nnoremap <silent> [b :bpreviou<CR>
-nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 nnoremap <Space>bb :b#<CR>
@@ -59,8 +57,6 @@ nnoremap <Leader>m :Unite mark<CR>
 nnoremap <Leader>b :Unite buffer<CR>
 
 "######<Space> family######
-" 現在の位置に空行を挿入
-nnoremap <silent> <Space><CR> <S-O><ESC>x
 xnoremap <Space>n :normal<Space>
 
 nnoremap <Space>ss q:i%s/
