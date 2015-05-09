@@ -73,11 +73,9 @@ endfunction
 command! EraseSpace :call EraseSpace_func()
 command! NoEraseSpace :au! BufWritePre
 
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  au BufWritePre * EraseSpace
-  au BufEnter * lcd %:p:h
-endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufWritePre * EraseSpace
+au BufEnter * lcd %:p:h
 
 
 source ~/.vim/neobundle.vim
@@ -90,7 +88,7 @@ syntax enable
 set t_Co=256    " 色を256にしてくれる
 set background=dark
 
-function s:set_colors()
+function! s:set_colors()
   if exists("g:set_colors")
     return 0
   elseif &filetype == 'cpp' || &filetype == 'c'
