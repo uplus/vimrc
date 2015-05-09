@@ -66,7 +66,10 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'cohama/vim-smartinput-endwise' " 前のやつの方が良かったかも
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
+NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
+NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
 NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
+NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 
 " #move
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
@@ -195,8 +198,9 @@ let g:NERDTreeWinSize=26  "//defo 31
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_leader_key="mm"
 let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-nmap <Space>j mmj
-nmap <Space>k mmk
+map <Space>j mmj
+map <Space>k mmk
+map <Space>w mmw
 
 " #syntastic
 let g:syntastic_cpp_compiler = 'clang++'
