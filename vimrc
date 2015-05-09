@@ -18,6 +18,7 @@ set path+=/usr/include/c++/HEAD/
 set enc=utf-8
 set number
 set cursorline
+set cursorcolumn
 set showmatch       " Show matching brackets.
 set laststatus=2
 set cmdheight=2
