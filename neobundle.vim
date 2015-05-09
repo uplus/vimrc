@@ -26,10 +26,9 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
 
 NeoBundle 'Shougo/vimshell'
 
-" View
+" #view
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
-" NeoBundle 'airblade/vim-gitgutter'          " gitのdiffを行に表示
 
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-scripts/Visual-Mark'
@@ -49,14 +48,15 @@ NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'qtmplsel.vim'            " テンプレートを挿入 バグる
 
-" rails and ruby
+" #rails and #ruby
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
 
 NeoBundle 'tpope/vim-fugitive'      " git
+" NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'LeafCage/yankround.vim'  " round the yank history
 
-" search and replace
+" #search and #replace
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
@@ -64,22 +64,22 @@ NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
-NeoBundle 'cohama/vim-smartinput-endwise'
+NeoBundle 'cohama/vim-smartinput-endwise' " 前のやつの方が良かったかも
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
 
-" Move
+" #move
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 
-" QuickRun
+" #quickrun
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 
-" textobj operator {{{
+" #textobj #operator {{{
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'emonkak/vim-operator-comment'
@@ -111,12 +111,10 @@ NeoBundle 'osyo-manga/vim-textobj-context'  " icx 別のfiletype のコンテキ
 
 NeoBundle 'glts/vim-textobj-indblock'   " ao io インデントの空白行
 NeoBundle 'deris/vim-textobj-enclosedsyntax'  " aq iq Perl や Ruby の正規表現
-NeoBundle 'akiyan/vim-textobj-php'  " aP iP phpタグに囲まれた部分
-
 NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式として評価する
 " }}}
 
-" colorscheme"{{{
+" #colorscheme"{{{
 NeoBundle 'croaker/mustang-vim'
 NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'mrkn/mrkn256.vim'
