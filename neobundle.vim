@@ -28,15 +28,17 @@ NeoBundle 'Shougo/vimshell'
 
 " View
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
-NeoBundle 'powerman/vim-plugin-AnsiEsc'     " ANSIカラー情報を反映して表示する
+NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
+" NeoBundle 'airblade/vim-gitgutter'          " gitのdiffを行に表示
+
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
 
 
-NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成できる
-" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換える
+NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
+" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
