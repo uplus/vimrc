@@ -2,10 +2,9 @@
 "Ctrl-[ は<ESC>
 "Ctrl-i は<TAB>
 "<CR>のマッピングは <expr>の結果として使えば行ける?
-":Errors :nohのマップ
 " inoremap <C-Space>を　状況によって <C-Y>に割り当てる
-"nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
-"nnoremap , コロンにマップできる :s がマップできるらしい　mはマークにマップされてる
+" nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
+" nnoremap ,コロンにマップできる mはマークにマップされてる
 
 command! VS :tabedit | VimShell
 command! Reload :source $MYVIMRC
@@ -14,6 +13,7 @@ command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
 command! QuickRunStop call quickrun#sweep_sessions()
 
+"comment mappings
 nnoremap <silent> gyy yy:TComment<CR>
 nnoremap <silent> gyj yj:.,+1TComment<CR>
 nnoremap <silent> gyk yk:.,+1TComment<CR>j
@@ -31,12 +31,14 @@ nnoremap mk ddkP
 nnoremap <Space>z za
 nmap zp v%zf
 
-" do to end
-nmap mp %
-vmap mp %
+" go to opposite
+map mp %
 
 nnoremap v V
 nnoremap V v
+
+noremap  <silent> <C-S> :w<CR>
+inoremap <silent> <C-S> <C-O>:w<CR>
 
 " ex-modeいらない
 nnoremap Q <Nop>
@@ -77,20 +79,14 @@ xnoremap <silent> <Space> <Nop>
 
 
 "######Ctrl+W family######
-"NERDTree
 nnoremap <silent> <C-W>e :NERDTreeFocus<CR>
-
-"Window control
 nnoremap <C-W>q :bdelete<CR>
-
-"Tab control
 nnoremap <C-W>p gt
 nnoremap <C-W>n gT
-
-"file open
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
+"resize
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
 call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
@@ -100,30 +96,18 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
-"######Ctrl+S family######
-" Save need #stty -ixon -ixoff
-noremap  <silent> <C-S> :w<CR>
-inoremap <silent> <C-S> <C-O>:w<CR>
-
 "######Move######
-nnoremap <UP> gk
-nnoremap <DOWN> gj
-nnoremap k gk
-nnoremap j gj
-nnoremap gk k
-nnoremap gj j
+noremap <UP> gk
+noremap <DOWN> gj
+noremap <LEFT> h
+noremap <RIGHT> l
+noremap k gk
+noremap j gj
+noremap gk k
+noremap gj j
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
 inoremap <C-K> <C-O>d$
 inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
-
-xnoremap <UP> gk
-xnoremap <DOWN> gj
-xnoremap <LEFT> h
-xnoremap <RIGHT> l
-xnoremap k gk
-xnoremap j gj
-xnoremap gk k
-xnoremap gj j
