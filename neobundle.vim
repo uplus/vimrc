@@ -195,12 +195,12 @@ map # <Plug>(incsearch-nohl-#)
 let g:NERDTreeWinSize=26  "//defo 31
 
 " #easymotion
-let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
 let g:EasyMotion_leader_key="mm"
-let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-map <Space>j mmj
-map <Space>k mmk
-map <Space>w mmw
+" let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+map <Space>w <Plug>(easymotion-w)
 map f <Plug>(easymotion-fl)
 map t <Plug>(easymotion-tl)
 map F <Plug>(easymotion-Fl)
