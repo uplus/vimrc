@@ -74,8 +74,8 @@ NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 " #move
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
+" NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 [p ]q
 
 " #quickrun
@@ -201,6 +201,14 @@ let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 map <Space>j mmj
 map <Space>k mmk
 map <Space>w mmw
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
+" nmap s <Plug>(easymotion-s2)
+" xmap s <Plug>(easymotion-s2)
+" surround.vimと被らないように
+" omap z <Plug>(easymotion-s2)
 
 " #syntastic
 let g:syntastic_cpp_compiler = 'clang++'
