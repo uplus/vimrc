@@ -78,8 +78,8 @@ au BufWritePre * EraseSpace
 au BufEnter * lcd %:p:h
 
 
+" #source
 source ~/.vim/neobundle.vim
-source ~/.vim/imode-color.vim
 source ~/.vim/keymap.vim
 source ~/.vim/filetype.vim
 
