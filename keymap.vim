@@ -37,7 +37,7 @@ map mp %
 nnoremap v V
 nnoremap V v
 
-noremap  <silent> <C-S> :w<CR>
+nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <C-O>:w<CR>
 
 " ex-modeいらない
@@ -99,10 +99,14 @@ noremap <UP> gk
 noremap <DOWN> gj
 noremap <LEFT> h
 noremap <RIGHT> l
-noremap k gk
-noremap j gj
-noremap gk k
-noremap gj j
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+vnoremap k gk
+vnoremap j gj
+vnoremap gk k
+vnoremap gj j
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj

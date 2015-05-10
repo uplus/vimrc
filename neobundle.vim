@@ -104,7 +104,7 @@ NeoBundle 'rhysd/vim-textobj-ruby' " arr brr Ruby のブロック
 " NeoBundle 'thinca/vim-textobj-function-perl'  " af if Perl の関数内
 NeoBundle 'saihoooooooo/vim-textobj-space'  " aS iS 連続したスペース
 NeoBundle 'rhysd/vim-textobj-lastinserted'  " au iu textobjとして最後に挿入された範囲
-NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上の word
+" NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上のword  ,がリマップされる
 " NeoBundle 'sgur/vim-textobj-parameter'  " a i 関数の引数
 
 NeoBundle 'osyo-manga/vim-textobj-multiblock' " asb isb 任意の複数の括弧のいずれか
