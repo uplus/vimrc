@@ -29,9 +29,8 @@ nnoremap gJ kddpkJ
 nnoremap mj ddp
 nnoremap mk ddkP
 nnoremap <Space>z za
+nnoremap Y v$hy
 nmap zp v%zf
-
-" go to opposite
 map mp %
 
 nnoremap v V
