@@ -51,8 +51,14 @@ nnoremap <Space>bb :b#<CR>
 nnoremap <Space>bd :bd<CR>
 
 "######<Leader> family######
-nnoremap <Leader>r :QuickRun -mode n<CR>
+function! WriteQuickRunN()
+  write
+  QuickRun -mode n
+endfunction
+
+nnoremap <Leader>r :call WriteQuickRunN()<CR>
 xnoremap <Leader>r :QuickRun -mode v<CR>
+
 nnoremap <Leader>m :Unite mark<CR>
 nnoremap <Leader>b :Unite buffer<CR>
 
