@@ -27,9 +27,8 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
 NeoBundle 'Shougo/vimshell'
 
 " #view
-NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
-
+NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
@@ -58,7 +57,7 @@ NeoBundle 'LeafCage/yankround.vim'  " round the yank history
 
 " #search and #replace
 NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
-NeoBundle 'osyo-manga/vim-anzu'     " show search point to command line
+NeoBundle 'osyo-manga/vim-anzu'     " show search point on the command-line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
