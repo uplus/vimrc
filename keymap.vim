@@ -36,6 +36,14 @@ map mp %
 nnoremap v V
 nnoremap V v
 
+function! CleanLine()
+  s/[^ ]//ge
+  noh
+endfunction
+
+nmap <silent>o o<Space><C-O>:call CleanLine()<CR><BS>
+nmap <silent><S-O> <S-O><Space><C-O>:call CleanLine()<CR><BS>
+
 nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <C-O>:w<CR>
 
