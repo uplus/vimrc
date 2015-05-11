@@ -64,10 +64,10 @@ nnoremap <Leader>b :Unite buffer<CR>
 "######<Space> family######
 xnoremap <Space>n :normal<Space>
 
-nnoremap <Space>ss %s/
-nnoremap <Space>sg %s//g<LEFT><LEFT>
-xnoremap <Space>ss s/
-xnoremap <Space>sg s//g<LEFT><LEFT>
+nnoremap <Space>ss :%s/
+nnoremap <Space>sg :%s//g<LEFT><LEFT>
+xnoremap <Space>ss :s/
+xnoremap <Space>sg :s//g<LEFT><LEFT>
 
 nnoremap <Space>h ^
 nnoremap <Space>l $
