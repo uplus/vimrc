@@ -2,6 +2,8 @@
 nnoremap <silent>! :Switch<CR>
 
 let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
+let g:switch_custom_definitions += [['>', '<'], ['<=', '>=']]
+
 au FileType ruby,eruby let g:switch_custom_definitions +=
       \ [
       \   [ 'if', 'unless' ],
