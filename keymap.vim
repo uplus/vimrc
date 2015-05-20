@@ -32,6 +32,7 @@ nnoremap <Space>z za
 nnoremap Y v$hy
 nmap zp v%zf
 map mp %
+nmap S <C-V>$S
 
 nnoremap v V
 nnoremap V v
@@ -41,8 +42,9 @@ function! CleanLine()
   noh
 endfunction
 
-nmap <silent>o o<Space><C-O>:call CleanLine()<CR><BS>
-nmap <silent><S-O> <S-O><Space><C-O>:call CleanLine()<CR><BS>
+" なぜかC-Uの挙動がおかしくなった
+" nmap <silent>o o<Space><C-O>:call CleanLine()<CR><BS>
+" nmap <silent><S-O> <S-O><Space><C-O>:call CleanLine()<CR><BS>
 
 nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <C-O>:w<CR>
@@ -110,10 +112,14 @@ if neobundle#is_installed('vim-submode')
 endif
 
 "######Move######
-noremap <UP> gk
-noremap <DOWN> gj
-noremap <LEFT> h
-noremap <RIGHT> l
+nnoremap <UP> gk
+nnoremap <DOWN> gj
+nnoremap <LEFT> h
+nnoremap <RIGHT> l
+vnoremap <UP> gk
+vnoremap <DOWN> gj
+vnoremap <LEFT> h
+vnoremap <RIGHT> l
 nnoremap k gk
 nnoremap j gj
 nnoremap gk k
