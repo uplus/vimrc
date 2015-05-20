@@ -166,6 +166,10 @@ filetype plugin indent on " Required
 
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 
+" これがプラグインロード後に実行される様にする
+" :SpeedDatingFormat! %v
+" :SpeedDatingFormat! %^v
+
 " #over
 let g:over#command_line#enable_move_cursor = 1
 let g:over_command_line_prompt = "> "
