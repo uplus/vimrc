@@ -66,3 +66,5 @@ highlight Pmenu	ctermbg=243 ctermfg=17
 highlight PmenuSel ctermbg=6	ctermfg=40
 highlight PmenuSel ctermbg=70 ctermfg=129
 
+"added
+highlight Normal                    guifg=#E6E1DC guibg=#1B1D1E ctermbg=233
