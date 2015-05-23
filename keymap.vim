@@ -1,11 +1,3 @@
-"Ctrl-M は<CR>
-"Ctrl-[ は<ESC>
-"Ctrl-i は<TAB>
-"<CR>のマッピングは <expr>の結果として使えば行ける?
-" inoremap <C-Space>を　状況によって <C-Y>に割り当てる
-" nnoremap <Space>h.. をundo履歴とかyank履歴とかにわりあてる
-" nnoremap ,コロンにマップできる mはマークにマップされてる
-
 command! VS :tabedit | VimShell
 command! Reload :source $MYVIMRC
 command! Colors :Unite colorscheme -auto-preview
