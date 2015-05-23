@@ -103,3 +103,5 @@ function! s:set_colors()
 endfunction
 
 au FileType * call s:set_colors()
+au FileType * highlight Search              ctermfg=39 ctermbg=56
+au FileType * highlight IncSearch           ctermfg=39 ctermbg=50
