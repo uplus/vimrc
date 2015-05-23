@@ -73,9 +73,9 @@ endfunction
 command! EraseSpace :call EraseSpace_func()
 command! NoEraseSpace :au! BufWritePre
 
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au BufWritePre * EraseSpace
-au BufEnter * lcd %:p:h
+au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufWritePre  * EraseSpace
+au BufEnter     * lcd %:p:h
 
 
 " #source
@@ -103,5 +103,5 @@ function! s:set_colors()
 endfunction
 
 au FileType * call s:set_colors()
-au FileType * highlight Search              ctermfg=39 ctermbg=56
-au FileType * highlight IncSearch           ctermfg=39 ctermbg=50
+au FileType * highlight Search      ctermfg=39 ctermbg=56
+au FileType * highlight IncSearch   ctermfg=39 ctermbg=50
