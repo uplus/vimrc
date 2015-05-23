@@ -12,6 +12,7 @@ command! Colors :Unite colorscheme -auto-preview
 command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
 command! QuickRunStop call quickrun#sweep_sessions()
+command! S :shell
 
 "comment mappings
 nnoremap <silent> gyy yy:TComment<CR>
@@ -131,11 +132,13 @@ vnoremap gj j
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
-inoremap <C-K> <C-O>d$
+inoremap <silent> <BS>  <C-O>"_d$
+imap <C-K> <BS>
+inoremap <C-D> <C-O>"_x
 inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
-" noremap!はinsert+command
+" noremap! is insert+command
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
