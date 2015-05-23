@@ -62,9 +62,12 @@ highlight SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg
 highlight SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
 
-highlight Pmenu	ctermbg=243 ctermfg=17
-highlight PmenuSel ctermbg=6	ctermfg=40
-highlight PmenuSel ctermbg=70 ctermfg=129
 
 "added
-highlight Normal                    guifg=#E6E1DC guibg=#1B1D1E ctermbg=233
+highlight Pmenu	              ctermbg=243 ctermfg=17
+highlight PmenuSel            ctermbg=6	  ctermfg=40
+highlight PmenuSel            ctermbg=70  ctermfg=129
+highlight Normal              guibg=#1B1D1E ctermbg=233
+highlight Folded              ctermfg=14 ctermbg=234
+highlight Search              ctermfg=39 ctermbg=56
+highlight IncSearch           ctermfg=39 ctermbg=50
