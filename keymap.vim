@@ -132,8 +132,7 @@ vnoremap gj j
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
-inoremap <silent> <BS>  <C-O>"_d$
-imap <C-K> <BS>
+inoremap <C-K> <C-O>"_D
 inoremap <C-D> <C-O>"_x
 inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
