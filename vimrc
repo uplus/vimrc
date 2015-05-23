@@ -102,6 +102,15 @@ function! s:set_colors()
   let g:set_colors = 1
 endfunction
 
+function! s:only_once()
+  if !exists("g:only_once")
+    SpeedDatingFormat! %v
+    SpeedDatingFormat! %^v
+  endif
+  let g:only_once = 1
+endfunction
+
 au FileType * call s:set_colors()
+au FileType * call s:only_once()
 au FileType * highlight Search      ctermfg=39 ctermbg=56
 au FileType * highlight IncSearch   ctermfg=39 ctermbg=50
