@@ -253,7 +253,12 @@ let g:quickrun_config.markdown = {
 let g:quickrun_no_default_key_mappings = 1
 
 " RSpec実行
-autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :!rspec %<CR>
+function! Rspec_run()
+  write
+  !rspec %
+endfunction
+
+autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call Rspec_run()<CR>
 
 "}}}
 
