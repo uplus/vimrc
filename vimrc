@@ -50,6 +50,8 @@ set expandtab     "Tabキーでスペース挿入
 set autoindent
 set smartindent
 set foldmethod=marker
+set foldlevel=1
+set foldnestmax=2
 
 if IsMac()
   set clipboard=unnamed
@@ -114,3 +116,4 @@ au FileType * call s:set_colors()
 au FileType * call s:only_once()
 au FileType * highlight Search      ctermfg=39 ctermbg=56
 au FileType * highlight IncSearch   ctermfg=39 ctermbg=50
+au FileType * highlight Visual      cterm=reverse
