@@ -23,9 +23,10 @@ nnoremap mj ddp
 nnoremap mk ddkP
 nnoremap <Space>z za
 nnoremap Y v$hy
+" sorrund
+nmap S <C-V>$S
 nmap zp v%zf
 map mp %
-nmap S <C-V>$S
 
 nnoremap v V
 nnoremap V v

@@ -81,7 +81,7 @@ NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
-NeoBundle 'skwp/vim-rspec'
+" NeoBundle 'skwp/vim-rspec'
 
 " #textobj #operator {{{
 NeoBundle 'kana/vim-textobj-user'
@@ -253,12 +253,12 @@ let g:quickrun_config.markdown = {
 let g:quickrun_no_default_key_mappings = 1
 
 " RSpec実行
-function! Rspec_run()
+function! RSpec_run()
   write
   !rspec %
 endfunction
 
-autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call Rspec_run()<CR>
+autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<CR>
 
 "}}}
 
