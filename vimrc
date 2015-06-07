@@ -50,7 +50,7 @@ set expandtab     "Tabキーでスペース挿入
 set autoindent
 set smartindent
 set foldmethod=marker
-set foldlevel=1
+set foldlevel=0
 set foldnestmax=2
 
 if IsMac()
