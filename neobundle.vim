@@ -126,6 +126,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'djjcast/mirodark'
 NeoBundle 'vim-scripts/BusyBee'
 NeoBundle '1player/lettuce.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
 if s:meet_neocomplete_requirements()
@@ -165,6 +166,7 @@ call neobundle#end()
 filetype plugin indent on " Required
 "###################### plugin config ############################"
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
+let g:solarized_termcolors=256 "solarizedをCUIで使うため
 
 " #over
 let g:over#command_line#enable_move_cursor = 1

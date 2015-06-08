@@ -17,18 +17,18 @@ highlight CursorLine                guibg=#000000 ctermbg=233 cterm=NONE
 
 highlight Comment                   guifg=#BC9458 ctermfg=180 gui=italic
 highlight Constant                  guifg=#6D9CBE ctermfg=73
-highlight Define                    guifg=#CC7833 ctermfg=173
+" highlight Define                    guifg=#CC7833 ctermfg=173
 highlight Error                     guifg=#FFC66D ctermfg=221 guibg=#990000 ctermbg=88
-highlight Function                  guifg=#FFC66D ctermfg=221 gui=NONE cterm=NONE
+" highlight Function                  guifg=#FFC66D ctermfg=221 gui=NONE cterm=NONE
 highlight Identifier                guifg=#6D9CBE ctermfg=73 gui=NONE cterm=NONE
 highlight Include                   guifg=#CC7833 ctermfg=173 gui=NONE cterm=NONE
 highlight PreCondit                 guifg=#CC7833 ctermfg=173 gui=NONE cterm=NONE
-highlight Keyword                   guifg=#CC7833 ctermfg=173 cterm=NONE
+" highlight Keyword                   guifg=#CC7833 ctermfg=173 cterm=NONE
 highlight LineNr                    guifg=#2B2B2B ctermfg=159 guibg=#C0C0FF
 highlight Number                    guifg=#A5C261 ctermfg=107
 highlight PreProc                   guifg=#E6E1DC ctermfg=103
-highlight Search                    guifg=NONE ctermfg=NONE guibg=#2b2b2b ctermbg=235 gui=italic cterm=underline
-highlight Statement                 guifg=#CC7833 ctermfg=173 gui=NONE cterm=NONE
+" highlight Search                    guifg=NONE ctermfg=NONE guibg=#2b2b2b ctermbg=235 gui=italic cterm=underline
+" highlight Statement                 guifg=#CC7833 ctermfg=173 gui=NONE cterm=NONE
 highlight String                    guifg=#A5C261 ctermfg=107
 highlight Title                     guifg=#FFFFFF ctermfg=15
 highlight Type                      guifg=#DA4939 ctermfg=167 gui=NONE cterm=NONE
@@ -39,14 +39,15 @@ highlight DiffDelete                guifg=#E6E1DC ctermfg=7 guibg=#660000 ctermb
 highlight Special                   guifg=#DA4939 ctermfg=167
 
 highlight pythonBuiltin             guifg=#6D9CBE ctermfg=73 gui=NONE cterm=NONE
-highlight rubyBlockParameter        guifg=#FFFFFF ctermfg=15
-highlight rubyClass                 guifg=#CC7833 ctermfg=161
-highlight rubyConstant              guifg=#DA4939 ctermfg=167
-highlight rubyInstanceVariable      guifg=#D0D0FF ctermfg=189
+
+" highlight rubyBlockParameter        guifg=#FFFFFF ctermfg=15
+" highlight rubyClass                 guifg=#CC7833 ctermfg=161
+" highlight rubyConstant              guifg=#DA4939 ctermfg=167
+" highlight rubyInstanceVariable      guifg=#D0D0FF ctermfg=189
 highlight rubyInterpolation         guifg=#519F50 ctermfg=107
 highlight rubyLocalVariableOrMethod guifg=#D0D0FF ctermfg=189
-highlight rubyPredefinedConstant    guifg=#DA4939 ctermfg=167
-highlight rubyPseudoVariable        guifg=#FFC66D ctermfg=221
+" highlight rubyPredefinedConstant    guifg=#DA4939 ctermfg=167
+" highlight rubyPseudoVariable        guifg=#FFC66D ctermfg=221
 highlight rubyStringDelimiter       guifg=#A5C261 ctermfg=143
 
 highlight xmlTag                    guifg=#E8BF6A ctermfg=179
@@ -67,7 +68,29 @@ highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f cterm
 highlight Pmenu	              ctermbg=243 ctermfg=17
 highlight PmenuSel            ctermbg=6	  ctermfg=40
 highlight PmenuSel            ctermbg=70  ctermfg=129
-highlight Normal              guibg=#1B1D1E ctermbg=233
-highlight Folded              ctermfg=14 ctermbg=234
+highlight Normal              ctermbg=233
+highlight Folded              ctermfg=33 ctermbg=233
 highlight Search              ctermfg=39 ctermbg=56
 highlight IncSearch           ctermfg=39 ctermbg=50
+
+highlight Function                  ctermfg=226
+highlight Define                    ctermfg=208
+highlight rubyClass                 ctermfg=198
+highlight rubyConstant              ctermfg=161
+highlight rubyPreDefinedConstant    ctermfg=161
+highlight rubyInstanceVariable      ctermfg=75
+highlight rubyClassVariable         ctermfg=43
+highlight rubySymbol                ctermfg=63
+highlight rubyString                ctermfg=112
+
+" if else do end exitなど
+highlight Statement                 ctermfg=214
+
+" self and super
+" highlight rubyPseudoVariable        ctermfg=220
+" highlight Keyword                   ctermfg=220
+highlight rubyPseudoVariable        ctermfg=190
+highlight Keyword                   ctermfg=190
+
+" ブロック変数の宣言だけを色つけしてくれる
+highlight rubyBlockParameter        ctermfg=111
