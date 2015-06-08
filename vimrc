@@ -63,6 +63,14 @@ endif
 set showcmd
 set matchtime=1
 
+function! FoldText()
+  let base  = foldtext()
+  let title = substitute(base, '\s*\d.*:', '', 'g')
+  return title
+endfunction
+
+set foldtext=FoldText()
+
 function! EraseSpace_func()
   if &filetype != 'markdown'
     let s:cursor = getpos(".")
