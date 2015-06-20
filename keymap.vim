@@ -28,6 +28,14 @@ nmap S <C-V>$S
 nmap zp v%zf
 map mp %
 
+" not registe delete
+nnoremap _d "_d
+vnoremap _d "_d
+nnoremap _x "_x
+vnoremap _x "_x
+nnoremap _X "_X
+vnoremap _X "_X
+
 nnoremap v V
 nnoremap V v
 
