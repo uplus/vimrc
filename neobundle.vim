@@ -173,6 +173,7 @@ filetype plugin indent on " Required
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
+" call smartinput_endwise#define_default_rules()
 
 " #easyalign"{{{
   vmap <Enter> <Plug>(EasyAlign)
@@ -233,7 +234,8 @@ let g:vinarise_enable_auto_detect=1
   map # <Plug>(incsearch-nohl-#)
 
 " #vimfiler
-  nnoremap <leader>e :VimFilerSimple split -winwidth=30 -find -no-quit<Cr>
+  " -findを指定するとカレントバッファと入れ替える
+  nnoremap <leader>e :VimFilerSimple -winwidth=30 -no-quit<Cr>
 
 " #nerdtree
   "0ならそのまま開いとく, 1なら閉じる
@@ -258,13 +260,13 @@ let g:vinarise_enable_auto_detect=1
   " omap z <Plug>(easymotion-s2)
 "}}}
 
-" #smartword
-  map w  <Plug>(smartword-w)
-  map b  <Plug>(smartword-b)
-  map e  <Plug>(smartword-e)
-  map ge <Plug>(smartword-ge)
+" #smartword 記号を含まず消したい時がある
+  " map w  <Plug>(smartword-w)
+  " map b  <Plug>(smartword-b)
+  " map e  <Plug>(smartword-e)
+  " map ge <Plug>(smartword-ge)
 
-" #syntastic
+" #syntastic"{{{
   let g:syntastic_cpp_compiler = 'clang++'
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
@@ -273,6 +275,7 @@ let g:vinarise_enable_auto_detect=1
   let g:syntastic_check_on_wq = 0
   let g:syntastic_enable_signs = 0
   " let g:syntastic_debug = 1
+"}}}
 
 " #quickrun"{{{
 let g:quickrun_config = get(g:, 'quickrun_config', {})

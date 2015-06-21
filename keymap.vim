@@ -1,4 +1,4 @@
-command! VS :tabedit | VimShell
+command! Vs :tabedit | VimShell
 command! Reload :source $MYVIMRC
 command! Colors :Unite colorscheme -auto-preview
 command! SudoWrite w !sudo tee % > /dev/null
@@ -18,6 +18,7 @@ nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
 
+inoremap <C-C> <ESC>
 nnoremap gJ kddpkJ
 nnoremap mj ddp
 nnoremap mk ddkP
@@ -53,7 +54,10 @@ inoremap <silent> <C-S> <C-O>:w<CR>
 
 " ex-modeいらない
 nnoremap Q <Nop>
-inoremap <C-C> <ESC>
+" not open the command windwo
+" いろいろやったけどこうするしかなかった
+nnoremap q: <NOP>
+nnoremap q<ESC> q
 
 " buffer
 nnoremap <silent> [B :bfirst<CR>

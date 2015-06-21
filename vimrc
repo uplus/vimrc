@@ -30,6 +30,7 @@ set ttimeoutlen=100
 set nobackup
 set mouse=a
 set nohidden
+set ignorecase
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,~
 "set virtualedit=onemore
