@@ -33,6 +33,7 @@ NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハ�
 NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
+NeoBundle 'Yggdroot/indentLine'
 
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
@@ -169,6 +170,11 @@ filetype plugin indent on " Required
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
+
+" #indentLine
+" let g:indentLine_faster = 1
+" nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
+" let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim']
 
 " #over
 let g:over#command_line#enable_move_cursor = 1
