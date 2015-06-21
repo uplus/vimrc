@@ -109,6 +109,9 @@ function! s:set_colors()
     colorscheme molokai
   endif
 
+  hi YankRoundRegion cterm=italic
+  " hi YankRoundRegion cterm=underline
+
   let g:set_colors = 1
 endfunction
 

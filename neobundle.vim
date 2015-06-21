@@ -331,8 +331,6 @@ autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<C
   let g:yankround_use_region_hl = 1
   let g:yankround_max_history = 20
   let g:yankround_dir = "~/.vim/tmp/"
-  " let g:yankround_region_hl_groupname	= YankRoundRegion
-  " au ColorScheme * hi YankRoundRegion ctermbg=green
 "}}}
 
 call Source_rc('switch.rc.vim')
