@@ -209,7 +209,7 @@ let g:vinarise_enable_auto_detect=1
 
 " #indentLine
   nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
-  " let g:indentLine_faster = 1
+  let g:indentLine_faster = 1
   " let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim']
 
 " #over
@@ -234,6 +234,7 @@ let g:vinarise_enable_auto_detect=1
   map # <Plug>(incsearch-nohl-#)
 
 " #vimfiler
+  let g:vimfiler_as_default_explorer = 1
   " -find    指定するとカレントバッファと入れ替える
   " -no-quit ファイルを開いても終了しない
   "バッファに表示されない|複数のバッファにならない
