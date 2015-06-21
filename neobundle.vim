@@ -39,7 +39,8 @@ NeoBundle 'Yggdroot/indentLine'
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
-NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
@@ -230,6 +231,8 @@ map # <Plug>(anzu-N-with-echo)
 map * <Plug>(incsearch-nohl-*)
 map # <Plug>(incsearch-nohl-#)
 
+" #vimfiler
+nnoremap <leader>e :VimFilerSimple split -winwidth=30 -find -no-quit<Cr>
 " #nerdtree
 "0ならそのまま開いとく, 1なら閉じる
 " let g:NERDTreeQuitOnOpen=0 "//defo 0
