@@ -101,7 +101,8 @@ xnoremap <silent> <Space> <Nop>
 
 
 "######Ctrl+W family######
-nnoremap <silent> <C-W>e :NERDTreeFocus<CR>
+" nnoremap <silent> <C-W>e :NERDTreeFocus<CR>
+nnoremap <silent><C-W>e :Vf<CR>
 nnoremap <C-W>q :bdelete<CR>
 nnoremap <C-W>p gt
 nnoremap <C-W>n gT

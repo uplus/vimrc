@@ -234,8 +234,24 @@ let g:vinarise_enable_auto_detect=1
   map # <Plug>(incsearch-nohl-#)
 
 " #vimfiler
-  " -findを指定するとカレントバッファと入れ替える
-  nnoremap <leader>e :VimFilerSimple -winwidth=30 -no-quit<Cr>
+  " -find    指定するとカレントバッファと入れ替える
+  " -no-quit ファイルを開いても終了しない
+  "バッファに表示されない|複数のバッファにならない
+  " 最後のバッファになったときqを押すと終了せずそのバッファを開いたファイルを開く
+
+  command! Vf VimFilerExplorer -split -simple -find -winwidth=26 -focus
+  "セーフモードを無効にした状態で起動する
+  " let g:vimfiler_safe_mode_by_default = 0
+
+  " au FileType vimfiler call s:vimfiler_settings()
+  function! s:vimfiler_settings()
+    nmap <buffer> q <Plug>(vimfiler_exit)
+    nmap <buffer> Q <Plug>(vimfiler_hide)
+    " sで分割
+    " vで縦分割
+    " \でルート二行くマップを消す
+  endfunction
+
 
 " #nerdtree
   "0ならそのまま開いとく, 1なら閉じる
