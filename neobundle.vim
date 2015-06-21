@@ -240,6 +240,7 @@ let g:vinarise_enable_auto_detect=1
   " -simple  日付などを表示しない
   " command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vf VimFilerExplorer -split -simple -find -winwidth=26 -focus
+
   "セーフモードを無効にした状態で起動する
   " let g:vimfiler_safe_mode_by_default = 0
   " let g:vimfiler_edit_action = 'edit'
@@ -267,23 +268,19 @@ let g:vinarise_enable_auto_detect=1
     silent! function
     silent! redir END
     let g:func_names = funcs
-    let @a = g:func_names
   endfunction
 
   au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
-    " nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree)
-    "       \ :<C-u>call <SID>unexpand_tree()<CR>
-
     nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-    " nmap     <buffer>h <Plug>(vimfiler_expand_tree)
+    nmap     <buffer>h <Plug>(vimfiler_unexpand_tree)
     nmap     <buffer>l <Plug>(vimfiler_expand_tree)
-    " nmap     <buffer>l<Plug>(vimfiler_cd)
+
+    " nmap <buffer>s <Plug>(vimfiler_split_edit_file)
     nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
     nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
 
     nmap <buffer><Tab> atabopen<CR>
-    " nmap <buffer>s <Plug>(vimfiler_split_edit_file)
     nnoremap <buffer>\ \
     nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
 
