@@ -125,6 +125,7 @@ endfunction
 
 au FileType * call s:set_colors()
 au FileType * call s:only_once()
-au FileType * highlight Search      ctermfg=39 ctermbg=56
-au FileType * highlight IncSearch   ctermfg=39 ctermbg=50
-au FileType * highlight Visual      cterm=reverse
+au FileType * highlight Visual          cterm=reverse
+au FileType * highlight Search          ctermfg=39 ctermbg=56
+au FileType * highlight IncSearch       ctermfg=39 ctermbg=50
+au FileType * highlight YankRoundRegion cterm=italic
