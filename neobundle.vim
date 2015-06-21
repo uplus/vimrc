@@ -291,14 +291,16 @@ let g:vinarise_enable_auto_detect=1
     silent! redir END
     let l:line = matchstr(commands, '\d*:\D*vimfiler\/mappings.vim')
     let l:sid  = matchstr(l:line, '^\d*')
-    let @a = l:line
-    let @b = l:sid
-    echo @a
-    echo @b
+    let g:vimfiler_mappings_sid = l:sid
 
-    " nnoremap <buffer><silent><expr> <Plug>(vimfiler_unexpand_tree)
-          " \ ":\<C-u>call \<SNR>" . l:sid . "_unexpand_tree()\<CR>"
+    function g:Vimfiler_unexpand_tree()
+      execute "call <SNR>" . g:vimfiler_mappings_sid . "_unexpand_tree()"
+    endfunction
+
+    nnoremap <buffer><silent><expr> \<Plug>(vimfiler_unexpand_tree) :<C-U>call g:Vimfiler_unexpand_tree()<CR>
   endfunction
+
+  command! GetSid call Get_sid()
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
   function! Get_func_names()
@@ -310,13 +312,14 @@ let g:vinarise_enable_auto_detect=1
 
   au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
+    GetSid
     nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-    nmap     <buffer>h <Plug>(vimfiler_unexpand_tree)
-    nmap     <buffer>l <Plug>(vimfiler_expand_tree)
+    nmap     <buffer>h :call g:Vimfiler_unexpand_tree()<CR>
+    nmap     <buffer>l <Plug>(vimfiler_expand)
 
     " nmap <buffer>s <Plug>(vimfiler_split_edit_file)
-    nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
-    nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
+    nnoremap <buffer>s: call vimfiler#mappings#do_action('my_split')<CR>
+    nnoremap <buffer>v: call vimfiler#mappings#do_action('my_vsplit')<CR>
 
     nmap <buffer><Tab> atabopen<CR>
     nnoremap <buffer>\ \
