@@ -66,6 +66,7 @@ NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'cohama/vim-smartinput-endwise' " 前のやつの方が良かったかも
+NeoBundle 'kana/vim-smartword'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
 NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
@@ -218,6 +219,11 @@ map <Space>T <Plug>(easymotion-Tl)
 " xmap s <Plug>(easymotion-s2)
 " surround.vimと被らないように
 " omap z <Plug>(easymotion-s2)
+
+map w  <Plug>(smartword-w)
+map b  <Plug>(smartword-b)
+map e  <Plug>(smartword-e)
+map ge <Plug>(smartword-ge)
 
 " #syntastic
 let g:syntastic_cpp_compiler = 'clang++'
