@@ -237,22 +237,50 @@ let g:vinarise_enable_auto_detect=1
   let g:vimfiler_as_default_explorer = 1
   " -find    指定するとカレントバッファと入れ替える
   " -no-quit ファイルを開いても終了しない
-  "バッファに表示されない|複数のバッファにならない
-  " 最後のバッファになったときqを押すと終了せずそのバッファを開いたファイルを開く
-
+  " -simple  日付などを表示しない
+  " command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vf VimFilerExplorer -split -simple -find -winwidth=26 -focus
   "セーフモードを無効にした状態で起動する
   " let g:vimfiler_safe_mode_by_default = 0
+  " let g:vimfiler_edit_action = 'edit'
+  let g:vimfiler_expand_jump_to_first_child=0
 
-  " au FileType vimfiler call s:vimfiler_settings()
+  au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
-    nmap <buffer> q <Plug>(vimfiler_exit)
-    nmap <buffer> Q <Plug>(vimfiler_hide)
-    " sで分割
-    " vで縦分割
-    " \でルート二行くマップを消す
+    " nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree)
+    "       \ :<C-u>call <SID>unexpand_tree()<CR>
+
+    nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+    " nmap     <buffer>h <Plug>(vimfiler_expand_tree)
+    nmap     <buffer>l <Plug>(vimfiler_expand_tree)
+    " nmap     <buffer>l<Plug>(vimfiler_cd)
+    nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
+    nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
+
+    nmap <buffer><Tab> atabopen<CR>
+    " nmap <buffer>s <Plug>(vimfiler_split_edit_file)
+    nnoremap <buffer>\ \
+    nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
+
+    " 最後に残っても終了する
+    nmap <buffer><nowait>q :quit<CR>
+    " nmap <buffer><nowait>q <Plug>(vimfiler_exit)
+    " nmap <buffer> Q <Plug>(vimfiler_hide)
   endfunction
 
+  let s:my_action = { 'is_selectable' : 1 }
+  function! s:my_action.func(candidates)
+    wincmd p
+    exec 'split '. a:candidates[0].action__path
+  endfunction
+  call unite#custom_action('file', 'my_split', s:my_action)
+
+  let s:my_action = { 'is_selectable' : 1 }
+  function! s:my_action.func(candidates)
+    wincmd p
+    exec 'vsplit '. a:candidates[0].action__path
+  endfunction
+  call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 " #nerdtree
   "0ならそのまま開いとく, 1なら閉じる
