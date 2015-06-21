@@ -36,7 +36,6 @@ NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Yggdroot/indentLine'
 
-
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
 " NeoBundle 'scrooloose/nerdtree'
@@ -143,7 +142,7 @@ NeoBundle 'Rip-Rip/clang_complete'
 NeoBundleLazy 'osyo-manga/vim-stargate', {
       \ 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
-" <CR> config "{{{
+" <CR>mapping config "{{{
 if neobundle#tap('vim-smartinput')
   call neobundle#config({ 'autoload' : { 'insert' : 1 }})
 
@@ -169,106 +168,111 @@ endif
 
 call neobundle#end()
 filetype plugin indent on " Required
+
 "###################### plugin config ############################"
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
 
-" #easyalign
-vmap <Enter> <Plug>(EasyAlign)
-vmap <Space><Enter> <Plug>(LiveEasyAlign)
-" nmap ga <Plug>(EasyAlign)
-let g:easy_align_ignore_groups = ['Comment', 'String']
+" #easyalign"{{{
+  vmap <Enter> <Plug>(EasyAlign)
+  vmap <Space><Enter> <Plug>(LiveEasyAlign)
+  " nmap ga <Plug>(EasyAlign)
+  let g:easy_align_ignore_groups = ['Comment', 'String']
 
-let g:easy_align_delimiters = {
-\ '>': { 'pattern': '>>\|=>\|>' },
-\ '/': {
-\     'pattern':         '//\+\|/\*\|\*/',
-\     'delimiter_align': 'l',
-\     'ignore_groups':   ['!Comment'] },
-\ ']': {
-\     'pattern':       '[[\]]',
-\     'left_margin':   0,
-\     'right_margin':  0,
-\     'stick_to_left': 0
-\   },
-\ ')': {
-\     'pattern':       '[()]',
-\     'left_margin':   0,
-\     'right_margin':  0,
-\     'stick_to_left': 0
-\   },
-\ 'd': {
-\     'pattern':      ' \(\S\+\s*[;=]\)\@=',
-\     'left_margin':  0,
-\     'right_margin': 0
-\   }
-\ }
+  let g:easy_align_delimiters = {
+  \ '>': { 'pattern': '>>\|=>\|>' },
+  \ '/': {
+  \     'pattern':         '//\+\|/\*\|\*/',
+  \     'delimiter_align': 'l',
+  \     'ignore_groups':   ['!Comment'] },
+  \ ']': {
+  \     'pattern':       '[[\]]',
+  \     'left_margin':   0,
+  \     'right_margin':  0,
+  \     'stick_to_left': 0
+  \   },
+  \ ')': {
+  \     'pattern':       '[()]',
+  \     'left_margin':   0,
+  \     'right_margin':  0,
+  \     'stick_to_left': 0
+  \   },
+  \ 'd': {
+  \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+  \     'left_margin':  0,
+  \     'right_margin': 0
+  \   }
+  \ }
+"}}}
 
 " #indentLine
-nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
-" let g:indentLine_faster = 1
-" let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim']
+  nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
+  " let g:indentLine_faster = 1
+  " let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim']
 
 " #over
-let g:over#command_line#enable_move_cursor = 1
-let g:over_command_line_prompt = "> "
-" let g:over_enable_auto_nohlsearch = 1
-" let g:over_enable_cmd_window = 1
-" let g:over#command_line#search#enable_incsearch = 1
-" let g:over#command_line#search#enable_move_cursor = 1
+  let g:over#command_line#enable_move_cursor = 1
+  let g:over_command_line_prompt = "> "
+  " let g:over_enable_auto_nohlsearch = 1
+  " let g:over_enable_cmd_window = 1
+  " let g:over#command_line#search#enable_incsearch = 1
+  " let g:over#command_line#search#enable_move_cursor = 1
 
-"# anzu&incsearch マッチした数&自動ハイライト&オフ
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
-map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
-map * <Plug>(anzu-n-with-echo)
-map # <Plug>(anzu-N-with-echo)
-map * <Plug>(incsearch-nohl-*)
-map # <Plug>(incsearch-nohl-#)
+" #anzu&incsearch マッチした数&自動ハイライト&オフ
+  set hlsearch
+  let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
+  map / <Plug>(incsearch-forward)
+  map ? <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+  map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+  map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+  map * <Plug>(anzu-n-with-echo)
+  map # <Plug>(anzu-N-with-echo)
+  map * <Plug>(incsearch-nohl-*)
+  map # <Plug>(incsearch-nohl-#)
 
 " #vimfiler
-nnoremap <leader>e :VimFilerSimple split -winwidth=30 -find -no-quit<Cr>
+  nnoremap <leader>e :VimFilerSimple split -winwidth=30 -find -no-quit<Cr>
+
 " #nerdtree
-"0ならそのまま開いとく, 1なら閉じる
-" let g:NERDTreeQuitOnOpen=0 "//defo 0
-"let g:NERDTreeShowHidden=0 "//defo 0
-let g:NERDTreeWinSize=26  "//defo 31
+  "0ならそのまま開いとく, 1なら閉じる
+  " let g:NERDTreeQuitOnOpen=0 "//defo 0
+  "let g:NERDTreeShowHidden=0 "//defo 0
+  let g:NERDTreeWinSize=26  "//defo 31
 
-" #easymotion
-let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
-let g:EasyMotion_leader_key="mm"
-" let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-map <Space>j <Plug>(easymotion-j)
-map <Space>k <Plug>(easymotion-k)
-map <Space>w <Plug>(easymotion-w)
-map <Space>f <Plug>(easymotion-fl)
-map <Space>t <Plug>(easymotion-tl)
-map <Space>F <Plug>(easymotion-Fl)
-map <Space>T <Plug>(easymotion-Tl)
-" nmap s <Plug>(easymotion-s2)
-" xmap s <Plug>(easymotion-s2)
-" surround.vimと被らないように
-" omap z <Plug>(easymotion-s2)
+" #easymotion"{{{
+  let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
+  let g:EasyMotion_leader_key="mm"
+  " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
+  map <Space>j <Plug>(easymotion-j)
+  map <Space>k <Plug>(easymotion-k)
+  map <Space>w <Plug>(easymotion-w)
+  map <Space>f <Plug>(easymotion-fl)
+  map <Space>t <Plug>(easymotion-tl)
+  map <Space>F <Plug>(easymotion-Fl)
+  map <Space>T <Plug>(easymotion-Tl)
+  " nmap s <Plug>(easymotion-s2)
+  " xmap s <Plug>(easymotion-s2)
+  " surround.vimと被らないように
+  " omap z <Plug>(easymotion-s2)
+"}}}
 
-map w  <Plug>(smartword-w)
-map b  <Plug>(smartword-b)
-map e  <Plug>(smartword-e)
-map ge <Plug>(smartword-ge)
+" #smartword
+  map w  <Plug>(smartword-w)
+  map b  <Plug>(smartword-b)
+  map e  <Plug>(smartword-e)
+  map ge <Plug>(smartword-ge)
 
 " #syntastic
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 0
-" let g:syntastic_debug = 1
+  let g:syntastic_cpp_compiler = 'clang++'
+  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
+  let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_enable_signs = 0
+  " let g:syntastic_debug = 1
 
 " #quickrun"{{{
 let g:quickrun_config = get(g:, 'quickrun_config', {})
@@ -314,20 +318,22 @@ autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<C
 
 "}}}
 
-" #yankround
-nmap p <Plug>(yankround-p)
-xmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-xmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-" round対象のうちはハイライトする
-let g:yankround_use_region_hl = 1
-let g:yankround_max_history = 50
-let g:yankround_dir = "~/.vim/tmp/"
-
+" #yankround"{{{
+  nmap p <Plug>(yankround-p)
+  xmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  xmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+  " round対象のうちはハイライトする
+  let g:yankround_use_region_hl = 1
+  let g:yankround_max_history = 20
+  let g:yankround_dir = "~/.vim/tmp/"
+  " let g:yankround_region_hl_groupname	= YankRoundRegion
+  " au ColorScheme * hi YankRoundRegion ctermbg=green
+"}}}
 
 call Source_rc('switch.rc.vim')
 if s:meet_neocomplete_requirements()
