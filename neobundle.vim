@@ -240,11 +240,49 @@ let g:vinarise_enable_auto_detect=1
   " -simple  日付などを表示しない
   " command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vf VimFilerExplorer -split -simple -find -winwidth=26 -focus
+  command! Vfs VimFilerSplit -simple -winwidth=26
 
   "セーフモードを無効にした状態で起動する
   " let g:vimfiler_safe_mode_by_default = 0
   " let g:vimfiler_edit_action = 'edit'
   let g:vimfiler_expand_jump_to_first_child=0
+
+  " Capture New window {{{
+  command!
+        \ -nargs=1
+        \ -complete=command
+        \ CaptureWin call CaptureWin(<f-args>)
+
+  function! CaptureWin(cmd)
+    redir => result
+    silent execute a:cmd
+    redir END
+
+    let bufname = 'Capture: ' . a:cmd
+    new
+    setlocal bufhidden=unload
+    setlocal nobuflisted
+    setlocal buftype=nofile
+    setlocal noswapfile
+    silent file `=bufname`
+    silent put =result
+    1,2delete _
+  endfunction
+  " }}}
+
+  " Capture {{{
+  command!
+        \ -nargs=1 -bang
+        \ -complete=command
+        \ Capture call Capture(<f-args>)
+
+  function! Capture(cmd)
+    redir => g:capture
+    silent execute a:cmd
+    redir END
+    return g:capture
+  endfunction
+  " }}}
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
   function! Get_sid()

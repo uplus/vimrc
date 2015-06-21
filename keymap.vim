@@ -147,6 +147,7 @@ inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
+cnoremap <C-D> <Del>
 " noremap! is insert+command
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
