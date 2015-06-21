@@ -33,6 +33,7 @@ NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハ�
 NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
+NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Yggdroot/indentLine'
 
 
@@ -171,6 +172,37 @@ filetype plugin indent on " Required
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
+
+" #easyalign
+vmap <Enter> <Plug>(EasyAlign)
+vmap <Space><Enter> <Plug>(LiveEasyAlign)
+" nmap ga <Plug>(EasyAlign)
+let g:easy_align_ignore_groups = ['Comment', 'String']
+
+let g:easy_align_delimiters = {
+\ '>': { 'pattern': '>>\|=>\|>' },
+\ '/': {
+\     'pattern':         '//\+\|/\*\|\*/',
+\     'delimiter_align': 'l',
+\     'ignore_groups':   ['!Comment'] },
+\ ']': {
+\     'pattern':       '[[\]]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ ')': {
+\     'pattern':       '[()]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ 'd': {
+\     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+\     'left_margin':  0,
+\     'right_margin': 0
+\   }
+\ }
 
 " #indentLine
 " let g:indentLine_faster = 1
