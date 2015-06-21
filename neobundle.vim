@@ -205,8 +205,8 @@ let g:easy_align_delimiters = {
 \ }
 
 " #indentLine
+nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 " let g:indentLine_faster = 1
-" nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 " let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim']
 
 " #over
