@@ -248,9 +248,9 @@ let g:vinarise_enable_auto_detect=1
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
   function! GetVimfiler_unexpand_tree()
-    " if exists(g:vimfiler_mappings_sid) " TODO
-    "   return
-    " endif
+    if exists('g:vimfiler_mappings_sid')
+      return
+    endif
 
     silent! redir => commands
     silent! scriptnames
@@ -258,12 +258,11 @@ let g:vinarise_enable_auto_detect=1
     let l:line = matchstr(commands, '\d*:\D*vimfiler\/mappings.vim')
     let l:sid  = matchstr(l:line, '^\d*')
 
-    " if empty(l:sid) " TODO
-    "   return
-    " endif
+    if empty(l:sid)
+      return
+    endif
 
     let g:vimfiler_mappings_sid = l:sid
-
     function g:Vimfiler_unexpand_tree()
       execute "call <SNR>" . g:vimfiler_mappings_sid . "_unexpand_tree()"
     endfunction
