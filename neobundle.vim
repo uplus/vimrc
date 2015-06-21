@@ -42,6 +42,7 @@ NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
 " NeoBundle 'jceb/vim-hier'
+NeoBundle 'Shougo/vinarise'
 
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'mattn/webapi-vim'
@@ -167,6 +168,7 @@ filetype plugin indent on " Required
 "###################### plugin config ############################"
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
+let g:vinarise_enable_auto_detect=1
 
 " #over
 let g:over#command_line#enable_move_cursor = 1
