@@ -245,15 +245,23 @@ let g:vinarise_enable_auto_detect=1
   "セーフモードを無効にした状態で起動する
   " let g:vimfiler_safe_mode_by_default = 0
   " let g:vimfiler_edit_action = 'edit'
-  let g:vimfiler_expand_jump_to_first_child=0
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
-  function! Get_sid()
+  function! GetVimfiler_unexpand_tree()
+    " if exists(g:vimfiler_mappings_sid) " TODO
+    "   return
+    " endif
+
     silent! redir => commands
     silent! scriptnames
     silent! redir END
     let l:line = matchstr(commands, '\d*:\D*vimfiler\/mappings.vim')
     let l:sid  = matchstr(l:line, '^\d*')
+
+    " if empty(l:sid) " TODO
+    "   return
+    " endif
+
     let g:vimfiler_mappings_sid = l:sid
 
     function g:Vimfiler_unexpand_tree()
@@ -263,14 +271,13 @@ let g:vinarise_enable_auto_detect=1
     nnoremap <buffer><silent><expr> \<Plug>(vimfiler_unexpand_tree) :<C-U>call g:Vimfiler_unexpand_tree()<CR>
   endfunction
 
-  command! GetSid call Get_sid()
-
   au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
-    GetSid
-    nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-    nmap     <buffer>h :call g:Vimfiler_unexpand_tree()<CR>
-    nmap     <buffer>l <Plug>(vimfiler_expand)
+    call GetVimfiler_unexpand_tree()
+
+    nmap <silent><buffer>h :call g:Vimfiler_unexpand_tree()<CR>
+    nmap <silent><buffer>l <Plug>(vimfiler_expand_tree)
+    nmap <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
 
     " nmap <buffer>s <Plug>(vimfiler_split_edit_file)
     nnoremap <buffer>s: call vimfiler#mappings#do_action('my_split')<CR>
