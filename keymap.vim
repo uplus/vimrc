@@ -86,8 +86,11 @@ nnoremap <Space>l $
 xnoremap <Space>h ^
 xnoremap <Space>l $
 
-nnoremap <Space>p o<ESC>p
-nnoremap <Space>P o<ESC>P
+nmap <Space>p o<C-U><ESC>p
+nmap <Space>P o<C-U><ESC>P
+" 一括でUndoできない
+" nmap <Space>p ]<Space>jp
+" nmap <Space>P ]<Space>jP
 
 nnoremap <silent> <Space> <Nop>
 xnoremap <silent> <Space> <Nop>
