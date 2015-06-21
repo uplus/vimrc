@@ -72,6 +72,43 @@ endfunction
 
 set foldtext=FoldText()
 
+  " Capture New window {{{
+  command!
+        \ -nargs=1
+        \ -complete=command
+        \ CaptureWin call CaptureWin(<f-args>)
+
+  function! CaptureWin(cmd)
+    redir => result
+    silent execute a:cmd
+    redir END
+
+    let bufname = 'Capture: ' . a:cmd
+    new
+    setlocal bufhidden=unload
+    setlocal nobuflisted
+    setlocal buftype=nofile
+    setlocal noswapfile
+    silent file `=bufname`
+    silent put =result
+    1,2delete _
+  endfunction
+  " }}}
+
+  " Capture {{{
+  command!
+        \ -nargs=1 -bang
+        \ -complete=command
+        \ Capture call Capture(<f-args>)
+
+  function! Capture(cmd)
+    redir => g:capture
+    silent execute a:cmd
+    redir END
+    return g:capture
+  endfunction
+  " }}}
+
 function! EraseSpace_func()
   if &filetype != 'markdown'
     let s:cursor = getpos(".")

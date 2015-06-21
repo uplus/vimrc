@@ -247,43 +247,6 @@ let g:vinarise_enable_auto_detect=1
   " let g:vimfiler_edit_action = 'edit'
   let g:vimfiler_expand_jump_to_first_child=0
 
-  " Capture New window {{{
-  command!
-        \ -nargs=1
-        \ -complete=command
-        \ CaptureWin call CaptureWin(<f-args>)
-
-  function! CaptureWin(cmd)
-    redir => result
-    silent execute a:cmd
-    redir END
-
-    let bufname = 'Capture: ' . a:cmd
-    new
-    setlocal bufhidden=unload
-    setlocal nobuflisted
-    setlocal buftype=nofile
-    setlocal noswapfile
-    silent file `=bufname`
-    silent put =result
-    1,2delete _
-  endfunction
-  " }}}
-
-  " Capture {{{
-  command!
-        \ -nargs=1 -bang
-        \ -complete=command
-        \ Capture call Capture(<f-args>)
-
-  function! Capture(cmd)
-    redir => g:capture
-    silent execute a:cmd
-    redir END
-    return g:capture
-  endfunction
-  " }}}
-
   "VimFilerを起動してからじゃないと関数が読み込まれない
   function! Get_sid()
     silent! redir => commands
@@ -301,14 +264,6 @@ let g:vinarise_enable_auto_detect=1
   endfunction
 
   command! GetSid call Get_sid()
-
-  "VimFilerを起動してからじゃないと関数が読み込まれない
-  function! Get_func_names()
-    silent! redir => funcs
-    silent! function
-    silent! redir END
-    let g:func_names = funcs
-  endfunction
 
   au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
