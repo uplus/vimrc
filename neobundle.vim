@@ -245,6 +245,31 @@ let g:vinarise_enable_auto_detect=1
   " let g:vimfiler_edit_action = 'edit'
   let g:vimfiler_expand_jump_to_first_child=0
 
+  "VimFilerを起動してからじゃないと関数が読み込まれない
+  function! Get_sid()
+    silent! redir => commands
+    silent! scriptnames
+    silent! redir END
+    let l:line = matchstr(commands, '\d*:\D*vimfiler\/mappings.vim')
+    let l:sid  = matchstr(l:line, '^\d*')
+    let @a = l:line
+    let @b = l:sid
+    echo @a
+    echo @b
+
+    " nnoremap <buffer><silent><expr> <Plug>(vimfiler_unexpand_tree)
+          " \ ":\<C-u>call \<SNR>" . l:sid . "_unexpand_tree()\<CR>"
+  endfunction
+
+  "VimFilerを起動してからじゃないと関数が読み込まれない
+  function! Get_func_names()
+    silent! redir => funcs
+    silent! function
+    silent! redir END
+    let g:func_names = funcs
+    let @a = g:func_names
+  endfunction
+
   au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
     " nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree)
