@@ -73,8 +73,8 @@ NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'cohama/vim-smartinput-endwise' " 前のやつの方が良かったかも
-NeoBundle 'tpope/vim-endwise'
+NeoBundle 'cohama/vim-smartinput-endwise'
+" NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
 NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
