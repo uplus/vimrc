@@ -134,7 +134,7 @@ source ~/.vim/filetype.vim
 
 filetype plugin indent on
 syntax enable
-set t_Co=256    " 色を256にしてくれる
+set t_Co=256    " 色を256にしてくれるよ!
 set background=dark
 
 function! s:set_colors()
@@ -142,6 +142,7 @@ function! s:set_colors()
     return 0
   elseif &filetype == 'cpp' || &filetype == 'c'
     colorscheme lettuce
+    " colorscheme kalisi
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
   else

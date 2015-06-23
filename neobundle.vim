@@ -17,6 +17,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'tacroe/unite-mark'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
 
 NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \   'mac'   : 'make -f make_mac.mak',
@@ -26,15 +28,17 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
 
 NeoBundle 'Shougo/vimshell'
 
+
+NeoBundle 'szw/vim-tags'
 " #view
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'vim-scripts/Visual-Mark'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 [p ]q
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
@@ -51,8 +55,10 @@ NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'qtmplsel.vim'            " テンプレートを挿入 バグる
 
 " #rails and #ruby
+NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
+NeoBundle 'bbatsov/rubocop'
 
 NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
@@ -64,10 +70,10 @@ NeoBundle 'osyo-manga/vim-anzu'     " show search point on the command-line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
-NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
+NeoBundle 'kana/vim-smartchr'
 NeoBundle 'cohama/vim-smartinput-endwise' " 前のやつの方が良かったかも
-NeoBundle 'kana/vim-smartword'
+NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
 NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
 NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
@@ -79,7 +85,7 @@ NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 " NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
 " NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 [p ]q
+NeoBundle 'kana/vim-smartword'
 
 " #quickrun
 NeoBundle 'thinca/vim-quickrun'
@@ -123,6 +129,7 @@ NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式とし
 " }}}
 
 " #colorscheme"{{{
+NeoBundle 'freeo/vim-kalisi'
 NeoBundle 'croaker/mustang-vim'
 NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'mrkn/mrkn256.vim'
@@ -135,6 +142,10 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
+  NeoBundle 'marcus/rsense'
+  NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
+        \ 'insert' : 1, 'filetype' : 'ruby',
+        \ } }
 endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -168,6 +179,7 @@ endif
 
 call neobundle#end()
 filetype plugin indent on " Required
+NeoBundleCheck
 
 "###################### plugin config ############################"
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
@@ -412,4 +424,3 @@ endif
 if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
   runtime macros/matchit.vim
 endif
-NeoBundleCheck
