@@ -56,8 +56,8 @@ inoremap <silent> <C-S> <C-O>:w<CR>
 nnoremap Q <Nop>
 " not open the command windwo
 " いろいろやったけどこうするしかなかった
-nnoremap q: <NOP>
-nnoremap q<ESC> q
+" nnoremap q: <NOP>
+" nnoremap q<ESC> q これやるとUniteがqで閉じれない
 
 " buffer
 nnoremap <silent> [B :bfirst<CR>
