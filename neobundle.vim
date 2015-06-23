@@ -17,8 +17,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'tacroe/unite-mark'
+
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
+NeoBundle 'szw/vim-tags'
 
 NeoBundle 'Shougo/vimproc.vim', { 'build' : {
                             \   'mac'   : 'make -f make_mac.mak',
@@ -28,31 +30,30 @@ NeoBundle 'Shougo/vimproc.vim', { 'build' : {
 
 NeoBundle 'Shougo/vimshell'
 
-
-NeoBundle 'szw/vim-tags'
 " #view
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
-" NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Yggdroot/indentLine'
+
 NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 [p ]q
+" NeoBundle 'Shougo/echodoc'
 
 NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
 " NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/vimfiler.vim'
+
 NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
 " NeoBundle 'jceb/vim-hier'
-NeoBundle 'Shougo/vinarise'
 
+NeoBundle 'Shougo/vinarise'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'qtmplsel.vim'            " テンプレートを挿入 バグる
 
 " #rails and #ruby
 NeoBundle 'vim-ruby/vim-ruby'
