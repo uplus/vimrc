@@ -13,6 +13,12 @@ if has('vim_starting') "set the directory to be managed by the bundle
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
+NeoBundle 'Shougo/vimproc.vim', { 'build' : {
+                            \   'mac'   : 'make -f make_mac.mak',
+                            \   'linux' : 'make',
+                            \   'unix'  : 'make -f make_unix.mak',
+                            \}, }
+NeoBundle 'Shougo/vimshell'
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -22,13 +28,6 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'szw/vim-tags'
 
-NeoBundle 'Shougo/vimproc.vim', { 'build' : {
-                            \   'mac'   : 'make -f make_mac.mak',
-                            \   'linux' : 'make',
-                            \   'unix'  : 'make -f make_unix.mak',
-                            \}, }
-
-NeoBundle 'Shougo/vimshell'
 
 " #view
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
@@ -181,8 +180,8 @@ endif
 call neobundle#end()
 filetype plugin indent on " Required
 NeoBundleCheck
-
 "###################### plugin config ############################"
+
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
@@ -233,7 +232,7 @@ let g:vinarise_enable_auto_detect=1
   " let g:over#command_line#search#enable_incsearch = 1
   " let g:over#command_line#search#enable_move_cursor = 1
 
-" #anzu&incsearch マッチした数&自動ハイライト&オフ
+" #anzu&incsearch マッチした数&自動ハイライト&オフ"{{{
   set hlsearch
   let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
   map / <Plug>(incsearch-forward)
@@ -245,8 +244,9 @@ let g:vinarise_enable_auto_detect=1
   map # <Plug>(anzu-N-with-echo)
   map * <Plug>(incsearch-nohl-*)
   map # <Plug>(incsearch-nohl-#)
+"}}}
 
-" #vimfiler
+" #vimfiler"{{{
   let g:vimfiler_as_default_explorer = 1
   " -find    指定するとカレントバッファと入れ替える
   " -no-quit ファイルを開いても終了しない
@@ -318,6 +318,7 @@ let g:vinarise_enable_auto_detect=1
     exec 'vsplit '. a:candidates[0].action__path
   endfunction
   call unite#custom_action('file', 'my_vsplit', s:my_action)
+"}}}
 
 " #nerdtree
   "0ならそのまま開いとく, 1なら閉じる
@@ -354,9 +355,13 @@ let g:vinarise_enable_auto_detect=1
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_enable_signs = 0
+  let g:syntastic_check_on_wq   = 0
+  let g:syntastic_enable_signs  = 0
   " let g:syntastic_debug = 1
+
+  "rubocop標準だとうるさい
+  " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+  " let g:syntastic_ruby_checkers = ['rubocop']
 "}}}
 
 " #quickrun"{{{
