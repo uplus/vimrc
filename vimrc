@@ -63,7 +63,7 @@ endif
 "ここらへんの意味がわからない
 set showcmd
 set matchtime=1
-set cmdheight=4
+set cmdwinheight=4
 
 function! FoldText()
   let base  = foldtext()
