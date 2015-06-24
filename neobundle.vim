@@ -283,17 +283,18 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "}}}
 
 " #vimfiler"{{{
+  " https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
   let g:vimfiler_as_default_explorer = 1
+  " let g:vimfiler_safe_mode_by_default = 0
+  " let g:vimfiler_edit_action = 'edit'
+
   " -no-quit ファイルを開いても終了しない カレントバッファと入れ替える
   " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
-  command! Vfe VimFilerExplorer -split -simple -find -winwidth=26 -focus
-  command! Vfs VimFiler -split -simple -find -winwidth=26 -no-quit
+  command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
+  command! Vfs VimFiler -split -simple
   " <C-W>eで呼ばれる
   command! Vf  Vfs
 
-  "セーフモードを無効にした状態で起動する
-  " let g:vimfiler_safe_mode_by_default = 0
-  " let g:vimfiler_edit_action = 'edit'
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
   function! GetVimfiler_unexpand_tree() "{{{
