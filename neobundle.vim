@@ -330,14 +330,12 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
     nnoremap <buffer>s :call vimfiler#mappings#do_action('my_split')<CR>
     nnoremap <buffer>v :call vimfiler#mappings#do_action('my_vsplit')<CR>
 
-    nmap <buffer><Tab> atabopen<CR>
+    nnoremap <buffer><Tab> :call vimfiler#mappings#do_action('tabopen')<CR>
     nnoremap <buffer>\ \
     nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
 
-    " 最後に残っても終了する
+    " 最後のバッファでも終了
     nnoremap <buffer><nowait>q :quit<CR>
-    " nmap <buffer><nowait>q <Plug>(vimfiler_exit)
-    " nmap <buffer> Q <Plug>(vimfiler_hide)
   endfunction "}}}
 
   let s:my_action = { 'is_selectable' : 1 }
