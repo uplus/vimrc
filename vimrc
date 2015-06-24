@@ -126,6 +126,23 @@ au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! 
 au BufWritePre  * EraseSpace
 au BufEnter     * lcd %:p:h
 
+command Bufonly call g:Bufonly()
+
+function g:Bufonly()
+  let l:current=bufnr('%')
+
+  silent! redir => l:bufs
+  silent! buffers
+  silent! redir END
+
+  for b in split(substitute(l:bufs, '\s', '', 'g'), '\n')
+    let n = matchstr(b, '^\d*')
+    if l:n != l:current
+      execute 'bdelete' l:n
+    endif
+  endfor
+endfunction
+
 
 " #source
 source ~/.vim/neobundle.vim
