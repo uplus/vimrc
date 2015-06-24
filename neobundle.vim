@@ -292,8 +292,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
   " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
   command! Vfs VimFiler -split -simple
+  command! Vfn VimFiler
   " <C-W>eで呼ばれる
-  command! Vf  Vfs
+  command! Vf Vfe
 
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
@@ -324,7 +325,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
     nnoremap <silent><buffer>h :VimFilerUnexpandTree<CR>
     nmap <silent><buffer>l <Plug>(vimfiler_expand_tree)
-    nmap <silent><buffer><CR> <Plug>(vimfiler_expand_or_edit)
+    " nmap <silent><buffer><CR> <Plug>(vimfiler_expand_or_edit)
+    nmap <silent><buffer><CR> <Plug>(vimfiler_cd_or_edit)
 
     " vimfilerのsplitは水平じゃなくて垂直 時々VimFilerWindがリサイズされる
     " nmap <buffer>v <Plug>(vimfiler_split_edit_file)
@@ -336,7 +338,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
     nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
 
     " 最後のバッファでも終了
-    nnoremap <buffer><nowait>q :quit<CR>
+    " nnoremap <buffer><nowait>q :quit<CR>
   endfunction "}}}
 
   let s:my_action = { 'is_selectable' : 1 }
