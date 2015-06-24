@@ -284,19 +284,19 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " #vimfiler"{{{
   let g:vimfiler_as_default_explorer = 1
-  " -find    指定するとカレントバッファと入れ替える
-  " -no-quit ファイルを開いても終了しない
-  " -simple  日付などを表示しない
-  " command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
-  command! Vf VimFilerExplorer -split -simple -find -winwidth=26 -focus
-  command! Vfs VimFilerSplit -simple -winwidth=26
+  " -no-quit ファイルを開いても終了しない カレントバッファと入れ替える
+  " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
+  command! Vfe VimFilerExplorer -split -simple -find -winwidth=26 -focus
+  command! Vfs VimFiler -split -simple -find -winwidth=26 -no-quit
+  " <C-W>eで呼ばれる
+  command! Vf  Vfs
 
   "セーフモードを無効にした状態で起動する
   " let g:vimfiler_safe_mode_by_default = 0
   " let g:vimfiler_edit_action = 'edit'
 
   "VimFilerを起動してからじゃないと関数が読み込まれない
-  function! GetVimfiler_unexpand_tree()
+  function! GetVimfiler_unexpand_tree() "{{{
     if exists('g:vimfiler_mappings_sid')
       return
     endif
@@ -311,35 +311,34 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
       return
     endif
 
+    " コマンドとして定義する
+    execute 'command! VimFilerUnexpandTree call <SNR>' . l:sid . '_unexpand_tree()'
     let g:vimfiler_mappings_sid = l:sid
-    function g:Vimfiler_unexpand_tree()
-      execute "call <SNR>" . g:vimfiler_mappings_sid . "_unexpand_tree()"
-    endfunction
-
-    nnoremap <buffer><silent><expr> \<Plug>(vimfiler_unexpand_tree) :<C-U>call g:Vimfiler_unexpand_tree()<CR>
-  endfunction
+  endfunction "}}}
 
   au FileType vimfiler call s:vimfiler_settings()
-  function! s:vimfiler_settings()
+  function! s:vimfiler_settings() "{{{
+    setlocal nobuflisted
     call GetVimfiler_unexpand_tree()
 
-    nmap <silent><buffer>h :call g:Vimfiler_unexpand_tree()<CR>
+    nnoremap <silent><buffer>h :VimFilerUnexpandTree<CR>
     nmap <silent><buffer>l <Plug>(vimfiler_expand_tree)
-    nmap <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+    nmap <silent><buffer><CR> <Plug>(vimfiler_expand_or_edit)
 
-    " nmap <buffer>s <Plug>(vimfiler_split_edit_file)
-    nnoremap <buffer>s: call vimfiler#mappings#do_action('my_split')<CR>
-    nnoremap <buffer>v: call vimfiler#mappings#do_action('my_vsplit')<CR>
+    " vimfilerのsplitは水平じゃなくて垂直 時々VimFilerWindがリサイズされる
+    " nmap <buffer>v <Plug>(vimfiler_split_edit_file)
+    nnoremap <buffer>s :call vimfiler#mappings#do_action('my_split')<CR>
+    nnoremap <buffer>v :call vimfiler#mappings#do_action('my_vsplit')<CR>
 
     nmap <buffer><Tab> atabopen<CR>
     nnoremap <buffer>\ \
     nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
 
     " 最後に残っても終了する
-    nmap <buffer><nowait>q :quit<CR>
+    nnoremap <buffer><nowait>q :quit<CR>
     " nmap <buffer><nowait>q <Plug>(vimfiler_exit)
     " nmap <buffer> Q <Plug>(vimfiler_hide)
-  endfunction
+  endfunction "}}}
 
   let s:my_action = { 'is_selectable' : 1 }
   function! s:my_action.func(candidates)
