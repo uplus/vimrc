@@ -62,8 +62,8 @@ nnoremap Q <Nop>
 " buffer
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-nnoremap <Space>bb :b#<CR>
-nnoremap <Space>bd :bd<CR>
+" nnoremap <Space>bb :b#<CR>
+" nnoremap <Space>bd :bd<CR>
 
 "######<Leader> family######
 function! WriteQuickRunN()
@@ -74,8 +74,8 @@ endfunction
 nnoremap <Leader>r :call WriteQuickRunN()<CR>
 xnoremap <Leader>r :QuickRun -mode v<CR>
 
-nnoremap <Leader>m :Unite mark<CR>
-nnoremap <Leader>b :Unite buffer<CR>
+nnoremap <Space>m :Unite mark<CR>
+nnoremap <Space>b :Unite buffer<CR>
 
 "######<Space> family######
 xnoremap <Space>n :normal<Space>
