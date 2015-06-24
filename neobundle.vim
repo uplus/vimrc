@@ -42,7 +42,8 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 " #view
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
-NeoBundle 'itchyny/lightline.vim'
+" NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Yggdroot/indentLine'
@@ -227,6 +228,16 @@ let g:vinarise_enable_auto_detect=1
   \     'right_margin': 0
   \   }
   \ }
+"}}}
+
+" #airline"{{{
+let g:airline_left_sep  = ""
+let g:airline_right_sep = ""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" BufReadCmd にしたら大変な事に
+au BufReadPost * source ~/.vim/colors/airline_colors.vim
 "}}}
 
 " #indentLine
