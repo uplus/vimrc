@@ -44,8 +44,8 @@ set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱わ
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
 
 set tabstop=2               "Tab表示幅
-let &softtabstop = &tabstop "Tab押下時のカーソル移動量
-let &shiftwidth  = &tabstop "インデント幅
+let &softtabstop=&tabstop "Tab押下時のカーソル移動量
+let &shiftwidth=&tabstop "インデント幅
 set expandtab     "Tabキーでスペース挿入
 
 set autoindent
@@ -73,42 +73,42 @@ endfunction
 
 set foldtext=FoldText()
 
-  " Capture New window {{{
-  command!
-        \ -nargs=1
-        \ -complete=command
-        \ CaptureWin call CaptureWin(<f-args>)
+" Capture New window {{{
+command!
+      \ -nargs=1
+      \ -complete=command
+      \ CaptureWin call CaptureWin(<f-args>)
 
-  function! CaptureWin(cmd)
-    redir => result
-    silent execute a:cmd
-    redir END
+function! CaptureWin(cmd)
+  redir => result
+  silent execute a:cmd
+  redir END
 
-    let bufname = 'Capture: ' . a:cmd
-    new
-    setlocal bufhidden=unload
-    setlocal nobuflisted
-    setlocal buftype=nofile
-    setlocal noswapfile
-    silent file `=bufname`
-    silent put =result
-    1,2delete _
-  endfunction
-  " }}}
+  let bufname = 'Capture: ' . a:cmd
+  new
+  setlocal bufhidden=unload
+  setlocal nobuflisted
+  setlocal buftype=nofile
+  setlocal noswapfile
+  silent file `=bufname`
+  silent put =result
+  1,2delete _
+endfunction
+" }}}
 
-  " Capture {{{
-  command!
-        \ -nargs=1 -bang
-        \ -complete=command
-        \ Capture call Capture(<f-args>)
+" Capture {{{
+command!
+      \ -nargs=1 -bang
+      \ -complete=command
+      \ Capture call Capture(<f-args>)
 
-  function! Capture(cmd)
-    redir => g:capture
-    silent execute a:cmd
-    redir END
-    return g:capture
-  endfunction
-  " }}}
+function! Capture(cmd)
+  redir => g:capture
+  silent execute a:cmd
+  redir END
+  return g:capture
+endfunction
+" }}}
 
 function! EraseSpace_func()
   if &filetype != 'markdown'
