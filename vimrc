@@ -135,12 +135,15 @@ function g:Bufonly()
   silent! buffers
   silent! redir END
 
+  let l:count=0
   for b in split(substitute(l:bufs, '\s', '', 'g'), '\n')
     let n = matchstr(b, '^\d*')
     if l:n != l:current
       execute 'bdelete' l:n
+      let l:count+=1
     endif
   endfor
+  echo l:count "buffer deleted"
 endfunction
 
 
