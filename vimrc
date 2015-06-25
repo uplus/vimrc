@@ -103,9 +103,9 @@ command!
       \ Capture call Capture(<f-args>)
 
 function! Capture(cmd)
-  redir => g:capture
-  silent execute a:cmd
-  redir END
+  silent! redir => g:capture
+  silent! execute a:cmd
+  silent! redir END
   return g:capture
 endfunction
 " }}}
@@ -126,9 +126,8 @@ au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! 
 au BufWritePre  * EraseSpace
 au BufEnter     * lcd %:p:h
 
-command Bufonly call g:Bufonly()
-
-function g:Bufonly()
+command! Bufonly call Bufonly()
+function! Bufonly()
   let l:current=bufnr('%')
 
   silent! redir => l:bufs
@@ -146,6 +145,11 @@ function g:Bufonly()
   echo l:count "buffer deleted"
 endfunction
 
+command! BufferCount ruby print VIM::Buffer.count
+function! BufferCount()
+  Capture BufferCount
+  return substitute(g:capture, '\D', '', 'g')
+endfunction
 
 " #source
 source ~/.vim/neobundle.vim
