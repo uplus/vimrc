@@ -73,6 +73,21 @@ endfunction
 
 set foldtext=FoldText()
 
+" Capture {{{
+command!
+      \ -nargs=+ -bang
+      \ -complete=command
+      \ Capture call Capture(<f-args>)
+
+function! Capture(cmd)
+  silent! redir => l:out
+  silent! execute a:cmd
+  silent! redir END
+  let g:capture = substitute(l:out, '\%^\n', '', '')
+  return g:capture
+endfunction
+" }}}
+
 " Capture New window {{{
 command!
       \ -nargs=+ -bang
@@ -93,21 +108,6 @@ function! CaptureWin(cmd)
   silent file `=bufname`
   silent put =result
   1,2delete _
-endfunction
-" }}}
-
-" Capture {{{
-command!
-      \ -nargs=+ -bang
-      \ -complete=command
-      \ Capture call Capture(<f-args>)
-
-function! Capture(cmd)
-  silent! redir => l:out
-  silent! execute a:cmd
-  silent! redir END
-  let g:capture = substitute(l:out, '\%^\n', '', '')
-  return g:capture
 endfunction
 " }}}
 
