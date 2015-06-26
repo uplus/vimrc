@@ -127,16 +127,14 @@ au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! 
 au BufWritePre  * EraseSpace
 au BufEnter     * lcd %:p:h
 
-command! Bufonly call Bufonly()
-function! Bufonly()
+command! Conly call CurrentOnly()
+command! CurrentOnly call CurrentOnly()
+function! CurrentOnly()
+  Capture buffers
+
   let l:current=bufnr('%')
-
-  silent! redir => l:bufs
-  silent! buffers
-  silent! redir END
-
   let l:count=0
-  for b in split(substitute(l:bufs, '\s', '', 'g'), '\n')
+  for b in split(substitute(g:capture, '\s', '', 'g'), '\n')
     let n = matchstr(b, '^\d*')
     if l:n != l:current
       execute 'bdelete' l:n
