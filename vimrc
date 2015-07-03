@@ -174,22 +174,24 @@ function! s:set_colors()
     colorscheme molokai
   endif
 
-  hi YankRoundRegion cterm=italic
-  " hi YankRoundRegion cterm=underline
 
-  let g:set_colors = 1
+  let g:set_colors=1
 endfunction
 
-function! s:only_once()
-  if !exists("g:only_once")
-    SpeedDatingFormat! %v
-    SpeedDatingFormat! %^v
+function! s:only_once() "{{{
+  if exists("g:only_once")
+    return 0
   endif
+
+  SpeedDatingFormat! %v
+  SpeedDatingFormat! %^v
+
   let g:only_once = 1
-endfunction
+endfunction "}}}
 
 au FileType * call s:set_colors()
 au FileType * call s:only_once()
-au FileType * highlight Visual          cterm=reverse
 au FileType * highlight Search          ctermfg=39 ctermbg=56
 au FileType * highlight IncSearch       ctermfg=39 ctermbg=50
+au FileType * hi Visual          cterm=reverse
+au FileType * hi YankRoundRegion cterm=italic
