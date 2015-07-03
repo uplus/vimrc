@@ -1,10 +1,11 @@
+colorscheme default
 set background=dark
-set t_Co=256
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
 
+set t_Co=256
 let g:colors_name = "railscasts-u10"
 
 hi link htmlTag                     xmlTag
@@ -108,3 +109,6 @@ highlight Keyword                   ctermfg=190
 
 " ブロック変数の宣言だけを色つけしてくれる
 highlight rubyBlockParameter        ctermfg=111
+
+" YankRound
+au FileType * hi YankRoundRegion cterm=italic
