@@ -80,9 +80,9 @@ command!
       \ Capture call Capture(<f-args>)
 
 function! Capture(cmd)
-  silent! redir => l:out
-  silent! execute a:cmd
-  silent! redir END
+  redir => l:out
+  silent execute a:cmd
+  redir END
   let g:capture = substitute(l:out, '\%^\n', '', '')
   return g:capture
 endfunction
@@ -127,6 +127,7 @@ au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! 
 au BufWritePre  * EraseSpace
 au BufEnter     * lcd %:p:h
 
+" CurrentOnly {{{
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
@@ -143,11 +144,12 @@ function! CurrentOnly()
   endfor
   echo l:count "buffer deleted"
 endfunction
+"}}}
 
 command! BufferCount ruby print VIM::Buffer.count
 function! BufferCount()
   Capture BufferCount
-  return substitute(g:capture, '\D', '', 'g')
+  return g:capture
 endfunction
 
 " #source
