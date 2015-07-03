@@ -172,10 +172,15 @@ function! s:set_colors() "{{{
     " colorscheme kalisi
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
+  elseif &filetype == 'vimfiler'
+    colorscheme vimfiler_color
+    au FileType * colorscheme airline_color
+    return 0
   else
     colorscheme molokai
   endif
 
+  colorscheme vimfiler_color
 
   let g:set_colors=1
 endfunction "}}}
