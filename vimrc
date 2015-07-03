@@ -162,10 +162,12 @@ syntax enable
 set t_Co=256    " 色を256にしてくれるよ!
 set background=dark
 
-function! s:set_colors()
+function! s:set_colors() "{{{
   if exists("g:set_colors")
     return 0
-  elseif &filetype == 'cpp' || &filetype == 'c'
+  end
+
+  if &filetype == 'cpp' || &filetype == 'c'
     colorscheme lettuce
     " colorscheme kalisi
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
@@ -176,7 +178,7 @@ function! s:set_colors()
 
 
   let g:set_colors=1
-endfunction
+endfunction "}}}
 
 function! s:only_once() "{{{
   if exists("g:only_once")
@@ -191,7 +193,9 @@ endfunction "}}}
 
 au FileType * call s:set_colors()
 au FileType * call s:only_once()
+
 au FileType * highlight Search          ctermfg=39 ctermbg=56
 au FileType * highlight IncSearch       ctermfg=39 ctermbg=50
-au FileType * hi Visual          cterm=reverse
-au FileType * hi YankRoundRegion cterm=italic
+au FileType * highlight Visual          cterm=reverse
+au FileType * highlight Todo            ctermfg=16 ctermbg=220
+au FileType * highlight YankRoundRegion cterm=italic

@@ -98,6 +98,8 @@ highlight rubyInclude               ctermfg=214
 " 埋め込み文字列の#{}など
 highlight Special                   ctermfg=47
 
+highlight Todo                      ctermfg=16 ctermbg=220
+
 " 埋め込み文字の中身
 highlight rubyInterpolation         ctermfg=254
 
