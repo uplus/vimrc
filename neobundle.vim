@@ -385,8 +385,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
   " map ge <Plug>(smartword-ge)
 
 " #syntastic"{{{
-  let g:syntastic_cpp_compiler = 'clang++'
-  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
@@ -394,53 +392,57 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
   let g:syntastic_enable_signs  = 0
   " let g:syntastic_debug = 1
 
-  "rubocop標準だとうるさい
-  " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-  " let g:syntastic_ruby_checkers = ['rubocop']
+  let g:syntastic_cpp_compiler = 'clang++'
+  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
 "}}}
 
-" #quickrun"{{{
-let g:quickrun_config = get(g:, 'quickrun_config', {})
-let g:quickrun_config._ = {
-      \ 'hook/close_unite_quickfix/enable_hook_loaded' : 1,
-      \ 'hook/unite_quickfix/enable_failure' : 1,
-      \ 'hook/close_quickfix/enable_exit' : 1,
-      \ 'hook/close_buffer/enable_failure' : 1,
-      \ 'hook/close_buffer/enable_empty_data' : 1,
-      \ 'outputter' : 'multi:buffer:quickfix',
-      \ 'hook/shabadoubi_touch_henshin/enable' : 1,
-      \ 'hook/shabadoubi_touch_henshin/wait' : 20,
-      \ 'outputter/buffer/split' : ':botright 8sp',
-      \ 'runner' : 'vimproc',
-      \ 'runner/vimproc/updatetime' : 40,
-      \ }
+" #quickrun "{{{
+  let g:quickrun_no_default_key_mappings = 1
+  nnoremap <Leader>r :write<CR>:QuickRun -mode n<CR>
+  xnoremap <Leader>r :write<CR>:QuickRun -mode v<CR>
 
-let g:quickrun_config.cpp = {
-      \ 'command' : '/usr/bin/clang++',
-      \ 'cmdopt'  : $CPP_COMP_OPT
-      \ }
+  " Config {{{
+  let g:quickrun_config = get(g:, 'quickrun_config', {})
+  let g:quickrun_config._ = {
+        \ 'hook/close_unite_quickfix/enable_hook_loaded' : 1,
+        \ 'hook/unite_quickfix/enable_failure' : 1,
+        \ 'hook/close_quickfix/enable_exit' : 1,
+        \ 'hook/close_buffer/enable_failure' : 1,
+        \ 'hook/close_buffer/enable_empty_data' : 1,
+        \ 'outputter' : 'multi:buffer:quickfix',
+        \ 'hook/shabadoubi_touch_henshin/enable' : 1,
+        \ 'hook/shabadoubi_touch_henshin/wait' : 20,
+        \ 'outputter/buffer/split' : ':botright 8sp',
+        \ 'runner' : 'vimproc',
+        \ 'runner/vimproc/updatetime' : 40,
+        \ }
+  "}}}
 
-let g:quickrun_config.c = {
-      \ 'command' : '/usr/bin/clang',
-      \ 'cmdopt'  : $C_COMP_OPT
-      \ }
-let g:quickrun_config.markdown = {
-      \ 'type': 'markdown/pandoc',
-      \ 'cmdopt': '-s',
-      \ 'outputter': 'browser'
-      \ }
+  " Languages {{{
+  let g:quickrun_config.cpp = {
+        \ 'command' : '/usr/bin/clang++',
+        \ 'cmdopt'  : $CPP_COMP_OPT
+        \ }
 
-let g:quickrun_no_default_key_mappings = 1
+  let g:quickrun_config.c = {
+        \ 'command' : '/usr/bin/clang',
+        \ 'cmdopt'  : $C_COMP_OPT
+        \ }
+  let g:quickrun_config.markdown = {
+        \ 'type': 'markdown/pandoc',
+        \ 'cmdopt': '-s',
+        \ 'outputter': 'browser'
+        \ }
+  "}}}
 
-" RSpec実行
-function! RSpec_run()
-  write
-  !rspec %
-endfunction
-command! Spec :call RSpec_run()
+  " RSpec実行
+  function! RSpec_run()
+    write
+    !rspec %
+  endfunction
+  command! Spec :call RSpec_run()
 
-autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<CR>
-
+  autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<CR>
 "}}}
 
 " #yankround"{{{

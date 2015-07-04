@@ -30,13 +30,14 @@ nnoremap mj ddp
 nnoremap mk ddkP
 nmap zp v%zf
 
-" not registe delete
+" not registe delete "{{{
 nnoremap _d "_d
 vnoremap _d "_d
 nnoremap _x "_x
 vnoremap _x "_x
 nnoremap _X "_X
 vnoremap _X "_X
+"}}}
 
 nnoremap v V
 nnoremap V v
@@ -48,19 +49,19 @@ inoremap <silent> <C-S> <C-O>:w<CR>
 nnoremap Q <Nop>
 " いろいろやったけどcmd-windowを無効化する方法は見つからなかった
 
+" visual-modeで[<Space>]が使えるようにする
+xmap [<Space> <ESC>[<Space>gv
+xmap ]<Space> <ESC>]<Space>gv
+
 " buffer
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 " nnoremap <Space>bb :b#<CR>
 
-"######<Leader> family######
-nnoremap <Leader>r :write<CR>:QuickRun -mode n<CR>
-xnoremap <Leader>r :QuickRun -mode v<CR>
-
+"######<Space> family###### "{{{
 nnoremap <Space>m :Unite mark<CR>
 nnoremap <Space>b :Unite buffer<CR>
 
-"######<Space> family######
 xnoremap <Space>n :normal<Space>
 
 nnoremap <Space>ss :%s/
@@ -81,7 +82,7 @@ nmap <Space>P o<ESC>P
 
 nnoremap <silent> <Space> <Nop>
 xnoremap <silent> <Space> <Nop>
-
+"}}}
 
 "######Ctrl+W family######
 " nnoremap <silent> <C-W>e :NERDTreeFocus<CR>
@@ -92,7 +93,7 @@ nnoremap <C-W>n gT
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
-"#resize"{{{
+"#resize "{{{
 if neobundle#is_installed('vim-submode')
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
   call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
