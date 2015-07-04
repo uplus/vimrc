@@ -4,6 +4,10 @@
 filetype off
 filetype plugin indent off
 
+if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
+  silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+endif
+
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
