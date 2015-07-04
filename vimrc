@@ -143,12 +143,15 @@ function! EraseSpace()
     return
   endif
 
-  if &filetype != 'markdown' && &filetype != 'gitcommit'
-    let s:cursor = getpos(".")
-    %s/^\s\+$//ge
-    %s/\s\+$//ge
-    call setpos(".", s:cursor)
+  " filetypeが一致したらreturn
+  if index(['markdown', 'gitcommit'], &filetype) != -1
+    return
   endif
+
+  let l:cursor = getpos(".")
+  %s/^\s\+$//ge
+  %s/\s\+$//ge
+  call setpos(".", l:cursor)
 endfunction
 "}}}
 
