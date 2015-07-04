@@ -109,6 +109,14 @@ nnoremap <C-W>n gT
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
+function! s:help_config()
+  nnoremap <buffer> q :q<CR>
+  setlocal foldmethod=indent
+  setlocal foldlevel=1
+  setlocal foldenable
+endfunction
+autocmd FileType help call s:help_config()
+
 "resize
 if neobundle#is_installed('vim-submode')
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
