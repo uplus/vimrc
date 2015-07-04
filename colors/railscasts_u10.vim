@@ -49,7 +49,7 @@ highlight pythonBuiltin             guifg=#6D9CBE ctermfg=73 gui=NONE cterm=NONE
 highlight rubyLocalVariableOrMethod guifg=#D0D0FF ctermfg=189
 " highlight rubyPredefinedConstant    guifg=#DA4939 ctermfg=167
 " highlight rubyPseudoVariable        guifg=#FFC66D ctermfg=221
-highlight rubyStringDelimiter       guifg=#A5C261 ctermfg=143
+" highlight rubyStringDelimiter       guifg=#A5C261 ctermfg=143
 
 highlight xmlTag                    guifg=#E8BF6A ctermfg=179
 highlight xmlTagName                guifg=#E8BF6A ctermfg=179
@@ -69,6 +69,7 @@ highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f cterm
 highlight Pmenu	              ctermbg=243 ctermfg=17
 highlight PmenuSel            ctermbg=6	  ctermfg=40
 highlight PmenuSel            ctermbg=70  ctermfg=129
+
 highlight Normal              ctermbg=233
 highlight Folded              ctermfg=33 ctermbg=233
 highlight Search              ctermfg=39 ctermbg=56
@@ -76,6 +77,7 @@ highlight IncSearch           ctermfg=39 ctermbg=50
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=236 cterm=NONE
 highlight CursorLineNr        ctermfg=196
+highlight Todo                      ctermfg=16 ctermbg=220
 
 highlight rubyFunction              ctermfg=226
 highlight rubyDefine                ctermfg=208
@@ -85,9 +87,10 @@ highlight rubyPreDefinedConstant    ctermfg=161
 highlight rubyInstanceVariable      ctermfg=75
 highlight rubyClassVariable         ctermfg=43
 
-highlight rubySymbol                ctermfg=63
-highlight rubyString                ctermfg=72
 highlight Number                    ctermfg=38
+highlight rubySymbol                ctermfg=63
+highlight rubyString                ctermfg=111
+highlight rubyStringDelimiter       ctermfg=74
 
 " if else do end exitなど
 highlight Statement                 ctermfg=214
@@ -95,13 +98,15 @@ highlight Statement                 ctermfg=214
 " require include
 highlight rubyInclude               ctermfg=214
 
-" 埋め込み文字列の#{}など
-highlight Special                   ctermfg=47
-
-highlight Todo                      ctermfg=16 ctermbg=220
+" 埋め込み文字列の#{}や\nなど
+highlight Special                   ctermfg=171
 
 " 埋め込み文字の中身
-highlight rubyInterpolation         ctermfg=254
+" highlight rubyInterpolation         ctermfg=254
+highlight rubyInterpolation         ctermfg=251
+
+" 埋め込み文字#{}
+highlight rubyInterpolationDelimiter ctermfg=39
 
 " self, super
 " highlight rubyPseudoVariable        ctermfg=220
@@ -113,4 +118,4 @@ highlight Keyword                   ctermfg=190
 highlight rubyBlockParameter        ctermfg=111
 
 " YankRound
-au FileType * hi YankRoundRegion cterm=italic
+hi YankRoundRegion cterm=italic
