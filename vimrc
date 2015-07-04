@@ -162,6 +162,13 @@ syntax enable
 set t_Co=256
 set background=dark
 
+augroup call_functions
+  autocmd!
+  au FileType * call s:set_colors()
+  au FileType * call s:only_once()
+  au FileType * call s:set_highlight_sub()
+augroup END
+
 function! s:set_colors() "{{{
   if exists("g:set_colors")
     return 0
@@ -185,6 +192,14 @@ function! s:set_colors() "{{{
   let g:set_colors=1
 endfunction "}}}
 
+function! s:set_highlight_sub() " {{{
+  highlight Search          ctermfg=39 ctermbg=56
+  highlight IncSearch       ctermfg=39 ctermbg=50
+  highlight Visual          cterm=reverse
+  highlight Todo            ctermfg=16 ctermbg=220
+  highlight YankRoundRegion cterm=italic
+endfunction " }}}
+
 function! s:only_once() "{{{
   if exists("g:only_once")
     return 0
@@ -196,11 +211,3 @@ function! s:only_once() "{{{
   let g:only_once = 1
 endfunction "}}}
 
-au FileType * call s:set_colors()
-au FileType * call s:only_once()
-
-au FileType * highlight Search          ctermfg=39 ctermbg=56
-au FileType * highlight IncSearch       ctermfg=39 ctermbg=50
-au FileType * highlight Visual          cterm=reverse
-au FileType * highlight Todo            ctermfg=16 ctermbg=220
-au FileType * highlight YankRoundRegion cterm=italic
