@@ -74,11 +74,11 @@ endfunction
 set foldtext=FoldText()
 
 " Capture {{{
-command!
-      \ -nargs=+ -bang
-      \ -complete=command
-      \ Capture call Capture(<f-args>)
+" cmdをクォートなしでとれる
+command! -nargs=+ -bang -complete=command
+      \ Capture call Capture(<q-args>)
 
+" cmdをクォートで囲んでとる
 function! Capture(cmd)
   redir => l:out
   silent execute a:cmd
@@ -89,10 +89,8 @@ endfunction
 " }}}
 
 " Capture New window {{{
-command!
-      \ -nargs=+ -bang
-      \ -complete=command
-      \ CaptureWin call CaptureWin(<f-args>)
+command! -nargs=+ -bang -complete=command
+      \ CaptureWin call CaptureWin(<q-args>)
 
 function! CaptureWin(cmd)
   redir => result
