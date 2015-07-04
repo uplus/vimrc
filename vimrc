@@ -111,8 +111,8 @@ function! CaptureWin(cmd)
 endfunction
 " }}}
 
-function! EraseSpace_func()
-  if &filetype != 'markdown'
+function! EraseSpace()
+  if &filetype != 'markdown' && &filetype != 'gitcommit'
     let s:cursor = getpos(".")
     %s/^\s\+$//ge
     %s/\s\+$//ge
@@ -120,7 +120,7 @@ function! EraseSpace_func()
   endif
 endfunction
 
-command! EraseSpace :call EraseSpace_func()
+command! EraseSpace :call EraseSpace()
 command! NoEraseSpace :au! BufWritePre
 
 au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -159,7 +159,7 @@ source ~/.vim/filetype.vim
 
 filetype plugin indent on
 syntax enable
-set t_Co=256    " 色を256にしてくれるよ!
+set t_Co=256
 set background=dark
 
 function! s:set_colors() "{{{

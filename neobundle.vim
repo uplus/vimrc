@@ -44,7 +44,7 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表�
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'AndrewRadev/linediff.vim'
+NeoBundle 'AndrewRadev/linediff.vim'  " visual-modeで選択した2つの行をvimdiffで確認する
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'Yggdroot/indentLine'
 
