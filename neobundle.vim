@@ -18,17 +18,85 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundle 'Shougo/vimproc.vim', { 'build' : {
-                            \   'mac'   : 'make -f make_mac.mak',
-                            \   'linux' : 'make',
-                            \   'unix'  : 'make -f make_unix.mak',
-                            \}, }
+      \   'mac'   : 'make -f make_mac.mak',
+      \   'linux' : 'make',
+      \   'unix'  : 'make -f make_unix.mak',
+      \}, }
 NeoBundle 'Shougo/vimshell'
 NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'Shougo/unite-help' " Unite で検索できる
 
+" #view "{{{
+NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
+NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
+" NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Yggdroot/indentLine'
+"}}}
+
+" #action "{{{
+NeoBundle 'AndrewRadev/linediff.vim' " visual-modeで選択した2つの行をvimdiffで確認する
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q
+NeoBundle 'LeafCage/yankround.vim'   " round the yank history
+NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
+" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
+NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
+NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
+NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
+"}}}
+
+" #search and #replace "{{{
+NeoBundle 'osyo-manga/vim-anzu'     " show search point on the command-line
+NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
+" NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
+"}}}
+
+" #move"{{{
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kana/vim-smartword'
+" NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
+" NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
+" NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
+"}}}
+
+" #syntaxchecker"{{{
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'scrooloose/syntastic.git'
+" NeoBundle 'osyo-manga/vim-watchdogs'
+" NeoBundle 'dannyob/quickfixstatus'
+" NeoBundle 'jceb/vim-hier'
+" NeoBundle 'Shougo/echodoc'
+"}}}
+
+" #quickrun"{{{
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
+NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
+"}}}
+
+NeoBundle 'Shougo/vinarise'
+NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
+NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
+NeoBundle 'kannokanno/previm'       " Markdown Previewer
+NeoBundle 'mattn/webapi-vim'
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
+NeoBundle 'tpope/vim-fugitive'      " git
+" NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+
+" #rails and #ruby"{{{
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
+NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
+NeoBundle 'bbatsov/rubocop'
+"}}}
+
+" #tab and #ref "{{{
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'szw/vim-tags'
@@ -42,72 +110,8 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
       \    ],
       \ }
       \ }
+"}}}
 
-
-" #view
-NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
-NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
-" NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'AndrewRadev/linediff.vim'  " visual-modeで選択した2つの行をvimdiffで確認する
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'Yggdroot/indentLine'
-
-NeoBundle 'tpope/vim-unimpaired'      " :cnextとかのマッピングを提供 [p ]q
-" NeoBundle 'Shougo/echodoc'
-
-NeoBundle 'kana/vim-submode'        " vimに独自のモードを作成
-" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
-" NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Shougo/vimfiler.vim'
-
-NeoBundle 'scrooloose/syntastic.git'
-" NeoBundle 'osyo-manga/vim-watchdogs'
-" NeoBundle 'dannyob/quickfixstatus'
-" NeoBundle 'jceb/vim-hier'
-
-NeoBundle 'Shougo/vinarise'
-NeoBundle 'kannokanno/previm'       " Markdown Previewer
-NeoBundle 'mattn/webapi-vim'
-
-" #rails and #ruby
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
-NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
-NeoBundle 'bbatsov/rubocop'
-
-NeoBundle 'tpope/vim-fugitive'      " git
-" NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
-NeoBundle 'LeafCage/yankround.vim'  " round the yank history
-
-" #search and #replace
-" NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
-NeoBundle 'osyo-manga/vim-anzu'     " show search point on the command-line
-NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
-
-NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'cohama/vim-smartinput-endwise'
-" NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
-NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
-NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
-NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
-NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
-
-" #move
-" NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
-" NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
-" NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'kana/vim-smartword'
-
-" #quickrun
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
-NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
-" NeoBundle 'skwp/vim-rspec'
 
 " #textobj #operator {{{
 NeoBundle 'kana/vim-textobj-user'
@@ -132,7 +136,6 @@ NeoBundle 'saihoooooooo/vim-textobj-space'  " aS iS 連続したスペース
 NeoBundle 'rhysd/vim-textobj-lastinserted'  " au iu textobjとして最後に挿入された範囲
 " NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上のword  ,がリマップされる
 " NeoBundle 'sgur/vim-textobj-parameter'  " a i 関数の引数
-
 NeoBundle 'osyo-manga/vim-textobj-multiblock' " asb isb 任意の複数の括弧のいずれか
 NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 NeoBundle 'anyakichi/vim-textobj-xbrackets' " axb ixb x() や x<> など
@@ -156,6 +159,7 @@ NeoBundle '1player/lettuce.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
+" #input-support"{{{
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
   NeoBundle 'marcus/rsense'
@@ -163,11 +167,15 @@ if s:meet_neocomplete_requirements()
         \ 'insert' : 1, 'filetype' : 'ruby',
         \ } }
 endif
+
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'cohama/vim-smartinput-endwise'
+" NeoBundle 'tpope/vim-endwise'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Rip-Rip/clang_complete'
-NeoBundleLazy 'osyo-manga/vim-stargate', {
-      \ 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+"}}}
 
 " <CR>mapping config "{{{
 if neobundle#tap('vim-smartinput')
@@ -354,12 +362,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
   endfunction
   call unite#custom_action('file', 'my_vsplit', s:my_action)
 "}}}
-
-" #nerdtree
-  "0ならそのまま開いとく, 1なら閉じる
-  " let g:NERDTreeQuitOnOpen=0 "//defo 0
-  "let g:NERDTreeShowHidden=0 "//defo 0
-  let g:NERDTreeWinSize=26  "//defo 31
 
 " #easymotion"{{{
   let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
