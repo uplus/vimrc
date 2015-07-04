@@ -169,8 +169,8 @@ endif
 
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'cohama/vim-smartinput-endwise'
-" NeoBundle 'tpope/vim-endwise'
+NeoBundle 'cohama/vim-smartinput-endwise' "ブロック引数を複数とるとendが入力されない
+" NeoBundle 'tpope/vim-endwise' " CRのマップをとられるとうまく動作しない
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Rip-Rip/clang_complete'
@@ -192,6 +192,8 @@ endif
 if neobundle#tap('vim-smartinput-endwise')
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
+    call s:define_rule_ruby()
+
     imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
           \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
           \ neocomplete#close_popup()
@@ -209,6 +211,15 @@ let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないよ�
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
 " call smartinput_endwise#define_default_rules()
+
+function! s:define_rule_ruby()
+  let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
+  call smartinput#define_rule({
+        \ 'at' : l:pattern, 'char': '<CR>',
+        \ 'input': '<CR>' .  'end' . '<Esc>O',
+        \ 'filetype': ['ruby']
+        \ })
+endfunction
 
 " #easyalign"{{{
   vmap <Enter> <Plug>(EasyAlign)
