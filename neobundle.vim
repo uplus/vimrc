@@ -162,9 +162,10 @@ NeoBundle 'altercation/vim-colors-solarized'
 " #input-support"{{{
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
-  " NeoBundle 'marcus/rsense'
-  " NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
-        " \ 'insert' : 1, 'filetype' : 'ruby', } }
+  " NeoBundle 'marcus/rsense' :helpが使えなくなる
+  NeoBundle 'NigoroJr/rsense'
+  NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
+        \ 'autoload' : { 'insert' : 1, 'filetype' : 'ruby', } }
 endif
 
 NeoBundle 'kana/vim-smartinput'
@@ -207,6 +208,7 @@ filetype plugin indent on " Required
 NeoBundleCheck
 "###################### plugin config ############################"
 
+let g:rsenseUseOmniFunc = 1
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
