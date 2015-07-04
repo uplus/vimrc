@@ -162,10 +162,9 @@ NeoBundle 'altercation/vim-colors-solarized'
 " #input-support"{{{
 if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
-  NeoBundle 'marcus/rsense'
-  NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
-        \ 'insert' : 1, 'filetype' : 'ruby',
-        \ } }
+  " NeoBundle 'marcus/rsense'
+  " NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
+        " \ 'insert' : 1, 'filetype' : 'ruby', } }
 endif
 
 NeoBundle 'kana/vim-smartinput'

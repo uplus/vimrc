@@ -15,6 +15,7 @@ filetype plugin indent off
 set viminfo+=n~/.vim/tmp/info.txt
 set path+=/usr/include/c++/HEAD/
 
+" #base config "{{{
 set enc=utf-8
 set number
 set cursorline
@@ -22,37 +23,49 @@ set nocursorcolumn
 set showmatch       " Show matching brackets.
 set laststatus=2
 set cmdheight=2
-
+set scrolloff=10
 set timeout
 set ttimeout          " なくても同じ
 set timeoutlen=3000
 set ttimeoutlen=100
 set nobackup
 set mouse=a
-set nohidden
+"}}}
+
+" #action config " {{{
+set autoindent
+set smartindent
 set ignorecase
+set smartcase
+set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,~
 "set virtualedit=onemore
 set wildmenu
 set wildmode=longest:full,full
-set scrolloff=10
-set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
-"set confirm  "未保存のファイルがあるときは終了前に確認
-"set autoread "外部でファイルが変更された時読みなおす
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
+" }}}
 
-set tabstop=2               "Tab表示幅
-let &softtabstop=&tabstop "Tab押下時のカーソル移動量
-let &shiftwidth=&tabstop "インデント幅
+set nohidden
+"set confirm  "未保存のファイルがあるときは終了前に確認
+"set autoread "外部でファイルが変更された時読みなおす
+
+" #tab
 set expandtab     "Tabキーでスペース挿入
+set tabstop=2     "Tab表示幅
+set softtabstop=2 "Tab押下時のカーソル移動量
+set shiftwidth=2  "インデント幅
 
-set autoindent
-set smartindent
+" #fold"{{{
 set foldmethod=marker
 set foldlevel=0
 set foldnestmax=2
+set foldtext=FoldText()
+function! FoldText()
+  return substitute(foldtext(), '\s*\d.*:', '', 'g')
+endfunction
+"}}}
 
 if IsMac()
   set clipboard=unnamed
@@ -65,15 +78,8 @@ set showcmd
 set matchtime=1
 set cmdwinheight=4
 
-function! FoldText()
-  let base  = foldtext()
-  let title = substitute(base, '\s*\d.*:', '', 'g')
-  return title
-endfunction
 
-set foldtext=FoldText()
-
-" Capture {{{
+" #Capture {{{
 " cmdをクォートなしでとれる
 command! -nargs=+ -bang -complete=command
       \ Capture call Capture(<q-args>)
@@ -88,7 +94,7 @@ function! Capture(cmd)
 endfunction
 " }}}
 
-" Capture New window {{{
+" #Capture New window {{{
 command! -nargs=+ -bang -complete=command
       \ CaptureWin call CaptureWin(<q-args>)
 
@@ -109,6 +115,7 @@ function! CaptureWin(cmd)
 endfunction
 " }}}
 
+" #MoveToTab "{{{
 command! Movett call s:MoveToTab()
 function! s:MoveToTab()
     tab split
@@ -122,7 +129,9 @@ function! s:MoveToTab()
 
     tabnext
 endfunction
+"}}}
 
+" #EraseSpace "{{{
 function! EraseSpace()
   if &filetype != 'markdown' && &filetype != 'gitcommit'
     let s:cursor = getpos(".")
@@ -134,12 +143,14 @@ endfunction
 
 command! EraseSpace :call EraseSpace()
 command! NoEraseSpace :au! BufWritePre
+"}}}
 
 au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au BufWritePre  * EraseSpace
 au BufEnter     * lcd %:p:h
 
-" CurrentOnly {{{
+" #CurrentOnly {{{
+" カレントバッファ以外をデリートして、その数を表示する
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
