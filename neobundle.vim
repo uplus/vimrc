@@ -394,6 +394,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
   let g:syntastic_cpp_compiler = 'clang++'
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
+  let g:syntastic_ruby_mri_args = "-W1"
 "}}}
 
 " #quickrun "{{{
