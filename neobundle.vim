@@ -169,9 +169,9 @@ if s:meet_neocomplete_requirements()
 endif
 
 NeoBundle 'kana/vim-smartinput'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'cohama/vim-smartinput-endwise' "ブロック引数を複数とるとendが入力されない
-" NeoBundle 'tpope/vim-endwise' " CRのマップをとられるとうまく動作しない
+
+NeoBundleLazy 'kana/vim-smartinput'
+NeoBundleLazy 'cohama/vim-smartinput-endwise', { 'depends' : [ 'kana/vim-smartinput' ] }
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Rip-Rip/clang_complete'
@@ -189,7 +189,6 @@ if neobundle#tap('vim-smartinput')
 endif
 
 function! g:CR_mapping()
-  " if pumvisible()
   if neosnippet#expandable()
     return neosnippet#mappings#_expand_target()
   else
@@ -198,7 +197,6 @@ function! g:CR_mapping()
 endfunction
 
 " neosnippet and neocomplete compatible
-" C-r=のマップでもimapにすれば平気かも
 if neobundle#tap('vim-smartinput-endwise')
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
@@ -219,7 +217,6 @@ let g:rsenseUseOmniFunc = 1
 let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 "solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1
-" call smartinput_endwise#define_default_rules()
 
 function! s:define_rule_ruby()
   let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
