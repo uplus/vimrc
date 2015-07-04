@@ -188,6 +188,15 @@ if neobundle#tap('vim-smartinput')
   call neobundle#untap()
 endif
 
+function! g:CR_mapping()
+  " if pumvisible()
+  if neosnippet#expandable()
+    return neosnippet#mappings#_expand_target()
+  else
+    return neocomplete#close_popup()
+  endif
+endfunction
+
 " neosnippet and neocomplete compatible
 " C-r=のマップでもimapにすれば平気かも
 if neobundle#tap('vim-smartinput-endwise')
@@ -195,9 +204,7 @@ if neobundle#tap('vim-smartinput-endwise')
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
     call s:define_rule_ruby()
 
-    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
-          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-          \ neocomplete#close_popup()
+    imap <silent><expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" : g:CR_mapping() . '<CR>'
   endfunction
   call neobundle#untap()
 endif
