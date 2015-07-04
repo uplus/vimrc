@@ -180,8 +180,13 @@ function! s:set_colors() "{{{
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
   elseif &filetype == 'vimfiler'
+    " 一度だけ実行するautocmd
+    augroup set_airline_color
+      autocmd!
+      autocmd FileType * colorscheme airline_color | autocmd! set_airline_color
+    aug END
+
     colorscheme vimfiler_color
-    au FileType * colorscheme airline_color
     return 0
   else
     colorscheme molokai
