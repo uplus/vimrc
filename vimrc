@@ -181,6 +181,19 @@ augroup call_functions
   au FileType * call s:set_highlight_sub()
 augroup END
 
+" TODO 動作検証
+function! OneShotAutocmd(name, event, pattern, cmd) "{{{
+  function l:tmp_func()
+    {a:cmd}
+    autocmd! {a:name}
+  endfunction
+
+  augroup a:name
+    autocmd!
+    autocmd {a:event} {a:pattern} call l:tmp_func()
+  augroup END
+endfunction "}}}
+
 function! s:set_colors() "{{{
   if exists("g:set_colors")
     return 0
