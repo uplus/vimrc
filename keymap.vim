@@ -1,12 +1,12 @@
+command! Schemes :Unite colorscheme -auto-preview
+command! SudoWrite w !sudo tee % > /dev/null
+command! QuickRunStop call quickrun#sweep_sessions()
+command! Q :q!
+command! S :shell
 command! Vs :tabedit | VimShell
 command! Reload :source $MYVIMRC
-command! Colors :Unite colorscheme -auto-preview
-command! SudoWrite w !sudo tee % > /dev/null
-command! Q :q!
-command! QuickRunStop call quickrun#sweep_sessions()
-command! S :shell
 
-"comment mappings
+"comment mappings "{{{
 nnoremap <silent> gyy yy:TComment<CR>
 nnoremap <silent> gyj yj:.,+1TComment<CR>
 nnoremap <silent> gyk yk:.,+1TComment<CR>j
@@ -17,17 +17,18 @@ xnoremap <silent> gy ygv:TComment<CR>
 nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
 nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
+"}}}
 
-inoremap <C-C> <ESC>
-nnoremap gJ kddpkJ
-nnoremap mj ddp
-nnoremap mk ddkP
 nnoremap <Space>z za
 nnoremap Y v$hy
-" sorrund
 nmap S <C-V>$S
-nmap zp v%zf
 map mp %
+nnoremap gJ kddpkJ
+
+inoremap <C-C> <ESC>
+nnoremap mj ddp
+nnoremap mk ddkP
+nmap zp v%zf
 
 " not registe delete
 nnoremap _d "_d
@@ -40,38 +41,20 @@ vnoremap _X "_X
 nnoremap v V
 nnoremap V v
 
-function! CleanLine()
-  s/[^ ]//ge
-  noh
-endfunction
-
-" なぜかC-Uの挙動がおかしくなった
-" nmap <silent>o o<Space><C-O>:call CleanLine()<CR><BS>
-" nmap <silent><S-O> <S-O><Space><C-O>:call CleanLine()<CR><BS>
-
 nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <C-O>:w<CR>
 
 " ex-modeいらない
 nnoremap Q <Nop>
-" not open the command windwo
-" いろいろやったけどこうするしかなかった
-" nnoremap q: <NOP>
-" nnoremap q<ESC> q これやるとUniteがqで閉じれない
+" いろいろやったけどcmd-windowを無効化する方法は見つからなかった
 
 " buffer
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 " nnoremap <Space>bb :b#<CR>
-" nnoremap <Space>bd :bd<CR>
 
 "######<Leader> family######
-function! WriteQuickRunN()
-  write
-  QuickRun -mode n
-endfunction
-
-nnoremap <Leader>r :call WriteQuickRunN()<CR>
+nnoremap <Leader>r :write<CR>:QuickRun -mode n<CR>
 xnoremap <Leader>r :QuickRun -mode v<CR>
 
 nnoremap <Space>m :Unite mark<CR>
@@ -109,15 +92,7 @@ nnoremap <C-W>n gT
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
-function! s:help_config()
-  nnoremap <buffer> q :q<CR>
-  setlocal foldmethod=indent
-  setlocal foldlevel=1
-  setlocal foldenable
-endfunction
-autocmd FileType help call s:help_config()
-
-"resize
+"#resize"{{{
 if neobundle#is_installed('vim-submode')
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
   call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
@@ -128,8 +103,9 @@ if neobundle#is_installed('vim-submode')
   call submode#map('winsize', 'n', '', '+', '<C-w>+')
   call submode#map('winsize', 'n', '', '-', '<C-w>-')
 endif
+"}}}
 
-"######Move######
+"######Move###### "{{{
 nnoremap <UP> gk
 nnoremap <DOWN> gj
 nnoremap <LEFT> h
@@ -138,6 +114,7 @@ vnoremap <UP> gk
 vnoremap <DOWN> gj
 vnoremap <LEFT> h
 vnoremap <RIGHT> l
+
 nnoremap k gk
 nnoremap j gj
 nnoremap gk k
@@ -156,6 +133,8 @@ inoremap <C-E> <C-O>$
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-D> <Del>
+
 " noremap! is insert+command
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
+"}}}
