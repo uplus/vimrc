@@ -78,6 +78,8 @@ set showcmd
 set matchtime=1
 set cmdwinheight=4
 
+au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufEnter     * lcd %:p:h
 
 " #Capture {{{
 " cmdをクォートなしでとれる
@@ -150,9 +152,6 @@ function! EraseSpace()
 endfunction
 "}}}
 
-au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au BufEnter     * lcd %:p:h
-
 " #CurrentOnly {{{
 " カレントバッファ以外をデリートして、その数を表示する
 command! Conly call CurrentOnly()
@@ -175,8 +174,7 @@ endfunction
 
 command! BufferCount ruby print VIM::Buffer.count
 function! BufferCount()
-  Capture BufferCount
-  return g:capture
+  return Capture("BufferCount")
 endfunction
 
 " #source
