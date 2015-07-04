@@ -293,40 +293,34 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
   command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
   command! Vfs VimFiler -split -simple
   command! Vfn VimFiler
-  " <C-W>eで呼ばれる
   command! Vf Vfe
 
-
   "VimFilerを起動してからじゃないと関数が読み込まれない
-  function! GetVimfiler_unexpand_tree() "{{{
-    if exists('g:vimfiler_mappings_sid')
+  function! s:set_vimfiler_unexpand_tree() "{{{
+    if hasmapto("<Plug>(vimfiler_unexpand_tree)")
       return
     endif
 
-    silent! redir => commands
-    silent! scriptnames
-    silent! redir END
-    let l:line = matchstr(commands, '\d*:\D*vimfiler\/mappings.vim')
-    let l:sid  = matchstr(l:line, '^\d*')
+    " 名前を取得
+    Capture function /\d+*_unexpand_tree\(\)$
+    let l:func_name = substitute(g:capture, '^function ', '', '')
 
-    if empty(l:sid)
+    if empty(l:func_name)
       return
     endif
 
-    " コマンドとして定義する
-    execute 'command! VimFilerUnexpandTree call <SNR>' . l:sid . '_unexpand_tree()'
-    let g:vimfiler_mappings_sid = l:sid
+    execute 'nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree) :<C-u>call' l:func_name '<CR>'
   endfunction "}}}
 
   au FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings() "{{{
     setlocal nobuflisted
-    call GetVimfiler_unexpand_tree()
+    call s:set_vimfiler_unexpand_tree()
 
-    nnoremap <silent><buffer>h :VimFilerUnexpandTree<CR>
+    nmap <silent><buffer>h <Plug>(vimfiler_unexpand_tree)
     nmap <silent><buffer>l <Plug>(vimfiler_expand_tree)
-    " nmap <silent><buffer><CR> <Plug>(vimfiler_expand_or_edit)
     nmap <silent><buffer><CR> <Plug>(vimfiler_cd_or_edit)
+    " nmap <silent><buffer><CR> <Plug>(vimfiler_expand_or_edit)
 
     " vimfilerのsplitは水平じゃなくて垂直 時々VimFilerWindがリサイズされる
     " nmap <buffer>v <Plug>(vimfiler_split_edit_file)
