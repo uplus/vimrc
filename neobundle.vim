@@ -45,13 +45,13 @@ NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
-NeoBundle 'tpope/vim-surround'      " 囲んでるものに対しての処理
-NeoBundle 'tpope/vim-repeat'        " surroundなどを.でリピートできる
-NeoBundle 'AndrewRadev/switch.vim'  " ifとunlessを入れ替えたり
+NeoBundle 'tpope/vim-surround'       " 囲んでるものに対しての処理
+NeoBundle 'tpope/vim-repeat'         " surroundなどを.でリピートできる
+NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
 "}}}
 
 " #search and #replace "{{{
-NeoBundle 'osyo-manga/vim-anzu'     " show search point on the command-line
+NeoBundle 'osyo-manga/vim-anzu'      " show search point on the command-line
 NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 "}}}
@@ -79,7 +79,7 @@ NeoBundle 'osyo-manga/unite-quickfix' " uniteにquickfixを出力
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 "}}}
 
-NeoBundle 'Shougo/vinarise'
+NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
 NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
@@ -94,6 +94,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
 NeoBundle 'bbatsov/rubocop'
+" NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
 " #tab and #ref "{{{
@@ -112,39 +113,38 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
       \ }
 "}}}
 
-
 " #textobj #operator {{{
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'emonkak/vim-operator-comment'
 " NoeBundle 'tyru/operator-camelize.vim'  " CamelCaseとsnake_caseを相互変換
 NeoBundle 'emonkak/vim-operator-sort'
-NeoBundle 'kana/vim-textobj-entire' " ae ie(先頭、末尾の空行なし)
-NeoBundle 'kana/vim-textobj-syntax' " ay iy
+NeoBundle 'kana/vim-textobj-entire'           " ae ie(先頭、末尾の空行なし)
+NeoBundle 'kana/vim-textobj-syntax'           " ay iy
 " NeoBundle 'kana/vim-textobj-line'   " al il
-NeoBundle 'kana/vim-textobj-function'   " af if
-NeoBundle 'kana/vim-textobj-indent'     " al il カーソル位置と同じインデント
-NeoBundle 'kana/vim-textobj-fold'       " az iz
-NeoBundle 'thinca/vim-textobj-between'  " af if 任意の区切り文字
-NeoBundle 'thinca/vim-textobj-comment'  "ac ic コメント
-NeoBundle 'gilligan/textobj-lastpaste'  "ip 直前に変更またはヤンクされたテキスト
-NeoBundle 'rhysd/vim-textobj-ruby' " arr brr Ruby のブロック
+NeoBundle 'kana/vim-textobj-function'         " af if
+NeoBundle 'kana/vim-textobj-indent'           " al il カーソル位置と同じインデント
+NeoBundle 'kana/vim-textobj-fold'             " az iz
+NeoBundle 'thinca/vim-textobj-between'        " af if 任意の区切り文字
+NeoBundle 'thinca/vim-textobj-comment'        "ac ic コメント
+NeoBundle 'gilligan/textobj-lastpaste'        "ip 直前に変更またはヤンクされたテキスト
+NeoBundle 'rhysd/vim-textobj-ruby'            " arr brr Ruby のブロック
 
 " NeoBundle 'thinca/vim-textobj-function-javascript'  " af if JavaScript の関数内
 " NeoBundle 'thinca/vim-textobj-function-perl'  " af if Perl の関数内
-NeoBundle 'saihoooooooo/vim-textobj-space'  " aS iS 連続したスペース
-NeoBundle 'rhysd/vim-textobj-lastinserted'  " au iu textobjとして最後に挿入された範囲
+NeoBundle 'saihoooooooo/vim-textobj-space'    " aS iS 連続したスペース
+NeoBundle 'rhysd/vim-textobj-lastinserted'    " au iu textobjとして最後に挿入された範囲
 " NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上のword  ,がリマップされる
 " NeoBundle 'sgur/vim-textobj-parameter'  " a i 関数の引数
 NeoBundle 'osyo-manga/vim-textobj-multiblock' " asb isb 任意の複数の括弧のいずれか
 NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
-NeoBundle 'anyakichi/vim-textobj-xbrackets' " axb ixb x() や x<> など
-NeoBundle 'hchbaw/textobj-motionmotion.vim' " am im 任意の2つの motion の間
-NeoBundle 'osyo-manga/vim-textobj-context'  " icx 別のfiletype のコンテキスト
+NeoBundle 'anyakichi/vim-textobj-xbrackets'   " axb ixb x() や x<> など
+NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
+NeoBundle 'osyo-manga/vim-textobj-context'    " icx 別のfiletype のコンテキスト
 
-NeoBundle 'glts/vim-textobj-indblock'   " ao io インデントの空白行
+NeoBundle 'glts/vim-textobj-indblock'         " ao io インデントの空白行
 NeoBundle 'deris/vim-textobj-enclosedsyntax'  " aq iq Perl や Ruby の正規表現
-NeoBundle 'rhysd/vim-operator-evalruby' " 選択したtextobjをRubyの式として評価する
+NeoBundle 'rhysd/vim-operator-evalruby'       " 選択したtextobjをRubyの式として評価する
 " }}}
 
 " #colorscheme"{{{
