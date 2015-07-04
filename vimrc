@@ -132,7 +132,15 @@ endfunction
 "}}}
 
 " #EraseSpace "{{{
+au BufWritePre  * EraseSpace
+command! EraseSpace :call EraseSpace()
+command! EraseSpaceEnable :let g:erase_space_on=1
+command! EraseSpaceDisable :let g:erase_space_on=0
 function! EraseSpace()
+  if exists("g:erase_space_on") && g:erase_space_on != 1
+    return
+  endif
+
   if &filetype != 'markdown' && &filetype != 'gitcommit'
     let s:cursor = getpos(".")
     %s/^\s\+$//ge
@@ -140,13 +148,9 @@ function! EraseSpace()
     call setpos(".", s:cursor)
   endif
 endfunction
-
-command! EraseSpace :call EraseSpace()
-command! NoEraseSpace :au! BufWritePre
 "}}}
 
 au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au BufWritePre  * EraseSpace
 au BufEnter     * lcd %:p:h
 
 " #CurrentOnly {{{
