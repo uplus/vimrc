@@ -109,6 +109,20 @@ function! CaptureWin(cmd)
 endfunction
 " }}}
 
+command! Movett call s:MoveToTab()
+function! s:MoveToTab()
+    tab split
+    tabprevious
+
+    if winnr('$') > 1
+        close
+    elseif bufnr('$') > 1
+        buffer #
+    endif
+
+    tabnext
+endfunction
+
 function! EraseSpace()
   if &filetype != 'markdown' && &filetype != 'gitcommit'
     let s:cursor = getpos(".")
