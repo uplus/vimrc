@@ -16,20 +16,23 @@ set viminfo+=n~/.vim/tmp/info.txt
 set path+=/usr/include/c++/HEAD/
 
 " #base config "{{{
-set enc=utf-8
+set encoding=utf-8
 set number
 set cursorline
 set nocursorcolumn
-set showmatch       " Show matching brackets.
+set showmatch
+set matchtime=1
 set laststatus=2
 set cmdheight=2
+set cmdwinheight=4
 set scrolloff=10
 set timeout
-set ttimeout          " なくても同じ
+set ttimeout   " なくても同じ
 set timeoutlen=3000
 set ttimeoutlen=100
 set nobackup
 set mouse=a
+set showcmd " 入力中のキーマップを表示する
 "}}}
 
 " #action config " {{{
@@ -40,6 +43,7 @@ set smartcase
 set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,~
+set matchpairs+=<:>
 "set virtualedit=onemore
 set wildmenu
 set wildmode=longest:full,full
@@ -47,33 +51,21 @@ set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱わ
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
 " }}}
 
-set nohidden
-"set confirm  "未保存のファイルがあるときは終了前に確認
-"set autoread "外部でファイルが変更された時読みなおす
-
 " #tab
 set expandtab     "Tabキーでスペース挿入
 set tabstop=2     "Tab表示幅
 set softtabstop=2 "Tab押下時のカーソル移動量
 set shiftwidth=2  "インデント幅
 
-" #fold"{{{
+" #fold
 set foldmethod=marker
 set foldlevel=0
 set foldnestmax=2
 set foldtext=FoldCCtext()
-"}}}
 
-if IsMac()
-  set clipboard=unnamed
-else
-  set clipboard=unnamedplus
-endif
+let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
+set nohidden
 
-"ここらへんの意味がわからない
-set showcmd
-set matchtime=1
-set cmdwinheight=4
 
 au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au BufEnter     * lcd %:p:h
@@ -195,6 +187,7 @@ augroup call_functions
 augroup END
 
 " TODO 動作検証
+" cmdは文字列とれるようにした方がいいかも
 function! OneShotAutocmd(name, event, pattern, cmd) "{{{
   function l:tmp_func()
     {a:cmd}
