@@ -6,7 +6,7 @@ command! S :shell
 command! Vs :tabedit | VimShell
 command! Reload :source $MYVIMRC
 
-"comment mappings "{{{
+"#comment mappings "{{{
 nnoremap <silent> gyy yy:TComment<CR>
 nnoremap <silent> gyj yj:.,+1TComment<CR>
 nnoremap <silent> gyk yk:.,+1TComment<CR>j
@@ -19,7 +19,15 @@ nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
 "}}}
 
-nnoremap <Space>z za
+"#not register delete "{{{
+nnoremap _d "_d
+vnoremap _d "_d
+nnoremap _x "_x
+vnoremap _x "_x
+nnoremap _X "_X
+vnoremap _X "_X
+"}}}
+
 nnoremap Y v$hy
 nmap S <C-V>$S
 map mp %
@@ -30,15 +38,6 @@ nnoremap mj ddp
 nnoremap mk ddkP
 nmap zp v%zf
 
-" not registe delete "{{{
-nnoremap _d "_d
-vnoremap _d "_d
-nnoremap _x "_x
-vnoremap _x "_x
-nnoremap _X "_X
-vnoremap _X "_X
-"}}}
-
 nnoremap v V
 nnoremap V v
 
@@ -47,22 +46,20 @@ inoremap <silent> <C-S> <C-O>:w<CR>
 
 " ex-modeいらない
 nnoremap Q <Nop>
-" いろいろやったけどcmd-windowを無効化する方法は見つからなかった
 
 " visual-modeで[<Space>]が使えるようにする
 xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
 
-" buffer
+" #buffer
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 " nnoremap <Space>bb :b#<CR>
 
+
 "######<Space> family###### "{{{
 nnoremap <Space>m :Unite mark<CR>
 nnoremap <Space>b :Unite buffer<CR>
-
-xnoremap <Space>n :normal<Space>
 
 nnoremap <Space>ss :%s/
 nnoremap <Space>sg :%s//g<LEFT><LEFT>
@@ -80,12 +77,14 @@ nmap <Space>P o<ESC>P
 " nmap <Space>p ]<Space>jp
 " nmap <Space>P ]<Space>jP
 
+xnoremap <Space>n :normal<Space>
+nnoremap <Space>z za
+
 nnoremap <silent> <Space> <Nop>
 xnoremap <silent> <Space> <Nop>
 "}}}
 
-"######Ctrl+W family######
-" nnoremap <silent> <C-W>e :NERDTreeFocus<CR>
+"######Ctrl+W family###### "{{{
 nnoremap <silent><C-W>e :Vf<CR>
 nnoremap <C-W>q :bdelete<CR>
 nnoremap <C-W>p gt
@@ -110,12 +109,12 @@ endif
 cnoremap <C-K> <C-F>
 
 au CmdwinEnter  * call s:cmdwin_config()
-function s:cmdwin_config()
+function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>
   nnoremap <silent><buffer><C-W> :q<CR><C-W>
 endfunction
 "}}}
-
+"}}}
 
 "######Move###### "{{{
 nnoremap <UP> gk
