@@ -246,10 +246,10 @@ filetype plugin indent on " Required
 NeoBundleCheck
 "###################### plugin config ############################"
 
-let g:rsenseUseOmniFunc = 1
-let g:no_cecutil_maps=1 " AnsiEsc の中で変なマッピングをしないようにする
-let g:solarized_termcolors=256 "solarizedをCUIで使うため
-let g:vinarise_enable_auto_detect=1
+let g:rsenseUseOmniFunc=1
+let g:no_cecutil_maps=1             " AnsiEsc の中で変なマッピングをしないようにする
+let g:solarized_termcolors=256      " solarizedをCUIで使うため
+let g:vinarise_enable_auto_detect=1 " バイナリを検出して自動で開いてくれる?
 
 function! s:define_rule_ruby()
   let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
@@ -304,7 +304,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " #indentLine
   nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
   let g:indentLine_faster = 1
-  " let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim']
+  let g:indentLine_fileTypeExclude = ['help', 'calendar']
 
 " #over
   let g:over#command_line#enable_move_cursor = 1
@@ -457,15 +457,15 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
   let g:quickrun_config = get(g:, 'quickrun_config', {})
   let g:quickrun_config._ = {
         \ 'hook/close_unite_quickfix/enable_hook_loaded' : 1,
-        \ 'hook/unite_quickfix/enable_failure' : 1,
-        \ 'hook/close_quickfix/enable_exit' : 1,
-        \ 'hook/close_buffer/enable_failure' : 1,
-        \ 'hook/close_buffer/enable_empty_data' : 1,
-        \ 'outputter' : 'multi:buffer:quickfix',
+        \ 'hook/unite_quickfix/enable_failure'   : 1,
+        \ 'hook/close_quickfix/enable_exit'      : 1,
+        \ 'hook/close_buffer/enable_failure'     : 1,
+        \ 'hook/close_buffer/enable_empty_data'  : 1,
         \ 'hook/shabadoubi_touch_henshin/enable' : 1,
-        \ 'hook/shabadoubi_touch_henshin/wait' : 20,
+        \ 'hook/shabadoubi_touch_henshin/wait'   : 20,
         \ 'outputter/buffer/split' : ':botright 8sp',
-        \ 'runner' : 'vimproc',
+        \ 'outputter'              : 'multi:buffer:quickfix',
+        \ 'runner'                 : 'vimproc',
         \ 'runner/vimproc/updatetime' : 40,
         \ }
   "}}}
@@ -481,9 +481,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
         \ 'cmdopt'  : $C_COMP_OPT
         \ }
   let g:quickrun_config.markdown = {
-        \ 'type': 'markdown/pandoc',
-        \ 'cmdopt': '-s',
-        \ 'outputter': 'browser'
+        \ 'type'      : 'markdown/pandoc',
+        \ 'cmdopt'    : '-s',
+        \ 'outputter' : 'browser'
         \ }
   "}}}
 
