@@ -143,7 +143,6 @@ function! EraseSpace()
   endif
 
   let l:cursor = getpos(".")
-  %s/^\s\+$//ge
   %s/\s\+$//ge
   call setpos(".", l:cursor)
 endfunction
