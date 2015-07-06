@@ -61,10 +61,7 @@ set shiftwidth=2  "インデント幅
 set foldmethod=marker
 set foldlevel=0
 set foldnestmax=2
-set foldtext=FoldText()
-function! FoldText()
-  return substitute(foldtext(), '\s*\d.*:', '', 'g')
-endfunction
+set foldtext=FoldCCtext()
 "}}}
 
 if IsMac()

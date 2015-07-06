@@ -104,6 +104,7 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+NeoBundle 'LeafCage/foldCC.vim'
 
 " Library used in vimrc
 NeoBundle 'vim-jp/vital.vim'
