@@ -25,7 +25,6 @@ set matchtime=1
 set laststatus=2
 set cmdheight=2
 set cmdwinheight=4
-set scrolloff=10
 set timeout
 set ttimeout   " なくても同じ
 set timeoutlen=3000
@@ -69,6 +68,12 @@ set nohidden
 
 au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au BufEnter     * lcd %:p:h
+au VimResized   * wincmd =
+
+" windowの行数の20%にセットする scrolloffはglobal-option
+command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
+au VimEnter * SmartScrolloff
+au WinEnter * SmartScrolloff
 
 " #Capture {{{
 " cmdをクォートなしでとれる
