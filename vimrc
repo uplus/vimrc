@@ -173,6 +173,17 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
+function! DeleteWindowHasntBuffer()
+  for str in split(Capture("ls"), "\n")
+    let res = matchstr(str, '\v\s*\d*......\s*')
+    if match(res, 'a') == -1
+      let res = substitute(res, '\D', '', 'g')
+      echo res
+      bdelete {res}
+    endif
+  endfor
+endfunction
+
 " #source
 source ~/.vim/neobundle.vim
 source ~/.vim/keymap.vim
