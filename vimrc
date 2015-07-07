@@ -173,16 +173,18 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
-function! DeleteWindowHasntBuffer()
-  for str in split(Capture("ls"), "\n")
-    let res = matchstr(str, '\v\s*\d*......\s*')
-    if match(res, 'a') == -1
-      let res = substitute(res, '\D', '', 'g')
-      echo res
-      bdelete {res}
+" #DeleteNonActiveBuffers "{{{
+command! Dnab call DeleteNonActiveBuffers()
+command! DeleteNonActiveBuffers call DeleteNonActiveBuffers()
+function! DeleteNonActiveBuffers()
+  for l:line in split(Capture("ls"), "\n")
+    let l:front = matchstr(l:line, '\v\s*\d*......\s*')
+    if match(l:front, 'a') == -1
+      execute "bdelete" substitute(l:front, '\D', '', 'g')
     endif
   endfor
 endfunction
+"}}}
 
 " #source
 source ~/.vim/neobundle.vim
