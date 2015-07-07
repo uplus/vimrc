@@ -34,8 +34,8 @@ map mp %
 nnoremap gJ kddpkJ
 
 inoremap <C-C> <ESC>
-nnoremap mj ddp
-nnoremap mk ddkP
+nnoremap <silent>mj :.move +1<CR>
+nnoremap <silent>mk :.move -2<CR>
 nmap zp v%zf
 
 nnoremap v V
