@@ -119,6 +119,7 @@ NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'LeafCage/foldCC.vim'
+NeoBundle 'mattn/excitetranslate-vim'
 
 " Library used in vimrc
 NeoBundle 'vim-jp/vital.vim'
@@ -267,6 +268,7 @@ let g:rsenseUseOmniFunc=1
 let g:no_cecutil_maps=1             " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256      " solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1 " バイナリを検出して自動で開いてくれる?
+command! -range Trans :<line1>,<line2>:ExciteTranslate
 
 function! s:define_rule_ruby()
   let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
