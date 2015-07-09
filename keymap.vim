@@ -35,21 +35,20 @@ vnoremap _X "_X
 nnoremap Y v$hy
 nmap S <C-V>$S
 map mp %
-nnoremap gJ kddpkJ
+nmap zp v%zf
 
 inoremap <C-C> <ESC>
+nnoremap Q <Nop>
+
 nnoremap <silent>mj :.move +1<CR>
 nnoremap <silent>mk :.move -2<CR>
-nmap zp v%zf
+nmap gJ mkJ
 
 nnoremap v V
 nnoremap V v
 
 nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <C-O>:w<CR>
-
-" ex-modeいらない
-nnoremap Q <Nop>
 
 " visual-modeで[<Space>]が使えるようにする
 xmap [<Space> <ESC>[<Space>gv
@@ -59,7 +58,6 @@ xmap ]<Space> <ESC>]<Space>gv
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 " nnoremap <Space>bb :b#<CR>
-
 
 "######<Space> family###### "{{{
 "Todo: set unite mappings
@@ -71,16 +69,14 @@ nnoremap <Space>sg :%s//g<LEFT><LEFT>
 xnoremap <Space>ss :s/
 xnoremap <Space>sg :s//g<LEFT><LEFT>
 
-nnoremap <Space>h ^
-nnoremap <Space>l $
-xnoremap <Space>h ^
-xnoremap <Space>l $
+" Toggle 0 and ^ VSのHome Endっぽくなる
+" nnoremap <expr>0  col('.') == 1 ? '^' : '0'
+" nnoremap <expr>^  col('.') == 1 ? '^' : '0'
+noremap <Space>h ^
+noremap <Space>l $
 
 nmap <Space>p o<ESC>p
 nmap <Space>P o<ESC>P
-" 一括でUndoできない
-" nmap <Space>p ]<Space>jp
-" nmap <Space>P ]<Space>jP
 
 xnoremap <Space>n :normal<Space>
 nnoremap <Space>z za
@@ -89,9 +85,8 @@ nnoremap <silent> <Space> <Nop>
 xnoremap <silent> <Space> <Nop>
 "}}}
 
-"######Ctrl+W family###### "{{{
+"#Ctrl+W family"{{{
 nnoremap <silent><C-W>e :Vf<CR>
-nnoremap <C-W>q :bdelete<CR>
 nnoremap <C-W>p gt
 nnoremap <C-W>n gT
 nnoremap <C-W>gs :vertical wincmd f<CR>
@@ -121,7 +116,7 @@ endfunction
 "}}}
 "}}}
 
-"######Move###### "{{{
+"#Move"{{{
 nnoremap <UP> gk
 nnoremap <DOWN> gj
 nnoremap <LEFT> h
@@ -154,3 +149,19 @@ cnoremap <C-D> <Del>
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
 "}}}
+
+
+" Basic Key Mapping  {{{
+
+" let maplocalleader = ','
+
+" N: Find next occurrence backward
+" nnoremap N  Nzzzv
+" nnoremap n  nzzzv
+
+" TODO: Move those settings to right section
+" au MyAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>
+" au MyAutoCmd CmdwinEnter [:>] nunmap <buffer> <Tab>
+
+" }}}
+
