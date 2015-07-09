@@ -2,6 +2,10 @@ if &compatible
   set nocompatible
 endif
 
+augroup U10ac
+  autocmd!
+augroup END
+
 command! -nargs=1 Source
       \ execute 'source' expand('~/.vim/' . <args> . '.vim')
 
@@ -9,8 +13,10 @@ command! -nargs=1 RcSource
       \ Source 'rc/' . <args> .  '.rc'
 
 function! IsMac()
-  return has('mac') || has('macunix') || has('gui_mac')
+  return (has('mac') || has('macunix') || has('gui_macvim') ||
+        \   (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction
+
 
 filetype off
 filetype plugin indent off
@@ -18,30 +24,31 @@ set viminfo+=n~/.vim/tmp/info.txt
 set path+=/usr/include/c++/HEAD/
 
 " #vim system config "{{{
+language message C
+scriptencoding=utf-8
 set encoding=utf-8
+set fileformats=unix,dos,mac
+" set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 set number
-set cursorline
-set nocursorcolumn
+set cursorline nocursorcolumn
 set showmatch
 set matchtime=1
 set laststatus=2
 set cmdheight=2
 set cmdwinheight=4
-set timeout
-set ttimeout   " なくても同じ
+set timeout ttimeout
 set timeoutlen=3000
 set ttimeoutlen=100
 set nobackup
 set mouse=a
 set showcmd " 入力中のキーマップを表示する
+let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
+set hidden
 "}}}
 
-
 " #action config " {{{
-set autoindent
-set smartindent
-set ignorecase
-set smartcase
+set autoindent smartindent
+set ignorecase smartcase
 set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
@@ -68,19 +75,17 @@ set foldlevel=0
 set foldnestmax=2
 set foldtext=FoldCCtext()
 
-let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
-set nohidden
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
-au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au BufEnter     * lcd %:p:h
-au VimResized   * wincmd =
+au U10ac BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+au U10ac BufEnter    * lcd %:p:h
+au U10ac VimResized   * wincmd =
 
 " windowの行数の20%にセットする scrolloffはglobal-option
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
-au VimEnter * SmartScrolloff
-au WinEnter * SmartScrolloff
+au U10ac VimEnter * SmartScrolloff
+au U10ac WinEnter * SmartScrolloff
 
 " #Source
 Source 'function'

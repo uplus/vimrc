@@ -15,16 +15,19 @@ endfunction
 if has('vim_starting') "set the directory to be managed by the bundle
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
+
 call neobundle#begin(expand('~/.vim/bundle'))
 
-NeoBundle 'Shougo/vimproc.vim', { 'build' : {
-      \   'mac'   : 'make -f make_mac.mak',
-      \   'linux' : 'make',
-      \   'unix'  : 'make -f make_unix.mak',
-      \}, }
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    }
+      \ }
+
 NeoBundleLazy 'Shougo/vimshell.vim', { 'depends' : [ 'Shougo/vimproc.vim' ] }
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
-NeoBundleFetch 'Shougo/neobundle.vim'
 
 
 " #unite "{{{
