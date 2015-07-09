@@ -5,6 +5,7 @@ au FileType html,css set foldmethod=indent
 
 au FileType gitcommit call s:gitcommit_config()
 function! s:gitcommit_config()
+  setlocal nofoldenable
   nnoremap Q <ESC>:wq
   nnoremap W <ESC>:wq
   goto 1
@@ -14,6 +15,6 @@ autocmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <buffer> q :q<CR>
   setlocal foldmethod=indent
-  setlocal foldlevel=1
+  setlocal foldlevel=2
   setlocal foldenable
 endfunction
