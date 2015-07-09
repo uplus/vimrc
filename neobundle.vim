@@ -257,8 +257,11 @@ endif
 
 call neobundle#end()
 filetype plugin indent on " Required
-NeoBundleCheck
 "###################### plugin config ############################"
+
+if !has('vim_starting')
+  NeoBundleCheck
+endif
 
 let g:rsenseUseOmniFunc=1
 let g:no_cecutil_maps=1             " AnsiEsc の中で変なマッピングをしないようにする
@@ -326,6 +329,7 @@ let g:airline#extensions#tabline#left_sep = ''
 "}}}
 
 " #easymotion"{{{
+"Todo: マップを整える
   let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
   let g:EasyMotion_leader_key="mm"
   " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
