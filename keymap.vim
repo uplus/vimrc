@@ -22,6 +22,8 @@ nnoremap <silent> gcp :%TComment<CR>
 "#not register delete "{{{
 nnoremap _d "_d
 vnoremap _d "_d
+nnoremap _D "_D
+vnoremap _D "_D
 nnoremap _x "_x
 vnoremap _x "_x
 nnoremap _X "_X
