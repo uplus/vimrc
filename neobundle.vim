@@ -96,6 +96,7 @@ NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
+NeoBundle 'rhysd/committia.vim'     " commitメッセージ表示をステキに
 NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
 NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
@@ -509,6 +510,25 @@ let g:airline#extensions#tabline#left_sep = ''
   let g:yankround_use_region_hl = 1
   let g:yankround_max_history = 20
   let g:yankround_dir = "~/.vim/tmp/"
+"}}}
+
+" #committa "{{{
+  let g:committia_open_only_vim_starting = 1
+  let g:committia_hooks = {}
+  function! g:committia_hooks.edit_open(info)
+    set nofoldenable
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    " if a:info.vcs ==# 'git' && getline(1) ==# ''
+    "     startinsert
+    " end
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-p>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+  endfunction
 "}}}
 
 call Source_rc('switch.rc.vim')
