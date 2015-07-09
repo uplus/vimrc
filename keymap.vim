@@ -3,6 +3,8 @@ command! SudoWrite w !sudo tee % > /dev/null
 command! QuickRunStop call quickrun#sweep_sessions()
 command! Q :q!
 command! S :shell
+command! -nargs=1 -complete=file T tabedit <args>
+command! Sh :w | sh
 command! Vs :tabedit | VimShell
 command! Reload :source $MYVIMRC
 
