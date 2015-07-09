@@ -93,6 +93,12 @@ Source 'neobundle'
 Source 'keymap'
 Source 'filetype'
 
+" Change cursor shape.
+if &term =~ "xterm"
+  let &t_SI = "\<Esc>]12;lightgreen\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+
 filetype plugin indent on
 syntax enable
 set t_Co=256
