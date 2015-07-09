@@ -2,9 +2,9 @@ if &compatible
   set nocompatible
 endif
 
-function! Source_rc(path)
-  execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
-endfunction
+command! -nargs=1 -bang RcSource
+      \ execute 'source' fnameescape(expand('~/.vim/rc/' . <args> . '.rc.vim'))
+
 
 function! IsMac()
   return has('mac') || has('macunix') || has('gui_mac')

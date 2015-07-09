@@ -499,9 +499,11 @@ let g:airline#extensions#tabline#left_sep = ''
   endfunction
 "}}}
 
-call Source_rc('switch.rc.vim')
+RcSource 'easyalign'
+RcSource 'switch'
+
 if s:meet_neocomplete_requirements()
-  call Source_rc('complete.rc.vim')
+  RcSource 'complete'
 endif
 if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
   runtime macros/matchit.vim
