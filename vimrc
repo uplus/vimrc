@@ -2,9 +2,11 @@ if &compatible
   set nocompatible
 endif
 
-command! -nargs=1 -bang RcSource
-      \ execute 'source' fnameescape(expand('~/.vim/rc/' . <args> . '.rc.vim'))
+command! -nargs=1 Source
+      \ execute 'source' expand('~/.vim/' . <args> . '.vim')
 
+command! -nargs=1 RcSource
+      \ Source 'rc/' . <args> .  '.rc'
 
 function! IsMac()
   return has('mac') || has('macunix') || has('gui_mac')
@@ -75,10 +77,10 @@ au VimEnter * SmartScrolloff
 au WinEnter * SmartScrolloff
 
 " #source
-source ~/.vim/function.vim
-source ~/.vim/neobundle.vim
-source ~/.vim/keymap.vim
-source ~/.vim/filetype.vim
+Source 'function'
+Source 'neobundle'
+Source 'keymap'
+Source 'filetype'
 
 filetype plugin indent on
 syntax enable
