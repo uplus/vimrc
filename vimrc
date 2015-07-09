@@ -17,7 +17,7 @@ filetype plugin indent off
 set viminfo+=n~/.vim/tmp/info.txt
 set path+=/usr/include/c++/HEAD/
 
-" #base config "{{{
+" #vim system config "{{{
 set encoding=utf-8
 set number
 set cursorline
@@ -36,6 +36,7 @@ set mouse=a
 set showcmd " 入力中のキーマップを表示する
 "}}}
 
+
 " #action config " {{{
 set autoindent
 set smartindent
@@ -43,12 +44,14 @@ set ignorecase
 set smartcase
 set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
 set backspace=start,eol,indent
-set whichwrap=b,s,[,],<,>,~
+set whichwrap=b,s,[,],<,>
+" set whichwrap+=h,l
 set matchpairs+=<:>
 "set virtualedit=onemore
 set wildmenu
 set wildmode=longest:full,full
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
+set iskeyword-=#
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
 " }}}
 
@@ -57,6 +60,7 @@ set expandtab     "Tabキーでスペース挿入
 set tabstop=2     "Tab表示幅
 set softtabstop=2 "Tab押下時のカーソル移動量
 set shiftwidth=2  "インデント幅
+" set smarttab
 
 " #fold
 set foldmethod=marker
@@ -66,6 +70,8 @@ set foldtext=FoldCCtext()
 
 let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
 set nohidden
+" set list
+set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
 au BufReadPost  * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au BufEnter     * lcd %:p:h
