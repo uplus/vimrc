@@ -76,7 +76,7 @@ command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au VimEnter * SmartScrolloff
 au WinEnter * SmartScrolloff
 
-" #source
+" #Source
 Source 'function'
 Source 'neobundle'
 Source 'keymap'
@@ -94,7 +94,7 @@ augroup call_functions
   au FileType * call s:set_highlight_sub()
 augroup END
 
-" TODO 動作検証
+" TODO: 動作検証
 " cmdは文字列とれるようにした方がいいかも
 function! OneShotAutocmd(name, event, pattern, cmd) "{{{
   function l:tmp_func()
@@ -140,7 +140,6 @@ function! s:set_highlight_sub() " {{{
   highlight Search          ctermfg=39 ctermbg=56
   highlight IncSearch       ctermfg=39 ctermbg=50
   highlight Visual          cterm=reverse
-  highlight Todo            ctermfg=16 ctermbg=220
   highlight YankRoundRegion cterm=italic
 endfunction " }}}
 

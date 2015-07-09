@@ -117,7 +117,7 @@ NeoBundle 'osyo-manga/vital-unlocker'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
 NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
-NeoBundle 'bbatsov/rubocop'
+" NeoBundle 'bbatsov/rubocop'
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
