@@ -312,74 +312,6 @@ let g:airline#extensions#tabline#left_sep = ''
   augroup END
 "}}}
 
-" #vimfiler"{{{
-  " https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
-  let g:vimfiler_as_default_explorer = 1
-  " let g:vimfiler_safe_mode_by_default = 0
-  " let g:vimfiler_edit_action = 'edit'
-
-  " -no-quit ファイルを開いても終了しない カレントバッファと入れ替える
-  " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
-  command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
-  command! Vfs VimFiler -split -simple
-  command! Vfn VimFiler
-  command! Vf Vfe
-
-  "VimFilerを起動してからじゃないと関数が読み込まれない
-  function! s:set_vimfiler_unexpand_tree() "{{{
-    if hasmapto("<Plug>(vimfiler_unexpand_tree)")
-      return
-    endif
-
-    " 名前を取得
-    Capture function /\d+*_unexpand_tree\(\)$
-    let l:func_name = substitute(g:capture, '^function ', '', '')
-
-    if empty(l:func_name)
-      return
-    endif
-
-    execute 'nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree) :<C-u>call' l:func_name '<CR>'
-  endfunction "}}}
-
-  au FileType vimfiler call s:vimfiler_settings()
-  function! s:vimfiler_settings() "{{{
-    setlocal nobuflisted
-    call s:set_vimfiler_unexpand_tree()
-
-    nmap <silent><buffer>h <Plug>(vimfiler_unexpand_tree)
-    nmap <silent><buffer>l <Plug>(vimfiler_expand_tree)
-    nmap <silent><buffer><CR> <Plug>(vimfiler_cd_or_edit)
-    " nmap <silent><buffer><CR> <Plug>(vimfiler_expand_or_edit)
-
-    " vimfilerのsplitは水平じゃなくて垂直 時々VimFilerWindがリサイズされる
-    " nmap <buffer>v <Plug>(vimfiler_split_edit_file)
-    nnoremap <buffer>s :call vimfiler#mappings#do_action('my_split')<CR>
-    nnoremap <buffer>v :call vimfiler#mappings#do_action('my_vsplit')<CR>
-
-    nnoremap <buffer><Tab> :call vimfiler#mappings#do_action('tabopen')<CR>
-    nnoremap <buffer>\ \
-    nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
-
-    " 最後のバッファでも終了
-    " nnoremap <buffer><nowait>q :quit<CR>
-  endfunction "}}}
-
-  let s:my_action = { 'is_selectable' : 1 }
-  function! s:my_action.func(candidates)
-    wincmd p
-    exec 'split '. a:candidates[0].action__path
-  endfunction
-  call unite#custom_action('file', 'my_split', s:my_action)
-
-  let s:my_action = { 'is_selectable' : 1 }
-  function! s:my_action.func(candidates)
-    wincmd p
-    exec 'vsplit '. a:candidates[0].action__path
-  endfunction
-  call unite#custom_action('file', 'my_vsplit', s:my_action)
-"}}}
-
 " #easymotion"{{{
   let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
   let g:EasyMotion_leader_key="mm"
@@ -414,55 +346,6 @@ let g:airline#extensions#tabline#left_sep = ''
   let g:syntastic_cpp_compiler = 'clang++'
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
   let g:syntastic_ruby_mri_args = "-W1"
-"}}}
-
-" #quickrun "{{{
-  let g:quickrun_no_default_key_mappings = 1
-  nnoremap <Leader>r :write<CR>:QuickRun -mode n<CR>
-  xnoremap <Leader>r :write<CR>:QuickRun -mode v<CR>
-
-  " Config {{{
-  let g:quickrun_config = get(g:, 'quickrun_config', {})
-  let g:quickrun_config._ = {
-        \ 'hook/close_unite_quickfix/enable_hook_loaded' : 1,
-        \ 'hook/unite_quickfix/enable_failure'   : 1,
-        \ 'hook/close_quickfix/enable_exit'      : 1,
-        \ 'hook/close_buffer/enable_failure'     : 1,
-        \ 'hook/close_buffer/enable_empty_data'  : 1,
-        \ 'hook/shabadoubi_touch_henshin/enable' : 1,
-        \ 'hook/shabadoubi_touch_henshin/wait'   : 20,
-        \ 'outputter/buffer/split' : ':botright 8sp',
-        \ 'outputter'              : 'multi:buffer:quickfix',
-        \ 'runner'                 : 'vimproc',
-        \ 'runner/vimproc/updatetime' : 40,
-        \ }
-  "}}}
-
-  " Languages {{{
-  let g:quickrun_config.cpp = {
-        \ 'command' : '/usr/bin/clang++',
-        \ 'cmdopt'  : $CPP_COMP_OPT
-        \ }
-
-  let g:quickrun_config.c = {
-        \ 'command' : '/usr/bin/clang',
-        \ 'cmdopt'  : $C_COMP_OPT
-        \ }
-  let g:quickrun_config.markdown = {
-        \ 'type'      : 'markdown/pandoc',
-        \ 'cmdopt'    : '-s',
-        \ 'outputter' : 'browser'
-        \ }
-  "}}}
-
-  " RSpec実行
-  function! RSpec_run()
-    write
-    !rspec %
-  endfunction
-  command! Spec :call RSpec_run()
-
-  autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<CR>
 "}}}
 
 " #yankround"{{{
@@ -501,6 +384,8 @@ let g:airline#extensions#tabline#left_sep = ''
 
 RcSource 'easyalign'
 RcSource 'switch'
+RcSource 'vimfiler'
+RcSource 'quickrun'
 
 if s:meet_neocomplete_requirements()
   RcSource 'complete'
