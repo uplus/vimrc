@@ -2,7 +2,7 @@ if &compatible
   set nocompatible
 endif
 
-augroup U10ac
+augroup uAutoCmd
   autocmd!
 augroup END
 
@@ -78,20 +78,19 @@ set foldtext=FoldCCtext()
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
-au U10ac BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-au U10ac BufEnter    * lcd %:p:h
-au U10ac VimResized   * wincmd =
+au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+au uAutoCmd BufEnter    * lcd %:p:h
+au uAutoCmd VimResized   * wincmd =
 
 " windowの行数の20%にセットする scrolloffはglobal-option
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
-au U10ac VimEnter * SmartScrolloff
-au U10ac WinEnter * SmartScrolloff
+au uAutoCmd VimEnter * SmartScrolloff
+au uAutoCmd WinEnter * SmartScrolloff
 
 " #Source
 Source 'function'
 Source 'neobundle'
 Source 'keymap'
-Source 'filetype'
 
 " Change cursor shape.
 if &term =~ "xterm"
@@ -171,3 +170,17 @@ function! s:only_once() "{{{
   let g:only_once = 1
 endfunction "}}}
 
+" each filetype config
+au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
+au uAutoCmd FileType vim nnoremap <silent> gca A<Tab>"<Space>
+au uAutoCmd FileType c,cpp set commentstring=//\ %s
+au uAutoCmd FileType html,css set foldmethod=indent
+au uAutoCmd FileType gitcommit set foldopen=all
+
+au uAutoCmd FileType help call s:help_config()
+function! s:help_config()
+  nnoremap <buffer> q :q<CR>
+  setlocal foldmethod=indent
+  setlocal foldlevel=2
+  setlocal foldenable
+endfunction

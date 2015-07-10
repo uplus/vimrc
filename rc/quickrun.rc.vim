@@ -45,4 +45,5 @@ endfunction
 command! Spec :call RSpec_run()
 
 autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<CR>
+autocmd uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :Spec<CR>
 
