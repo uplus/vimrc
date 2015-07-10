@@ -73,9 +73,7 @@ NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
-NeoBundle 'surround.vim'
-" NeoBundle 'tpope/vim-surround'       " 囲んでるものに対しての処理
-NeoBundle 'tpope/vim-repeat'         " surroundなどを.でリピートできる
+NeoBundle 'tpope/vim-repeat'
 " NeoBundle 'kana/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
 "}}}
@@ -162,6 +160,7 @@ NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-textobj-u
 NeoBundle 'rhysd/vim-operator-evalruby'       " 選択したtextobjをRubyの式として評価する
 NeoBundle 'emonkak/vim-operator-comment'
 NeoBundle 'emonkak/vim-operator-sort'
+NeoBundle 'rhysd/vim-operator-surround'
 " NoeBundle 'tyru/operator-camelize.vim'  " CamelCaseとsnake_caseを相互変換
 "}}}
 
@@ -376,6 +375,23 @@ let g:airline#extensions#tabline#left_sep = ''
   " xmap s <Plug>(easymotion-s2)
   " surround.vimと被らないように
   " omap z <Plug>(easymotion-s2)
+"}}}
+
+" #surround "{{{
+  " () {} はab aB で表す 他は記号
+  " srのaは srab を srbとするため
+  map <silent>sa <Plug>(operator-surround-append)
+  map <silent>sd <Plug>(operator-surround-delete)
+  map <silent>sr <Plug>(operator-surround-replace)a
+
+  " if you use vim-textobj-multiblock
+  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+
+  " if you use vim-textobj-between
+  " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+  " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+
 "}}}
 
 " #smartword 記号を含まず消したい時がある
