@@ -98,10 +98,13 @@ if &term =~ "xterm"
   let &t_EI = "\<Esc>]12;white\x7"
 endif
 
-filetype plugin indent on
 syntax enable
 set t_Co=256
 set background=dark
+if has('vim_starting')
+  NeoBundleCheck
+endif
+
 
 augroup call_functions
   autocmd!

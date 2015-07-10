@@ -119,7 +119,9 @@ NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'LeafCage/foldCC.vim'
 NeoBundle 'mattn/webapi-vim'
+NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/excitetranslate-vim'
+NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 
 " Library used in vimrc
 NeoBundle 'vim-jp/vital.vim'
@@ -259,10 +261,6 @@ endif
 call neobundle#end()
 filetype plugin indent on " Required
 "###################### plugin config ############################"
-
-if !has('vim_starting')
-  NeoBundleCheck
-endif
 
 let g:netrw_nogx = 1                " 不要なkeymapを無効
 let g:rsenseUseOmniFunc=1
