@@ -2,6 +2,8 @@
 let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader>r :write<CR>:QuickRun -mode n<CR>
 xnoremap <Leader>r :write<CR>:QuickRun -mode v<CR>
+command! QuickRunStop call quickrun#sweep_sessions()
+command! Stop QuickRunStop
 
 " Config
 let g:quickrun_config = get(g:, 'quickrun_config', {})
@@ -38,12 +40,6 @@ let g:quickrun_config.markdown = {
 
 
 " RSpec実行
-function! RSpec_run()
-  write
-  !rspec %
-endfunction
-command! Spec :call RSpec_run()
-
-autocmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :call RSpec_run()<CR>
+command! Spec :write | !rspec %
 autocmd uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :Spec<CR>
 

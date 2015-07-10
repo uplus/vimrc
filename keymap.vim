@@ -1,14 +1,12 @@
-command! Schemes :Unite colorscheme -auto-preview
 command! SudoWrite w !sudo tee % > /dev/null
-command! QuickRunStop call quickrun#sweep_sessions()
 command! Q :q!
 command! S :shell
-command! -nargs=1 -complete=file T tabedit <args>
 command! Sh :w | sh
+command! -nargs=1 -complete=file T tabedit <args>
 command! Vs :tabedit | VimShell
 command! Reload :source $MYVIMRC
 
-"#comment mappings "{{{
+" #comment mappings "{{{
 nnoremap <silent> gyy yy:TComment<CR>
 nnoremap <silent> gyj yj:.,+1TComment<CR>
 nnoremap <silent> gyk yk:.,+1TComment<CR>j
@@ -21,7 +19,7 @@ nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
 nnoremap <silent> gcp :%TComment<CR>
 "}}}
 
-"#not register delete "{{{
+" #non register delete "{{{
 nnoremap _d "_d
 vnoremap _d "_d
 nnoremap _D "_D
@@ -40,9 +38,9 @@ nmap zp v%zf
 inoremap <C-C> <ESC>
 nnoremap Q <Nop>
 
-nnoremap <silent>mj :.move +1<CR>
-nnoremap <silent>mk :.move -2<CR>
-nmap gJ mkJ
+nnoremap <silent>mj :move+<CR>
+nnoremap <silent>mk :move-2<CR>
+nmap gJ mjkJ
 
 nnoremap v V
 nnoremap V v
