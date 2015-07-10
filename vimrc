@@ -178,7 +178,6 @@ au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
 au uAutoCmd FileType vim nnoremap <silent> gca A<Tab>"<Space>
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
-au uAutoCmd FileType gitcommit set foldopen=all
 
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()

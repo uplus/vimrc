@@ -156,9 +156,9 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 
 " #operator "{{{
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'tyru/operator-html-escape.vim', { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user'           }
 NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' }
-NeoBundle 'osyo-manga/vim-operator-block', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-textobj-user'            }
 NeoBundle 'rhysd/vim-operator-evalruby'       " 選択したtextobjをRubyの式として評価する
 NeoBundle 'emonkak/vim-operator-comment'
 NeoBundle 'emonkak/vim-operator-sort'
@@ -167,13 +167,13 @@ NeoBundle 'emonkak/vim-operator-sort'
 
 " #textobj "{{{
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-entire', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-entire',   { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'kana/vim-textobj-indent', { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'rhysd/vim-textobj-ruby', { 'depends' : 'kana/vim-textobj-user' } " arr brr Ruby のブロック
-NeoBundle 'osyo-manga/vim-textobj-multiblock', { 'depends' : 'kana/vim-textobj-user' } " asb isb 任意の括弧
-NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'osyo-manga/vim-textobj-blockwise', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'rhysd/vim-textobj-ruby',    { 'depends' : 'kana/vim-textobj-user' } " arr brr Ruby のブロック
+NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends': 'kana/vim-textobj-user' } " sb なんらかの括弧
+NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends': 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends': 'kana/vim-textobj-user' }
 
 NeoBundle 'kana/vim-textobj-syntax'           " ay iy
 NeoBundle 'kana/vim-textobj-fold'             " az iz
@@ -181,7 +181,6 @@ NeoBundle 'kana/vim-textobj-fold'             " az iz
 NeoBundle 'thinca/vim-textobj-between'        " af if 任意の区切り文字
 NeoBundle 'thinca/vim-textobj-comment'        "ac ic コメント
 NeoBundle 'gilligan/textobj-lastpaste'        "ip 直前に変更またはヤンクされたテキスト
-
 
 " NeoBundle 'thinca/vim-textobj-function-javascript'  " af if JavaScript の関数内
 " NeoBundle 'thinca/vim-textobj-function-perl'  " af if Perl の関数内
@@ -418,6 +417,7 @@ let g:airline#extensions#tabline#left_sep = ''
   let g:committia_hooks = {}
   function! g:committia_hooks.edit_open(info)
     set nofoldenable
+    set foldopen=all
     setlocal spell
 
     " If no commit message, start with insert mode
@@ -429,6 +429,7 @@ let g:airline#extensions#tabline#left_sep = ''
     " Map <C-n> and <C-p>
     imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
     imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+    goto 1
   endfunction
 "}}}
 
