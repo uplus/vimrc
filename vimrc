@@ -87,6 +87,7 @@ command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
+nnoremap Q <Nop>
 " #Source
 Source 'function'
 Source 'neobundle'

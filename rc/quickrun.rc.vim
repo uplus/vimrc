@@ -1,7 +1,7 @@
 " #quickrun
 let g:quickrun_no_default_key_mappings = 1
-nnoremap <Leader>r :write<CR>:QuickRun -mode n<CR>
-xnoremap <Leader>r :write<CR>:QuickRun -mode v<CR>
+nnoremap \r :write<CR>:QuickRun -mode n<CR>
+xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
 command! QuickRunStop call quickrun#sweep_sessions()
 command! Stop QuickRunStop
 

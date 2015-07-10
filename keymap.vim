@@ -31,12 +31,14 @@ vnoremap _X "_X
 "}}}
 
 nnoremap Y v$hy
-nmap S <C-V>$S
+nmap S <C-V>$sa
+
+" deprecated
 map mp %
-nmap zp v%zf
+" superseded
+map gp %
 
 inoremap <C-C> <ESC>
-nnoremap Q <Nop>
 
 nnoremap <silent>mj :move+<CR>
 nnoremap <silent>mk :move-2<CR>
@@ -132,13 +134,15 @@ vnoremap gj j
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
 inoremap <C-K> <C-O>"_D
-inoremap <C-D> <C-O>"_x
-inoremap <C-A> <C-O>^
+inoremap <C-D>  <Del>
+inoremap <silent><C-A>  <C-o>^
 inoremap <C-E> <C-O>$
+inoremap <C-W>  <C-G>u<C-W>
+inoremap <C-U>  <C-G>u<C-U>
+
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-D> <Del>
-
 " noremap! is insert+command
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
