@@ -362,20 +362,16 @@ nnoremap [unite]r :UniteResume
 
 " #easymotion"{{{
 "Todo: マップを整える
-  let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
-  let g:EasyMotion_leader_key="mm"
+  " let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
+  let g:EasyMotion_leader_key=";"
   " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-  map <Space>j <Plug>(easymotion-j)
-  map <Space>k <Plug>(easymotion-k)
-  map <Space>w <Plug>(easymotion-w)
-  map <Space>f <Plug>(easymotion-fl)
-  map <Space>t <Plug>(easymotion-tl)
-  map <Space>F <Plug>(easymotion-Fl)
-  map <Space>T <Plug>(easymotion-Tl)
-  " nmap s <Plug>(easymotion-s2)
-  " xmap s <Plug>(easymotion-s2)
-  " surround.vimと被らないように
-  " omap z <Plug>(easymotion-s2)
+  " map <Space>j <Plug>(easymotion-j)
+  " map <Space>k <Plug>(easymotion-k)
+  " map <Space>w <Plug>(easymotion-w)
+  " map <Space>f <Plug>(easymotion-fl)
+  " map <Space>t <Plug>(easymotion-tl)
+  " map <Space>F <Plug>(easymotion-Fl)
+  " map <Space>T <Plug>(easymotion-Tl)
 "}}}
 
 " #surround "{{{

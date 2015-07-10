@@ -87,7 +87,15 @@ command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
+" Release keymappings for plug-in.
 nnoremap Q <Nop>
+nnoremap ;  <Nop>
+xnoremap ;  <Nop>
+nnoremap ,  <Nop>
+xnoremap ,  <Nop>
+
+let g:mapleader = ';'
+
 " #Source
 Source 'function'
 Source 'neobundle'
