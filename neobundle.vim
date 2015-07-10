@@ -63,7 +63,7 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表�
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'Yggdroot/indentLine'
+" NeoBundle 'Yggdroot/indentLine'
 "}}}
 
 " #action "{{{
@@ -318,7 +318,7 @@ nnoremap [unite]r :UniteResume
 "}}}
 
 " #indentLine
-  nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
+  nmap <silent>\i :<C-u>IndentLinesToggle<CR>
   let g:indentLine_faster = 1
   let g:indentLine_fileTypeExclude = ['help', 'calendar']
 
