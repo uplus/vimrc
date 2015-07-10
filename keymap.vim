@@ -58,10 +58,6 @@ nnoremap <silent> ]B :blast<CR>
 " nnoremap <Space>bb :b#<CR>
 
 "######<Space> family###### "{{{
-"Todo: set unite mappings
-nnoremap <Space>m :Unite mark<CR>
-nnoremap <Space>b :Unite buffer<CR>
-
 nnoremap <Space>ss :%s/
 nnoremap <Space>sg :%s//g<LEFT><LEFT>
 xnoremap <Space>ss :s/

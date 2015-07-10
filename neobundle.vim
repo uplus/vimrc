@@ -32,6 +32,7 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
 
 " #unite "{{{
 NeoBundle     'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -269,7 +270,6 @@ let g:solarized_termcolors=256      " solarizedをCUIで使うため
 let g:vinarise_enable_auto_detect=1 " バイナリを検出して自動で開いてくれる?
 
 command! -range Trans :<line1>,<line2>:ExciteTranslate
-command! Scheme :Unite colorscheme -auto-preview
 
 
 function! s:define_rule_ruby()
@@ -280,6 +280,35 @@ function! s:define_rule_ruby()
         \ 'filetype': ['ruby']
         \ })
 endfunction
+
+" #unite "{{{
+command! Uscheme :Unite colorscheme -auto-preview
+command! Umap :Unite output:map|map!|lmap
+
+nnoremap [unite]   <Nop>
+nmap ; [unite]
+nnoremap [unite]m :Unite mark<CR>
+nnoremap [unite]b :Unite buffer<CR>
+nnoremap [unite]k :Unite bookmark<CR>
+nnoremap [unite]f :Unite file -start-insert<CR>
+nnoremap [unite]r :UniteResume
+
+" unite-grep {{{
+  let g:unite_source_grep_max_candidates = 200
+  if executable('ag')
+      " Use ag in unite grep source.
+      let g:unite_source_grep_command = 'ag'
+      let g:unite_source_grep_recursive_opt = 'HRn'
+      let g:unite_source_grep_default_opts =
+      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  endif
+
+  " unite-grepのキーマップ 選択した文字列をunite-grep
+  vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+" }}}
+
+"}}}
 
 " #airline"{{{
 let g:airline_powerline_fonts = 1
