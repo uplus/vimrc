@@ -194,4 +194,5 @@ function! s:help_config()
   setlocal foldmethod=indent
   setlocal foldlevel=2
   setlocal foldenable
+  setlocal number
 endfunction
