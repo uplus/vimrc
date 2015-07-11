@@ -5,7 +5,6 @@
 " let g:neocomplete#enable_insert_char_pre = 0
 
 let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_ignore_case = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_camel_case = 1

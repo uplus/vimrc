@@ -1,15 +1,19 @@
 " #vimfiler
 " https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
-let g:vimfiler_as_default_explorer = 1
-" let g:vimfiler_safe_mode_by_default = 0
-" let g:vimfiler_edit_action = 'edit'
 
-" -no-quit ファイルを開いても終了しない カレントバッファと入れ替える
+let g:vimfiler_enable_clipboard = 0
+let g:vimfiler_as_default_explorer = 1
+call vimfiler#custom#profile('default', 'context', {
+      \ 'safe' : 0,
+      \ 'auto_expand' : 1,
+      \ 'parent' : 0,
+      \ })
+
 " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
 command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
 command! Vfs VimFiler -split -simple
-command! Vfn VimFiler
-command! Vf Vfe
+command! Vf VimFiler
+nnoremap <silent><C-W>e :Vfe<CR>
 
 "VimFilerを起動してからじゃないと関数が読み込まれない
 function! s:set_vimfiler_unexpand_tree() "{{{

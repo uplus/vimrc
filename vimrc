@@ -60,6 +60,12 @@ set wildmode=longest:full,full
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 set iskeyword-=#
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
+
+" 3formatoptions
+au uAutoCmd FileType * setlocal formatoptions-=ro
+" r When type <return> in insert-mode auto insert commentstring
+" o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
+
 " }}}
 
 " #tab
@@ -168,7 +174,7 @@ function! s:set_highlight_sub() " {{{
   highlight Search          ctermfg=39 ctermbg=56
   highlight IncSearch       ctermfg=39 ctermbg=50
   highlight Visual          cterm=reverse
-  highlight YankRoundRegion cterm=italic
+  " highlight YankRoundRegion cterm=italic
 endfunction " }}}
 
 function! s:only_once() "{{{

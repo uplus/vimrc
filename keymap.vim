@@ -30,6 +30,16 @@ nnoremap _X "_X
 vnoremap _X "_X
 "}}}
 
+" paired map
+nnoremap <silent> [b :bnext<CR>
+nnoremap <silent> ]b :bprevious<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+nnoremap <silent> [<Space> O<ESC>j
+nnoremap <silent> ]<Space> o<ESC>k
+nnoremap <silent> [p :cprevious<CR>
+nnoremap <silent> ]p :cprevious<CR>
+
 nnoremap Y v$hy
 nmap S <C-V>$sa
 
@@ -54,9 +64,6 @@ inoremap <silent> <C-S> <C-O>:w<CR>
 xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
 
-" #buffer
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
 " nnoremap <Space>bb :b#<CR>
 
 "######<Space> family###### "{{{
@@ -82,26 +89,12 @@ xnoremap <silent> <Space> <Nop>
 "}}}
 
 "#Ctrl+W family"{{{
-nnoremap <silent><C-W>e :Vf<CR>
 nnoremap <C-W>p gt
 nnoremap <C-W>n gT
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
-"#resize "{{{
-if neobundle#is_installed('vim-submode')
-  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-  call submode#map('winsize', 'n', '', '>', '<C-w>>')
-  call submode#map('winsize', 'n', '', '<', '<C-w><')
-  call submode#map('winsize', 'n', '', '+', '<C-w>+')
-  call submode#map('winsize', 'n', '', '-', '<C-w>-')
-endif
-"}}}
-
-"#cmdwin "{{{
+"#cmdwin
 cnoremap <C-K> <C-F>
 
 au uAutoCmd CmdwinEnter  * call s:cmdwin_config()
@@ -109,7 +102,7 @@ function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>
   nnoremap <silent><buffer><C-W> :q<CR><C-W>
 endfunction
-"}}}
+
 "}}}
 
 "#Move"{{{
@@ -148,18 +141,14 @@ noremap! <C-B> <Left>
 noremap! <C-F> <Right>
 "}}}
 
-
-" Basic Key Mapping  {{{
+" Basic Key Mapping
 
 " let maplocalleader = ','
 
 " N: Find next occurrence backward
-" nnoremap N  Nzzzv
-" nnoremap n  nzzzv
+nnoremap N  Nzzzv
+nnoremap n  nzzzv
 
 " TODO: Move those settings to right section
 " au MyAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>
 " au MyAutoCmd CmdwinEnter [:>] nunmap <buffer> <Tab>
-
-" }}}
-

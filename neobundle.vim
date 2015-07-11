@@ -69,7 +69,7 @@ NeoBundle 'bling/vim-airline'
 " #action "{{{
 NeoBundle 'AndrewRadev/linediff.vim' " visual-modeで選択した2つの行をvimdiffで確認する
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q
+NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
@@ -265,10 +265,176 @@ let g:netrw_nogx = 1                " 不要なkeymapを無効
 let g:rsenseUseOmniFunc=1
 let g:no_cecutil_maps=1             " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256      " solarizedをCUIで使うため
-let g:vinarise_enable_auto_detect=1 " バイナリを検出して自動で開いてくれる?
-
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
+if neobundle#tap('vinarise.vim') "{{{
+  let g:vinarise_enable_auto_detect = 1
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('neocomplete.vim') && has('lua') "{{{
+  let g:neocomplete#enable_at_startup = 1
+  let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('switch.vim') "{{{
+  let neobundle#hooks.on_source = '~/.vim/rc/switch.rc.vim'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-quickrun') "{{{
+  let neobundle#hooks.on_source = '~/.vim/rc/quickrun.rc.vim'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vimfiler.vim') "{{{
+  let neobundle#hooks.on_source = '~/.vim/rc/vimfiler.rc.vim'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-easy-align') "{{{
+  let neobundle#hooks.on_source = '~/.vim/rc/easyalign.rc.vim'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('syntastic') "{{{
+  let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq   = 0
+  let g:syntastic_enable_signs  = 0
+  " let g:syntastic_debug = 1
+
+  let g:syntastic_cpp_compiler = 'clang++'
+  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
+  let g:syntastic_ruby_mri_args = "-W1"
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('committia.vim') "{{{
+  let g:committia_open_only_vim_starting = 1
+  let g:committia_hooks = {}
+  function! g:committia_hooks.edit_open(info)
+    set nofoldenable
+    set foldopen=all
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    " if a:info.vcs ==# 'git' && getline(1) ==# ''
+    "     startinsert
+    " end
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-p>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+    goto 1
+  endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('yankround.vim') "{{{
+	nmap p <Plug>(yankround-p)
+	xmap p <Plug>(yankround-p)
+	nmap P <Plug>(yankround-P)
+	nmap gp <Plug>(yankround-gp)
+	xmap gp <Plug>(yankround-gp)
+	nmap gP <Plug>(yankround-gP)
+	nmap <C-p> <Plug>(yankround-prev)
+	nmap <C-n> <Plug>(yankround-next)
+
+  " cmdlineで<C-y>押せばレジストリが遡れる
+	cmap <C-r> <Plug>(yankround-insert-register)
+	cmap <C-y> <Plug>(yankround-pop)
+
+  let g:yankround_use_region_hl = 1
+  let g:yankround_dir = "~/.vim/tmp/"
+  highlight YankRoundRegion cterm=italic
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-operator-surround') "{{{
+  " () {} はab aB で表す 他は記号
+  " srのaは srab を srbとするため
+  map <silent>sa <Plug>(operator-surround-append)
+  map <silent>sd <Plug>(operator-surround-delete)
+  map <silent>sr <Plug>(operator-surround-replace)a
+
+  " if you use vim-textobj-multiblock
+  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+
+  " if you use vim-textobj-between
+  " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+  " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-easymotion') "{{{
+  "Todo: マップを整える
+  " let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
+  let g:EasyMotion_leader_key=";"
+  " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
+  " map <Space>j <Plug>(easymotion-j)
+  " map <Space>k <Plug>(easymotion-k)
+  " map <Space>w <Plug>(easymotion-w)
+  " map <Space>f <Plug>(easymotion-fl)
+  " map <Space>t <Plug>(easymotion-tl)
+  " map <Space>F <Plug>(easymotion-Fl)
+  " map <Space>T <Plug>(easymotion-Tl)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('switch.vim') "{{{
+  let neobundle#hooks.on_source = '~/.vim/rc/switch.rc.vim'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-airline') "{{{
+  " https://github.com/bling/vim-airline/wiki/Screenshots
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme           = "dark"
+  let g:airline_left_sep        = ''
+  let g:airline#extensions#tabline#enabled  = 1
+  let g:airline#extensions#tabline#left_sep = ''
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-textobj-user') "{{{
+  omap ab <Plug>(textobj-multiblock-a)
+  omap ib <Plug>(textobj-multiblock-i)
+  xmap ab <Plug>(textobj-multiblock-a)
+  xmap ib <Plug>(textobj-multiblock-i)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-submode') "{{{
+  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+  call submode#map('winsize', 'n', '', '>', '<C-w>>')
+  call submode#map('winsize', 'n', '', '<', '<C-w><')
+  call submode#map('winsize', 'n', '', '+', '<C-w>+')
+  call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+  call neobundle#untap()
+endif "}}}
 
 function! s:define_rule_ruby()
   let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
@@ -279,43 +445,6 @@ function! s:define_rule_ruby()
         \ })
 endfunction
 
-" #unite "{{{
-command! Uscheme :Unite colorscheme -auto-preview
-command! Umap :Unite output:map|map!|lmap
-
-nnoremap [unite]   <Nop>
-nmap ; [unite]
-nnoremap [unite]m :Unite mark<CR>
-nnoremap [unite]b :Unite buffer<CR>
-nnoremap [unite]k :Unite bookmark<CR>
-nnoremap [unite]f :Unite file -start-insert<CR>
-nnoremap [unite]r :UniteResume
-
-" unite-grep {{{
-  let g:unite_source_grep_max_candidates = 200
-  if executable('ag')
-      " Use ag in unite grep source.
-      let g:unite_source_grep_command = 'ag'
-      let g:unite_source_grep_recursive_opt = 'HRn'
-      let g:unite_source_grep_default_opts =
-      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  endif
-
-  " unite-grepのキーマップ 選択した文字列をunite-grep
-  vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
-" }}}
-
-"}}}
-
-" #airline"{{{
-  " https://github.com/bling/vim-airline/wiki/Screenshots
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme           = "dark"
-  let g:airline_left_sep        = ''
-  let g:airline#extensions#tabline#enabled  = 1
-  let g:airline#extensions#tabline#left_sep = ''
-"}}}
 
 " #indentLine
   nmap <silent>\i :<C-u>IndentLinesToggle<CR>
@@ -344,11 +473,12 @@ nnoremap [unite]r :UniteResume
   map # <Plug>(incsearch-nohl-#)
 "}}}
 
-" #alpaca_tags"{{{
+if neobundle#tap('alpaca_tags') "{{{
   let g:alpaca_tags#config = {
-                         \    '_' : '-R --sort=yes',
-                         \    'ruby': '--languages=+Ruby',
-                         \ }
+        \    '_' : '-R --sort=yes',
+        \    'ruby': '--languages=+Ruby',
+        \ }
+
   augroup AlpacaTags
     autocmd!
     if exists(':Tags')
@@ -358,102 +488,68 @@ nnoremap [unite]r :UniteResume
       " autocmd BufWritePost * TagsUpdate
     endif
   augroup END
-"}}}
 
-" #easymotion"{{{
-"Todo: マップを整える
-  " let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
-  let g:EasyMotion_leader_key=";"
-  " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-  " map <Space>j <Plug>(easymotion-j)
-  " map <Space>k <Plug>(easymotion-k)
-  " map <Space>w <Plug>(easymotion-w)
-  " map <Space>f <Plug>(easymotion-fl)
-  " map <Space>t <Plug>(easymotion-tl)
-  " map <Space>F <Plug>(easymotion-Fl)
-  " map <Space>T <Plug>(easymotion-Tl)
-"}}}
+  call neobundle#untap()
+endif "}}}
 
-" #surround "{{{
-  " () {} はab aB で表す 他は記号
-  " srのaは srab を srbとするため
-  map <silent>sa <Plug>(operator-surround-append)
-  map <silent>sd <Plug>(operator-surround-delete)
-  map <silent>sr <Plug>(operator-surround-replace)a
+if neobundle#tap('unite.vim') "{{{
+  command! Uscheme :Unite colorscheme -auto-preview
+  command! Umap :Unite output:map|map!|lmap
 
-  " if you use vim-textobj-multiblock
-  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
-  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+  nnoremap [unite] <Nop>
+  xnoremap [unite] <Nop>
+  nmap ;u [unite]
+  xmap ;u [unite]
 
-  " if you use vim-textobj-between
-  " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
-  " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+  nnoremap ;m :Unite mark<CR>
+  nnoremap ;b :Unite buffer<CR>
+  nnoremap ;k :Unite bookmark<CR>
+  nnoremap ;f :Unite file -start-insert<CR>
+  nnoremap ;r :UniteResume<CR>
 
-"}}}
+  " unite-grep {{{
+  let g:unite_source_grep_max_candidates = 200
+  if executable('ag')
+      " Use ag in unite grep source.
+      let g:unite_source_grep_command = 'ag'
+      let g:unite_source_grep_recursive_opt = 'HRn'
+      let g:unite_source_grep_default_opts =
+      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  endif
 
-" #smartword 記号を含まず消したい時がある
-  " map w  <Plug>(smartword-w)
-  " map b  <Plug>(smartword-b)
-  " map e  <Plug>(smartword-e)
-  " map ge <Plug>(smartword-ge)
+  " unite-grepのキーマップ 選択した文字列をunite-grep
+  vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+  " }}}
 
-" #syntastic"{{{
-  let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq   = 0
-  let g:syntastic_enable_signs  = 0
-  " let g:syntastic_debug = 1
+  call neobundle#untap()
+endif "}}}
 
-  let g:syntastic_cpp_compiler = 'clang++'
-  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-  let g:syntastic_ruby_mri_args = "-W1"
-"}}}
+if neobundle#tap('') "{{{
 
-" #yankround"{{{
-  nmap p <Plug>(yankround-p)
-  xmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap gp <Plug>(yankround-gp)
-  xmap gp <Plug>(yankround-gp)
-  nmap gP <Plug>(yankround-gP)
-  nmap <C-p> <Plug>(yankround-prev)
-  nmap <C-n> <Plug>(yankround-next)
-  " round対象のうちはハイライトする
-  let g:yankround_use_region_hl = 1
-  let g:yankround_max_history = 20
-  let g:yankround_dir = "~/.vim/tmp/"
-"}}}
+  call neobundle#untap()
+endif "}}}
 
-" #committa "{{{
-  let g:committia_open_only_vim_starting = 1
-  let g:committia_hooks = {}
-  function! g:committia_hooks.edit_open(info)
-    set nofoldenable
-    set foldopen=all
-    setlocal spell
+if neobundle#tap('') "{{{
 
-    " If no commit message, start with insert mode
-    " if a:info.vcs ==# 'git' && getline(1) ==# ''
-    "     startinsert
-    " end
+  call neobundle#untap()
+endif "}}}
 
-    " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
-    goto 1
-  endfunction
-"}}}
+if neobundle#tap('') "{{{
 
-RcSource 'easyalign'
-RcSource 'switch'
-RcSource 'vimfiler'
-RcSource 'quickrun'
+  call neobundle#untap()
+endif "}}}
 
-if s:meet_neocomplete_requirements()
-  RcSource 'complete'
-endif
+if neobundle#tap('') "{{{
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('') "{{{
+
+  call neobundle#untap()
+endif "}}}
+
 if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
   runtime macros/matchit.vim
 endif
