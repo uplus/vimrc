@@ -1,6 +1,4 @@
-  "------------------"
-  "Neobundle Settings"
-  "------------------"
+" Neobundle:
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -119,6 +117,7 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
+NeoBundleLazy 'matchit.zip', { 'mappings' : ['nxo', '%', 'g%'] }
 
 " vital Library used in vimrc
 NeoBundle 'vim-jp/vital.vim'
@@ -451,6 +450,14 @@ if neobundle#tap('vim-submode') "{{{
   endfunction
 endif "}}}
 
+if neobundle#tap('matchit.zip') "{{{
+  function! neobundle#hooks.on_post_source(bundle)
+    silent! execute 'doautocmd Filetype' &filetype
+  endfunction
+
+  call neobundle#untap()
+endif "}}}
+
 function! s:define_rule_ruby()
   let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
   call smartinput#define_rule({
@@ -459,12 +466,6 @@ function! s:define_rule_ruby()
         \ 'filetype': ['ruby']
         \ })
 endfunction
-
-
-" #indentLine
-  nmap <silent>\i :<C-u>IndentLinesToggle<CR>
-  let g:indentLine_faster = 1
-  let g:indentLine_fileTypeExclude = ['help', 'calendar']
 
 " #over
   let g:over#command_line#enable_move_cursor = 1
@@ -557,7 +558,4 @@ endif "}}}
 
 call neobundle#end()
 filetype plugin indent on " Required
-
-if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
-  runtime macros/matchit.vim
-endif
+syntax enable

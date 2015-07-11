@@ -81,7 +81,7 @@ set foldlevel=0
 set foldnestmax=2
 set foldtext=FoldCCtext()
 
-" set list
+set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
 " Change cursor shape.
@@ -109,11 +109,11 @@ xnoremap ,  <Nop>
 let g:mapleader = ';'
 
 " #Source
-Source 'function'
 Source 'neobundle'
+
+Source 'function'
 Source 'keymap'
 
-syntax enable
 set t_Co=256
 set background=dark
 if has('vim_starting')
