@@ -1,8 +1,6 @@
   "------------------"
   "Neobundle Settings"
   "------------------"
-filetype off
-filetype plugin indent off
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -93,7 +91,6 @@ NeoBundle 'kana/vim-smartword'
 "}}}
 
 " #syntaxchecker"{{{
-NeoBundleLazy 'Shougo/vimfiler.vim', { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
@@ -107,6 +104,7 @@ NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 "}}}
 
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
+NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
 NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
 NeoBundle 'rhysd/committia.vim'     " commitメッセージ表示をステキに
 NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
@@ -122,7 +120,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 
-" Library used in vimrc
+" vital Library used in vimrc
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'osyo-manga/vital-reunions'
 NeoBundle 'osyo-manga/vital-over'
@@ -257,14 +255,12 @@ if neobundle#tap('vim-smartinput-endwise')
 endif
 "}}}
 
-call neobundle#end()
-filetype plugin indent on " Required
-"###################### plugin config ############################"
 
-let g:netrw_nogx = 1                " 不要なkeymapを無効
+"###################### plugin config ############################"
+let g:netrw_nogx=1             " 不要なkeymapを無効
 let g:rsenseUseOmniFunc=1
-let g:no_cecutil_maps=1             " AnsiEsc の中で変なマッピングをしないようにする
-let g:solarized_termcolors=256      " solarizedをCUIで使うため
+let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
+let g:solarized_termcolors=256 " solarizedをCUIで使うため
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
 if neobundle#tap('vinarise.vim') "{{{
@@ -294,7 +290,6 @@ endif "}}}
 
 if neobundle#tap('vimfiler.vim') "{{{
   let neobundle#hooks.on_source = '~/.vim/rc/vimfiler.rc.vim'
-
   call neobundle#untap()
 endif "}}}
 
@@ -560,6 +555,8 @@ if neobundle#tap('') "{{{
   call neobundle#untap()
 endif "}}}
 
+call neobundle#end()
+filetype plugin indent on " Required
 
 if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
   runtime macros/matchit.vim
