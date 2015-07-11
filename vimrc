@@ -116,10 +116,6 @@ Source 'keymap'
 
 set t_Co=256
 set background=dark
-if has('vim_starting')
-  NeoBundleCheck
-endif
-
 
 augroup call_functions
   autocmd!
@@ -174,16 +170,12 @@ function! s:set_highlight_sub() " {{{
   highlight Search          ctermfg=39 ctermbg=56
   highlight IncSearch       ctermfg=39 ctermbg=50
   highlight Visual          cterm=reverse
-  " highlight YankRoundRegion cterm=italic
 endfunction " }}}
 
 function! s:only_once() "{{{
   if exists("g:only_once")
     return 0
   endif
-
-  SpeedDatingFormat! %v
-  SpeedDatingFormat! %^v
 
   let g:only_once = 1
 endfunction "}}}

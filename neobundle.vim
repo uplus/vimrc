@@ -26,7 +26,7 @@ NeoBundleLazy 'Shougo/vimshell.vim', { 'depends' : [ 'Shougo/vimproc.vim' ] }
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
 
 
-" #unite "{{{
+" Unite: "{{{
 NeoBundle     'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -43,6 +43,7 @@ NeoBundleLazy 'rhysd/unite-ruby-require.vim',     { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'tacroe/unite-alias',               { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'tacroe/unite-mark',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'taka84u9/unite-git',               { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'Kocha/vim-unite-tig' ,             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -54,7 +55,9 @@ NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.
 
 "}}}
 
-" #view "{{{
+" View: "{{{
+NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
+NeoBundle 'rhysd/committia.vim'     " commitメッセージ表示をステキに
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
 NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
@@ -62,7 +65,7 @@ NeoBundle 'bling/vim-airline'
 " NeoBundle 'Yggdroot/indentLine'
 "}}}
 
-" #action "{{{
+" Action: "{{{
 NeoBundle 'AndrewRadev/linediff.vim' " visual-modeで選択した2つの行をvimdiffで確認する
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
@@ -72,6 +75,8 @@ NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
 NeoBundle 'tpope/vim-repeat'
 " NeoBundle 'kana/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
+NeoBundle 'tpope/vim-speeddating'    " 年月日に加算できる
+NeoBundle 'LeafCage/foldCC.vim'
 "}}}
 
 " #search and #replace "{{{
@@ -96,28 +101,24 @@ NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'Shougo/echodoc'
 "}}}
 
-" #quickrun"{{{
+" Quickrun: "{{{
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 "}}}
 
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
-NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
-NeoBundle 'rhysd/committia.vim'     " commitメッセージ表示をステキに
-NeoBundle 'tpope/vim-speeddating'   " 年月日に加算できる
-NeoBundle 'tomtom/tcomment_vim'     " 他のも試したけどダメだった
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
-NeoBundle 'LeafCage/foldCC.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['nxo', '%', 'g%'] }
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 " vital Library used in vimrc
 NeoBundle 'vim-jp/vital.vim'
@@ -537,6 +538,11 @@ if neobundle#tap('unite.vim') "{{{
   " unite-grepのキーマップ 選択した文字列をunite-grep
   vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
   " }}}
+if neobundle#tap('vim-speeddating') "{{{
+  function! neobundle#hooks.on_post_source(bundle)
+    SpeedDatingFormat! %v
+    SpeedDatingFormat! %^v
+  endfunction
 
   call neobundle#untap()
 endif "}}}
@@ -559,3 +565,8 @@ endif "}}}
 call neobundle#end()
 filetype plugin indent on " Required
 syntax enable
+
+if has('vim_starting')
+  NeoBundleCheck
+endif
+

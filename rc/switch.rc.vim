@@ -1,5 +1,5 @@
 " switch.vim
-nnoremap <silent>! :Switch<CR>
+let g:switch_mapping = "!"
 
 let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
 let g:switch_custom_definitions += [['>', '<'], ['<=', '>=']]
@@ -13,6 +13,7 @@ au FileType ruby,eruby let g:switch_custom_definitions +=
       \   [ 'class', 'module' ],
       \   [ '.inject', '.reject' ],
       \   [ '.map', '.map!' ],
+      \   [ '.sub', '.sub!', '.gub', '.gub!',],
       \   [ 'attr_accessor', 'attr_reader', 'attr_writer' ],
       \ ]
 
