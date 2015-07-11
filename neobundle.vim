@@ -374,7 +374,7 @@ if neobundle#tap('vim-operator-surround') "{{{
   nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
-  " if you use vim-textobj-between
+  " if you use vim-textobj-between srbはsrabと被る
   " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
   " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
 
@@ -560,15 +560,6 @@ if neobundle#tap('') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('') "{{{
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('') "{{{
-
-  call neobundle#untap()
-endif "}}}
 
 if !exists('loaded_matchit') " rubyとかでdef~endの移動をしてくれる
   runtime macros/matchit.vim

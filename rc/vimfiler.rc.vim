@@ -1,8 +1,8 @@
 " #vimfiler
 " https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
 
-let g:vimfiler_enable_clipboard = 0
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_enable_clipboard = 0
 call vimfiler#custom#profile('default', 'context', {
       \ 'safe' : 0,
       \ 'auto_expand' : 1,

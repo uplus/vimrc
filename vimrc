@@ -84,6 +84,12 @@ set foldtext=FoldCCtext()
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
+" Change cursor shape.
+if &term =~ "xterm"
+  let &t_SI = "\<Esc>]12;lightgreen\x7"
+  let &t_EI = "\<Esc>]12;white\x7"
+endif
+
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd BufEnter    * lcd %:p:h
 au uAutoCmd VimResized   * wincmd =
@@ -106,12 +112,6 @@ let g:mapleader = ';'
 Source 'function'
 Source 'neobundle'
 Source 'keymap'
-
-" Change cursor shape.
-if &term =~ "xterm"
-  let &t_SI = "\<Esc>]12;lightgreen\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
-endif
 
 syntax enable
 set t_Co=256
