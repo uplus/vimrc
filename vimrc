@@ -30,6 +30,7 @@ xnoremap ;  <Nop>
 nnoremap ,  <Nop>
 xnoremap ,  <Nop>
 
+
 Source 'neobundle'
 filetype plugin indent on " Required
 syntax enable
@@ -62,6 +63,8 @@ set nobackup
 set mouse=a
 set showcmd " 入力中のキーマップを表示する
 let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
+
+set cpoptions-=m
 "}}}
 
 " #action config " {{{
@@ -96,8 +99,6 @@ set foldcolumn=1
 " set foldlevel=2
 set foldtext=FoldCCtext()
 
-set cpoptions-=m
-
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
@@ -106,6 +107,9 @@ if &term =~ "xterm"
   let &t_SI = "\<Esc>]12;lightgreen\x7"
   let &t_EI = "\<Esc>]12;white\x7"
 endif
+
+Source 'function'
+Source 'keymap'
 
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd BufEnter    * lcd %:p:h
@@ -116,8 +120,6 @@ command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
-Source 'function'
-Source 'keymap'
 
 "
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
@@ -207,8 +209,7 @@ au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <buffer> q :q<CR>
   setlocal foldmethod=indent
-  setlocal foldcolumn=0
-  setlocal foldenable
+  setlocal foldcolumn=1
   setlocal foldclose=all
   setlocal number
 endfunction

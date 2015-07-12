@@ -18,7 +18,7 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    }
       \ }
 
-NeoBundleLazy 'Shougo/vimshell.vim', { 'depends' : [ 'Shougo/vimproc.vim' ] }
+NeoBundleLazy 'Shougo/vimshell.vim',  { 'depends' : [ 'Shougo/vimproc.vim'  ] }
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
 
 
@@ -97,31 +97,17 @@ NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'Shougo/echodoc'
 "}}}
 
-" Quickrun: "{{{
+" #quickrun "{{{
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 "}}}
 
-NeoBundle 'Shougo/context_filetype.vim'
-" NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
-NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'kannokanno/previm'       " Markdown Previewer
-NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
-NeoBundle 'tpope/vim-fugitive'      " git
-" NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'mattn/excitetranslate-vim'
-NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
-NeoBundleLazy 'matchit.zip', { 'mappings' : ['nxo', '%', 'g%'] }
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
-
-" vital Library used in vimrc
+" vital Library used in vimrc "{{{
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'osyo-manga/vital-reunions'
 NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
+"}}}
 
 " #rails and #ruby"{{{
 NeoBundle 'vim-ruby/vim-ruby'
@@ -204,7 +190,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
 " #input-support"{{{
-NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'marcus/rsense' :helpが使えなくなる
 NeoBundle 'NigoroJr/rsense'
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete']}
@@ -215,6 +201,23 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Rip-Rip/clang_complete'
 "}}}
+
+NeoBundle 'Shougo/context_filetype.vim'
+" NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
+NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'kannokanno/previm'       " Markdown Previewer
+NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
+NeoBundle 'tpope/vim-fugitive'      " git
+" NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'mattn/excitetranslate-vim'
+
+NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
+NeoBundleLazy 'matchit.zip', { 'mappings' : ['nxo', '%', 'g%'] }
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
@@ -253,7 +256,7 @@ endif "}}}
 if neobundle#tap('neocomplete.vim') && has('lua') "{{{
   let g:rsenseUseOmniFunc=1
   let g:neocomplete#enable_at_startup = 1
-  " let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
+  let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
 
   call neobundle#untap()
 endif "}}}

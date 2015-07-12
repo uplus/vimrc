@@ -54,6 +54,10 @@ nnoremap <silent>mj :move+<CR>
 nnoremap <silent>mk :move-2<CR>
 nmap gJ mjkJ
 
+" N: Find next occurrence backward
+nnoremap N  Nzzzv
+nnoremap n  nzzzv
+
 nnoremap v V
 nnoremap V v
 
@@ -140,14 +144,6 @@ cnoremap <C-D> <Del>
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
 "}}}
-
-" Basic Key Mapping
-
-" let maplocalleader = ','
-
-" N: Find next occurrence backward
-nnoremap N  Nzzzv
-nnoremap n  nzzzv
 
 " TODO: Move those settings to right section
 " au MyAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>
