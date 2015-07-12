@@ -160,12 +160,12 @@ NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj
 NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " 連続したtextobjを矩形選択 ciw -> cIw
 NeoBundle 'lucapette/vim-textobj-underscore',    { 'depends' : 'kana/vim-textobj-user' } " _ underscore区切り?
 NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " regexで自分でtextobjが作れる
-NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' }  " q 任意のsyntax /../ '..'
+NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' } " q 任意のsyntax /../ '..'
+NeoBundle 'anyakichi/vim-textobj-xbrackets',     { 'depends' : 'kana/vim-textobj-user' } " xb func()などを表す
 
 
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
-NeoBundle 'anyakichi/vim-textobj-xbrackets', { 'depends' : 'kana/vim-textobj-user' }    " xb func() などを表す
 " , { 'depends' : 'kana/vim-textobj-user' }
 " , { 'depends' : 'kana/vim-textobj-user' }
 " , { 'depends' : 'kana/vim-textobj-user' }
@@ -253,14 +253,20 @@ if neobundle#tap('vim-operator-surround') "{{{
   call neobundle#untap()
 endif "}}}
 
+" vim-textobj "{{{
 if neobundle#tap('vim-textobj-user')
-  let g:textobj_line_no_default_key_mappings = 1
-  omap aL <Plug>(textobj-line-a)
-  omap iL <Plug>(textobj-line-i)
 
   " let g:textobj_enclosedsyntax_no_default_key_mappings = 1
   call neobundle#untap()
 endif
+
+if neobundle#tap('vim-textobj-line') "{{{
+  let g:textobj_line_no_default_key_mappings = 1
+  omap aL <Plug>(textobj-line-a)
+  omap iL <Plug>(textobj-line-i)
+
+  call neobundle#untap()
+endif "}}}
 
 if neobundle#tap('vim-textobj-function') "{{{
   let g:textobj_function_no_default_key_mappings = 1
@@ -296,6 +302,7 @@ let g:textobj_multiblock_blocks = [
 
   call neobundle#untap()
 endif "}}}
+"}}}
 
 if neobundle#tap('vim-smartinput') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
