@@ -39,7 +39,6 @@ if has('vim_starting')
   NeoBundleCheck
 endif
 
-" #vim system config "{{{
 language message C
 scriptencoding=utf-8
 set encoding=utf-8
@@ -65,9 +64,8 @@ set showcmd " 入力中のキーマップを表示する
 let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
 
 set cpoptions-=m
-"}}}
 
-" #action config " {{{
+
 set autoindent smartindent
 set ignorecase smartcase
 set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
@@ -82,7 +80,7 @@ set virtualedit=block
 set wildmenu
 set wildmode=longest:full,full
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
-" }}}
+"
 
 " #tab
 set shiftround
@@ -139,7 +137,6 @@ set background=dark
 augroup call_functions
   autocmd!
   au FileType * call s:set_colors()
-  au FileType * call s:only_once()
   au FileType * call s:set_highlight_sub()
 augroup END
 
@@ -190,14 +187,6 @@ function! s:set_highlight_sub() " {{{
   highlight IncSearch       ctermfg=39 ctermbg=50
   highlight Visual          cterm=reverse
 endfunction " }}}
-
-function! s:only_once() "{{{
-  if exists("g:only_once")
-    return 0
-  endif
-
-  let g:only_once = 1
-endfunction "}}}
 
 " each filetype config
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent

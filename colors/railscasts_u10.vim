@@ -77,7 +77,7 @@ highlight IncSearch           ctermfg=39 ctermbg=50
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=236 cterm=NONE
 highlight CursorLineNr        ctermfg=196
-highlight Todo                      ctermfg=16 ctermbg=220
+highlight Todo                ctermfg=16 ctermbg=220
 
 highlight rubyFunction              ctermfg=226
 highlight rubyDefine                ctermfg=208

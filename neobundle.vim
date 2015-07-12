@@ -194,21 +194,21 @@ NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'marcus/rsense' :helpが使えなくなる
 NeoBundle 'NigoroJr/rsense'
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete']}
+NeoBundleLazy 'Rip-Rip/clang_complete', { 'filetypes' : ['c', 'cpp'] }
 
 NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : { 'insert' : 1 }}
 NeoBundleLazy 'cohama/vim-smartinput-endwise', { 'depends' : [ 'kana/vim-smartinput' ] }
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Rip-Rip/clang_complete'
 "}}}
 
 NeoBundle 'Shougo/context_filetype.vim'
-" NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 NeoBundle 'tpope/vim-fugitive'      " git
+" NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 
 NeoBundle 'mattn/webapi-vim'
@@ -516,18 +516,18 @@ endif "}}}
   " let g:over#command_line#search#enable_incsearch = 1
   " let g:over#command_line#search#enable_move_cursor = 1
 
-" #anzu&incsearch マッチした数&自動ハイライト&オフ"{{{
+" #anzu&incsearch マッチした数&自動ハイライト&オフ "{{{0
   set hlsearch
   let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
   map / <Plug>(incsearch-forward)
   map ? <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
-  map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
-  map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
   map * <Plug>(anzu-n-with-echo)
   map # <Plug>(anzu-N-with-echo)
   map * <Plug>(incsearch-nohl-*)
   map # <Plug>(incsearch-nohl-#)
+  map n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
+  map N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
 "}}}
 
 call neobundle#end()
