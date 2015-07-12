@@ -4,10 +4,6 @@ if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 endif
 
-function! s:meet_neocomplete_requirements()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
-
 if has('vim_starting') "set the directory to be managed by the bundle
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
@@ -106,6 +102,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'   " 汎用的なquickrun-hook
 "}}}
 
+NeoBundle 'Shougo/context_filetype.vim'
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
 NeoBundle 'tomtom/tcomment_vim'
@@ -207,77 +204,97 @@ NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
 " #input-support"{{{
-if s:meet_neocomplete_requirements()
-  NeoBundle 'Shougo/neocomplete'
-  " NeoBundle 'marcus/rsense' :helpが使えなくなる
-  NeoBundle 'NigoroJr/rsense'
-  NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
-        \ 'autoload' : { 'insert' : 1, 'filetype' : 'ruby', } }
-endif
+NeoBundle 'Shougo/neocomplete'
+" NeoBundle 'marcus/rsense' :helpが使えなくなる
+NeoBundle 'NigoroJr/rsense'
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete']}
 
-NeoBundle 'kana/vim-smartinput'
-
-NeoBundleLazy 'kana/vim-smartinput'
+NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : { 'insert' : 1 }}
 NeoBundleLazy 'cohama/vim-smartinput-endwise', { 'depends' : [ 'kana/vim-smartinput' ] }
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Rip-Rip/clang_complete'
 "}}}
 
-" <CR>mapping config "{{{
-if neobundle#tap('vim-smartinput')
-  call neobundle#config({ 'autoload' : { 'insert' : 1 }})
+"###################### plugin config ############################"
+let g:netrw_nogx=1             " 不要なkeymapを無効
+let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
+let g:solarized_termcolors=256 " solarizedをCUIで使うため
+command! -range Trans :<line1>,<line2>:ExciteTranslate
 
+
+if neobundle#tap('vim-smartinput') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call smartinput_endwise#define_default_rules()
   endfunction
 
   call neobundle#untap()
-endif
+endif "}}}
 
-function! g:CR_mapping()
-  if neosnippet#expandable()
-    return neosnippet#mappings#_expand_target()
-  else
-    return neocomplete#close_popup()
-  endif
-endfunction
-
-" neosnippet and neocomplete compatible
-if neobundle#tap('vim-smartinput-endwise')
+if neobundle#tap('vim-smartinput-endwise') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
-    call s:define_rule_ruby()
 
-    imap <silent><expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" : g:CR_mapping() . '<CR>'
+    " ruby
+    call smartinput#define_rule({
+          \ 'at' : '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#', 'char': '<CR>',
+          \ 'input': '<CR>' .  'end' . '<Esc>O',
+          \ 'filetype': ['ruby']
+          \ })
+
+    " neosnippet and neocomplete compatible
+    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
+          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+          \ neocomplete#close_popup()
   endfunction
-  call neobundle#untap()
-endif
-"}}}
-
-
-"###################### plugin config ############################"
-let g:netrw_nogx=1             " 不要なkeymapを無効
-let g:rsenseUseOmniFunc=1
-let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
-let g:solarized_termcolors=256 " solarizedをCUIで使うため
-command! -range Trans :<line1>,<line2>:ExciteTranslate
-
-if neobundle#tap('vinarise.vim') "{{{
-  let g:vinarise_enable_auto_detect = 1
-
   call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('neocomplete.vim') && has('lua') "{{{
+  let g:rsenseUseOmniFunc=1
   let g:neocomplete#enable_at_startup = 1
-  let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
+  " let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
 
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('switch.vim') "{{{
-  let neobundle#hooks.on_source = '~/.vim/rc/switch.rc.vim'
+if neobundle#tap('unite.vim') "{{{
+  command! Uscheme :Unite colorscheme -auto-preview
+  command! Umap :Unite output:map|map!|lmap
+
+  nnoremap [unite] <Nop>
+  xnoremap [unite] <Nop>
+  nmap ;u [unite]
+  xmap ;u [unite]
+
+  nnoremap <silent><Space>m :<C-U>Unite mark<CR>
+  nnoremap <silent><Space>b :<C-U>Unite buffer -auto-resize<CR>
+  nnoremap <silent><Space>t :<C-u>Unite tab -auto-resize -select=`tabpagenr()-1` <CR>
+  nnoremap <silent><Space>k :<C-U>Unite bookmark<CR>
+  nnoremap <silent><Space>f :<C-U>Unite file -start-insert<CR>
+  nnoremap <silent><Space>o :<C-U>Unite outline -auto-resize -no-start-insert -resume<CR>
+  nnoremap <silent><Space>r :<C-U>UniteResume<CR>
+
+  " unite-grep {{{
+  let g:unite_source_grep_max_candidates = 200
+  if executable('ag')
+      " Use ag in unite grep source.
+      let g:unite_source_grep_command = 'ag'
+      let g:unite_source_grep_recursive_opt = 'HRn'
+      let g:unite_source_grep_default_opts =
+      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  endif
+
+  " unite-grepのキーマップ 選択した文字列をunite-grep
+  vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+  " }}}
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vinarise.vim') "{{{
+  let g:vinarise_enable_auto_detect = 1
 
   call neobundle#untap()
 endif "}}}
@@ -378,16 +395,10 @@ endif "}}}
 
 if neobundle#tap('vim-easymotion') "{{{
   "Todo: マップを整える
-  " let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvb'
   let g:EasyMotion_leader_key=";"
   " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
   " map <Space>j <Plug>(easymotion-j)
   " map <Space>k <Plug>(easymotion-k)
-  " map <Space>w <Plug>(easymotion-w)
-  " map <Space>f <Plug>(easymotion-fl)
-  " map <Space>t <Plug>(easymotion-tl)
-  " map <Space>F <Plug>(easymotion-Fl)
-  " map <Space>T <Plug>(easymotion-Tl)
 
   call neobundle#untap()
 endif "}}}
@@ -445,9 +456,6 @@ if neobundle#tap('vim-submode') "{{{
     call submode#map('winsize', 'n', '', '<', '<C-w><')
     call submode#map('winsize', 'n', '', '+', '<C-w>+')
     call submode#map('winsize', 'n', '', '-', '<C-w>-')
-    " TODO: Repeat last executed macro. umaku dekinai...
-    " call submode#enter_with('macro/a', 'n', '', '@a', '@a')
-    " call submode#map('macro/a', 'n', '', 'a', '@a')
   endfunction
 endif "}}}
 
@@ -459,14 +467,43 @@ if neobundle#tap('matchit.zip') "{{{
   call neobundle#untap()
 endif "}}}
 
-function! s:define_rule_ruby()
-  let l:pattern = '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#'
-  call smartinput#define_rule({
-        \ 'at' : l:pattern, 'char': '<CR>',
-        \ 'input': '<CR>' .  'end' . '<Esc>O',
-        \ 'filetype': ['ruby']
-        \ })
-endfunction
+if neobundle#tap('alpaca_tags') "{{{
+  let g:alpaca_tags#config = {
+        \    '_' : '-R --sort=yes',
+        \    'ruby': '--languages=+Ruby',
+        \ }
+
+  augroup AlpacaTags
+    autocmd!
+    if exists(':Tags')
+      autocmd BufWritePost Gemfile TagsBundle
+      autocmd BufEnter * TagsSet
+      " 毎回保存と同時更新する場合はコメントを外す
+      " autocmd BufWritePost * TagsUpdate
+    endif
+  augroup END
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-speeddating') "{{{
+  function! neobundle#hooks.on_post_source(bundle)
+    SpeedDatingFormat! %v
+    SpeedDatingFormat! %^v
+  endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+" if neobundle#tap('') "{{{
+"
+"   call neobundle#untap()
+" endif "}}}
+"
+" if neobundle#tap('') "{{{
+"
+"   call neobundle#untap()
+" endif "}}}
 
 " #over
   let g:over#command_line#enable_move_cursor = 1
@@ -490,83 +527,4 @@ endfunction
   map # <Plug>(incsearch-nohl-#)
 "}}}
 
-if neobundle#tap('alpaca_tags') "{{{
-  let g:alpaca_tags#config = {
-        \    '_' : '-R --sort=yes',
-        \    'ruby': '--languages=+Ruby',
-        \ }
-
-  augroup AlpacaTags
-    autocmd!
-    if exists(':Tags')
-      autocmd BufWritePost Gemfile TagsBundle
-      autocmd BufEnter * TagsSet
-      " 毎回保存と同時更新する場合はコメントを外す
-      " autocmd BufWritePost * TagsUpdate
-    endif
-  augroup END
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('unite.vim') "{{{
-  command! Uscheme :Unite colorscheme -auto-preview
-  command! Umap :Unite output:map|map!|lmap
-
-  nnoremap [unite] <Nop>
-  xnoremap [unite] <Nop>
-  nmap ;u [unite]
-  xmap ;u [unite]
-
-  nnoremap ;m :Unite mark<CR>
-  nnoremap ;b :Unite buffer<CR>
-  nnoremap ;k :Unite bookmark<CR>
-  nnoremap ;f :Unite file -start-insert<CR>
-  nnoremap ;r :UniteResume<CR>
-
-  " unite-grep {{{
-  let g:unite_source_grep_max_candidates = 200
-  if executable('ag')
-      " Use ag in unite grep source.
-      let g:unite_source_grep_command = 'ag'
-      let g:unite_source_grep_recursive_opt = 'HRn'
-      let g:unite_source_grep_default_opts =
-      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  endif
-
-  " unite-grepのキーマップ 選択した文字列をunite-grep
-  vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
-  " }}}
-if neobundle#tap('vim-speeddating') "{{{
-  function! neobundle#hooks.on_post_source(bundle)
-    SpeedDatingFormat! %v
-    SpeedDatingFormat! %^v
-  endfunction
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('') "{{{
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('') "{{{
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('') "{{{
-
-  call neobundle#untap()
-endif "}}}
-
 call neobundle#end()
-filetype plugin indent on " Required
-syntax enable
-
-if has('vim_starting')
-  NeoBundleCheck
-endif
-
