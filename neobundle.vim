@@ -185,7 +185,7 @@ NeoBundle '1player/lettuce.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
-" #input-support"{{{
+" #input-support "{{{
 NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'marcus/rsense' :helpが使えなくなる
 NeoBundle 'NigoroJr/rsense'
@@ -193,7 +193,7 @@ NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neoc
 NeoBundleLazy 'Rip-Rip/clang_complete',        { 'filetypes' : ['c', 'cpp'] }
 NeoBundleLazy 'kana/vim-smartinput',           { 'autoload' : { 'insert' : 1 }}
 NeoBundleLazy 'cohama/vim-smartinput-endwise', { 'depends' : [ 'kana/vim-smartinput' ] }
-NeoBundleLazy 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
 "}}}
 
@@ -393,21 +393,6 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 
   call neobundle#untap()
 endif "}}}
-
-if neobundle#tap('neosnippet.vim') " {{{
-
-call neobundle#config({
-      \   'autoload' : {
-      \     'insert' : 1,
-      \     'filetype' : 'snippet',
-      \     'commands' : [ 'NeoSnippetEdit', 'NeoSnippetSource' ],
-      \     'filetypes' : [ 'nsnippet' ],
-      \     'unite_sources' :
-      \       ['snippet', 'neosnippet/user', 'neosnippet/runtime']
-      \   }
-      \ })
-
-endif " }}}
 
 if neobundle#tap('unite.vim') "{{{
   command! Uscheme :Unite colorscheme -auto-preview
