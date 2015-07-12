@@ -24,6 +24,7 @@ set path+=/usr/include/c++/HEAD/
 
 
 " Release keymappings for plug-in.
+let mapleader = ";"
 nnoremap Q <Nop>
 nnoremap ; <Nop>
 xnoremap ; <Nop>
@@ -91,9 +92,10 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
-set foldlevel=0
 set foldcolumn=1
 set foldtext=FoldCCtext()
+set foldlevel=0
+set foldnestmax=2
 " set foldenable
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 

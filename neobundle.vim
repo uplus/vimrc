@@ -141,7 +141,6 @@ NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-
 NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " textobjをRubyの式として評価
 NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'emonkak/vim-operator-comment',      { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
@@ -157,6 +156,7 @@ NeoBundle 'kana/vim-textobj-fold',     { 'depends' : 'kana/vim-textobj-user' } "
 NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } " l -> L current-lineの行末を除いた
 NeoBundle 'mattn/vim-textobj-url',     { 'depends' : 'kana/vim-textobj-user' } " u
 NeoBundle 'h1mesuke/textobj-wiw',      { 'depends' : 'kana/vim-textobj-user' } " ,w  CamelCaseMotionと併用
+NeoBundle 'thinca/vim-textobj-comment',          { 'depends' : 'kana/vim-textobj-user' } " c コメント
 NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " p 最後にペーストしたtextobj
 NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} 任意の区切り文字
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb なんらかの括弧
@@ -169,13 +169,8 @@ NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } "
 
 " , { 'depends' : 'kana/vim-textobj-user' }
 " , { 'depends' : 'kana/vim-textobj-user' }
-" , { 'depends' : 'kana/vim-textobj-user' }
-
-" NeoBundle 'thinca/vim-textobj-comment'        " c コメント
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
-" NeoBundle 'glts/vim-textobj-indblock'         " ao io インデントの空白行
-
 " }}}
 
 " #colorscheme"{{{
@@ -205,7 +200,6 @@ NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' 
 " #other "{{{
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 " NeoBundle 'tpope/vim-fugitive'      " git
@@ -257,10 +251,17 @@ endif "}}}
 
 " vim-textobj "{{{
 if neobundle#tap('vim-textobj-user')
-
   " let g:textobj_enclosedsyntax_no_default_key_mappings = 1
   call neobundle#untap()
 endif
+
+if neobundle#tap('vim-textobj-indent') "{{{
+  vmap il <Plug>(textobj-indent-i)
+  vmap al <Plug>(textobj-indent-a)
+  omap il <Plug>(textobj-indent-i)
+  omap al <Plug>(textobj-indent-a)
+  call neobundle#untap()
+endif "}}}
 
 if neobundle#tap('h1mesuke/textobj-wiw') "{{{
   " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く

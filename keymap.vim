@@ -44,7 +44,10 @@ xmap ]<Space> <ESC>]<Space>gv
 
 nnoremap Y v$hy
 nmap S <C-V>$sa
-nmap gJ mjkJ
+nmap gJ ]ekJ
+
+" 行末にスペースを一つ追加する
+xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
 " deprecated
 map mp %
