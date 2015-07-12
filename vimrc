@@ -29,6 +29,8 @@ nnoremap ;  <Nop>
 xnoremap ;  <Nop>
 nnoremap ,  <Nop>
 xnoremap ,  <Nop>
+nnoremap s <Nop>
+xnoremap s <Nop>
 
 
 Source 'neobundle'
@@ -98,6 +100,7 @@ set foldenable
 set foldmethod=marker
 set foldcolumn=1
 " set foldlevel=2
+set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 set foldtext=FoldCCtext()
 
 " set list
@@ -114,7 +117,7 @@ Source 'keymap'
 
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd BufEnter    * lcd %:p:h
-au uAutoCmd VimResized   * wincmd =
+au uAutoCmd VimResized  * wincmd =
 
 " windowの行数の20%にセットする scrolloffはglobal-option
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
@@ -122,36 +125,20 @@ au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
 
-"
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 au FileType vim setl iskeyword-=#
-
 au FileType * setl formatoptions-=ro
-setlocal formatoptions-=ro
 " 3formatoptions
 " au uAutoCmd FileType * setlocal formatoptions-=roA
 " r When type <return> in insert-mode auto insert commentstring
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 
-
 set t_Co=256
 set background=dark
 
 au uAutoCmd FileType * nested call s:set_colors()
-
-" TODO: 動作検証
-" cmdは文字列とれるようにした方がいいかも
-function! OneShotAutocmd(name, event, pattern, cmd) "{{{
-  function l:tmp_func()
-    {a:cmd}
-    autocmd! {a:name}
-  endfunction
-
-  augroup a:name
-    autocmd!
-    autocmd {a:event} {a:pattern} call l:tmp_func()
-  augroup END
-endfunction "}}}
+au uAutoCmd ColorScheme * highlight Visual cterm=reverse
+"au uAutoCmd CursorMoved * nohlsearch
 
 function! s:set_colors() "{{{
   if exists("g:set_colors")
@@ -180,8 +167,6 @@ function! s:set_colors() "{{{
 
   let g:set_colors=1
 endfunction "}}}
-
-au ColorScheme * highlight Visual cterm=reverse
 
 " each filetype config
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent

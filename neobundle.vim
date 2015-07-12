@@ -372,7 +372,7 @@ if neobundle#tap('yankround.vim') "{{{
 
   let g:yankround_use_region_hl = 1
   let g:yankround_dir = "~/.vim/tmp/"
-  highlight YankRoundRegion cterm=italic
+  au uAutoCmd ColorScheme * highlight YankRoundRegion cterm=italic
 
   call neobundle#untap()
 endif "}}}
@@ -498,8 +498,8 @@ if neobundle#tap('vim-speeddating') "{{{
 endif "}}}
 
 if neobundle#tap('incsearch.vim') " {{{
-  au ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
-  au ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
+  au uAutoCmd ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
+  au uAutoCmd ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
 
   " let g:incsearch#no_inc_hlsearch = 1 " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す

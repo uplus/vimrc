@@ -178,3 +178,18 @@ function! BufferWipeoutInteractive() " {{{
     bwipeout
   endif
 endfunction " }}}
+
+" TODO: 動作検証
+" cmdは文字列とれるようにした方がいいかも
+function! OneShotAutocmd(name, event, pattern, cmd) "{{{
+  function l:tmp_func()
+    {a:cmd}
+    autocmd! {a:name}
+  endfunction
+
+  augroup a:name
+    autocmd!
+    autocmd {a:event} {a:pattern} call l:tmp_func()
+  augroup END
+endfunction "}}}
+
