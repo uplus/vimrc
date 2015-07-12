@@ -35,8 +35,6 @@ nnoremap <silent> [b :bnext<CR>
 nnoremap <silent> ]b :bprevious<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-nnoremap <silent> [<Space> O<ESC>j
-nnoremap <silent> ]<Space> o<ESC>k
 nnoremap <silent> [p :cprevious<CR>
 nnoremap <silent> ]p :cprevious<CR>
 
@@ -78,8 +76,8 @@ xnoremap <Space>sg :s//g<LEFT><LEFT>
 noremap <Space>h ^
 noremap <Space>l $
 
-nmap <Space>p o<ESC>p
-nmap <Space>P o<ESC>P
+nmap <Space>p :call feedkeys("]\<Space>jp")<CR>
+nmap <Space>P :call feedkeys("[\<Space>kP")<CR>
 
 xnoremap <Space>n :normal<Space>
 nnoremap <Space>z za
@@ -142,5 +140,5 @@ noremap! <C-F> <Right>
 "}}}
 
 " TODO: Move those settings to right section
-" au MyAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>
-" au MyAutoCmd CmdwinEnter [:>] nunmap <buffer> <Tab>
+" au uAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>
+" au uAutoCmd CmdwinEnter [:>] nunmap <buffer> <Tab>
