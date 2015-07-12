@@ -96,10 +96,10 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
-" #DeleteNonActiveBuffers "{{{
-command! Dnab call DeleteNonActiveBuffers()
-command! DeleteNonActiveBuffers call DeleteNonActiveBuffers()
-function! DeleteNonActiveBuffers()
+" #ActiveOnly "{{{
+command! Aonly call ActiveOnly()
+command! ActiveOnly call ActiveOnly()
+function! ActiveOnly()
   for l:line in split(Capture("ls"), "\n")
     let l:front = matchstr(l:line, '\v\s*\d*......\s*')
     if match(l:front, 'a') == -1
