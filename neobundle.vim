@@ -54,7 +54,7 @@ NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.
 NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
 NeoBundle 'rhysd/committia.vim'     " commitメッセージ表示をステキに
 NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
-NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
+" NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bling/vim-airline'
 " NeoBundle 'Yggdroot/indentLine'
@@ -116,7 +116,7 @@ NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
-" #tab and #ref "{{{
+" #tag and #ref "{{{
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'szw/vim-tags'
@@ -133,47 +133,50 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 "}}}
 
 " #operator "{{{
+" operatorをLazyにすると読み込まない
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user'           }
 NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' }
-NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-textobj-user'            }
-NeoBundle 'rhysd/vim-operator-evalruby'       " 選択したtextobjをRubyの式として評価する
-NeoBundle 'emonkak/vim-operator-comment'
-NeoBundle 'emonkak/vim-operator-sort'
-NeoBundle 'rhysd/vim-operator-surround'
-" NoeBundle 'tyru/operator-camelize.vim'  " CamelCaseとsnake_caseを相互変換
+NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " textobjをRubyの式として評価
+NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'emonkak/vim-operator-comment',      { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
+NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' }
 "}}}
 
 " #textobj "{{{
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-entire',   { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'rhysd/vim-textobj-ruby',    { 'depends' : 'kana/vim-textobj-user' } " arr brr Ruby のブロック
+NeoBundle 'kana/vim-textobj-entire',   { 'depends' : 'kana/vim-textobj-user' } " e buffer全体
+NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' } " l
+NeoBundle 'kana/vim-textobj-syntax',   { 'depends' : 'kana/vim-textobj-user' } " y syntax-highlightされてる部分
+NeoBundle 'kana/vim-textobj-fold',     { 'depends' : 'kana/vim-textobj-user' } " z
+NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } " l -> L current-lineの行末を除いた
+NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " p 最後にペーストしたtextobj
+NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} 任意の区切り文字
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb なんらかの括弧
-NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " 連続したtextobjを矩形選択 ciw -> cIw
+NeoBundle 'lucapette/vim-textobj-underscore',    { 'depends' : 'kana/vim-textobj-user' } " _ underscore区切り?
+NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " regexで自分でtextobjが作れる
+NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' }  " q 任意のsyntax /../ '..'
 
-NeoBundle 'kana/vim-textobj-syntax'           " ay iy
-NeoBundle 'kana/vim-textobj-fold'             " az iz
-" NeoBundle 'kana/vim-textobj-line'   " al il
-NeoBundle 'thinca/vim-textobj-between'        " af if 任意の区切り文字
-NeoBundle 'thinca/vim-textobj-comment'        "ac ic コメント
-NeoBundle 'gilligan/textobj-lastpaste'        "ip 直前に変更またはヤンクされたテキスト
 
-" NeoBundle 'thinca/vim-textobj-function-javascript'  " af if JavaScript の関数内
-" NeoBundle 'thinca/vim-textobj-function-perl'  " af if Perl の関数内
-NeoBundle 'saihoooooooo/vim-textobj-space'    " aS iS 連続したスペース
-NeoBundle 'rhysd/vim-textobj-lastinserted'    " au iu textobjとして最後に挿入された範囲
+NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
+NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
+NeoBundle 'anyakichi/vim-textobj-xbrackets', { 'depends' : 'kana/vim-textobj-user' }    " xb func() などを表す
+" , { 'depends' : 'kana/vim-textobj-user' }
+" , { 'depends' : 'kana/vim-textobj-user' }
+" , { 'depends' : 'kana/vim-textobj-user' }
+
+" NeoBundle 'thinca/vim-textobj-comment'        " c コメント
+
 " NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上のword  ,がリマップされる
-" NeoBundle 'sgur/vim-textobj-parameter'  " a i 関数の引数
-NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
-NeoBundle 'anyakichi/vim-textobj-xbrackets'   " axb ixb x() や x<> など
-NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
-NeoBundle 'osyo-manga/vim-textobj-context'    " icx 別のfiletype のコンテキスト
+" NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
+" NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
+" NeoBundle 'glts/vim-textobj-indblock'         " ao io インデントの空白行
 
-NeoBundle 'glts/vim-textobj-indblock'         " ao io インデントの空白行
-NeoBundle 'deris/vim-textobj-enclosedsyntax'  " aq iq Perl や Ruby の正規表現
 " }}}
 
 " #colorscheme"{{{
@@ -201,6 +204,7 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 "}}}
 
+" #other "{{{
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
 NeoBundle 'tomtom/tcomment_vim'
@@ -209,14 +213,16 @@ NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
-
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'mattn/excitetranslate-vim'
+NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser-github.vim'
+NeoBundleLazy 'mattn/excitetranslate-vim'
 
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
+NeoBundleLazy 'itchyny/screensaver.vim'
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+"}}}
 
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
@@ -224,6 +230,72 @@ let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしな
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
+if neobundle#tap('vim-operator-user')
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-operator-surround') "{{{
+  " () {} はab aB で表す 他は記号
+  " srのaは srab を srbとするため
+  map <silent>sa <Plug>(operator-surround-append)
+  map <silent>sd <Plug>(operator-surround-delete)
+  map <silent>sr <Plug>(operator-surround-replace)a
+
+  " if you use vim-textobj-multiblock
+  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+
+  " if you use vim-textobj-between srbはsrabと被る
+  " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+  " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-textobj-user')
+  let g:textobj_line_no_default_key_mappings = 1
+  omap aL <Plug>(textobj-line-a)
+  omap iL <Plug>(textobj-line-i)
+
+  " let g:textobj_enclosedsyntax_no_default_key_mappings = 1
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-textobj-function') "{{{
+  let g:textobj_function_no_default_key_mappings = 1
+  omap iF <Plug>(textobj-function-i)
+  omap aF <Plug>(textobj-function-a)
+  vmap iF <Plug>(textobj-function-i)
+  vmap aF <Plug>(textobj-function-a)
+  omap IF <Plug>(textobj-function-I)
+  omap AF <Plug>(textobj-function-A)
+  vmap IF <Plug>(textobj-function-I)
+  vmap AF <Plug>(textobj-function-A)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-textobj-multiblock') "{{{
+  " omap ib <Plug>(textobj-multiblock-i)
+  " omap ab <Plug>(textobj-multiblock-a)
+  " vmap ib <Plug>(textobj-multiblock-i)
+  " vmap ab <Plug>(textobj-multiblock-a)
+
+let g:textobj_multiblock_search_limit = 20
+let g:textobj_multiblock_blocks = [
+      \   ['(', ')', 1],
+      \   ['[', ']', 1],
+      \   ['{', '}', 1],
+      \   ['<', '>', 1],
+      \   ['"', '"', 1],
+      \   ["'", "'", 1],
+      \   ['`', '`', 1],
+      \   ['|', '|', 1],
+      \ ]
+
+  call neobundle#untap()
+endif "}}}
 
 if neobundle#tap('vim-smartinput') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
@@ -357,18 +429,18 @@ if neobundle#tap('committia.vim') "{{{
 endif "}}}
 
 if neobundle#tap('yankround.vim') "{{{
-	nmap p <Plug>(yankround-p)
-	xmap p <Plug>(yankround-p)
-	nmap P <Plug>(yankround-P)
-	nmap gp <Plug>(yankround-gp)
-	xmap gp <Plug>(yankround-gp)
-	nmap gP <Plug>(yankround-gP)
-	nmap <C-p> <Plug>(yankround-prev)
-	nmap <C-n> <Plug>(yankround-next)
+  nmap p <Plug>(yankround-p)
+  xmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  xmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
 
   " cmdlineで<C-y>押せばレジストリが遡れる
-	cmap <C-r> <Plug>(yankround-insert-register)
-	cmap <C-y> <Plug>(yankround-pop)
+  cmap <C-r> <Plug>(yankround-insert-register)
+  cmap <C-y> <Plug>(yankround-pop)
 
   let g:yankround_use_region_hl = 1
   let g:yankround_dir = "~/.vim/tmp/"
@@ -377,30 +449,16 @@ if neobundle#tap('yankround.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-operator-surround') "{{{
-  " () {} はab aB で表す 他は記号
-  " srのaは srab を srbとするため
-  map <silent>sa <Plug>(operator-surround-append)
-  map <silent>sd <Plug>(operator-surround-delete)
-  map <silent>sr <Plug>(operator-surround-replace)a
-
-  " if you use vim-textobj-multiblock
-  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
-  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
-
-  " if you use vim-textobj-between srbはsrabと被る
-  " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
-  " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('vim-easymotion') "{{{
+  " https://github.com/easymotion/vim-easymotion
   "Todo: マップを整える
   let g:EasyMotion_leader_key=";"
   " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
-  " map <Space>j <Plug>(easymotion-j)
-  " map <Space>k <Plug>(easymotion-k)
+
+  " map <Leader>j <Plug>(easymotion-j)
+  " map <Leader>k <Plug>(easymotion-k)
+  " map <Leader>l <Plug>(easymotion-lineforward)
+  " map <Leader>h <Plug>(easymotion-linebackward)
 
   call neobundle#untap()
 endif "}}}
@@ -418,15 +476,6 @@ if neobundle#tap('vim-airline') "{{{
   let g:airline_left_sep        = ''
   let g:airline#extensions#tabline#enabled  = 1
   let g:airline#extensions#tabline#left_sep = ''
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('vim-textobj-user') "{{{
-  omap ab <Plug>(textobj-multiblock-a)
-  omap ib <Plug>(textobj-multiblock-i)
-  xmap ab <Plug>(textobj-multiblock-a)
-  xmap ib <Plug>(textobj-multiblock-i)
 
   call neobundle#untap()
 endif "}}}
