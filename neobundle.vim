@@ -1,10 +1,10 @@
-" Neobundle:
+" NeoBundle:
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 endif
 
-if has('vim_starting') "set the directory to be managed by the bundle
+if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
@@ -158,10 +158,8 @@ NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj
 NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} 任意の区切り文字
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb なんらかの括弧
 NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " 連続したtextobjを矩形選択 ciw -> cIw
-NeoBundle 'lucapette/vim-textobj-underscore',    { 'depends' : 'kana/vim-textobj-user' } " _ underscore区切り?
 NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " regexで自分でtextobjが作れる
 NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' } " q 任意のsyntax /../ '..'
-NeoBundle 'anyakichi/vim-textobj-xbrackets',     { 'depends' : 'kana/vim-textobj-user' } " xb func()などを表す
 
 
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
@@ -205,11 +203,11 @@ NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' 
 
 " #other "{{{
 NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'Shougo/vimfiler.vim'     " Lazy にするとデフォルトのブラウザにできない
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
-NeoBundle 'tpope/vim-fugitive'      " git
+" NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'mattn/webapi-vim'
@@ -222,7 +220,7 @@ NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'
 NeoBundle 'mattn/excitetranslate-vim'
 
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
-NeoBundle 'itchyny/screensaver.vim'
+" NeoBundle 'itchyny/screensaver.vim'
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 "}}}
