@@ -330,6 +330,7 @@ if neobundle#tap('vim-smartinput-endwise') "{{{
     imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
           \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
           \ neocomplete#close_popup()
+
   endfunction
   call neobundle#untap()
 endif "}}}
@@ -354,24 +355,6 @@ call neobundle#config({
       \       ['snippet', 'neosnippet/user', 'neosnippet/runtime']
       \   }
       \ })
-
-let g:neosnippet#enable_snipmate_compatibility = 1
-" My original snippets
-let g:neosnippet_snippets_directories = s:add_to_uniq_list(
-      \   s:get_list(g:, 'neosnippet_snippets_directories'),
-      \   '~/.vim/snippets'
-      \ )
-
-" let g:neosnippet#snippets_directory = join(g:neosnippet_snippets_directories, ',')
-" <CR> to expand snippet if can
-" imap <expr><CR> !pumvisible() ? "\<CR>" :
-"       \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-"       \ neocomplete#close_popup()
-" supertab.
-" imap <expr><TAB> pumvisible() ? "\<C-n>" :
-"       \ neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
-" smap <expr><TAB> pumvisible() ? "\<C-n>" :
-"       \ neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
 
 endif " }}}
 
