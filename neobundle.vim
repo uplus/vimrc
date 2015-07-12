@@ -213,12 +213,16 @@ NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'mattn/webapi-vim'
-NeoBundleLazy 'tyru/open-browser.vim'
-NeoBundleLazy 'tyru/open-browser-github.vim'
-NeoBundleLazy 'mattn/excitetranslate-vim'
+NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
+      \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
+      \     'function_prefix' : 'openbrowser',
+      \   }  }
+
+NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
+NeoBundle 'mattn/excitetranslate-vim'
 
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
-NeoBundleLazy 'itchyny/screensaver.vim'
+NeoBundle 'itchyny/screensaver.vim'
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 "}}}
