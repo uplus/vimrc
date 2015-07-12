@@ -508,8 +508,8 @@ if neobundle#tap('incsearch.vim') " {{{
   map g/ <Plug>(incsearch-stay)
   map / <Plug>(incsearch-forward)
   map ? <Plug>(incsearch-backward)
-  map * <Plug>(incsearch-nohl-*)<Plug>(anzu-star)
-  map # <Plug>(incsearch-nohl-#)<Plug>(anzu-sharp)
+  map * <Plug>(incsearch-nohl)<Plug>(anzu-star)
+  map # <Plug>(incsearch-nohl)<Plug>(anzu-sharp)
 
   map   n <Plug>(incsearch-nohl-n)
   map   N <Plug>(incsearch-nohl-N)
