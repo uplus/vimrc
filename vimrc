@@ -137,11 +137,7 @@ setlocal formatoptions-=ro
 set t_Co=256
 set background=dark
 
-augroup call_functions
-  autocmd!
-  au FileType * nested call s:set_colors()
-  au FileType * call s:set_highlight_sub()
-augroup END
+au uAutoCmd FileType * nested call s:set_colors()
 
 " TODO: 動作検証
 " cmdは文字列とれるようにした方がいいかも
@@ -185,9 +181,7 @@ function! s:set_colors() "{{{
   let g:set_colors=1
 endfunction "}}}
 
-function! s:set_highlight_sub() " {{{
-  highlight Visual          cterm=reverse
-endfunction " }}}
+au ColorScheme * highlight Visual cterm=reverse
 
 " each filetype config
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
