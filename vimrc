@@ -32,7 +32,6 @@ xnoremap , <Nop>
 nnoremap s <Nop>
 xnoremap s <Nop>
 
-
 Source 'neobundle'
 filetype plugin indent on " Required
 syntax enable
@@ -92,10 +91,10 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
+set foldlevel=0
 set foldcolumn=1
 set foldtext=FoldCCtext()
 " set foldenable
-" set foldlevel=2
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 
 " set list
@@ -117,13 +116,16 @@ au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "
 au uAutoCmd BufEnter    * lcd %:p:h
 au uAutoCmd VimResized  * wincmd =
 
+" 引数を全てタブで開く
+au uAutoCmd VimEnter    * nested tab ball
+
 " windowの行数の20%にセットする scrolloffはglobal-option
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
-au FileType vim setl iskeyword-=#
-au FileType * setl formatoptions-=ro
+au uAutoCmd FileType vim setl iskeyword-=#
+au uAutoCmd FileType * setl formatoptions-=ro
 " r When type <return> in insert-mode auto insert commentstring
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 
@@ -164,7 +166,7 @@ endfunction "}}}
 
 " each filetype config
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
-au uAutoCmd FileType vim nnoremap <silent> gca A<Tab>"<Space>
+au uAutoCmd FileType vim nnoremap <silent> gca A<Space>"<Space>
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
 
