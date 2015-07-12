@@ -81,6 +81,7 @@ NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
 "}}}
 
 " #move"{{{
+NeoBundle 'bkad/CamelCaseMotion'      " textobjも持ってる ,w ,b ,e
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kana/vim-smartword'
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
@@ -154,6 +155,8 @@ NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' } "
 NeoBundle 'kana/vim-textobj-syntax',   { 'depends' : 'kana/vim-textobj-user' } " y syntax-highlightされてる部分
 NeoBundle 'kana/vim-textobj-fold',     { 'depends' : 'kana/vim-textobj-user' } " z
 NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } " l -> L current-lineの行末を除いた
+NeoBundle 'mattn/vim-textobj-url',     { 'depends' : 'kana/vim-textobj-user' } " u
+NeoBundle 'h1mesuke/textobj-wiw',      { 'depends' : 'kana/vim-textobj-user' } " ,w  CamelCaseMotionと併用
 NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " p 最後にペーストしたtextobj
 NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} 任意の区切り文字
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb なんらかの括弧
@@ -161,16 +164,14 @@ NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj
 NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " regexで自分でtextobjが作れる
 NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' } " q 任意のsyntax /../ '..'
 
-
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
+
 " , { 'depends' : 'kana/vim-textobj-user' }
 " , { 'depends' : 'kana/vim-textobj-user' }
 " , { 'depends' : 'kana/vim-textobj-user' }
 
 " NeoBundle 'thinca/vim-textobj-comment'        " c コメント
-
-" NeoBundle 'h1mesuke/textobj-wiw'    " a,w, i,w snake_case 上のword  ,がリマップされる
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 " NeoBundle 'glts/vim-textobj-indblock'         " ao io インデントの空白行
@@ -261,10 +262,25 @@ if neobundle#tap('vim-textobj-user')
   call neobundle#untap()
 endif
 
+if neobundle#tap('h1mesuke/textobj-wiw') "{{{
+  " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
+  let g:textobj_wiw_no_default_key_mappings = 1
+  omap a,w <Plug>(textobj-wiw-a)
+  omap i,w <Plug>(textobj-wiw-i)
+  xmap a,w <Plug>(textobj-wiw-a)
+  xmap i,w <Plug>(textobj-wiw-i)
+
+  call neobundle#untap()
+endif "}}}
+
 if neobundle#tap('vim-textobj-line') "{{{
   let g:textobj_line_no_default_key_mappings = 1
   omap aL <Plug>(textobj-line-a)
   omap iL <Plug>(textobj-line-i)
+
+  " whitout <Space> <CR>...
+  nmap yY y<Plug>(textobj-line-i)
+  nmap dD y<Plug>(textobj-line-i)
 
   call neobundle#untap()
 endif "}}}
