@@ -116,8 +116,8 @@ au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "
 au uAutoCmd BufEnter    * lcd %:p:h
 au uAutoCmd VimResized  * wincmd =
 
-" 引数を全てタブで開く
-au uAutoCmd VimEnter    * nested tab ball
+" 引数を全てタブで開く 条件付けないとcommittiaがうまくいなかくなる
+au uAutoCmd VimEnter    * nested if 2 <= argc() | tab ball | endif
 
 " windowの行数の20%にセットする scrolloffはglobal-option
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
