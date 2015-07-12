@@ -218,6 +218,22 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 " NeoBundle 'itchyny/screensaver.vim'
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+
+" NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'scrooloose/nerdcommenter'
+
+if neobundle#tap('nerdcommenter')
+  let g:old_leader = mapleader
+  " Todo:  neobundleのホックを使ってgの値を元にもどすようにする
+  let mapleader = "g"
+
+  nmap gcc <plug>NERDCommenterToggle
+  xmap gc <plug>NERDCommenterToggle
+  call neobundle#untap()
+
+  let mapleader = ";"
+endif
+
 "}}}
 
 "###################### plugin config ############################"
@@ -225,6 +241,26 @@ let g:netrw_nogx=1             " 不要なkeymapを無効
 let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
 command! -range Trans :<line1>,<line2>:ExciteTranslate
+
+if neobundle#tap('tcomment_vim')
+  call neobundle#untap()
+
+" let g:tcommentMaps = 1
+
+  nnoremap <silent> gyy yy:TComment<CR>
+  nnoremap <silent> gyj yj:.,+1TComment<CR>
+  nnoremap <silent> gyk :-1,yank<CR>:-1,TComment<CR>
+
+  nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
+  nnoremap <silent> gyG yG:.,$TComment<CR>
+  nnoremap <silent> gyp :%y<CR>:%TComment<CR>
+  xnoremap <silent> gy ygv:TComment<CR>
+
+  nnoremap <silent> gcj :.,+1TComment<CR>
+  nnoremap <silent> gck :-1,.TComment<CR>
+
+  call neobundle#untap()
+endif
 
 if neobundle#tap('vim-operator-user')
 

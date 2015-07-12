@@ -6,19 +6,6 @@ command! -nargs=1 -complete=file T tabedit <args>
 command! Vs :tabedit | VimShell
 command! Reload :source $MYVIMRC
 
-" #comment mappings "{{{
-nnoremap <silent> gyy yy:TComment<CR>
-nnoremap <silent> gyj yj:.,+1TComment<CR>
-nnoremap <silent> gyk yk:.,+1TComment<CR>j
-nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
-nnoremap <silent> gyG yG:.,$TComment<CR>
-nnoremap <silent> gyp :%y<CR>:%TComment<CR>
-xnoremap <silent> gy ygv:TComment<CR>
-nnoremap <silent> gcj :TComment<CR>j:TComment<CR>k
-nnoremap <silent> gck :TComment<CR>k:TComment<CR>j
-nnoremap <silent> gcp :%TComment<CR>
-"}}}
-
 " #non register delete "{{{
 nnoremap _d "_d
 vnoremap _d "_d
