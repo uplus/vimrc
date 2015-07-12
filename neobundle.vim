@@ -150,9 +150,9 @@ NeoBundle 'kana/vim-textobj-entire',   { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'rhysd/vim-textobj-ruby',    { 'depends' : 'kana/vim-textobj-user' } " arr brr Ruby のブロック
-NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends': 'kana/vim-textobj-user' } " sb なんらかの括弧
-NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends': 'kana/vim-textobj-user' }
-NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends': 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb なんらかの括弧
+NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' }
 
 NeoBundle 'kana/vim-textobj-syntax'           " ay iy
 NeoBundle 'kana/vim-textobj-fold'             " az iz
