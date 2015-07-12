@@ -82,6 +82,9 @@ set wildmode=longest:full,full
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
 "
 
+set incsearch
+set hlsearch | nohlsearch "Highlight search patterns, support reloading
+
 " #tab
 set shiftround
 set expandtab     "Tabキーでスペース挿入
@@ -136,7 +139,7 @@ set background=dark
 
 augroup call_functions
   autocmd!
-  au FileType * call s:set_colors()
+  au FileType * nested call s:set_colors()
   au FileType * call s:set_highlight_sub()
 augroup END
 
@@ -183,8 +186,6 @@ function! s:set_colors() "{{{
 endfunction "}}}
 
 function! s:set_highlight_sub() " {{{
-  highlight Search          ctermfg=39 ctermbg=56
-  highlight IncSearch       ctermfg=39 ctermbg=50
   highlight Visual          cterm=reverse
 endfunction " }}}
 

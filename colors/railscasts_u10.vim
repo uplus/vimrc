@@ -72,8 +72,6 @@ highlight PmenuSel            ctermbg=70  ctermfg=129
 
 highlight Normal              ctermbg=233
 highlight Folded              ctermfg=33 ctermbg=233
-highlight Search              ctermfg=39 ctermbg=56
-highlight IncSearch           ctermfg=39 ctermbg=50
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=236 cterm=NONE
 highlight CursorLineNr        ctermfg=196
@@ -117,5 +115,3 @@ highlight Keyword                   ctermfg=190
 " ブロック変数の宣言だけを色つけしてくれる
 highlight rubyBlockParameter        ctermfg=111
 
-" YankRound
-hi YankRoundRegion cterm=italic

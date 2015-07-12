@@ -21,7 +21,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundleLazy 'Shougo/vimshell.vim',  { 'depends' : [ 'Shougo/vimproc.vim'  ] }
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
 
-
 " Unite: "{{{
 NeoBundle     'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -216,7 +215,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/excitetranslate-vim'
 
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
-NeoBundleLazy 'matchit.zip', { 'mappings' : ['nxo', '%', 'g%'] }
+NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 "###################### plugin config ############################"
@@ -498,17 +497,39 @@ if neobundle#tap('vim-speeddating') "{{{
   call neobundle#untap()
 endif "}}}
 
-" if neobundle#tap('') "{{{
-"
-"   call neobundle#untap()
-" endif "}}}
-"
-" if neobundle#tap('') "{{{
-"
-"   call neobundle#untap()
-" endif "}}}
+if neobundle#tap('incsearch.vim') " {{{
+  au ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
+  au ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
 
-" #over
+  " let g:incsearch#no_inc_hlsearch = 1 " 他のwindowではハイライトしない
+  let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
+  let g:incsearch#do_not_save_error_message_history = 1
+  " let g:incsearch#magic = '\v'
+  map g/ <Plug>(incsearch-stay)
+  map / <Plug>(incsearch-forward)
+  map ? <Plug>(incsearch-backward)
+  map * <Plug>(incsearch-nohl-*)<Plug>(anzu-star)
+  map # <Plug>(incsearch-nohl-#)<Plug>(anzu-sharp)
+
+  map   n <Plug>(incsearch-nohl-n)
+  map   N <Plug>(incsearch-nohl-N)
+  nmap  n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
+  nmap  N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-anzu') " {{{
+  " let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
+  " Treat folding well
+  " nnoremap <expr> n anzu#mode#mapexpr('n', '', 'zzzv')
+  " nnoremap <expr> N anzu#mode#mapexpr('N', '', 'zzzv')
+
+  " clear status
+  " nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+endif " }}}
+
+if neobundle#tap('vim-over') "{{{
   let g:over#command_line#enable_move_cursor = 1
   let g:over_command_line_prompt = "> "
   " let g:over_enable_auto_nohlsearch = 1
@@ -516,18 +537,13 @@ endif "}}}
   " let g:over#command_line#search#enable_incsearch = 1
   " let g:over#command_line#search#enable_move_cursor = 1
 
-" #anzu&incsearch マッチした数&自動ハイライト&オフ "{{{0
-  set hlsearch
-  let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
-  map / <Plug>(incsearch-forward)
-  map ? <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-  map * <Plug>(anzu-n-with-echo)
-  map # <Plug>(anzu-N-with-echo)
-  map * <Plug>(incsearch-nohl-*)
-  map # <Plug>(incsearch-nohl-#)
-  map n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
-  map N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
-"}}}
+
+  call neobundle#untap()
+endif "}}}
+
+" if neobundle#tap('') "{{{
+"
+"   call neobundle#untap()
+" endif "}}}
 
 call neobundle#end()
