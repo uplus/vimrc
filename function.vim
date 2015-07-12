@@ -76,11 +76,9 @@ endfunction
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
-  Capture buffers
-
   let l:current=bufnr('%')
   let l:count=0
-  for b in split(substitute(g:capture, '\s', '', 'g'), '\n')
+  for b in split(substitute(Capture("ls"), '\s', '', 'g'), '\n')
     let n = matchstr(b, '^\d*')
     if l:n != l:current
       execute 'bdelete' l:n
@@ -100,12 +98,15 @@ endfunction
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()
+  let l:count=0
   for l:line in split(Capture("ls"), "\n")
     let l:front = matchstr(l:line, '\v\s*\d*......\s*')
     if match(l:front, 'a') == -1
       execute "bdelete" substitute(l:front, '\D', '', 'g')
+      let l:count+=1
     endif
   endfor
+  echo l:count "buffer deleted"
 endfunction
 "}}}
 

@@ -25,10 +25,10 @@ set path+=/usr/include/c++/HEAD/
 
 " Release keymappings for plug-in.
 nnoremap Q <Nop>
-nnoremap ;  <Nop>
-xnoremap ;  <Nop>
-nnoremap ,  <Nop>
-xnoremap ,  <Nop>
+nnoremap ; <Nop>
+xnoremap ; <Nop>
+nnoremap , <Nop>
+xnoremap , <Nop>
 nnoremap s <Nop>
 xnoremap s <Nop>
 
@@ -75,6 +75,7 @@ set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
 " set whichwrap+=h,l
 set matchpairs+=<:>
+set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 
 " Enable virtualedit in visual block mode.
 set virtualedit=block
@@ -82,7 +83,6 @@ set virtualedit=block
 set wildmenu
 set wildmode=longest:full,full
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
-"
 
 set incsearch
 set hlsearch | nohlsearch "Highlight search patterns, support reloading
@@ -124,12 +124,8 @@ command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
-
-set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 au FileType vim setl iskeyword-=#
 au FileType * setl formatoptions-=ro
-" 3formatoptions
-" au uAutoCmd FileType * setlocal formatoptions-=roA
 " r When type <return> in insert-mode auto insert commentstring
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 
