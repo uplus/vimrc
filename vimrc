@@ -46,44 +46,39 @@ scriptencoding=utf-8
 set encoding=utf-8
 set fileformats=unix,dos,mac
 " set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+
 set number
 set hidden
+set showcmd
 set cursorline
 set showmatch
-set matchtime=1
 set laststatus=2
-set cmdheight=2
-set cmdwinheight=4
+set cmdheight=2 cmdwinheight=4
+set mouse=a
+set nobackup
 
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
 set updatetime=1000
 
-set nobackup
-set mouse=a
-set showcmd " 入力中のキーマップを表示する
-let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
-
-set cpoptions-=m
-
-
 set autoindent smartindent
 set ignorecase smartcase
-set wrapscan  "最後尾まで検索を終えたら次の検索で先頭に戻る
+
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
-" set whichwrap+=h,l
 set matchpairs+=<:>
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 
 " Enable virtualedit in visual block mode.
 set virtualedit=block
 
+" #menu
 set wildmenu
 set wildmode=longest:full,full
 set nrformats-=octal  " 加減算で数値を8進数として扱わない
 
+" #search
 set incsearch
 set hlsearch | nohlsearch "Highlight search patterns, support reloading
 
@@ -95,16 +90,19 @@ set softtabstop=2 "Tab押下時のカーソル移動量
 set shiftwidth=2  "インデント幅
 " set smarttab
 
-" Fold:
-set foldenable
+" #fold
 set foldmethod=marker
 set foldcolumn=1
-" set foldlevel=2
-set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 set foldtext=FoldCCtext()
+" set foldenable
+" set foldlevel=2
+" set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
+
+let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
+set cpoptions-=m
 
 " Change cursor shape.
 if &term =~ "xterm"
