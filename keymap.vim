@@ -30,16 +30,21 @@ nnoremap _X "_X
 vnoremap _X "_X
 "}}}
 
-" paired map
+" #paired map "{{{
 nnoremap <silent> [b :bnext<CR>
 nnoremap <silent> ]b :bprevious<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> [p :cprevious<CR>
 nnoremap <silent> ]p :cprevious<CR>
+" visual-modeで[<Space>]が使えるようにする
+xmap [<Space> <ESC>[<Space>gv
+xmap ]<Space> <ESC>]<Space>gv
+"}}}
 
 nnoremap Y v$hy
 nmap S <C-V>$sa
+nmap gJ mjkJ
 
 " deprecated
 map mp %
@@ -48,23 +53,13 @@ map gp %
 
 inoremap <C-C> <ESC>
 
-nnoremap <silent>mj :move+<CR>
-nnoremap <silent>mk :move-2<CR>
-nmap gJ mjkJ
-
 nnoremap v V
 nnoremap V v
 
-nnoremap <silent> <C-S> :w<CR>
-inoremap <silent> <C-S> <C-O>:w<CR>
+nnoremap <silent> <C-S> :update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
 
-" visual-modeで[<Space>]が使えるようにする
-xmap [<Space> <ESC>[<Space>gv
-xmap ]<Space> <ESC>]<Space>gv
-
-" nnoremap <Space>bb :b#<CR>
-
-"######<Space> family###### "{{{
+" #Space "{{{
 nnoremap <Space>ss :%s/
 nnoremap <Space>sg :%s//g<LEFT><LEFT>
 xnoremap <Space>ss :s/
@@ -86,9 +81,9 @@ nnoremap <silent> <Space> <Nop>
 xnoremap <silent> <Space> <Nop>
 "}}}
 
-"#Ctrl+W family"{{{
-nnoremap <C-W>p gt
-nnoremap <C-W>n gT
+" #window"{{{
+nnoremap <C-W>p <Nop>
+nnoremap <C-W>n <Nop>
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gs :vertical wincmd f<CR>
 
@@ -103,7 +98,7 @@ endfunction
 
 "}}}
 
-"#Move"{{{
+" #move "{{{
 nnoremap <UP> gk
 nnoremap <DOWN> gj
 nnoremap <LEFT> h
@@ -124,6 +119,9 @@ vnoremap gj j
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
+"}}}
+
+" #emacs-bind "{{{
 inoremap <C-K> <C-O>"_D
 inoremap <C-D>  <Del>
 inoremap <silent><C-A>  <C-o>^
@@ -134,6 +132,7 @@ inoremap <C-U>  <C-G>u<C-U>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-D> <Del>
+
 " noremap! is insert+command
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
