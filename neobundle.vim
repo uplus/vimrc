@@ -196,12 +196,11 @@ NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'marcus/rsense' :helpが使えなくなる
 NeoBundle 'NigoroJr/rsense'
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete']}
-NeoBundleLazy 'Rip-Rip/clang_complete', { 'filetypes' : ['c', 'cpp'] }
-
-NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : { 'insert' : 1 }}
+NeoBundleLazy 'Rip-Rip/clang_complete',        { 'filetypes' : ['c', 'cpp'] }
+NeoBundleLazy 'kana/vim-smartinput',           { 'autoload' : { 'insert' : 1 }}
 NeoBundleLazy 'cohama/vim-smartinput-endwise', { 'depends' : [ 'kana/vim-smartinput' ] }
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundleLazy 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
 "}}}
 
 " #other "{{{
@@ -338,6 +337,39 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 
   call neobundle#untap()
 endif "}}}
+
+if neobundle#tap('neosnippet.vim') " {{{
+
+call neobundle#config({
+      \   'autoload' : {
+      \     'insert' : 1,
+      \     'filetype' : 'snippet',
+      \     'commands' : [ 'NeoSnippetEdit', 'NeoSnippetSource' ],
+      \     'filetypes' : [ 'nsnippet' ],
+      \     'unite_sources' :
+      \       ['snippet', 'neosnippet/user', 'neosnippet/runtime']
+      \   }
+      \ })
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+" My original snippets
+let g:neosnippet_snippets_directories = s:add_to_uniq_list(
+      \   s:get_list(g:, 'neosnippet_snippets_directories'),
+      \   '~/.vim/snippets'
+      \ )
+
+" let g:neosnippet#snippets_directory = join(g:neosnippet_snippets_directories, ',')
+" <CR> to expand snippet if can
+" imap <expr><CR> !pumvisible() ? "\<CR>" :
+"       \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+"       \ neocomplete#close_popup()
+" supertab.
+" imap <expr><TAB> pumvisible() ? "\<C-n>" :
+"       \ neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
+" smap <expr><TAB> pumvisible() ? "\<C-n>" :
+"       \ neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
+
+endif " }}}
 
 if neobundle#tap('unite.vim') "{{{
   command! Uscheme :Unite colorscheme -auto-preview
