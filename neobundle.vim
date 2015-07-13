@@ -197,7 +197,7 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
 "}}}
 
-" #other "{{{
+" #other "{{{0
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
@@ -219,19 +219,46 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
+" NeoBundle 'tyru/caw.vim'
+" NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
 " NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'scrooloose/nerdcommenter'
 
-if neobundle#tap('nerdcommenter')
-  let g:old_leader = mapleader
-  " Todo:  neobundleのホックを使ってgの値を元にもどすようにする
-  let mapleader = "g"
 
-  nmap gcc <plug>NERDCommenterToggle
-  xmap gc <plug>NERDCommenterToggle
+if neobundle#tap('caw.vim')
+  let g:caw_no_default_keymappings = 0
+
   call neobundle#untap()
+endif
 
-  let mapleader = ";"
+if neobundle#tap('vim-operator-exec_command')
+  " operatorとして使おうとするとtoggle以外が使用できなくなる
+
+  nmap <silent><expr> <Plug>(operator-caw-i-toggle)
+  \   operator#exec_command#mapexpr("normal `[%v`]\<Plug>(caw:i:toggle)")
+
+  nmap gc <Plug>(operator-caw-i-toggle)
+  nmap gcc <Plug>(caw:i:toggle)
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('nerdcommenter')
+  let mapleader = 'g'
+  "nmap gcc <Plug>NERDCommenterToggle
+  " nmap gci <Plug>NERDCommenterInvert
+  " nmap gcy <Plug>NERDCommenterYank
+
+  " nmap gca <Plug>NERDCommenterAltDelims
+  " nmap gcb <Plug>NERDCommenterAlignBoth
+  " nmap gcl <Plug>NERDCommenterAlignLeft
+  " nmap gcA <Plug>NERDCommenterAppend
+  " nmap gcs <Plug>NERDCommenterSexy
+  " nmap gc$ <Plug>NERDCommenterToEOL
+  " nmap gcn <Plug>NERDCommenterNested
+  " nmap gcm <Plug>NERDCommenterMinimal
+
+  call neobundle#untap()
 endif
 
 "}}}
@@ -243,19 +270,16 @@ let g:solarized_termcolors=256 " solarizedをCUIで使うため
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
 if neobundle#tap('tcomment_vim')
-  call neobundle#untap()
-
-" let g:tcommentMaps = 1
+  " let g:tcommentMaps = 1
 
   nnoremap <silent> gyy yy:TComment<CR>
   nnoremap <silent> gyj yj:.,+1TComment<CR>
   nnoremap <silent> gyk :-1,yank<CR>:-1,TComment<CR>
-
-  nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
-  nnoremap <silent> gyG yG:.,$TComment<CR>
   nnoremap <silent> gyp :%y<CR>:%TComment<CR>
   xnoremap <silent> gy ygv:TComment<CR>
 
+  nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
+  nnoremap <silent> gyG yG:.,$TComment<CR>
   nnoremap <silent> gcj :.,+1TComment<CR>
   nnoremap <silent> gck :-1,.TComment<CR>
 
@@ -285,7 +309,7 @@ if neobundle#tap('vim-operator-surround') "{{{
   call neobundle#untap()
 endif "}}}
 
-" vim-textobj "{{{
+" vim-textobj taps "{{{0
 if neobundle#tap('vim-textobj-user')
   " let g:textobj_enclosedsyntax_no_default_key_mappings = 1
   call neobundle#untap()
