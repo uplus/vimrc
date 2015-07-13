@@ -403,11 +403,12 @@ if neobundle#tap('unite.vim') "{{{
   nmap ;u [unite]
   xmap ;u [unite]
 
-  nnoremap <silent><Space>m :<C-U>Unite mark<CR>
+  " Todo: auto-resize
+  nnoremap <silent><Space>m :<C-U>Unite mark -auto-resize<CR>
   nnoremap <silent><Space>b :<C-U>Unite buffer -auto-resize<CR>
   nnoremap <silent><Space>t :<C-u>Unite tab -auto-resize -select=`tabpagenr()-1` <CR>
-  nnoremap <silent><Space>k :<C-U>Unite bookmark<CR>
-  nnoremap <silent><Space>f :<C-U>Unite file -start-insert<CR>
+  nnoremap <silent><Space>a :<C-U>Unite bookmark -auto-resize<CR>
+  nnoremap <silent><Space>f :<C-U>Unite file -auto-resize -start-insert<CR>
   nnoremap <silent><Space>o :<C-U>Unite outline -auto-resize -no-start-insert -resume<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume<CR>
 

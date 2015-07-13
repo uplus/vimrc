@@ -94,8 +94,8 @@ set shiftwidth=2  "インデント幅
 set foldmethod=marker
 set foldcolumn=1
 set foldtext=FoldCCtext()
-set foldlevel=0
-set foldnestmax=2
+set foldlevel=0     " どのレベルから折りたたむか
+set foldnestmax=2   " どの深さまで折りたたむか
 " set foldenable
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 
