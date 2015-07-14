@@ -223,8 +223,8 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 
 "comment out {{{0
 " NeoBundle 'tomtom/tcomment_vim'
-" NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
-" NeoBundle 'tyru/caw.vim'
+NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
+NeoBundle 'tyru/caw.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 
 " toggle yank append invert
@@ -235,49 +235,39 @@ if neobundle#tap('caw.vim')
   call neobundle#untap()
 endif
 
-if neobundle#tap('vim-operator-exec_command')
-  " operatorとして使おうとするとtoggle以外が使用できなくなる
+if neobundle#tap('vim-operator-exec_command') && neobundle#tap('caw.vim') && neobundle#tap('nerdcommenter')
+  nmap <silent><expr> <Plug>(operator-comment-toggle)
+  \   operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
 
-  nmap <silent><expr> <Plug>(operator-caw-i-toggle)
-  \   operator#exec_command#mapexpr("normal `[%v`]\<Plug>(caw:i:toggle)")
+  nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
+  \   operator#exec_command#mapexpr_v_keymapping("\<Plug>NERDCommenterYank")
 
-  nmap gc <Plug>(operator-caw-i-toggle)
-  nmap gcc <Plug>(caw:i:toggle)
+  nmap gc <Plug>(operator-comment-toggle)
+  nmap gy <Plug>(operator-comment-yank-toggle)
 
   call neobundle#untap()
 endif
 
 if neobundle#tap('nerdcommenter')
   let g:NERDCreateDefaultMappings = 0
-  let mapleader = 'g'
   let NERDSpaceDelims = 1
 
-  " nmap gcj 2<Plug>NERDCommenterInvert
-  " nmap gck k2<Plug>NERDCommenterInvert
+  " 上下で反転させるならこれが必要
+  nmap gcj 2<Plug>NERDCommenterInvert
+  nmap gck k2<Plug>NERDCommenterInvertj
 
-  map gcc <Plug>NERDCommenterToggle
-  nmap gci <Plug>NERDCommenterInvert
-  nmap gcy <Plug>NERDCommenterYank
+  " line-toggleはこっちのじゃないと先頭に数字指定できない
+  nmap gcc <Plug>NERDCommenterToggle
+  nmap gyy <Plug>NERDCommenterYank
 
+  " Aじゃないとmotionのaが使えない
   nmap gcA <Plug>NERDCommenterAppend
-  nmap gcs <Plug>NERDCommenterSexy
 
   call neobundle#untap()
 endif
 
 if neobundle#tap('tcomment_vim')
   let g:tcommentMaps = 1
-
-  nnoremap <silent> gyy yy:TComment<CR>
-  nnoremap <silent> gyj yj:.,+1TComment<CR>
-  nnoremap <silent> gyk :-1,yank<CR>:-1,TComment<CR>
-  nnoremap <silent> gyp :%y<CR>:%TComment<CR>
-  xnoremap <silent> gy ygv:TComment<CR>
-
-  nnoremap <silent> gyg ygg<C-o>:0,.TComment<CR>
-  nnoremap <silent> gyG yG:.,$TComment<CR>
-  nnoremap <silent> gcj :.,+1TComment<CR>
-  nnoremap <silent> gck :-1,.TComment<CR>
 
   call neobundle#untap()
 endif
