@@ -145,6 +145,9 @@ NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
 NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' }
+
+" 任意のcmdを実行するoperator
+NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operator-user' }
 "}}}
 
 " #textobj "{{{
@@ -198,6 +201,9 @@ NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' 
 "}}}
 
 " #other "{{{
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tyru/caw.vim'
+
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
@@ -220,50 +226,6 @@ NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
 "}}}
-
-NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tyru/caw.vim'
-
-if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim') "{{{
-  nmap <silent><expr> <Plug>(operator-comment-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
-
-  "NERDCommenterの方だとコメントアウトしても #が揃わない
-  nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>NERDCommenterYank")
-
-  nmap gc <Plug>(operator-comment-toggle)
-  nmap gy <Plug>(operator-comment-yank-toggle)
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('caw.vim') "{{{
-  let g:caw_no_default_keymappings = 1
-  xmap gc <Plug>(caw:i:toggle)
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('nerdcommenter') "{{{
-  let g:NERDCreateDefaultMappings = 0
-  let g:NERDSpaceDelims = 1
-
-  " 上下で反転させるならこれが必要
-  nmap gcj 2<Plug>NERDCommenterInvert
-  nmap gck k2<Plug>NERDCommenterInvertj
-
-  " line-toggleはこっちのじゃないと先頭に数字指定できない
-  nmap gcc <Plug>NERDCommenterToggle
-  nmap gyy <Plug>NERDCommenterYank
-
-  " Aじゃないとmotionのaが使えない
-  nmap gcA <Plug>NERDCommenterAppend
-  xmap gy <Plug>NERDCommenterYank
-
-  call neobundle#untap()
-endif "}}}
 
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
@@ -638,6 +600,46 @@ if neobundle#tap('incsearch.vim') " {{{
   map   N <Plug>(incsearch-nohl-N)
   nmap  n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
   nmap  N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('caw.vim') "{{{
+  let g:caw_no_default_keymappings = 1
+  xmap gc <Plug>(caw:i:toggle)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('nerdcommenter') "{{{
+  let g:NERDCreateDefaultMappings = 0
+  let g:NERDSpaceDelims = 1
+
+  " 上下で反転させるならこれが必要
+  nmap gcj 2<Plug>NERDCommenterInvert
+  nmap gck k2<Plug>NERDCommenterInvertj
+
+  " line-toggleはこっちのじゃないと先頭に数字指定できない
+  nmap gcc <Plug>NERDCommenterToggle
+  nmap gyy <Plug>NERDCommenterYank
+
+  " Aじゃないとmotionのaが使えない
+  nmap gcA <Plug>NERDCommenterAppend
+  xmap gy <Plug>NERDCommenterYank
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim') "{{{
+  nmap <silent><expr> <Plug>(operator-comment-toggle)
+        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
+
+  "NERDCommenterの方だとコメントアウトしても #が揃わない
+  nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
+        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>NERDCommenterYank")
+
+  nmap gc <Plug>(operator-comment-toggle)
+  nmap gy <Plug>(operator-comment-yank-toggle)
 
   call neobundle#untap()
 endif "}}}
