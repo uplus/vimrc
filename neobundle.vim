@@ -222,22 +222,20 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 "}}}
 
 "comment out {{{0
-" NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
-NeoBundle 'tyru/caw.vim'
+" NeoBundle 'tyru/caw.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 
 " toggle yank append invert
 
-if neobundle#tap('caw.vim')
-  let g:caw_no_default_keymappings = 1
+" if neobundle#tap('caw.vim')
+  " let g:caw_no_default_keymappings = 1
+  " call neobundle#untap()
+" endif
 
-  call neobundle#untap()
-endif
-
-if neobundle#tap('vim-operator-exec_command') && neobundle#tap('caw.vim') && neobundle#tap('nerdcommenter')
+if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter')
   nmap <silent><expr> <Plug>(operator-comment-toggle)
-  \   operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
+  \   operator#exec_command#mapexpr_v_keymapping("\<Plug>NERDCommenterToggle")
 
   nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
   \   operator#exec_command#mapexpr_v_keymapping("\<Plug>NERDCommenterYank")
@@ -260,17 +258,15 @@ if neobundle#tap('nerdcommenter')
   nmap gcc <Plug>NERDCommenterToggle
   nmap gyy <Plug>NERDCommenterYank
 
+  xmap gc <Plug>NERDCommenterToggle
+  xmap gy <Plug>NERDCommenterYank
+
   " Aじゃないとmotionのaが使えない
   nmap gcA <Plug>NERDCommenterAppend
 
   call neobundle#untap()
 endif
 
-if neobundle#tap('tcomment_vim')
-  let g:tcommentMaps = 1
-
-  call neobundle#untap()
-endif
 "}}}
 
 "###################### plugin config ############################"
