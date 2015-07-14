@@ -221,19 +221,11 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 
 "}}}
 
-"comment out {{{0
 NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/caw.vim'
 
-if neobundle#tap('caw.vim')
-  let g:caw_no_default_keymappings = 1
-  xmap gc <Plug>(caw:i:toggle)
-
-  call neobundle#untap()
-endif
-
-if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim')
+if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim') "{{{
   nmap <silent><expr> <Plug>(operator-comment-toggle)
         \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
 
@@ -245,9 +237,16 @@ if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') 
   nmap gy <Plug>(operator-comment-yank-toggle)
 
   call neobundle#untap()
-endif
+endif "}}}
 
-if neobundle#tap('nerdcommenter')
+if neobundle#tap('caw.vim') "{{{
+  let g:caw_no_default_keymappings = 1
+  xmap gc <Plug>(caw:i:toggle)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('nerdcommenter') "{{{
   let g:NERDCreateDefaultMappings = 0
   let g:NERDSpaceDelims = 1
 
@@ -264,9 +263,7 @@ if neobundle#tap('nerdcommenter')
   xmap gy <Plug>NERDCommenterYank
 
   call neobundle#untap()
-endif
-
-"}}}
+endif "}}}
 
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
