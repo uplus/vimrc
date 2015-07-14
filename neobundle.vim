@@ -197,7 +197,7 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
 "}}}
 
-" #other "{{{0
+" #other "{{{
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
@@ -219,14 +219,18 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
 
-" NeoBundle 'tyru/caw.vim'
-" NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
+"}}}
+
+"comment out {{{0
 " NeoBundle 'tomtom/tcomment_vim'
+" NeoBundle 'osyo-manga/vim-operator-exec_command' " 任意のcmdを実行するoperator
+" NeoBundle 'tyru/caw.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 
+" toggle yank append invert
 
 if neobundle#tap('caw.vim')
-  let g:caw_no_default_keymappings = 0
+  let g:caw_no_default_keymappings = 1
 
   call neobundle#untap()
 endif
@@ -244,33 +248,25 @@ if neobundle#tap('vim-operator-exec_command')
 endif
 
 if neobundle#tap('nerdcommenter')
+  let g:NERDCreateDefaultMappings = 0
   let mapleader = 'g'
-  "nmap gcc <Plug>NERDCommenterToggle
-  " nmap gci <Plug>NERDCommenterInvert
-  " nmap gcy <Plug>NERDCommenterYank
+  let NERDSpaceDelims = 1
 
-  " nmap gca <Plug>NERDCommenterAltDelims
-  " nmap gcb <Plug>NERDCommenterAlignBoth
-  " nmap gcl <Plug>NERDCommenterAlignLeft
-  " nmap gcA <Plug>NERDCommenterAppend
-  " nmap gcs <Plug>NERDCommenterSexy
-  " nmap gc$ <Plug>NERDCommenterToEOL
-  " nmap gcn <Plug>NERDCommenterNested
-  " nmap gcm <Plug>NERDCommenterMinimal
+  " nmap gcj 2<Plug>NERDCommenterInvert
+  " nmap gck k2<Plug>NERDCommenterInvert
+
+  map gcc <Plug>NERDCommenterToggle
+  nmap gci <Plug>NERDCommenterInvert
+  nmap gcy <Plug>NERDCommenterYank
+
+  nmap gcA <Plug>NERDCommenterAppend
+  nmap gcs <Plug>NERDCommenterSexy
 
   call neobundle#untap()
 endif
 
-"}}}
-
-"###################### plugin config ############################"
-let g:netrw_nogx=1             " 不要なkeymapを無効
-let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
-let g:solarized_termcolors=256 " solarizedをCUIで使うため
-command! -range Trans :<line1>,<line2>:ExciteTranslate
-
 if neobundle#tap('tcomment_vim')
-  " let g:tcommentMaps = 1
+  let g:tcommentMaps = 1
 
   nnoremap <silent> gyy yy:TComment<CR>
   nnoremap <silent> gyj yj:.,+1TComment<CR>
@@ -285,6 +281,15 @@ if neobundle#tap('tcomment_vim')
 
   call neobundle#untap()
 endif
+"}}}
+
+"###################### plugin config ############################"
+let g:netrw_nogx=1             " 不要なkeymapを無効
+let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
+let g:solarized_termcolors=256 " solarizedをCUIで使うため
+command! -range Trans :<line1>,<line2>:ExciteTranslate
+
+
 
 if neobundle#tap('vim-operator-user')
 

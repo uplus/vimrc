@@ -168,7 +168,6 @@ endfunction "}}}
 
 " each filetype config
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
-au uAutoCmd FileType vim nnoremap <silent> gca A<Space>"<Space>
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
 
