@@ -491,15 +491,29 @@ endif "}}}
 if neobundle#tap('vim-easymotion') "{{{
   " https://github.com/easymotion/vim-easymotion
   "Todo: マップを整える
+  let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
   let g:EasyMotion_leader_key=";"
-  " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
+  let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
+  let g:EasyMotion_smartcase = 1 "?? default is 0
 
-  map <Leader>j <Plug>(easymotion-j)
-  map <Leader>k <Plug>(easymotion-k)
-  " map <Leader>l <Plug>(easymotion-lineforward)
-  " map <Leader>h <Plug>(easymotion-linebackward)
+  map <Space>j <Plug>(easymotion-j)
+  map <Space>k <Plug>(easymotion-k)
+  map <Leader>j <Plug>(easymotion-sol-j)
+  map <Leader>k <Plug>(easymotion-sol-k)
 
-  call neobundle#untap()
+  " On the current-line f F t and T
+  map <Leader>f <Plug>(easymotion-fl)
+  map <Leader>F <Plug>(easymotion-Fl)
+  map <Leader>t <Plug>(easymotion-tl)
+  map <Leader>T <Plug>(easymotion-Tl)
+
+  " On the current line
+  map <Leader>l <Plug>(easymotion-bd-fl)
+  map <Leader>L <Plug>(easymotion-bd-tl)
+
+  " 2 chars motion
+  map <Leader>s <Plug>(easymotion-s2)
+
 endif "}}}
 
 if neobundle#tap('switch.vim') "{{{
