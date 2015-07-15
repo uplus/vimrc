@@ -171,7 +171,6 @@ NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
 
 " , { 'depends' : 'kana/vim-textobj-user' }
-" , { 'depends' : 'kana/vim-textobj-user' }
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 " }}}
@@ -234,6 +233,7 @@ let g:solarized_termcolors=256 " solarizedをCUIで使うため
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
 
+" vim-operator taps "{{{
 if neobundle#tap('vim-operator-user')
 
   call neobundle#untap()
@@ -257,7 +257,9 @@ if neobundle#tap('vim-operator-surround') "{{{
   call neobundle#untap()
 endif "}}}
 
-" vim-textobj taps "{{{0
+ "}}}
+
+" vim-textobj taps "{{{
 if neobundle#tap('vim-textobj-user')
   " let g:textobj_enclosedsyntax_no_default_key_mappings = 1
   call neobundle#untap()
@@ -369,6 +371,8 @@ endif "}}}
 if neobundle#tap('unite.vim') "{{{
   command! Uscheme :Unite colorscheme -auto-preview
   command! Umap :Unite output:map|map!|lmap
+
+  let g:unite_enable_start_insert = 0
 
   nnoremap [unite] <Nop>
   xnoremap [unite] <Nop>

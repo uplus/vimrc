@@ -179,7 +179,5 @@ au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <buffer> q :q<CR>
   setlocal foldmethod=indent
-  setlocal foldcolumn=1
-  setlocal foldclose=all
   setlocal number
 endfunction
