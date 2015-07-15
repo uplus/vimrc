@@ -56,6 +56,7 @@ set laststatus=2
 set cmdheight=2 cmdwinheight=4
 set mouse=a
 set nobackup
+set modeline
 
 set nowrap
 set sidescroll=0
