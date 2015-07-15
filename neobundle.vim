@@ -222,7 +222,8 @@ NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 " NeoBundle 'itchyny/screensaver.vim'
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] } }
+NeoBundle 'vimtaku/hl_matchit.vim'
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
 
 "}}}
 
@@ -566,6 +567,17 @@ if neobundle#tap('matchit.zip') "{{{
   function! neobundle#hooks.on_post_source(bundle)
     silent! execute 'doautocmd Filetype' &filetype
   endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('hl_matchit.vim') "{{{
+  let g:hl_matchit_enable_on_vim_startup = 1
+  let g:hl_matchit_hl_groupname = 'Title'
+  let g:hl_matchit_allow_ft     = 'html,vim,zsh,sh' " ruby上手くいかない
+  let g:hl_matchit_cursor_wait  = 0.10              " 更新頻度
+  let g:hl_matchit_hl_groupname = 'HlMatchit'
+  au ColorScheme * hi HlMatchit ctermfg=93
 
   call neobundle#untap()
 endif "}}}
