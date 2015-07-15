@@ -85,7 +85,7 @@ NeoBundle 'bkad/CamelCaseMotion'      " textobjも持ってる ,w ,b ,e
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kana/vim-smartword'
 " NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
-" NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
+NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
 " NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
 "}}}
 
@@ -691,6 +691,18 @@ if neobundle#tap('vim-over') "{{{
   " let g:over#command_line#search#enable_move_cursor = 1
 
 
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('rhysd/clever-f.vim') "{{{
+  let g:clever_f_across_no_line    = 0
+  let g:clever_f_ignore_case       = 0
+  let g:clever_f_smart_case        = 0
+  let g:clever_f_fix_key_direction = 0 " 1だとどんな時でもfで後ろにFで前に移動する
+  let g:clever_f_show_prompt       = 1
+
+  "Todo: 設定135までよんだ
+  " f<CR> で前回のf検索を繰り返せる
   call neobundle#untap()
 endif "}}}
 
