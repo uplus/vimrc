@@ -23,12 +23,12 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
 
 " Unite: "{{{
 NeoBundle     'Shougo/unite.vim'
-NeoBundleLazy 'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle     'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-fold/',           { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -232,7 +232,6 @@ let g:netrw_nogx=1             " 不要なkeymapを無効
 let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
 command! -range Trans :<line1>,<line2>:ExciteTranslate
-
 
 
 if neobundle#tap('vim-operator-user')
@@ -491,8 +490,8 @@ if neobundle#tap('vim-easymotion') "{{{
   let g:EasyMotion_leader_key=";"
   " let g:EasyMotion_grouping=1       " 1 ストローク選択を優先する
 
-  " map <Leader>j <Plug>(easymotion-j)
-  " map <Leader>k <Plug>(easymotion-k)
+  map <Leader>j <Plug>(easymotion-j)
+  map <Leader>k <Plug>(easymotion-k)
   " map <Leader>l <Plug>(easymotion-lineforward)
   " map <Leader>h <Plug>(easymotion-linebackward)
 

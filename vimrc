@@ -57,6 +57,10 @@ set cmdheight=2 cmdwinheight=4
 set mouse=a
 set nobackup
 
+set nowrap
+set sidescroll=0
+set sidescrolloff=8
+
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
