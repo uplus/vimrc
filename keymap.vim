@@ -45,6 +45,8 @@ inoremap <C-C> <ESC>
 
 nnoremap v V
 nnoremap V v
+xnoremap v <C-V>
+xnoremap V v
 
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
