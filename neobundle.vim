@@ -621,6 +621,8 @@ if neobundle#tap('incsearch.vim') " {{{
   " let g:incsearch#no_inc_hlsearch = 1 " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
   let g:incsearch#do_not_save_error_message_history = 1
+  let g:incsearch#magic = '\v' " very magic
+
   " let g:incsearch#magic = '\v'
   map g/ <Plug>(incsearch-stay)
   map / <Plug>(incsearch-forward)
