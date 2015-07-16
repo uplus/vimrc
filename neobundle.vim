@@ -51,9 +51,9 @@ NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.
 "}}}
 
 " View: "{{{
-NeoBundle 'Shougo/vinarise'         " バイナリを閲覧
-NeoBundle 'rhysd/committia.vim'     " commitメッセージ表示をステキに
-NeoBundle 'powerman/vim-plugin-AnsiEsc'     " カラー情報を反映して表示
+NeoBundle 'Shougo/vinarise'             " バイナリを閲覧
+NeoBundle 'rhysd/committia.vim'         " commitメッセージ表示をステキに
+NeoBundle 'powerman/vim-plugin-AnsiEsc' " カラー情報を反映して表示
 " NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bling/vim-airline'
@@ -303,11 +303,13 @@ if neobundle#tap('vim-textobj-function') "{{{
   omap aF <Plug>(textobj-function-a)
   vmap iF <Plug>(textobj-function-i)
   vmap aF <Plug>(textobj-function-a)
-  omap IF <Plug>(textobj-function-I)
-  omap AF <Plug>(textobj-function-A)
-  vmap IF <Plug>(textobj-function-I)
-  vmap AF <Plug>(textobj-function-A)
 
+  " I A でvisual-blockの挿入ができない
+  " omap IF <Plug>(textobj-function-I)
+  " omap AF <Plug>(textobj-function-A)
+  " vmap IF <Plug>(textobj-function-I)
+  " vmap AF <Plug>(textobj-function-A)
+  "
   call neobundle#untap()
 endif "}}}
 
@@ -650,7 +652,8 @@ if neobundle#tap('nerdcommenter') "{{{
   nmap gck k2<Plug>NERDCommenterInvertj
 
   " line-toggleはこっちのじゃないと先頭に数字指定できない
-  nmap gcc <Plug>NERDCommenterToggle
+  " foldを一括でtoggleできない
+  nmap gcc v<Plug>NERDCommenterToggle
   nmap gyy <Plug>NERDCommenterYank
 
   " Aじゃないとmotionのaが使えない
