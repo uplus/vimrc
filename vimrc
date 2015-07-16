@@ -38,7 +38,7 @@ nnoremap s <Nop>
 xnoremap s <Nop>
 
 Source 'neobundle'
-filetype plugin indent on " Required
+filetype plugin indent on
 syntax enable
 
 if has('vim_starting')
@@ -114,6 +114,9 @@ set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
 set cpoptions-=m
 
+set t_Co=256
+set background=dark
+
 " Change cursor shape.
 if &term =~ "xterm"
   let &t_SI = "\<Esc>]12;lightgreen\x7"
@@ -122,6 +125,8 @@ endif
 
 Source 'function'
 Source 'keymap'
+
+" #auto commands
 
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd BufEnter    * lcd %:p:h
@@ -139,9 +144,6 @@ au uAutoCmd FileType vim setl iskeyword-=#
 au uAutoCmd FileType * setl formatoptions-=ro
 " r When type <return> in insert-mode auto insert commentstring
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
-
-set t_Co=256
-set background=dark
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * highlight Visual cterm=reverse
