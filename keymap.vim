@@ -57,6 +57,7 @@ xnoremap V v
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
+" Info keymap and release " {{{
 nnoremap g8 <Nop>
 xnoremap g8 <Nop>
 nnoremap g<C-G> <Nop>
@@ -74,7 +75,7 @@ nnoremap ga<C-G> g<C-G>
 xnoremap ga<C-G> g<C-G>
 nnoremap ga<C-A> g<C-A>
 xnoremap ga<C-A> g<C-A>
-
+" }}}
 
 " #Space "{{{
 nnoremap <Space>ss :%s/
@@ -93,6 +94,11 @@ nmap <Space>P :call feedkeys("[\<Space>kP")<CR>
 
 xnoremap <Space>n :normal<Space>
 nnoremap <Space>z za
+
+noremap <Space>w W
+noremap <Space>e E
+noremap <Space>b B
+noremap <Space>ge gE
 
 nnoremap <silent> <Space> <Nop>
 xnoremap <silent> <Space> <Nop>

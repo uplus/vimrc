@@ -654,7 +654,7 @@ if neobundle#tap('nerdcommenter') "{{{
   nmap gck k2<Plug>NERDCommenterInvertj
 
   " line-toggleはこっちのじゃないと先頭に数字指定できない
-  " foldを一括でtoggleできない
+  " foldをまとめてtoggleするため
   nmap gcc v<Plug>NERDCommenterToggle
   nmap gyy <Plug>NERDCommenterYank
 
