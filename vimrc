@@ -1,3 +1,7 @@
+if filereadable(expand($HOME.'/.vimrc_local_before'))
+  source $HOME/.localsetting/vimrc_local
+endif
+
 if &compatible
   set nocompatible
 endif
@@ -182,3 +186,7 @@ function! s:help_config()
   setlocal foldmethod=indent
   setlocal number
 endfunction
+
+if filereadable(expand($HOME.'/.vimrc_local_after'))
+  source $HOME/.localsetting/vimrc_local
+endif
