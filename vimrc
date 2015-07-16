@@ -36,6 +36,9 @@ nnoremap , <Nop>
 xnoremap , <Nop>
 nnoremap s <Nop>
 xnoremap s <Nop>
+" N秒間スリープ
+nnoremap gs <Nop>
+xnoremap gs <Nop>
 
 Source 'neobundle'
 filetype plugin indent on

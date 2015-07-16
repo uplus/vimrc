@@ -33,7 +33,13 @@ nnoremap Y v$hy
 nmap S <C-V>$sa
 nmap gJ ]ekJ
 
+nnoremap d<Space>j 3dj
+nnoremap d<Space>k 3dk
+nnoremap y<Space>j 3yj
+nnoremap y<Space>k 3yk
+
 " 行末にスペースを一つ追加する
+" Todo: 高速に動作するようにsubsを使って改良する
 xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
 " deprecated
@@ -50,6 +56,25 @@ xnoremap V v
 
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
+
+nnoremap g8 <Nop>
+xnoremap g8 <Nop>
+nnoremap g<C-G> <Nop>
+xnoremap g<C-G> <Nop>
+nnoremap g<C-A> <Nop>
+xnoremap g<C-A> <Nop>
+
+nnoremap gaa ga
+xnoremap gaa ga
+nnoremap ga8 g8
+xnoremap ga8 g8
+nnoremap gas :SyntaxInfo<CR>
+xnoremap gas :SyntaxInfo<CR>
+nnoremap ga<C-G> g<C-G>
+xnoremap ga<C-G> g<C-G>
+nnoremap ga<C-A> g<C-A>
+xnoremap ga<C-A> g<C-A>
+
 
 " #Space "{{{
 nnoremap <Space>ss :%s/
