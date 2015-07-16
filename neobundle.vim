@@ -207,8 +207,8 @@ NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'kannokanno/previm'       " Markdown Previewer
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
+NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'tpope/vim-fugitive'      " git
-" NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
@@ -705,6 +705,21 @@ if neobundle#tap('rhysd/clever-f.vim') "{{{
 
   "Todo: 設定135までよんだ
   " f<CR> で前回のf検索を繰り返せる
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-jplus') "{{{
+  " 行継続文字などを消して結合
+  nmap J <Plug>(jplus)
+
+  " 任意の1文字を入力して結合を行う
+  nmap g<Space>J <Plug>(jplus-getchar)
+  vmap g<Space>J <Plug>(jplus-getchar)
+
+  " 複数文字を入力したい場合は <Plug>(jplus-input) を使用する
+  " nmap g<Space>J <Plug>(jplus-input)
+  " vmap g<Space>J <Plug>(jplus-input)
+
   call neobundle#untap()
 endif "}}}
 
