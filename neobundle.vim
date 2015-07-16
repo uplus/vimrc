@@ -577,7 +577,7 @@ if neobundle#tap('hl_matchit.vim') "{{{
   let g:hl_matchit_allow_ft     = 'html,vim,zsh,sh' " ruby上手くいかない
   let g:hl_matchit_cursor_wait  = 0.10              " 更新頻度
   let g:hl_matchit_hl_groupname = 'HlMatchit'
-  au ColorScheme * hi HlMatchit ctermfg=93
+  au uAutoCmd ColorScheme * hi HlMatchit cterm=bold,underline
 
   call neobundle#untap()
 endif "}}}
