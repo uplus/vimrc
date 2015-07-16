@@ -491,8 +491,10 @@ endif "}}}
 
 if neobundle#tap('vim-easymotion') "{{{
   let g:EasyMotion_keys             = 'asdghklqwertyuiopzxcvbnmfj'
+  let g:EasyMotion_use_upper        = 0
   let g:EasyMotion_leader_key       = ';'
   let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
+  let g:EasyMotion_space_jump_first = 0 " Space jump to first match
   let g:EasyMotion_smartcase        = 1
 
   map <Space>j <Plug>(easymotion-j)
