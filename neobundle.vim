@@ -232,6 +232,7 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 " NeoBundle 'itchyny/screensaver.vim'
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundle 'vimtaku/hl_matchit.vim'
+NeoBundle 't9md/vim-quickhl'
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
 NeoBundleLazy 'Shougo/echodoc',           { 'autoload' : { 'insert' : 1 }}
 
@@ -734,6 +735,38 @@ if neobundle#tap('vim-jplus') "{{{
   " 複数文字を入力したい場合は <Plug>(jplus-input) を使用する
   " nmap g<Space>J <Plug>(jplus-input)
   " vmap g<Space>J <Plug>(jplus-input)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-quickhl') "{{{
+  let g:quickhl_manual_enable_at_startup = 1
+  let g:quickhl_cword_enable_at_startup  = 0
+  let g:quickhl_tag_enable_at_startup    = 0
+  let g:quickhl_manual_keywords          = [] " Can use List and Dictionary
+
+  nmap gh <Plug>(quickhl-manual-this)
+  xmap gh <Plug>(quickhl-manual-this)
+  nmap gsm <Plug>(quickhl-manual-reset)
+  xmap gsm  <Plug>(quickhl-manual-reset)
+  nmap gsc <Plug>(quickhl-cword-toggle)
+  " nmap <Plug>(quickhl-tag-toggle)
+  " map  <Plug>(operator-quickhl-manual-this-motion)
+
+  let g:quickhl_manual_colors = [
+        \ 'gui=bold ctermfg=16  ctermbg=153 guifg=#ffffff guibg=#0a7383',
+        \ 'gui=bold ctermfg=0   ctermbg=1   guibg=#a07040 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=2   guibg=#4070a0 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=3   guibg=#40a070 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=4   guibg=#70a040 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=5   guibg=#0070e0 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=6   guibg=#007020 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=21  guibg=#d4a00d guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=22  guibg=#06287e guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=45  guibg=#5b3674 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=16  guibg=#4c8f2f guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=50  guibg=#1060a0 guifg=#ffffff',
+        \ 'gui=bold ctermfg=0   ctermbg=56  guibg=#a0b0c0 guifg=black']
 
   call neobundle#untap()
 endif "}}}
