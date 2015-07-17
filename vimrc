@@ -1,5 +1,5 @@
-if filereadable(expand($HOME.'/.vimrc_local_before'))
-  source $HOME/.localsetting/vimrc_local
+if filereadable(expand('~/.vimrc_local_before'))
+  source $HOME/.vimrc_local_before
 endif
 
 if &compatible
@@ -192,6 +192,6 @@ function! s:help_config()
   setlocal number
 endfunction
 
-if filereadable(expand($HOME.'/.vimrc_local_after'))
-  source $HOME/.localsetting/vimrc_local
+if filereadable(expand('~/.vimrc_local_after'))
+  source $HOME/.vimrc_local_after
 endif
