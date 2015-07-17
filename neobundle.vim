@@ -537,8 +537,9 @@ if neobundle#tap('yankround.vim') "{{{
   nmap <C-n> <Plug>(yankround-next)
 
   " cmdlineで<C-y>押せばレジストリが遡れる
-  cmap <C-r> <Plug>(yankround-insert-register)
-  cmap <C-y> <Plug>(yankround-pop)
+  " 検索で <C-r>が使えなくなる
+  " cmap <C-r> <Plug>(yankround-insert-register)
+  " cmap <C-y> <Plug>(yankround-pop)
 
   let g:yankround_use_region_hl = 1
   let g:yankround_dir = "~/.vim/tmp/"
