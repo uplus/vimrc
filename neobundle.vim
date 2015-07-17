@@ -422,6 +422,47 @@ if neobundle#tap('unite.vim') "{{{
   vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
   " }}}
 
+  " search "{{{
+  " nnoremap <silent> / :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
+  " nnoremap <silent> ? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
+  " nnoremap <silent> * :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
+  " nnoremap [Alt]/       /
+  " nnoremap [Alt]?       ?
+
+  " nnoremap <silent> n
+  "       \ :<C-u>UniteResume search%`bufnr('%')`
+  "       \  -no-start-insert -force-redraw<CR>
+  "}}}
+
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    call unite#custom#default_action("source/vimpatches/*", "openbuf")
+  endfunction
+
+  " alias {{{
+  " For unite-alias.
+  let g:unite_source_alias_aliases = {}
+  let g:unite_source_alias_aliases.test = {
+        \ 'source' : 'file_rec',
+        \ 'args'   : '~/',
+        \ }
+  let g:unite_source_alias_aliases.line_migemo = 'line'
+  let g:unite_source_alias_aliases.calc = 'kawaii-calc'
+  let g:unite_source_alias_aliases.l = 'launcher'
+  let g:unite_source_alias_aliases.kill = 'process'
+  let g:unite_source_alias_aliases.message = {
+        \ 'source' : 'output',
+        \ 'args'   : 'message',
+        \ }
+  let g:unite_source_alias_aliases.mes = {
+        \ 'source' : 'output',
+        \ 'args'   : 'message',
+        \ }
+  let g:unite_source_alias_aliases.scriptnames = {
+        \ 'source' : 'output',
+        \ 'args'   : 'scriptnames',
+        \ }
+  "}}}
+
   call neobundle#untap()
 endif "}}}
 
