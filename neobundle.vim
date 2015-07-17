@@ -674,27 +674,44 @@ if neobundle#tap('vim-speeddating') "{{{
   call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('vim-asterisk') "{{{
+  " let g:asterisk#keeppos = 1
+  call neobundle#untap()
+endif "}}}
+
 if neobundle#tap('incsearch.vim') " {{{
   au uAutoCmd ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
   au uAutoCmd ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
 
-  " let g:incsearch#no_inc_hlsearch = 1 " 他のwindowではハイライトしない
-  let g:incsearch#auto_nohlsearch = 1 "自動でハイライトを消す
+  let g:incsearch#no_inc_hlsearch                   = 0    " 他のwindowではハイライトしない
+  let g:incsearch#auto_nohlsearch                   = 1    " 自動でハイライトを消す
+  let g:incsearch#consistent_n_direction            = 0    " 1:nで常にforwardに移動
   let g:incsearch#do_not_save_error_message_history = 1
-  let g:incsearch#magic = '\v' " very magic
+  let g:incsearch#magic                             = '\v' " very magic
 
-  " let g:incsearch#magic = '\v'
   map g/ <Plug>(incsearch-stay)
   map / <Plug>(incsearch-forward)
   map ? <Plug>(incsearch-backward)
+
   map * <Plug>(incsearch-nohl)<Plug>(anzu-star)
   map # <Plug>(incsearch-nohl)<Plug>(anzu-sharp)
+  map g* <Plug>(incsearch-nohl)<Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
+  map g# <Plug>(incsearch-nohl)<Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
 
-  map   n <Plug>(incsearch-nohl-n)
-  map   N <Plug>(incsearch-nohl-N)
-  nmap  n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
-  nmap  N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
+  map z* <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
+  map z# <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
+  map gz* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
+  map gz# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
 
+  map  n <Plug>(incsearch-nohl-n)
+  map  N <Plug>(incsearch-nohl-N)
+  nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
+  nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
+
+  " g系は選択範囲を検索 zはstay asteriskはsmartcaseで*検索する
+  " nohlとnohl0の違いはたぶんCursorMovedがあるかないか
+  " map *   <Plug>(incsearch-nohl)<Plug>(asterisk-*)
+  " map #   <Plug>(incsearch-nohl)<Plug>(asterisk-#)
   call neobundle#untap()
 endif "}}}
 
