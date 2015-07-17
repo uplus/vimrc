@@ -19,8 +19,8 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    }
       \ }
 
-NeoBundleLazy 'Shougo/vimshell.vim',  { 'depends' : [ 'Shougo/vimproc.vim'  ] }
-NeoBundleLazy 'ujihisa/vimshell-ssh', { 'depends' : [ 'Shougo/vimshell.vim' ] }
+NeoBundleLazy 'Shougo/vimshell.vim',  { 'commands' : ['VimShell'], 'depends' : [ 'Shougo/vimproc.vim'  ] }
+NeoBundleLazy 'ujihisa/vimshell-ssh', { 'commands' : ['VimShell'], 'depends' : [ 'Shougo/vimshell.vim' ] }
 
 " Unite: "{{{
 NeoBundle     'Shougo/unite.vim'
