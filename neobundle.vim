@@ -76,7 +76,8 @@ NeoBundle 'LeafCage/foldCC.vim'
 
 " #search and #replace "{{{
 NeoBundle 'osyo-manga/vim-anzu'      " show search point on the command-line
-NeoBundle 'haya14busa/incsearch.vim' "サーチ時に全てをハイライト
+NeoBundle 'haya14busa/incsearch.vim' " サーチ時に全てをハイライト
+NeoBundle 'haya14busa/vim-asterisk'  " Todo: これの設定をする
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 "}}}
 
