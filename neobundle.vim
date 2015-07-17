@@ -113,10 +113,10 @@ NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
-" #rails and #ruby"{{{
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rails'         " Modelを表示したりできる
-NeoBundle 'basyura/unite-rails'     " Unite上にrailsの情報を表示する
+" #ruby"{{{
+NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
+NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Modelを表示したりできる
+NeoBundleLazy 'basyura/unite-rails', { 'filetypes' : ['ruby'] } " Unite上にrailsの情報を表示する
 " NeoBundle 'bbatsov/rubocop'
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
@@ -138,6 +138,8 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 "}}}
 
 " #operator "{{{
+" http://qiita.com/rbtnn/items/a47ed6684f1f0bc52906
+
 " operatorをLazyにすると読み込まない
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' }
@@ -149,6 +151,7 @@ NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
 NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' }
+" NeoBundle '',         { 'depends' : 'kana/vim-operator-user' }
 
 " 任意のcmdを実行するoperator
 NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operator-user' }
@@ -175,6 +178,7 @@ NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
 
 " , { 'depends' : 'kana/vim-textobj-user' }
+" t9md/vim-textobj-function-ruby
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 " }}}
@@ -189,6 +193,7 @@ NeoBundle 'djjcast/mirodark'
 NeoBundle 'vim-scripts/BusyBee'
 NeoBundle '1player/lettuce.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+" NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
 "}}}
 
 " #input-support "{{{
@@ -396,7 +401,7 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent><Space>o :<C-U>Unite outline -auto-resize -no-start-insert -resume<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume<CR>
 
-  " unite-grep {{{
+  " grep {{{
   let g:unite_source_grep_max_candidates = 200
   if executable('ag')
       " Use ag in unite grep source.
@@ -724,7 +729,7 @@ if neobundle#tap('vim-jplus') "{{{
 
   " 任意の1文字を入力して結合を行う
   nmap g<Space>J <Plug>(jplus-getchar)
-  vmap g<Space>J <Plug>(jplus-getchar)
+  xmap g<Space>J <Plug>(jplus-getchar)
 
   " 複数文字を入力したい場合は <Plug>(jplus-input) を使用する
   " nmap g<Space>J <Plug>(jplus-input)
