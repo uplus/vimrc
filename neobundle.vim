@@ -73,12 +73,15 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
 NeoBundle 'tpope/vim-speeddating'    " 年月日に加算できる
 NeoBundle 'LeafCage/foldCC.vim'
+NeoBundle 'kana/vim-niceblock'
+NeoBundle 't9md/vim-choosewin'
 "}}}
 
 " #search and #replace "{{{
 NeoBundle 'osyo-manga/vim-anzu'      " show search point on the command-line
 NeoBundle 'haya14busa/incsearch.vim' " サーチ時に全てをハイライト
 NeoBundle 'haya14busa/vim-asterisk'  " Todo: これの設定をする
+NeoBundle 'tpope/vim-abolish'
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 "}}}
 
@@ -96,7 +99,6 @@ NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
 " NeoBundle 'jceb/vim-hier'
-" NeoBundle 'Shougo/echodoc'
 "}}}
 
 " #quickrun "{{{
@@ -226,6 +228,7 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
 NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
+NeoBundleLazy 'Shougo/echodoc',           { 'autoload' : { 'insert' : 1 }}
 
 "}}}
 
@@ -726,6 +729,30 @@ if neobundle#tap('vim-jplus') "{{{
   " 複数文字を入力したい場合は <Plug>(jplus-input) を使用する
   " nmap g<Space>J <Plug>(jplus-input)
   " vmap g<Space>J <Plug>(jplus-input)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-niceblock') "{{{
+  xmap I  <Plug>(niceblock-I)
+  xmap A  <Plug>(niceblock-A)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-choosewin') "{{{
+  nmap g<C-w>  <Plug>(choosewin)
+  let g:choosewin_overlay_enable          = 1
+  let g:choosewin_overlay_clear_multibyte = 1
+  let g:choosewin_blink_on_land           = 0 " 頼むから着地時にカーソル点滅をさせないでくれ！
+  " let g:choosewin_statusline_replace      = 0 " どうかステータスラインリプレイスしないで下さい!
+  " let g:choosewin_tabline_replace         = 0 " どうかタブラインもリプレイスしないでいただきたい！
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('echodoc.vim') "{{{
+  let g:echodoc_enable_at_startup = 1
 
   call neobundle#untap()
 endif "}}}
