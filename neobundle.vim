@@ -156,6 +156,7 @@ NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
 NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Do two ro more operators
 " NeoBundle '',         { 'depends' : 'kana/vim-operator-user' }
 
 " 任意のcmdを実行するoperator
@@ -225,13 +226,12 @@ NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 " NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/excitetranslate-vim'
 NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
       \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
       \     'function_prefix' : 'openbrowser',
       \   }  }
-
 NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
-NeoBundle 'mattn/excitetranslate-vim'
 
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 " NeoBundle 'itchyny/screensaver.vim'
@@ -477,9 +477,8 @@ if neobundle#tap('committia.vim') "{{{
     " end
 
     " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+    imap <buffer><C-e> <Plug>(committia-scroll-diff-up-half)
+    imap <buffer><C-y> <Plug>(committia-scroll-diff-down-half)
     goto 1
   endfunction
 
@@ -732,6 +731,7 @@ endif "}}}
 if neobundle#tap('vim-jplus') "{{{
   " 行継続文字などを消して結合
   nmap J <Plug>(jplus)
+  xmap J <Plug>(jplus)
 
   " 任意の1文字を入力して結合を行う
   nmap g<Space>J <Plug>(jplus-getchar)
@@ -798,6 +798,23 @@ if neobundle#tap('jedi-vim') "{{{
   autocmd uAutoCmd FileType python setlocal omnifunc=jedi#completions
   let g:jedi#completions_enabled    = 0
   let g:jedi#auto_vim_configuration = 0
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('open-browser.vim') "{{{
+  " nmap gs <Plug>(open-browser-wwwsearch)
+
+  function! neobundle#hooks.on_source(bundle)
+    command Wsearch :call <SID>www_search()
+    nnoremap <Plug>(open-browser-wwwsearch) :<C-u>call <SID>www_search()<CR>
+    function! s:www_search()
+      let l:search_word = input('Please input search word: ')
+      if l:search_word != ''
+        execute 'OpenBrowserSearch' escape(l:search_word, '"')
+      endif
+    endfunction
+  endfunction
 
   call neobundle#untap()
 endif "}}}
