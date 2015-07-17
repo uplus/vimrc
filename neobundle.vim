@@ -1,4 +1,5 @@
 " NeoBundle:
+" gs をkeymapのtoggleプレフィックスに割り当てる
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim

@@ -29,7 +29,7 @@ xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
 "}}}
 
-nnoremap Y v$hy
+nnoremap Y y$
 nmap S <C-V>$sa
 nmap gJ ]ekJ
 
@@ -39,7 +39,7 @@ nnoremap y<Space>j 3yj
 nnoremap y<Space>k 3yk
 
 " 行末にスペースを一つ追加する
-" Todo: 高速に動作するようにsubsを使って改良する
+" Todo: 高速に動作するようにsubsを使って改良する appendでできる
 xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
 " deprecated
@@ -108,10 +108,11 @@ xnoremap <silent> <Space> <Nop>
 nnoremap <C-W>p <Nop>
 nnoremap <C-W>n <Nop>
 nnoremap <C-W>gs :vertical wincmd f<CR>
-nnoremap gs :vertical wincmd f<CR>
+nnoremap gft gf
+nnoremap gfv :vertical wincmd f<CR>
 
 "#cmdwin
-cnoremap <C-K> <C-F>
+cnoremap <C-L> <C-F>
 
 au uAutoCmd CmdwinEnter  * call s:cmdwin_config()
 function! s:cmdwin_config()
