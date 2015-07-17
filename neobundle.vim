@@ -121,6 +121,11 @@ NeoBundleLazy 'basyura/unite-rails', { 'filetypes' : ['ruby'] } " Unite上にrai
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
+" #python
+NeoBundleLazy 'hdima/python-syntax',  { 'filetypes' : ['python'] }
+NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " 折りたたみの設定
+NeoBundleLazy 'davidhalter/jedi-vim', { 'filetypes' : ['python'] }
+
 " #tag and #ref "{{{
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
@@ -242,8 +247,8 @@ NeoBundleLazy 'Shougo/echodoc',           { 'autoload' : { 'insert' : 1 }}
 let g:netrw_nogx=1             " 不要なkeymapを無効
 let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
+let python_highlight_all = 1
 command! -range Trans :<line1>,<line2>:ExciteTranslate
-
 
 " vim-operator taps "{{{
 if neobundle#tap('vim-operator-user')
@@ -785,6 +790,14 @@ if neobundle#tap('vim-choosewin') "{{{
   let g:choosewin_blink_on_land           = 0 " 頼むから着地時にカーソル点滅をさせないでくれ！
   " let g:choosewin_statusline_replace      = 0 " どうかステータスラインリプレイスしないで下さい!
   " let g:choosewin_tabline_replace         = 0 " どうかタブラインもリプレイスしないでいただきたい！
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('jedi-vim') "{{{
+  autocmd uAutoCmd FileType python setlocal omnifunc=jedi#completions
+  let g:jedi#completions_enabled    = 0
+  let g:jedi#auto_vim_configuration = 0
 
   call neobundle#untap()
 endif "}}}
