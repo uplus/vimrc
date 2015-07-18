@@ -52,8 +52,7 @@ xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
 " deprecated
 map mp %
-" superseded
-map gp %
+nmap mmp g^%
 
 inoremap <C-C> <ESC>
 
@@ -94,8 +93,8 @@ xnoremap <Space>sg :s//g<LEFT><LEFT>
 " Toggle 0 and ^ VSのHome Endっぽくなる
 " nnoremap <expr>0  col('.') == 1 ? '^' : '0'
 " nnoremap <expr>^  col('.') == 1 ? '^' : '0'
-noremap <Space>h ^
-noremap <Space>l $
+noremap <Space>h g^
+noremap <Space>l g$
 
 nmap <Space>p :call feedkeys("]\<Space>jp")<CR>
 nmap <Space>P :call feedkeys("[\<Space>kP")<CR>

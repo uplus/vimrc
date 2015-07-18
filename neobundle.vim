@@ -119,7 +119,7 @@ NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
-" #Ruby"{{{
+" #Ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Modelを表示したりできる
 NeoBundleLazy 'basyura/unite-rails', { 'filetypes' : ['ruby'] } " Unite上にrailsの情報を表示する
@@ -127,10 +127,11 @@ NeoBundleLazy 'basyura/unite-rails', { 'filetypes' : ['ruby'] } " Unite上にrai
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
-" #Python
+" #Python "{{{
 NeoBundleLazy 'hdima/python-syntax',  { 'filetypes' : ['python'] }
 NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " 折りたたみの設定
 NeoBundleLazy 'davidhalter/jedi-vim', { 'filetypes' : ['python'] }
+"}}}
 
 " #tag and #ref "{{{
 NeoBundle 'thinca/vim-ref'
