@@ -601,21 +601,25 @@ endif "}}}
 if neobundle#tap('vim-submode') "{{{
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:submode_keep_leaving_key = 1
+
     " tab moving
     call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
     call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
     call submode#map('changetab', 'n', '', 't', 'gt')
     call submode#map('changetab', 'n', '', 'T', 'gT')
+
     " undo/redo
     call submode#enter_with('undo/redo', 'n', '', '<C-r>', '<C-r>')
     call submode#enter_with('undo/redo', 'n', '', 'u', 'u')
     call submode#map('undo/redo', 'n', '', '<C-r>', '<C-r>')
     call submode#map('undo/redo', 'n', '', 'u', 'u')
+
     " move between fold
     call submode#enter_with('movefold', 'n', '', 'zj', 'zjzMzvzz')
     call submode#enter_with('movefold', 'n', '', 'zk', 'zkzMzv[zzz')
     call submode#map('movefold', 'n', '', 'j', 'zjzMzvzz')
     call submode#map('movefold', 'n', '', 'k', 'zkzMzv[zzz')
+
     " resize window
     call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
     call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
@@ -626,6 +630,8 @@ if neobundle#tap('vim-submode') "{{{
     call submode#map('winsize', 'n', '', '+', '<C-w>+')
     call submode#map('winsize', 'n', '', '-', '<C-w>-')
   endfunction
+
+  call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('matchit.zip') "{{{
@@ -674,6 +680,16 @@ if neobundle#tap('vim-speeddating') "{{{
 
   call neobundle#untap()
 endif "}}}
+
+if neobundle#tap('vim-anzu') " {{{
+  " let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
+  " Treat folding well
+  " nnoremap <expr> n anzu#mode#mapexpr('n', '', 'zzzv')
+  " nnoremap <expr> N anzu#mode#mapexpr('N', '', 'zzzv')
+
+  " clear status
+  " nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+endif " }}}
 
 if neobundle#tap('vim-asterisk') "{{{
   " let g:asterisk#keeppos = 1
@@ -756,16 +772,6 @@ if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') 
 
   call neobundle#untap()
 endif "}}}
-
-if neobundle#tap('vim-anzu') " {{{
-  " let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
-  " Treat folding well
-  " nnoremap <expr> n anzu#mode#mapexpr('n', '', 'zzzv')
-  " nnoremap <expr> N anzu#mode#mapexpr('N', '', 'zzzv')
-
-  " clear status
-  " nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-endif " }}}
 
 if neobundle#tap('vim-over') "{{{
   let g:over#command_line#enable_move_cursor = 1
