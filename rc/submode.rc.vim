@@ -1,6 +1,5 @@
 let g:submode_keep_leaving_key = 1
-
-" Todo: foldを展開しないzjマップ作る 別ファイルに移動
+let g:submode_timeoutlen       = 8000
 
 " tab moving
 call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
@@ -15,10 +14,16 @@ call submode#map('undo/redo', 'n', '', '<C-r>', '<C-r>')
 call submode#map('undo/redo', 'n', '', 'u', 'u')
 
 " move between fold
-call submode#enter_with('movefold', 'n', '', 'zj', 'zjzMzvzz')
 call submode#enter_with('movefold', 'n', '', 'zk', 'zkzMzv[zzz')
-call submode#map('movefold', 'n', '', 'j', 'zjzMzvzz')
+call submode#enter_with('movefold', 'n', '', 'zj', 'zjzMzvzz')
 call submode#map('movefold', 'n', '', 'k', 'zkzMzv[zzz')
+call submode#map('movefold', 'n', '', 'j', 'zjzMzvzz')
+
+" move between fold but not open and close it
+call submode#enter_with('movefold-not', 'n', '', 'z<Space>k', 'zk')
+call submode#enter_with('movefold-not', 'n', '', 'z<Space>j', 'zj')
+call submode#map('movefold-not', 'n', '', 'k', 'zk')
+call submode#map('movefold-not', 'n', '', 'j', 'zj')
 
 " resize window
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
@@ -29,3 +34,14 @@ call submode#map('winsize', 'n', '', '>', '<C-w>>')
 call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+" time travel
+call submode#enter_with('time-travel', 'n', '', 'g-', 'g-')
+call submode#enter_with('time-travel', 'n', '', 'g+', 'g+')
+call submode#map('time-travel', 'n', '', '-', 'g-')
+call submode#map('time-travel', 'n', '', '+', 'g+')
+
+" continuous x
+nnoremap <silent> <Plug>(continuous-x) :<C-u>undojoin \| normal! "_x<CR>
+call submode#enter_with('continuous-x', 'n', '', 'x', '"_x')
+call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
