@@ -914,7 +914,7 @@ if neobundle#tap('rainbowcyclone.vim') "{{{
   " nmap c/ <Plug>(rc_highlight)
   " nmap c* <Plug>(rc_highlight_with_cursor)
   " nmap cn <Plug>(rc_highlight_with_last_pattern)
-  nmap * <Plug>(rc_search_forward_with_cursor_complete)
+  " nmap * <Plug>(rc_search_forward_with_cursor_complete)
   call neobundle#untap()
 endif "}}}
 
