@@ -88,6 +88,7 @@ NeoBundle 'haya14busa/incsearch.vim' " サーチ時に全てをハイライト
 NeoBundle 'haya14busa/vim-asterisk'  " Todo: これの設定をする
 NeoBundle 'tpope/vim-abolish'
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
+NeoBundle 'daisuzu/rainbowcyclone.vim'
 "}}}
 
 " #move"{{{
@@ -884,6 +885,31 @@ endif "}}}
 if neobundle#tap('echodoc.vim') "{{{
   let g:echodoc_enable_at_startup = 1
 
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('rainbowcyclone.vim') "{{{
+  let g:rainwbow_cyclone_colors = [
+        \ 'term=reverse ctermfg=232 ctermbg=196 gui=bold guifg=Black guibg=Red',
+        \ 'term=reverse ctermfg=232 ctermbg=129 gui=bold guifg=Black guibg=Purple',
+        \ 'term=reverse ctermfg=232 ctermbg=63  gui=bold guifg=Black guibg=SlateBlue',
+        \ 'term=reverse ctermfg=232 ctermbg=27  gui=bold guifg=Black guibg=Blue',
+        \ 'term=reverse ctermfg=232 ctermbg=40  gui=bold guifg=Black guibg=Green',
+        \ 'term=reverse ctermfg=232 ctermbg=226 gui=bold guifg=Black guibg=Yellow',
+        \ 'term=reverse ctermfg=232 ctermbg=202 gui=bold guifg=Black guibg=Orange',
+        \ ]
+
+  nmap co/ <Plug>(rc_search_forward)
+  nmap co? <Plug>(rc_search_backward)
+  nmap co* <Plug>(rc_search_forward_with_cursor)
+  nmap co# <Plug>(rc_search_backward_with_cursor)
+  " nmap cn <Plug>(rc_search_forward_with_last_pattern)
+  " nmap cN <Plug>(rc_search_backward_with_last_pattern)
+
+  " nmap c/ <Plug>(rc_highlight)
+  " nmap c* <Plug>(rc_highlight_with_cursor)
+  " nmap cn <Plug>(rc_highlight_with_last_pattern)
+  nmap * <Plug>(rc_search_forward_with_cursor_complete)
   call neobundle#untap()
 endif "}}}
 

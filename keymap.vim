@@ -33,8 +33,8 @@ xmap ]<Space> <ESC>]<Space>gv
 " #reset highlight "{{{
 nnoremap <silent>\hn :nohlsearch<CR>
 
-" Reset all highlight
-nnoremap <silent>\hh :nohlsearch \| QuickhlManualReset \| RCReset<CR>
+" Reset all highlight 3以上|で連続できない
+nnoremap <silent>\hh :nohlsearch \| QuickhlManualReset<CR>:RCReset<CR>
 "}}}
 
 nnoremap Y y$
