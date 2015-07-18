@@ -1,5 +1,7 @@
 " NeoBundle:
 " gs をkeymapのtoggleプレフィックスに割り当てる
+" \ _ もtoggle系に使えるかも
+" ga は情報表示系のprefix
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -54,10 +56,11 @@ NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.
 " View: "{{{
 NeoBundle 'Shougo/vinarise'             " バイナリを閲覧
 NeoBundle 'rhysd/committia.vim'         " commitメッセージ表示をステキに
+NeoBundle 'kannokanno/previm'           " Markdown Previewer
 NeoBundle 'powerman/vim-plugin-AnsiEsc' " カラー情報を反映して表示
+NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'bling/vim-airline'
 " NeoBundle 'Yggdroot/indentLine'
 "}}}
 
@@ -68,12 +71,13 @@ NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
 " NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
-NeoBundle 'tpope/vim-repeat'
-" NeoBundle 'kana/vim-repeat'
+" NeoBundle 'tpope/vim-repeat'
+NeoBundle 'kana/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
 NeoBundle 'tpope/vim-speeddating'    " 年月日に加算できる
 NeoBundle 'LeafCage/foldCC.vim'
 NeoBundle 'kana/vim-niceblock'
+NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
 NeoBundle 't9md/vim-choosewin'
 "}}}
 
@@ -86,12 +90,12 @@ NeoBundle 'tpope/vim-abolish'
 "}}}
 
 " #move"{{{
-NeoBundle 'bkad/CamelCaseMotion'      " textobjも持ってる ,w ,b ,e
+NeoBundle 'bkad/CamelCaseMotion'    " textobjも持ってる ,w ,b ,e
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kana/vim-smartword'
-" NeoBundle 'deris/improvedft'        " ftFTで複数文字を入力できる
 NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;の動作をする
-" NeoBundle 'deris/vim-shot-f'        " ftFTで一発で飛べる位置を表示する
+" NeoBundle 'deris/improvedft'      " ftFTで複数文字を入力できる
+" NeoBundle 'deris/vim-shot-f'      " ftFTで一発で飛べる位置を表示する
 "}}}
 
 " #syntaxchecker"{{{
@@ -113,7 +117,7 @@ NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
-" #ruby"{{{
+" #Ruby"{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Modelを表示したりできる
 NeoBundleLazy 'basyura/unite-rails', { 'filetypes' : ['ruby'] } " Unite上にrailsの情報を表示する
@@ -121,7 +125,7 @@ NeoBundleLazy 'basyura/unite-rails', { 'filetypes' : ['ruby'] } " Unite上にrai
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
-" #python
+" #Python
 NeoBundleLazy 'hdima/python-syntax',  { 'filetypes' : ['python'] }
 NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " 折りたたみの設定
 NeoBundleLazy 'davidhalter/jedi-vim', { 'filetypes' : ['python'] }
@@ -151,7 +155,7 @@ NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-tex
 NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " textobjをRubyの式として評価
-NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] }
 NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
@@ -182,9 +186,9 @@ NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj
 
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
+" NeoBundle 't9md/vim-textobj-function-ruby', { 'depends' : 'kana/vim-textobj-user' } " f -> F に変更
 
 " , { 'depends' : 'kana/vim-textobj-user' }
-" t9md/vim-textobj-function-ruby
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 " }}}
@@ -206,25 +210,31 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'marcus/rsense' :helpが使えなくなる
 NeoBundle 'NigoroJr/rsense'
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete']}
-NeoBundleLazy 'Rip-Rip/clang_complete',        { 'filetypes' : ['c', 'cpp'] }
-NeoBundleLazy 'kana/vim-smartinput',           { 'autoload' : { 'insert' : 1 }}
-NeoBundleLazy 'cohama/vim-smartinput-endwise', { 'depends' : [ 'kana/vim-smartinput' ] }
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete.vim']}
+NeoBundleLazy 'Rip-Rip/clang_complete',              { 'filetypes' : ['c', 'cpp'] }
+NeoBundleLazy 'kana/vim-smartinput',                 { 'autoload' : { 'insert' : 1 }}
+NeoBundleLazy 'cohama/vim-smartinput-endwise',       { 'depends' : [ 'kana/vim-smartinput' ] }
 NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neosnippet.vim' ] }
 "}}}
 
 " #other "{{{
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/caw.vim'
 
-NeoBundle 'Shougo/context_filetype.vim'
+NeoBundleLazy 'matchit.zip',    { 'mappings' : ['%', 'g%'] }
+NeoBundle 'vimtaku/hl_matchit.vim'
+NeoBundle 't9md/vim-quickhl'
+NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
+
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'kannokanno/previm'       " Markdown Previewer
+NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
-NeoBundle 'osyo-manga/vim-jplus'    " 任意の文字で行を結合する
+
+
 " NeoBundle 'tpope/vim-fugitive'      " git
 " NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
@@ -235,11 +245,8 @@ NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'
 
 NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 " NeoBundle 'itchyny/screensaver.vim'
-NeoBundleLazy 'matchit.zip', { 'mappings' : ['%', 'g%'] }
-NeoBundle 'vimtaku/hl_matchit.vim'
-NeoBundle 't9md/vim-quickhl'
+
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
-NeoBundleLazy 'Shougo/echodoc',           { 'autoload' : { 'insert' : 1 }}
 
 "}}}
 
@@ -700,11 +707,10 @@ if neobundle#tap('incsearch.vim') " {{{
   au uAutoCmd ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
   au uAutoCmd ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
 
-  let g:incsearch#no_inc_hlsearch                   = 0    " 他のwindowではハイライトしない
-  let g:incsearch#auto_nohlsearch                   = 1    " 自動でハイライトを消す
-  let g:incsearch#consistent_n_direction            = 0    " 1:nで常にforwardに移動
-  let g:incsearch#do_not_save_error_message_history = 1
-  let g:incsearch#magic                             = '\v' " very magic
+  let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
+  let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
+  let g:incsearch#consistent_n_direction = 0    " 1:nで常にforwardに移動
+  let g:incsearch#magic                  = '\v' " very magic
 
   map g/ <Plug>(incsearch-stay)
   map / <Plug>(incsearch-forward)
@@ -732,14 +738,15 @@ if neobundle#tap('incsearch.vim') " {{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('caw.vim') "{{{
+" commentout taps "{{{
+if neobundle#tap('caw.vim')
   let g:caw_no_default_keymappings = 1
   xmap gc <Plug>(caw:i:toggle)
 
   call neobundle#untap()
-endif "}}}
+endif
 
-if neobundle#tap('nerdcommenter') "{{{
+if neobundle#tap('nerdcommenter')
   let g:NERDCreateDefaultMappings = 0
   let g:NERDSpaceDelims = 1
 
@@ -757,9 +764,9 @@ if neobundle#tap('nerdcommenter') "{{{
   xmap gy <Plug>NERDCommenterYank
 
   call neobundle#untap()
-endif "}}}
+endif
 
-if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim') "{{{
+if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim')
   nmap <silent><expr> <Plug>(operator-comment-toggle)
         \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
 
@@ -771,7 +778,8 @@ if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') 
   nmap gy <Plug>(operator-comment-yank-toggle)
 
   call neobundle#untap()
-endif "}}}
+endif
+"}}}
 
 if neobundle#tap('vim-over') "{{{
   let g:over#command_line#enable_move_cursor = 1
@@ -780,7 +788,6 @@ if neobundle#tap('vim-over') "{{{
   " let g:over_enable_cmd_window = 1
   " let g:over#command_line#search#enable_incsearch = 1
   " let g:over#command_line#search#enable_move_cursor = 1
-
 
   call neobundle#untap()
 endif "}}}
@@ -806,7 +813,7 @@ if neobundle#tap('vim-jplus') "{{{
   nmap g<Space>J <Plug>(jplus-getchar)
   xmap g<Space>J <Plug>(jplus-getchar)
 
-  " 複数文字を入力したい場合は <Plug>(jplus-input) を使用する
+  " 複数文字を入力したい場合
   " nmap g<Space>J <Plug>(jplus-input)
   " vmap g<Space>J <Plug>(jplus-input)
 
