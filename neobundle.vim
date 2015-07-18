@@ -869,12 +869,13 @@ if neobundle#tap('vim-niceblock') "{{{
 endif "}}}
 
 if neobundle#tap('vim-choosewin') "{{{
-  nmap g<C-w>  <Plug>(choosewin)
+  nmap \w <Plug>(choosewin)
   let g:choosewin_overlay_enable          = 1
   let g:choosewin_overlay_clear_multibyte = 1
-  let g:choosewin_blink_on_land           = 0 " 頼むから着地時にカーソル点滅をさせないでくれ！
-  " let g:choosewin_statusline_replace      = 0 " どうかステータスラインリプレイスしないで下さい!
-  " let g:choosewin_tabline_replace         = 0 " どうかタブラインもリプレイスしないでいただきたい！
+  let g:choosewin_overlay_font_size       = 'small'
+  let g:choosewin_blink_on_land           = 0
+  let g:choosewin_statusline_replace      = 0
+  let g:choosewin_tabline_replace         = 0
 
   call neobundle#untap()
 endif "}}}
