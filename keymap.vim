@@ -3,7 +3,7 @@ command! Q :q!
 command! S :shell
 command! Sh :w | sh
 command! -nargs=1 -complete=file T tabedit <args>
-command! Vs :tabedit | VimShell
+command! Vs :tabnew +VimShell
 command! Reload :source $MYVIMRC
 
 " #non register delete "{{{
@@ -105,8 +105,6 @@ xnoremap <silent> <Space> <Nop>
 "}}}
 
 " #window"{{{
-nnoremap <C-W>p <Nop>
-nnoremap <C-W>n <Nop>
 nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gft gf
 nnoremap gfv :vertical wincmd f<CR>

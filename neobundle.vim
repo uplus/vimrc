@@ -1,7 +1,8 @@
 " NeoBundle:
-" gs をkeymapのtoggleプレフィックスに割り当てる
-" \ _ もtoggle系に使えるかも
+" gs gr gR
 " ga は情報表示系のprefix
+" \ _ もtoggle系に使えるかも
+" \h is prefix of highlight
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -177,7 +178,7 @@ NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } "
 NeoBundle 'mattn/vim-textobj-url',     { 'depends' : 'kana/vim-textobj-user' } " u
 NeoBundle 'h1mesuke/textobj-wiw',      { 'depends' : 'kana/vim-textobj-user' } " ,w  CamelCaseMotionと併用
 NeoBundle 'thinca/vim-textobj-comment',          { 'depends' : 'kana/vim-textobj-user' } " c コメント
-NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " p 最後にペーストしたtextobj
+NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " ip 最後にペーストしたtextobj apない
 NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} 任意の区切り文字
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb なんらかの括弧
 NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " 連続したtextobjを矩形選択 ciw -> cIw
