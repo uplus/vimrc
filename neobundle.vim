@@ -828,14 +828,22 @@ if neobundle#tap('vim-quickhl') "{{{
 
   nmap gh <Plug>(quickhl-manual-this)
   xmap gh <Plug>(quickhl-manual-this)
-  nmap gsm <Plug>(quickhl-manual-reset)
-  xmap gsm  <Plug>(quickhl-manual-reset)
-  nmap gsc <Plug>(quickhl-cword-toggle)
-  " nmap <Plug>(quickhl-tag-toggle)
-  " map  <Plug>(operator-quickhl-manual-this-motion)
+  map  gH <Plug>(operator-quickhl-manual-this-motion)
 
+  nmap \hm <Plug>(quickhl-manual-reset)
+  xmap \hm <Plug>(quickhl-manual-reset)
+  nmap \ht <Plug>(quickhl-tag-toggle)
+  nmap \hc <Plug>(quickhl-cword-toggle)
+
+  let g:quickhl_manual_hl_priority = 100
   let g:quickhl_manual_colors = [
-        \ 'gui=bold ctermfg=16  ctermbg=153 guifg=#ffffff guibg=#0a7383',
+        \ 'term=reverse ctermfg=232 ctermbg=196 gui=bold guifg=Black guibg=Red',
+        \ 'term=reverse ctermfg=232 ctermbg=129 gui=bold guifg=Black guibg=Purple',
+        \ 'term=reverse ctermfg=232 ctermbg=63  gui=bold guifg=Black guibg=SlateBlue',
+        \ 'term=reverse ctermfg=232 ctermbg=27  gui=bold guifg=Black guibg=Blue',
+        \ 'term=reverse ctermfg=232 ctermbg=40  gui=bold guifg=Black guibg=Green',
+        \ 'term=reverse ctermfg=232 ctermbg=226 gui=bold guifg=Black guibg=Yellow',
+        \ 'term=reverse ctermfg=232 ctermbg=202 gui=bold guifg=Black guibg=Orange',
         \ 'gui=bold ctermfg=0   ctermbg=1   guibg=#a07040 guifg=#ffffff',
         \ 'gui=bold ctermfg=0   ctermbg=2   guibg=#4070a0 guifg=#ffffff',
         \ 'gui=bold ctermfg=0   ctermbg=3   guibg=#40a070 guifg=#ffffff',
@@ -847,7 +855,8 @@ if neobundle#tap('vim-quickhl') "{{{
         \ 'gui=bold ctermfg=0   ctermbg=45  guibg=#5b3674 guifg=#ffffff',
         \ 'gui=bold ctermfg=0   ctermbg=16  guibg=#4c8f2f guifg=#ffffff',
         \ 'gui=bold ctermfg=0   ctermbg=50  guibg=#1060a0 guifg=#ffffff',
-        \ 'gui=bold ctermfg=0   ctermbg=56  guibg=#a0b0c0 guifg=black']
+        \ 'gui=bold ctermfg=0   ctermbg=56  guibg=#a0b0c0 guifg=black',
+        \ ]
 
   call neobundle#untap()
 endif "}}}
