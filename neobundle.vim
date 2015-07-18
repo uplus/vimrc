@@ -779,12 +779,19 @@ if neobundle#tap('vim-jplus') "{{{
   xmap J <Plug>(jplus)
 
   " 任意の1文字を入力して結合を行う
-  nmap g<Space>J <Plug>(jplus-getchar)
-  xmap g<Space>J <Plug>(jplus-getchar)
+  nmap gJ <Plug>(jplus-getchar)
+  xmap gJ <Plug>(jplus-getchar)
 
   " 複数文字を入力したい場合
-  " nmap g<Space>J <Plug>(jplus-input)
-  " vmap g<Space>J <Plug>(jplus-input)
+  nmap <Space>gJ <Plug>(jplus-input)
+  vmap <Space>gJ <Plug>(jplus-input)
+
+  " <Plug>(jplus-getchar) %d は結合文字
+  let g:jplus#config = {
+        \   "_" : {
+        \       "delimiter_format" : ' %d '
+        \   }
+        \}
 
   call neobundle#untap()
 endif "}}}

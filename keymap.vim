@@ -31,7 +31,7 @@ xmap ]<Space> <ESC>]<Space>gv
 
 nnoremap Y y$
 nmap S <C-V>$sa
-nmap gJ ]ekJ
+nmap <Space>J ]ekJ
 
 nnoremap d<Space>j 3dj
 nnoremap d<Space>k 3dk
