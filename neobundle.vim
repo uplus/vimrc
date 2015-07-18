@@ -595,13 +595,11 @@ if neobundle#tap('vim-airline') "{{{
   let g:airline_powerline_fonts = 1
   let g:airline_theme           = "dark"
   let g:airline_left_sep        = ''
-  let g:airline#extensions#tabline#enabled  = 1
+  let g:airline#extensions#tabline#enabled     = 1
   let g:airline#extensions#tabline#show_tab_nr = 1
-  let g:airline#extensions#tabline#left_sep = ''
-
-  " Todo:
-  " タブに表示する名前（fnamemodifyの第二引数）
-  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+  let g:airline#extensions#tabline#left_sep    = ''
+  let g:airline#extensions#tabline#fnamemod    = ':t' " name in tabline. second argument of fnamemodify
   call neobundle#untap()
 endif "}}}
 
