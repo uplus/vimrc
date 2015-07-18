@@ -62,7 +62,7 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc' " カラー情報を反映して表示
 NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace' " 行末の半角スペースをハイライト
 " NeoBundle 'itchyny/lightline.vim'
-" NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'Yggdroot/indentLine'
 "}}}
 
 " Action: "{{{
@@ -88,6 +88,7 @@ NeoBundle 'haya14busa/incsearch.vim' " サーチ時に全てをハイライト
 NeoBundle 'haya14busa/vim-asterisk'  " Todo: これの設定をする
 NeoBundle 'tpope/vim-abolish'
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
+NeoBundle 'osyo-manga/vim-hopping'
 NeoBundle 'daisuzu/rainbowcyclone.vim'
 "}}}
 
@@ -251,6 +252,9 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
 
+NeoBundle 'lilydjwg/colorizer'
+NeoBundle 'colorsel.vim' " gui only
+" NeoBundle 'cohama/vim-insert-linenr' " insert-modeでLineNrを反転
 "}}}
 
 "###################### plugin config ############################"
@@ -911,6 +915,37 @@ if neobundle#tap('rainbowcyclone.vim') "{{{
   " nmap c* <Plug>(rc_highlight_with_cursor)
   " nmap cn <Plug>(rc_highlight_with_last_pattern)
   nmap * <Plug>(rc_search_forward_with_cursor_complete)
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('colorizer') "{{{
+  let g:colorizer_nomap   = 1
+  let g:colorizer_startup = 0
+  nmap \hz <Plug>Colorizer
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('indentLine') "{{{
+  let g:indentLine_enabled              = 0
+  let g:indentLine_faster               = 1
+  let g:indentLine_showFirstIndentLevel = 1
+  let g:indentLine_color_term           = 208
+  nmap <silent>\il :IndentLinesToggle<CR>
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-hopping') "{{{
+  let g:hopping#prompt     = "Input:> "
+  nmap \H <Plug>(hopping-start)
+  " let g:hopping#keymapping = {
+  "   \	"\<C-n>" : "<Over>(hopping-next)",
+  "   \	"\<C-p>" : "<Over>(hopping-prev)",
+  "   \	"\<C-u>" : "<Over>(scroll-u)",
+  "   \	"\<C-d>" : "<Over>(scroll-d)",
+  "   \}
+  "
   call neobundle#untap()
 endif "}}}
 
