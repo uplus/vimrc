@@ -27,6 +27,14 @@ nnoremap <silent> ]p :cprevious<CR>
 " visual-modeで[<Space>]が使えるようにする
 xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
+
+"}}}
+
+" #reset highlight "{{{
+nnoremap <silent>\hn :nohlsearch<CR>
+
+" Reset all highlight
+nnoremap <silent>\hh :nohlsearch \| QuickhlManualReset \| RCReset<CR>
 "}}}
 
 nnoremap Y y$
