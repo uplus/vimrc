@@ -194,11 +194,11 @@ function! OneShotAutocmd(name, event, pattern, cmd) "{{{
   augroup END
 endfunction "}}}
 
-command! UndoClear :call UndoClear()
+command! UndoClear :call UndoClear() "{{{
 function! UndoClear()
   let l:old = &undolevels
   set undolevels=-1
   exe "normal a \<BS>\<Esc>"
   let &undolevels = l:old
   unlet l:old
-endfunction
+endfunction "}}}

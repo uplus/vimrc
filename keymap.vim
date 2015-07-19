@@ -1,6 +1,5 @@
 command! SudoWrite w !sudo tee % > /dev/null
 command! Q :q!
-command! S :shell
 command! Sh :w | sh
 command! -nargs=1 -complete=file T tabedit <args>
 command! Vs :tabnew +VimShell
