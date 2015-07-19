@@ -404,6 +404,8 @@ endif "}}}
 if neobundle#tap('unite.vim') "{{{
   command! Uscheme :Unite colorscheme -auto-preview
   command! Umap :Unite output:map|map!|lmap
+  command! Update Unite neobundle/update
+  command! Bundle Unite neobundle
 
   let g:unite_enable_start_insert = 0
 

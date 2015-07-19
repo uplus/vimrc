@@ -1,9 +1,9 @@
 command! SudoWrite w !sudo tee % > /dev/null
-command! Q :q!
-command! Sh :w | sh
+command! Q quit!
+command! Sh update | shell
 command! -nargs=1 -complete=file T tabedit <args>
-command! Vs :tabnew +VimShell
-command! Reload :source $MYVIMRC
+command! Vs tabnew +VimShell
+command! Reload source $MYVIMRC
 
 " #non register delete "{{{
 nnoremap _d "_d
