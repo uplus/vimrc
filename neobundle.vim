@@ -71,7 +71,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
-NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
+NeoBundle 'kana/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
 " NeoBundle 'tpope/vim-repeat'
 NeoBundle 'kana/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
