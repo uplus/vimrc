@@ -42,6 +42,6 @@ call submode#map('time-travel', 'n', '', '-', 'g-')
 call submode#map('time-travel', 'n', '', '+', 'g+')
 
 " continuous x
-nnoremap <silent> <Plug>(continuous-x) :<C-u>undojoin \| normal! "_x<CR>
-call submode#enter_with('continuous-x', 'n', '', 'x', '"_x')
+nnoremap <silent> <Plug>(continuous-x) :<C-u>undojoin \| normal! x<CR>
+call submode#enter_with('continuous-x', 'n', '', 'x', 'x')
 call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
