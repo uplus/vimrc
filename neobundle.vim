@@ -950,19 +950,7 @@ if neobundle#tap('vim-hopping') "{{{
 endif "}}}
 
 if neobundle#tap('vim-altercmd') "{{{
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    AlterCommand t T
-    AlterCommand vsh[ell] tabnew +VimShell
-    AlterCommand ao[nly] ActiveOnly
-    AlterCommand co[nly] CurrentOnly
-    AlterCommand undoc[lear] UndoClear
-    AlterCommand cap[ture] Capture
-    AlterCommand capturewin CaptureWin
-    AlterCommand movet Movett
-    AlterCommand sh Sh
-
-  endfunction
-
+  let neobundle#tapped.hooks.on_post_source = '~/.vim/rc/altercmd.rc.vim'
   call neobundle#untap()
 endif "}}}
 
