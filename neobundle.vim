@@ -71,7 +71,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
-" NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
+NeoBundle 'tyru/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
 " NeoBundle 'tpope/vim-repeat'
 NeoBundle 'kana/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
@@ -946,6 +946,23 @@ if neobundle#tap('vim-hopping') "{{{
   "   \	"\<C-d>" : "<Over>(scroll-d)",
   "   \}
   "
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-altercmd') "{{{
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    AlterCommand t T
+    AlterCommand vsh[ell] tabnew +VimShell
+    AlterCommand ao[nly] ActiveOnly
+    AlterCommand co[nly] CurrentOnly
+    AlterCommand undoc[lear] UndoClear
+    AlterCommand cap[ture] Capture
+    AlterCommand capturewin CaptureWin
+    AlterCommand movet Movett
+    AlterCommand sh Sh
+
+  endfunction
+
   call neobundle#untap()
 endif "}}}
 
