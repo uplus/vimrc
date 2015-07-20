@@ -73,8 +73,8 @@ set nobackup
 set modeline
 
 set nowrap
-set sidescroll=0
-set sidescrolloff=8
+set sidescroll=1
+set sidescrolloff=12
 
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
