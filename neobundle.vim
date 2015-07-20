@@ -1,8 +1,4 @@
 " NeoBundle:
-" gs gr gR
-" ga は情報表示系のprefix
-" \ _ もtoggle系に使えるかも
-" \h is prefix of highlight
 
 if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
