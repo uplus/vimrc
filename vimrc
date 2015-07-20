@@ -139,6 +139,7 @@ Source 'keymap'
 " #auto commands
 
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+"Todo: 起動時のみにするかも
 au uAutoCmd BufEnter    * lcd %:p:h
 au uAutoCmd VimResized  * wincmd =
 
@@ -201,6 +202,12 @@ function! s:help_config()
   setlocal number
 endfunction
 
+" InsertLeave
+let g:autosave_when_insertleave = 0
+nnoremap <silent><buffer> <F2> :let g:autosave_when_insertleave=!g:autosave_when_insertleave<CR>
+au uAutoCmd InsertLeave * if g:autosave_when_insertleave != 0 | write | endif
+
 if filereadable(expand('~/.vimrc_local_after'))
   source $HOME/.vimrc_local_after
 endif
+
