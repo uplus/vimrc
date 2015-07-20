@@ -581,10 +581,10 @@ if neobundle#tap('vim-easymotion') "{{{
   let g:EasyMotion_space_jump_first = 0 " Space jump to first match
   let g:EasyMotion_smartcase        = 1
 
-  map <Space>j <Plug>(easymotion-j)
-  map <Space>k <Plug>(easymotion-k)
-  map ;j <Plug>(easymotion-sol-j)
-  map ;k <Plug>(easymotion-sol-k)
+  map ;j <Plug>(easymotion-j)
+  map ;k <Plug>(easymotion-k)
+  " map ;j <Plug>(easymotion-sol-j)
+  " map ;k <Plug>(easymotion-sol-k)
 
   " On the current-line f F t and T
   map ;f <Plug>(easymotion-fl)
@@ -785,8 +785,6 @@ if neobundle#tap('rhysd/clever-f.vim') "{{{
   let g:clever_f_fix_key_direction = 0 " 1だとどんな時でもfで後ろにFで前に移動する
   let g:clever_f_show_prompt       = 1
 
-  "Todo: 設定135までよんだ
-  " f<CR> で前回のf検索を繰り返せる
   call neobundle#untap()
 endif "}}}
 
