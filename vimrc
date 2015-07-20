@@ -150,7 +150,8 @@ command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter * SmartScrolloff
 au uAutoCmd WinEnter * SmartScrolloff
 
-au uAutoCmd FileType vim setl iskeyword-=# | setl iskeyword-=_
+" _を除くと*での検索がやりずらい
+au uAutoCmd FileType vim setl iskeyword-=#
 au uAutoCmd FileType * setl formatoptions-=ro
 " r When type <return> in insert-mode auto insert commentstring
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
