@@ -42,16 +42,15 @@ nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 
-nnoremap d<Space>j 3dj
-nnoremap d<Space>k 3dk
-nnoremap y<Space>j 3yj
-nnoremap y<Space>k 3yk
+nnoremap <C-y> 3<C-y>
+xnoremap <C-y> 3<C-y>
+nnoremap <C-e> 3<C-e>
+xnoremap <C-e> 3<C-e>
 
 " 行末にスペースを一つ追加する
 " Todo: 高速に動作するようにsubsを使って改良する appendでできる
 xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
-" deprecated
 map mp %
 nmap mmp g^%
 
@@ -77,8 +76,8 @@ nnoremap gaa ga
 xnoremap gaa ga
 nnoremap ga8 g8
 xnoremap ga8 g8
-nnoremap gas :SyntaxInfo<CR>
-xnoremap gas :SyntaxInfo<CR>
+nnoremap gah :SyntaxInfo<CR>
+xnoremap gah :SyntaxInfo<CR>
 nnoremap ga<C-G> g<C-G>
 xnoremap ga<C-G> g<C-G>
 nnoremap ga<C-A> g<C-A>
