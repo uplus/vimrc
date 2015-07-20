@@ -1,14 +1,15 @@
 " Altercmd:
 
-AlterCommand t T
-AlterCommand ao[nly] ActiveOnly
-AlterCommand co[nly] CurrentOnly
-AlterCommand cap[ture] Capture
-AlterCommand capturewin CaptureWin
-AlterCommand movet Movett
-AlterCommand undoc[lear] UndoClear
+cnoreabbrev t T
+cnoreabbrev movett Movett
+cnoreabbrev sh Sh
+CAlterCommand ao[nly] Aonly
+CAlterCommand co[nly] Conly
+CAlterCommand cap[ture] Capture
+CAlterCommand capwin CaptureWin
+CAlterCommand undoc[lear] UndoClear
+CAlterCommand uc[lear] UndoClear
 
-AlterCommand sh Sh
-AlterCommand vsh[ell] tabnew<Space>+VimShell
-
-AlterCommand uni[te] Unite
+CAlterCommand vsh[ell] Vshell
+CAlterCommand uni[te] Unite
+CAlterCommand vgr[ep] Unite vimgrep
