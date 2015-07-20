@@ -47,8 +47,8 @@ NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'zhaocai/unite-scriptnames',        { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'bundai223/unite-picktodo',         { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'kannokanno/unite-todo',            { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'bundai223/unite-picktodo',         { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'kannokanno/unite-todo',            { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 
@@ -71,7 +71,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
 NeoBundle 'LeafCage/yankround.vim'   " round the yank history
 NeoBundle 'kana/vim-submode'         " vimに独自のモードを作成
-NeoBundle 'kana/vim-altercmd'       " :wとかの元からあるコマンドを書き換え
+NeoBundle 'tyru/vim-altercmd'
 " NeoBundle 'tpope/vim-repeat'
 NeoBundle 'kana/vim-repeat'
 NeoBundle 'AndrewRadev/switch.vim'   " ifとunlessを入れ替えたり
@@ -85,7 +85,7 @@ NeoBundle 't9md/vim-choosewin'
 " #search and #replace "{{{
 NeoBundle 'osyo-manga/vim-anzu'      " show search point on the command-line
 NeoBundle 'haya14busa/incsearch.vim' " サーチ時に全てをハイライト
-NeoBundle 'haya14busa/vim-asterisk'  " Todo: これの設定をする
+NeoBundle 'haya14busa/vim-asterisk'
 NeoBundle 'tpope/vim-abolish'
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'osyo-manga/vim-hopping'
