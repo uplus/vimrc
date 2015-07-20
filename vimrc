@@ -38,6 +38,14 @@ nnoremap s <Nop>
 xnoremap s <Nop>
 nnoremap gs <Nop>
 xnoremap gs <Nop>
+nnoremap gr <Nop>
+xnoremap gr <Nop>
+nnoremap gR <Nop>
+xnoremap gR <Nop>
+nnoremap gh <Nop>
+xnoremap gh <Nop>
+nnoremap gm <Nop>
+xnoremap gm <Nop>
 
 Source 'neobundle'
 filetype plugin indent on
