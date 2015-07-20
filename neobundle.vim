@@ -913,12 +913,12 @@ if neobundle#tap('rainbowcyclone.vim') "{{{
         \ 'term=reverse ctermfg=232 ctermbg=202 gui=bold guifg=Black guibg=Orange',
         \ ]
 
-  nmap cl/ <Plug>(rc_search_forward)
-  nmap cl? <Plug>(rc_search_backward)
-  nmap cl* <Plug>(rc_search_forward_with_cursor)
-  nmap cl# <Plug>(rc_search_backward_with_cursor)
-  nmap cln <Plug>(rc_search_forward_with_last_pattern)
-  nmap clN <Plug>(rc_search_backward_with_last_pattern)
+  nmap co/ <Plug>(rc_search_forward)
+  nmap co? <Plug>(rc_search_backward)
+  nmap co* <Plug>(rc_search_forward_with_cursor)
+  nmap co# <Plug>(rc_search_backward_with_cursor)
+  nmap con <Plug>(rc_search_forward_with_last_pattern)
+  nmap coN <Plug>(rc_search_backward_with_last_pattern)
 
   " nmap c/ <Plug>(rc_highlight)
   " nmap c* <Plug>(rc_highlight_with_cursor)
