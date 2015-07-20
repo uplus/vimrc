@@ -724,6 +724,8 @@ endif "}}}
 if neobundle#tap('caw.vim')
   let g:caw_no_default_keymappings = 1
   xmap gc <Plug>(caw:i:toggle)
+  xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:i:toggle)
+  xmap gy <Plug>(comment-toggle-yank)
 
   call neobundle#untap()
 endif
@@ -736,14 +738,13 @@ if neobundle#tap('nerdcommenter')
   nmap gcj 2<Plug>NERDCommenterInvert
   nmap gck k2<Plug>NERDCommenterInvertj
 
-  " line-toggleはこっちのじゃないと先頭に数字指定できない
-  " foldをまとめてtoggleするため
+  " こっちのじゃないと先頭に数字指定できない
+  " vはfoldをまとめてtoggleするため
   nmap gcc v<Plug>NERDCommenterToggle
   nmap gyy <Plug>NERDCommenterYank
 
   " Aじゃないとmotionのaが使えない
   nmap gcA <Plug>NERDCommenterAppend
-  xmap gy <Plug>NERDCommenterYank
 
   call neobundle#untap()
 endif
@@ -752,9 +753,8 @@ if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') 
   nmap <silent><expr> <Plug>(operator-comment-toggle)
         \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
 
-  "NERDCommenterの方だとコメントアウトしても #が揃わない
   nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>NERDCommenterYank")
+        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
 
   nmap gc <Plug>(operator-comment-toggle)
   nmap gy <Plug>(operator-comment-yank-toggle)
