@@ -789,24 +789,24 @@ if neobundle#tap('rhysd/clever-f.vim') "{{{
 endif "}}}
 
 if neobundle#tap('vim-jplus') "{{{
-  " 行継続文字などを消して結合
   nmap J <Plug>(jplus)
   xmap J <Plug>(jplus)
 
-  " 任意の1文字を入力して結合を行う
-  nmap gJ <Plug>(jplus-getchar)
-  xmap gJ <Plug>(jplus-getchar)
+  " 任意の1文字+両端に空白を挿入して結合を行う
+  nmap gJ <Plug>(jplus-getchar-with-space)
+  xmap gJ <Plug>(jplus-getchar-with-space)
 
   " 複数文字を入力したい場合
   nmap <Space>gJ <Plug>(jplus-input)
   vmap <Space>gJ <Plug>(jplus-input)
 
   " <Plug>(jplus-getchar) %d は結合文字
-  let g:jplus#config = {
-        \   "_" : {
-        \       "delimiter_format" : ' %d '
-        \   }
-        \}
+  " 全てのマップに影響する
+  " let g:jplus#config = {
+  "       \   "_" : {
+  "       \       "delimiter_format" : ' %d '
+  "       \   }
+  "       \}
 
   call neobundle#untap()
 endif "}}}
