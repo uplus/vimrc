@@ -402,25 +402,27 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
-  command! Uscheme :Unite colorscheme -auto-preview
-  command! Umap :Unite output:map|map!|lmap
-  command! Update Unite neobundle/update
-  command! Bundle Unite neobundle
+  command! Maps    Unite -auto-resize output:map|map!|lmap
+  command! Bundle  Unite -auto-resize neobundle
+  command! Update  Unite -auto-resize neobundle/update
+  command! Vimgrep Unite -auto-resize vimgrep
+  command! Schemes Unite -auto-resize -auto-preview colorscheme
+  command! Todo    Unite -auto-resize -auto-preview grep:%::todo\:
+  command! High    Unite highlight
 
   let g:unite_enable_start_insert = 0
 
-  nnoremap [unite] <Nop>
-  xnoremap [unite] <Nop>
-  nmap ;u [unite]
-  xmap ;u [unite]
+  nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
+  nnoremap <silent><Space>bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
+  nnoremap <silent><Space>ba :<C-U>UniteBookmarkAdd<CR>
 
-  " Todo: auto-resize
-  nnoremap <silent><Space>m :<C-U>Unite mark -auto-resize<CR>
-  nnoremap <silent><Space>b :<C-U>Unite buffer -auto-resize<CR>
-  nnoremap <silent><Space>t :<C-u>Unite tab -auto-resize -select=`tabpagenr()-1` <CR>
-  nnoremap <silent><Space>a :<C-U>Unite bookmark -auto-resize<CR>
-  nnoremap <silent><Space>f :<C-U>Unite file -auto-resize -start-insert<CR>
-  nnoremap <silent><Space>o :<C-U>Unite outline -auto-resize -no-start-insert -resume<CR>
+
+  nnoremap <silent>;ub :<C-U>Unite buffer<CR>
+  nnoremap <silent>;ut :<C-u>Unite -select=`tabpagenr()-1` tab<CR>
+
+  nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
+  nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
+  nnoremap <silent>;uo :<C-U>Unite -no-start-insert -resume outline<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume<CR>
 
   " grep {{{
@@ -435,20 +437,22 @@ if neobundle#tap('unite.vim') "{{{
   endif
 
   " unite-grepのキーマップ 選択した文字列をunite-grep
-  vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+  " vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
   " }}}
 
   " search "{{{
-  " nnoremap <silent> / :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
-  " nnoremap <silent> ? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
-  " nnoremap <silent> * :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
-  " nnoremap [Alt]/       /
-  " nnoremap [Alt]?       ?
+  nnoremap <silent> ;u/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
+  nnoremap <silent> ;u? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
+  nnoremap <silent> ;u* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
 
-  " nnoremap <silent> n
-  "       \ :<C-u>UniteResume search%`bufnr('%')`
-  "       \  -no-start-insert -force-redraw<CR>
+  nnoremap <silent> ;un
+        \ :<C-u>UniteResume search%`bufnr('%')`
+        \  -no-start-insert -force-redraw<CR>
   "}}}
+
+  function! neobundle#hooks.on_source(bundle)
+    " call unite#custom#profile('default', 'context', {   'auto_resize': 1   })
+  endfunction
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
