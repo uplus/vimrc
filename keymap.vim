@@ -54,6 +54,11 @@ xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 map mp %
 nmap mmp g^%
 
+nnoremap ,dd :bd<CR>
+nnoremap ,i ".p
+nnoremap ,v '[<S-v>']
+nnoremap ,w :earlier 1f<CR>
+
 inoremap <C-C> <ESC>
 
 nnoremap v V
@@ -64,14 +69,7 @@ xnoremap V v
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-" Info keymap and release " {{{
-nnoremap g8 <Nop>
-xnoremap g8 <Nop>
-nnoremap g<C-G> <Nop>
-xnoremap g<C-G> <Nop>
-nnoremap g<C-A> <Nop>
-xnoremap g<C-A> <Nop>
-
+" #Info keymap and release " {{{
 nnoremap gaa ga
 xnoremap gaa ga
 nnoremap ga8 g8
@@ -93,8 +91,9 @@ xnoremap <Space>sg :s//g<LEFT><LEFT>
 " Toggle 0 and ^ VSのHome Endっぽくなる
 " nnoremap <expr>0  col('.') == 1 ? '^' : '0'
 " nnoremap <expr>^  col('.') == 1 ? '^' : '0'
-noremap <Space>h g^
-noremap <Space>l g$
+" g^ g$ にするとsidescrollのとき画面上の端までしか動いてくれない
+noremap <Space>h 0
+noremap <Space>l $
 
 nmap <Space>p :call feedkeys("]\<Space>jp")<CR>
 nmap <Space>P :call feedkeys("[\<Space>kP")<CR>

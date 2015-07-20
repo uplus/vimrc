@@ -27,7 +27,7 @@ set viminfo+=n~/.vim/tmp/info.txt
 set path+=/usr/include/c++/HEAD/
 
 
-" Release keymappings for plug-in.
+" Release keymaps"{{{
 let mapleader = ";"
 nnoremap Q <Nop>
 nnoremap ; <Nop>
@@ -46,6 +46,13 @@ nnoremap gh <Nop>
 xnoremap gh <Nop>
 nnoremap gm <Nop>
 xnoremap gm <Nop>
+nnoremap g8 <Nop>
+xnoremap g8 <Nop>
+nnoremap g<C-G> <Nop>
+xnoremap g<C-G> <Nop>
+nnoremap g<C-A> <Nop>
+xnoremap g<C-A> <Nop>
+"}}}
 
 Source 'neobundle'
 filetype plugin indent on
