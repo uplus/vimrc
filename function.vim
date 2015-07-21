@@ -202,3 +202,56 @@ function! UndoClear()
   let &undolevels = l:old
   unlet l:old
 endfunction "}}}
+
+    " jump情報取り忘れた
+    "add
+    "return
+
+    " 中間に#がない前提
+    " echo matchlist(getline('.'), '\v^\s*(#+)\s*(\w[^\{#]*).*$')[1:2]
+    " echo matchlist(getline('.'), '\v^\s*(#+)\s*(\w[^\{#]*)')[1:2]
+
+    " let matched = matchlist(getline('.'), '\v^(\s*#+\s*)(\w[^\{]*)')[2]
+    " let filterd = substitute(matched, '\v\s*#+\s*$', '', '')
+
+function! g:GetTitle()
+  let s:unite_source = {
+        \ 'name': 'title',
+        \ 'max_candidates': 50,
+        \ 'is_volatile': 1,
+        \ }
+
+  let path   = expand('%:p') " Todo: unite-sourceにするには%を#にする
+  let titles = []
+  for line in getbufline('%', 0, '$')
+    let matched = matchlist(line, '\v^\s*(#+)\s*(\w[^\{#]*)')[1:2]
+    let title   = join(matched, '')
+    if empty(title)
+      continue
+    endif
+    echo title
+
+    call add(titles,{
+          \ "word" : title,
+          \ "source" : "title",
+          \ "kind" : "jump_list",
+          \ "action__path": path,
+          \ })
+          " \ "action__line": v:key + 1,
+  endfor
+
+  return titles
+endfunction
+
+" function! s:unite_source.gather_candidates(args, context)
+"   let path   = expand('#:p')
+"   let lines  = getbufline('#', 1, '$')
+"   let format = '%' . strlen(len(lines)) . 'd: %s'
+"   return map(lines, '{
+"         \   "word": printf(format, v:key + 1, v:val),
+"         \   "source": "lines",
+"         \   "kind": "jump_list",
+"         \   "action__path": path,
+"         \   "action__line": v:key + 1,
+"         \ }')
+" endfunction
