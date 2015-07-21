@@ -13,3 +13,4 @@ CAlterCommand uc[lear] UndoClear
 CAlterCommand vsh[ell] Vshell
 CAlterCommand uni[te] Unite
 CAlterCommand vgr[ep] Unite vimgrep
+CAlterCommand ug[rep] Unite -auto-resize grep:%::

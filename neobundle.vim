@@ -87,6 +87,7 @@ NeoBundle 'tpope/vim-abolish'
 " NeoBundle 'osyo-manga/vim-over'     " タブ補完が効く置き換えモード
 NeoBundle 'osyo-manga/vim-hopping'
 NeoBundle 'daisuzu/rainbowcyclone.vim'
+NeoBundle 'rking/ag.vim'
 "}}}
 
 " #move"{{{
@@ -406,6 +407,8 @@ if neobundle#tap('unite.vim') "{{{
   command! Schemes Unite -auto-resize -auto-preview colorscheme
   command! Todo    Unite -auto-resize -auto-preview grep:%::todo\:
   command! High    Unite highlight
+  command! MemoOutline Unite -no-empty -auto-resize grep:%::^\\s*#\+\\s*\\w
+
 
   let g:unite_enable_start_insert = 0
 
@@ -427,10 +430,10 @@ if neobundle#tap('unite.vim') "{{{
   if executable('ag')
       " Use ag in unite grep source.
       let g:unite_source_grep_command = 'ag'
-      let g:unite_source_grep_recursive_opt = 'HRn'
       let g:unite_source_grep_default_opts =
-      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+            \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
+            \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+      let g:unite_source_grep_recursive_opt = ''
   endif
 
   " unite-grepのキーマップ 選択した文字列をunite-grep
