@@ -408,24 +408,25 @@ if neobundle#tap('unite.vim') "{{{
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
-  command! Todo    Unite -auto-resize -auto-preview -ignorecase grep:%::todo\:
+  command! Todo    Unite -auto-resize -auto-highlight -ignorecase grep:%::todo\:
   command! High    Unite highlight
-  command! MemoOutline Unite -no-empty -auto-resize -start-insert grep:%::^\\s*#\+\\s*\\w
+
+  " Todo: filetypeごとにbuffer-localにコメント文字を変更して生成する
+  command! Memo    Unite -no-empty -auto-resize -auto-highlight -start-insert grep:%::^\\s*#\+\\s*\\w
+
+  " http://komaken.me/blog/2014/05/07/いつまでたってもunite-vimが使いこなせないので、さす/
+  " auto-previewじゃなくて -auto-highlightなら開いてあるバッファがが動くかも
 
   " alias {{{
-  " For unite-alias.
+  " aliasは入力値などを固定化出来るだけ
   let g:unite_source_alias_aliases = {}
-  let g:unite_source_alias_aliases.memo = {
-        \ 'source' : 'grep:%',
-        \ 'args': '-no-empty -auto-resize',
+  let g:unite_source_alias_aliases.g = {
+        \ 'source' : 'grep',
+        \ 'args' : '%',
         \ }
-
-  " grep:%::^\\s*#\+\\s*\\w
-
-  let g:unite_source_alias_aliases.line_migemo = 'line'
-  let g:unite_source_alias_aliases.calc = 'kawaii-calc'
-  let g:unite_source_alias_aliases.l = 'launcher'
-  let g:unite_source_alias_aliases.kill = 'process'
+  let g:unite_source_alias_aliases.calc    = 'kawaii-calc'
+  let g:unite_source_alias_aliases.l       = 'launcher'
+  let g:unite_source_alias_aliases.kill    = 'process'
   let g:unite_source_alias_aliases.message = {
         \ 'source' : 'output',
         \ 'args'   : 'message',
@@ -463,8 +464,6 @@ if neobundle#tap('unite.vim') "{{{
       let g:unite_source_grep_recursive_opt = ''
   endif
 
-  " unite-grepのキーマップ 選択した文字列をunite-grep
-  " vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
   " }}}
 
   " search "{{{
