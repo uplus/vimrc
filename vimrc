@@ -211,8 +211,9 @@ endfunction
 
 " InsertLeave
 let g:autosave_when_insertleave = 0
-nnoremap <silent><buffer> <F2> :let g:autosave_when_insertleave=!g:autosave_when_insertleave<CR>
-au uAutoCmd InsertLeave * if g:autosave_when_insertleave != 0 | write | endif
+command! AutoSaveWhenInsertLeaveToggle let g:autosave_when_insertleave=!g:autosave_when_insertleave
+nnoremap <silent><buffer> <F2> :AutoSaveWhenInsertLeaveToggle<CR>
+au uAutoCmd InsertLeave * nested if g:autosave_when_insertleave != 0 | write | endif
 
 if filereadable(expand('~/.vimrc_local_after'))
   source $HOME/.vimrc_local_after
