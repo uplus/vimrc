@@ -399,18 +399,46 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
+  let g:unite_enable_start_insert = 0
+  let g:unite_enable_ignore_case  = 1
+  let g:unite_enable_smart_case   = 1
+
   command! Maps    Unite -auto-resize -start-insert output:map|map!|lmap
   command! Bundle  Unite -auto-resize -start-insert neobundle
   command! Update  Unite -auto-resize neobundle/update
-  command! Vgrep Unite -auto-resize vimgrep
+  command! Vgrep   Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
   command! Todo    Unite -auto-resize -auto-preview -ignorecase grep:%::todo\:
   command! High    Unite highlight
   command! MemoOutline Unite -no-empty -auto-resize -start-insert grep:%::^\\s*#\+\\s*\\w
 
-  let g:unite_enable_start_insert = 0
-  let g:unite_enable_ignore_case  = 1
-  let g:unite_enable_smart_case   = 1
+  " alias {{{
+  " For unite-alias.
+  let g:unite_source_alias_aliases = {}
+  let g:unite_source_alias_aliases.memo = {
+        \ 'source' : 'grep:%',
+        \ 'args': '-no-empty -auto-resize',
+        \ }
+
+  " grep:%::^\\s*#\+\\s*\\w
+
+  let g:unite_source_alias_aliases.line_migemo = 'line'
+  let g:unite_source_alias_aliases.calc = 'kawaii-calc'
+  let g:unite_source_alias_aliases.l = 'launcher'
+  let g:unite_source_alias_aliases.kill = 'process'
+  let g:unite_source_alias_aliases.message = {
+        \ 'source' : 'output',
+        \ 'args'   : 'message',
+        \ }
+  let g:unite_source_alias_aliases.mes = {
+        \ 'source' : 'output',
+        \ 'args'   : 'message',
+        \ }
+  let g:unite_source_alias_aliases.scriptnames = {
+        \ 'source' : 'output',
+        \ 'args'   : 'scriptnames',
+        \ }
+  "}}}
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
   nnoremap <silent><Space>bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
@@ -456,34 +484,6 @@ if neobundle#tap('unite.vim') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
   endfunction
-
-  " alias {{{
-  " For unite-alias.
-  let g:unite_source_alias_aliases = {}
-  let g:unite_source_alias_aliases.memo = {
-        \ 'source' : 'grep:%',
-        \ 'args': '-no-empty -auto-resize',
-        \ }
-
-  " grep:%::^\\s*#\+\\s*\\w
-
-  let g:unite_source_alias_aliases.line_migemo = 'line'
-  let g:unite_source_alias_aliases.calc = 'kawaii-calc'
-  let g:unite_source_alias_aliases.l = 'launcher'
-  let g:unite_source_alias_aliases.kill = 'process'
-  let g:unite_source_alias_aliases.message = {
-        \ 'source' : 'output',
-        \ 'args'   : 'message',
-        \ }
-  let g:unite_source_alias_aliases.mes = {
-        \ 'source' : 'output',
-        \ 'args'   : 'message',
-        \ }
-  let g:unite_source_alias_aliases.scriptnames = {
-        \ 'source' : 'output',
-        \ 'args'   : 'scriptnames',
-        \ }
-  "}}}
 
   call neobundle#untap()
 endif "}}}
