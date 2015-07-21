@@ -25,6 +25,8 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', { 'commands' : ['VimShell'], 'depends' : [
 NeoBundle     'Shougo/unite.vim'
 NeoBundle     'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'ujihisa/unite-font',               { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -42,10 +44,7 @@ NeoBundleLazy 'Kocha/vim-unite-tig' ,             { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'zhaocai/unite-scriptnames',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ], 'filetypes' : ['ruby'] } " Unite上にrailsの情報を表示する
-" NeoBundleLazy 'bundai223/unite-picktodo',         { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundleLazy 'kannokanno/unite-todo',            { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'mattn/unite-remotefile',          { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'supermomonga/unite-goimport.vim', { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 
@@ -400,15 +399,14 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
-  command! Maps    Unite -auto-resize output:map|map!|lmap
-  command! Bundle  Unite -auto-resize neobundle
+  command! Maps    Unite -auto-resize -start-insert output:map|map!|lmap
+  command! Bundle  Unite -auto-resize -start-insert neobundle
   command! Update  Unite -auto-resize neobundle/update
-  command! Vimgrep Unite -auto-resize vimgrep
+  command! Vgrep Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
-  command! Todo    Unite -auto-resize -auto-preview grep:%::todo\:
+  command! Todo    Unite -auto-resize -auto-preview -ignorecase grep:%::todo\:
   command! High    Unite highlight
-  command! MemoOutline Unite -no-empty -auto-resize grep:%::^\\s*#\+\\s*\\w
-
+  command! MemoOutline Unite -no-empty -auto-resize -start-insert grep:%::^\\s*#\+\\s*\\w
 
   let g:unite_enable_start_insert = 0
 
@@ -461,9 +459,6 @@ if neobundle#tap('unite.vim') "{{{
   " alias {{{
   " For unite-alias.
   let g:unite_source_alias_aliases = {}
-  let g:unite_source_alias_aliases.test = {
-        \ 'source' : 'file_rec',
-        \ 'args'   : '~/',
         \ }
   let g:unite_source_alias_aliases.line_migemo = 'line'
   let g:unite_source_alias_aliases.calc = 'kawaii-calc'
