@@ -52,7 +52,7 @@ xnoremap <C-e> 3<C-e>
 xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
 map mp %
-nmap mmp g^%
+map mmp ^%
 
 nnoremap ,dd :bd<CR>
 nnoremap ,i ".p
