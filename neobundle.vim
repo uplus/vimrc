@@ -869,7 +869,7 @@ if neobundle#tap('vim-niceblock') "{{{
 endif "}}}
 
 if neobundle#tap('vim-choosewin') "{{{
-  nmap ,w <Plug>(choosewin)
+  nmap \w <Plug>(choosewin)
   let g:choosewin_overlay_enable          = 1
   let g:choosewin_overlay_clear_multibyte = 1
   let g:choosewin_overlay_font_size       = 'small'

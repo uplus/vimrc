@@ -6,6 +6,9 @@ command! Vshell tabnew +VimShell
 command! Reload source $MYVIMRC
 command! Ao Aonly
 command! Co Conly
+command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
+"Todo:
+" cmd prefix map見たいに mapにプレフィックスつけて検索するコマンド
 
 " #non register delete "{{{
 nnoremap _d "_d
@@ -73,8 +76,8 @@ nnoremap ,dd :bd<CR>
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
-" Todo: 現在変更がなければ変更しないようにする?
-nnoremap ,u :earlier 1f<CR>
+nnoremap ,uu :earlier 1f<CR>
+nnoremap ,uc :UndoClear<CR>
 
 inoremap <C-C> <ESC>
 
