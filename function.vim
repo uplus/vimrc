@@ -214,33 +214,35 @@ endfunction "}}}
     " let matched = matchlist(getline('.'), '\v^(\s*#+\s*)(\w[^\{]*)')[2]
     " let filterd = substitute(matched, '\v\s*#+\s*$', '', '')
 
-function! g:GetTitle()
+function! g:GetCommentOutline()
   let s:unite_source = {
-        \ 'name': 'title',
+        \ 'name': 'comment_outline',
         \ 'max_candidates': 50,
         \ 'is_volatile': 1,
         \ }
 
-  let path   = expand('%:p') " Todo: unite-sourceにするには%を#にする
-  let titles = []
-  for line in getbufline('%', 0, '$')
+  let path     = expand('%:p') " Todo: unite-sourceにするには%を#にする
+  let format   = '%' . strlen(len(lines)) . 'd: %s'
+  let outlines = []
+  for line in getbufline('%', 1, '$')
     let matched = matchlist(line, '\v^\s*(#+)\s*(\w[^\{#]*)')[1:2]
-    let title   = join(matched, '')
-    if empty(title)
+    let oline   = substitute(join(matched, ''), '#', '-', 'g')
+    if empty(oline)
       continue
     endif
-    echo title
 
-    call add(titles,{
-          \ "word" : title,
-          \ "source" : "title",
-          \ "kind" : "jump_list",
+    echo oline
+
+    call add(outlines,{
+          \ "word"   : printf(format, v:key + 1, v:val),
+          \ "source" : "comment_outline",
+          \ "kind"   : "jump_list",
           \ "action__path": path,
           \ })
           " \ "action__line": v:key + 1,
   endfor
 
-  return titles
+  return outlines
 endfunction
 
 " function! s:unite_source.gather_candidates(args, context)
