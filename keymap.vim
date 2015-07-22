@@ -167,12 +167,13 @@ inoremap <DOWN> <C-O>gj
 "}}}
 
 " #emacs-bind "{{{
-inoremap <C-K> <C-O>"_D
-inoremap <C-D>  <Del>
-inoremap <silent><C-A>  <C-o>^
+inoremap <C-A>  <C-o>^
 inoremap <C-E> <C-O>$
+imap <C-D>  <Del>
+" Todo: can delete {} with <C-W> and <C-U> in insert-mode
 inoremap <C-W>  <C-G>u<C-W>
 inoremap <C-U>  <C-G>u<C-U>
+inoremap <C-K> <C-O>"_D
 
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
