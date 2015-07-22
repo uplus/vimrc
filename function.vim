@@ -94,6 +94,7 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
+" Todo: for bufnr and bufwinnr
 " #ActiveOnly "{{{
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
