@@ -161,7 +161,7 @@ NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCaseとsnake_caseを相互変換
 NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
-NeoBundle "osyo-manga/vim-operator-jump_side", { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' }
 " NeoBundle '',         { 'depends' : 'kana/vim-operator-user' }
 
 " 任意のcmdを実行するoperator
@@ -263,6 +263,13 @@ command! -range Trans :<line1>,<line2>:ExciteTranslate
 
 " vim-operator taps "{{{
 if neobundle#tap('vim-operator-user')
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-operator-jump_side')
+  nmap <Space>k <Plug>(operator-jump-head-out)a
+  nmap <Space>j <Plug>(operator-jump-tail-out)a
 
   call neobundle#untap()
 endif
@@ -861,7 +868,7 @@ if neobundle#tap('vim-niceblock') "{{{
 endif "}}}
 
 if neobundle#tap('vim-choosewin') "{{{
-  nmap \w <Plug>(choosewin)
+  nmap ,w <Plug>(choosewin)
   let g:choosewin_overlay_enable          = 1
   let g:choosewin_overlay_clear_multibyte = 1
   let g:choosewin_overlay_font_size       = 'small'

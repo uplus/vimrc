@@ -42,6 +42,9 @@ nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 
+nnoremap Zz ZZ
+nnoremap Zq Zq
+
 nnoremap <C-y> 3<C-y>
 xnoremap <C-y> 3<C-y>
 nnoremap <C-e> 3<C-e>
@@ -51,13 +54,27 @@ xnoremap <C-e> 3<C-e>
 " Todo: 高速に動作するようにsubsを使って改良する appendでできる
 xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
+" Todo: 便利コマンドの集まりにする 空バッファを消すとか
+nmap <silent> \<Space> \hh
+
 map mp %
 map mmp ^%
 
+nnoremap ,ba :ActiveOnly<CR>
+nnoremap ,bc :CurrentOnly<CR>
+nnoremap ,bo :only<CR>
+nnoremap ,bt :tabonly<CR>
+nnoremap ,bl :ls<CR>
+nnoremap ,bL :ls!<CR>
+nnoremap ,bb :b#<CR>
+nnoremap ,bd :bd<CR>
+
 nnoremap ,dd :bd<CR>
 nnoremap ,i ".p
+nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
-nnoremap ,w :earlier 1f<CR>
+" Todo: 現在変更がなければ変更しないようにする?
+nnoremap ,u :earlier 1f<CR>
 
 inoremap <C-C> <ESC>
 
