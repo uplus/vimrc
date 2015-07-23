@@ -29,7 +29,7 @@ if filereadable(expand('~/.vimrc_local_before'))
   source $HOME/.vimrc_local_before
 endif
 
-" Release keymaps"{{{
+" #Release keymaps"{{{
 let mapleader = ";"
 nnoremap Q <Nop>
 nnoremap ; <Nop>
