@@ -406,24 +406,13 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
-  let g:unite_enable_start_insert = 0
-  let g:unite_enable_ignore_case  = 1
-  let g:unite_enable_smart_case   = 1
-
   command! Maps    Unite -auto-resize -start-insert output:map|map!|lmap
   command! Bundle  Unite -auto-resize -start-insert neobundle
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
-  " Todo: Can find FIX XXX...
-  command! Todo    Unite -auto-resize -auto-highlight -ignorecase grep:%::todo\:
+  command! Todo    Unite -auto-resize -auto-highlight -ignorecase grep:%::\ (todo|fix|xxx)\:
   command! High    Unite highlight
-
-  " Todo: filetypeごとにbuffer-localにコメント文字を変更して生成する
-  command! Memo    Unite -no-empty -auto-resize -auto-highlight -start-insert grep:%::^\\s*#\+\\s*\\w
-
-  " Todo:  http://komaken.me/blog/2014/05/07/いつまでたってもunite-vimが使いこなせないので、さす
-  " auto-previewじゃなくて -auto-highlightなら開いてあるバッファがが動くかも
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
   nnoremap <silent><Space>bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
@@ -446,8 +435,6 @@ if neobundle#tap('unite.vim') "{{{
         \ :<C-u>UniteResume search%`bufnr('%')`
         \  -no-start-insert -force-redraw<CR>
 
-
-  " Todo: 外部読み込みを完成させる
   let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
 
   function! neobundle#tapped.hooks.on_post_source(bundle)

@@ -1,4 +1,8 @@
 " Unite:
+let g:unite_enable_start_insert = 0
+let g:unite_enable_ignore_case  = 1
+let g:unite_enable_smart_case   = 1
+
 
 " grep
 let g:unite_source_grep_max_candidates = 200
@@ -13,7 +17,6 @@ endif
 
 
 " alias
-" aliasは入力値などを固定化出来るだけ
 let g:unite_source_alias_aliases = {}
 let g:unite_source_alias_aliases.g = {
       \ 'source' : 'grep',
