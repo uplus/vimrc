@@ -1,6 +1,5 @@
-if filereadable(expand('~/.vimrc_local_before'))
-  source $HOME/.vimrc_local_before
-endif
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
 
 if &compatible
   set nocompatible
@@ -26,6 +25,9 @@ let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
 set path+=/usr/include/c++/HEAD/
 
+if filereadable(expand('~/.vimrc_local_before'))
+  source $HOME/.vimrc_local_before
+endif
 
 " Release keymaps"{{{
 let mapleader = ";"
