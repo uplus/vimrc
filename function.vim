@@ -71,39 +71,44 @@ function! EraseSpace()
 endfunction
 "}}}
 
-" #CurrentOnly {{{
-" カレントバッファ以外をデリートして、その数を表示する
-command! Conly call CurrentOnly()
-command! CurrentOnly call CurrentOnly()
-function! CurrentOnly()
-  let l:current=bufnr('%')
-  let l:count=0
-  for b in split(substitute(Capture("ls"), '\s', '', 'g'), '\n')
-    let n = matchstr(b, '^\d*')
-    if l:n != l:current
-      execute 'bdelete' l:n
-      let l:count+=1
-    endif
+" #Buffer functions "{{{
+" bufnr status name を返す
+function! BuffersInfo()
+  let l:ret = []
+  for l:line in split(Capture('ls'), '\n')
+    call add(l:ret, matchlist(l:line, '\v\s*(\d*)\s+([^ ]*)\s*"(.*)"\s*.*\s(\d*)$')[1:3])
   endfor
-  echo l:count "buffer deleted"
+  return l:ret
 endfunction
-"}}}
 
 command! BufferCount ruby print VIM::Buffer.count
 function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
-" Todo: for bufnr and bufwinnr
-" #ActiveOnly "{{{
+" #CurrentOnly
+" カレントバッファ以外をデリートして、その数を表示する
+command! Conly call CurrentOnly()
+command! CurrentOnly call CurrentOnly()
+function! CurrentOnly()
+  let l:count=0
+  for l:buf in BuffersInfo()
+    if -1 == stridx(l:buf[1], '%')
+      execute "bdelete" l:buf[0]
+      let l:count+=1
+    endif
+  endfor
+  echo l:count "buffer deleted"
+endfunction
+
+" #ActiveOnly
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()
   let l:count=0
-  for l:line in split(Capture("ls"), "\n")
-    let l:front = matchstr(l:line, '\v\s*\d*......\s*')
-    if match(l:front, 'a') == -1
-      execute "bdelete" substitute(l:front, '\D', '', 'g')
+  for l:buf in BuffersInfo()
+    if -1 == stridx(l:buf[1], 'a')
+      execute "bdelete" l:buf[0]
       let l:count+=1
     endif
   endfor
