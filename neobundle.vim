@@ -425,30 +425,6 @@ if neobundle#tap('unite.vim') "{{{
   " Todo:  http://komaken.me/blog/2014/05/07/いつまでたってもunite-vimが使いこなせないので、さす
   " auto-previewじゃなくて -auto-highlightなら開いてあるバッファがが動くかも
 
-  " alias {{{
-  " aliasは入力値などを固定化出来るだけ
-  let g:unite_source_alias_aliases = {}
-  let g:unite_source_alias_aliases.g = {
-        \ 'source' : 'grep',
-        \ 'args' : '%',
-        \ }
-  let g:unite_source_alias_aliases.calc    = 'kawaii-calc'
-  let g:unite_source_alias_aliases.l       = 'launcher'
-  let g:unite_source_alias_aliases.kill    = 'process'
-  let g:unite_source_alias_aliases.message = {
-        \ 'source' : 'output',
-        \ 'args'   : 'message',
-        \ }
-  let g:unite_source_alias_aliases.mes = {
-        \ 'source' : 'output',
-        \ 'args'   : 'message',
-        \ }
-  let g:unite_source_alias_aliases.scriptnames = {
-        \ 'source' : 'output',
-        \ 'args'   : 'scriptnames',
-        \ }
-  "}}}
-
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
   nnoremap <silent><Space>bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
   nnoremap <silent><Space>ba :<C-U>UniteBookmarkAdd<CR>
@@ -461,19 +437,6 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>;uo :<C-U>Unite -no-start-insert -resume outline<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume<CR>
 
-  " grep {{{
-  let g:unite_source_grep_max_candidates = 200
-  if executable('ag')
-      " Use ag in unite grep source.
-      let g:unite_source_grep_command = 'ag'
-      let g:unite_source_grep_default_opts =
-            \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-            \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-      let g:unite_source_grep_recursive_opt = ''
-  endif
-
-  " }}}
-
   " search
   nnoremap <silent> ;u/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
   nnoremap <silent> ;u? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
@@ -483,9 +446,9 @@ if neobundle#tap('unite.vim') "{{{
         \ :<C-u>UniteResume search%`bufnr('%')`
         \  -no-start-insert -force-redraw<CR>
 
-  function! neobundle#hooks.on_source(bundle)
-    " call unite#custom#profile('default', 'context', {   'auto_resize': 1   })
-  endfunction
+
+  " Todo: 外部読み込みを完成させる
+  let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
