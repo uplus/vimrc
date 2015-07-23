@@ -72,13 +72,12 @@ endfunction
 "}}}
 
 " #Buffer functions "{{{
+
+" #BuffersInfo
 " bufnr status name を返す
 function! BuffersInfo()
-  let l:ret = []
-  for l:line in split(Capture('ls'), '\n')
-    call add(l:ret, matchlist(l:line, '\v\s*(\d*)\s+([^ ]*)\s*"(.*)"\s*.*\s(\d*)$')[1:3])
-  endfor
-  return l:ret
+  return map(split(Capture('ls'), '\n'),
+        \ 'matchlist(v:val, ''\v\s*(\d*)\s+([^ ]*)\s*"(.*)"\s*.*\s(\d*)$'')[1:3]' )
 endfunction
 
 command! BufferCount ruby print VIM::Buffer.count
