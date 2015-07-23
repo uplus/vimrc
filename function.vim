@@ -208,57 +208,34 @@ function! UndoClear()
   unlet l:old
 endfunction "}}}
 
-    " jump情報取り忘れた
-    "add
-    "return
+let s:unite_source_comment_outline = {
+      \ 'name': 'comment_outline',
+      \ 'max_candidates': 100,
+      \ }
 
-    " 中間に#がない前提
-    " echo matchlist(getline('.'), '\v^\s*(#+)\s*(\w[^\{#]*).*$')[1:2]
-    " echo matchlist(getline('.'), '\v^\s*(#+)\s*(\w[^\{#]*)')[1:2]
-
-    " let matched = matchlist(getline('.'), '\v^(\s*#+\s*)(\w[^\{]*)')[2]
-    " let filterd = substitute(matched, '\v\s*#+\s*$', '', '')
-
-function! g:GetCommentOutline()
-  let s:unite_source = {
-        \ 'name': 'comment_outline',
-        \ 'max_candidates': 50,
-        \ 'is_volatile': 1,
-        \ }
-
+function! s:unite_source_comment_outline.gather_candidates(args, context)
   let path     = expand('%:p') " Todo: unite-sourceにするには%を#にする
-  let format   = '%' . strlen(len(lines)) . 'd: %s'
   let outlines = []
+  let num      = 0
   for line in getbufline('%', 1, '$')
-    let matched = matchlist(line, '\v^\s*(#+)\s*(\w[^\{#]*)')[1:2]
-    let oline   = substitute(join(matched, ''), '#', '-', 'g')
-    if empty(oline)
-      continue
-    endif
-
-    echo oline
+    let num+=1
+    let matched = matchlist(line, '\v^\s*#(#*)\s*(\w[^\{#]*)')[1:2]
+    let oline   = substitute(join(matched, ''), '#', '  ', 'g')
+    if empty(oline) | continue | endif
 
     call add(outlines,{
-          \ "word"   : printf(format, v:key + 1, v:val),
+          \ "word"   : oline,
           \ "source" : "comment_outline",
           \ "kind"   : "jump_list",
           \ "action__path": path,
+          \ "action__line": num
           \ })
-          " \ "action__line": v:key + 1,
   endfor
 
   return outlines
 endfunction
 
-" function! s:unite_source.gather_candidates(args, context)
-"   let path   = expand('#:p')
-"   let lines  = getbufline('#', 1, '$')
-"   let format = '%' . strlen(len(lines)) . 'd: %s'
-"   return map(lines, '{
-"         \   "word": printf(format, v:key + 1, v:val),
-"         \   "source": "lines",
-"         \   "kind": "jump_list",
-"         \   "action__path": path,
-"         \   "action__line": v:key + 1,
-"         \ }')
-" endfunction
+command! GetCommentOutline for abc in <SID>s:unite_source_comment_outline.gather_candidates(0,0) | echo abc.word | endfor
+
+call unite#define_source(s:unite_source_comment_outline)
+unlet s:unite_source_comment_outline
