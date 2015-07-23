@@ -208,13 +208,12 @@ function! UndoClear()
   unlet l:old
 endfunction "}}}
 
-let s:unite_source_comment_outline = {
-      \ 'name': 'comment_outline',
+let s:unite_source_headline = {
+      \ 'name': 'headline',
       \ 'max_candidates': 100,
       \ }
 
-function! s:unite_source_comment_outline.gather_candidates(args, context)
-  let path     = expand('%:p') " Todo: unite-sourceにするには%を#にする
+function! s:unite_source_headline.gather_candidates(args, context)
   let outlines = []
   let num      = 0
   for line in getbufline('%', 1, '$')
@@ -224,18 +223,16 @@ function! s:unite_source_comment_outline.gather_candidates(args, context)
     if empty(oline) | continue | endif
 
     call add(outlines,{
-          \ "word"   : oline,
-          \ "source" : "comment_outline",
-          \ "kind"   : "jump_list",
-          \ "action__path": path,
-          \ "action__line": num
+          \ "word"         : oline,
+          \ "source"       : "headline",
+          \ "kind"         : "jump_list",
+          \ "action__path" : expand('%:p'),
+          \ "action__line" : num
           \ })
   endfor
 
   return outlines
 endfunction
 
-command! GetCommentOutline for abc in <SID>s:unite_source_comment_outline.gather_candidates(0,0) | echo abc.word | endfor
-
-call unite#define_source(s:unite_source_comment_outline)
-unlet s:unite_source_comment_outline
+call unite#define_source(s:unite_source_headline)
+unlet s:unite_source_headline
