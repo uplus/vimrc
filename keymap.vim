@@ -52,9 +52,14 @@ nnoremap <C-e> 3<C-e>
 xnoremap <C-e> 3<C-e>
 
 " 行末にスペースを一つ追加する
-" Todo: 高速に動作するようにsubsを使って改良する appendでできる
-xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
-
+xnoremap zF zf
+xnoremap zf <ESC>:call <SID>add_fold_and_space()<CR>
+function! s:add_fold_and_space()
+  '<s/\v\s*$/ /
+  '>s/\v^(.+)$/\1 /e
+  '<,'>fold
+  nohlsearch
+endfunction
 
 map mp %
 map mmp ^%
