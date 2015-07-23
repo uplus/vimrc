@@ -43,6 +43,8 @@ nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 
+nnoremap <C-Q>q :q<CR>
+nnoremap <C-Q>w :wq<CR>
 nnoremap Zz ZZ
 nnoremap Zq Zq
 

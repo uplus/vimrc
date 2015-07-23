@@ -942,6 +942,14 @@ if neobundle#tap('vim-abolish') "{{{
   call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('CamelCaseMotion') "{{{
+    map <silent> <Space>w <Plug>CamelCaseMotion_w
+    map <silent> <Space>b <Plug>CamelCaseMotion_b
+    map <silent> <Space>e <Plug>CamelCaseMotion_e
+
+  call neobundle#untap()
+endif "}}}
+
 " if neobundle#tap('') "{{{
 "
 "   call neobundle#untap()
