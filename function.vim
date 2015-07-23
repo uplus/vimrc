@@ -206,7 +206,11 @@ function! UndoClear()
   exe "normal a \<BS>\<Esc>"
   let &undolevels = l:old
   unlet l:old
+  write
 endfunction "}}}
+
+"Todo:
+" cmd prefix mapみたいに mapにプレフィックスつけて検索するコマンド
 
 let s:unite_source_headline = {
       \ 'name': 'headline',

@@ -7,8 +7,6 @@ command! Reload source $MYVIMRC
 command! Ao Aonly
 command! Co Conly
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
-"Todo:
-" cmd prefix map見たいに mapにプレフィックスつけて検索するコマンド
 
 " #non register delete "{{{
 nnoremap _d "_d
@@ -38,7 +36,7 @@ xmap ]<Space> <ESC>]<Space>gv
 nnoremap <silent>\hn :nohlsearch<CR>
 
 " Reset all highlight 3以上|で連続できない
-nnoremap <silent>\hh :nohlsearch \| QuickhlManualReset<CR>:RCReset<CR>
+nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 "}}}
 
 nnoremap Y y$
@@ -57,8 +55,6 @@ xnoremap <C-e> 3<C-e>
 " Todo: 高速に動作するようにsubsを使って改良する appendでできる
 xnoremap zF <ESC>'<A<Space><ESC>'>A<Space><ESC>gvzf
 
-" Todo: 便利コマンドの集まりにする 空バッファを消すとか
-nmap <silent> \<Space> \hh
 
 map mp %
 map mmp ^%
@@ -89,7 +85,7 @@ xnoremap V v
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-" #Info keymap and release " {{{
+" # ga Info keymap and release " {{{
 nnoremap gaa ga
 xnoremap gaa ga
 nnoremap ga8 g8
@@ -102,7 +98,7 @@ nnoremap ga<C-A> g<C-A>
 xnoremap ga<C-A> g<C-A>
 " }}}
 
-" #Space "{{{
+" #Space
 nnoremap <Space>ss :%s/
 nnoremap <Space>sg :%s//g<LEFT><LEFT>
 xnoremap <Space>ss :s/
@@ -118,17 +114,9 @@ noremap <Space>l $
 nmap <Space>p :call feedkeys("]\<Space>jp")<CR>
 nmap <Space>P :call feedkeys("[\<Space>kP")<CR>
 
+nmap <silent> <Space>n \hh
 xnoremap <Space>n :normal<Space>
 nnoremap <Space>z za
-
-noremap <Space>w W
-noremap <Space>e E
-noremap <Space>b B
-noremap <Space>ge gE
-
-nnoremap <silent> <Space> <Nop>
-xnoremap <silent> <Space> <Nop>
-"}}}
 
 " #window"{{{
 nnoremap <C-W>gs :vertical wincmd f<CR>

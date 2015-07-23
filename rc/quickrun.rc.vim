@@ -43,4 +43,4 @@ let g:quickrun_config.markdown = {
 command! Spec :write | !rspec %
 autocmd uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <buffer>\r :Spec<CR>
 
-au uAutoCmd FileType vim nnoremap <silent><buffer>\r :.QuickRun<CR>
+au uAutoCmd FileType vim nnoremap <silent><buffer>\r v:QuickRun<CR>

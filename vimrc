@@ -206,7 +206,7 @@ au uAutoCmd FileType html,css set foldmethod=indent
 
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
-  nnoremap <buffer> q :q<CR>
+  nnoremap <silent><buffer> q :q<CR>
   setlocal foldmethod=indent
   setlocal number
 endfunction

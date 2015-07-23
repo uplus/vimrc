@@ -422,7 +422,7 @@ if neobundle#tap('unite.vim') "{{{
   " Todo: filetypeごとにbuffer-localにコメント文字を変更して生成する
   command! Memo    Unite -no-empty -auto-resize -auto-highlight -start-insert grep:%::^\\s*#\+\\s*\\w
 
-  " http://komaken.me/blog/2014/05/07/いつまでたってもunite-vimが使いこなせないので、さす/
+  " Todo:  http://komaken.me/blog/2014/05/07/いつまでたってもunite-vimが使いこなせないので、さす
   " auto-previewじゃなくて -auto-highlightなら開いてあるバッファがが動くかも
 
   " alias {{{
@@ -474,7 +474,7 @@ if neobundle#tap('unite.vim') "{{{
 
   " }}}
 
-  " search "{{{
+  " search
   nnoremap <silent> ;u/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
   nnoremap <silent> ;u? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
   nnoremap <silent> ;u* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
@@ -482,7 +482,6 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent> ;un
         \ :<C-u>UniteResume search%`bufnr('%')`
         \  -no-start-insert -force-redraw<CR>
-  "}}}
 
   function! neobundle#hooks.on_source(bundle)
     " call unite#custom#profile('default', 'context', {   'auto_resize': 1   })
@@ -889,11 +888,12 @@ if neobundle#tap('jedi-vim') "{{{
 endif "}}}
 
 if neobundle#tap('open-browser.vim') "{{{
-  " nmap gs <Plug>(open-browser-wwwsearch)
+  nmap ,os <Plug>(openbrowser-wwwsearch)
+  nmap ,oa <Plug>(openbrowser-smart-search)
 
   function! neobundle#hooks.on_source(bundle)
     command Wsearch :call <SID>www_search()
-    nnoremap <Plug>(open-browser-wwwsearch) :<C-u>call <SID>www_search()<CR>
+    nnoremap <Plug>(openbrowser-wwwsearch) :<C-u>call <SID>www_search()<CR>
     function! s:www_search()
       let l:search_word = input('Please input search word: ')
       if l:search_word != ''
@@ -969,6 +969,13 @@ endif "}}}
 
 if neobundle#tap('vim-altercmd') "{{{
   let neobundle#tapped.hooks.on_post_source = '~/.vim/rc/altercmd.rc.vim'
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-abolish') "{{{
+  " Downer snake case
+  nmap crd crsguaw
+
   call neobundle#untap()
 endif "}}}
 
