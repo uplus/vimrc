@@ -212,31 +212,3 @@ endfunction "}}}
 "Todo:
 " cmd prefix mapみたいに mapにプレフィックスつけて検索するコマンド
 
-let s:unite_source_headline = {
-      \ 'name': 'headline',
-      \ 'max_candidates': 100,
-      \ }
-
-function! s:unite_source_headline.gather_candidates(args, context)
-  let outlines = []
-  let num      = 0
-  for line in getbufline('%', 1, '$')
-    let num+=1
-    let matched = matchlist(line, '\v^\s*#(#*)\s*(\w[^\{#]*)')[1:2]
-    let oline   = substitute(join(matched, ''), '#', '  ', 'g')
-    if empty(oline) | continue | endif
-
-    call add(outlines,{
-          \ "word"         : oline,
-          \ "source"       : "headline",
-          \ "kind"         : "jump_list",
-          \ "action__path" : expand('%:p'),
-          \ "action__line" : num
-          \ })
-  endfor
-
-  return outlines
-endfunction
-
-call unite#define_source(s:unite_source_headline)
-unlet s:unite_source_headline
