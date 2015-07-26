@@ -204,6 +204,7 @@ endfunction "}}}
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
+au uAutoCmd FileType diff nnoremap <silent><buffer> q :<CR>
 
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
@@ -214,7 +215,7 @@ endfunction
 
 " InsertLeave
 let g:autosave_when_insertleave = 0
-command! AutoSaveWhenInsertLeaveToggle let g:autosave_when_insertleave=!g:autosave_when_insertleave
+command! AutoSaveWhenInsertLeaveToggle let g:autosave_when_insertleave=!g:autosave_when_insertleave | echo "autosave when insertleave toggled"
 nnoremap <silent><buffer> <F2> :AutoSaveWhenInsertLeaveToggle<CR>
 au uAutoCmd InsertLeave * nested if g:autosave_when_insertleave != 0 | write | endif
 
