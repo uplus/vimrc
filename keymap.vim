@@ -44,6 +44,7 @@ nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 
 nnoremap <C-Q>q :q<CR>
+nnoremap <C-Q>a :qa<CR>
 nnoremap <C-Q>w :wq<CR>
 nnoremap Zz ZZ
 nnoremap Zq Zq
@@ -111,9 +112,6 @@ nnoremap <Space>sg :%s//g<LEFT><LEFT>
 xnoremap <Space>ss :s/
 xnoremap <Space>sg :s//g<LEFT><LEFT>
 
-" Toggle 0 and ^ VSのHome Endっぽくなる
-" nnoremap <expr>0  col('.') == 1 ? '^' : '0'
-" nnoremap <expr>^  col('.') == 1 ? '^' : '0'
 " g^ g$ にするとsidescrollのとき画面上の端までしか動いてくれない
 noremap <Space>h 0
 noremap <Space>l $
@@ -181,6 +179,11 @@ cnoremap <C-D> <Del>
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
 "}}}
+
+" #alt-keybind  はescapeとalt
+" inoremap w <C-o>dw
+" inoremap f <C-o>w
+" inoremap b <C-o>b
 
 " TODO: Move those settings to right section
 " au uAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>

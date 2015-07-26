@@ -204,7 +204,7 @@ endfunction "}}}
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
-au uAutoCmd FileType diff nnoremap <silent><buffer> q :<CR>
+au uAutoCmd FileType diff nnoremap <silent><buffer> q :q<CR>
 
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()

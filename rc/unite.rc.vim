@@ -40,7 +40,6 @@ let g:unite_source_alias_aliases.scriptnames = {
 
 
 " Todo: custom-filterやる
-
 " " Custom filters."{{{
 " call unite#custom#source(
 "       \ 'buffer,file_rec,file_rec/async,file_rec/git', 'matchers',
@@ -59,7 +58,6 @@ let g:unite_source_alias_aliases.scriptnames = {
 " call unite#filters#sorter_default#use(['sorter_rank'])
 " " call unite#filters#sorter_default#use(['sorter_length'])
 " "}}}
-"
 " function! s:unite_my_settings() "{{{
 "   " Directory partial match.
 "   call unite#custom#alias('file', 'h', 'left')
@@ -100,7 +98,6 @@ let g:unite_source_alias_aliases.scriptnames = {
 "         \ empty(unite#mappings#get_current_sorters()) ? ['sorter_reverse'] : [])
 "   nmap <buffer> x     <Plug>(unite_quick_match_jump)
 " endfunction"}}}
-"
 
 " #headline unite-soure "{{{
 let s:unite_source_headline = {
