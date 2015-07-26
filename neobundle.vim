@@ -412,7 +412,8 @@ if neobundle#tap('unite.vim') "{{{
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
-  command! Todo    Unite -auto-resize -auto-highlight -ignorecase grep:%::\ (todo|fix|xxx)\:
+  command! Todo    Unite -auto-resize -auto-preview -ignorecase grep:%::\ (todo|fix|xxx)\:
+  command! Headline Unite headline -auto-resize -auto-preview
   command! High    Unite highlight
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
@@ -431,6 +432,10 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent> ;u/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
   nnoremap <silent> ;u? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
   nnoremap <silent> ;u* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
+
+  nnoremap <silent> ;oo :Unite outline -auto-resize -auto-preview<CR>
+  nnoremap <silent> ;oh :Headline<CR>
+  nnoremap <silent> ;ot :Todo<CR>
 
   nnoremap <silent> ;un
         \ :<C-u>UniteResume search%`bufnr('%')`
