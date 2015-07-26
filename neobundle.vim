@@ -234,7 +234,7 @@ NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 
 
 " NeoBundle 'tpope/vim-fugitive'      " git
-" NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
@@ -301,10 +301,11 @@ if neobundle#tap('vim-textobj-user')
 endif
 
 if neobundle#tap('vim-textobj-indent') "{{{
-  vmap il <Plug>(textobj-indent-i)
-  vmap al <Plug>(textobj-indent-a)
-  omap il <Plug>(textobj-indent-i)
-  omap al <Plug>(textobj-indent-a)
+  let g:textobj_indent_no_default_key_mappings = 0
+  " vmap il <Plug>(textobj-indent-i)
+  " vmap al <Plug>(textobj-indent-a)
+  " omap il <Plug>(textobj-indent-i)
+  " omap al <Plug>(textobj-indent-a)
   call neobundle#untap()
 endif "}}}
 
@@ -481,7 +482,7 @@ if neobundle#tap('syntastic') "{{{
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
   let g:syntastic_ruby_mri_args = "-W1"
 
-  nmap \st :SyntasticToggle<CR>
+  nmap \ts :SyntasticToggle<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>
 
   call neobundle#untap()
@@ -899,7 +900,7 @@ if neobundle#tap('indentLine') "{{{
   let g:indentLine_faster               = 1
   let g:indentLine_showFirstIndentLevel = 1
   let g:indentLine_color_term           = 208
-  nmap <silent>\il :IndentLinesToggle<CR>
+  nmap <silent>\tl :IndentLinesToggle<CR>
 
   call neobundle#untap()
 endif "}}}
@@ -933,6 +934,31 @@ if neobundle#tap('CamelCaseMotion') "{{{
     map <silent> <Space>w <Plug>CamelCaseMotion_w
     map <silent> <Space>b <Plug>CamelCaseMotion_b
     map <silent> <Space>e <Plug>CamelCaseMotion_e
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-gitgutter') "{{{
+  let g:gitgutter_enabled         = 1
+  let g:gitgutter_signs           = 1
+  let g:gitgutter_highlight_lines = 0
+  let g:gitgutter_escape_grep     = 1
+  let g:gitgutter_map_keys        = 0
+  " let g:gitgutter_diff_args = '-w'
+  command! Stage GitGutterStageHunk
+  command! Revert GitGutterRevertHunk
+
+  nmap [h <Plug>GitGutterPrevHunkzMzvzz
+  nmap ]h <Plug>GitGutterNextHunkzMzvzz
+  nmap \gp <Plug>GitGutterPreviewHunk
+  " nmap \gs <Plug>GitGutterStageHunk
+  " nmap \gr <Plug>GitGutterRevertHunk
+  nmap \gl :GitGutterLineHighlightsToggle<CR>
+  nmap \gs :GitGutterSignsToggle<CR>
+
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    hi GitGutterChangeDefault ctermfg=226
+  endfunction
 
   call neobundle#untap()
 endif "}}}
