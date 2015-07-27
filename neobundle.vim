@@ -666,13 +666,12 @@ if neobundle#tap('incsearch.vim') " {{{
   map / <Plug>(incsearch-forward)
   map ? <Plug>(incsearch-backward)
 
-  map * <Plug>(incsearch-nohl)<Plug>(anzu-star)
-  map # <Plug>(incsearch-nohl)<Plug>(anzu-sharp)
-  map g* <Plug>(incsearch-nohl)<Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
-  map g# <Plug>(incsearch-nohl)<Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
-
-  map z* <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
-  map z# <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
+  map * <Plug>(incsearch-nohl-*)<Plug>(anzu-update-search-status-with-echo)
+  map # <Plug>(incsearch-nohl-#)<Plug>(anzu-update-search-status-with-echo)
+  map g* <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
+  map g# <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
+  map z* <Plug>(incsearch-nohl)<Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
+  map z# <Plug>(incsearch-nohl)<Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
   map gz* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
   map gz# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
 
