@@ -74,10 +74,11 @@ endfunction
 " #Buffer functions "{{{
 
 " #BuffersInfo
-" bufnr status name を返す
+" bufnr status modified name を返す
+command! BuffersInfo for buf in BuffersInfo() | echo buf | endfor
 function! BuffersInfo()
   return map(split(Capture('ls'), '\n'),
-        \ 'matchlist(v:val, ''\v\s*(\d*)\s+([^ ]*)\s*"(.*)"\s*.*\s(\d*)$'')[1:3]' )
+        \ 'matchlist(v:val, ''\v^\s*(\d*)\s+([^ ]*)\s*(\+?)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction
 
 command! BufferCount ruby print VIM::Buffer.count
@@ -97,7 +98,10 @@ function! CurrentOnly()
       let l:count+=1
     endif
   endfor
-  echo l:count "buffer deleted"
+
+  if 2 <= &report
+    echo l:count "buffer deleted"
+  endif
 endfunction
 
 " #ActiveOnly
@@ -111,7 +115,10 @@ function! ActiveOnly()
       let l:count+=1
     endif
   endfor
-  echo l:count "buffer deleted"
+
+  if 2 <= &report
+    echo l:count "buffer deleted"
+  endif
 endfunction
 "}}}
 
