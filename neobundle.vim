@@ -232,9 +232,12 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 
-
-" NeoBundle 'tpope/vim-fugitive'      " git
+" #git
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+NeoBundle 'idanarye/vim-merginal'   " git log --graph
+NeoBundle 'cohama/agit.vim'         " git log
+NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
 
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
@@ -406,6 +409,9 @@ if neobundle#tap('unite.vim') "{{{
   command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::\ (todo|fix|xxx)\:
   command! Headline Unite headline -auto-resize -auto-preview
   command! High    Unite highlight
+  command! Status  Unite -auto-resize -no-empty -no-quit git_untracked git_modified
+
+  nnoremap <silent>\gs :Status<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
   nnoremap <silent>;bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
@@ -946,14 +952,19 @@ if neobundle#tap('vim-gitgutter') "{{{
   nmap [h <Plug>GitGutterPrevHunkzMzvzz
   nmap ]h <Plug>GitGutterNextHunkzMzvzz
   nmap \gp <Plug>GitGutterPreviewHunk
-  nmap \gad <Plug>GitGutterStageHunk
-  nmap \gre <Plug>GitGutterRevertHunk
-  nmap \gl :GitGutterLineHighlightsToggle<CR>
-  nmap \gs :GitGutterSignsToggle<CR>
+  nmap \gadd <Plug>GitGutterStageHunk
+  nmap \grev <Plug>GitGutterRevertHunk
+  nmap \th :GitGutterLineHighlightsToggle<CR>
+  nmap \tg :GitGutterSignsToggle<CR>
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     hi GitGutterChangeDefault ctermfg=226
   endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-fugitive') "{{{
 
   call neobundle#untap()
 endif "}}}

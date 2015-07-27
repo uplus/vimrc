@@ -7,6 +7,7 @@ command! Reload source $MYVIMRC
 command! Ao Aonly
 command! Co Conly
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
+command! Commit !git cov
 
 " #non register delete "{{{
 nnoremap _d "_d
@@ -75,6 +76,7 @@ nnoremap ,bl :ls<CR>
 nnoremap ,bL :ls!<CR>
 nnoremap ,bb :b#<CR>
 nnoremap ,bd :bd<CR>
+nnoremap ,bq :q<CR>
 
 nnoremap ,dd :bd<CR>
 nnoremap ,i ".p
