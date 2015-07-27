@@ -958,6 +958,19 @@ if neobundle#tap('vim-gitgutter') "{{{
   call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('linediff.vim') "{{{
+  nnoremap <silent>\d  :Linediff<CR>
+  xnoremap <silent>\d  :Linediff<CR>
+
+  let g:linediff_buffer_type = 'scratch'
+  " onにするとqで一発終了できない
+  " let g:linediff_indent = 1
+  " let g:linediff_first_buffer_command  = 'new'
+  " let g:linediff_second_buffer_command = 'vertical new'
+
+  call neobundle#untap()
+endif "}}}
+
 " if neobundle#tap('') "{{{
 "
 "   call neobundle#untap()
