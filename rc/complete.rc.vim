@@ -1,4 +1,4 @@
-" Complete
+" Complete:
 " set completeopt=menu,longest,preview
 
 " let g:neocomplete#disable_auto_complete = 0
@@ -69,6 +69,7 @@ let g:clang_complete_auto = 0
 let g:clang_auto_select   = 0
 let g:clang_use_library	  = 1
 let g:clang_user_options  = '-std=c++14 -stdlib=libc++'
+
 if IsMac()
   " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
   let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
@@ -76,6 +77,7 @@ else
   let g:clang_library_path =  '/usr/lib/llvm-3.6/lib'
 endif
 
-
-" let g:clang_snippets	 = 1
-" let g:clang_snippets_engine = 'clang_complete'
+if !empty(getftype(g:clang_library_path))
+  let g:clang_use_library = 0
+  let g:clang_library_path = ""
+endif
