@@ -300,15 +300,6 @@ if neobundle#tap('vim-textobj-user')
   call neobundle#untap()
 endif
 
-if neobundle#tap('vim-textobj-indent') "{{{
-  let g:textobj_indent_no_default_key_mappings = 0
-  " vmap il <Plug>(textobj-indent-i)
-  " vmap al <Plug>(textobj-indent-a)
-  " omap il <Plug>(textobj-indent-i)
-  " omap al <Plug>(textobj-indent-a)
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('h1mesuke/textobj-wiw') "{{{
   " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
   let g:textobj_wiw_no_default_key_mappings = 1
@@ -944,7 +935,7 @@ endif "}}}
 
 if neobundle#tap('vim-gitgutter') "{{{
   let g:gitgutter_enabled         = 1
-  let g:gitgutter_signs           = 1
+  let g:gitgutter_signs           = 0
   let g:gitgutter_highlight_lines = 0
   let g:gitgutter_escape_grep     = 1
   let g:gitgutter_map_keys        = 0
@@ -955,8 +946,8 @@ if neobundle#tap('vim-gitgutter') "{{{
   nmap [h <Plug>GitGutterPrevHunkzMzvzz
   nmap ]h <Plug>GitGutterNextHunkzMzvzz
   nmap \gp <Plug>GitGutterPreviewHunk
-  " nmap \gs <Plug>GitGutterStageHunk
-  " nmap \gr <Plug>GitGutterRevertHunk
+  nmap \gad <Plug>GitGutterStageHunk
+  nmap \gre <Plug>GitGutterRevertHunk
   nmap \gl :GitGutterLineHighlightsToggle<CR>
   nmap \gs :GitGutterSignsToggle<CR>
 
