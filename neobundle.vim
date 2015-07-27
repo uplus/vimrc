@@ -412,13 +412,13 @@ if neobundle#tap('unite.vim') "{{{
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
-  command! Todo    Unite -auto-resize -auto-preview -ignorecase grep:%::\ (todo|fix|xxx)\:
+  command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::\ (todo|fix|xxx)\:
   command! Headline Unite headline -auto-resize -auto-preview
   command! High    Unite highlight
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
-  nnoremap <silent><Space>bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
-  nnoremap <silent><Space>ba :<C-U>UniteBookmarkAdd<CR>
+  nnoremap <silent>;bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
+  nnoremap <silent>;ba :<C-U>UniteBookmarkAdd<CR>
 
   nnoremap <silent>;ub :<C-U>Unite buffer<CR>
   nnoremap <silent>;ut :<C-u>Unite -select=`tabpagenr()-1` tab<CR>
