@@ -36,6 +36,9 @@ NeoBundleLazy 'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'osyo-manga/unite-vimmer',          { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'osyo-manga/unite-vim_hacks',       { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'rhysd/unite-ruby-require.vim',     { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'tacroe/unite-alias',               { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'tacroe/unite-mark',                { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -45,8 +48,8 @@ NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ], 'filetypes' : ['ruby'] }
-NeoBundleLazy 'mattn/unite-remotefile',          { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'supermomonga/unite-goimport.vim', { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
+NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 
 "}}}
 
@@ -102,7 +105,7 @@ NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
 NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
-" NeoBundle 'jceb/vim-hier'
+NeoBundle 'jceb/vim-hier'
 "}}}
 
 " #quickrun "{{{
@@ -188,6 +191,7 @@ NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
 NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " change keymap f -> F
 " NeoBundle 't9md/vim-textobj-function-ruby', { 'depends' : 'kana/vim-textobj-user' }
+" osyo-manga/vim-operator-swap
 
 " , { 'depends' : 'kana/vim-textobj-user' }
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
@@ -241,6 +245,8 @@ NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
 
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
+NeoBundle 'mattn/wwwrenderer-vim'
+NeoBundle 'thinca/vim-openbuf'
 NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
       \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
       \     'function_prefix' : 'openbrowser',
