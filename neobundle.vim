@@ -406,7 +406,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
-  command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::\ (todo|fix|xxx)\:
+  command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
   command! Headline Unite headline -auto-resize -auto-preview
   command! High    Unite highlight
   command! Status  Unite -auto-resize -no-empty -no-quit git_untracked git_modified

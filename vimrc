@@ -149,8 +149,7 @@ Source 'keymap'
 " #auto commands
 
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-"Todo: 起動時のみにするかも
-au uAutoCmd BufEnter    * lcd %:p:h
+au uAutoCmd VimEnter    * lcd %:p:h
 au uAutoCmd VimResized  * wincmd =
 
 " 引数を全てタブで開く 条件付けないとcommittiaがうまくいなかくなる
