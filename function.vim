@@ -230,3 +230,7 @@ function! UndoClear()
   write
 endfunction "}}}
 
+function Execute(cmd)
+  execute a:cmd
+endfunction
+
