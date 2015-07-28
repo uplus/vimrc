@@ -414,8 +414,8 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>\gs :Status<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
-  nnoremap <silent>;bb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
-  nnoremap <silent>;ba :<C-U>UniteBookmarkAdd<CR>
+  nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
+  nnoremap <silent>;ma :<C-U>UniteBookmarkAdd<CR>
 
   nnoremap <silent>;ub :<C-U>Unite buffer<CR>
   nnoremap <silent>;ut :<C-u>Unite -select=`tabpagenr()-1` tab<CR>
