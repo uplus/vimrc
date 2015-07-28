@@ -77,7 +77,7 @@ else
   let g:clang_library_path =  '/usr/lib/llvm-3.6/lib'
 endif
 
-if !empty(getftype(g:clang_library_path))
+if empty(getftype(g:clang_library_path))
   let g:clang_use_library = 0
   let g:clang_library_path = ""
 endif

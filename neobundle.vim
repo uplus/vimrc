@@ -498,7 +498,7 @@ if neobundle#tap('syntastic') "{{{
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
   let g:syntastic_ruby_mri_args = "-W1"
 
-  nmap \ts :SyntasticToggle<CR>
+  nmap \ts :SyntasticToggleMode<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>
 
   call neobundle#untap()

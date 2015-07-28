@@ -232,5 +232,6 @@ endfunction "}}}
 
 function Execute(cmd)
   execute a:cmd
+  return ""
 endfunction
 
