@@ -1,5 +1,6 @@
 " #quickrun
 let g:quickrun_no_default_key_mappings = 1
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 nnoremap \r :write<CR>:QuickRun -mode n<CR>
 xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
 command! QuickRunStop call quickrun#sweep_sessions()

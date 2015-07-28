@@ -44,11 +44,11 @@ nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 
-nnoremap <C-Q>q :q<CR>
-nnoremap <C-Q>a :qa<CR>
-nnoremap <C-Q>w :wq<CR>
-nnoremap Zz ZZ
-nnoremap Zq Zq
+nnoremap <silent><C-Q>q :q<CR>
+nnoremap <silent><C-Q>a :qa<CR>
+nnoremap <silent><C-Q>w :wq<CR>
+nnoremap <silent>Zz ZZ
+nnoremap <silent>Zq Zq
 
 nnoremap <C-y> 3<C-y>
 xnoremap <C-y> 3<C-y>
