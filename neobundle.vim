@@ -438,20 +438,24 @@ if neobundle#tap('unite.vim') "{{{
         \ :<C-u>UniteResume search%`bufnr('%')`
         \  -no-start-insert -force-redraw<CR>
 
+  " 最後のバッファならquit ハイライト消す
+  au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_close()<CR>
+  function! s:unite_close()
+    if unite#get_context()['auto_highlight'] == 1
+      call clearmatches()
+    endif
+
+    if ActiveBufferCount() == 0
+      quit
+    else
+      call feedkeys("\<Plug>(unite_exit)")
+    endif
+  endfunction
+
   let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
-
-    function s:close_unite()
-      if ActiveBufferCount()
-        call unite#quit_session()
-      else
-        quit
-      endif
-    endfunction
-
-    au FileType unite nnoremap <silent><buffer>q :call <SID>close_unite()<CR>
   endfunction
 
   call neobundle#untap()
