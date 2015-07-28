@@ -86,12 +86,25 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
+function! ActiveBufferCount()
+  let l:count = 0
+  for l:buf in BuffersInfo()
+    if -1 != stridx(l:buf[1], 'a')
+      let l:count+=1
+    endif
+  endfor
+  return l:count
+endfunction
+
 " #CurrentOnly
 " カレントバッファ以外をデリートして、その数を表示する
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
+  let l:old = &report
+  set report=1000
   let l:count=0
+
   for l:buf in BuffersInfo()
     if -1 == stridx(l:buf[1], '%')
       execute "bdelete" l:buf[0]
@@ -99,16 +112,18 @@ function! CurrentOnly()
     endif
   endfor
 
-  if 2 <= &report
-    echo l:count "buffer deleted"
-  endif
+  echo l:count "buffer deleted"
+  let &report=l:old
 endfunction
 
 " #ActiveOnly
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()
+  let l:old = &report
+  set report=1000
   let l:count=0
+
   for l:buf in BuffersInfo()
     if -1 == stridx(l:buf[1], 'a')
       execute "bdelete" l:buf[0]
@@ -116,9 +131,8 @@ function! ActiveOnly()
     endif
   endfor
 
-  if 2 <= &report
-    echo l:count "buffer deleted"
-  endif
+  echo l:count "buffer deleted"
+  let &report=l:old
 endfunction
 "}}}
 
@@ -215,7 +229,4 @@ function! UndoClear()
   unlet l:old
   write
 endfunction "}}}
-
-"Todo:
-" cmd prefix mapみたいに mapにプレフィックスつけて検索するコマンド
 
