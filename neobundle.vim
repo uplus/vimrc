@@ -442,6 +442,16 @@ if neobundle#tap('unite.vim') "{{{
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
+
+    function s:close_unite()
+      if ActiveBufferCount()
+        call unite#quit_session()
+      else
+        quit
+      endif
+    endfunction
+
+    au FileType unite nnoremap <silent><buffer>q :call <SID>close_unite()<CR>
   endfunction
 
   call neobundle#untap()
