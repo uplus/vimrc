@@ -57,10 +57,11 @@ xnoremap <C-e> 3<C-e>
 
 " 行末にスペースを一つ追加する
 xnoremap zF zf
-xnoremap zf <ESC>:call <SID>add_fold_and_space()<CR>
+xnoremap <silent>zf <ESC>:call <SID>add_fold_and_space()<CR>
 function! s:add_fold_and_space()
-  '<s/\v\s*$/ /
-  '>s/\v^(.+)$/\1 /e
+  silent '<s/\v\s*$/ /
+  silent '>s/\v\s*$/ /
+  silent '>s/\v^ $//e
   '<,'>fold
   nohlsearch
 endfunction
