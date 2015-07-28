@@ -58,7 +58,14 @@ function! s:vimfiler_settings() "{{{
   nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
 
   " 最後のバッファでも終了
-  " nnoremap <buffer><nowait>q :quit<CR>
+  function! s:close_vimfiler()
+    if ActiveBufferCount()
+      call vimfiler#util#hide_buffer()
+    else
+      quit
+    endif
+  endfunction
+  nnoremap <buffer><silent>q :call <SID>close_vimfiler()<CR>
 endfunction "}}}
 
 let s:my_action = { 'is_selectable' : 1 }
