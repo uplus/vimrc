@@ -113,7 +113,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 "}}}
 
-" vital Library used in vimrc "{{{
+" #vital "{{{
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'osyo-manga/vital-reunions'
 NeoBundle 'osyo-manga/vital-over'
@@ -547,8 +547,9 @@ if neobundle#tap('yankround.vim') "{{{
   " cmap <C-r> <Plug>(yankround-insert-register)
   " cmap <C-y> <Plug>(yankround-pop)
 
+  let g:yankround_max_history   = 30
+  let g:yankround_dir           = "~/.vim/tmp/"
   let g:yankround_use_region_hl = 1
-  let g:yankround_dir = "~/.vim/tmp/"
   au uAutoCmd ColorScheme * highlight YankRoundRegion cterm=italic
 
   call neobundle#untap()

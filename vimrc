@@ -23,6 +23,7 @@ command! -nargs=1 Source
 
 let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
+set undodir=~/.vim/tmp/undo.txt
 set path+=/usr/include/c++/HEAD/
 
 if filereadable(expand('~/.vimrc_local_before'))
@@ -70,12 +71,14 @@ set encoding=utf-8
 set fileformats=unix,dos,mac
 " set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 
+" set undofile
 set report=0  " コマンドで0行以上変更されたらmessage
 set number
 set hidden
 set showcmd
 set cursorline
 set showmatch
+set matchtime=0 " 括弧を入力した時に移動しないようにする
 set laststatus=2
 set cmdheight=2 cmdwinheight=4
 set mouse=a
@@ -212,11 +215,12 @@ function! s:help_config()
   setlocal number
 endfunction
 
-" InsertLeave
+" autosave insert leave "{{{
 let g:autosave_when_insertleave = 0
 command! AutoSaveWhenInsertLeaveToggle let g:autosave_when_insertleave=!g:autosave_when_insertleave | echo "autosave when insertleave toggled"
 nnoremap <silent><buffer> <F2> :AutoSaveWhenInsertLeaveToggle<CR>
 au uAutoCmd InsertLeave * nested if g:autosave_when_insertleave != 0 | write | endif
+"}}}
 
 if filereadable(expand('~/.vimrc_local_after'))
   source $HOME/.vimrc_local_after
