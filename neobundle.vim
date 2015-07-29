@@ -68,7 +68,8 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
-NeoBundle 'LeafCage/yankround.vim'
+" NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'u10e10/yankorder.vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'tyru/vim-altercmd'
 " NeoBundle 'tpope/vim-repeat'
@@ -536,7 +537,7 @@ if neobundle#tap('committia.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('yankround.vim') "{{{
+if neobundle#tap('yankorder.vim') "{{{
   nmap p <Plug>(yankround-p)
   xmap p <Plug>(yankround-p)
   nmap P <Plug>(yankround-P)
@@ -552,7 +553,7 @@ if neobundle#tap('yankround.vim') "{{{
   " cmap <C-y> <Plug>(yankround-pop)
 
   let g:yankround_max_history   = 30
-  let g:yankround_dir           = "~/.vim/tmp/"
+  let g:yankround_file          = "~/.vim/tmp/yankround_history"
   let g:yankround_use_region_hl = 1
   au uAutoCmd ColorScheme * highlight YankRoundRegion cterm=italic
 
