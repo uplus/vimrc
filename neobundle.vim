@@ -570,16 +570,16 @@ if neobundle#tap('vim-easymotion') "{{{
   map ;j <Plug>(easymotion-j)
   map ;k <Plug>(easymotion-k)
 
-  " On the current-line f F t and T
-  " map ;f <Plug>(easymotion-fl)
-  " map ;F <Plug>(easymotion-Fl)
-  " map ;t <Plug>(easymotion-tl)
-  " map ;T <Plug>(easymotion-Tl)
-  map ;f <Plug>(easymotion-fl2)
-  map ;F <Plug>(easymotion-Fl2)
-  map ;t <Plug>(easymotion-tl2)
-  map ;T <Plug>(easymotion-Tl2)
-
+  " on the current-line f f t and t
+  map ;f <plug>(easymotion-fl)
+  map ;f <plug>(easymotion-fl)
+  map ;t <plug>(easymotion-tl)
+  map ;t <plug>(easymotion-tl)
+  " map ;f <plug>(easymotion-fl2)
+  " map ;f <plug>(easymotion-fl2)
+  " map ;t <plug>(easymotion-tl2)
+  " map ;t <plug>(easymotion-tl2)
+  "
   " 2 chars motion
   map ;s <Plug>(easymotion-s2)
   map ;x <Plug>(easymotion-sl2)

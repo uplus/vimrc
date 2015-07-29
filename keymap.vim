@@ -8,6 +8,7 @@ command! Ao Aonly
 command! Co Conly
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Commit !git cov
+command! Uclear UndoClear
 
 " #non register delete "{{{
 nnoremap _d "_d

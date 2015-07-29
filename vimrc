@@ -150,13 +150,9 @@ Source 'function'
 Source 'keymap'
 
 " #auto commands
-
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd VimEnter    * if argc() == 1 | lcd %:p:h | endif
 au uAutoCmd VimResized  * wincmd =
-
-" 引数を全てタブで開く 条件付けないとcommittiaがうまくいなかくなる
-" au uAutoCmd VimEnter    * nested if 2 <= argc() | tab ball | endif
 
 " windowの行数の20%にセットする scrolloffはglobal-option
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
