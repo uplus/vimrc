@@ -152,7 +152,7 @@ Source 'keymap'
 " #auto commands
 
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-au uAutoCmd VimEnter    * lcd %:p:h
+au uAutoCmd VimEnter    * if argc() == 1 | lcd %:p:h | endif
 au uAutoCmd VimResized  * wincmd =
 
 " 引数を全てタブで開く 条件付けないとcommittiaがうまくいなかくなる
