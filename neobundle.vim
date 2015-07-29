@@ -120,6 +120,10 @@ NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
+NeoBundle 'mbbill/undotree'
+" NeoBundle 'sjl/gundo.vim'
+NeoBundle 'simnalamburt/vim-mundo'
+
 " #Ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
@@ -998,6 +1002,27 @@ if neobundle#tap('linediff.vim') "{{{
   " let g:linediff_indent = 1 " onにするとqで一発終了できない
   " let g:linediff_first_buffer_command  = 'new'
   " let g:linediff_second_buffer_command = 'vertical new'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-mundo') "{{{
+  let g:gundo_width            = 45
+  let g:gundo_preview_height   = 15 " defo 15
+  let g:gundo_preview_bottom   = 0
+  let g:gundo_right            = 1
+  let g:gundo_help             = 1
+  let g:gundo_map_move_older   = "j"
+  let g:gundo_map_move_newer   = "k"
+  let g:gundo_close_on_revert  = 0
+  let g:gundo_return_on_revert = 1
+  let g:gundo_auto_preview     = 0 " defo 1
+  let g:gundo_verbose_graph    = 1
+  let g:gundo_playback_delay   = 1
+  let g:gundo_mirror_graph     = 1
+  let g:gundo_inline_graph     = 0
+
+  nnoremap ,ug :GundoToggle<CR>
 
   call neobundle#untap()
 endif "}}}
