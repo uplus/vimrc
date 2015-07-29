@@ -211,11 +211,11 @@ function! s:help_config()
   setlocal number
 endfunction
 
-" autosave insert leave "{{{
-let g:autosave_when_insertleave = 0
-command! AutoSaveWhenInsertLeaveToggle let g:autosave_when_insertleave=!g:autosave_when_insertleave | echo "autosave when insertleave toggled"
-nnoremap <silent><buffer> <F2> :AutoSaveWhenInsertLeaveToggle<CR>
-au uAutoCmd InsertLeave * nested if g:autosave_when_insertleave != 0 | write | endif
+" u10 autosave "{{{
+let g:u10_autosave = 0
+command! U10AutoSave let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
+nnoremap <silent><buffer> <F2> :U10AutoSave<CR>
+au uAutoCmd InsertLeave,TextChanged * nested if g:u10_autosave != 0 | write | endif
 "}}}
 
 if filereadable(expand('~/.vimrc_local_after'))
