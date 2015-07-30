@@ -561,6 +561,7 @@ if neobundle#tap('yankorder.vim') "{{{
 endif "}}}
 
 if neobundle#tap('vim-easymotion') "{{{
+  let g:EasyMotion_do_mapping       = 0
   let g:EasyMotion_keys             = 'asdghklqwertyuiopzxcvbnmfj'
   let g:EasyMotion_use_upper        = 0
   let g:EasyMotion_leader_key       = ';'
@@ -573,17 +574,26 @@ if neobundle#tap('vim-easymotion') "{{{
 
   " on the current-line f f t and t
   map ;f <plug>(easymotion-fl)
-  map ;f <plug>(easymotion-fl)
+  map ;F <plug>(easymotion-Fl)
   map ;t <plug>(easymotion-tl)
-  map ;t <plug>(easymotion-tl)
-  " map ;f <plug>(easymotion-fl2)
-  " map ;f <plug>(easymotion-fl2)
-  " map ;t <plug>(easymotion-tl2)
-  " map ;t <plug>(easymotion-tl2)
-  "
+  map ;T <plug>(easymotion-Tl)
+
   " 2 chars motion
   map ;s <Plug>(easymotion-s2)
   map ;x <Plug>(easymotion-sl2)
+
+  " other keymap. default
+  map ;w <Plug>(easymotion-w)
+  map ;W <Plug>(easymotion-W)
+  map ;b <Plug>(easymotion-b)
+  map ;B <Plug>(easymotion-B)
+  map ;e <Plug>(easymotion-e)
+  map ;E <Plug>(easymotion-E)
+  map ;ge <Plug>(easymotion-ge)
+  map ;gE <Plug>(easymotion-gE)
+
+  " map ;n <Plug>(easymotion-n)
+  " map ;N <Plug>(easymotion-N)
 
 endif "}}}
 
