@@ -493,6 +493,7 @@ endif "}}}
 
 if neobundle#tap('syntastic') "{{{
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
+  let g:syntastic_loc_list_height = 10
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq   = 0
@@ -500,6 +501,9 @@ if neobundle#tap('syntastic') "{{{
   let g:syntastic_auto_jump     = 3 " default is 0
   let g:syntastic_ignore_files  = ['\m^/usr/include/', expand('~/Documents/memo/')]
   " let g:syntastic_debug = 1
+
+  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_warning_symbol = "⚠"
 
   let g:syntastic_cpp_compiler = 'clang++'
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
