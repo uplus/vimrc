@@ -32,7 +32,7 @@ NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle     'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -122,8 +122,8 @@ NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
 NeoBundle 'mbbill/undotree'
-" NeoBundle 'sjl/gundo.vim'
-NeoBundle 'simnalamburt/vim-mundo'
+NeoBundle 'sjl/gundo.vim'
+" NeoBundle 'simnalamburt/vim-mundo'
 
 " #Ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
@@ -1011,7 +1011,7 @@ if neobundle#tap('linediff.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-mundo') "{{{
+if neobundle#tap('gundo.vim') "{{{
   let g:gundo_width            = 45
   let g:gundo_preview_height   = 15 " defo 15
   let g:gundo_preview_bottom   = 0
@@ -1028,6 +1028,12 @@ if neobundle#tap('vim-mundo') "{{{
   let g:gundo_inline_graph     = 0
 
   nnoremap ,ug :GundoToggle<CR>
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-hier') "{{{
+  au uAutoCmd BufWrite * HierUpdate
 
   call neobundle#untap()
 endif "}}}
