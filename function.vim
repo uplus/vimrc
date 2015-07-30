@@ -86,6 +86,7 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
+command! Ao Aonly
 function! ActiveBufferCount()
   let l:count = 0
   for l:buf in BuffersInfo()
@@ -97,7 +98,7 @@ function! ActiveBufferCount()
 endfunction
 
 " #CurrentOnly
-" カレントバッファ以外をデリートして、その数を表示する
+command! Co Conly
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
@@ -227,7 +228,8 @@ function! OneShotAutocmd(name, event, pattern, cmd) "{{{
   augroup END
 endfunction "}}}
 
-command! UndoClear :call UndoClear() "{{{
+command! Uclear UndoClear "{{{
+command! UndoClear :call UndoClear()
 function! UndoClear()
   let l:old = &undolevels
   set undolevels=-1
@@ -241,4 +243,5 @@ function Execute(cmd)
   execute a:cmd
   return ""
 endfunction
+
 

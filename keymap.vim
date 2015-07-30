@@ -4,11 +4,8 @@ command! Sh update | shell
 command! -nargs=1 -complete=file T tabedit <args>
 command! Vshell tabnew +VimShell
 command! Reload source $MYVIMRC
-command! Ao Aonly
-command! Co Conly
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Commit !git cov
-command! Uclear UndoClear
 
 " #non register delete "{{{
 nnoremap _d "_d
