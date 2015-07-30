@@ -244,4 +244,20 @@ function Execute(cmd)
   return ""
 endfunction
 
+command! OpenGitDiffWin call OpenGitDiff('w')
+command! OpenGitDiffTab call OpenGitDiff('t')
+function! OpenGitDiff(type)
+  let cmdname = 'git diff ' .  bufname('%')
 
+  silent! execute 'bdelete \[' . escape(cmdname, ' ') . '\]'
+  execute (a:type == 't')? 'tabnew' : 'vnew' '[' . cmdname . ']'
+  wincmd L
+
+  setl buftype=nofile
+  setl filetype=diff
+  setl undolevels=-1
+  setl nofoldenable
+  setl foldcolumn=0
+  silent put! =system(cmdname)
+  nnoremap <buffer><silent>q :bdelete!<CR>
+endfunction

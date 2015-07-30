@@ -42,6 +42,8 @@ nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 
+nnoremap \gd :OpenGitDiffWin<CR>
+
 nnoremap <silent><C-Q>q :q<CR>
 nnoremap <silent><C-Q>a :qa<CR>
 nnoremap <silent><C-Q>w :wq<CR>
