@@ -433,21 +433,17 @@ if neobundle#tap('unite.vim') "{{{
 
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
-  nnoremap <silent>;uo :<C-U>Unite -no-start-insert -resume outline<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume<CR>
 
   " search
-  nnoremap <silent> ;u/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
-  nnoremap <silent> ;u? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward<CR>
-  nnoremap <silent> ;u* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
+  nnoremap <silent> ;/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
+  nnoremap <silent> ;? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward:wrap<CR>
+  nnoremap <silent> ;* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
+  nnoremap <silent> ;n :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR>
 
-  nnoremap <silent> ;oo :Unite outline -auto-resize -auto-preview<CR>
+  nnoremap <silent> ;oo :Unite outline -auto-resize -resume -auto-preview<CR>
   nnoremap <silent> ;oh :Headline<CR>
   nnoremap <silent> ;ot :Todo<CR>
-
-  nnoremap <silent> ;un
-        \ :<C-u>UniteResume search%`bufnr('%')`
-        \  -no-start-insert -force-redraw<CR>
 
   " 最後のバッファならquit ハイライト消す
   au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_close()<CR>
@@ -1004,7 +1000,7 @@ if neobundle#tap('vim-fugitive') "{{{
 endif "}}}
 
 if neobundle#tap('linediff.vim') "{{{
-  nnoremap <silent>gcd  :Linediff<CR>
+  nnoremap <silent>gsd  :Linediff<CR>
   xnoremap <silent>gsd  :Linediff<CR>
 
   let g:linediff_buffer_type = 'scratch'

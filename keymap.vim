@@ -81,6 +81,9 @@ nnoremap ,bd :bd<CR>
 nnoremap ,bq :q<CR>
 
 nnoremap ,dd :bd<CR>
+nnoremap ,dw :q<CR>
+nnoremap ,da :qa<CR>
+
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
