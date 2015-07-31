@@ -66,22 +66,22 @@ function! s:add_fold_and_space()
   nohlsearch
 endfunction
 
-map mp %
-map mmp ^%
+map <silent>mp %
+map <silent>mmp ^%
 
-nnoremap ,ba :ActiveOnly<CR>
-nnoremap ,bc :CurrentOnly<CR>
-nnoremap ,bo :only<CR>
-nnoremap ,bt :tabonly<CR>
-nnoremap ,bl :ls<CR>
-nnoremap ,bL :ls!<CR>
-nnoremap ,bb :b#<CR>
-nnoremap ,bd :bd<CR>
-nnoremap ,bq :q<CR>
+nnoremap <silent>,ba :ActiveOnly<CR>
+nnoremap <silent>,bc :CurrentOnly<CR>
+nnoremap <silent>,bo :only<CR>
+nnoremap <silent>,bt :tabonly<CR>
+nnoremap <silent>,bl :ls<CR>
+nnoremap <silent>,bL :ls!<CR>
+nnoremap <silent>,bb :b#<CR>
+nnoremap <silent>,bd :bd<CR>
+nnoremap <silent>,bq :q<CR>
 
-nnoremap ,dd :bd<CR>
-nnoremap ,dw :q<CR>
-nnoremap ,da :qa<CR>
+nnoremap <silent>,dd :bd<CR>
+nnoremap <silent>,dw :q<CR>
+nnoremap <silent>,da :qa<CR>
 
 nnoremap ,i ".p
 nnoremap ,p "0p
