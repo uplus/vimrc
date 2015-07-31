@@ -125,11 +125,10 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
-set foldcolumn=1
 set foldtext=FoldCCtext()
-set foldlevel=0     " どのレベルから折りたたむか
-set foldnestmax=2   " どの深さまで折りたたむか
-" set foldenable
+set foldcolumn=1
+set foldlevelstart=0     " どのレベルから折りたたむか
+set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 
 " set list
@@ -205,7 +204,13 @@ endfunction "}}}
 au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
-au uAutoCmd FileType diff nnoremap <silent><buffer> q :q<CR>
+
+au uAutoCmd FileType diff call s:diff_config()
+function! s:diff_config()
+  nnoremap <silent><buffer> q :q<CR>
+  setl foldcolumn=0
+  setl foldmethod=diff
+endfunction
 
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()

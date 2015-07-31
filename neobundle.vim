@@ -519,8 +519,6 @@ if neobundle#tap('committia.vim') "{{{
   let g:committia_open_only_vim_starting = 1
   let g:committia_hooks = {}
   function! g:committia_hooks.edit_open(info)
-    set nofoldenable
-    set foldopen=all
     setlocal spell
 
     " If no commit message, start with insert mode
