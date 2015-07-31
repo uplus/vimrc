@@ -166,13 +166,12 @@ au uAutoCmd FileType * setl formatoptions-=ro
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 
 au uAutoCmd FileType * nested call s:set_colors()
-au uAutoCmd ColorScheme * highlight Visual cterm=reverse
-au uAutoCmd ColorScheme * hi Todo ctermfg=201 ctermbg=56
+au uAutoCmd ColorScheme * call s:set_highlights()
 "au uAutoCmd CursorMoved * nohlsearch
 
 function! s:set_colors() "{{{
   if exists("g:set_colors")
-    return 0
+    return
   end
 
   if &filetype == 'cpp' || &filetype == 'c'
@@ -181,21 +180,24 @@ function! s:set_colors() "{{{
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
   elseif &filetype == 'vimfiler'
-    " 一度だけ実行するautocmd
-    augroup set_airline_color
-      autocmd!
-      autocmd FileType * colorscheme airline_color | autocmd! set_airline_color
-    aug END
-
-    colorscheme vimfiler_color
-    return 0
+    let g:set_airline_color = 1
+    return
   else
     colorscheme molokai
   endif
 
+  let g:set_colors=1
+endfunction "}}}
+
+function! s:set_highlights() "{{{
+  hi Visual  cterm=reverse
+  hi Todo    ctermfg=201     ctermbg=56
+  hi QFError cterm=undercurl ctermfg=198
   colorscheme vimfiler_color
 
-  let g:set_colors=1
+  if exists("g:set_airline_color") && g:set_airline_color
+   colorscheme airline_color
+  endif
 endfunction "}}}
 
 " each filetype config
