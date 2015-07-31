@@ -248,10 +248,12 @@ command! OpenGitDiffWin call OpenGitDiff('w')
 command! OpenGitDiffTab call OpenGitDiff('t')
 function! OpenGitDiff(type)
   let cmdname = 'git diff ' .  bufname('%')
-
   silent! execute 'bdelete \[' . escape(cmdname, ' ') . '\]'
+
+  let tmp_spr = &splitright
+  set splitright
   execute (a:type == 't')? 'tabnew' : 'vnew' '[' . cmdname . ']'
-  wincmd L
+  let &splitright=tmp_spr
 
   setl buftype=nofile
   setl filetype=diff
