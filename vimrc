@@ -68,7 +68,7 @@ endif
 language message C
 scriptencoding=utf-8
 set encoding=utf-8
-set fileformats=unix,dos,mac
+set fileformats=unix,mac
 " set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 
 " set undofile
@@ -77,30 +77,38 @@ set number
 set hidden
 set showcmd
 set cursorline
-set showmatch
+set showmatch   " 閉じ括弧が入力された時、対応する括弧にわずかの間ジャンプする
 set matchtime=0 " 括弧を入力した時に移動しないようにする
 set laststatus=2
 set cmdheight=2 cmdwinheight=4
-set mouse=a
+set mouse=      " クリックでマウスが動かないように
 set nobackup
 set modeline
 set cedit=<C-L> " move to cmdwin key
+set icon
 
 set nowrap
 set sidescroll=1
 set sidescrolloff=12
+
 
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
 set updatetime=1000
 
-set autoindent smartindent
-set ignorecase smartcase
+" #indent
+set autoindent
+" set smartindent
+set cindent
+set cinkeys-=0#
+" *<Return> enterするたびにreindent
+set cinoptions+=#1,J1,j1,g0,N-2
+" :0 にすると switchとcaseが同じレベルになる
 
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
-set matchpairs+=<:>
+" set matchpairs+=<:> " jumpして欲しくない時がある
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 
 " Enable virtualedit in visual block mode.
@@ -109,9 +117,10 @@ set virtualedit=block
 " #menu
 set wildmenu
 set wildmode=longest:full,full
-set nrformats-=octal  " 加減算で数値を8進数として扱わない
+set nrformats-=octal  " 加減算で数値を8進数として扱わない +=alphaすると文字も加減算できる
 
 " #search
+set ignorecase smartcase
 set incsearch
 set hlsearch | nohlsearch "Highlight search patterns, support reloading
 
@@ -136,6 +145,10 @@ set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
 let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
 set cpoptions-=m
+set cpoptions+=Z
+set complete+=d,t
+set cryptmethod=zip,blowfish,blowfish2
+set diffopt=filler,context:4,vertical
 
 set t_Co=256
 set background=dark
@@ -201,7 +214,6 @@ function! s:set_highlights() "{{{
 endfunction "}}}
 
 " each filetype config
-au uAutoCmd FileType c,cpp,ruby,zsh,php,perl set cindent
 au uAutoCmd FileType c,cpp set commentstring=//\ %s
 au uAutoCmd FileType html,css set foldmethod=indent
 

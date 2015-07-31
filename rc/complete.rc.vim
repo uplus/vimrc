@@ -1,5 +1,5 @@
 " Complete:
-" set completeopt=menu,longest,preview
+set completeopt=menu,longest,preview
 
 " let g:neocomplete#disable_auto_complete = 0
 " let g:neocomplete#enable_insert_char_pre = 0
