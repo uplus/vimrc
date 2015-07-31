@@ -134,9 +134,6 @@ nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gft gf
 nnoremap gfv :vertical wincmd f<CR>
 
-"#cmdwin
-cnoremap <C-L> <C-F>
-
 au uAutoCmd CmdwinEnter  * call s:cmdwin_config()
 function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>

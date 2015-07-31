@@ -84,6 +84,7 @@ set cmdheight=2 cmdwinheight=4
 set mouse=a
 set nobackup
 set modeline
+set cedit=<C-L> " move to cmdwin key
 
 set nowrap
 set sidescroll=1
