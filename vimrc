@@ -220,8 +220,19 @@ function! s:set_highlights() "{{{
 endfunction "}}}
 
 " each filetype config
-au uAutoCmd FileType c,cpp set commentstring=//\ %s
-au uAutoCmd FileType html,css set foldmethod=indent
+au uAutoCmd FileType c,cpp setl commentstring=//\ %s
+au uAutoCmd FileType html,css setl foldmethod=indent
+
+au uAutoCmd StdinReadPost * call s:stdin_config()
+function! s:stdin_config()
+  setl buftype=nofile
+  setl foldcolumn=0
+  setfiletype help
+  nnoremap q :quit<CR>
+  %s/\(_\|.\)//ge
+  goto
+  %foldopen!
+endfunction
 
 au uAutoCmd FileType diff call s:diff_config()
 function! s:diff_config()
@@ -233,8 +244,8 @@ endfunction
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <silent><buffer> q :q<CR>
-  setlocal foldmethod=indent
-  setlocal number
+  setl foldmethod=indent
+  setl number
 endfunction
 
 " u10 autosave "{{{
