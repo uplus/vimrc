@@ -800,13 +800,11 @@ if neobundle#tap('vim-jplus') "{{{
   nmap <Space>gJ <Plug>(jplus-input)
   vmap <Space>gJ <Plug>(jplus-input)
 
-  " <Plug>(jplus-getchar) %d は結合文字
-  " 全てのマップに影響する
-  " let g:jplus#config = {
-  "       \   "_" : {
-  "       \       "delimiter_format" : ' %d '
-  "       \   }
-  "       \}
+  let g:jplus#config = {
+  \   "ruby" : {
+  \       "right_matchstr_pattern" : '^\s*#*\s*\zs.*',
+  \   }
+  \}
 
   call neobundle#untap()
 endif "}}}
