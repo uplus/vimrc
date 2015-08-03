@@ -161,6 +161,9 @@ vnoremap j gj
 vnoremap gk k
 vnoremap gj j
 
+nnoremap <silent><expr>h (foldclosed(line('.')) != -1)? "zo" : "h"
+nnoremap <silent><expr>l (foldclosed(line('.')) != -1)? "zO" : "l"
+
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
 "}}}
