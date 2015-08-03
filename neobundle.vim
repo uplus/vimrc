@@ -512,6 +512,14 @@ if neobundle#tap('syntastic') "{{{
   nmap \ts :SyntasticToggleMode<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>
 
+  if neobundle#tap('vim-hier') "{{{
+    function! neobundle#hooks.on_post_source(bundle)
+      au syntastic BufWritePost * HierUpdate
+    endfunction
+
+    call neobundle#untap()
+  endif "}}}
+
   call neobundle#untap()
 endif "}}}
 
@@ -1030,12 +1038,6 @@ if neobundle#tap('gundo.vim') "{{{
   let g:gundo_inline_graph     = 0
 
   nnoremap ,ug :GundoToggle<CR>
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('vim-hier') "{{{
-  au uAutoCmd BufWrite * HierUpdate
 
   call neobundle#untap()
 endif "}}}
