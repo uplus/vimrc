@@ -190,6 +190,7 @@ function! s:set_colors() "{{{
   if &filetype == 'cpp' || &filetype == 'c'
     colorscheme lettuce
     " colorscheme kalisi
+    hi Pmenu ctermfg=36 ctermbg=235
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
   elseif &filetype == 'vimfiler'
@@ -197,6 +198,7 @@ function! s:set_colors() "{{{
     return
   else
     colorscheme molokai
+    hi Folded ctermfg=63
   endif
 
   let g:set_colors=1

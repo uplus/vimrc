@@ -16,7 +16,7 @@ highlight Normal                    guifg=#E6E1DC guibg=#111111
 highlight Cursor                    guifg=#000000 ctermfg=0 guibg=#FFFFFF ctermbg=15
 " highlight CursorLine                guibg=#000000 ctermbg=233 cterm=NONE
 
-highlight Comment                   guifg=#BC9458 ctermfg=180 gui=italic
+highlight Comment                   guifg=#BC9458 ctermfg=179 gui=italic
 highlight Constant                  guifg=#6D9CBE ctermfg=73
 " highlight Define                    guifg=#CC7833 ctermfg=173
 highlight Error                     guifg=#FFC66D ctermfg=221 guibg=#990000 ctermbg=88
@@ -64,17 +64,16 @@ highlight SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg
 highlight SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
 
-
 "added
-highlight Pmenu	              ctermbg=243 ctermfg=17
-highlight PmenuSel            ctermbg=6	  ctermfg=40
-highlight PmenuSel            ctermbg=70  ctermfg=129
+highlight Pmenu	              ctermfg=214 ctermbg=236
+" highlight PmenuSel            ctermfg=232 ctermbg=208
+highlight PmenuSel            ctermfg=166 ctermbg=232
 
 highlight Normal              ctermbg=233
-highlight Folded              ctermfg=33  ctermbg=233
+highlight Folded              ctermfg=200 ctermbg=NONE
 highlight FoldColumn          ctermfg=99  ctermbg=232
 highlight LineNr              ctermfg=252 ctermbg=237
-highlight CursorLine          ctermbg=236 cterm=NONE
+highlight CursorLine          ctermbg=235 cterm=NONE
 highlight CursorLineNr        ctermfg=196
 highlight Todo                ctermfg=16 ctermbg=220
 
