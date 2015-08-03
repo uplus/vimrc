@@ -84,6 +84,7 @@ set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
 set nobackup
 set modeline
+set modelines=2
 set cedit=<C-L> " move to cmdwin key
 set icon
 
@@ -175,8 +176,11 @@ au uAutoCmd WinEnter * SmartScrolloff
 " _を除くと*での検索がやりずらい
 au uAutoCmd FileType vim setl iskeyword-=#
 au uAutoCmd FileType * setl formatoptions-=ro
+au uAutoCmd FileType * setl formatoptions+=Bj
 " r When type <return> in insert-mode auto insert commentstring
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
+" B multi-byte charの結合で空白を挿入しない
+" j コメントを結合する時に可能であればコメントリーダーを削除する
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
