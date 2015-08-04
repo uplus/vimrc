@@ -421,6 +421,8 @@ if neobundle#tap('unite.vim') "{{{
   command! Headline Unite headline -auto-resize -auto-preview
   command! High    Unite highlight
   command! Status  Unite -auto-resize -no-empty -no-quit git_untracked git_modified
+  command! Location Unite location_list -buffer-name=location_list
+        \ -auto-resize -no-quit -no-empty -no-focus -direction=below
 
   nnoremap <silent>\gs :Status<CR>
 
