@@ -37,7 +37,14 @@ let g:unite_source_alias_aliases.scriptnames = {
       \ 'source' : 'output',
       \ 'args'   : 'scriptnames',
       \ }
-
+let g:unite_source_alias_aliases.maps = {
+      \ 'source' : 'output',
+      \ 'args'   : 'map|map!|lmap',
+      \ }
+let g:unite_source_alias_aliases.prefix = {
+      \ 'source' : 'output',
+      \ 'args'   : "map \\ |map;|map,|map s|map gs",
+      \ }
 
 " Todo: custom-filterやる
 " " Custom filters."{{{

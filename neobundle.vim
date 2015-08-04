@@ -412,7 +412,8 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
-  command! Maps    Unite -auto-resize -start-insert output:map|map!|lmap
+  command! Maps Unite maps -auto-resize -start-insert
+  command! Prefix Unite prefix -auto-resize -start-insert
   command! Bundle  Unite -auto-resize -start-insert neobundle
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize -no-empty -no-quit vimgrep
@@ -420,9 +421,12 @@ if neobundle#tap('unite.vim') "{{{
   command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
   command! Headline Unite headline -auto-resize -auto-preview
   command! High    Unite highlight
-  command! Status  Unite -auto-resize -no-empty -no-quit git_untracked git_modified
+  command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
   command! Location Unite location_list -buffer-name=location_list
         \ -auto-resize -no-quit -no-empty -no-focus -direction=below
+
+  " Todo: -direction=belowすると反転しちゃう
+  command! Quickfix Unite quickfix -no-empty -auto-resize
 
   nnoremap <silent>\gs :Status<CR>
 
