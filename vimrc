@@ -69,7 +69,7 @@ language message C
 scriptencoding=utf-8
 set encoding=utf-8
 set fileformats=unix,mac
-" set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 
 " set undofile
 set report=0  " コマンドで0行以上変更されたらmessage
@@ -87,6 +87,7 @@ set modeline
 set modelines=2
 set cedit=<C-L> " move to cmdwin key
 set icon
+set splitright splitbelow
 
 set nowrap
 set sidescroll=1
