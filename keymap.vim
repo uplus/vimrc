@@ -41,6 +41,8 @@ nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
+nnoremap d{ ^d{
+nnoremap d} ^d}
 
 nnoremap \gd :OpenGitDiffWin<CR>
 
@@ -86,8 +88,8 @@ nnoremap <silent>,da :qa<CR>
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
-nnoremap ,uu :earlier 1f<CR>
-nnoremap ,uc :UndoClear<CR>
+nnoremap <silent> ,uu :earlier 1f<CR>
+nnoremap <silent> ,uc :UndoClear<CR>
 
 inoremap <C-C> <ESC>
 
