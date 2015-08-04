@@ -93,7 +93,6 @@ set nowrap
 set sidescroll=1
 set sidescrolloff=12
 
-
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
@@ -107,11 +106,14 @@ set cinkeys-=0#
 " *<Return> enterするたびにreindent
 set cinoptions+=#1,J1,j1,g0,N-2
 " :0 にすると switchとcaseが同じレベルになる
+au uAutoCmd FileType conf,gitcommit,html,css set nocindent
 
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
 " set matchpairs+=<:> " jumpして欲しくない時がある
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
+" _を除くと*での検索がやりずらい
+au uAutoCmd FileType vim setl iskeyword-=#
 
 " Enable virtualedit in visual block mode.
 set virtualedit=block
@@ -168,14 +170,12 @@ Source 'keymap'
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd VimEnter    * if argc() == 1 | lcd %:p:h | endif
 au uAutoCmd VimResized  * wincmd =
+au uAutoCmd BufWritePre * EraseSpace
 
-" windowの行数の20%にセットする scrolloffはglobal-option
+" windowの行数の20%にセットする
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
-au uAutoCmd VimEnter * SmartScrolloff
-au uAutoCmd WinEnter * SmartScrolloff
+au uAutoCmd VimEnter,WinEnter,VimResized * SmartScrolloff
 
-" _を除くと*での検索がやりずらい
-au uAutoCmd FileType vim setl iskeyword-=#
 au uAutoCmd FileType * setl formatoptions-=ro
 au uAutoCmd FileType * setl formatoptions+=Bjn
 " r When type <return> in insert-mode auto insert commentstring
@@ -185,7 +185,7 @@ au uAutoCmd FileType * setl formatoptions+=Bjn
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
-"au uAutoCmd CursorMoved * nohlsearch
+au uAutoCmd CursorMoved * nohlsearch
 
 function! s:set_colors() "{{{
   if exists("g:set_colors")
@@ -220,7 +220,7 @@ function! s:set_highlights() "{{{
   endif
 endfunction "}}}
 
-" each filetype config
+" #filetype config "{{{
 au uAutoCmd FileType c,cpp setl commentstring=//\ %s
 au uAutoCmd FileType html,css setl foldmethod=indent
 
@@ -248,8 +248,9 @@ function! s:help_config()
   setl foldmethod=indent
   setl number
 endfunction
+"}}}
 
-" u10 autosave "{{{
+" #autosave "{{{
 let g:u10_autosave = 0
 command! U10AutoSave let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
 nnoremap <silent><buffer> <F2> :U10AutoSave<CR>

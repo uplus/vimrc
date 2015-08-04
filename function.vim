@@ -51,7 +51,6 @@ endfunction
 "}}}
 
 " #EraseSpace "{{{
-au BufWritePre  * EraseSpace
 command! EraseSpace :call EraseSpace()
 command! EraseSpaceEnable :let g:erase_space_on=1
 command! EraseSpaceDisable :let g:erase_space_on=0
@@ -199,7 +198,6 @@ function! SelectInteractive(question, candidates) " {{{
     redraw!
   endtry
 endfunction " }}}
-
 function! BufferWipeoutInteractive() " {{{
   if &modified == 1
     let l:selected = SelectInteractive('Buffer is unsaved. Force quit?', ['n', 'w', 'y'])
@@ -244,6 +242,7 @@ function Execute(cmd)
   return ""
 endfunction
 
+" #OpenGitDiff "{{{
 command! OpenGitDiffWin call OpenGitDiff('w')
 command! OpenGitDiffTab call OpenGitDiff('t')
 function! OpenGitDiff(type)
@@ -262,4 +261,4 @@ function! OpenGitDiff(type)
   setl foldcolumn=0
   silent put! =system(cmdname)
   nnoremap <buffer><silent>q :bdelete!<CR>
-endfunction
+endfunction "}}}
