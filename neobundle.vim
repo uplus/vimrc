@@ -50,7 +50,7 @@ NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ], 'filetypes' : ['ruby'] }
 NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
-
+NeoBundleLazy 'osyo-manga/unite-airline_themes',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 "}}}
 
 " View: "{{{
@@ -419,7 +419,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Vgrep   Unite -auto-resize -no-empty -no-quit vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
   command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
-  command! Headline Unite headline -auto-resize -auto-preview
+  command! Headline Unite headline -auto-resize -auto-preview -start-insert
   command! High    Unite highlight
   command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
   command! Location Unite location_list -buffer-name=location_list
