@@ -535,8 +535,8 @@ if neobundle#tap('committia.vim') "{{{
     " end
 
     " Scroll the diff window from insert mode
-    imap <buffer><C-e> <Plug>(committia-scroll-diff-up-half)
-    imap <buffer><C-y> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-k> <Plug>(committia-scroll-diff-up-half)
+    imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
     goto 1
   endfunction
 
