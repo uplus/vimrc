@@ -31,7 +31,7 @@ NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle     'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle     'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -502,12 +502,12 @@ if neobundle#tap('syntastic') "{{{
   let g:syntastic_ignore_files  = ['\m^/usr/include/', expand('~/Documents/memo/')]
   " let g:syntastic_debug = 1
 
-  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_error_symbol   = "✗"
   let g:syntastic_warning_symbol = "⚠"
 
-  let g:syntastic_cpp_compiler = 'clang++'
+  let g:syntastic_cpp_compiler         = 'clang++'
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-  let g:syntastic_ruby_mri_args = "-W1"
+  let g:syntastic_ruby_mri_args        = "-W1"
 
   nmap \ts :SyntasticToggleMode<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>

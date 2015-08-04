@@ -1,6 +1,6 @@
 " #Capture {{{
 " cmdをクォートなしでとれる
-command! -nargs=+ -bang -complete=command
+command! -nargs=+ -complete=command
       \ Capture call Capture(<q-args>)
 
 " cmdをクォートで囲んでとる
@@ -14,7 +14,7 @@ endfunction
 " }}}
 
 " #Capture New window {{{
-command! -nargs=+ -bang -complete=command
+command! -nargs=+ -complete=command
       \ CaptureWin call CaptureWin(<q-args>)
 
 function! CaptureWin(cmd)
