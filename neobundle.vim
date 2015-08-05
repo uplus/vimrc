@@ -10,46 +10,49 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
+" neobundle vimproc vimshell "{{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
+      \   'mac'  : 'make -f make_mac.mak',
+      \   'unix' : 'make -f make_unix.mak',
       \    }
       \ }
 
 NeoBundleLazy 'Shougo/vimshell.vim',  { 'commands' : ['VimShell'], 'depends' : [ 'Shougo/vimproc.vim'  ] }
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'commands' : ['VimShell'], 'depends' : [ 'Shougo/vimshell.vim' ] }
+"}}}
 
 " Unite: "{{{
 NeoBundle     'Shougo/unite.vim'
 NeoBundle     'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'ujihisa/unite-font',               { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'ujihisa/unite-font',               { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle     'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle     'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-vimmer',          { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-vim_hacks',       { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'osyo-manga/unite-vim_hacks',       { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'rhysd/unite-ruby-require.vim',     { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'tacroe/unite-alias',               { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'tacroe/unite-mark',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'taka84u9/unite-git',               { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'Kocha/vim-unite-tig' ,             { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'Kocha/vim-unite-tig' ,             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'pasela/unite-webcolorname',        { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ], 'filetypes' : ['ruby'] }
-NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
+" NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 NeoBundleLazy 'osyo-manga/unite-airline_themes',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 "}}}
 
@@ -80,6 +83,13 @@ NeoBundle 'LeafCage/foldCC.vim'
 NeoBundle 'kana/vim-niceblock'
 NeoBundle 'osyo-manga/vim-jplus'
 NeoBundle 't9md/vim-choosewin'
+
+NeoBundle 'bkad/CamelCaseMotion'    " has textobj ,w ,b ,e
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kana/vim-smartword'
+NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
+" NeoBundle 'deris/improvedft'      " ftFT can input many charactores
+" NeoBundle 'deris/vim-shot-f'      " ftFT show oneshot jump points
 "}}}
 
 " #search and #replace "{{{
@@ -91,15 +101,6 @@ NeoBundle 'tpope/vim-abolish'
 NeoBundle 'osyo-manga/vim-hopping'
 NeoBundle 'daisuzu/rainbowcyclone.vim'
 NeoBundle 'rking/ag.vim'
-"}}}
-
-" #move"{{{
-NeoBundle 'bkad/CamelCaseMotion'    " has textobj ,w ,b ,e
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'kana/vim-smartword'
-NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
-" NeoBundle 'deris/improvedft'      " ftFT can input many charactores
-" NeoBundle 'deris/vim-shot-f'      " ftFT show oneshot jump points
 "}}}
 
 " #syntaxchecker"{{{
@@ -123,7 +124,6 @@ NeoBundle 'osyo-manga/vital-unlocker'
 
 NeoBundle 'mbbill/undotree'
 NeoBundle 'sjl/gundo.vim'
-" NeoBundle 'simnalamburt/vim-mundo'
 
 " #Ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
@@ -419,7 +419,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Vgrep   Unite -auto-resize -no-empty -no-quit vimgrep
   command! Schemes Unite -auto-resize -auto-preview colorscheme
   command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
-  command! Headline Unite headline -auto-resize -auto-preview -start-insert
+  command! Headline Unite headline -auto-resize -auto-preview -no-empty -start-insert
   command! High    Unite highlight
   command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
   command! Location Unite location_list -buffer-name=location_list
@@ -447,9 +447,9 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent> ;* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent> ;n :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR>
 
-  nnoremap <silent> ;oo :Unite outline -auto-resize -resume -auto-preview<CR>
-  nnoremap <silent> ;oh :Headline<CR>
-  nnoremap <silent> ;ot :Todo<CR>
+  nnoremap <silent> soo :Unite outline -auto-resize -resume -auto-preview<CR>
+  nnoremap <silent> soh :Headline<CR>
+  nnoremap <silent> sot :Todo<CR>
 
   " 最後のバッファならquit ハイライト消す
   au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_close()<CR>
