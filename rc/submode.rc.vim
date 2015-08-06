@@ -21,8 +21,10 @@ call submode#map('movefold', 'n', '', 'k', 'zkzMzv[zzz')
 call submode#map('movefold', 'n', '', 'j', 'zjzMzvzz')
 
 " move between fold but not open and close it
-call submode#enter_with('movefold-not', 'n', '', 'z<Space>k', 'zk')
-call submode#enter_with('movefold-not', 'n', '', 'z<Space>j', 'zj')
+call submode#enter_with('movefold-not', 'n', '', 'zK', 'zk')
+call submode#enter_with('movefold-not', 'n', '', 'zJ', 'zj')
+call submode#map('movefold-not', 'n', '', 'K', 'zk')
+call submode#map('movefold-not', 'n', '', 'J', 'zj')
 call submode#map('movefold-not', 'n', '', 'k', 'zk')
 call submode#map('movefold-not', 'n', '', 'j', 'zj')
 
