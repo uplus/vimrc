@@ -452,8 +452,10 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent> sot :Todo<CR>
 
   " 最後のバッファならquit ハイライト消す
-  au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_close()<CR>
-  function! s:unite_close()
+  au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
+  function! s:unite_smart_close()
+    "Todo: unite#buffer上でやっても意味無い
+    " uniteのcloseとかをみてコード書く
     if unite#get_context()['auto_highlight'] == 1
       call clearmatches()
     endif

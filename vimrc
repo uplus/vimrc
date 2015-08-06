@@ -87,7 +87,7 @@ set modeline
 set modelines=2
 set cedit=<C-L> " move to cmdwin key
 set icon
-set splitright splitbelow
+set splitright nosplitbelow
 
 set nowrap
 set sidescroll=1
