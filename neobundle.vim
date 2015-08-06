@@ -425,8 +425,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Location Unite location_list -buffer-name=location_list
         \ -auto-resize -no-quit -no-empty -no-focus -direction=below
 
-  " Todo: -direction=belowすると反転しちゃう
-  command! Quickfix Unite quickfix -no-empty -auto-resize
+  command! Quickfix Unite quickfix -no-empty -auto-resize -direction= -no-quit
 
   nnoremap <silent>\gs :Status<CR>
 
