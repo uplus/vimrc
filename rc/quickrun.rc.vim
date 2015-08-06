@@ -15,17 +15,13 @@ au uAutoCmd FileType vim nnoremap <silent><buffer>\r :.QuickRun<CR>
 " Config
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
-      \ 'hook/close_unite_quickfix/enable_hook_loaded' : 1,
-      \ 'hook/unite_quickfix/enable_failure'   : 1,
-      \ 'hook/close_quickfix/enable_exit'      : 1,
-      \ 'hook/close_buffer/enable_failure'     : 1,
-      \ 'hook/close_buffer/enable_empty_data'  : 1,
-      \ 'hook/shabadoubi_touch_henshin/enable' : 1,
-      \ 'hook/shabadoubi_touch_henshin/wait'   : 20,
-      \ 'outputter/buffer/split' : ':botright 8sp',
-      \ 'outputter'              : 'multi:buffer:quickfix',
-      \ 'runner'                 : 'vimproc',
-      \ 'runner/vimproc/updatetime' : 40,
+      \ 'runner'    : 'vimproc',
+      \ 'runner/vimproc/updatetime' : 60,
+      \ 'outputter' : 'error',
+      \ 'outputter/error/success' : 'buffer',
+      \ 'outputter/error/error'   : 'quickfix',
+      \ 'outputter/buffer/split'  : ':rightbelow 8sp',
+      \ 'outputter/buffer/close_on_empty' : 1,
       \ }
 
 " Languages "{{{
