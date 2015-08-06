@@ -142,3 +142,7 @@ endfunction
 call unite#define_source(s:unite_source_headline)
 unlet s:unite_source_headline
 "}}}
+
+" on_post_sourceの中でやると起動直後に反映されてない
+call unite#custom_source('quickfix,location_list', 'sorters', 'sorter_reverse')
+call unite#custom_source('quickfix', 'converters', 'converter_quickfix_highlight')

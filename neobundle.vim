@@ -28,7 +28,7 @@ NeoBundle     'Shougo/unite.vim'
 NeoBundle     'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'ujihisa/unite-font',               { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
+" NeoBundleLazy 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
