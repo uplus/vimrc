@@ -454,23 +454,46 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>sot :Todo<CR>
 "}}}
 
+  au FileType unite call s:unite_config()
+  function! s:unite_config()
+    nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
+    let context = unite#get_context()
 
-
-  " 最後のバッファならquit ハイライト消す
-  au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
-  function! s:unite_smart_close()
-    "Todo: unite#buffer上でやっても意味無い
-    " uniteのcloseとかをみてコード書く
-    if unite#get_context()['auto_highlight'] == 1
-      call clearmatches()
+    " unite-quickfixの設定色々
+    if context.buffer_name == 'quickrun-hook-unite-quickfix'
+      au WinEnter <buffer> if winnr('$') == 1 | quit | endif
+      nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
+      nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
     endif
+
+    if context.buffer_name == 'location_list'
+      au WinEnter <buffer> if winnr('$') == 1 | quit | endif
+    endif
+  endfunction
+
+  " smart_close "{{{
+  " active-bufferならquit
+  " auto_highlightを消す
+  function! s:unite_smart_close()
+    let context = unite#get_context()
 
     if ActiveBufferCount() == 0
       quit
+    elseif context.auto_highlight == 1
+      if context.quit == 0
+        call feedkeys("\<Plug>(unite_exit)")
+      endif
+      call feedkeys("\<Plug>(unite_do_default_action)")
     else
       call feedkeys("\<Plug>(unite_exit)")
     endif
-  endfunction
+
+  endfunction "}}}
+  " unie_move_pos unite-quickfixで賢く移動する "{{{
+  function! s:unite_move_pos(is_up)
+    call cursor(0, a:is_up? 1 : col('$'))
+    call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
+  endfunction "}}}
 
   let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
 
