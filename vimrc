@@ -185,7 +185,7 @@ au uAutoCmd FileType * setl formatoptions+=Bjn
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
-au uAutoCmd CursorMoved * nohlsearch
+au uAutoCmd CursorMoved * nohlsearch | silent! call matchdelete(10)
 
 function! s:set_colors() "{{{
   if exists("g:set_colors")
@@ -203,7 +203,8 @@ function! s:set_colors() "{{{
     return
   else
     colorscheme molokai
-    hi Folded ctermfg=63
+    hi Folded  ctermfg=63
+    hi Comment ctermfg=245
   endif
 
   let g:set_colors=1
