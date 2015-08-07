@@ -5,9 +5,17 @@ let g:unite_quickfix_filename_is_pathshorten = 0
 let g:unite#filters#converter_quickfix_highlight#enable_bold_for_message = 1
 
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-nnoremap \r :write<CR>:QuickRun -mode n<CR>
 xnoremap \r :QuickRun -mode v<CR>
 nmap \R <Plug>(quickrun)
+
+nnoremap <silent>\r :call SmartQuickRun()<CR>
+function! g:SmartQuickRun()
+  write
+  if empty(getloclist('.'))
+    echo "start quickrun"
+    QuickRun -mode n
+  endif
+endfunction
 
 command! QuickRunStop call quickrun#sweep_sessions()
 command! Stop QuickRunStop
@@ -20,7 +28,6 @@ function! s:quickrun_config()
   nnoremap <silent><buffer>q <C-w>q
   au BufEnter <buffer> if winnr('$') == 1 | quit | endif
 endfunction
-
 
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
@@ -45,8 +52,6 @@ let g:quickrun_config._ = {
       " -createを指定することで再実行した時に-no-focusでもハイライトを有効に
       " -direction=botrightで標示順序が逆になるのはsorter_reverseで解決
       " -buffer-name を変えると自動で閉じない
-
-" Todo: uniteを呼び出す前にsyntasticの確認をするhookを書く
 
 function! s:make_hook_points_module(base)
   return shabadou#make_hook_points_module(a:base)
