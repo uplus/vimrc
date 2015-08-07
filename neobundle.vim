@@ -292,7 +292,7 @@ if neobundle#tap('vim-operator-surround') "{{{
   " () {} はab aB で表す 他は記号
   " srのaは srab を srbとするため
   map <silent>sa <Plug>(operator-surround-append)
-  map <silent>sd <Plug>(operator-surround-delete)
+  map <silent>sd <Plug>(operator-surround-delete)a
   map <silent>sr <Plug>(operator-surround-replace)a
 
   " if you use vim-textobj-multiblock
@@ -438,17 +438,21 @@ if neobundle#tap('unite.vim') "{{{
 
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
-  nnoremap <silent><Space>r :<C-U>UniteResume<CR>
+  nnoremap <silent><Space>r :<C-U>UniteResume -no-start-insert -force-redraw<CR>
 
   " search
-  nnoremap <silent> ;/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
-  nnoremap <silent> ;? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward:wrap<CR>
-  nnoremap <silent> ;* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
-  nnoremap <silent> ;n :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR>
+  nnoremap <silent>s/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
+  nnoremap <silent>s? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward:wrap<CR>
+  nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
+  nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
+  nnoremap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR>
 
-  nnoremap <silent> soo :Unite outline -auto-resize -resume -auto-preview<CR>
-  nnoremap <silent> soh :Headline<CR>
-  nnoremap <silent> sot :Todo<CR>
+  " outline系
+  nnoremap <silent>soo :Unite outline -auto-resize -resume -auto-preview<CR>
+  nnoremap <silent>soh :Headline<CR>
+  nnoremap <silent>sot :Todo<CR>
+
+
 
   " 最後のバッファならquit ハイライト消す
   au FileType unite nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>

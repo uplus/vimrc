@@ -4,6 +4,7 @@ command! Sh update | shell
 command! -nargs=1 -complete=file T tabedit <args>
 command! Vshell tabnew +VimShell
 command! Reload source $MYVIMRC
+command! ReloadKeymap source ~/.vim/keymap.vim
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Commit !git cov
 
@@ -50,7 +51,7 @@ nnoremap <silent><C-Q>q :q<CR>
 nnoremap <silent><C-Q>a :qa<CR>
 nnoremap <silent><C-Q>w :wq<CR>
 nnoremap <silent>Zz ZZ
-nnoremap <silent>Zq Zq
+nnoremap <silent>Zq ZQ
 
 nnoremap <C-y> 3<C-y>
 xnoremap <C-y> 3<C-y>
@@ -76,19 +77,20 @@ nnoremap <silent>,bc :CurrentOnly<CR>
 nnoremap <silent>,bo :only<CR>
 nnoremap <silent>,bt :tabonly<CR>
 nnoremap <silent>,bl :ls<CR>
-nnoremap <silent>,bL :ls!<CR>
+nnoremap <silent>,bh :ls!<CR>
 nnoremap <silent>,bb :b#<CR>
 nnoremap <silent>,bd :bd<CR>
 nnoremap <silent>,bq :q<CR>
 
 nnoremap <silent>,dd :bd<CR>
-nnoremap <silent>,dw :q<CR>
+nnoremap <silent>,dq :q<CR>
 nnoremap <silent>,da :qa<CR>
 
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
-nnoremap <silent> ,uu :earlier 1f<CR>
+nnoremap <silent> ,uf :earlier 1f<CR>
+nnoremap <silent> ,ud :earlier 1d<CR>
 nnoremap <silent> ,uc :UndoClear<CR>
 
 inoremap <C-C> <ESC>
@@ -133,8 +135,10 @@ nnoremap <Space>z za
 
 " #window"{{{
 nnoremap <C-W>gs :vertical wincmd f<CR>
-nnoremap gft gf
+nnoremap gfb gf
+nnoremap gft :tab wincmd f<CR>
 nnoremap gfv :vertical wincmd f<CR>
+nnoremap gfs :botright wincmd f<CR>
 
 au uAutoCmd CmdwinEnter  * call s:cmdwin_config()
 function! s:cmdwin_config()
@@ -174,7 +178,7 @@ inoremap <DOWN> <C-O>gj
 inoremap <C-A>  <C-o>^
 inoremap <C-E> <C-O>$
 imap <C-D>  <Del>
-" Todo: can delete {} with <C-W> and <C-U> in insert-mode
+
 inoremap <C-W>  <C-G>u<C-W>
 inoremap <C-U>  <C-G>u<C-U>
 inoremap <C-K> <C-O>"_D
