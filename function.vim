@@ -176,6 +176,7 @@ function! s:get_syn_info()
         \ " guifg: "   . linkedSyn.guifg   .
         \ " guibg: "   . linkedSyn.guibg
 
+  echo base
   if base != link
     echo "link to"
     echo link

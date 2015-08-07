@@ -501,7 +501,7 @@ endif "}}}
 if neobundle#tap('syntastic') "{{{
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
   let g:syntastic_loc_list_height = 10
-  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq   = 0
   let g:syntastic_enable_signs  = 0
@@ -519,13 +519,13 @@ if neobundle#tap('syntastic') "{{{
   nmap \ts :SyntasticToggleMode<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>
 
-  if neobundle#tap('vim-hier') "{{{
-    function! neobundle#hooks.on_post_source(bundle)
-      au syntastic BufWritePost * HierUpdate
-    endfunction
+  call neobundle#untap()
+endif "}}}
 
-    call neobundle#untap()
-  endif "}}}
+if neobundle#tap('vim-hier') "{{{
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    au uAutoCmd BufWritePost * HierUpdate
+  endfunction
 
   call neobundle#untap()
 endif "}}}
