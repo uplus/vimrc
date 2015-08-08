@@ -19,8 +19,17 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    }
       \ }
 
-NeoBundleLazy 'Shougo/vimshell.vim',  { 'commands' : ['VimShell'], 'depends' : [ 'Shougo/vimproc.vim'  ] }
-NeoBundleLazy 'ujihisa/vimshell-ssh', { 'commands' : ['VimShell'], 'depends' : [ 'Shougo/vimshell.vim' ] }
+NeoBundleLazy 'Shougo/vimshell.vim',{
+      \ 'depends' : 'Shougo/vimproc.vim',
+      \ 'autoload' : {
+      \   'commands' : [{ 'name' : 'VimShell',
+      \                   'complete' : 'customlist,vimshell#complete'},
+      \                 'VimShellExecute', 'VimShellInteractive',
+      \                 'VimShellTerminal', 'VimShellPop'],
+      \   'mappings' : '<Plug>',
+      \ }}
+
+NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
 "}}}
 
 " Unite: "{{{
@@ -237,7 +246,17 @@ NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundle 't9md/vim-quickhl'
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
 
-NeoBundle 'Shougo/vimfiler.vim'
+NeoBundleLazy 'Shougo/vimfiler.vim', {
+      \ 'depends' : 'Shougo/unite.vim',
+      \ 'autoload' : {
+      \    'commands' : [{ 'name' : 'VimFiler',
+      \                    'complete' : 'customlist,vimfiler#complete' },
+      \                  'VimFilerExplorer',
+      \                  'Edit', 'Read', 'Source', 'Write'],
+      \    'mappings' : '<Plug>',
+      \    'explorer' : 1,
+      \ }
+      \ }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 
