@@ -45,8 +45,13 @@ let g:unite_source_alias_aliases.prefix = {
       \ 'source' : 'output',
       \ 'args'   : "map \\ |map;|map,|map s|map gs",
       \ }
+let g:unite_source_alias_aliases.here_grep = {
+      \ 'source' : 'grep',
+      \ 'args'   : '%',
+      \ }
 
-" Todo: custom-filterやる
+
+" Shougo "{{{
 " " Custom filters."{{{
 " call unite#custom#source(
 "       \ 'buffer,file_rec,file_rec/async,file_rec/git', 'matchers',
@@ -105,6 +110,7 @@ let g:unite_source_alias_aliases.prefix = {
 "         \ empty(unite#mappings#get_current_sorters()) ? ['sorter_reverse'] : [])
 "   nmap <buffer> x     <Plug>(unite_quick_match_jump)
 " endfunction"}}}
+"}}}
 
 " #headline unite-soure "{{{
 let s:unite_source_headline = {

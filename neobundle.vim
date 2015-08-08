@@ -412,8 +412,8 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
-  command! Maps Unite maps -auto-resize -start-insert
-  command! Prefix Unite prefix -auto-resize -start-insert
+  command! Maps    Unite maps -auto-resize -start-insert
+  command! Prefix  Unite prefix -auto-resize -start-insert -input=^...
   command! Bundle  Unite -auto-resize -start-insert neobundle
   command! Update  Unite -auto-resize neobundle/update
   command! Vgrep   Unite -auto-resize -no-empty -no-quit vimgrep
@@ -427,6 +427,7 @@ if neobundle#tap('unite.vim') "{{{
 
   command! Quickfix Unite quickfix -no-empty -auto-resize -direction= -no-quit
 
+ " keymap "{{{
   nnoremap <silent>\gs :Status<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
@@ -451,6 +452,7 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>soo :Unite outline -auto-resize -resume -auto-preview<CR>
   nnoremap <silent>soh :Headline<CR>
   nnoremap <silent>sot :Todo<CR>
+"}}}
 
 
 
