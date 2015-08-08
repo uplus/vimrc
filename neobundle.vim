@@ -526,6 +526,13 @@ if neobundle#tap('vim-quickrun') "{{{
 endif "}}}
 
 if neobundle#tap('vimfiler.vim') "{{{
+  " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
+  command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
+  command! Vfs VimFiler -split
+  command! Vf VimFiler
+  command! Vimfiler Vf
+  nnoremap <silent><C-W>e :Vfe<CR>
+
   let neobundle#hooks.on_source = '~/.vim/rc/vimfiler.rc.vim'
   call neobundle#untap()
 endif "}}}
