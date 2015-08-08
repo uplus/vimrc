@@ -422,10 +422,19 @@ if neobundle#tap('unite.vim') "{{{
   command! Headline Unite headline -auto-resize -auto-preview -no-empty -start-insert
   command! High    Unite highlight
   command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
-  command! Location Unite location_list -buffer-name=location_list
-        \ -auto-resize -no-quit -no-empty -no-focus -direction=below
-
   command! Quickfix Unite quickfix -no-empty -auto-resize -direction= -no-quit
+  command! LocationList call g:OpenLocationList()
+
+  functio! g:OpenLocationList() "{{{
+    let num = unite#get_unite_winnr('location_list')
+    if num != -1
+      " unite_exitの実態はclose
+      execute num . "windo quit"
+    endif
+    " -createつけると意図した通りに動作するがhide-bufferが大量生成される
+    " つけないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
+    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below
+  endfunctio "}}}
 
  " keymap "{{{
   nnoremap <silent>\gs :Status<CR>
