@@ -557,6 +557,12 @@ if neobundle#tap('syntastic') "{{{
   nmap \ts :SyntasticToggleMode<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>
 
+  " buffer read/wrteに開く 定義順序が大事
+  au uAutoCmd BufReadPost * nested call g:OpenLocationList()
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    au uAutoCmd BufWritePost * nested call g:OpenLocationList()
+  endfunction
+
   call neobundle#untap()
 endif "}}}
 
