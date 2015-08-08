@@ -1,4 +1,3 @@
-" Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 if &compatible
@@ -176,6 +175,9 @@ au uAutoCmd BufWritePre * EraseSpace
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter,WinEnter,VimResized * SmartScrolloff
 
+au uAutoCmd FileType vim setl keywordprg=:help
+au uAutoCmd FileType vim nnoremap <silent><buffer>K :help <C-r><C-a><CR>
+
 au uAutoCmd FileType * setl formatoptions-=ro
 au uAutoCmd FileType * setl formatoptions+=Bjn
 " r When type <return> in insert-mode auto insert commentstring
@@ -248,6 +250,8 @@ au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <silent><buffer> q :q<CR>
   setl foldmethod=indent
+  setl foldlevelstart=99
+  setl foldcolumn=0
   setl number
 endfunction
 "}}}
