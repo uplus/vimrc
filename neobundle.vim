@@ -452,7 +452,9 @@ if neobundle#tap('unite.vim') "{{{
     endif
     " -createつけると意図した通りに動作するがhide-bufferが大量生成される
     " つけないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
-    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below
+    " -silent つかないと起動時にメッセージが出て止まる
+    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
+
   endfunctio "}}}
 
  " keymap "{{{
@@ -583,10 +585,10 @@ if neobundle#tap('syntastic') "{{{
   nmap \ts :SyntasticToggleMode<CR>
   nmap \sh :call SyntasticLoclistHide()<CR>
 
-  " buffer read/wrteに開く 定義順序が大事
-  au uAutoCmd BufReadPost * nested call g:OpenLocationList()
+  " wrteで開く
+  " readで開くのはafter/plugin/の中にある
   function! neobundle#tapped.hooks.on_post_source(bundle)
-    au uAutoCmd BufWritePost * nested call g:OpenLocationList()
+    au uAutoCmd BufWritePost * call g:OpenLocationList()
   endfunction
 
   call neobundle#untap()
