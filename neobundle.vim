@@ -79,9 +79,8 @@ NeoBundle 'Yggdroot/indentLine'
 " Action: "{{{
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tpope/vim-unimpaired'     " :cnextとかのマッピングを提供 [p ]q ぐちゃくちゃ多すぎる
 " NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'u10e10/yankorder.vim'
+NeoBundle 'u10e10/yankround.vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'tyru/vim-altercmd'
 " NeoBundle 'tpope/vim-repeat'
@@ -294,22 +293,26 @@ let g:solarized_termcolors=256 " solarizedをCUIで使うため
 let python_highlight_all = 1
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
+if neobundle#tap('vimshell.vim') "{{{
+  command! Vshell tabnew +VimShell
+  call neobundle#untap()
+endif "}}}
+
 " vim-operator taps "{{{
 if neobundle#tap('vim-operator-user')
-
-  call neobundle#untap()
-endif
-
-if neobundle#tap('vim-operator-jump_side')
   nmap <Space>k <Plug>(operator-jump-head-out)a
   nmap <Space>j <Plug>(operator-jump-tail-out)a
+  nmap gr <Plug>(operator-replace)
+  xmap gr <Plug>(operator-replace)
+
+  nmap se <Plug>(operator-evalruby)
+  xmap se <Plug>(operator-evalruby)
 
   call neobundle#untap()
 endif
 
 if neobundle#tap('vim-operator-surround') "{{{
-  " () {} はab aB で表す 他は記号
-  " srのaは srab を srbとするため
+  " () {} はab aB で表す 他は記号 でもb Bは使わないかな
   map <silent>sa <Plug>(operator-surround-append)
   map <silent>sd <Plug>(operator-surround-delete)a
   map <silent>sr <Plug>(operator-surround-replace)a
@@ -325,7 +328,15 @@ if neobundle#tap('vim-operator-surround') "{{{
   call neobundle#untap()
 endif "}}}
 
- "}}}
+if neobundle#tap('vim-clang-format') "{{{
+  let g:clang_format#command = 'clang-format'
+  if !executable(g:clang_format#command)
+    let g:clang_format#command = 'clang-format-3.6'
+  endif
+
+  call neobundle#untap()
+endif "}}}
+"}}}
 
 " vim-textobj taps "{{{
 if neobundle#tap('vim-textobj-user')
@@ -349,7 +360,7 @@ if neobundle#tap('vim-textobj-line') "{{{
   omap aL <Plug>(textobj-line-a)
   omap iL <Plug>(textobj-line-i)
 
-  " whitout <Space> <CR>...
+  " whitout last <Space> <CR>...
   nmap yY y<Plug>(textobj-line-i)
   nmap dD y<Plug>(textobj-line-i)
 
@@ -549,7 +560,8 @@ endif "}}}
 if neobundle#tap('vimfiler.vim') "{{{
   " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
-  command! Vfs VimFiler -split
+  command! Vfs VimFilerSplit
+  command! Vft VimFilerTab
   command! Vf VimFiler
   command! Vimfiler Vf
   nnoremap <silent><C-W>e :Vfe<CR>
@@ -622,7 +634,7 @@ if neobundle#tap('committia.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('yankorder.vim') "{{{
+if neobundle#tap('yankround.vim') "{{{
   nmap p <Plug>(yankround-p)
   xmap p <Plug>(yankround-p)
   nmap P <Plug>(yankround-P)
@@ -632,8 +644,7 @@ if neobundle#tap('yankorder.vim') "{{{
   nmap <C-p> <Plug>(yankround-prev)
   nmap <C-n> <Plug>(yankround-next)
 
-  " cmdlineで<C-y>押せばレジストリが遡れる
-  " 検索で <C-r>が使えなくなる
+  " cmdlineで<C-y>押せばレジストリが遡れる 検索で <C-r>が使えなくなる
   " cmap <C-r> <Plug>(yankround-insert-register)
   " cmap <C-y> <Plug>(yankround-pop)
 
@@ -821,9 +832,9 @@ if neobundle#tap('nerdcommenter')
   nmap gcj 2<Plug>NERDCommenterInvert
   nmap gck k2<Plug>NERDCommenterInvertj
 
-  " こっちのじゃないと先頭に数字指定できない
-  " vはfoldをまとめてtoggleするため
-  nmap gcc v<Plug>NERDCommenterToggle
+  " vを付けないとこっちのじゃないと先頭に回数指定できない
+  " vを先頭につけると回数指定の動作が変わる
+  nmap gcc <Plug>NERDCommenterToggle
   nmap gyy <Plug>NERDCommenterYank
 
   " Aじゃないとmotionのaが使えない

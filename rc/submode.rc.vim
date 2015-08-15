@@ -1,6 +1,5 @@
 let g:submode_keep_leaving_key = 1
 let g:submode_timeout          = 0
-" let g:submode_timeoutlen       = 8000
 
 " tab moving
 call submode#enter_with('changetab', 'n', '', 'gt', 'gt')

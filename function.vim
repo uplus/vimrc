@@ -51,11 +51,12 @@ endfunction
 "}}}
 
 " #EraseSpace "{{{
+let g:erase_space_on = 1
 command! EraseSpace :call EraseSpace()
 command! EraseSpaceEnable :let g:erase_space_on=1
 command! EraseSpaceDisable :let g:erase_space_on=0
 function! EraseSpace()
-  if exists("g:erase_space_on") && g:erase_space_on != 1
+  if g:erase_space_on != 1
     return
   endif
 
@@ -214,10 +215,9 @@ function! BufferWipeoutInteractive() " {{{
 endfunction " }}}
 
 " TODO: 動作検証
-" cmdは文字列とれるようにした方がいいかも
 function! OneShotAutocmd(name, event, pattern, cmd) "{{{
   function l:tmp_func()
-    {a:cmd}
+    execute cmd
     autocmd! {a:name}
   endfunction
 
@@ -238,10 +238,10 @@ function! UndoClear()
   write
 endfunction "}}}
 
-function Execute(cmd)
+function Execute(cmd) "{{{
   execute a:cmd
   return ""
-endfunction
+endfunction "}}}
 
 " #OpenGitDiff "{{{
 command! OpenGitDiffWin call OpenGitDiff('w')

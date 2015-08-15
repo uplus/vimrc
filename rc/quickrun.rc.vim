@@ -21,7 +21,7 @@ command! QuickRunStop call quickrun#sweep_sessions()
 command! Stop QuickRunStop
 command! Spec :write | !rspec %
 au uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :Spec<CR>
-au uAutoCmd FileType vim nnoremap <silent><buffer>\r :.QuickRun<CR>
+au uAutoCmd FileType vim nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
 
 au uAutoCmd FileType quickrun call s:quickrun_config()
 function! s:quickrun_config()
@@ -59,9 +59,9 @@ endfunction
 
 " quickrun-hook-clear_quickfix {{{
 let s:hook = s:make_hook_points_module({
-\ "name" : "clear_quickfix",
-\ "kind" : "hook",
-\})
+      \ "name" : "clear_quickfix",
+      \ "kind" : "hook",
+      \})
 
 function! s:hook.hook_apply(context)
   if !empty(&g:errorformat)

@@ -1,8 +1,7 @@
 command! SudoWrite w !sudo tee % > /dev/null
-command! Q quit!
+command! Q qall!
 command! Sh update | shell
 command! -nargs=1 -complete=file T tabedit <args>
-command! Vshell tabnew +VimShell
 command! Reload source $MYVIMRC
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
@@ -24,8 +23,9 @@ nnoremap <silent> [b :bnext<CR>
 nnoremap <silent> ]b :bprevious<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-nnoremap <silent> [p :cprevious<CR>
-nnoremap <silent> ]p :cprevious<CR>
+" Todo: search other mappings.
+" nnoremap <silent> [p :cprevious<CR>
+" nnoremap <silent> ]p :cprevious<CR>
 " visual-modeで[<Space>]が使えるようにする
 xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
@@ -42,7 +42,9 @@ nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
-nnoremap d{ ^d{
+" nnoremap d{ ^Dd{
+" nnoremap d{ {:+1,''delete<CR>k
+nnoremap d{ V{jd
 nnoremap d} ^d}
 
 nnoremap \gd :OpenGitDiffWin<CR>
@@ -167,8 +169,8 @@ vnoremap j gj
 vnoremap gk k
 vnoremap gj j
 
-nnoremap <silent><expr>h (foldclosed(line('.')) != -1)? "zo" : "h"
-nnoremap <silent><expr>l (foldclosed(line('.')) != -1)? "zO" : "l"
+nnoremap <silent><expr>h foldclosed('.') != -1? "zo" : "h"
+nnoremap <silent><expr>l foldclosed('.') != -1? "zO" : "l"
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj

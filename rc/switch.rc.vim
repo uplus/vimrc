@@ -13,7 +13,7 @@ au FileType ruby,eruby let g:switch_custom_definitions +=
       \   [ 'class', 'module' ],
       \   [ '.inject', '.reject' ],
       \   [ '.map', '.map!' ],
-      \   [ '.sub', '.sub!', '.gub', '.gub!',],
+      \   [ '.sub', '.sub!', '.gub', '.gub!' ],
       \   [ 'attr_accessor', 'attr_reader', 'attr_writer' ],
       \ ]
 

@@ -1,8 +1,8 @@
 " Altercmd:
 
-cnoreabbrev t T
-cnoreabbrev movett Movett
-cnoreabbrev sh Sh
+CAlterCommand movett Movett
+CAlterCommand t T
+CAlterCommand sh Sh
 CAlterCommand ao[nly] Aonly
 CAlterCommand co[nly] Conly
 CAlterCommand cap[ture] Capture

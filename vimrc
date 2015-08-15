@@ -224,9 +224,9 @@ function! s:set_highlights() "{{{
 endfunction "}}}
 
 " #filetype config "{{{
-au uAutoCmd FileType c,cpp setl commentstring=//\ %s
+au uAutoCmd FileType c,cpp    setl commentstring=//\ %s
 au uAutoCmd FileType html,css setl foldmethod=indent
-au uAutoCmd FileType qf nnoremap <silent><buffer>q :quit<CR>
+au uAutoCmd FileType qf       nnoremap <silent><buffer>q :quit<CR>
 
 au uAutoCmd StdinReadPost * call s:stdin_config()
 function! s:stdin_config()
@@ -236,7 +236,7 @@ function! s:stdin_config()
   nnoremap <buffer>q :quit<CR>
   %s/\(_\|.\)//ge
   goto
-  %foldopen!
+  silent! %foldopen!
 endfunction
 
 au uAutoCmd FileType diff call s:diff_config()
