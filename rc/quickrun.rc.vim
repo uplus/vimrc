@@ -25,6 +25,7 @@ au uAutoCmd FileType vim nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
 
 au uAutoCmd FileType quickrun call s:quickrun_config()
 function! s:quickrun_config()
+  setl buftype=nofile
   nnoremap <silent><buffer>q <C-w>q
   au BufEnter <buffer> if winnr('$') == 1 | quit | endif
 endfunction
@@ -37,7 +38,7 @@ let g:quickrun_config._ = {
       \ 'outputter'               : 'error',
       \ 'outputter/error/success' : 'buffer',
       \ 'outputter/error/error'   : 'quickfix',
-      \ 'outputter/buffer/split'  : ':rightbelow 8sp',
+      \ 'outputter/buffer/split'  : 'botright 8sp `=a:config.name` | echo 1 ||',
       \ 'outputter/buffer/close_on_empty' : 1,
       \ 'hook/close_unite_quickfix/enable_module_loaded' : 1,
       \ 'hook/clear_quickfix/enable_hook_loaded'         : 1,
@@ -52,6 +53,9 @@ let g:quickrun_config._ = {
       " -createを指定することで再実行した時に-no-focusでもハイライトを有効に
       " -direction=botrightで標示順序が逆になるのはsorter_reverseで解決
       " -buffer-name を変えると自動で閉じない
+      " Todo: split って名前の無駄なバッファが作られる
+      " 原因はquickrun側で sp 'split' execute `=edit a:config.name` としてるからバッファ名が食い違う
+      " 後続の splitを無効化することで回避
 
 function! s:make_hook_points_module(base)
   return shabadou#make_hook_points_module(a:base)
