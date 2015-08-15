@@ -167,15 +167,15 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 
 " operatorをLazyにすると読み込まない
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' }
+NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' } " I A 系
 NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " evaluate textobj as expression of ruby
-NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] }
-NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' } " sa sd sr
+NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " se evaluate textobj as expression of lambda of ruby
+NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] } " command only
+" NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCase <=> snake_case
-NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' } " gr
 NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
 NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' }
 " NeoBundle '',         { 'depends' : 'kana/vim-operator-user' }
@@ -384,22 +384,22 @@ if neobundle#tap('vim-textobj-function') "{{{
 endif "}}}
 
 if neobundle#tap('vim-textobj-multiblock') "{{{
-  " omap ib <Plug>(textobj-multiblock-i)
-  " omap ab <Plug>(textobj-multiblock-a)
-  " vmap ib <Plug>(textobj-multiblock-i)
-  " vmap ab <Plug>(textobj-multiblock-a)
+  omap ib <Plug>(textobj-multiblock-i)
+  xmap ib <Plug>(textobj-multiblock-i)
+  omap ab <Plug>(textobj-multiblock-a)
+  xmap ab <Plug>(textobj-multiblock-a)
 
-let g:textobj_multiblock_search_limit = 20
-let g:textobj_multiblock_blocks = [
-      \   ['(', ')', 1],
-      \   ['[', ']', 1],
-      \   ['{', '}', 1],
-      \   ['<', '>', 1],
-      \   ['"', '"', 1],
-      \   ["'", "'", 1],
-      \   ['`', '`', 1],
-      \   ['|', '|', 1],
-      \ ]
+  let g:textobj_multiblock_search_limit = 20
+  let g:textobj_multiblock_blocks = [
+        \   ['(', ')', 1],
+        \   ['[', ']', 1],
+        \   ['{', '}', 1],
+        \   ['<', '>', 1],
+        \   ['"', '"', 1],
+        \   ["'", "'", 1],
+        \   ['`', '`', 1],
+        \   ['|', '|', 1],
+        \ ]
 
   call neobundle#untap()
 endif "}}}
