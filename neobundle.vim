@@ -79,6 +79,7 @@ NeoBundle 'Yggdroot/indentLine'
 " Action: "{{{
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'tyru/nextfile.vim'
 " NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'u10e10/yankround.vim'
 NeoBundle 'kana/vim-submode'
@@ -109,6 +110,7 @@ NeoBundle 'tpope/vim-abolish'
 NeoBundle 'osyo-manga/vim-hopping'
 NeoBundle 'daisuzu/rainbowcyclone.vim'
 NeoBundle 'rking/ag.vim'
+NeoBundleLazy 'thinca/vim-qfreplace', { 'filetypes' : ['unite', 'quickfix'] } " quickfixの各行を編集、反映できる
 "}}}
 
 " #syntaxchecker"{{{
@@ -239,6 +241,7 @@ NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neo
 " #other "{{{
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/caw.vim'
+NeoBundle 'terryma/vim-expand-region'
 
 NeoBundleLazy 'matchit.zip',    { 'mappings' : ['%', 'g%'] }
 NeoBundle 'vimtaku/hl_matchit.vim'
@@ -284,6 +287,10 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'colorsel.vim' " gui only
 " NeoBundle 'cohama/vim-insert-linenr' " insert-modeでLineNrを反転
+
+NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
+      \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ]
+      \ }}
 "}}}
 
 "###################### plugin config ############################"
@@ -404,6 +411,13 @@ if neobundle#tap('vim-textobj-multiblock') "{{{
   call neobundle#untap()
 endif "}}}
 "}}}
+
+if neobundle#tap('vim-expand-region') "{{{
+  xmap v <Plug>(expand_region_expand)
+  xmap gm <Plug>(expand_region_shrink)
+
+  call neobundle#untap()
+endif "}}}
 
 if neobundle#tap('vim-smartinput') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
@@ -1126,6 +1140,29 @@ if neobundle#tap('gundo.vim') "{{{
   let g:gundo_inline_graph     = 0
 
   nnoremap ,ug :GundoToggle<CR>
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('shaberu.vim') "{{{
+  command! -nargs=1 Say ShaberuSay <args>
+  let g:shaberu_user_define_say_command = 'jsay "%%TEXT%%"'
+  let g:shaberu_is_mute = 0
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('nextfile.vim') "{{{
+  let g:nf_map_next         = '[f'
+  let g:nf_map_previous     = ']f'
+  let g:nf_include_dotfiles = 0
+  let g:nf_ignore_dir       = 1
+  let g:nf_open_command     = 'edit'
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-qfreplace') "{{{
+  au uAutoCmd FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
 
   call neobundle#untap()
 endif "}}}
