@@ -57,6 +57,33 @@ function! s:make_hook_points_module(base)
   return shabadou#make_hook_points_module(a:base)
 endfunction
 
+" replace_region {{{
+let s:config = {
+      \ 'replace_region' : {
+      \   'outputter'                  : 'error',
+      \   'outputter/success'          : 'replace_region',
+      \   'outputter/error'            : 'message',
+      \   'outputter/message/log'      : 1,
+      \   'hook/unite_quickfix/enable' : 0,
+      \   'type'                       : 'ruby',
+      \ },
+      \}
+
+call extend(g:quickrun_config, s:config)
+unlet s:config
+
+command! -nargs=* -range -complete=customlist,quickrun#complete
+      \ ReplaceRegion QuickRun
+      \   -mode v
+      \   -outputter error
+      \   -outputter/success replace_region
+      \   -outputter/error message
+      \   -outputter/message/log 1
+      \   -hook/unite_quickfix/enable 0
+      \   -hook/echo/enable 0
+      \   -type ruby
+" }}}
+
 " quickrun-hook-clear_quickfix {{{
 let s:hook = s:make_hook_points_module({
       \ "name" : "clear_quickfix",

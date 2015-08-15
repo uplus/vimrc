@@ -123,6 +123,7 @@ NeoBundle 'jceb/vim-hier'
 " #quickrun "{{{
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
+NeoBundle "osyo-manga/quickrun-outputter-replace_region"
 "}}}
 
 " #vital "{{{
