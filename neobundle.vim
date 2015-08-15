@@ -580,6 +580,10 @@ if neobundle#tap('vimfiler.vim') "{{{
   command! Vf VimFiler
   command! Vimfiler Vf
   nnoremap <silent><C-W>e :Vfe<CR>
+  nnoremap <Space>ff :VimFiler<CR>
+  nnoremap <Space>ft :VimFilerTab<CR>
+  nnoremap <Space>fs :VimFilerSplit<CR>
+  nnoremap <Space>fe :Vfe<CR>
 
   let neobundle#hooks.on_source = '~/.vim/rc/vimfiler.rc.vim'
   call neobundle#untap()
@@ -656,8 +660,16 @@ if neobundle#tap('yankround.vim') "{{{
   nmap gp <Plug>(yankround-gp)
   xmap gp <Plug>(yankround-gp)
   nmap gP <Plug>(yankround-gP)
-  nmap <C-p> <Plug>(yankround-prev)
   nmap <C-n> <Plug>(yankround-next)
+
+  nnoremap <C-p> :call <SID>smart_previous()<CR>
+  function! s:smart_previous()
+    if yankround#is_active()
+      call yankround#prev()
+    else
+      call feedkeys(":\<C-p>")
+    endif
+  endfunction
 
   " cmdlineで<C-y>押せばレジストリが遡れる 検索で <C-r>が使えなくなる
   " cmap <C-r> <Plug>(yankround-insert-register)
@@ -921,8 +933,9 @@ if neobundle#tap('vim-quickhl') "{{{
   let g:quickhl_manual_keywords          = [] " Can use List and Dictionary
 
   nmap gh <Plug>(quickhl-manual-this)
+  nmap gl v<Plug>(quickhl-manual-this)
+  nmap gm <Plug>(operator-quickhl-manual-this-motion)
   xmap gh <Plug>(quickhl-manual-this)
-  map  gH <Plug>(operator-quickhl-manual-this-motion)
 
   nmap \hm <Plug>(quickhl-manual-reset)
   xmap \hm <Plug>(quickhl-manual-reset)
