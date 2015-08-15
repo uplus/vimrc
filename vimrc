@@ -153,7 +153,7 @@ set cpoptions-=m
 set cpoptions+=Z
 set complete+=d,t
 set cryptmethod=zip,blowfish,blowfish2
-set diffopt=filler,context:4,vertical
+set diffopt=filler,context:2,vertical,foldcolumn:0
 
 set t_Co=256
 set background=dark
@@ -208,13 +208,22 @@ function! s:set_colors() "{{{
 endfunction "}}}
 
 function! s:set_highlights() "{{{
-  hi Visual  cterm=reverse
-  hi Todo    ctermfg=201     ctermbg=56
-  hi QFError cterm=undercurl ctermfg=198
+  hi Visual     cterm=reverse
+  hi Todo       ctermfg=201     ctermbg=56
+  hi QFError    cterm=undercurl ctermfg=198
+  hi QFWarning  cterm=undercurl ctermfg=198
+  hi DiffAdd    ctermfg=255     ctermbg=27
+  hi DiffDelete ctermfg=200     ctermbg=56
+  hi DiffChange ctermfg=252     ctermbg=22
+  hi DiffText   ctermfg=226     ctermbg=29
   colorscheme vimfiler_color
 
   if exists("g:set_airline_color") && g:set_airline_color
-   colorscheme airline_color
+    colorscheme airline_color
+  endif
+
+  if &diff
+    hi clear CursorLine
   endif
 endfunction "}}}
 
