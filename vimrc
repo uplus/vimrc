@@ -23,6 +23,7 @@ command! -nargs=1 Source
 let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
 set undodir=~/.vim/tmp/undo.txt
+set viewdir=~/.vim/tmp/view
 set path+=/usr/include/c++/HEAD/
 
 if filereadable(expand('~/.vimrc_local_before'))
@@ -113,6 +114,7 @@ set whichwrap=b,s,[,],<,>
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
 " _を除くと*での検索がやりずらい
 au uAutoCmd FileType vim setl iskeyword-=#
+au uAutoCmd FileType zsh setl iskeyword-=-
 
 " Enable virtualedit in visual block mode.
 set virtualedit=block
@@ -178,13 +180,6 @@ au uAutoCmd VimEnter,WinEnter,VimResized * SmartScrolloff
 au uAutoCmd FileType vim setl keywordprg=:help
 au uAutoCmd FileType vim nnoremap <silent><buffer>K :help <C-r><C-a><CR>
 
-au uAutoCmd FileType * setl formatoptions-=ro
-au uAutoCmd FileType * setl formatoptions+=Bjn
-" r When type <return> in insert-mode auto insert commentstring
-" o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
-" B multi-byte charの結合で空白を挿入しない
-" j コメントを結合する時に可能であればコメントリーダーを削除する
-
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
 au uAutoCmd CursorMoved * nohlsearch | silent! call matchdelete(10)
@@ -249,8 +244,9 @@ endfunction
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <silent><buffer> q :q<CR>
-  setl foldmethod=indent
-  setl foldlevelstart=99
+  setl nofoldenable
+  " global
+  " setl foldlevelstart=99
   setl foldcolumn=0
   setl number
 endfunction
@@ -258,7 +254,7 @@ endfunction
 
 " #autosave "{{{
 let g:u10_autosave = 0
-command! U10AutoSave let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
+command! U10AutoSave write | let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
 nnoremap <silent><buffer> <F2> :U10AutoSave<CR>
 au uAutoCmd InsertLeave,TextChanged * nested if g:u10_autosave != 0 | write | endif
 "}}}
