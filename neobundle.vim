@@ -457,6 +457,7 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
+  " commands "{{{
   command! Maps    Unite maps -auto-resize -start-insert
   command! Prefix  Unite prefix -auto-resize -start-insert -input=^...
   command! Bundle  Unite -auto-resize -start-insert neobundle
@@ -469,21 +470,8 @@ if neobundle#tap('unite.vim') "{{{
   command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
   command! Quickfix Unite quickfix -no-empty -auto-resize -direction= -no-quit
   command! LocationList call g:OpenLocationList()
-
-  functio! g:OpenLocationList() "{{{
-    let num = unite#get_unite_winnr('location_list')
-    if num != -1
-      " unite_exitの実態はclose
-      execute num . "windo quit"
-    endif
-    " -createつけると意図した通りに動作するがhide-bufferが大量生成される
-    " つけないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
-    " -silent つかないと起動時にメッセージが出て止まる
-    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
-
-  endfunctio "}}}
-
- " keymap "{{{
+  "}}}
+  " keymap "{{{
   nnoremap <silent>\gs :Status<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
@@ -492,6 +480,7 @@ if neobundle#tap('unite.vim') "{{{
 
   nnoremap <silent>;ub :<C-U>Unite buffer<CR>
   nnoremap <silent>;ut :<C-u>Unite -select=`tabpagenr()-1` tab<CR>
+  nnoremap <silent>;uj :<C-u>Unite jump
 
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
@@ -505,12 +494,12 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR>
 
   " outline系
+  nnoremap <silent>sh :Headline<CR>
   nnoremap <silent>soo :Unite outline -auto-resize -resume -auto-preview<CR>
-  nnoremap <silent>soh :Headline<CR>
   nnoremap <silent>sot :Todo<CR>
-"}}}
+  "}}}
 
-  au FileType unite call s:unite_config()
+  " unite_config "{{{
   function! s:unite_config()
     nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
     let context = unite#get_context()
@@ -525,7 +514,7 @@ if neobundle#tap('unite.vim') "{{{
     if context.buffer_name == 'location_list'
       au WinEnter <buffer> if winnr('$') == 1 | quit | endif
     endif
-  endfunction
+  endfunction "}}}
 
   " smart_close "{{{
   " active-bufferならquit
@@ -545,14 +534,29 @@ if neobundle#tap('unite.vim') "{{{
     endif
 
   endfunction "}}}
+
   " unie_move_pos unite-quickfixで賢く移動する "{{{
   function! s:unite_move_pos(is_up)
     call cursor(0, a:is_up? 1 : col('$'))
     call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
   endfunction "}}}
 
-  let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
+  " OpenLocationList "{{{
+  functio! g:OpenLocationList()
+    let num = unite#get_unite_winnr('location_list')
+    if num != -1
+      " unite_exitの実態はclose
+      execute num . "windo quit"
+    endif
 
+    " -createつけると意図した通りに動作するがhide-bufferが大量生成される
+    " つけないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
+    " -silent つかないと起動時にメッセージが出て止まる
+    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
+  endfunctio "}}}
+
+  au FileType unite call s:unite_config()
+  let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
   endfunction
