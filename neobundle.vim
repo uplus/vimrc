@@ -245,7 +245,7 @@ NeoBundle 'tyru/caw.vim'
 NeoBundle 'terryma/vim-expand-region'
 
 NeoBundleLazy 'matchit.zip',    { 'mappings' : ['%', 'g%'] }
-NeoBundle 'vimtaku/hl_matchit.vim'
+" NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundle 't9md/vim-quickhl'
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
 
@@ -270,6 +270,7 @@ NeoBundle 'idanarye/vim-merginal'   " git log --graph
 NeoBundle 'cohama/agit.vim'         " git log
 NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
 
+" web
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
@@ -287,7 +288,6 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 
 NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'colorsel.vim' " gui only
-" NeoBundle 'cohama/vim-insert-linenr' " insert-modeでLineNrを反転
 
 NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
       \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ]
