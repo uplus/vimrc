@@ -42,12 +42,24 @@ nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
+noremap ( {j
+noremap ) }k
 " nnoremap d{ ^Dd{
 " nnoremap d{ {:+1,''delete<CR>k
 nnoremap d{ V{jd
 nnoremap d} ^d}
 
 nnoremap \gd :OpenGitDiffWin<CR>
+nnoremap gst :WordTranslate<CR>
+xnoremap gst :ExciteTranslate<CR>
+
+nmap [<Space> <Plug>(BlankUp)
+nmap ]<Space> <Plug>(BlankDown)
+nmap [e <Plug>(MoveUp)
+nmap ]e <Plug>(MoveDown)
+xmap [e <Plug>(MoveSelectionUp)
+xmap ]e <Plug>(MoveSelectionDown)
+
 
 nnoremap <silent><C-Q>q :q<CR>
 nnoremap <silent><C-Q>a :qa<CR>
@@ -60,6 +72,10 @@ xnoremap <C-y> 3<C-y>
 nnoremap <C-e> 3<C-e>
 xnoremap <C-e> 3<C-e>
 
+nnoremap zr zR
+nnoremap zR zr
+nnoremap zm zM
+nnoremap zM zm
 " 行末にスペースを一つ追加する
 xnoremap zF zf
 xnoremap <silent>zf <ESC>:call <SID>add_fold_and_space()<CR>
@@ -99,8 +115,9 @@ inoremap <C-C> <ESC>
 
 nnoremap v V
 nnoremap V v
-xnoremap v <C-V>
-xnoremap V v
+" using in the expand-region
+" xnoremap v <C-V>
+" xnoremap V v
 
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>

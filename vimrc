@@ -179,6 +179,7 @@ au uAutoCmd VimEnter,WinEnter,VimResized * SmartScrolloff
 
 au uAutoCmd FileType vim setl keywordprg=:help
 au uAutoCmd FileType vim nnoremap <silent><buffer>K :help <C-r><C-a><CR>
+au uAutoCmd FileType vim nnoremap <silent><buffer>gD :call GotoVimFunction()<CR>
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
