@@ -64,20 +64,21 @@ let g:neocomplete#sources#omni#input_patterns.cpp   = '[^.[:digit:] *\t]\%(\.\|-
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 
-" " clang_complete
-let g:clang_complete_auto = 0
+" clang_complete "{{{
 let g:clang_auto_select   = 0
+let g:clang_complete_auto = 0
 let g:clang_use_library	  = 1
-let g:clang_user_options  = '-std=c++14 -stdlib=libc++'
+let g:clang_user_options  = matchstr($CPP_COMP_OPT, '\V-std=c++\.\.')
 
 if IsMac()
   " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
   let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 else
-  let g:clang_library_path =  '/usr/lib/llvm-3.6/lib'
+  let g:clang_library_path =  '/usr/lib/llvm-3.6/lib/libclang.so'
 endif
 
 if empty(getftype(g:clang_library_path))
   let g:clang_use_library = 0
   let g:clang_library_path = ""
 endif
+"}}}
