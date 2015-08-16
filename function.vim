@@ -13,7 +13,7 @@ function! OptionPush(name, expr)
     return
   endif
 
-  call add(g:option_stack, [a:name, eval('&' . a:name)])
+  call add(g:option_stack, [a:name, eval('&l:' . a:name)])
 
   try
     execute 'setlocal' a:name . a:expr
@@ -25,7 +25,7 @@ endfunction
 
 function! OptionPop()
   let [name, value] = remove(g:option_stack, -1)
-  execute 'set' name '=' . value
+  execute 'setl ' . name . '=' . value
 endfunction
 
 function! OptionStackClean()
