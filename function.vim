@@ -274,9 +274,13 @@ command! -nargs=? WTrans call WordTranslate(<f-args>)
 command! -nargs=? WordTranslate call WordTranslate(<f-args>)
 function! WordTranslate(...)
   if !a:0
-    call OptionPush('iskeyword', '=@')
-    let word = expand('<cword>')
-    call OptionPop()
+    if &l:ft == 'help'
+      let word = expand('<cword>')
+    else
+      call OptionPush('iskeyword', '=@')
+      let word = expand('<cword>')
+      call OptionPop()
+    endif
   else
     let word = a:1
   endif
