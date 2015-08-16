@@ -4,15 +4,18 @@ let g:switch_mapping = "!"
 let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
 let g:switch_custom_definitions += [
       \ ['enable', 'disable'],
-      \ ['>', '<'],
-      \ ['<=', '>='],
+      \ { '\v(\S\s*)\<(\s*\S)' : '\1>\2' },
+      \ { '\v(\S\s*)\>(\s*\S)' : '\1<\2' },
+      \ { '\v(\S\s*)\<\=(\s*\S)' : '\1>\=\2' },
+      \ { '\v(\S\s*)\>\=(\s*\S)' : '\1<\=\2' },
+      \ { '\v(\S\s*)\=\=(\s*\S)' : '\1\!\=\2' },
+      \ { '\v(\S\s*)\!\=(\s*\S)' : '\1\=\=\2' },
+      \ { '\v"(.+)"'   : '''\1''' },
+      \ { '\v''(.+)''' : '"\1"'   },
       \]
 
-" Todo: make theres
-" > < をまわりのスペースか文字を認識して実効するようにする ->が -<になったりしちゃう
-" ruby-lambdaをスペースを識別できるようにする
-" "" '' ``
-
+" Todo: ruby-lambdaをスペースを識別できるようにする
+" {'''\(\k\+\)''': ':\1', '"\(\k\+\)"': '''\1''', ':\(\k\+\)\@>\%(\s*=>\)\@!': '"\1"\2'},
 au FileType ruby,eruby let g:switch_custom_definitions +=
       \ [
       \   [ 'if', 'unless' ],
@@ -26,12 +29,14 @@ au FileType ruby,eruby let g:switch_custom_definitions +=
       \   [ 'attr_accessor', 'attr_reader', 'attr_writer' ],
       \ ]
 
+
 au FileType markdown let g:switch_custom_definitions += [[ '[ ]', '[x]' ]]
 
 au FileType erb,html,php let g:switch_custom_definitions += [ { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' } ]
 
 au FileType vim let g:switch_custom_definitions +=
       \ [
+      \   [ 'NeoBundle ', 'NeoBundleLazy ' ],
       \   [ 'nnoremap', 'nmap' ],
       \   [ 'inoremap', 'imap' ],
       \   [ 'cnoremap', 'cmap' ],
@@ -46,5 +51,5 @@ au FileType vim let g:switch_custom_definitions +=
       \ ]
 
 au FileType gitrebase let g:switch_custom_definitions += [
-      \  [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec'],
+      \  [ 'pick', 'squash', 'fixup', 'edit', 'reword', 'exec'],
       \ ]
