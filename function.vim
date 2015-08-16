@@ -69,22 +69,6 @@ function! CaptureWin(cmd)
 endfunction
 " }}}
 
-" #MoveToTab "{{{
-command! Movett call s:MoveToTab()
-function! s:MoveToTab()
-    tab split
-    tabprevious
-
-    if winnr('$') > 1
-        close
-    elseif bufnr('$') > 1
-        buffer #
-    endif
-
-    tabnext
-endfunction
-"}}}
-
 " #EraseSpace "{{{
 let g:erase_space_on = 1
 command! EraseSpace :call EraseSpace()
@@ -219,35 +203,6 @@ function! s:get_syn_info()
   endif
 endfunction
 "}}}
-
-function! SelectInteractive(question, candidates) " {{{
-  try
-    let a:candidates[0] = toupper(a:candidates[0])
-    let l:select = 0
-    while index(a:candidates, l:select, 0, 1) == -1
-      let l:select = input(a:question . ' [' . join(a:candidates, '/') . '] ')
-      if l:select == ''
-        let l:select = a:candidates[0]
-      endif
-    endwhile
-    return tolower(l:select)
-  finally
-    redraw!
-  endtry
-endfunction " }}}
-function! BufferWipeoutInteractive() " {{{
-  if &modified == 1
-    let l:selected = SelectInteractive('Buffer is unsaved. Force quit?', ['n', 'w', 'y'])
-    if l:selected == 'w'
-      write
-      bwipeout
-    elseif l:selected == 'y'
-      bwipeout!
-    endif
-  else
-    bwipeout
-  endif
-endfunction " }}}
 
 " TODO: 動作検証
 function! OneShotAutocmd(name, event, pattern, cmd) "{{{
