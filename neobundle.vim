@@ -249,17 +249,7 @@ NeoBundleLazy 'matchit.zip',    { 'mappings' : ['%', 'g%'] }
 NeoBundle 't9md/vim-quickhl'
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
 
-NeoBundleLazy 'Shougo/vimfiler.vim', {
-      \ 'depends' : 'Shougo/unite.vim',
-      \ 'autoload' : {
-      \    'commands' : [{ 'name' : 'VimFiler',
-      \                    'complete' : 'customlist,vimfiler#complete' },
-      \                  'VimFilerExplorer',
-      \                  'Edit', 'Read', 'Source', 'Write'],
-      \    'mappings' : '<Plug>',
-      \    'explorer' : 1,
-      \ }
-      \ }
+NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
 

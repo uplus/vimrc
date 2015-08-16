@@ -190,15 +190,16 @@ function! s:set_colors() "{{{
     return
   end
 
+  if &filetype == 'vimfiler'
+    let g:set_airline_color = 1
+  endif
+
   if &filetype == 'cpp' || &filetype == 'c'
     colorscheme lettuce
     " colorscheme kalisi
     hi Pmenu ctermfg=36 ctermbg=235
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
-  elseif &filetype == 'vimfiler'
-    let g:set_airline_color = 1
-    return
   else
     colorscheme molokai
     hi Folded  ctermfg=63

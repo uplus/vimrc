@@ -1,20 +1,25 @@
 " #vimfiler
 " https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
 
+let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_enable_clipboard = 0
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_marked_file_icon = '✓'
+let g:vimfiler_quick_look_command = IsMac() ? 'qlmanage -p' : 'gloobus-preview'
+
 call vimfiler#custom#profile('default', 'context', {
       \ 'safe' : 0,
       \ 'auto_expand' : 1,
       \ 'parent' : 0,
       \ })
 
-let g:vimfiler_as_default_explorer = 1
-
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_marked_file_icon = '✓'
-
-let g:vimfiler_quick_look_command = IsMac() ? 'qlmanage -p' : 'gloobus-preview'
-
+let g:vimfiler_sendto = {
+      \ 'unzip' : 'unzip %f',
+      \ 'zip' : 'zip -r %F.zip %*',
+      \ 'Inkscape' : 'inkspace',
+      \ 'GIMP' : 'gimp %*',
+      \ 'gedit' : 'gedit',
+      \ }
 
 "VimFilerを起動してからじゃないと関数が読み込まれない
 function! s:set_vimfiler_unexpand_tree() "{{{
@@ -47,7 +52,7 @@ function! s:vimfiler_settings() "{{{
   " vimfilerのsplitは開いた時のoptに影響する
   nnoremap <silent><buffer><nowait>s :call vimfiler#mappings#do_action('split_action')<CR>
   nnoremap <silent><buffer><nowait>v :call vimfiler#mappings#do_action('vsplit_action')<CR>
-  nnoremap <silent><buffer>t :call vimfiler#mappings#do_action('tabopen')<CR>
+  nnoremap <silent><buffer><expr>t vimfiler#do_action('tabopen')
   nmap <buffer>e <Plug>(vimfiler_edit_file)
 
   nmap <buffer>R <Plug>(vimfiler_expand_tree_recursive)
@@ -67,17 +72,17 @@ function! s:smart_quit()
   endif
 endfunction
 
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
+let s:split_action = { 'is_selectable' : 1 }
+function! s:split_action.func(candidates)
   wincmd p
-  exec 'split '. a:candidates[0].action__path
+  exec 'botright split '. a:candidates[0].action__path
 endfunction
-call unite#custom_action('file', 'split_action', s:my_action)
+call unite#custom_action('file', 'split_action', s:split_action)
 
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
+let s:vsplit_action = { 'is_selectable' : 1 }
+function! s:vsplit_action.func(candidates)
   wincmd p
   exec 'vsplit '. a:candidates[0].action__path
 endfunction
-call unite#custom_action('file', 'vsplit_action', s:my_action)
+call unite#custom_action('file', 'vsplit_action', s:vsplit_action)
 
