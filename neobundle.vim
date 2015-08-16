@@ -656,24 +656,20 @@ if neobundle#tap('yankround.vim') "{{{
   nmap gP <Plug>(yankround-gP)
   nmap <C-n> <Plug>(yankround-next)
 
-  nnoremap <C-p> :call <SID>smart_previous()<CR>
+  nmap <expr><C-p> <SID>smart_previous()
   function! s:smart_previous()
     if yankround#is_active()
-      call yankround#prev()
+      return "\<Plug>(yankround-prev)"
     else
-      call feedkeys(":\<C-p>")
+      return ":\<C-p>"
     endif
   endfunction
 
-  " cmdlineで<C-y>押せばレジストリが遡れる 検索で <C-r>が使えなくなる
-  " cmap <C-r> <Plug>(yankround-insert-register)
-  " cmap <C-y> <Plug>(yankround-pop)
-
   let g:yankround_max_history   = 30
-  let g:yankround_file          = "~/.vim/tmp/yankround_history"
+  let g:yankround_dir           = '~/.vim/tmp/yankround_history'
   let g:yankround_use_region_hl = 1
+  highlight YankRoundRegion cterm=italic
   au uAutoCmd ColorScheme * highlight YankRoundRegion cterm=italic
-
   call neobundle#untap()
 endif "}}}
 

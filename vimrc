@@ -183,7 +183,7 @@ au uAutoCmd FileType vim nnoremap <silent><buffer>gD :call GotoVimFunction()<CR>
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
-au uAutoCmd CursorMoved * nohlsearch | silent! call matchdelete(10)
+au uAutoCmd CursorMoved * nohlsearch
 
 function! s:set_colors() "{{{
   if exists("g:set_colors")
