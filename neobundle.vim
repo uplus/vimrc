@@ -452,7 +452,8 @@ if neobundle#tap('unite.vim') "{{{
   command! Prefix  Unite prefix -auto-resize -start-insert -input=^...
   command! Bundle  Unite -auto-resize -start-insert neobundle
   command! Update  Unite -auto-resize neobundle/update
-  command! Vgrep   Unite -auto-resize -no-empty -no-quit vimgrep
+  command! Vgrep   Unite -auto-resize -no-empty -no-quit vg
+  command! Mes Unite -auto-resize  mes
   command! Schemes Unite -auto-resize -auto-preview colorscheme
   command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
   command! Headline Unite headline -auto-resize -auto-preview -no-empty -start-insert
@@ -460,6 +461,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
   command! Quickfix Unite quickfix -no-empty -auto-resize -direction= -no-quit
   command! LocationList call g:OpenLocationList()
+  command! -nargs=1 Out Unite output:<args>
   "}}}
   " keymap "{{{
   nnoremap <silent>\gs :Status<CR>
@@ -481,7 +483,7 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>s? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward:wrap<CR>
   nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
-  nnoremap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR>
+  nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
 
   " outline系
   nnoremap <silent>sh :Headline<CR>

@@ -20,7 +20,15 @@ endif
 let g:unite_source_alias_aliases = {}
 let g:unite_source_alias_aliases.g = {
       \ 'source' : 'grep',
-      \ 'args' : '%',
+      \ 'args'   : '%',
+      \ }
+let g:unite_source_alias_aliases.vg = {
+      \ 'source' : 'grep',
+      \ 'args'   : '**',
+      \ }
+let g:unite_source_alias_aliases.here_grep = {
+      \ 'source' : 'grep',
+      \ 'args'   : '%',
       \ }
 let g:unite_source_alias_aliases.calc    = 'kawaii-calc'
 let g:unite_source_alias_aliases.l       = 'launcher'
@@ -33,6 +41,10 @@ let g:unite_source_alias_aliases.mes = {
       \ 'source' : 'output',
       \ 'args'   : 'message',
       \ }
+let g:unite_source_alias_aliases.function = {
+      \ 'source' : 'output',
+      \ 'args'   : 'function',
+      \ }
 let g:unite_source_alias_aliases.scriptnames = {
       \ 'source' : 'output',
       \ 'args'   : 'scriptnames',
@@ -44,10 +56,6 @@ let g:unite_source_alias_aliases.maps = {
 let g:unite_source_alias_aliases.prefix = {
       \ 'source' : 'output',
       \ 'args'   : "map \\ |map;|map,|map s|map gs",
-      \ }
-let g:unite_source_alias_aliases.here_grep = {
-      \ 'source' : 'grep',
-      \ 'args'   : '%',
       \ }
 
 
