@@ -265,8 +265,8 @@ endfunction
 
 " #autosave "{{{
 let g:u10_autosave = 0
-command! U10AutoSave write | let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
-nnoremap <silent><buffer> <F2> :U10AutoSave<CR>
+command! AutoSave write | let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
+nnoremap <silent><buffer> <F2> :AutoSave<CR>
 au uAutoCmd InsertLeave,TextChanged * nested if g:u10_autosave != 0 | write | endif
 "}}}
 

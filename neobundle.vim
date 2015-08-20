@@ -448,18 +448,18 @@ endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
   " commands "{{{
-  command! Maps    Unite maps -auto-resize -start-insert
-  command! Prefix  Unite prefix -auto-resize -start-insert -input=^...
-  command! Bundle  Unite -auto-resize -start-insert neobundle
-  command! Update  Unite -auto-resize neobundle/update
-  command! Vgrep   Unite -auto-resize -no-empty -no-quit vg
-  command! Mes Unite -auto-resize  mes
-  command! Schemes Unite -auto-resize -auto-preview colorscheme
-  command! Todo    Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
-  command! Headline Unite headline -auto-resize -auto-preview -no-empty -start-insert
-  command! High    Unite highlight
-  command! Status  Unite -auto-resize -no-empty -no-quit git_modified git_untracked
-  command! Quickfix Unite quickfix -no-empty -auto-resize -direction= -no-quit
+  command! Maps     Unite -auto-resize -start-insert maps
+  command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
+  command! Bundle   Unite -auto-resize -start-insert neobundle
+  command! Update   Unite -auto-resize neobundle/update
+  command! Vgrep    Unite -auto-resize -no-empty -no-quit vg
+  command! Mes      Unite -auto-resize mes
+  command! Schemes  Unite -auto-resize -auto-preview colorscheme
+  command! Todo     Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
+  command! Headline Unite -auto-resize -auto-preview -no-empty -start-insert headline
+  command! High     Unite highlight
+  command! Status   Unite -auto-resize -no-empty -no-quit giti/status
+  command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
   command! LocationList call g:OpenLocationList()
   command! -nargs=1 Out Unite output:<args>
   "}}}
