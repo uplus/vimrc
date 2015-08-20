@@ -493,7 +493,16 @@ if neobundle#tap('unite.vim') "{{{
 
   " unite_config "{{{
   function! s:unite_config()
+
+    nmap <buffer>I 1gg<Plug>(unite_insert_head)
+    nmap <buffer>A 1gg<Plug>(unite_append_end)
+    nnoremap <buffer>cc ggcc
+    inoremap <buffer><C-e> <C-o>$
+    inoremap <buffer><C-d> <Del>
+    inoremap <buffer><C-b> <Left>
+    inoremap <buffer><C-f> <Right>
     nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
+
     let context = unite#get_context()
 
     " unite-quickfixの設定色々
