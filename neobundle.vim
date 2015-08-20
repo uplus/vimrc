@@ -693,6 +693,19 @@ if neobundle#tap('vim-easymotion') "{{{
   let g:EasyMotion_space_jump_first = 0 " Space jump to first match
   let g:EasyMotion_smartcase        = 1
 
+  function! s:easymotion_highlight()
+    hi EasyMotionTarget ctermfg=40
+
+    " highlight of first char when 2loop.
+    hi EasyMotionTarget2First ctermfg=220
+
+    " highlight of second char when 2loop.
+    hi EasyMotionTarget2Second ctermfg=220
+  endfunction
+
+  call s:easymotion_highlight()
+  au uAutoCmd ColorScheme * call s:easymotion_highlight()
+
   map ;j <Plug>(easymotion-j)
   map ;k <Plug>(easymotion-k)
 
