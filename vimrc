@@ -169,9 +169,17 @@ Source 'keymap'
 
 " #auto commands
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-au uAutoCmd VimEnter    * if argc() == 1 | lcd %:p:h | endif
 au uAutoCmd VimResized  * wincmd =
 au uAutoCmd BufWritePre * EraseSpace
+
+au uAutoCmd VimEnter    * call s:vimenter()
+function s:vimenter()
+  if argc() == 0
+    setl buftype=nowrite
+  elseif argc() == 1
+    lcd %:p:h
+  endif
+endfunction
 
 " windowの行数の20%にセットする
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
