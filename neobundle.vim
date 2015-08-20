@@ -988,8 +988,9 @@ if neobundle#tap('jedi-vim') "{{{
 endif "}}}
 
 if neobundle#tap('open-browser.vim') "{{{
-  nmap ,os <Plug>(openbrowser-wwwsearch)
-  nmap ,oa <Plug>(openbrowser-smart-search)
+  nmap gss <Plug>(openbrowser-wwwsearch)
+  nmap gsc <Plug>(openbrowser-smart-search)
+  xmap gsc <Plug>(openbrowser-smart-search)
 
   function! neobundle#hooks.on_source(bundle)
     command Wsearch :call <SID>www_search()

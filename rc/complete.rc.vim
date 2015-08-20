@@ -73,6 +73,7 @@ let g:clang_user_options  = matchstr($CPP_COMP_OPT, '\V-std=c++\.\.')
 if IsMac()
   " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
   let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+  let g:clang_user_options .= ' -stdlib=libc++'
 else
   let g:clang_library_path =  '/usr/lib/llvm-3.6/lib/libclang.so'
 endif
