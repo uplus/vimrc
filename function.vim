@@ -237,13 +237,11 @@ endfunction "}}}
 command! OpenGitDiffWin call OpenGitDiff('w')
 command! OpenGitDiffTab call OpenGitDiff('t')
 function! OpenGitDiff(type)
+  let s:before_winnr = winnr()
   let cmdname = 'git diff ' .  bufname('%')
   silent! execute 'bdelete \[' . escape(cmdname, ' ') . '\]'
 
-  let tmp_spr = &splitright
-  set splitright
-  execute (a:type == 't')? 'tabnew' : 'vnew' '[' . cmdname . ']'
-  let &splitright=tmp_spr
+  execute (a:type == 't')? 'tabnew' : 'botright vsplit' '[' . cmdname . ']'
 
   setl buftype=nofile
   setl filetype=diff
@@ -251,7 +249,12 @@ function! OpenGitDiff(type)
   setl nofoldenable
   setl foldcolumn=0
   silent put! =system(cmdname)
-  nnoremap <buffer><silent>q :bdelete!<CR>
+  nnoremap <silent><buffer>q :call <SID>bdelete_and_back()<CR>
+
+  function! s:bdelete_and_back()
+    bdelete!
+    execute 'normal!' s:before_winnr ."\<C-w>w"
+  endfunction
 endfunction "}}}
 
 " #Hi "{{{
