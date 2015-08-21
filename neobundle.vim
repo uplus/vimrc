@@ -291,11 +291,6 @@ let g:solarized_termcolors=256 " solarizedをCUIで使うため
 let python_highlight_all = 1
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
-if neobundle#tap('vimshell.vim') "{{{
-  command! Vshell tabnew +VimShell
-  call neobundle#untap()
-endif "}}}
-
 " vim-operator taps "{{{
 if neobundle#tap('vim-operator-user')
   nmap <Space>k <Plug>(operator-jump-head-out)a
@@ -389,13 +384,13 @@ if neobundle#tap('vim-textobj-multiblock') "{{{
 
   let g:textobj_multiblock_search_limit = 20
   let g:textobj_multiblock_blocks = [
+        \   ['"', '"', 1],
+        \   ["'", "'", 1],
+        \   ['`', '`', 1],
         \   ['(', ')', 1],
         \   ['[', ']', 1],
         \   ['{', '}', 1],
         \   ['<', '>', 1],
-        \   ['"', '"', 1],
-        \   ["'", "'", 1],
-        \   ['`', '`', 1],
         \   ['|', '|', 1],
         \ ]
 
@@ -403,10 +398,51 @@ if neobundle#tap('vim-textobj-multiblock') "{{{
 endif "}}}
 "}}}
 
-if neobundle#tap('vim-expand-region') "{{{
-  xmap v <Plug>(expand_region_expand)
-  xmap gm <Plug>(expand_region_shrink)
+" commentout taps "{{{
+if neobundle#tap('caw.vim')
+  let g:caw_no_default_keymappings = 1
+  xmap gc <Plug>(caw:i:toggle)
+  xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:i:toggle)
+  xmap gy <Plug>(comment-toggle-yank)
 
+  call neobundle#untap()
+endif
+
+if neobundle#tap('nerdcommenter')
+  let g:NERDCreateDefaultMappings = 0
+  let g:NERDSpaceDelims = 1
+
+  " 上下で反転させるならこれが必要
+  nmap gcj 2<Plug>NERDCommenterInvert
+  nmap gck k2<Plug>NERDCommenterInvertj
+
+  " vを付けないとこっちのじゃないと先頭に回数指定できない
+  " vを先頭につけると回数指定の動作が変わる
+  nmap gcc <Plug>NERDCommenterToggle
+  nmap gyy <Plug>NERDCommenterYank
+
+  " Aじゃないとmotionのaが使えない
+  nmap gcA <Plug>NERDCommenterAppend
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim')
+  nmap <silent><expr> <Plug>(operator-comment-toggle)
+        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
+
+  nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
+        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
+
+  nmap gc <Plug>(operator-comment-toggle)
+  nmap gy <Plug>(operator-comment-yank-toggle)
+
+  call neobundle#untap()
+endif
+"}}}
+
+if neobundle#tap('vimshell.vim') "{{{
+  command! Vshell tabnew +VimShell
   call neobundle#untap()
 endif "}}}
 
@@ -439,6 +475,10 @@ if neobundle#tap('vim-smartinput-endwise') "{{{
 endif "}}}
 
 if neobundle#tap('neocomplete.vim') && has('lua') "{{{
+  " <TAB>: completion.
+  inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
+  inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
   let g:rsenseUseOmniFunc=1
   let g:neocomplete#enable_at_startup = 1
   let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
@@ -595,6 +635,9 @@ if neobundle#tap('vimfiler.vim') "{{{
 endif "}}}
 
 if neobundle#tap('vim-easy-align') "{{{
+  " nmap ga <Plug>(EasyAlign)
+  vmap <CR> <Plug>(EasyAlign)
+  vmap <Space><CR> <Plug>(LiveEasyAlign)
   let neobundle#hooks.on_source = '~/.vim/rc/easyalign.rc.vim'
 
   call neobundle#untap()
@@ -854,49 +897,6 @@ if neobundle#tap('incsearch.vim') " {{{
   " map #   <Plug>(incsearch-nohl)<Plug>(asterisk-#)
   call neobundle#untap()
 endif "}}}
-
-" commentout taps "{{{
-if neobundle#tap('caw.vim')
-  let g:caw_no_default_keymappings = 1
-  xmap gc <Plug>(caw:i:toggle)
-  xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:i:toggle)
-  xmap gy <Plug>(comment-toggle-yank)
-
-  call neobundle#untap()
-endif
-
-if neobundle#tap('nerdcommenter')
-  let g:NERDCreateDefaultMappings = 0
-  let g:NERDSpaceDelims = 1
-
-  " 上下で反転させるならこれが必要
-  nmap gcj 2<Plug>NERDCommenterInvert
-  nmap gck k2<Plug>NERDCommenterInvertj
-
-  " vを付けないとこっちのじゃないと先頭に回数指定できない
-  " vを先頭につけると回数指定の動作が変わる
-  nmap gcc <Plug>NERDCommenterToggle
-  nmap gyy <Plug>NERDCommenterYank
-
-  " Aじゃないとmotionのaが使えない
-  nmap gcA <Plug>NERDCommenterAppend
-
-  call neobundle#untap()
-endif
-
-if neobundle#tap('vim-operator-exec_command') && neobundle#tap('nerdcommenter') && neobundle#tap('caw.vim')
-  nmap <silent><expr> <Plug>(operator-comment-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
-
-  nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
-
-  nmap gc <Plug>(operator-comment-toggle)
-  nmap gy <Plug>(operator-comment-yank-toggle)
-
-  call neobundle#untap()
-endif
-"}}}
 
 if neobundle#tap('vim-over') "{{{
   let g:over#command_line#enable_move_cursor = 1
@@ -1192,6 +1192,13 @@ endif "}}}
 
 if neobundle#tap('vim-qfreplace') "{{{
   au uAutoCmd FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-expand-region') "{{{
+  xmap v <Plug>(expand_region_expand)
+  xmap gm <Plug>(expand_region_shrink)
 
   call neobundle#untap()
 endif "}}}

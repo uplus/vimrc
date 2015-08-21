@@ -1,7 +1,4 @@
 " #easyalign
-vmap <Enter> <Plug>(EasyAlign)
-vmap <Space><Enter> <Plug>(LiveEasyAlign)
-" nmap ga <Plug>(EasyAlign)
 let g:easy_align_ignore_groups = ['Comment', 'String']
 
 let g:easy_align_delimiters = {
