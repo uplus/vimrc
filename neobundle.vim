@@ -635,9 +635,10 @@ if neobundle#tap('vimfiler.vim') "{{{
 endif "}}}
 
 if neobundle#tap('vim-easy-align') "{{{
-  " nmap ga <Plug>(EasyAlign)
-  vmap <CR> <Plug>(EasyAlign)
-  vmap <Space><CR> <Plug>(LiveEasyAlign)
+  nmap sl <Plug>(EasyAlign)
+  vmap sl <Plug>(EasyAlign)
+  nmap <Space>sl <Plug>(LiveEasyAlign)
+  vmap <Space>sl <Plug>(LiveEasyAlign)
   let neobundle#hooks.on_source = '~/.vim/rc/easyalign.rc.vim'
 
   call neobundle#untap()
