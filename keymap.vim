@@ -53,6 +53,9 @@ nnoremap \gd :OpenGitDiffWin<CR>
 nnoremap gst :WordTranslate<CR>
 xnoremap gst :ExciteTranslate<CR>
 
+" #toggle options
+nnoremap \toc :set cursorcolumn!<CR>
+
 nmap [<Space> <Plug>(BlankUp)
 nmap ]<Space> <Plug>(BlankDown)
 nmap [e <Plug>(MoveUp)

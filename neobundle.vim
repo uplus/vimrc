@@ -909,7 +909,7 @@ if neobundle#tap('vim-over') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('rhysd/clever-f.vim') "{{{
+if neobundle#tap('clever-f.vim') "{{{
   let g:clever_f_across_no_line    = 0
   let g:clever_f_ignore_case       = 0
   let g:clever_f_smart_case        = 0
