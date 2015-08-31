@@ -492,11 +492,11 @@ if neobundle#tap('unite.vim') "{{{
   command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
   command! Bundle   Unite -auto-resize -start-insert neobundle
   command! Update   Unite -auto-resize neobundle/update
-  command! Vgrep    Unite -auto-resize -no-empty -no-quit vg
+  command! Vgrep    Unite -auto-resize -no-empty -no-quit vimgrep
   command! Mes      Unite -auto-resize mes
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
-  command! Todo     Unite -auto-resize -auto-preview -no-empty -ignorecase grep:%::(todo|fix|xxx)\:
-  command! Headline Unite -auto-resize -auto-preview -no-empty -start-insert headline
+  command! Todo     Unite -auto-resize -no-empty -auto-preview -ignorecase grep:%::(todo|fix|xxx)\:
+  command! Headline Unite -auto-resize -no-empty -start-insert headline
   command! High     Unite highlight
   command! Status   Unite -auto-resize -no-empty -no-quit giti/status
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
@@ -526,8 +526,8 @@ if neobundle#tap('unite.vim') "{{{
   nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
 
   " outline系
-  nnoremap <silent>sh :Headline<CR>
-  nnoremap <silent>soo :Unite outline -auto-resize -resume -auto-preview<CR>
+  nnoremap <silent>sh  :Headline<CR>
+  nnoremap <silent>soo :Unite outline -auto-resize -resume<CR>
   nnoremap <silent>sot :Todo<CR>
   "}}}
 

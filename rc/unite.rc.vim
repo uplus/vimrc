@@ -23,8 +23,7 @@ let g:unite_source_alias_aliases.g = {
       \ 'args'   : '%',
       \ }
 let g:unite_source_alias_aliases.vg = {
-      \ 'source' : 'grep',
-      \ 'args'   : '**',
+      \ 'source' : 'vimgrep',
       \ }
 let g:unite_source_alias_aliases.here_grep = {
       \ 'source' : 'grep',
