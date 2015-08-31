@@ -586,10 +586,9 @@ if neobundle#tap('unite.vim') "{{{
 
   " OpenLocationList "{{{
   functio! g:OpenLocationList()
-    let num = unite#get_unite_winnr('location_list')
-    if num != -1
-      " unite_exitの実態はclose
-      execute num . "windo quit"
+    let bufnum = winbufnr(unite#get_unite_winnr('location_list'))
+    if bufnum != -1
+      execute "bwipeout" bufnum
     endif
 
     " -createつけると意図した通りに動作するがhide-bufferが大量生成される
