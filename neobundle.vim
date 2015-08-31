@@ -244,7 +244,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'terryma/vim-expand-region'
 
-NeoBundleLazy 'matchit.zip',    { 'mappings' : ['%', 'g%'] }
+NeoBundle 'matchit.zip'
 " NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundle 't9md/vim-quickhl'
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
@@ -800,14 +800,6 @@ endif "}}}
 
 if neobundle#tap('vim-submode') "{{{
   let neobundle#hooks.on_source = '~/.vim/rc/submode.rc.vim'
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('matchit.zip') "{{{
-  function! neobundle#hooks.on_post_source(bundle)
-    silent! execute 'doautocmd Filetype' &filetype
-  endfunction
 
   call neobundle#untap()
 endif "}}}
