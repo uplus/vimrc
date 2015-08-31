@@ -279,6 +279,8 @@ NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cp
 NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'colorsel.vim' " gui only
 
+NeoBundle 'thinca/vim-threes'
+
 NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
       \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ]
       \ }}
@@ -1200,6 +1202,15 @@ endif "}}}
 if neobundle#tap('vim-expand-region') "{{{
   xmap v <Plug>(expand_region_expand)
   xmap gm <Plug>(expand_region_shrink)
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-threes') "{{{
+  let g:threes#data_directory = expand('~/.vim/tmp')
+  " let g:threes#start_with_higher_tile = 1
+
+  command! Threes ThreesStart
 
   call neobundle#untap()
 endif "}}}
