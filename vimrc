@@ -244,10 +244,11 @@ au uAutoCmd FileType qf       nnoremap <silent><buffer>q :quit<CR>
 
 au uAutoCmd StdinReadPost * call s:stdin_config()
 function! s:stdin_config()
-  setl buftype=nofile
-  setl foldcolumn=0
-  setfiletype help
   nnoremap <buffer>q :quit<CR>
+  setl buftype=nofile
+  setl nofoldenable
+  setl foldcolumn=0
+
   %s/\(_\|.\)//ge
   goto
   silent! %foldopen!
@@ -256,16 +257,14 @@ endfunction
 au uAutoCmd FileType diff call s:diff_config()
 function! s:diff_config()
   nnoremap <silent><buffer> q :q<CR>
-  setl foldcolumn=0
   setl foldmethod=diff
+  setl foldcolumn=0
 endfunction
 
 au uAutoCmd FileType help call s:help_config()
 function! s:help_config()
   nnoremap <silent><buffer> q :q<CR>
   setl nofoldenable
-  " global
-  " setl foldlevelstart=99
   setl foldcolumn=0
   setl number
 endfunction
