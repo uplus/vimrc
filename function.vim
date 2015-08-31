@@ -239,20 +239,21 @@ command! OpenGitDiffTab call OpenGitDiff('t')
 function! OpenGitDiff(type)
   let s:before_winnr = winnr()
   let cmdname = 'git diff ' .  bufname('%')
-  silent! execute 'bdelete \[' . escape(cmdname, ' ') . '\]'
+  silent! execute 'bwipeout \[' . escape(cmdname, ' ') . '\]'
 
   execute (a:type == 't')? 'tabnew' : 'botright vsplit' '[' . cmdname . ']'
 
+  " diff_config()で設定しようとするとnofileのタイミングが遅い
+  setfiletype diff
   setl buftype=nofile
-  setl filetype=diff
   setl undolevels=-1
   setl nofoldenable
   setl foldcolumn=0
   silent put! =system(cmdname)
-  nnoremap <silent><buffer>q :call <SID>bdelete_and_back()<CR>
+  nnoremap <silent><buffer>q :call <SID>bwipeout_and_back()<CR>
 
-  function! s:bdelete_and_back()
-    bdelete!
+  function! s:bwipeout_and_back()
+    bwipeout!
     execute 'normal!' s:before_winnr ."\<C-w>w"
   endfunction
 endfunction "}}}
