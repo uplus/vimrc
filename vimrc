@@ -118,9 +118,12 @@ au uAutoCmd FileType zsh setl iskeyword-=-
 set virtualedit=block
 
 " #menu
+set nrformats-=octal    " 加減算で数値を8進数として扱わない +=alphaすると文字も加減算できる
+set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
+set wildoptions=tagfile " Can supplement a tag in a command-line.
+" 補完候補を全て表示 もう一度<Tab>で巡回
 set wildmenu
-set wildmode=longest:full,full
-set nrformats-=octal  " 加減算で数値を8進数として扱わない +=alphaすると文字も加減算できる
+set wildmode=list:longest,full
 
 " #search
 set ignorecase smartcase
