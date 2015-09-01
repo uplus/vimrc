@@ -1,20 +1,22 @@
 " Complete:
-set completeopt=menu,longest,preview
 
-" let g:neocomplete#disable_auto_complete = 0
-" let g:neocomplete#enable_insert_char_pre = 0
+let g:neocomplete#disable_auto_complete  = 0
+let g:neocomplete#enable_insert_char_pre = 0
 
-let g:neocomplete#enable_ignore_case      = 1
+let g:neocomplete#enable_auto_select = 1
+
+let g:neocomplete#enable_auto_close_preview = 1 " preview windowを補完完了後に自動で閉じる
+let g:neocomplete#enable_auto_delimiter     = 1
+let g:neocomplete#disable_auto_select_buffer_name_pattern = '\[Command Line\]'
+
 let g:neocomplete#enable_smart_case       = 1
 let g:neocomplete#enable_camel_case       = 1
 let g:neocomplete#enable_fuzzy_completion = 0
 
 let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
-let g:neocomplete#min_keyword_length                = 3            " Set minimum keyword length.
-let g:neocomplete#auto_completion_start_length      = 1  "補完が自動で開始される文字数
+let g:neocomplete#min_keyword_length                = 3 " Set minimum keyword length.
+let g:neocomplete#auto_completion_start_length      = 1 " 補完が自動で開始される文字数
 let g:neocomplete#manual_completion_start_length    = 0 " Set manual completion length.
-
-let g:neocomplete#enable_auto_close_preview = 1
 
 " Define dictionary.
 " let g:neocomplete#sources#dictionary#dictionaries = {
