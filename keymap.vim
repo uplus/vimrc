@@ -63,6 +63,8 @@ nmap ]e <Plug>(MoveDown)
 xmap [e <Plug>(MoveSelectionUp)
 xmap ]e <Plug>(MoveSelectionDown)
 
+vnoremap <c-a> <c-a>gv
+vnoremap <c-x> <c-x>gv
 
 nnoremap <silent><C-Q>q :q<CR>
 nnoremap <silent><C-Q>a :qa<CR>

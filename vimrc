@@ -53,8 +53,6 @@ nnoremap g8 <Nop>
 xnoremap g8 <Nop>
 nnoremap g<C-G> <Nop>
 xnoremap g<C-G> <Nop>
-nnoremap g<C-A> <Nop>
-xnoremap g<C-A> <Nop>
 "}}}
 
 Source 'neobundle'
