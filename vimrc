@@ -246,7 +246,10 @@ function! s:set_highlights() "{{{
     hi Pmenu        ctermfg=232 ctermbg=6
     hi PmenuSel     ctermfg=232 ctermbg=32
   elseif g:colors_name == 'BusyBee'
-    hi Folded ctermfg=232 ctermbg=24
+    hi Normal ctermbg=233
+    hi Folded ctermfg=0    ctermbg=24
+    hi Visual ctermfg=NONE ctermbg=NONE
+    hi CursorLine cterm=NONE ctermbg=234
   endif
 endfunction "}}}
 
