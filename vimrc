@@ -212,10 +212,10 @@ function! s:set_colors() "{{{
     hi Pmenu ctermfg=36 ctermbg=235
   elseif &filetype == 'ruby' || &filetype == 'gitcommit'
     colorscheme railscasts_u10
+  elseif &filetype == 'vim'
+    colorscheme BusyBee
   else
     colorscheme molokai
-    hi Folded  ctermfg=63
-    hi Comment ctermfg=245
   endif
 
   let g:set_colors=1
@@ -238,6 +238,15 @@ function! s:set_highlights() "{{{
 
   if &diff
     hi clear CursorLine
+  endif
+
+  if g:colors_name == 'molokai'
+    hi Folded       ctermfg=63
+    hi Comment      ctermfg=245
+    hi Pmenu        ctermfg=232 ctermbg=6
+    hi PmenuSel     ctermfg=232 ctermbg=32
+  elseif g:colors_name == 'BusyBee'
+    hi Folded ctermfg=232 ctermbg=24
   endif
 endfunction "}}}
 
