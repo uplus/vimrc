@@ -215,6 +215,7 @@ NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } "
 " }}}
 
 " #colorscheme"{{{
+NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
 NeoBundle 'freeo/vim-kalisi'
 NeoBundle 'croaker/mustang-vim'
 NeoBundle 'vim-scripts/Lucius'
@@ -224,7 +225,13 @@ NeoBundle 'djjcast/mirodark'
 NeoBundle 'vim-scripts/BusyBee'
 NeoBundle '1player/lettuce.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-" NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
+NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'w0ng/vim-hybrid'
+
+NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'vim-scripts/louver.vim'
+NeoBundle 'croaker/mustang-vim'
+" calmar256-dark gentooish inkot mirodark mustang neverness tabula synic vividchalk
 "}}}
 
 " #input-support "{{{
