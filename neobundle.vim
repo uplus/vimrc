@@ -1203,6 +1203,12 @@ endif "}}}
 
 if neobundle#tap('vim-qfreplace') "{{{
   au uAutoCmd FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+  au uAutoCmd FileType qfreplace call s:qfreplace_config()
+
+  function! s:qfreplace_config()
+    setl nobuflisted
+    nnoremap <buffer>q <C-w>q
+  endfunction
 
   call neobundle#untap()
 endif "}}}
