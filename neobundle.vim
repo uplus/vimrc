@@ -519,9 +519,10 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
   nnoremap <silent>;ma :<C-U>UniteBookmarkAdd<CR>
 
-  nnoremap <silent>;ub :<C-U>Unite buffer<CR>
-  nnoremap <silent>;ut :<C-u>Unite -select=`tabpagenr()-1` tab<CR>
-  nnoremap <silent>;uj :<C-u>Unite jump
+  nnoremap <silent>;ub :<C-u>Unite buffer -auto-resize -buffer-name=buffer<CR>
+  nnoremap <silent>;ut :<C-u>Unite tab    -auto-resize -select=`tabpagenr()-1` -buffer-name=tab<CR>
+  nnoremap <silent>;uj :<C-u>Unite jump   -auto-resize -buffer-name=jump<CR>
+  nnoremap <silent>;u <Nop>
 
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
@@ -536,7 +537,7 @@ if neobundle#tap('unite.vim') "{{{
 
   " outline系
   nnoremap <silent>sh  :Headline<CR>
-  nnoremap <silent>soo :Unite outline -auto-resize -resume<CR>
+  nnoremap <silent>;o  :Unite outline -auto-resize -resume<CR>
   nnoremap <silent>sot :Todo<CR>
   "}}}
 
@@ -559,10 +560,15 @@ if neobundle#tap('unite.vim') "{{{
       au WinEnter <buffer> if winnr('$') == 1 | quit | endif
       nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
       nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
-    endif
-
-    if context.buffer_name == 'location_list'
+    elseif context.buffer_name == 'location_list'
       au WinEnter <buffer> if winnr('$') == 1 | quit | endif
+    elseif context.buffer_name ==# 'buffer'
+      nnoremap <silent><buffer><expr><nowait>s unite#do_action('split')
+      nnoremap <silent><buffer><expr><nowait>v unite#do_action('vsplit')
+      nnoremap <silent><buffer><expr><nowait>t unite#do_action('tabopen')
+    elseif context.buffer_name =~# '^search'
+      nnoremap <silent><buffer><expr>r unite#do_action('replace')
+      nmap <silent><buffer>R *r
     endif
   endfunction "}}}
 
