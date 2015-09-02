@@ -263,11 +263,15 @@ command! -complete=highlight -nargs=+ Hi call Hili(<f-args>)
 command! -complete=highlight -nargs=+ Hili call Hili(<f-args>)
 function! Hili(group, ...)
   let cmd = "highlight " . a:group
-  if a:0 == 1
+
+  if 1 <=  a:0
     let cmd .= " ctermfg=" . a:1
-  elseif a:0 == 2
-    let cmd .= " ctermbg=" . a:2
+
+    if 2 <= a:0
+      let cmd .= " ctermbg=" . a:2
+    endif
   endif
+
   execute cmd
 endfunction
 "}}}
