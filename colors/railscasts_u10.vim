@@ -66,8 +66,7 @@ highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f cterm
 
 "added
 highlight Pmenu	              ctermfg=214 ctermbg=236
-" highlight PmenuSel            ctermfg=232 ctermbg=208
-highlight PmenuSel            ctermfg=166 ctermbg=232
+highlight PmenuSel            ctermfg=235 ctermbg=214
 
 highlight Normal              ctermbg=233
 highlight Folded              ctermfg=200 ctermbg=NONE
