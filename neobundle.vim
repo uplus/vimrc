@@ -1134,11 +1134,11 @@ if neobundle#tap('vim-gitgutter') "{{{
 
   nmap [h <Plug>GitGutterPrevHunkzMzvzz
   nmap ]h <Plug>GitGutterNextHunkzMzvzz
-  nmap \gp <Plug>GitGutterPreviewHunk
-  nmap \gadd <Plug>GitGutterStageHunk
-  nmap \grev <Plug>GitGutterRevertHunk
-  nmap \th :GitGutterLineHighlightsToggle<CR>
-  nmap \tg :GitGutterSignsToggle<CR>
+  nmap ,gp <Plug>GitGutterPreviewHunk
+  nmap ,gadd <Plug>GitGutterStageHunk
+  nmap ,grev <Plug>GitGutterRevertHunk
+  nmap ,gh :GitGutterLineHighlightsToggle<CR>
+  nmap ,gg :GitGutterSignsToggle<CR>
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     hi GitGutterChangeDefault ctermfg=226

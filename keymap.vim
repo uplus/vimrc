@@ -43,8 +43,6 @@ noremap ( {j
 noremap ) }k
 nnoremap d{ V{jd
 nnoremap d} ^d}
-
-nnoremap \gd :OpenGitDiffWin<CR>
 nnoremap 0 ^
 nnoremap ^ 0
 nnoremap - $
@@ -52,6 +50,7 @@ xnoremap 0 ^
 xnoremap ^ 0
 xnoremap - $
 
+nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap gst :WordTranslate<CR>
 xnoremap gst :ExciteTranslate<CR>
 
