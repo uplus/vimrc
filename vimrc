@@ -245,11 +245,14 @@ function! s:set_highlights() "{{{
     hi Comment      ctermfg=245
     hi Pmenu        ctermfg=232 ctermbg=6
     hi PmenuSel     ctermfg=232 ctermbg=32
+    hi NonText      ctermfg=NONE ctermbg=NONE
   elseif g:colors_name == 'BusyBee'
-    hi Normal ctermbg=233
-    hi Folded ctermfg=0    ctermbg=24
-    hi Visual ctermfg=NONE ctermbg=NONE
-    hi CursorLine cterm=NONE ctermbg=234
+    hi Normal       ctermbg=233
+    hi Folded       ctermfg=0    ctermbg=24
+    hi FoldColumn   ctermfg=14   ctermbg=233
+    hi Visual       ctermfg=NONE ctermbg=NONE
+    hi NonText      ctermfg=NONE ctermbg=NONE
+    hi CursorLine   cterm=NONE   ctermbg=234
   endif
 endfunction "}}}
 
