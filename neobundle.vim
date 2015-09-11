@@ -254,6 +254,7 @@ NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'matchit.zip'
 " NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundle 't9md/vim-quickhl'
+NeoBundle 'oblitum/rainbow'
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
 
 NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
@@ -1225,6 +1226,12 @@ if neobundle#tap('vim-threes') "{{{
   " let g:threes#start_with_higher_tile = 1
 
   command! Threes ThreesStart
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('rainbow') "{{{
+  let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'magenta', 'red', 'darkmagenta', 'darkblue', 'darkgreen', 'darkcyan']
 
   call neobundle#untap()
 endif "}}}
