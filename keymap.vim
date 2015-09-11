@@ -6,6 +6,7 @@ command! Reload source $MYVIMRC
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Commit !git cov
+command! Tig execute "silent! !tig" | redraw!
 
 " #non register delete "{{{
 nnoremap _d "_d
@@ -32,24 +33,25 @@ xmap ]<Space> <ESC>]<Space>gv
 
 "}}}
 
-" #reset highlight "{{{
 nnoremap <silent>\hn :nohlsearch<CR>
-
-" Reset all highlight 3以上|で連続できない
 nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
-"}}}
 
 nnoremap Y y$
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 noremap ( {j
 noremap ) }k
-" nnoremap d{ ^Dd{
-" nnoremap d{ {:+1,''delete<CR>k
 nnoremap d{ V{jd
 nnoremap d} ^d}
 
 nnoremap \gd :OpenGitDiffWin<CR>
+nnoremap 0 ^
+nnoremap ^ 0
+nnoremap - $
+xnoremap 0 ^
+xnoremap ^ 0
+xnoremap - $
+
 nnoremap gst :WordTranslate<CR>
 xnoremap gst :ExciteTranslate<CR>
 
@@ -65,6 +67,10 @@ xmap ]e <Plug>(MoveSelectionDown)
 
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
+map mp %
+map mmp ^%
+nnoremap v V
+nnoremap V v
 
 nnoremap <silent><C-Q>q :q<CR>
 nnoremap <silent><C-Q>a :qa<CR>
@@ -92,9 +98,6 @@ function! s:add_fold_and_space()
   nohlsearch
 endfunction
 
-map <silent>mp %
-map <silent>mmp ^%
-
 nnoremap <silent>,ba :ActiveOnly<CR>
 nnoremap <silent>,bc :CurrentOnly<CR>
 nnoremap <silent>,bo :only<CR>
@@ -118,14 +121,8 @@ nnoremap <silent> ,uc :UndoClear<CR>
 
 inoremap <C-C> <ESC>
 
-nnoremap v V
-nnoremap V v
-" using in the expand-region
-" xnoremap v <C-V>
-" xnoremap V v
-
-nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
+nnoremap <silent><C-S> :update<CR>
 
 " # ga Info keymap and release " {{{
 nnoremap gaa ga
@@ -143,8 +140,12 @@ xnoremap ga<C-A> g<C-A>
 " #Space
 nnoremap <Space>ss :%s/
 nnoremap <Space>sg :%s//g<LEFT><LEFT>
+nnoremap <Space>sw :%s/<C-r><C-w>/g<LEFT><LEFT>
+nnoremap <Space>sa :%s/<C-r><C-a>/g<LEFT><LEFT>
 xnoremap <Space>ss :s/
 xnoremap <Space>sg :s//g<LEFT><LEFT>
+xnoremap <Space>sw :%s/<C-r><C-w>/g<LEFT><LEFT>
+xnoremap <Space>sa :%s/<C-r><C-a>/g<LEFT><LEFT>
 
 " g^ g$ にするとsidescrollのとき画面上の端までしか動いてくれない
 noremap <Space>h 0
