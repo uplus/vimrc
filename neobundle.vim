@@ -468,22 +468,26 @@ if neobundle#tap('vim-smartinput-endwise') "{{{
     call smartinput#map_to_trigger('i', '<Plug>(smartinput_cr)', '<Enter>', '<Enter>')
 
     " neosnippet and neocomplete compatible
-    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
-          \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-          \ neocomplete#close_popup()
+    imap <expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
+          \ pumvisible()? neocomplete#close_popup() :
+          \ "\<Plug>(smartinput_cr)"
 
   endfunction
   call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('neocomplete.vim') && has('lua') "{{{
-  " <TAB>: completion.
-  inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
-  inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
   let g:rsenseUseOmniFunc = 1
   let g:neocomplete#enable_at_startup = 1
   let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
+
+  inoremap <expr><S-TAB> pumvisible()? "\<C-p>" : "\<S-TAB>"
+  imap <expr><TAB> pumvisible()? "\<C-n>" :
+        \ neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" :
+        \ "\<TAB>"
+
+  inoremap <Plug>(insert-lasttext) <C-a>
+  imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(insert-lasttext)"
 
   call neobundle#untap()
 endif "}}}
