@@ -248,6 +248,7 @@ function! OpenGitDiff(type)
   setl buftype=nofile
   setl undolevels=-1
   setl nofoldenable
+  setl nonumber
   setl foldcolumn=0
   silent put! =system(cmdname)
   nnoremap <silent><buffer>q :call <SID>bwipeout_and_back()<CR>
