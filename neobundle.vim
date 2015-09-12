@@ -308,6 +308,7 @@ if neobundle#tap('vim-operator-user') "{{{
   xmap gr <Plug>(operator-replace)
 
   nmap se <Plug>(operator-evalruby)
+  nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
   xmap se <Plug>(operator-evalruby)
 
   call neobundle#untap()
@@ -342,7 +343,7 @@ if neobundle#tap('vim-textobj-user')
   call neobundle#untap()
 endif
 
-if neobundle#tap('h1mesuke/textobj-wiw') "{{{
+if neobundle#tap('textobj-wiw') "{{{
   " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
   let g:textobj_wiw_no_default_key_mappings = 1
   omap a,w <Plug>(textobj-wiw-a)
@@ -360,7 +361,7 @@ if neobundle#tap('vim-textobj-line') "{{{
 
   " whitout last <Space> <CR>...
   nmap yY y<Plug>(textobj-line-i)
-  nmap dD y<Plug>(textobj-line-i)
+  nmap dD d<Plug>(textobj-line-i)
 
   call neobundle#untap()
 endif "}}}
