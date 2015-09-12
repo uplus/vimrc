@@ -133,9 +133,6 @@ NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
-NeoBundle 'mbbill/undotree'
-NeoBundle 'sjl/gundo.vim'
-
 " #Ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
@@ -260,6 +257,8 @@ NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
 NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
+NeoBundle 'mbbill/undotree'
+NeoBundle 'sjl/gundo.vim'
 
 " #git
 NeoBundle 'tpope/vim-fugitive'
@@ -302,7 +301,7 @@ let python_highlight_all = 1
 command! -range Trans :<line1>,<line2>:ExciteTranslate
 
 " vim-operator taps "{{{
-if neobundle#tap('vim-operator-user')
+if neobundle#tap('vim-operator-user') "{{{
   nmap <Space>k <Plug>(operator-jump-head-out)a
   nmap <Space>j <Plug>(operator-jump-tail-out)a
   nmap gr <Plug>(operator-replace)
@@ -312,7 +311,7 @@ if neobundle#tap('vim-operator-user')
   xmap se <Plug>(operator-evalruby)
 
   call neobundle#untap()
-endif
+endif "}}}
 
 if neobundle#tap('vim-operator-surround') "{{{
   " () {} はab aB で表す 他は記号 でもb Bは使わないかな
@@ -323,10 +322,6 @@ if neobundle#tap('vim-operator-surround') "{{{
   " if you use vim-textobj-multiblock
   nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
-
-  " if you use vim-textobj-between srbはsrabと被る
-  " nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
-  " nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
 
   call neobundle#untap()
 endif "}}}
@@ -392,7 +387,8 @@ if neobundle#tap('vim-textobj-multiblock') "{{{
   omap ab <Plug>(textobj-multiblock-a)
   xmap ab <Plug>(textobj-multiblock-a)
 
-  let g:textobj_multiblock_search_limit = 20
+  let g:textobj#multiblock#enable_block_in_cursor = 50
+  let g:textobj_multiblock_search_limit = 40
   let g:textobj_multiblock_blocks = [
         \   ['"', '"', 1],
         \   ["'", "'", 1],
@@ -465,15 +461,10 @@ if neobundle#tap('vim-smartinput') "{{{
 endif "}}}
 
 if neobundle#tap('vim-smartinput-endwise') "{{{
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
+  let g:smartinput_endwise_avoid_neocon_conflict =  0
 
-    " ruby
-    call smartinput#define_rule({
-          \ 'at' : '\%(^\s*#.*\)\@<!do\s*\%(|.*|\)\?\s*\%#', 'char': '<CR>',
-          \ 'input': '<CR>' .  'end' . '<Esc>O',
-          \ 'filetype': ['ruby']
-          \ })
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_cr)', '<Enter>', '<Enter>')
 
     " neosnippet and neocomplete compatible
     imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
@@ -489,7 +480,7 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
   inoremap <expr> <TAB> pumvisible()? "\<C-n>" : "\<TAB>"
   inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-  let g:rsenseUseOmniFunc=1
+  let g:rsenseUseOmniFunc = 1
   let g:neocomplete#enable_at_startup = 1
   let neobundle#hooks.on_source = '~/.vim/rc/complete.rc.vim'
 
