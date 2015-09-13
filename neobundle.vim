@@ -456,6 +456,58 @@ endif "}}}
 if neobundle#tap('vim-smartinput') "{{{
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call smartinput_endwise#define_default_rules()
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_cr)', '<Enter>', '<Enter>')
+    call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
+
+    call smartinput#define_rule({
+          \   'at'       : '\%(\<struct\>\|\<class\>\|\<enum\>\)\s*\w\+.*\%#',
+          \   'char'     : '{',
+          \   'input'    : '{};<Left><Left>',
+          \   'filetype' : ['cpp'],
+          \   })
+
+    call smartinput#define_rule({
+          \   'at'       : '\\\%(\|%\|z\)\%#',
+          \   'char'     : '(',
+          \   'input'    : '(\)<Left><Left>',
+          \   'filetype' : ['vim'],
+          \   })
+
+    call smartinput#define_rule({
+          \   'at'       : '\\(\%#\\)',
+          \   'char'     : '<BS>',
+          \   'input'    : '<Del><Del><BS><BS>',
+          \   'filetype' : ['vim'],
+          \   })
+
+    call smartinput#define_rule({
+          \   'at'       : '\\[%z](\%#\\)',
+          \   'char'     : '<BS>',
+          \   'input'    : '<Del><Del><BS><BS><BS>',
+          \   'filetype' : ['vim'],
+          \   })
+
+    call smartinput#define_rule({
+          \   'at': '\({\|\<do\>\)\s*\%#',
+          \   'char': '<Bar>',
+          \   'input': '<Bar><Bar><Left>',
+          \   'filetype': ['ruby'],
+          \ })
+
+    call smartinput#define_rule({
+          \   'at': '\({\|\<do\>\)\s*|.*\%#|',
+          \   'char': '<Bar>',
+          \   'input': '<Right>',
+          \   'filetype': ['ruby'],
+          \ })
+
+    call smartinput#define_rule({
+          \   'at': '\({\|\<do\>\)\s*|\%#|',
+          \   'char': '<BS>',
+          \   'input': '<Del><BS>',
+          \   'filetype': ['ruby'],
+          \ })
+
   endfunction
 
   call neobundle#untap()
@@ -465,9 +517,6 @@ if neobundle#tap('vim-smartinput-endwise') "{{{
   let g:smartinput_endwise_avoid_neocon_conflict =  0
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
-    call smartinput#map_to_trigger('i', '<Plug>(smartinput_cr)', '<Enter>', '<Enter>')
-
-    " neosnippet and neocomplete compatible
     imap <expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
           \ pumvisible()? neocomplete#close_popup() :
           \ "\<Plug>(smartinput_cr)"
