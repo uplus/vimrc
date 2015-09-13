@@ -301,6 +301,7 @@ function! WordTranslate(...)
     echo found
   else
     echo "Not found " . word
+    call openbrowser#smart_search(expand("<cword>"))
   endif
 endfunction
 "}}}
