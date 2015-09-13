@@ -92,6 +92,7 @@ NeoBundle 'LeafCage/foldCC.vim'
 NeoBundle 'kana/vim-niceblock'
 NeoBundle 'osyo-manga/vim-jplus'
 NeoBundle 't9md/vim-choosewin'
+NeoBundle 'osyo-manga/vim-milfeulle'
 
 NeoBundle 'bkad/CamelCaseMotion'    " has textobj ,w ,b ,e
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -1277,6 +1278,15 @@ endif "}}}
 
 if neobundle#tap('rainbow') "{{{
   let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'magenta', 'red', 'darkmagenta', 'darkblue', 'darkgreen', 'darkcyan']
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-milfeulle') "{{{
+  nmap <C-o> <Plug>(milfeulle-prev)
+  nmap <C-i> <Plug>(milfeulle-next)
+  let g:milfeulle_default_kind = "window"
+  let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
 
   call neobundle#untap()
 endif "}}}
