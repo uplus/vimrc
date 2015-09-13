@@ -628,6 +628,16 @@ if neobundle#tap('unite.vim') "{{{
     elseif context.buffer_name =~# '^search'
       nnoremap <silent><buffer><expr>r unite#do_action('replace')
       nmap <silent><buffer>R *r
+
+      let s:action = { 'is_selectable' : 0 }
+      function! s:action.func(candidates)
+        let @/ = unite#get_input()
+        call feedkeys(a:candidates.action__line . 'gg')
+      endfunction
+      call unite#custom#action('jump_list', 'search_jump', s:action)
+      unlet s:action
+
+      call unite#custom#default_action('source/line/*', 'search_jump')
     endif
   endfunction "}}}
 
