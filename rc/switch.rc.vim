@@ -56,7 +56,7 @@ au FileType vim let g:switch_custom_definitions +=
       \ ]
 
 au FileType gitrebase let g:switch_custom_definitions += [
-      \  [ 'pick', 'squash', 'fixup', 'edit', 'reword', 'exec'],
+      \  [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec'],
       \ ]
 
 au FileType zsh,bash,sh let g:switch_custom_definitions += [

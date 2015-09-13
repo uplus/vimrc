@@ -280,6 +280,15 @@ function! s:help_config()
   setl foldcolumn=0
   setl number
 endfunction
+
+au uAutoCmd FileType gitrebase call s:gitrebase_config()
+function! s:gitrebase_config() abort
+  noremap <silent><buffer><C-j>p :Pick<CR>
+  noremap <silent><buffer><C-j>r :Reword<CR>
+  noremap <silent><buffer><C-j>e :Edit<CR>
+  noremap <silent><buffer><C-j>s :Squash<CR>
+  noremap <silent><buffer><C-j>f :Fixup<CR>
+endfunction
 "}}}
 
 " #autosave "{{{

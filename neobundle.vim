@@ -572,7 +572,7 @@ if neobundle#tap('unite.vim') "{{{
   command! -nargs=1 Out Unite output:<args>
   "}}}
   " keymap "{{{
-  nnoremap <silent>\gs :Status<CR>
+  nnoremap <silent>,gs :Status<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
   nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
