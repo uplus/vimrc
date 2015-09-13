@@ -817,8 +817,9 @@ if neobundle#tap('vim-easymotion') "{{{
   let g:EasyMotion_use_upper        = 0
   let g:EasyMotion_leader_key       = ';'
   let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
-  let g:EasyMotion_space_jump_first = 0 " Space jump to first match
+  let g:EasyMotion_space_jump_first = 1 " Space jump to first match
   let g:EasyMotion_smartcase        = 1
+  let g:EasyMotion_add_search_history = 0
 
   function! s:easymotion_highlight()
     hi EasyMotionTarget ctermfg=40
@@ -833,31 +834,15 @@ if neobundle#tap('vim-easymotion') "{{{
   call s:easymotion_highlight()
   au uAutoCmd ColorScheme * call s:easymotion_highlight()
 
+  " <Plug>(easymotion-sn) 複数文字入力で絞り込み
+  " <Plug>(easymotion-lineanywhere) current line上のwordの初めと終わりを選択して飛ぶ
+  " <Plug>(easymotion-jumptoanywhere) スクリーン上のwordの初めと終わりを選択して飛ぶ
+
   map ;j <Plug>(easymotion-j)
   map ;k <Plug>(easymotion-k)
-
-  " on the current-line f f t and t
-  map ;f <plug>(easymotion-fl)
-  map ;F <plug>(easymotion-Fl)
-  map ;t <plug>(easymotion-tl)
-  map ;T <plug>(easymotion-Tl)
-
-  " 2 chars motion
-  map ;s <Plug>(easymotion-s2)
-  map ;x <Plug>(easymotion-sl2)
-
-  " other keymap. default
-  map ;w <Plug>(easymotion-w)
-  map ;W <Plug>(easymotion-W)
-  map ;b <Plug>(easymotion-b)
-  map ;B <Plug>(easymotion-B)
-  map ;e <Plug>(easymotion-e)
-  map ;E <Plug>(easymotion-E)
-  map ;ge <Plug>(easymotion-ge)
-  map ;gE <Plug>(easymotion-gE)
-
-  " map ;n <Plug>(easymotion-n)
-  " map ;N <Plug>(easymotion-N)
+  map ;; <Plug>(easymotion-s2)
+  map ;f <Plug>(easymotion-sl2)
+  map ;t <Plug>(easymotion-repeat)
 
 endif "}}}
 
