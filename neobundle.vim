@@ -334,6 +334,18 @@ if neobundle#tap('vim-clang-format') "{{{
     let g:clang_format#command = 'clang-format-3.6'
   endif
 
+  let g:clang_format#code_style = "Google"
+  let g:clang_format#style_options = {
+        \ 'AllowShortIfStatementsOnASingleLine' : 'true',
+        \ 'AllowShortLoopsOnASingleLine'        : 'true',
+        \ 'AllowShortFunctionsOnASingleLine'    : 'true',
+        \ 'AlwaysBreakTemplateDeclarations'     : 'true',
+        \ 'AccessModifierOffset' : -4,
+        \ 'ColumnLimit'          : 0,
+        \ 'Standard'             : 'C++11',
+        \ 'BreakBeforeBraces'    : 'Attach',
+        \ }
+
   call neobundle#untap()
 endif "}}}
 "}}}
