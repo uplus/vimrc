@@ -560,13 +560,14 @@ if neobundle#tap('unite.vim') "{{{
   command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
   command! Bundle   Unite -auto-resize -start-insert neobundle
   command! Update   Unite -auto-resize neobundle/update
-  command! Vgrep    Unite -auto-resize -no-empty -no-quit vimgrep
+  command! Vgrep    Unite -auto-resize -no-empty -no-quit -buffer-name=vimgrep vimgrep
   command! Mes      Unite -auto-resize mes
+  command! Todo     Unite -auto-resize -no-empty -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
+  command! Outline  Unite -auto-resize -no-empty -start-insert -resume -buffer-name=outline outline
+  command! Headline Unite -auto-resize -no-empty -start-insert -buffer-name=headline headline
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
-  command! Todo     Unite -auto-resize -no-empty -auto-preview -ignorecase grep:%::(todo|fix|xxx)\:
-  command! Headline Unite -auto-resize -no-empty -start-insert headline
   command! High     Unite highlight
-  command! Status   Unite -auto-resize -no-empty -no-quit giti/status
+  command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
   command! LocationList call g:OpenLocationList()
   command! -nargs=1 Out Unite output:<args>
@@ -574,8 +575,8 @@ if neobundle#tap('unite.vim') "{{{
   " keymap "{{{
   nnoremap <silent>,gs :Status<CR>
 
-  nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty mark<CR>
-  nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty bookmark<CR>
+  nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty -buffer-name=mark mark<CR>
+  nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty -buffer-name=bookmark bookmark<CR>
   nnoremap <silent>;ma :<C-U>UniteBookmarkAdd<CR>
 
   nnoremap <silent>;ub :<C-u>Unite buffer -auto-resize -buffer-name=buffer<CR>
@@ -594,9 +595,9 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
   nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
 
-  " outline系
+  " outline
   nnoremap <silent>sh  :Headline<CR>
-  nnoremap <silent>;o  :Unite outline -auto-resize -resume<CR>
+  nnoremap <silent>;o  :Outline<CR>
   nnoremap <silent>sot :Todo<CR>
   "}}}
 
