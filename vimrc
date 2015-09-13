@@ -70,8 +70,8 @@ set fileformats=unix,mac
 set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 
 " set undofile
-set report=0  " コマンドで0行以上変更されたらmessage
-set number
+set report=0  " コマンド似よって0行以上変更されたらmessage
+set nonumber
 set hidden
 set showcmd
 set cursorline
@@ -81,47 +81,41 @@ set laststatus=2
 set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
 set nobackup
-set modeline
-set modelines=2
+set modeline modelines=2
 set cedit=<C-L> " move to cmdwin key
-set icon
 set splitright nosplitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
 set ttyfast
 set completeopt=noinsert,menuone
 
 set nowrap
+set breakindent
 set sidescroll=1
 set sidescrolloff=12
+set virtualedit=block
+set nrformats-=octal
 
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
-set updatetime=1000
+set updatetime=500
 
 " #indent
-set autoindent
-" set smartindent
-set cindent
+au uAutoCmd FileType conf,gitcommit,html,css set nocindent
+set autoindent cindent
 set cinkeys-=0#
 " *<Return> enterするたびにreindent
 set cinoptions+=#1,J1,j1,g0,N-2
 " :0 にすると switchとcaseが同じレベルになる
-au uAutoCmd FileType conf,gitcommit,html,css set nocindent
 
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
-" set matchpairs+=<:> " jumpして欲しくない時がある
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
-" _を除くと*での検索がやりずらい
+                      " _を除くと*での検索がやりずらい
 au uAutoCmd FileType vim setl iskeyword-=#
 au uAutoCmd FileType zsh setl iskeyword-=-
 
-" Enable virtualedit in visual block mode.
-set virtualedit=block
-
 " #menu
-set nrformats-=octal    " 加減算で数値を8進数として扱わない +=alphaすると文字も加減算できる
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
 set wildoptions=tagfile " Can supplement a tag in a command-line.
 " 補完候補を全て表示 もう一度<Tab>で巡回
@@ -152,7 +146,7 @@ set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
 
-let &clipboard = IsMac()? 'unnamed' : 'unnamedplus'
+set clipboard=unnamed,unnamedplus
 set cpoptions-=m
 set cpoptions+=Z
 set complete+=d,t
@@ -195,7 +189,6 @@ au uAutoCmd FileType vim nnoremap <silent><buffer>gD :call GotoVimFunction()<CR>
 
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
-au uAutoCmd CursorMoved * nohlsearch
 
 function! s:set_colors() "{{{
   if exists("g:set_colors")
