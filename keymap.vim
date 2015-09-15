@@ -56,6 +56,9 @@ xnoremap gst :ExciteTranslate<CR>
 
 " #toggle options
 nnoremap \toc :set cursorcolumn!<CR>
+nnoremap \ton :set number!<CR>
+nnoremap \tow :set wrap!<CR>
+nnoremap \tol :set list!<CR>
 
 nmap [<Space> <Plug>(BlankUp)
 nmap ]<Space> <Plug>(BlankDown)
