@@ -268,7 +268,7 @@ NeoBundle 'idanarye/vim-merginal'   " git log --graph
 NeoBundle 'cohama/agit.vim'         " git log
 NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
 
-" web
+" #web
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
