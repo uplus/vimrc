@@ -293,10 +293,16 @@ endfunction
 "}}}
 
 " #autosave "{{{
+au uAutoCmd InsertLeave,CursorHold * nested if g:u10_autosave != 0 | update | endif
+nnoremap <silent><F2> :call AutoSave()<CR>
+command! AutoSave call AutoSave()
+
 let g:u10_autosave = 0
-command! AutoSave write | let g:u10_autosave = !g:u10_autosave | echo "autosave" g:u10_autosave? "enabled" : "disabled"
-nnoremap <silent><buffer> <F2> :AutoSave<CR>
-au uAutoCmd InsertLeave,TextChanged * nested if g:u10_autosave != 0 | write | endif
+function! AutoSave()
+  silent update
+  let g:u10_autosave = !g:u10_autosave
+  echo "autosave" g:u10_autosave? "enabled" : "disabled"
+endfunction
 "}}}
 
 if filereadable(expand('~/.vimrc_local_after'))
