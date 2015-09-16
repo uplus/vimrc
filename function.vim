@@ -237,6 +237,7 @@ endfunction "}}}
 command! OpenGitDiffWin call OpenGitDiff('w')
 command! OpenGitDiffTab call OpenGitDiff('t')
 function! OpenGitDiff(type)
+  update
   let s:before_winnr = winnr()
   let cmdname = 'git diff ' .  bufname('%')
   silent! execute 'bwipeout \[' . escape(cmdname, ' ') . '\]'
