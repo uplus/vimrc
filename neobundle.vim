@@ -242,6 +242,7 @@ NeoBundleLazy 'kana/vim-smartinput',                 { 'autoload' : { 'insert' :
 NeoBundleLazy 'cohama/vim-smartinput-endwise',       { 'depends' : [ 'kana/vim-smartinput' ] }
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+NeoBundle 'mattn/googlesuggest-complete-vim'
 "}}}
 
 " #other "{{{
@@ -1295,6 +1296,12 @@ if neobundle#tap('vim-milfeulle') "{{{
   nmap <C-i> <Plug>(milfeulle-next)
   let g:milfeulle_default_kind = "window"
   let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('googlesuggest-complete-vim') "{{{
+  set completefunc=googlesuggest#Complete
 
   call neobundle#untap()
 endif "}}}
