@@ -242,6 +242,7 @@ NeoBundleLazy 'kana/vim-smartinput',                 { 'autoload' : { 'insert' :
 NeoBundleLazy 'cohama/vim-smartinput-endwise',       { 'depends' : [ 'kana/vim-smartinput' ] }
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+NeoBundle 'honza/vim-snippets',                      { 'depends' : [ 'Shougo/neosnippet.vim' ] }
 NeoBundle 'mattn/googlesuggest-complete-vim'
 "}}}
 
@@ -551,6 +552,12 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
 
   inoremap <Plug>(insert-lasttext) <C-a>
   imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(insert-lasttext)"
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('neosnippet.vim') "{{{
+  let g:neosnippet#enable_snipmate_compatibility = 1
 
   call neobundle#untap()
 endif "}}}
