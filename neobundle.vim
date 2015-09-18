@@ -286,6 +286,7 @@ NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
 
+NeoBundle 'rbtnn/vimconsole.vim'
 NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'colorsel.vim' " gui only
 
