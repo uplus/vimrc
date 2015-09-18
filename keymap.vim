@@ -140,15 +140,6 @@ xnoremap ga<C-A> g<C-A>
 " }}}
 
 " #Space
-nnoremap <Space>ss :%s/
-nnoremap <Space>sg :%s//g<LEFT><LEFT>
-nnoremap <Space>sw :%s/<C-r><C-w>/g<LEFT><LEFT>
-nnoremap <Space>sa :%s/<C-r><C-a>/g<LEFT><LEFT>
-xnoremap <Space>ss :s/
-xnoremap <Space>sg :s//g<LEFT><LEFT>
-xnoremap <Space>sw :%s/<C-r><C-w>/g<LEFT><LEFT>
-xnoremap <Space>sa :%s/<C-r><C-a>/g<LEFT><LEFT>
-
 " g^ g$ にするとsidescrollのとき画面上の端までしか動いてくれない
 noremap <Space>h 0
 noremap <Space>l $
