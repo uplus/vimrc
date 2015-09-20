@@ -123,7 +123,7 @@ nnoremap <silent> ,uc :UndoClear<CR>
 
 inoremap <C-C> <ESC>
 
-inoremap <silent><C-S> <C-O>:update<CR>
+inoremap <silent><C-S> <ESC>:update<CR>
 nnoremap <silent><C-S> :update<CR>
 
 " # ga Info keymap and release " {{{
