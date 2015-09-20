@@ -87,7 +87,11 @@ set cedit=<C-L> " move to cmdwin key
 set splitright nosplitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
 set ttyfast
-set completeopt=noinsert,menuone
+set completeopt=menuone
+
+if has('patch755')
+  set completeopt+=noinsert
+endif
 
 set nowrap
 set breakindent
