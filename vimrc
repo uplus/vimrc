@@ -117,7 +117,7 @@ set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
                       " _を除くと*での検索がやりずらい
-au uAutoCmd FileType vim setl iskeyword-=#
+" au uAutoCmd FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
 au uAutoCmd FileType zsh setl iskeyword-=-
 
 " #menu
