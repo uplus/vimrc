@@ -969,17 +969,6 @@ if neobundle#tap('incsearch.vim') " {{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-over') "{{{
-  let g:over#command_line#enable_move_cursor = 1
-  let g:over_command_line_prompt = "> "
-  " let g:over_enable_auto_nohlsearch = 1
-  " let g:over_enable_cmd_window = 1
-  " let g:over#command_line#search#enable_incsearch = 1
-  " let g:over#command_line#search#enable_move_cursor = 1
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('clever-f.vim') "{{{
   let g:clever_f_across_no_line    = 0
   let g:clever_f_ignore_case       = 0
