@@ -22,6 +22,7 @@ command! Stop QuickRunStop
 command! Spec :write | !rspec %
 au uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :Spec<CR>
 au uAutoCmd FileType vim nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
+au uAutoCmd FileType markdown noremap <silent><buffer>\r :write<CR>:PrevimOpen<CR>
 
 au uAutoCmd FileType quickrun call s:quickrun_config()
 function! s:quickrun_config()

@@ -8,4 +8,4 @@ au uAutoCmd FileType * setl formatoptions+=Bjn
 " j コメントを結合する時に可能であればコメントリーダーを削除する
 
 " ft=textのときjplusで結合するとテキストが消える
-au uAutoCmd FileType text setl formatoptions-=j
+au uAutoCmd FileType text,markdown setl formatoptions-=j
