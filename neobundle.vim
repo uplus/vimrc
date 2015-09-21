@@ -1304,8 +1304,8 @@ if neobundle#tap('googlesuggest-complete-vim') "{{{
 endif "}}}
 
 if neobundle#tap('vim-over') "{{{
-  let g:over_enable_auto_nohlsearch = 1
-  let g:over_command_line_prompt = "> "
+  " let g:over_enable_auto_nohlsearch = 1
+  " let g:over_command_line_prompt = "> "
   " let g:over_command_line_key_mappings = {}
   " <Plug>(over-cmdline-scroll-y)			|CTRL-y| 相当
   " <Plug>(over-cmdline-scroll-u)			|CTRL-u| 相当
@@ -1314,14 +1314,14 @@ if neobundle#tap('vim-over') "{{{
   " <Plug>(over-cmdline-scroll-d)			|CTRL-d| 相当
   " <Plug>(over-cmdline-scroll-b)			|CTRL-b| 相当
 
-  nnoremap <Space>ss :OverCommandLine %s/<CR>
-  nnoremap <Space>sg :OverCommandLine %s//g<CR><Left><Left>
-  nnoremap <Space>sw :OverCommandLine %s/<C-r><C-w>/g<CR><Left><Left>
-  nnoremap <Space>sa :OverCommandLine %s/<C-r><C-a>/g<CR><Left><Left>
-  xnoremap <Space>ss :OverCommandLine s/<CR>
-  xnoremap <Space>sg :OverCommandLine s//g<CR><Left><Left>
-  xnoremap <Space>sw :OverCommandLine s/<C-r><C-w>/g<CR><Left><Left>
-  xnoremap <Space>sa :OverCommandLine s/<C-r><C-a>/g<CR><Left><Left>
+  nnoremap <Space>ss :OverCommandLine %s/\v<CR>
+  nnoremap <Space>sg :OverCommandLine %s/\v/g<CR><Left><Left>
+  nnoremap <Space>sw :OverCommandLine %s/\v<C-r><C-w>/g<CR><Left><Left>
+  nnoremap <Space>sa :OverCommandLine %s/\v<C-r><C-a>/g<CR><Left><Left>
+  xnoremap <Space>ss :OverCommandLine s/\v<CR>
+  xnoremap <Space>sg :OverCommandLine s/\v/g<CR><Left><Left>
+  xnoremap <Space>sw :OverCommandLine s/\v<C-r><C-w>/g<CR><Left><Left>
+  xnoremap <Space>sa :OverCommandLine s/\v<C-r><C-a>/g<CR><Left><Left>
 
   " <CR>がsmartinputでマップされている
   " それをcunmapすると色々バグる
