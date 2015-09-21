@@ -252,6 +252,7 @@ function! OpenGitDiff(type)
   setl nonumber
   setl foldcolumn=0
   silent put! =system(cmdname)
+  $delete
   nnoremap <silent><buffer>q :call <SID>bwipeout_and_back()<CR>
 
   function! s:bwipeout_and_back()
