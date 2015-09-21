@@ -598,8 +598,8 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent><Space>r :<C-U>UniteResume -no-start-insert -force-redraw<CR>
 
   " search
-  nnoremap <silent>s/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:forward:wrap<CR>
-  nnoremap <silent>s? :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:backward:wrap<CR>
+  nnoremap <silent>s/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:all<CR>
+  nnoremap <silent>s? :<C-u>Vgrep<CR>
   nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
   nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
