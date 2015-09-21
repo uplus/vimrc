@@ -569,7 +569,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
   command! Bundle   Unite -auto-resize -start-insert neobundle
   command! Update   Unite -auto-resize neobundle/update
-  command! Vgrep    Unite -auto-resize -no-empty -no-quit -buffer-name=vimgrep vimgrep
+  command! Vgrep    Unite -auto-resize -no-empty -no-quit -buffer-name=vimgrep vg
   command! Mes      Unite -auto-resize mes
   command! Todo     Unite -auto-resize -no-empty -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
   command! Outline  Unite -auto-resize -no-empty -start-insert -resume -buffer-name=outline outline

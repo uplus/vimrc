@@ -1,8 +1,9 @@
 " Unite:
 let g:unite_enable_start_insert = 0
+let g:unite_enable_auto_select  = 0
+let g:unite_source_history_yank_enable = 1
 let g:unite_enable_ignore_case  = 1
 let g:unite_enable_smart_case   = 1
-
 
 " grep
 let g:unite_source_grep_max_candidates = 200
@@ -15,21 +16,16 @@ if executable('ag')
     let g:unite_source_grep_recursive_opt = ''
 endif
 
-
-" alias
+" aliases "{{{
 let g:unite_source_alias_aliases = {}
 let g:unite_source_alias_aliases.g = {
       \ 'source' : 'grep',
       \ 'args'   : '%',
       \ }
 let g:unite_source_alias_aliases.vg = {
-      \ 'source' : 'vimgrep',
-      \ }
-let g:unite_source_alias_aliases.here_grep = {
       \ 'source' : 'grep',
-      \ 'args'   : '%',
+      \ 'args'   : '**'
       \ }
-let g:unite_source_alias_aliases.calc    = 'kawaii-calc'
 let g:unite_source_alias_aliases.l       = 'launcher'
 let g:unite_source_alias_aliases.kill    = 'process'
 let g:unite_source_alias_aliases.message = {
@@ -56,6 +52,7 @@ let g:unite_source_alias_aliases.prefix = {
       \ 'source' : 'output',
       \ 'args'   : "map \\ |map;|map,|map s|map gs",
       \ }
+"}}}
 
 
 " Shougo "{{{
