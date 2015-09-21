@@ -1,6 +1,8 @@
 " Altercmd:
 
 CAlterCommand movett Movett
+CAlterCommand maps Maps
+CAlterCommand tig Tig
 CAlterCommand t T
 CAlterCommand sh Sh
 CAlterCommand ao[nly] Aonly

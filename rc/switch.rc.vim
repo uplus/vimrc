@@ -30,6 +30,9 @@ au FileType ruby,eruby let g:switch_custom_definitions +=
       \   [ '.inject', '.reject' ],
       \   [ '.map', '.map!' ],
       \   [ '.sub', '.sub!', '.gub', '.gub!' ],
+      \   [ '.clone', '.dup' ],
+      \   [ '.any?', '.none?' ],
+      \   [ '.all?', '.one?' ],
       \   [ 'p ', 'puts ', 'print '],
       \   [ 'attr_accessor', 'attr_reader', 'attr_writer' ],
       \ ]
