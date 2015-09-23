@@ -341,4 +341,36 @@ endfunction
 "}}}
 
 " #Move "{{{
+nnoremap <silent><Plug>(MoveUp)   :<C-u>call <SID>Move(v:count1, 1)<CR>
+nnoremap <silent><Plug>(MoveDown) :<C-u>call <SID>Move(v:count1, 0)<CR>
+
+" 指定した行にペーストする
+function! s:LinePaste(line) abort
+  exec a:line < 1? 1: a:line
+
+  if line('$') < a:line
+    normal! p
+  else
+    normal! P
+  endif
+endfunction
+
+function! s:Move(count, is_up) abort
+  let pos  = getcurpos()
+  let line = pos[1]
+
+  if a:is_up
+    let line -= a:count
+  else
+    let line += a:count
+  endif
+
+  delete
+  call s:LinePaste(line)
+
+  let pos[1] = line('.')
+  call setpos('.', pos)
+
+  call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
+endfunction
 "}}}
