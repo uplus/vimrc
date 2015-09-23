@@ -188,6 +188,7 @@ endfunction
 " windowの行数の20%にセットする
 command! SmartScrolloff let &scrolloff=float2nr(winheight('')*0.2)
 au uAutoCmd VimEnter,WinEnter,VimResized * SmartScrolloff
+au uAutoCmd InsertLeave * if executable('fcitx-remote') | call system('fcitx-remote -c') | endif
 
 au uAutoCmd FileType vim setl keywordprg=:help
 au uAutoCmd FileType vim nnoremap <silent><buffer>K :help <C-r><C-a><CR>
