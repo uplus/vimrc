@@ -1329,6 +1329,24 @@ if neobundle#tap('vim-over') "{{{
   call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('vim-smartword') "{{{
+  nmap w  <Plug>(smartword-w)
+  nmap b  <Plug>(smartword-b)
+  nmap e  <Plug>(smartword-e)
+  nmap ge  <Plug>(smartword-ge)
+  vmap w  <Plug>(smartword-w)
+  vmap b  <Plug>(smartword-b)
+  vmap e  <Plug>(smartword-e)
+  vmap ge  <Plug>(smartword-ge)
+
+  " word moveをCamelCase単位にする
+  map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
+  map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
+  map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
+
+  call neobundle#untap()
+endif "}}}
+
 " if neobundle#tap('') "{{{
 "
 "   call neobundle#untap()
