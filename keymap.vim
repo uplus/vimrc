@@ -20,6 +20,11 @@ vnoremap _X "_X
 "}}}
 
 " #paired map "{{{
+nmap [e <Plug>(MoveUp)
+nmap ]e <Plug>(MoveDown)
+xmap [e <Plug>(MoveVisualUp)
+xmap ]e <Plug>(MoveVisualDown)
+
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
@@ -27,10 +32,12 @@ nnoremap <silent> ]B :blast<CR>
 " Todo: search other mappings.
 " nnoremap <silent> [p :cprevious<CR>
 " nnoremap <silent> ]p :cprevious<CR>
+
+nmap [<Space> <Plug>(BlankUp)
+nmap ]<Space> <Plug>(BlankDown)
 " visual-modeで[<Space>]が使えるようにする
 xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
-
 "}}}
 
 nnoremap <silent>\hn :nohlsearch<CR>
@@ -38,12 +45,13 @@ nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 
 nnoremap Y y$
 xnoremap u <ESC>u
-nmap S <C-V>$sa
+nmap S <C-v>$sa
 nmap <Space>J ]ekJ
 noremap ( {j
 noremap ) }k
 nnoremap d{ V{jd
 nnoremap d} ^d}
+
 nnoremap 0 ^
 nnoremap ^ 0
 nnoremap - $
@@ -60,13 +68,6 @@ nnoremap \toc :set cursorcolumn!<CR>
 nnoremap \ton :set number!<CR>
 nnoremap \tow :set wrap!<CR>
 nnoremap \tol :set list!<CR>
-
-nmap [<Space> <Plug>(BlankUp)
-nmap ]<Space> <Plug>(BlankDown)
-nmap [e <Plug>(MoveUp)
-nmap ]e <Plug>(MoveDown)
-xmap [e <Plug>(MoveVisualUp)
-xmap ]e <Plug>(MoveVisualDown)
 
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
@@ -118,9 +119,10 @@ nnoremap <silent>,da :qa<CR>
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
-nnoremap <silent> ,uf :earlier 1f<CR>
-nnoremap <silent> ,ud :earlier 1d<CR>
-nnoremap <silent> ,uc :UndoClear<CR>
+nnoremap <silent>,uf :earlier 1f<CR>
+nnoremap <silent>,ud :earlier 1d<CR>
+nnoremap <silent>,uc :UndoClear<CR>
+nnoremap <silent>,u <Nop>
 
 inoremap <C-C> <ESC>
 
@@ -148,7 +150,7 @@ noremap <Space>l $
 nmap <Space>p :call feedkeys("]\<Space>jp")<CR>
 nmap <Space>P :call feedkeys("[\<Space>kP")<CR>
 
-nmap <silent> <Space>n \hh
+nmap <silent><Space>n \hh
 xnoremap <Space>n :normal<Space>
 nnoremap <Space>z za
 
@@ -195,13 +197,13 @@ inoremap <DOWN> <C-O>gj
 "}}}
 
 " #emacs-bind "{{{
-inoremap <C-A>  <C-o>^
-inoremap <C-E> <C-O>$
-imap <C-D>  <Del>
+inoremap <C-A> <C-o>^
+inoremap <C-E> <C-o>$
+imap <C-D> <Del>
 
-inoremap <C-W>  <C-G>u<C-W>
-inoremap <C-U>  <C-G>u<C-U>
-inoremap <C-K> <C-O>"_D
+inoremap <C-W> <C-g>u<C-W>
+inoremap <C-U> <C-g>u<C-U>
+inoremap <C-K> <C-o>"_D
 
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
