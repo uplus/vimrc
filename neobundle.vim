@@ -1311,14 +1311,14 @@ if neobundle#tap('vim-over') "{{{
   " <Plug>(over-cmdline-scroll-d)     |CTRL-d| 相当
   " <Plug>(over-cmdline-scroll-b)     |CTRL-b| 相当
 
-  nnoremap <Space>ss :OverCommandLine %s/\v<CR>
-  nnoremap <Space>sg :OverCommandLine %s/\v/g<CR><Left><Left>
-  nnoremap <Space>sw :OverCommandLine %s/\v<C-r><C-w>/g<CR><Left><Left>
-  nnoremap <Space>sa :OverCommandLine %s/\v<C-r><C-a>/g<CR><Left><Left>
-  xnoremap <Space>ss :OverCommandLine s/\v<CR>
-  xnoremap <Space>sg :OverCommandLine s/\v/g<CR><Left><Left>
-  xnoremap <Space>sw :OverCommandLine s/\v<C-r><C-w>/g<CR><Left><Left>
-  xnoremap <Space>sa :OverCommandLine s/\v<C-r><C-a>/g<CR><Left><Left>
+  " nnoremap <Space>ss :OverCommandLine %s/\v<CR>
+  nnoremap <Space>sg :OverCommandLine %s/\v<CR>
+  nnoremap <Space>sw :OverCommandLine %s/\v<C-r><C-w><CR>
+  nnoremap <Space>sa :OverCommandLine %s/\v<C-r><C-a><CR>
+  " xnoremap <Space>ss :OverCommandLine s/\v<CR>
+  xnoremap <Space>sg :OverCommandLine s/\v<CR>
+  xnoremap <Space>sw :OverCommandLine s/\v<C-r><C-w><CR>
+  xnoremap <Space>sa :OverCommandLine s/\v<C-r><C-a><CR>
 
   " <CR>がsmartinputでマップされている
   " それをcunmapすると色々バグる

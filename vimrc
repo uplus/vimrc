@@ -128,6 +128,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " #search
+set gdefault
 set ignorecase smartcase
 set incsearch
 set hlsearch | nohlsearch "Highlight search patterns, support reloading
