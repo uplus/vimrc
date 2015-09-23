@@ -8,12 +8,9 @@ let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
 " Todo: \zs \ze
 let g:switch_custom_definitions += [
       \ ['enable', 'disable'],
-      \ { '\v(\S\s*)\<(\s*\S)' : '\1>\2' },
-      \ { '\v(\S\s*)\>(\s*\S)' : '\1<\2' },
-      \ { '\v(\S\s*)\<\=(\s*\S)' : '\1>\=\2' },
-      \ { '\v(\S\s*)\>\=(\s*\S)' : '\1<\=\2' },
-      \ { '\v(\S\s*)\=\=(\s*\S)' : '\1\!\=\2' },
-      \ { '\v(\S\s*)\!\=(\s*\S)' : '\1\=\=\2' },
+      \ [ ' < ', ' > '],
+      \ [ ' <= ', ' >= '],
+      \ [ ' == ', ' != '],
       \ { '\v"(.+)"'   : '''\1''' },
       \ { '\v''(.+)''' : '"\1"'   },
       \]
@@ -49,9 +46,9 @@ au FileType vim let g:switch_custom_definitions +=
       \   [ 'inoremap ', 'imap ' ],
       \   [ 'cnoremap ', 'cmap ' ],
       \   [ 'xnoremap ', 'xmap ' ],
-      \   [ ' <silent>', ' <silent><buffer>', ' <silent><buffer><expr>' ],
-      \   [ 'BufWrite', 'BufWritePre', 'BufWritePost', 'BufWriteCmd'],
-      \   [ 'BufRead', 'BufReadPre', 'BufReadPost', 'BufReadCmd'],
+      \   [ ' <silent><buffer>', ' <silent>' ],
+      \   [ 'BufWritePre', 'BufWritePost', 'BufWriteCmd'],
+      \   [ 'BufReadPre', 'BufReadPost', 'BufReadCmd'],
       \   [ '==#', '!=#' ],
       \   [ '==?', '!=?' ],
       \   [ '=~#', '!~#' ],
