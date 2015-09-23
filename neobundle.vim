@@ -175,6 +175,7 @@ NeoBundle 'idanarye/vim-merginal'   " git log --graph
 NeoBundle 'cohama/agit.vim'         " git log
 NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
 NeoBundle 'rhysd/committia.vim'
+NeoBundle 'rhysd/conflict-marker.vim'
 "}}}
 
 " #web "{{{
