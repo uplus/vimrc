@@ -24,15 +24,22 @@ NeoBundleLazy 'Shougo/vimshell.vim',{
       \ 'autoload' : {
       \   'commands' : [{ 'name' : 'VimShell',
       \                   'complete' : 'customlist,vimshell#complete'},
-      \                 'VimShellExecute', 'VimShellInteractive',
-      \                 'VimShellTerminal', 'VimShellPop'],
+      \                   'VimShellExecute', 'VimShellInteractive',
+      \                   'VimShellTerminal', 'VimShellPop'],
       \   'mappings' : '<Plug>',
       \ }}
 
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
 "}}}
 
-" Unite: "{{{
+" #vital "{{{
+NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'osyo-manga/vital-reunions'
+NeoBundle 'osyo-manga/vital-over'
+NeoBundle 'osyo-manga/vital-unlocker'
+"}}}
+
+" #untie "{{{
 NeoBundle 'Shougo/unite.vim',                 { 'depends' : [ 'Shougo/vimproc.vim' ] }
 NeoBundle 'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -65,7 +72,7 @@ NeoBundle 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim'
 " NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 "}}}
 
-" View: "{{{
+" #view "{{{
 NeoBundle 'Shougo/vinarise'
 NeoBundle 'kannokanno/previm' " Markdown Previewer
 NeoBundle 'powerman/vim-plugin-AnsiEsc'
@@ -80,7 +87,7 @@ NeoBundle 'oblitum/rainbow'
 NeoBundle 'lilydjwg/colorizer'
 "}}}
 
-" Action: "{{{
+" #action "{{{
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tyru/nextfile.vim'
@@ -134,13 +141,6 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle "osyo-manga/quickrun-outputter-replace_region"
 "}}}
 
-" #vital "{{{
-NeoBundle 'vim-jp/vital.vim'
-NeoBundle 'osyo-manga/vital-reunions'
-NeoBundle 'osyo-manga/vital-over'
-NeoBundle 'osyo-manga/vital-unlocker'
-"}}}
-
 " #ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
@@ -152,6 +152,41 @@ NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,
 NeoBundleLazy 'hdima/python-syntax',  { 'filetypes' : ['python'] }
 NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " fold config of python
 NeoBundleLazy 'davidhalter/jedi-vim', { 'filetypes' : ['python'] }
+"}}}
+
+" #input-support "{{{
+NeoBundle 'Shougo/neocomplete.vim'
+" NeoBundle 'marcus/rsense' :helpが使えなくなる
+NeoBundle 'NigoroJr/rsense'
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete.vim']}
+NeoBundleLazy 'Rip-Rip/clang_complete',              { 'filetypes' : ['c', 'cpp'] }
+NeoBundleLazy 'kana/vim-smartinput',                 { 'autoload' : { 'insert' : 1 }}
+NeoBundleLazy 'cohama/vim-smartinput-endwise',       { 'depends' : [ 'kana/vim-smartinput' ] }
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+NeoBundle 'honza/vim-snippets',                      { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+NeoBundle 'mattn/googlesuggest-complete-vim'
+"}}}
+
+" #git "{{{
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
+NeoBundle 'idanarye/vim-merginal'   " git log --graph
+NeoBundle 'cohama/agit.vim'         " git log
+NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
+NeoBundle 'rhysd/committia.vim'
+"}}}
+
+" #web "{{{
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/excitetranslate-vim'
+NeoBundle 'mattn/wwwrenderer-vim'
+NeoBundle 'thinca/vim-openbuf'
+NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
+      \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
+      \     'function_prefix' : 'openbrowser',
+      \   }  }
+NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
 "}}}
 
 " #tag and #ref "{{{
@@ -237,42 +272,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 " calmar256-dark gentooish inkot mirodark mustang neverness tabula synic vividchalk
 "}}}
 
-" #input-support "{{{
-NeoBundle 'Shougo/neocomplete.vim'
-" NeoBundle 'marcus/rsense' :helpが使えなくなる
-NeoBundle 'NigoroJr/rsense'
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete.vim']}
-NeoBundleLazy 'Rip-Rip/clang_complete',              { 'filetypes' : ['c', 'cpp'] }
-NeoBundleLazy 'kana/vim-smartinput',                 { 'autoload' : { 'insert' : 1 }}
-NeoBundleLazy 'cohama/vim-smartinput-endwise',       { 'depends' : [ 'kana/vim-smartinput' ] }
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neosnippet.vim' ] }
-NeoBundle 'honza/vim-snippets',                      { 'depends' : [ 'Shougo/neosnippet.vim' ] }
-NeoBundle 'mattn/googlesuggest-complete-vim'
-"}}}
-
-" #git "{{{
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
-NeoBundle 'idanarye/vim-merginal'   " git log --graph
-NeoBundle 'cohama/agit.vim'         " git log
-NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
-NeoBundle 'rhysd/committia.vim'
-"}}}
-
-" #web "{{{
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/excitetranslate-vim'
-NeoBundle 'mattn/wwwrenderer-vim'
-NeoBundle 'thinca/vim-openbuf'
-NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
-      \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
-      \     'function_prefix' : 'openbrowser',
-      \   }  }
-NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
-"}}}
-
-" #other "{{{
+" #misc "{{{
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'sjl/gundo.vim'
@@ -1141,10 +1141,10 @@ if neobundle#tap('vim-hopping') "{{{
   let g:hopping#prompt     = "Input:> "
   nmap \H <Plug>(hopping-start)
   " let g:hopping#keymapping = {
-  "   \	"\<C-n>" : "<Over>(hopping-next)",
-  "   \	"\<C-p>" : "<Over>(hopping-prev)",
-  "   \	"\<C-u>" : "<Over>(scroll-u)",
-  "   \	"\<C-d>" : "<Over>(scroll-d)",
+  "   \ "\<C-n>" : "<Over>(hopping-next)",
+  "   \ "\<C-p>" : "<Over>(hopping-prev)",
+  "   \ "\<C-u>" : "<Over>(scroll-u)",
+  "   \ "\<C-d>" : "<Over>(scroll-d)",
   "   \}
   "
   call neobundle#untap()
@@ -1303,12 +1303,12 @@ if neobundle#tap('vim-over') "{{{
   " let g:over_enable_auto_nohlsearch = 1
   " let g:over_command_line_prompt = "> "
   " let g:over_command_line_key_mappings = {}
-  " <Plug>(over-cmdline-scroll-y)			|CTRL-y| 相当
-  " <Plug>(over-cmdline-scroll-u)			|CTRL-u| 相当
-  " <Plug>(over-cmdline-scroll-f)			|CTRL-f| 相当
-  " <Plug>(over-cmdline-scroll-e)			|CTRL-e| 相当
-  " <Plug>(over-cmdline-scroll-d)			|CTRL-d| 相当
-  " <Plug>(over-cmdline-scroll-b)			|CTRL-b| 相当
+  " <Plug>(over-cmdline-scroll-y)     |CTRL-y| 相当
+  " <Plug>(over-cmdline-scroll-u)     |CTRL-u| 相当
+  " <Plug>(over-cmdline-scroll-f)     |CTRL-f| 相当
+  " <Plug>(over-cmdline-scroll-e)     |CTRL-e| 相当
+  " <Plug>(over-cmdline-scroll-d)     |CTRL-d| 相当
+  " <Plug>(over-cmdline-scroll-b)     |CTRL-b| 相当
 
   nnoremap <Space>ss :OverCommandLine %s/\v<CR>
   nnoremap <Space>sg :OverCommandLine %s/\v/g<CR><Left><Left>
