@@ -65,8 +65,8 @@ nmap [<Space> <Plug>(BlankUp)
 nmap ]<Space> <Plug>(BlankDown)
 nmap [e <Plug>(MoveUp)
 nmap ]e <Plug>(MoveDown)
-xmap [e <Plug>(MoveSelectionUp)
-xmap ]e <Plug>(MoveSelectionDown)
+xmap [e <Plug>(MoveVisualUp)
+xmap ]e <Plug>(MoveVisualDown)
 
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
