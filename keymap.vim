@@ -37,6 +37,7 @@ nnoremap <silent>\hn :nohlsearch<CR>
 nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 
 nnoremap Y y$
+xnoremap u <ESC>u
 nmap S <C-V>$sa
 nmap <Space>J ]ekJ
 noremap ( {j
