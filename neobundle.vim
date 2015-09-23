@@ -67,13 +67,17 @@ NeoBundle 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim'
 
 " View: "{{{
 NeoBundle 'Shougo/vinarise'
-NeoBundle 'rhysd/committia.vim'
 NeoBundle 'kannokanno/previm' " Markdown Previewer
 NeoBundle 'powerman/vim-plugin-AnsiEsc'
 NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace'
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'matchit.zip'
+" NeoBundle 'vimtaku/hl_matchit.vim'
+NeoBundle 't9md/vim-quickhl'
+NeoBundle 'oblitum/rainbow'
+NeoBundle 'lilydjwg/colorizer'
 "}}}
 
 " Action: "{{{
@@ -100,6 +104,9 @@ NeoBundle 'kana/vim-smartword'
 NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
 " NeoBundle 'deris/improvedft'      " ftFT can input many charactores
 " NeoBundle 'deris/vim-shot-f'      " ftFT show oneshot jump points
+
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tyru/caw.vim'
 "}}}
 
 " #search and #replace "{{{
@@ -134,14 +141,14 @@ NeoBundle 'osyo-manga/vital-over'
 NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
-" #Ruby "{{{
+" #ruby "{{{
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
 " NeoBundle 'bbatsov/rubocop'
 " NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
-" #Python "{{{
+" #python "{{{
 NeoBundleLazy 'hdima/python-syntax',  { 'filetypes' : ['python'] }
 NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " fold config of python
 NeoBundleLazy 'davidhalter/jedi-vim', { 'filetypes' : ['python'] }
@@ -188,7 +195,7 @@ NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operat
 " #textobj "{{{
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-entire',   { 'depends' : 'kana/vim-textobj-user' } " e buffer
-NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' } " l
+NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' } " l -> i
 NeoBundle 'kana/vim-textobj-syntax',   { 'depends' : 'kana/vim-textobj-user' } " y syntax-highlight
 NeoBundle 'kana/vim-textobj-fold',     { 'depends' : 'kana/vim-textobj-user' } " z
 NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } " l -> L ignore last-char of current-line
@@ -213,22 +220,20 @@ NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } "
 " }}}
 
 " #colorscheme"{{{
-NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
 NeoBundle 'freeo/vim-kalisi'
-NeoBundle 'croaker/mustang-vim'
 NeoBundle 'vim-scripts/Lucius'
-NeoBundle 'mrkn/mrkn256.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'djjcast/mirodark'
 NeoBundle 'vim-scripts/BusyBee'
 NeoBundle '1player/lettuce.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'cocopon/iceberg.vim'
-NeoBundle 'w0ng/vim-hybrid'
-
-NeoBundle 'nelstrom/vim-mac-classic-theme'
-NeoBundle 'vim-scripts/louver.vim'
-NeoBundle 'croaker/mustang-vim'
+" NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
+" NeoBundle 'cocopon/iceberg.vim'
+" NeoBundle 'w0ng/vim-hybrid'
+" NeoBundle 'mrkn/mrkn256.vim'
+" NeoBundle 'nelstrom/vim-mac-classic-theme'
+" NeoBundle 'vim-scripts/louver.vim'
+" NeoBundle 'croaker/mustang-vim'
 " calmar256-dark gentooish inkot mirodark mustang neverness tabula synic vividchalk
 "}}}
 
@@ -246,31 +251,16 @@ NeoBundle 'honza/vim-snippets',                      { 'depends' : [ 'Shougo/neo
 NeoBundle 'mattn/googlesuggest-complete-vim'
 "}}}
 
-" #other "{{{
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tyru/caw.vim'
-NeoBundle 'terryma/vim-expand-region'
-
-NeoBundle 'matchit.zip'
-" NeoBundle 'vimtaku/hl_matchit.vim'
-NeoBundle 't9md/vim-quickhl'
-NeoBundle 'oblitum/rainbow'
-NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
-
-NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
-NeoBundle 'mbbill/undotree'
-NeoBundle 'sjl/gundo.vim'
-
-" #git
+" #git "{{{
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
 NeoBundle 'idanarye/vim-merginal'   " git log --graph
 NeoBundle 'cohama/agit.vim'         " git log
 NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
+NeoBundle 'rhysd/committia.vim'
+"}}}
 
-" #web
+" #web "{{{
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
@@ -280,21 +270,27 @@ NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
       \     'function_prefix' : 'openbrowser',
       \   }  }
 NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
+"}}}
 
-NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
-" NeoBundle 'itchyny/screensaver.vim'
-
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
-
+" #other "{{{
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'sjl/gundo.vim'
 NeoBundle 'rbtnn/vimconsole.vim'
-NeoBundle 'lilydjwg/colorizer'
+NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
+NeoBundle 'Shougo/context_filetype.vim'
+
+NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
+NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
+NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
 NeoBundle 'colorsel.vim' " gui only
 
-NeoBundle 'thinca/vim-threes'
+" NeoBundle 'thinca/vim-threes'
+" NeoBundle 'itchyny/screensaver.vim'
 
-NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
-      \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ]
-      \ }}
+" NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
+      " \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ] }}
 "}}}
 
 "###################### plugin config ############################"
