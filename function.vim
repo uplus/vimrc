@@ -377,24 +377,13 @@ endfunction
 
 function! s:MoveVisual(count, is_up) abort
   let pos  = getcurpos()
-  let line = pos[1]
 
   if a:is_up
-    let line -= a:count
   else
-    let line += a:count
   endif
-
-  " *deleteの前にやらないと正常に動作しない(lockmarksじゃだめだった)
-  let reselect = 'normal! V' . repeat('j', line("'>") - line("'<"))
-  *delete
-  call s:LinePaste(line)
 
   let pos[1] = line('.')
   call setpos('.', pos)
-  exec reselect
-
-  " visual mdoeではrepeatできないっぽい
-  call repeat#set("\<Plug>(MoveVisual" . (a:is_up? 'Up)': 'Down)'), a:count)
+  normal! '[V']
 endfunction
 "}}}
