@@ -33,6 +33,12 @@ function! OptionStackClean()
 endfunction
 "}}}
 
+" cursolがlastlineにあるかどうか
+function! s:is_lastline()
+  let last = line('$')
+  return line('.') == last || foldclosedend(line('.')) == last
+endfunction
+
 " #Capture {{{
 " cmdをクォートなしでとれる
 command! -nargs=+ -complete=command
@@ -350,7 +356,18 @@ function! s:Move(count, is_up) abort
   let pos  = getcurpos()
 
   if a:is_up
+    let line = a:count
+    if s:is_lastline()
+      let line -= 1
+    endif
+
+    delete
+    silent! exec 'normal!' repeat('k', line)
+    normal! P
   else
+    delete
+    silent! exec 'normal!' repeat('j', a:count-1)
+    normal! p
   endif
 
   let pos[1] = line('.')
