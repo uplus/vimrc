@@ -219,7 +219,4 @@ inoremap w <C-o>dw
 inoremap f <C-o>w
 inoremap b <C-o>b
 inoremap <nowait><ESC> <ESC>
-
 " TODO: Move those settings to right section
-" au uAutoCmd CmdwinEnter [:>] iunmap <buffer> <Tab>
-" au uAutoCmd CmdwinEnter [:>] nunmap <buffer> <Tab>
