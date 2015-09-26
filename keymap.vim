@@ -130,6 +130,21 @@ inoremap <C-C> <ESC>
 inoremap <silent><C-S> <ESC>:update<CR>
 nnoremap <silent><C-S> :update<CR>
 
+" complete
+inoremap <C-x>n <C-x><C-n>
+inoremap <C-x>i <C-x><C-i>
+inoremap <C-x>] <C-x><C-]>
+inoremap <C-x>k <C-x><C-k>
+inoremap <C-x>s <C-x><C-s>
+inoremap <C-x>l <C-x><C-l>
+inoremap <C-x>f <C-x><C-f>
+inoremap <C-x>o <C-x><C-o>
+inoremap <C-x>u <C-x><C-u>
+inoremap <C-x>d <C-x><C-d>
+inoremap <C-x>p <C-x><C-p>
+inoremap <C-x>v <C-x><C-v>
+inoremap <C-x> <Nop>
+
 " # ga Info keymap and release " {{{
 nnoremap gaa ga
 xnoremap gaa ga
