@@ -88,6 +88,7 @@ set splitright nosplitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
 set ttyfast
 set completeopt=menuone
+set switchbuf=usetab
 
 if has('patch755')
   set completeopt+=noinsert
