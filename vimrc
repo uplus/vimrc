@@ -299,7 +299,7 @@ endfunction
 "}}}
 
 " #autosave "{{{
-au uAutoCmd InsertLeave,CursorHold * nested if g:u10_autosave != 0 | update | endif
+au uAutoCmd InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 nnoremap <silent><F2> :call AutoSave()<CR>
 command! AutoSave call AutoSave()
 
