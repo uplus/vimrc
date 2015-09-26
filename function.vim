@@ -34,9 +34,9 @@ endfunction
 "}}}
 
 " cursolがlastlineにあるかどうか
-function! s:is_lastline()
+function! s:is_lastline(is_visual)
   let last = line('$')
-  return line('.') == last || foldclosedend(line('.')) == last
+  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction
 
 " #Capture {{{
@@ -357,7 +357,7 @@ function! s:Move(count, is_up) abort
 
   if a:is_up
     let line = a:count
-    if s:is_lastline()
+    if s:is_lastline(0)
       let line -= 1
     endif
 
