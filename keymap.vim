@@ -45,7 +45,8 @@ nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
 
 nnoremap Y y$
 xnoremap u <ESC>u
-nmap S <C-v>$sa
+nmap S <S-v>$<Plug>(operator-surround-append)
+
 nmap <Space>J ]ekJ
 noremap ( {j
 noremap ) }k
