@@ -347,54 +347,37 @@ endfunction
 "}}}
 
 " #Move "{{{
-nnoremap <silent><Plug>(MoveUp)   :<C-u>call <SID>Move(v:count1, 1)<CR>
-nnoremap <silent><Plug>(MoveDown) :<C-u>call <SID>Move(v:count1, 0)<CR>
-xnoremap <silent><Plug>(MoveVisualUp)   :<C-u>call <SID>MoveVisual(v:count1, 1)<CR>
-xnoremap <silent><Plug>(MoveVisualDown) :<C-u>call <SID>MoveVisual(v:count1, 0)<CR>
+nnoremap <silent><Plug>(MoveUp)   :<C-u>call <SID>Move(v:count1, 1, 0)<CR>
+nnoremap <silent><Plug>(MoveDown) :<C-u>call <SID>Move(v:count1, 0, 0)<CR>
+xnoremap <silent><Plug>(MoveUp)   :<C-u>call <SID>Move(v:count1, 1, 1)<CR>
+xnoremap <silent><Plug>(MoveDown) :<C-u>call <SID>Move(v:count1, 0, 1)<CR>
 
-function! s:Move(count, is_up) abort
+function! s:Move(count, is_up, is_visual) abort
   let pos  = getcurpos()
+  let delete = (a:is_visual? '*' : '') . 'delete'
 
   if a:is_up
     let line = a:count
-    if s:is_lastline(0)
+    if s:is_lastline(a:is_visual)
       let line -= 1
     endif
 
-    delete
+    exec delete
     silent! exec 'normal!' repeat('k', line)
     normal! P
   else
-    delete
+    exec delete
     silent! exec 'normal!' repeat('j', a:count-1)
     normal! p
   endif
 
   let pos[1] = line('.')
   call setpos('.', pos)
-  call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
-endfunction
 
-function! s:MoveVisual(count, is_up) abort
-  let pos  = getcurpos()
-
-  if a:is_up
-    let line = a:count
-    if s:is_lastline(1)
-      let line -= 1
-    endif
-
-    *delete
-    silent! exec 'normal!' repeat('k', line)
-    normal! P
+  if a:is_visual
+    normal! '[V']
   else
-    *delete
-    silent! exec 'normal!' repeat('j', a:count-1)
-    normal! p
+    call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
   endif
-
-  let pos[1] = line('.')
-  call setpos('.', pos)
-  normal! '[V']
 endfunction
 "}}}

@@ -22,8 +22,8 @@ vnoremap _X "_X
 " #paired map "{{{
 nmap [e <Plug>(MoveUp)
 nmap ]e <Plug>(MoveDown)
-xmap [e <Plug>(MoveVisualUp)
-xmap ]e <Plug>(MoveVisualDown)
+xmap [e <Plug>(MoveUp)
+xmap ]e <Plug>(MoveDown)
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
