@@ -325,6 +325,8 @@ if neobundle#tap('vim-operator-surround') "{{{
   nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
+  nmap S <S-v>$<Plug>(operator-surround-append)
+
   call neobundle#untap()
 endif "}}}
 
