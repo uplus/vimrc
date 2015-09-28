@@ -249,7 +249,7 @@ function! s:set_highlights() "{{{
     hi NonText      ctermfg=NONE ctermbg=NONE
   elseif g:colors_name == 'BusyBee'
     hi Normal       ctermbg=233
-    hi Folded       ctermfg=0    ctermbg=24
+    hi Folded       ctermfg=0    ctermbg=4
     hi FoldColumn   ctermfg=14   ctermbg=233
     hi Visual       ctermfg=NONE ctermbg=NONE
     hi NonText      ctermfg=NONE ctermbg=NONE
