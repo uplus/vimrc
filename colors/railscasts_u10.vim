@@ -6,7 +6,7 @@ if exists("syntax_on")
 endif
 
 set t_Co=256
-let g:colors_name = "railscasts-u10"
+let g:colors_name = "railscasts_u10"
 
 hi link htmlTag                     xmlTag
 hi link htmlTagName                 xmlTagName
@@ -68,11 +68,11 @@ highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f cterm
 highlight Pmenu	              ctermfg=214 ctermbg=236
 highlight PmenuSel            ctermfg=235 ctermbg=214
 
-highlight Normal              ctermbg=233
-highlight Folded              ctermfg=200 ctermbg=NONE
+highlight Normal              ctermbg=NONE
+highlight Folded              ctermfg=198 ctermbg=NONE
 highlight FoldColumn          ctermfg=99  ctermbg=232
 highlight LineNr              ctermfg=252 ctermbg=237
-highlight CursorLine          ctermbg=235 cterm=NONE
+highlight CursorLine          ctermbg=233 cterm=NONE
 highlight CursorLineNr        ctermfg=196
 highlight Todo                ctermfg=16 ctermbg=220
 
