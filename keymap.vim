@@ -51,6 +51,12 @@ nnoremap <silent>,da :qa<CR>
 inoremap <c-c> <ESC>
 xnoremap u <ESC>u
 nnoremap Y y$
+nnoremap <C-]> g<C-]>
+nnoremap g<C-]> <C-]>
+nnoremap <C-w><C-]> <C-w>g<C-]>
+nnoremap <C-w>g<C-]> <C-w><C-]>
+nnoremap <C-w>] <C-w>g]
+nnoremap <C-w>g] <C-w>]
 nnoremap v V
 nnoremap V v
 xnoremap <c-a> <c-a>gv

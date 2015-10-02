@@ -28,6 +28,9 @@ set viminfo+=n~/.vim/tmp/info.txt
 set undodir=~/.vim/tmp/undo.txt
 set viewdir=~/.vim/tmp/view
 set path+=/usr/include/c++/HEAD/
+set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
+" tags;     current-dirからtagsが見つかるまで遡る
+" tas;/dir  上記と同じだが/dirより上には行かない
 
 if filereadable(expand('~/.vimrc_local_before'))
   source $HOME/.vimrc_local_before
