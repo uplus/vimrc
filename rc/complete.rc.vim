@@ -45,8 +45,12 @@ let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " clang_complete "{{{
 let g:clang_complete_auto = 0
 let g:clang_auto_select   = 0
+let g:clang_hl_errors     = 0
 let g:clang_use_library	  = 1
 let g:clang_user_options  = matchstr($CPP_COMP_OPT, '\V-std=c++\.\.')
+let g:clang_make_default_keymappings = 0
+let g:clang_snippets      = 1
+let g:clang_complete_optional_args_in_snippets = 1
 
 if IsMac()
   " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
