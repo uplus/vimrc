@@ -58,6 +58,7 @@ NeoBundle 'pasela/unite-webcolorname',        { 'depends' : [ 'Shougo/unite.vim'
 NeoBundle 'rhysd/unite-ruby-require.vim',     { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'tsukkee/unite-tag',                { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'Shougo/unite-help',            { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'help' }
 " NeoBundle 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -65,7 +66,6 @@ NeoBundle 'tsukkee/unite-tag',                { 'depends' : [ 'Shougo/unite.vim'
 " NeoBundle 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vim_hacks',       { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'ujihisa/unite-font',               { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
