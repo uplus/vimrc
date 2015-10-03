@@ -1,4 +1,3 @@
-command! SudoWrite w !sudo tee % > /dev/null
 command! Q qall!
 command! W w!
 command! Sh update | shell

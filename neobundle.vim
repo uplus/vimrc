@@ -291,6 +291,7 @@ NeoBundleLazy 'rbtnn/vimconsole.vim', {
 
 NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
 NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'sudo.vim'
 
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
 NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
@@ -1363,6 +1364,12 @@ if neobundle#tap('vim-smartword') "{{{
   map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
   map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
   map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('sudo.vim') "{{{
+  command! Swrite write sudo:%
 
   call neobundle#untap()
 endif "}}}
