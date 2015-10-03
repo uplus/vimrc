@@ -12,16 +12,13 @@ function! IsMac()
         \   (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction
 
-function! s:source_rc(path)
-  execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
+function! s:source(path)
+  execute 'source' fnameescape(expand('~/.vim/' . a:path . '.vim'))
 endfunction
 
 augroup uAutoCmd
   autocmd!
 augroup END
-
-command! -nargs=1 Source
-      \ execute 'source' expand('~/.vim/' . <args> . '.vim')
 
 let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
@@ -61,7 +58,7 @@ nnoremap g<C-G> <Nop>
 xnoremap g<C-G> <Nop>
 "}}}
 
-Source 'neobundle'
+call s:source('neobundle')
 filetype plugin indent on
 syntax enable
 
@@ -172,8 +169,8 @@ if &term =~ "xterm"
   let &t_EI = "\<Esc>]12;white\x7"
 endif
 
-Source 'function'
-Source 'keymap'
+call s:source('function')
+call s:source('keymap')
 
 " #auto commands
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
