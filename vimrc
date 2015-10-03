@@ -198,8 +198,10 @@ au uAutoCmd FileType vim nnoremap <silent><buffer>gD :call GotoVimFunction()<CR>
 au uAutoCmd FileType * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
 
+let g:set_colors        = 0
+let g:set_airline_color = 0
 function! s:set_colors() "{{{
-  if exists("g:set_colors")
+  if g:set_colors == 1
     return
   end
 
@@ -233,7 +235,7 @@ function! s:set_highlights() "{{{
   hi DiffText   ctermfg=226     ctermbg=29
   colorscheme vimfiler_color
 
-  if exists("g:set_airline_color") && g:set_airline_color
+  if g:set_airline_color
     colorscheme airline_color
   endif
 
