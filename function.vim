@@ -234,7 +234,7 @@ function! UndoClear()
   write
 endfunction "}}}
 
-function Execute(cmd) "{{{
+function! Execute(cmd) "{{{
   execute a:cmd
   return ""
 endfunction "}}}
