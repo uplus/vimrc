@@ -214,17 +214,16 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 
 " operatorをLazyにすると読み込まない
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' } " I A 系
+NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' } " yank delete changeなどのblockwise版
 NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' } " sa sd sr
 NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " se evaluate textobj as expression of lambda of ruby
 NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] } " command only
 " NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'tyru/operator-camelize.vim',        { 'depends' : 'kana/vim-operator-user' } " CamelCase <=> snake_case
 NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' } " gr
 NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
-NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' } " <space>j <space>k
 " NeoBundle '',         { 'depends' : 'kana/vim-operator-user' }
 
 " 任意のcmdを実行するoperator
@@ -244,7 +243,7 @@ NeoBundle 'thinca/vim-textobj-comment',          { 'depends' : 'kana/vim-textobj
 NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " ip last pasted textobj. don't have ap
 NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} select a range between character
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb some block
-NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " 連続したtextobjを矩形選択 ciw -> cIw
+NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " I A 連続したtextobjを矩形選択 ciw -> cIw
 NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " Can make textobj by regex
 NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' } " q some syntax /../ '..'
 
@@ -280,7 +279,15 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'rbtnn/vimconsole.vim'
+NeoBundleLazy 'rbtnn/vimconsole.vim', {
+      \ 'autoload' : {
+      \     'commands' : [
+      \       'VimConsoleOpen', 'VimConsoleClose', 'VimConsoleToggle', 'VimConsoleClear',
+      \       'VimConsoleLog', 'VimConsoleRedraw', 'VimConsoleDump', 'VimConsoleLoadSession',
+      \     ]
+      \   }
+      \ }
+
 NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
 NeoBundle 'Shougo/context_filetype.vim'
 
