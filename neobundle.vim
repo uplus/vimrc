@@ -57,6 +57,7 @@ NeoBundle 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim'
 NeoBundle 'pasela/unite-webcolorname',        { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'rhysd/unite-ruby-require.vim',     { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'tsukkee/unite-tag',                { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -611,6 +612,8 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>s? :<C-u>Vgrep<CR>
   nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
+  nnoremap <silent>st :Unite -start-insert tag<CR>
+  nnoremap <silent>sg :Unite -start-insert giti/grep<CR>
   nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
 
   " outline
