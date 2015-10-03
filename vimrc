@@ -177,6 +177,7 @@ call s:source('keymap')
 
 " #auto commands
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+au uAutoCmd InsertLeave * if executable('fcitx-remote') | call system('fcitx-remote -c') | endif
 au uAutoCmd VimResized  * wincmd =
 au uAutoCmd BufWritePre * EraseSpace
 
@@ -187,7 +188,7 @@ au uAutoCmd BufWritePost,BufReadPre *
       \ |   filetype detect
       \ | endif
 
-au uAutoCmd VimEnter    * call s:vimenter()
+au uAutoCmd VimEnter * call s:vimenter()
 function! s:vimenter()
   if argc() == 0
     setl buftype=nowrite
@@ -196,16 +197,14 @@ function! s:vimenter()
   endif
 endfunction
 
-" windowの行数の20%にセットする
-command! SmartScrolloff let &scrolloff=float2nr(winheight('') * 0.1)
-au uAutoCmd VimEnter,WinEnter,VimResized * SmartScrolloff
-au uAutoCmd InsertLeave * if executable('fcitx-remote') | call system('fcitx-remote -c') | endif
+" windowの行数の10%にセットする
+au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
 au uAutoCmd FileType vim setl keywordprg=:help
 au uAutoCmd FileType vim nnoremap <silent><buffer>K :help <C-r><C-a><CR>
 au uAutoCmd FileType vim nnoremap <silent><buffer>gD :call GotoVimFunction()<CR>
 
-au uAutoCmd FileType * nested call s:set_colors()
+au uAutoCmd FileType    * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
 
 let g:set_colors        = 0
