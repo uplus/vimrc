@@ -291,11 +291,11 @@ endfunction
 
 au uAutoCmd FileType gitrebase call s:gitrebase_config()
 function! s:gitrebase_config() abort
-  noremap <silent><buffer><C-j>p :Pick<CR>
-  noremap <silent><buffer><C-j>r :Reword<CR>
-  noremap <silent><buffer><C-j>e :Edit<CR>
-  noremap <silent><buffer><C-j>s :Squash<CR>
-  noremap <silent><buffer><C-j>f :Fixup<CR>
+  noremap <silent><buffer><nowait>gp :Pick<CR>
+  noremap <silent><buffer><nowait>gr :Reword<CR>
+  noremap <silent><buffer><nowait>ge :Edit<CR>
+  noremap <silent><buffer><nowait>gs :Squash<CR>
+  noremap <silent><buffer><nowait>gf :Fixup<CR>
 endfunction
 "}}}
 
