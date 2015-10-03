@@ -1,3 +1,14 @@
+function! Execute(cmd)
+  execute a:cmd
+  return ""
+endfunction
+
+" cursolがlastlineにあるかどうか
+function! s:is_lastline(is_visual)
+  let last = line('$')
+  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
+endfunction
+
 " #OptionStack "{{{
 " 引数には = += -= 含めた値をとる
 let g:option_stack = []
@@ -32,12 +43,6 @@ function! OptionStackClean()
   let g:option_stack = []
 endfunction
 "}}}
-
-" cursolがlastlineにあるかどうか
-function! s:is_lastline(is_visual)
-  let last = line('$')
-  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
-endfunction
 
 " #Capture {{{
 " cmdをクォートなしでとれる
@@ -210,20 +215,8 @@ function! s:get_syn_info()
 endfunction
 "}}}
 
-" TODO: 動作検証
-function! OneShotAutocmd(name, event, pattern, cmd) "{{{
-  function l:tmp_func()
-    execute cmd
-    autocmd! {a:name}
-  endfunction
-
-  augroup a:name
-    autocmd!
-    autocmd {a:event} {a:pattern} call l:tmp_func()
-  augroup END
-endfunction "}}}
-
-command! Uclear UndoClear "{{{
+" #UndoClear"{{{
+command! Uclear UndoClear
 command! UndoClear :call UndoClear()
 function! UndoClear()
   let l:old = &undolevels
@@ -232,12 +225,8 @@ function! UndoClear()
   let &undolevels = l:old
   unlet l:old
   write
-endfunction "}}}
-
-function! Execute(cmd) "{{{
-  execute a:cmd
-  return ""
-endfunction "}}}
+endfunction
+"}}}
 
 " #Reload "{{{
 command! Reload source $MYVIMRC | call Reload()
