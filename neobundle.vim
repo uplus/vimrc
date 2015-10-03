@@ -369,6 +369,13 @@ if neobundle#tap('vim-textobj-user')
   call neobundle#untap()
 endif
 
+if neobundle#tap('textobj-lastpaste') "{{{
+  let g:textobj_lastpaste_no_default_key_mappings = 1
+  omap p <Plug>(textobj-lastpaste-i)
+
+  call neobundle#untap()
+endif "}}}
+
 if neobundle#tap('textobj-wiw') "{{{
   " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
   let g:textobj_wiw_no_default_key_mappings = 1
@@ -768,7 +775,7 @@ if neobundle#tap('syntastic') "{{{
   let g:syntastic_ruby_mri_args        = "-W1"
 
   nmap \ts :SyntasticToggleMode<CR>
-  nmap \sh :call SyntasticLoclistHide()<CR>
+  nmap gas :call SyntasticLoclistHide()<CR>
 
   " wrteで開く
   " readで開くのはafter/plugin/の中にある
@@ -961,10 +968,11 @@ if neobundle#tap('incsearch.vim') " {{{
   map # <Plug>(incsearch-nohl-#)<Plug>(anzu-update-search-status-with-echo)
   map g* <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
   map g# <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
-  map z* <Plug>(incsearch-nohl)<Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
-  map z# <Plug>(incsearch-nohl)<Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
-  map gz* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
-  map gz# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
+
+  xmap * <Plug>(incsearch-nohl)<Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
+  xmap # <Plug>(incsearch-nohl)<Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
+  xmap g* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
+  xmap g# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
 
   map  n <Plug>(incsearch-nohl-n)
   map  N <Plug>(incsearch-nohl-N)

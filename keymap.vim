@@ -29,9 +29,9 @@ nnoremap ( {j
 nnoremap ) }k
 xnoremap <silent>( {:<C-u>exec 'normal!' (line('.') == 1? 'gv' : 'gvj')<CR>
 xnoremap <silent>) }:<C-u>exec 'normal!' (line('.') == line('$')? 'gv' : 'gvk')<CR>
-nmap >p p,v>
-nmap <p p,v<
-nmap =p p,v=
+nmap >p p:normal! '[V']><CR>
+nmap <p p:normal! '[V']<<CR>
+nmap =p p:normal! '[V']=<CR>
 inoremap <silent><C-s> <ESC>:update<CR>
 nnoremap <silent><C-s> :update<CR>
 nnoremap <silent><C-q>w :wq<CR>
