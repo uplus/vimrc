@@ -646,11 +646,11 @@ if neobundle#tap('unite.vim') "{{{
 
     " unite-quickfixの設定色々
     if context.buffer_name == 'quickrun-hook-unite-quickfix'
-      au WinEnter <buffer> if winnr('$') == 1 | quit | endif
+      au uAutoCmd WinEnter <buffer> if winnr('$') == 1 | quit | endif
       nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
       nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
     elseif context.buffer_name == 'location_list'
-      au WinEnter <buffer> if winnr('$') == 1 | quit | endif
+      au uAutoCmd WinEnter <buffer> if winnr('$') == 1 | quit | endif
     elseif context.buffer_name ==# 'buffer'
       nnoremap <silent><buffer><expr><nowait>s unite#do_action('split')
       nnoremap <silent><buffer><expr><nowait>v unite#do_action('vsplit')
@@ -709,7 +709,7 @@ if neobundle#tap('unite.vim') "{{{
     Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
   endfunctio "}}}
 
-  au FileType unite call s:unite_config()
+  au uAutoCmd FileType unite call s:unite_config()
   let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
@@ -718,7 +718,7 @@ if neobundle#tap('unite.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vinarise.vim') "{{{
+if neobundle#tap('vinarise') "{{{
   let g:vinarise_enable_auto_detect = 1
 
   call neobundle#untap()
@@ -920,9 +920,9 @@ if neobundle#tap('alpaca_tags') "{{{
 
   augroup AlpacaTags
     autocmd!
-    " au FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
-    " au FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
-    " au FileReadPost,BufEnter      *       AlpacaTagsSet
+    " au uAutoCmd FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
+    " au uAutoCmd FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
+    " au uAutoCmd FileReadPost,BufEnter      *       AlpacaTagsSet
   augroup END
 
   call neobundle#untap()
