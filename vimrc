@@ -20,6 +20,9 @@ augroup uAutoCmd
   autocmd!
 augroup END
 
+set all&
+let g:colors_name = ''
+
 let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
 set undodir=~/.vim/tmp/undo.txt
@@ -176,6 +179,13 @@ call s:source('keymap')
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd VimResized  * wincmd =
 au uAutoCmd BufWritePre * EraseSpace
+
+" update filetype for Reload.
+au uAutoCmd BufWritePost,BufReadPre *
+      \ if &l:filetype ==# '' || exists('b:ftdetect')
+      \ |   unlet! b:ftdetect
+      \ |   filetype detect
+      \ | endif
 
 au uAutoCmd VimEnter    * call s:vimenter()
 function! s:vimenter()

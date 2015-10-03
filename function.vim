@@ -239,6 +239,15 @@ function! Execute(cmd) "{{{
   return ""
 endfunction "}}}
 
+" #Reload "{{{
+command! Reload source $MYVIMRC | call Reload()
+function! Reload() abort
+  AirlineToggle
+  AirlineToggle
+  write
+endfunction
+"}}}
+
 " #OpenGitDiff "{{{
 command! OpenGitDiffWin call OpenGitDiff('w')
 command! OpenGitDiffTab call OpenGitDiff('t')
