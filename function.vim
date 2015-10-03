@@ -107,8 +107,8 @@ endfunction
 " bufnr status modified name を返す
 command! BuffersInfo for buf in BuffersInfo() | echo buf | endfor
 function! BuffersInfo()
-  return map(split(Capture('ls'), '\n'),
-        \ 'matchlist(v:val, ''\v^\s*(\d*)\s+([^ ]*)\s*(\+?)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
+  return map(split(Capture('ls!'), '\n'),
+        \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction
 
 command! BufferCount ruby print VIM::Buffer.count
@@ -121,7 +121,6 @@ function! ActiveBufferCount()
 endfunction
 
 " #CurrentOnly
-command! Co Conly
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
@@ -131,7 +130,7 @@ function! CurrentOnly()
 
   for l:buf in BuffersInfo()
     if -1 == stridx(l:buf[1], '%')
-      execute "bdelete" l:buf[0]
+      execute "bwipeout" l:buf[0]
       let l:count+=1
     endif
   endfor
@@ -141,7 +140,6 @@ function! CurrentOnly()
 endfunction
 
 " #ActiveOnly
-command! Ao call ActiveOnly()
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()
@@ -151,7 +149,7 @@ function! ActiveOnly()
 
   for l:buf in BuffersInfo()
     if -1 == stridx(l:buf[1], 'a')
-      execute "bdelete" l:buf[0]
+      execute "bwipeout" l:buf[0]
       let l:count+=1
     endif
   endfor
