@@ -272,10 +272,12 @@ function! Hili(group, ...)
   let cmd = "highlight " . a:group
 
   if 1 <=  a:0
-    let cmd .= " ctermfg=" . a:1
+    if a:1 !=# '_'
+      execute cmd "ctermfg=" . a:1
+    endif
 
     if 2 <= a:0
-      let cmd .= " ctermbg=" . a:2
+      execute  cmd "ctermbg=" . a:2
     endif
   endif
 
