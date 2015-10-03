@@ -9,6 +9,7 @@ command! Fix !git fix
 command! Tig execute "silent! !tig status" | redraw!
 
 nnoremap ,gd :OpenGitDiffWin<CR>
+nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 xnoremap gst :ExciteTranslate<CR>
 
@@ -39,6 +40,7 @@ nnoremap Zq ZQ
 nnoremap <silent>,uf :earlier 1f<CR>
 nnoremap <silent>,ud :earlier 1d<CR>
 nnoremap <silent>,uc :UndoClear<CR>
+nnoremap <silent>,uw :e!<CR>
 nnoremap <silent>,u <Nop>
 
 nnoremap <silent>,dd :bd<CR>
