@@ -116,15 +116,8 @@ function! BufferCount()
   return Capture("BufferCount")
 endfunction
 
-command! Ao Aonly
 function! ActiveBufferCount()
-  let l:count = 0
-  for l:buf in BuffersInfo()
-    if -1 != stridx(l:buf[1], 'a')
-      let l:count+=1
-    endif
-  endfor
-  return l:count
+  return len(split(Capture('ls! a'), "\n"))
 endfunction
 
 " #CurrentOnly
@@ -148,6 +141,7 @@ function! CurrentOnly()
 endfunction
 
 " #ActiveOnly
+command! Ao call ActiveOnly()
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()
