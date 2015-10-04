@@ -27,7 +27,8 @@ NeoBundleLazy 'Shougo/vimshell.vim',{
       \                   'VimShellExecute', 'VimShellInteractive',
       \                   'VimShellTerminal', 'VimShellPop'],
       \   'mappings' : '<Plug>',
-      \ }}
+      \ }
+      \ }
 
 NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
 "}}}
@@ -81,7 +82,6 @@ NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace'
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'matchit.zip'
 " NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'oblitum/rainbow'
@@ -113,6 +113,8 @@ NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
 " NeoBundle 'deris/improvedft'      " ftFT can input many charactores
 " NeoBundle 'deris/vim-shot-f'      " ftFT show oneshot jump points
 
+NeoBundle 'matchit.zip'
+NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'taku-o/vim-vis'          " execute command for selected area with B.
@@ -188,7 +190,8 @@ NeoBundle 'thinca/vim-openbuf'
 NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
       \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
       \     'function_prefix' : 'openbrowser',
-      \   }  }
+      \   }
+      \ }
 NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
 "}}}
 
@@ -213,20 +216,20 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 
 " #operator "{{{
 " http://qiita.com/rbtnn/items/a47ed6684f1f0bc52906
+" operatorをLazyにすると読み込まない?
 
-" operatorをLazyにすると読み込まない
 NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' } " gr
 NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' } " yank delete changeなどのblockwise版
 NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' } " <space>j <space>k
 NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' } " sa sd sr
 NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " se evaluate textobj as expression of lambda of ruby
 NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] } " command only
-" NeoBundle 'emonkak/vim-operator-sort',         { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' } " gr
 NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
-NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' } " <space>j <space>k
-" NeoBundle '',         { 'depends' : 'kana/vim-operator-user' }
+" emonkak/vim-operator-sort
+" osyo-manga/vim-operator-swap
 
 " 任意のcmdを実行するoperator
 NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operator-user' }
@@ -242,19 +245,16 @@ NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } "
 NeoBundle 'mattn/vim-textobj-url',     { 'depends' : 'kana/vim-textobj-user' } " u
 NeoBundle 'h1mesuke/textobj-wiw',      { 'depends' : 'kana/vim-textobj-user' } " ,w  use it with CamelCaseMotion
 NeoBundle 'thinca/vim-textobj-comment',          { 'depends' : 'kana/vim-textobj-user' } " c
-NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " ip last pasted textobj. don't have ap
 NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} select a range between character
+NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " ip last pasted textobj. don't have ap
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb some block
 NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " I A 連続したtextobjを矩形選択 ciw -> cIw
 NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " Can make textobj by regex
 NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' } " q some syntax /../ '..'
 
 NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
-NeoBundle 'kana/vim-textobj-function', { 'depends' : 'kana/vim-textobj-user' } " change keymap f -> F
+NeoBundle 'kana/vim-textobj-function',           { 'depends' : 'kana/vim-textobj-user' } " change keymap f -> F
 " NeoBundle 't9md/vim-textobj-function-ruby', { 'depends' : 'kana/vim-textobj-user' }
-" osyo-manga/vim-operator-swap
-
-" , { 'depends' : 'kana/vim-textobj-user' }
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 " }}}
@@ -278,7 +278,9 @@ NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
 " #misc "{{{
-NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
+NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'sudo.vim'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'sjl/gundo.vim'
 NeoBundleLazy 'rbtnn/vimconsole.vim', {
@@ -290,21 +292,16 @@ NeoBundleLazy 'rbtnn/vimconsole.vim', {
       \   }
       \ }
 
-NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'sudo.vim'
-
+NeoBundle 'comeonly/php.vim-html-enhanced'  " php,htmlのindentをきれいに
+NeoBundle 'inotom/str2htmlentity'           " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
-NeoBundle 'comeonly/php.vim-html-enhanced' " php,htmlのindentをきれいに
-NeoBundle 'inotom/str2htmlentity'   " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
 NeoBundle 'colorsel.vim' " gui only
-
 " NeoBundle 'thinca/vim-threes'
 " NeoBundle 'itchyny/screensaver.vim'
-
 " NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
       " \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ] }}
+
 "}}}
 
 "###################### plugin config ############################"
