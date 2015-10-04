@@ -185,6 +185,9 @@ au uAutoCmd InsertLeave * if executable('fcitx-remote') | call system('fcitx-rem
 au uAutoCmd VimResized  * wincmd =
 au uAutoCmd BufWritePre * EraseSpace
 
+command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
+au uAutoCmd SwapExists * let g:swapname = v:swapname
+
 " update filetype for Reload.
 au uAutoCmd BufWritePost,BufReadPre *
       \ if &l:filetype ==# '' || exists('b:ftdetect')
