@@ -116,8 +116,8 @@ nnoremap <Space>z za
 "}}}
 
 " #buffer "{{{
-nnoremap <silent>,ba :ActiveOnly<CR>
-nnoremap <silent>,bc :CurrentOnly<CR>
+nnoremap <silent>,ba :call ActiveOnly()<CR>
+nnoremap <silent>,bc :call CurrentOnly()<CR>
 nnoremap <silent>,bo :only<CR>
 nnoremap <silent>,bt :tabonly<CR>
 nnoremap <silent>,bl :ls<CR>

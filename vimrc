@@ -183,7 +183,7 @@ call s:source('keymap')
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd InsertLeave * if executable('fcitx-remote') | call system('fcitx-remote -c') | endif
 au uAutoCmd VimResized  * wincmd =
-au uAutoCmd BufWritePre * EraseSpace
+au uAutoCmd BufWritePre * call EraseSpace()
 
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 au uAutoCmd SwapExists * let g:swapname = v:swapname

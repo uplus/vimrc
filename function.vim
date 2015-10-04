@@ -82,9 +82,9 @@ endfunction
 
 " #EraseSpace "{{{
 let g:erase_space_on = 1
-command! EraseSpace :call EraseSpace()
-command! EraseSpaceEnable :let g:erase_space_on=1
-command! EraseSpaceDisable :let g:erase_space_on=0
+command! EraseSpace        call EraseSpace()
+command! EraseSpaceEnable  let g:erase_space_on=1
+command! EraseSpaceDisable let g:erase_space_on=0
 function! EraseSpace()
   if g:erase_space_on != 1
     return
@@ -104,23 +104,22 @@ endfunction
 " #Buffer functions "{{{
 
 " #BuffersInfo
-" bufnr status modified name を返す
+" return list [bufnr,status,name]
 command! BuffersInfo for buf in BuffersInfo() | echo buf | endfor
 function! BuffersInfo()
   return map(split(Capture('ls!'), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction
 
-command! BufferCount ruby print VIM::Buffer.count
 function! BufferCount()
-  return Capture("BufferCount")
+  return len(split(Capture('ls!'), "\n"))
 endfunction
 
 function! ActiveBufferCount()
   return len(split(Capture('ls! a'), "\n"))
 endfunction
 
-" #CurrentOnly
+" #CurrentOnly "{{{
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
@@ -138,8 +137,9 @@ function! CurrentOnly()
   echo l:count "buffer deleted"
   let &report=l:old
 endfunction
+"}}}
 
-" #ActiveOnly
+" #ActiveOnly "{{{
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()
@@ -157,6 +157,8 @@ function! ActiveOnly()
   echo l:count "buffer deleted"
   let &report=l:old
 endfunction
+"}}}
+
 "}}}
 
 " #Syntaxinfo "{{{
