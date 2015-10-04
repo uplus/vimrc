@@ -115,6 +115,7 @@ NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
 
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/caw.vim'
+NeoBundle 'taku-o/vim-vis'          " execute command for selected area with B.
 "}}}
 
 " #search and #replace "{{{
