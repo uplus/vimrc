@@ -307,17 +307,16 @@ endfunction
 "}}}
 
 " #GotoVimFunction "{{{
-" goto function declaration on vim
 function! GotoVimFunction()
-  let matched = matchlist(getline('.'),  '\vcall\s+%(.:)?(.*)\(.*\)')
-  if empty(matched)
-    echo 'function not found on current cursor.'
+  let func_name = matchstr(getline('.'),  '\vcall\s+%(.\:)?\zs(.*)\ze\(.*\)')
+  if empty(func_name)
     return 1
   endif
 
-  if !search('\vfu%[nction]!?\s+(.:)?' . matched[1], 'w')
-    echo 'function declaration not found.'
-  endif
+  exec 'lvimgrep /\vfu%[nction]\!?\s+(.\:)?' . func_name . '/' . '`git ls-files`'
+  call setloclist(0, [])
+  silent! HierUpdate
+  normal! zv
 endfunction
 "}}}
 
