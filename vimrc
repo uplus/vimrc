@@ -70,8 +70,12 @@ if has('vim_starting')
 endif
 
 set encoding=utf-8
-set fileformats=unix,mac
-set fileencodings=ucs-bom,utf-8,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+set termencoding=utf-8
+set fileencodings=iso-2022-jp-3,iso-2022-jp,euc-jisx0213,utf-8,ucs-bom,euc-jp,eucjp-ms,cp932
+" Default fileformat.
+set fileformat=unix
+" Automatic recognition of a new line cord.
+set fileformats=unix,dos,mac
 
 " set undofile
 set report=0  " コマンド似よって0行以上変更されたらmessage
