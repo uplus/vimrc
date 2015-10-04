@@ -189,7 +189,7 @@ command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endi
 au uAutoCmd SwapExists * let g:swapname = v:swapname
 
 " update filetype for Reload.
-au uAutoCmd BufWritePost,BufReadPre *
+au uAutoCmd BufWritePost *
       \ if &l:filetype ==# '' || exists('b:ftdetect')
       \ |   unlet! b:ftdetect
       \ |   filetype detect
