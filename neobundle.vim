@@ -41,25 +41,25 @@ NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
 " #untie "{{{
-NeoBundle 'Shougo/unite.vim',                 { 'depends' : [ 'Shougo/vimproc.vim' ] }
-NeoBundle 'Shougo/neomru.vim',                { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'Shougo/unite-outline',             { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'tacroe/unite-alias',               { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'tacroe/unite-mark',                { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'kmnk/vim-unite-giti',              { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'Kocha/vim-unite-tig',              { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'osyo-manga/unite-airline_themes',  { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'pasela/unite-webcolorname',        { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'rhysd/unite-ruby-require.vim',     { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'basyura/unite-rails',              { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'tsukkee/unite-tag',                { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'Shougo/unite-help',            { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'help' }
+NeoBundle 'Shougo/unite.vim',                     { 'depends' : [ 'Shougo/vimproc.vim' ] }
+NeoBundle 'Shougo/neomru.vim',                    { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'Shougo/unite-outline',                 { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'tacroe/unite-alias',                   { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'tacroe/unite-mark',                    { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'tsukkee/unite-tag',                { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'tag'       }
+NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'help'      }
+NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'history'   }
+NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'fold'      }
+NeoBundleLazy 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'highlight' }
+NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'quickrun_config' }
+NeoBundle 'osyo-manga/unite-quickfix',            { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'kmnk/vim-unite-giti',                  { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'Kocha/vim-unite-tig',                  { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'osyo-manga/unite-airline_themes',  { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'airline_themes' }
+NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'colorscheme'    }
+NeoBundleLazy 'pasela/unite-webcolorname',        { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'webcolorname'   }
+NeoBundle 'rhysd/unite-ruby-require.vim',         { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'basyura/unite-rails',                  { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -67,7 +67,6 @@ NeoBundleLazy 'Shougo/unite-help',            { 'depends' : [ 'Shougo/unite.vim'
 " NeoBundle 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vim_hacks',       { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'ujihisa/unite-font',               { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
