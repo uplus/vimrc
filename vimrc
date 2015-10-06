@@ -279,7 +279,6 @@ au uAutoCmd FileType qf       nnoremap <silent><buffer>q :quit<CR>
 au uAutoCmd FileType vim call s:vim_config()
 function! s:vim_config() abort
   setl keywordprg=:help
-  nnoremap <silent><buffer>K :help <C-r><C-a><CR>
   nnoremap <silent><buffer>gd :call GotoVimFunction()<CR>
   nmap <buffer>[m [[
   nmap <buffer>]m ]]
