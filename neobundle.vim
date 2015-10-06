@@ -1371,6 +1371,25 @@ if neobundle#tap('sudo.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('webapi-vim') "{{{
+  command! URIencode :call URIencode()
+  command! URIdecode :call URIdecode()
+
+  function! URIencode() abort
+    let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
+    let url = webapi#http#encodeURI(list[1])
+    call setline('.', list[0] . url)
+  endfunction
+
+  function! URIdecode() abort
+    let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
+    let url = webapi#http#dencodeURI(list[1])
+    call setline('.', list[0] . url)
+  endfunction
+
+  call neobundle#untap()
+endif "}}}
+
 " if neobundle#tap('') "{{{
 "
 "   call neobundle#untap()
