@@ -191,7 +191,12 @@ NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
       \     'function_prefix' : 'openbrowser',
       \   }
       \ }
-NeoBundle 'tyru/open-browser-github.vim', { 'depends' : ['tyru/open-browser.vim'] }
+NeoBundleLazy 'tyru/open-browser-github.vim', {
+      \ 'depends'  : ['tyru/open-browser.vim'],
+      \ 'autoload' : {
+      \   'commands' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ],
+      \ }
+      \ }
 "}}}
 
 " #tag and #ref "{{{
