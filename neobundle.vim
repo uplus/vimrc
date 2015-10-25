@@ -596,7 +596,6 @@ if neobundle#tap('unite.vim') "{{{
   command! Outline  Unite -auto-resize -no-empty -start-insert -resume -buffer-name=outline outline
   command! Headline Unite -auto-resize -no-empty -start-insert -buffer-name=headline headline
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
-  command! High     Unite highlight
   command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
   command! LocationList call g:OpenLocationList()

@@ -259,23 +259,27 @@ function! OpenGitDiff(type)
   endfunction
 endfunction "}}}
 
-" #Hi "{{{
-command! -complete=highlight -nargs=+ Hi call Hili(<f-args>)
-command! -complete=highlight -nargs=+ Hili call Hili(<f-args>)
-function! Hili(group, ...)
-  let cmd = "highlight " . a:group
-
-  if 1 <=  a:0
-    if a:1 !=# '_'
-      execute cmd "ctermfg=" . a:1
-    endif
+" #High "{{{
+command! -complete=highlight -nargs=* Hi call High(<f-args>)
+command! -complete=highlight -nargs=* High call High(<f-args>)
+function! High(...)
+  if 0 == a:0
+    Unite highlight
+  else
+    let cmd = "highlight " . a:1
 
     if 2 <= a:0
-      execute  cmd "ctermbg=" . a:2
-    endif
-  endif
+      if a:2 !=# '_'
+        execute cmd "ctermfg=" . a:2
+      endif
 
-  execute cmd
+      if 3 <= a:0
+        execute  cmd "ctermbg=" . a:3
+      endif
+    endif
+
+    execute cmd
+  endif
 endfunction
 "}}}
 
