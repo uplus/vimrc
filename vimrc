@@ -101,8 +101,10 @@ if has('patch755')
   set completeopt+=noinsert
 endif
 
+if has('linebreak')
+  set breakindent
+endif
 set nowrap
-set breakindent
 set sidescroll=1
 set sidescrolloff=12
 set virtualedit=block
@@ -159,13 +161,17 @@ set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
+if has('diff')
+  set diffopt=filler,context:2,vertical,foldcolumn:0
+endif
 
 set clipboard=unnamed,unnamedplus
 set cpoptions-=m
 set cpoptions+=Z
 set complete+=d,t
-set cryptmethod=zip,blowfish,blowfish2
-set diffopt=filler,context:2,vertical,foldcolumn:0
+
+" It seems 15ms overhead.
+" set cryptmethod=blowfish2
 
 set t_Co=256
 set background=dark
