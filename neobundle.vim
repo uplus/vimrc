@@ -1016,12 +1016,6 @@ if neobundle#tap('vim-jplus') "{{{
   nmap <Space>gJ <Plug>(jplus-input)
   vmap <Space>gJ <Plug>(jplus-input)
 
-  let g:jplus#config = {
-  \   "ruby" : {
-  \       "right_matchstr_pattern" : '^\s*#*\s*\zs.*',
-  \   }
-  \}
-
   call neobundle#untap()
 endif "}}}
 
