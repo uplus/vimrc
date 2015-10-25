@@ -28,13 +28,11 @@ nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 xnoremap gst :ExciteTranslate<CR>
 
-nnoremap <silent>\hn :nohlsearch<CR>
-nnoremap <silent>\hh :nohlsearch \| :call clearmatches()<CR>
-nmap <Space>n \hh
+nnoremap <silent><space>n :nohlsearch \| :QuickhlManualReset<CR>:call clearmatches()<CR>
+xnoremap <Space>n :normal<Space>
 
 map mp %
 map mmp ^%
-xnoremap <Space>n :normal<Space>
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
@@ -43,9 +41,9 @@ nnoremap ( {j
 nnoremap ) }k
 xnoremap <silent>( {:<C-u>exec 'normal!' (line('.') == 1? 'gv' : 'gvj')<CR>
 xnoremap <silent>) }:<C-u>exec 'normal!' (line('.') == line('$')? 'gv' : 'gvk')<CR>
-nmap >p p:normal! '[V']><CR>
-nmap <p p:normal! '[V']<<CR>
-nmap =p p:normal! '[V']=<CR>
+nmap >p p:'[,']><CR>
+nmap <p p:'[,']<<CR>
+nmap =p p:'[,']=<CR>
 inoremap <silent><C-s> <ESC>:update<CR>
 nnoremap <silent><C-s> :update<CR>
 nnoremap <silent><C-q>w :wq<CR>
