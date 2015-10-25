@@ -586,20 +586,20 @@ endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
   " commands "{{{
-  command! Maps     Unite -auto-resize -start-insert maps
   command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
   command! Bundle   Unite -auto-resize -start-insert neobundle
-  command! Update   Unite -auto-resize neobundle/update
-  command! Vgrep    Unite -auto-resize -no-empty -no-quit -buffer-name=vimgrep vg
-  command! Mes      Unite -auto-resize mes
-  command! Todo     Unite -auto-resize -no-empty -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-  command! Outline  Unite -auto-resize -no-empty -start-insert -resume -buffer-name=outline outline
-  command! Headline Unite -auto-resize -no-empty -start-insert -buffer-name=headline headline
+  command! Update   Unite -auto-resize -no-quit -buffer-name=neobundle neobundle/update
+  command! Vgrep    Unite -auto-resize -no-quit -buffer-name=vimgrep vg
+  command! Mes      Unite -auto-resize -buffer-name=message message
+  command! Todo     Unite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
+  command! Outline  Unite -auto-resize -start-insert -resume -buffer-name=outline outline
+  command! Headline Unite -auto-resize -start-insert -buffer-name=headline headline
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
   command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
   command! LocationList call g:OpenLocationList()
-  command! -nargs=1 Out Unite output:<args>
+  command! -nargs=* Maps execute 'Unite -auto-resize -start-insert output:map\ ' . <q-args> . '|map!\ ' . <q-args>
+  command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
   "}}}
   " keymap "{{{
   nnoremap <silent>,gs :Status<CR>
