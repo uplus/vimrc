@@ -1330,12 +1330,12 @@ if neobundle#tap('vim-over') "{{{
 
   " nnoremap <Space>ss :OverCommandLine %s/\v<CR>
   nnoremap <Space>sg :OverCommandLine %s/\v<CR>
-  nnoremap <Space>sw :OverCommandLine %s/\v<C-r><C-w><CR>
-  nnoremap <Space>sa :OverCommandLine %s/\v<C-r><C-a><CR>
+  nnoremap <Space>sw :OverCommandLine %s/\v<C-r><C-w>/<CR>
+  nnoremap <Space>sa :OverCommandLine %s/\v<C-r><C-a>/<CR>
   " xnoremap <Space>ss :OverCommandLine s/\v<CR>
   xnoremap <Space>sg :OverCommandLine s/\v<CR>
-  xnoremap <Space>sw :OverCommandLine s/\v<C-r><C-w><CR>
-  xnoremap <Space>sa :OverCommandLine s/\v<C-r><C-a><CR>
+  xnoremap <Space>sw :OverCommandLine s/\v<C-r><C-w>/<CR>
+  xnoremap <Space>sa :OverCommandLine s/\v<C-r><C-a>/<CR>
 
   " <CR>がsmartinputでマップされている
   " それをcunmapすると色々バグる
