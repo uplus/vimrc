@@ -187,8 +187,9 @@ NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
-      \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ],
+      \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch', ],
       \     'function_prefix' : 'openbrowser',
+      \     'mappings' : [ '<Plug>(openbrowser-open)', '<Plug>(openbrowser-search)', '<Plug>(openbrowser-smart-search)', ],
       \   }
       \ }
 NeoBundleLazy 'tyru/open-browser-github.vim', {
