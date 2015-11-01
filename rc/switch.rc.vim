@@ -32,6 +32,7 @@ au FileType ruby,eruby let g:switch_custom_definitions +=
       \   [ '.all?', '.one?' ],
       \   [ 'p ', 'puts ', 'print '],
       \   [ 'attr_accessor', 'attr_reader', 'attr_writer' ],
+      \   [ 'File.exist?', 'File.file?', 'File.directory?' ],
       \ ]
 
 
