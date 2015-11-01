@@ -766,7 +766,7 @@ if neobundle#tap('syntastic') "{{{
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq   = 0
   let g:syntastic_enable_signs  = 0
-  let g:syntastic_auto_jump     = 3 " default is 0
+  let g:syntastic_auto_jump     = 0 " default is 0
   let g:syntastic_ignore_files  = ['\m^/usr/include/', expand('~/Documents/memo/')]
   " let g:syntastic_debug = 1
 
