@@ -845,7 +845,7 @@ endif "}}}
 
 if neobundle#tap('vim-easymotion') "{{{
   let g:EasyMotion_do_mapping       = 0
-  let g:EasyMotion_keys             = 'asdghklqwertyuiopzxcvbnmfj'
+  let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'
   let g:EasyMotion_use_upper        = 0
   let g:EasyMotion_leader_key       = ';'
   let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
@@ -875,6 +875,7 @@ if neobundle#tap('vim-easymotion') "{{{
   map ;; <Plug>(easymotion-s2)
   map ;f <Plug>(easymotion-sl2)
   map ;t <Plug>(easymotion-repeat)
+  map ;w <Plug>(easymotion-w)
 
 endif "}}}
 
