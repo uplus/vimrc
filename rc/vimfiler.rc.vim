@@ -50,9 +50,9 @@ function! s:vimfiler_settings() "{{{
   nnoremap <buffer>q :call <SID>smart_quit()<CR>
 
   " vimfilerのsplitは開いた時のoptに影響する
-  nnoremap <silent><buffer><nowait>s :call vimfiler#mappings#do_action('split_action')<CR>
-  nnoremap <silent><buffer><nowait>v :call vimfiler#mappings#do_action('vsplit_action')<CR>
-  nnoremap <silent><buffer><expr>t vimfiler#do_action('tabopen')
+  nnoremap <silent><buffer><expr><nowait>s vimfiler#do_action('split_action')
+  nnoremap <silent><buffer><expr><nowait>v vimfiler#do_action('vsplit_action')
+  nnoremap <silent><buffer><expr><nowait>t vimfiler#do_action('tabopen')
   nmap <buffer>e <Plug>(vimfiler_edit_file)
 
   nmap <buffer>R <Plug>(vimfiler_expand_tree_recursive)
