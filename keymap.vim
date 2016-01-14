@@ -45,6 +45,8 @@ xnoremap <silent>) }:<C-u>exec 'normal!' (line('.') == line('$')? 'gv' : 'gvk')<
 nmap >p p:'[,']><CR>
 nmap <p p:'[,']<<CR>
 nmap =p p:'[,']=<CR>
+nnoremap <space>{ {o
+nnoremap <space>} }O
 inoremap <silent><C-s> <ESC>:update<CR>
 nnoremap <silent><C-s> :update<CR>
 nnoremap <silent><C-q>w :wq<CR>

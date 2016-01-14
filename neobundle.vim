@@ -341,6 +341,8 @@ if neobundle#tap('vim-operator-surround') "{{{
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
   nmap S <S-v>$<Plug>(operator-surround-append)
+  nmap saw saaw
+  nmap saW saaW
 
   call neobundle#untap()
 endif "}}}
