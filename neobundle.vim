@@ -594,7 +594,7 @@ if neobundle#tap('unite.vim') "{{{
   command! Vgrep    Unite -auto-resize -no-quit -buffer-name=vimgrep vg
   command! Mes      Unite -auto-resize -buffer-name=message message
   command! Todo     Unite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-  command! Outline  Unite -auto-resize -start-insert -resume -buffer-name=outline outline
+  command! Outline  Unite -auto-resize -start-insert -resume -input= -buffer-name=outline outline
   command! Headline Unite -auto-resize -start-insert -buffer-name=headline headline
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
   command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
@@ -625,7 +625,7 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
   nnoremap <silent>st :Unite -start-insert tag<CR>
-  nnoremap <silent>sg :Unite -start-insert giti/grep<CR>
+  nnoremap <silent>sg :Unite -start-insert grep/git:**:-i<CR>
   nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
 
   " outline
