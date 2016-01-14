@@ -1,5 +1,5 @@
 " switch.vim
-let g:switch_mapping = "!"
+let g:switch_mapping = "<silent>!"
 let g:switch_find_smallest_match = 1
 au uAutoCmd FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
 
@@ -42,6 +42,7 @@ au FileType erb,html,php let g:switch_custom_definitions += [ { '<!--\([a-zA-Z0-
 
 au FileType vim let g:switch_custom_definitions +=
       \ [
+      \   [ 'echo ', 'echomsg ' ],
       \   [ 'NeoBundle ', 'NeoBundleLazy ' ],
       \   [ 'nnoremap ', 'nmap ' ],
       \   [ 'inoremap ', 'imap ' ],
