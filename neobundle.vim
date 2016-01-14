@@ -135,7 +135,7 @@ NeoBundleLazy 'thinca/vim-qfreplace', { 'filetypes' : ['unite', 'quickfix'] } " 
 NeoBundle 'scrooloose/syntastic.git'
 " NeoBundle 'osyo-manga/vim-watchdogs'
 " NeoBundle 'dannyob/quickfixstatus'
-NeoBundle 'jceb/vim-hier'
+" NeoBundle 'jceb/vim-hier'
 "}}}
 
 " #quickrun "{{{
@@ -1177,8 +1177,6 @@ if neobundle#tap('vim-altercmd') "{{{
 endif "}}}
 
 if neobundle#tap('vim-abolish') "{{{
-  " Downer snake case
-  nmap crd crsguaw
 
   call neobundle#untap()
 endif "}}}
