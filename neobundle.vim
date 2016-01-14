@@ -791,11 +791,12 @@ if neobundle#tap('syntastic') "{{{
   nmap \ts :SyntasticToggleMode<CR>
   nmap gas :call SyntasticLoclistHide()<CR>
 
+  " TODO
   " wrteで開く
   " readで開くのはafter/plugin/の中にある
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    au uAutoCmd BufWritePost * call g:OpenLocationList()
-  endfunction
+  " function! neobundle#tapped.hooks.on_post_source(bundle)
+  "   au uAutoCmd BufWritePost * LocationList
+  " endfunction
 
   call neobundle#untap()
 endif "}}}
@@ -1405,3 +1406,6 @@ endif "}}}
 " endif "}}}
 
 call neobundle#end()
+
+
+NeoBundleSource unite-quickfix
