@@ -207,7 +207,7 @@ au uAutoCmd VimEnter * call s:vimenter()
 function! s:vimenter()
   if argc() == 0
     setl buftype=nowrite
-  elseif argc() == 1
+  elseif argc() == 1 && !exists('g:swapname')
     lcd %:p:h
   endif
 endfunction
