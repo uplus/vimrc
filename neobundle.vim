@@ -52,7 +52,7 @@ NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.
 NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'fold'      }
 NeoBundleLazy 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'highlight' }
 NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'quickrun_config' }
-NeoBundle 'osyo-manga/unite-quickfix',            { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : ['location_list', 'quickfix'] }
 NeoBundle 'kmnk/vim-unite-giti',                  { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundle 'Kocha/vim-unite-tig',                  { 'depends' : [ 'Shougo/unite.vim' ] }
 NeoBundleLazy 'osyo-manga/unite-airline_themes',  { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'airline_themes' }
@@ -599,10 +599,10 @@ if neobundle#tap('unite.vim') "{{{
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
   command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
-  command! LocationList call g:OpenLocationList()
   command! -nargs=* Maps execute 'Unite -auto-resize -start-insert output:map\ ' . <q-args> . '|map!\ ' . <q-args>
   command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
   "}}}
+
   " keymap "{{{
   nnoremap <silent>,gs :Status<CR>
 
@@ -700,24 +700,33 @@ if neobundle#tap('unite.vim') "{{{
     call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
   endfunction "}}}
 
-  " OpenLocationList "{{{
-  functio! g:OpenLocationList()
-    let bufnum = winbufnr(unite#get_unite_winnr('location_list'))
-    if bufnum != -1
-      execute "bwipeout" bufnum
-    endif
-
-    " -createつけると意図した通りに動作するがhide-bufferが大量生成される
-    " つけないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
-    " -silent つかないと起動時にメッセージが出て止まる
-    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
-  endfunctio "}}}
-
   au uAutoCmd FileType unite call s:unite_config()
   let neobundle#hooks.on_source = '~/.vim/rc/unite.rc.vim'
   function! neobundle#tapped.hooks.on_post_source(bundle)
     call unite#custom#default_action("source/vimpatches/*", "openbuf")
   endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('unite-quickfix') "{{{
+  command! LocationList call s:OpenLocationList()
+
+  functio! s:OpenLocationList()
+    let l:bufnum = winbufnr(unite#get_unite_winnr('location_list'))
+    echomsg bufnum
+    if bufnum != -1
+      echomsg "delete " . l:bufnum
+      execute "bwipeout" l:bufnum
+    endif
+
+    " -silent つかないと起動時にメッセージが出て止まる
+    " -create  意図した通りに動作するがhide-bufferが大量生成される
+    "          ないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
+    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
+  endfunction
+
+  " au uAutoCmd VimEnter * au uAutoCmd BufWritePost * LocationList
 
   call neobundle#untap()
 endif "}}}
