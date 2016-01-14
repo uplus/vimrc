@@ -378,3 +378,11 @@ function! s:Move(count, is_up, is_visual) abort
   endif
 endfunction
 "}}}
+
+" #Git "{{{
+command! CdGitTop execute 'cd' g:GitTop()
+command! Cdtop CdGitTop
+function! g:GitTop()
+  return system('git rev-parse --show-toplevel')
+endfunction
+"}}}
