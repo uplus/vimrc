@@ -190,8 +190,10 @@ call s:source('keymap')
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd VimResized  * if &ft !=# 'help' |  wincmd = | endif
 au uAutoCmd BufWritePre * call EraseSpace()
+
 if executable('fcitx-remote')
-  au uAutoCmd InsertLeave *  call system('fcitx-remote -c')
+  command! FcitxOff call system('fcitx-remote -c')
+  au uAutoCmd InsertLeave * FcitxOff
 endif
 
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
