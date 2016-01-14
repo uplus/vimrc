@@ -129,6 +129,7 @@ set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱わ
                       " _を除くと*での検索がやりずらい
 " au uAutoCmd FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
 " au uAutoCmd FileType zsh setl iskeyword-=-
+au uAutoCmd FileType zsh setl iskeyword-=$
 
 " #menu
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
