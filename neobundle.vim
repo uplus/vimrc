@@ -1219,6 +1219,10 @@ if neobundle#tap('vim-gitgutter') "{{{
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     hi GitGutterChangeDefault ctermfg=226
+
+    " if use vim-submode, cannot use mappings to move tab(gt gT).
+    autocmd! gitgutter TabEnter
+    autocmd! gitgutter BufEnter
   endfunction
 
   call neobundle#untap()
