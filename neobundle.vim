@@ -557,7 +557,7 @@ if neobundle#tap('vim-smartinput-endwise') "{{{
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     imap <expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
-          \ pumvisible()? neocomplete#close_popup() :
+          \ pumvisible()? "\<C-y>" :
           \ "\<Plug>(smartinput_cr)"
 
   endfunction
