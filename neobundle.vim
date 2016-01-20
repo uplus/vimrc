@@ -25,7 +25,7 @@ NeoBundleLazy 'Shougo/vimshell.vim',{
       \   'commands' : [{ 'name' : 'VimShell',
       \                   'complete' : 'customlist,vimshell#complete'},
       \                   'VimShellExecute', 'VimShellInteractive',
-      \                   'VimShellTerminal', 'VimShellPop'],
+      \                   'VimShellTab', 'VimShellPop'],
       \   'mappings' : '<Plug>',
       \ }
       \ }
@@ -488,7 +488,8 @@ endif
 "}}}
 
 if neobundle#tap('vimshell.vim') "{{{
-  command! Vshell tabnew +VimShell
+  nnoremap <space>sh :VimShellTab<CR>
+
   call neobundle#untap()
 endif "}}}
 
