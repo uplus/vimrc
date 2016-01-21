@@ -34,10 +34,10 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
 "}}}
 
 " #vital "{{{
-NeoBundle 'vim-jp/vital.vim'
-NeoBundle 'osyo-manga/vital-reunions'
-NeoBundle 'osyo-manga/vital-over'
-NeoBundle 'osyo-manga/vital-unlocker'
+" NeoBundle 'vim-jp/vital.vim'
+" NeoBundle 'osyo-manga/vital-reunions'
+" NeoBundle 'osyo-manga/vital-over'
+" NeoBundle 'osyo-manga/vital-unlocker'
 "}}}
 
 " #untie "{{{
@@ -80,16 +80,16 @@ NeoBundle 'powerman/vim-plugin-AnsiEsc'
 NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace'
 " NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'Yggdroot/indentLine'
+NeoBundleLazy 'Yggdroot/indentLine', { 'commands' : ['IndentLinesToggle', 'LeadingSpaceToggle']  }
+NeoBundleLazy 't9md/vim-quickhl',    { 'mappings' : ['<Plug>(quickhl'] }
+NeoBundleLazy 'oblitum/rainbow',     { 'commands' : ['RainbowToggle', 'RainbowLoad'] }
 " NeoBundle 'vimtaku/hl_matchit.vim'
-NeoBundle 't9md/vim-quickhl'
-NeoBundle 'oblitum/rainbow'
 NeoBundle 'lilydjwg/colorizer'
 "}}}
 
 " #action "{{{
-NeoBundle 'AndrewRadev/linediff.vim'
-NeoBundle 'junegunn/vim-easy-align'
+NeoBundleLazy 'AndrewRadev/linediff.vim', { 'commands' : ['Linediff'] }
+NeoBundleLazy 'junegunn/vim-easy-align', { 'mappings' : ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'] }
 NeoBundle 'tyru/nextfile.vim'
 " NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'u10e10/yankround.vim'
@@ -123,12 +123,12 @@ NeoBundle 'taku-o/vim-vis'          " execute command for selected area with B.
 NeoBundle 'osyo-manga/vim-anzu'      " show search point on the command-line
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'haya14busa/vim-asterisk'
-NeoBundle 'tpope/vim-abolish'
+NeoBundleLazy 'haya14busa/vim-asterisk',    { 'mappings' : ['<Plug>(asterisk-'] }
+NeoBundleLazy 'tpope/vim-abolish',          { 'mappings' : ['<Plug>Coerce']  }
 NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'osyo-manga/vim-hopping'
-NeoBundle 'daisuzu/rainbowcyclone.vim'
-NeoBundle 'rking/ag.vim'
-NeoBundleLazy 'thinca/vim-qfreplace', { 'filetypes' : ['unite', 'quickfix'] } " quickfixの各行を編集、反映できる
+NeoBundleLazy 'osyo-manga/vim-hopping',     { 'mappings' : ['<Plug>(hopping'] }
+NeoBundleLazy 'daisuzu/rainbowcyclone.vim', { 'mappings' : ['<Plug>(rc_search_', '<Plug>(rc_highlight)'] }
+NeoBundleLazy 'thinca/vim-qfreplace',       { 'filetypes' : ['unite', 'quickfix'] } " quickfixの各行を編集、反映できる
 "}}}
 
 " #syntaxchecker"{{{
@@ -198,9 +198,7 @@ NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
       \ }
 NeoBundleLazy 'tyru/open-browser-github.vim', {
       \ 'depends'  : ['tyru/open-browser.vim'],
-      \ 'autoload' : {
-      \   'commands' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ],
-      \ }
+      \ 'commands' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ],
       \ }
 "}}}
 
@@ -213,14 +211,11 @@ NeoBundle 'yuku-t/vim-ref-ri'
 " Ruby/Bundlerに対応して、必要最低限のtagsのみを非同期生成
 NeoBundleLazy 'alpaca-tc/alpaca_tags', {
       \ 'depends': ['Shougo/vimproc.vim'],
-      \ 'autoload' : {
-      \    'commands' : [
-      \       { 'name' : 'AlpacaTagsBundle', 'complete': 'customlist,alpaca_tags#complete_source' },
-      \       { 'name' : 'AlpacaTagsUpdate', 'complete': 'customlist,alpaca_tags#complete_source' },
-      \       'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsEnable', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus',
-      \    ],
-      \ }
-      \ }
+      \ 'commands' : [
+      \    { 'name' : 'AlpacaTagsBundle', 'complete': 'customlist,alpaca_tags#complete_source' },
+      \    { 'name' : 'AlpacaTagsUpdate', 'complete': 'customlist,alpaca_tags#complete_source' },
+      \    'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsEnable', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus',
+      \ ], }
 "}}}
 
 " #operator "{{{
@@ -233,10 +228,10 @@ NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-tex
 NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' } " <space>j <space>k
 NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' } " sa sd sr
-NeoBundle 'rhysd/vim-operator-evalruby',       { 'depends' : 'kana/vim-operator-user' } " se evaluate textobj as expression of lambda of ruby
-NeoBundle 'rhysd/vim-clang-format',            { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] } " command only
-NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
+NeoBundleLazy 'rhysd/vim-operator-evalruby',        { 'depends' : 'kana/vim-operator-user', 'mappings' : ['<Plug>(operator-evalruby)'] } " se evaluate textobj as expression of lambda of ruby
+NeoBundleLazy 'rhysd/vim-clang-format',             { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] } " command only
+" NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
+" NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
 " emonkak/vim-operator-sort
 " osyo-manga/vim-operator-swap
 
@@ -289,22 +284,20 @@ NeoBundle 'altercation/vim-colors-solarized'
 " #misc "{{{
 NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
 NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'sudo.vim'
-NeoBundle 'mbbill/undotree'
-NeoBundle 'sjl/gundo.vim'
-NeoBundleLazy 'rbtnn/vimconsole.vim', {
-      \ 'autoload' : {
-      \     'commands' : [
-      \       'VimConsoleOpen', 'VimConsoleClose', 'VimConsoleToggle', 'VimConsoleClear',
-      \       'VimConsoleLog', 'VimConsoleRedraw', 'VimConsoleDump', 'VimConsoleLoadSession',
-      \     ]
-      \   }
-      \ }
+NeoBundleLazy 'sudo.vim',        { 'commands' : ['SudoWrite', 'SudoRead'] }
+NeoBundleLazy 'mbbill/undotree', { 'commands' : ['UndotreeToggle', 'UndotreeShow'] }
+NeoBundleLazy 'sjl/gundo.vim',   { 'commands' : ['GundoToggle', 'GundoShow'] }
+NeoBundleLazy 'rbtnn/vimconsole.vim', { 'commands' : [
+      \ 'VimConsoleOpen', 'VimConsoleClose', 'VimConsoleToggle', 'VimConsoleClear',
+      \ 'VimConsoleLog', 'VimConsoleRedraw', 'VimConsoleDump', 'VimConsoleLoadSession',
+      \ ]}
 
 NeoBundle 'comeonly/php.vim-html-enhanced'  " php,htmlのindentをきれいに
-NeoBundle 'inotom/str2htmlentity'           " rangeをHTMLの実体参照に相互変換
-NeoBundleLazy 'Shougo/echodoc', { 'autoload' : { 'insert' : 1 }}
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'autoload' : {'filetypes' : ['c', 'cpp'] }}
+NeoBundleLazy 'inotom/str2htmlentity',   { 'commands' : ['Str2HtmlEntity', 'Entity2HtmlString'] } " rangeをHTMLの実体参照に相互変換
+NeoBundleLazy 'Shougo/echodoc',          { 'insert' : 1 }
+NeoBundleLazy 'osyo-manga/vim-stargate', { 'filetypes' : ['c', 'cpp'] }
+NeoBundleLazy 'thinca/vim-prettyprint',  { 'commands' : ['PP'] } " PP! == echomes
+
 NeoBundle 'colorsel.vim' " gui only
 " NeoBundle 'thinca/vim-threes'
 " NeoBundle 'itchyny/screensaver.vim'
