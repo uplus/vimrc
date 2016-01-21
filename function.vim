@@ -386,3 +386,14 @@ function! g:GitTop()
   return system('git rev-parse --show-toplevel')
 endfunction
 "}}}
+
+" # delete_for_match "{{{
+noremap <Plug>(delete_for_match) :<c-u>call <SID>delete_for_match()<CR>
+function! s:delete_for_match()
+  normal! V
+  normal %
+  normal! d
+
+  call repeat#set("\<Plug>(delete_for_match)")
+endfunction
+" }}}

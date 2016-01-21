@@ -42,6 +42,7 @@ xnoremap <Space>n :normal<Space>
 
 map mp %
 map mmp ^%
+nmap dmp <Plug>(delete_for_match)
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
