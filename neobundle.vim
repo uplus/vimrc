@@ -179,6 +179,10 @@ NeoBundle 'cohama/agit.vim'         " git log
 NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
 NeoBundle 'rhysd/committia.vim'
 NeoBundle 'rhysd/conflict-marker.vim'
+NeoBundleLazy 'lambdalisue/vim-gista', {
+    \ 'on_cmd': ['Gista'],
+    \ 'on_func': 'gista#',
+    \ }
 "}}}
 
 " #web "{{{
@@ -1225,6 +1229,12 @@ if neobundle#tap('vim-gitgutter') "{{{
     autocmd! gitgutter TabEnter
     autocmd! gitgutter BufEnter
   endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-gista') "{{{
+  let g:gista#client#default_username = 'u10e10'
 
   call neobundle#untap()
 endif "}}}
