@@ -1381,7 +1381,7 @@ if neobundle#tap('vim-smartword') "{{{
 endif "}}}
 
 if neobundle#tap('sudo.vim') "{{{
-  command! Swrite write sudo:%
+  command! Swrite SudoWrite %
 
   call neobundle#untap()
 endif "}}}

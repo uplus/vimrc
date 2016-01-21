@@ -8,6 +8,7 @@ command! Commit !git cov
 command! Fix !git fix
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
+cabbr w!! w !sudo tee > /dev/null %
 
 " Opening with a specific character code again."{{{
 " In particular effective when I am garbled in a terminal.
