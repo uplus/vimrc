@@ -220,17 +220,7 @@ au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('')
 au uAutoCmd FileType    * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
 
-let g:set_colors        = 0
-let g:set_airline_color = 0
 function! s:set_colors() "{{{
-  if g:set_colors == 1
-    return
-  end
-
-  if &filetype == 'vimfiler'
-    let g:set_airline_color = 1
-  endif
-
   if &filetype == 'cpp' || &filetype == 'c'
     colorscheme lettuce
     " colorscheme kalisi
@@ -242,8 +232,6 @@ function! s:set_colors() "{{{
   else
     colorscheme molokai
   endif
-
-  let g:set_colors=1
 endfunction "}}}
 
 function! s:set_highlights() "{{{
@@ -257,9 +245,7 @@ function! s:set_highlights() "{{{
   hi DiffText   ctermfg=226     ctermbg=29
   colorscheme vimfiler_color
 
-  if g:set_airline_color
-    colorscheme airline_color
-  endif
+  colorscheme airline_color
 
   if &diff
     hi clear CursorLine
