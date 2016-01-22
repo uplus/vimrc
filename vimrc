@@ -243,9 +243,12 @@ function! s:set_highlights() "{{{
   hi DiffDelete ctermfg=200     ctermbg=56
   hi DiffChange ctermfg=252     ctermbg=22
   hi DiffText   ctermfg=226     ctermbg=29
+
   colorscheme vimfiler_color
 
-  colorscheme airline_color
+  if ! has('vim_starting')
+    execute 'AirlineTheme' g:airline_theme
+  endif
 
   if &diff
     hi clear CursorLine
