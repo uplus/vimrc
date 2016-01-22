@@ -83,8 +83,7 @@ set nonumber
 set hidden
 set showcmd
 set cursorline
-set showmatch   " 閉じ括弧が入力された時、対応する括弧にわずかの間ジャンプする
-set matchtime=0 " 括弧を入力した時に移動しないようにする
+set noshowmatch matchtime=0 " 括弧を入力した時に移動しないようにする
 set laststatus=2
 set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
