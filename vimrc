@@ -225,10 +225,12 @@ function! s:set_colors() "{{{
     colorscheme lettuce
     " colorscheme kalisi
     hi Pmenu ctermfg=36 ctermbg=235
-  elseif &filetype == 'ruby' || &filetype == 'gitcommit'
+  elseif &filetype == 'ruby'
     colorscheme railscasts_u10
   elseif &filetype == 'vim'
     colorscheme BusyBee
+  elseif &filetype == 'gitcommit'
+    colorscheme gitcommit_u10
   else
     colorscheme molokai
   endif
