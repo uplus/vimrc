@@ -1,7 +1,7 @@
 command! Q qall!
 command! W w!
 command! Sh update | shell
-command! -nargs=1 -complete=file T tabedit <args>
+command! -nargs=* -complete=file T tabedit <args>
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Commit !git cov
