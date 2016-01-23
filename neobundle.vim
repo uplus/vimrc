@@ -145,7 +145,7 @@ NeoBundle "osyo-manga/quickrun-outputter-replace_region"
 "}}}
 
 " #ruby "{{{
-NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
+" NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] } " 標準のが先に読み込まれる
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
 " NeoBundle 'bbatsov/rubocop'
 NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
@@ -282,7 +282,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 "}}}
 
 " #misc "{{{
-NeoBundle 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1, }
+NeoBundleLazy 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1 }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundleLazy 'sudo.vim',        { 'commands' : ['SudoWrite', 'SudoRead'] }
 NeoBundleLazy 'mbbill/undotree', { 'commands' : ['UndotreeToggle', 'UndotreeShow'] }

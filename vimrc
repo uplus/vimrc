@@ -199,19 +199,15 @@ endif
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 au uAutoCmd SwapExists * let g:swapname = v:swapname
 
-" update filetype for Reload.
-au uAutoCmd BufWritePost *
-      \ if &l:filetype ==# '' || exists('b:ftdetect')
-      \ |   unlet! b:ftdetect
-      \ |   filetype detect
-      \ | endif
-
 au uAutoCmd VimEnter * call s:vimenter()
 function! s:vimenter()
   if argc() == 0
     setl buftype=nowrite
   elseif argc() == 1 && !exists('g:swapname')
-    lcd %:p:h
+    " many side effect.
+    " e.g: invalid behavior smart_quit() of vimfiler.
+    " e.g: swap, grep
+    " lcd %:p:h
   endif
 endfunction
 
