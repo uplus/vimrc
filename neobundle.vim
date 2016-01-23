@@ -205,6 +205,7 @@ NeoBundleLazy 'tyru/open-browser-github.vim', {
 " #tag and #ref "{{{
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
+NeoBundle 'mfumi/ref-dicts-en'
 " NeoBundle 'szw/vim-tags'
 " NeoBundle 'soramugi/auto-ctags.vim'
 
@@ -1410,6 +1411,40 @@ endif "}}}
 if neobundle#tap('ruby_hl_lvar.vim') "{{{
   let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
   au uAutoCmd ColorScheme * hi rubyLocalVariable ctermfg=38
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('ref-dicts-en') "{{{
+  let g:ref_source_webdict_sites = {
+        \ 'ej': { 'url': 'http://dictionary.infoseek.ne.jp/ejword/%s' },
+        \ 'je': { 'url': 'http://dictionary.infoseek.ne.jp/jeword/%s' },
+        \ 'wiki': { 'url': 'http://ja.wikipedia.org/wiki/%s' },
+        \ }
+
+  let g:ref_source_webdict_sites.default = 'ej'
+
+  " output filter
+  function! g:ref_source_webdict_sites.ej.filter(output)
+    let l:body = join(split(a:output, "\n")[16:], "\n")
+    let l:body = tr(l:body, '《》〈〉【】［］（）', '<><>[][]()')
+    let l:body = substitute(l:body, '[★▼●]', '', 'g')
+    let l:body = substitute(l:body, '\n出典：\_.*\%$', '', 'g')
+    return l:body
+  endfunction
+
+  function! g:ref_source_webdict_sites.je.filter(output)
+    let l:body = join(split(a:output, "\n")[16:], "\n")
+    let l:body = tr(l:body, '《》〈〉【】［］（）', '<><>[][]()')
+    let l:body = substitute(l:body, '[★▼●]', '', 'g')
+    let l:body = substitute(l:body, '\n出典：\_.*\%$', '', 'g')
+    return l:body
+  endfunction
+
+  au uAutoCmd FileType ref-webdict nnoremap <silent><buffer>q :quit<CR>
+
+  command! -nargs=1 Wiki Ref webdict wiki <args>
+  command! -nargs=1 Eng Ref webdict <args>
 
   call neobundle#untap()
 endif "}}}
