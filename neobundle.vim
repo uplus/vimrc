@@ -811,17 +811,9 @@ if neobundle#tap('committia.vim') "{{{
   let g:committia_open_only_vim_starting = 1
   let g:committia_hooks = {}
   function! g:committia_hooks.edit_open(info)
-    setlocal spell
-
-    " If no commit message, start with insert mode
-    " if a:info.vcs ==# 'git' && getline(1) ==# ''
-    "     startinsert
-    " end
-
     " Scroll the diff window from insert mode
     imap <buffer><C-k> <Plug>(committia-scroll-diff-up-half)
     imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
-    goto 1
   endfunction
 
   call neobundle#untap()
@@ -1238,6 +1230,8 @@ if neobundle#tap('vim-gista') "{{{
 endif "}}}
 
 if neobundle#tap('vim-fugitive') "{{{
+  command! Commit Gcommit -v
+  command! Fix Gcommit --amend -v
 
   call neobundle#untap()
 endif "}}}
