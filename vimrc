@@ -178,8 +178,8 @@ set background=dark
 
 " Change cursor shape.
 if &term =~ "xterm"
-  let &t_SI = "\<Esc>]12;lightgreen\x7"
-  let &t_EI = "\<Esc>]12;white\x7"
+  let &t_SI = "\e[5 q\e]12;Orange\x7"
+  let &t_EI = "\e[0 q\e]12;RoyalBlue1\x7"
 endif
 
 call s:source('function')
