@@ -31,6 +31,14 @@ xnoremap gst :ExciteTranslate<CR>
 nnoremap <silent><space>n :call ResetHightlights()<CR>
 xnoremap <Space>n :normal<Space>
 
+noremap <Plug>(vim-basic-visual) v
+noremap <Plug>(vim-basic-visualline) V
+noremap <Plug>(vim-basic-visualblock) <c-v>
+noremap <Plug>(vim-basic-start) 0
+noremap <Plug>(vim-basic-last) $
+noremap <Plug>(vim-basic-front) ^
+noremap <Plug>(vim-basic-tail) g_
+
 map mp %
 map mmp ^%
 nmap dmp <Plug>(delete_for_match)
