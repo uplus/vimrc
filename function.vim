@@ -240,7 +240,7 @@ function! OpenGitDiff(type)
   let cmdname = 'git diff ' .  bufname('%')
   silent! execute 'bwipeout \[' . escape(cmdname, ' ') . '\]'
 
-  execute (a:type == 't')? 'tabnew' : 'botright vsplit' '[' . cmdname . ']'
+  execute 'silent' (a:type == 't')? 'tabnew' : 'botright vsplit' '[' . cmdname . ']'
 
   " diff_config()で設定しようとするとnofileのタイミングが遅い
   setfiletype diff
