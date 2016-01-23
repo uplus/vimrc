@@ -23,18 +23,22 @@ let g:vimfiler_sendto = {
 
 "VimFilerを起動してからじゃないと関数が読み込まれない
 function! s:set_vimfiler_unexpand_tree() "{{{
-  if hasmapto("<Plug>(vimfiler_unexpand_tree)") | return | endif
+  if hasmapto("<Plug>(vimfiler_unexpand_tree)")
+    return
+  endif
 
   " 名前を取得
   Capture function /\d+*_unexpand_tree\(\)$
   let l:func_name = substitute(g:capture, '^function ', '', '')
 
-  if empty(l:func_name) | return | endif
+  if empty(l:func_name)
+    return
+  endif
 
   execute 'nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree) :<C-u>call' l:func_name '<CR>'
 endfunction "}}}
 
-au FileType vimfiler call s:vimfiler_settings()
+au uAutoCmd FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings() "{{{
   setlocal nobuflisted
   call s:set_vimfiler_unexpand_tree()
@@ -65,7 +69,7 @@ function! s:vimfiler_settings() "{{{
 endfunction "}}}
 
 function! s:smart_quit()
-  if argc() == 0 || isdirectory(argv(0))
+  if argc() == 0 || isdirectory(argv(0)) || ListedBufferCount() == 0
     quit
   else
     call vimfiler#util#hide_buffer()
