@@ -187,7 +187,7 @@ call s:source('keymap')
 
 " #auto commands
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-au uAutoCmd VimResized  * if &ft !=# 'help' |  wincmd = | endif
+au uAutoCmd VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
 au uAutoCmd BufWritePre * call EraseSpace()
 
 if executable('fcitx-remote')
