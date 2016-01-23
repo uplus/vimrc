@@ -238,10 +238,12 @@ endfunction "}}}
 
 function! s:set_highlights() "{{{
   hi Visual     cterm=reverse
-  hi Todo       ctermfg=201     ctermbg=56
+  hi Title      ctermfg=118
+  hi Todo       ctermfg=0   ctermbg=226
+  hi Error      ctermfg=255 ctermbg=161
   hi QFError    cterm=undercurl ctermfg=198
   hi QFWarning  cterm=undercurl ctermfg=198
-  hi DiffAdd    ctermfg=255     ctermbg=27
+  hi DiffAdd    ctermfg=255     ctermbg=163
   hi DiffDelete ctermfg=200     ctermbg=56
   hi DiffChange ctermfg=252     ctermbg=22
   hi DiffText   ctermfg=226     ctermbg=29
