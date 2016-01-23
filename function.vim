@@ -407,13 +407,21 @@ function! g:GitTop()
 endfunction
 "}}}
 
-" # delete_for_match "{{{
+" #Misc "{{{
 noremap <Plug>(delete_for_match) :<c-u>call <SID>delete_for_match()<CR>
-function! s:delete_for_match()
-  normal! V
+function! s:delete_for_match() abort
+  normal! V^
   normal %
   normal! d
 
   call repeat#set("\<Plug>(delete_for_match)")
 endfunction
-" }}}
+
+function! ResetHightlights() abort
+  nohlsearch
+  silent! QuickhlManualReset
+  silent! RCReset
+  call clearmatches()
+endfunction
+"}}}
+

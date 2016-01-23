@@ -28,14 +28,7 @@ nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 xnoremap gst :ExciteTranslate<CR>
 
-function! ResetHightlight() abort
-  nohlsearch
-  silent! QuickhlManualReset
-  silent! RCReset
-  call clearmatches()
-endfunction
-nnoremap <silent><space>n :call ResetHightlight()<CR>
-
+nnoremap <silent><space>n :call ResetHightlights()<CR>
 xnoremap <Space>n :normal<Space>
 
 map mp %
