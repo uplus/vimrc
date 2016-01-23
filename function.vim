@@ -9,6 +9,10 @@ function! s:is_lastline(is_visual)
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction
 
+function! s:removestr(str, pattern) abort
+  return substitute(a:str, a:pattern, '', 'g')
+endfunction
+
 " #OptionStack "{{{
 " 引数には = += -= 含めた値をとる
 let g:option_stack = []
@@ -284,6 +288,18 @@ endfunction
 "}}}
 
 " #WordTranslate "{{{
+command! -nargs=1 WtransWeblio echo WordTranslateWeblio(<f-args>)
+function! WordTranslateWeblio(word) abort
+  let l:html = webapi#http#get('ejje.weblio.jp/content/' . a:word)
+  " let l:body = matchstr(l:html.content, '\vname\="description"\s+content\="[^\s]{-}\s\zs.{-1,}\ze\s\-\s', 0, 1)
+  let l:body = matchstr(l:html.content, '\vname\="description".{-}\=.{-}\s\zs.{-1,}\ze\s\-\s', 0, 1)
+  let l:body = tr(l:body, '《》【】', '<>[]')
+  let l:body = s:removestr(l:body, '★')
+  if l:body =~# '\.\.\.$'
+    let l:body = l:body[0:strridx(l:body, ';')-1]
+  endif
+  return l:body
+endfunction
 
 command! -nargs=? WTransLocal call WordTranslateLocalDict(<f-args>)
 let g:word_translate_local_dict = '~/.vim/dict/gene.dict'
