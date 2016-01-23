@@ -148,7 +148,7 @@ NeoBundle "osyo-manga/quickrun-outputter-replace_region"
 NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] }
 NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
 " NeoBundle 'bbatsov/rubocop'
-" NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
+NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
 "}}}
 
 " #python "{{{
@@ -1403,6 +1403,13 @@ if neobundle#tap('webapi-vim') "{{{
     let url = webapi#http#dencodeURI(list[1])
     call setline('.', list[0] . url)
   endfunction
+
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('ruby_hl_lvar.vim') "{{{
+  let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
+  au uAutoCmd ColorScheme * hi rubyLocalVariable ctermfg=38
 
   call neobundle#untap()
 endif "}}}
