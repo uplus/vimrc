@@ -284,8 +284,14 @@ endfunction
 "}}}
 
 " #WordTranslate "{{{
-let g:wtrans_dict = '~/.vim/dict/gene.dict'
-command! -nargs=? WTrans call WordTranslate(<f-args>)
+
+command! -nargs=? WTransLocal call WordTranslateLocalDict(<f-args>)
+let g:word_translate_local_dict = '~/.vim/dict/gene.dict'
+function! WordTranslateLocalDict(word) abort
+  let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
+  return substitute(l:str, '\v(^|\n)(--|' . a:word . ')?(\_s|$)', '', 'gi')
+endfunction
+
 command! -nargs=? WordTranslate call WordTranslate(<f-args>)
 function! WordTranslate(...)
   if !a:0
@@ -300,9 +306,7 @@ function! WordTranslate(...)
     let word = a:1
   endif
 
-  let str = system('grep -ihwA 1 ^' . word . '$ ' . g:wtrans_dict)
-  let found = substitute(str, '\v(^|\n)(--|' . word . ')?(\_s|$)', '', 'gi')
-
+  let found = WordTranslateLocalDict(word)
   if found !=# ''
     echo found
   else
