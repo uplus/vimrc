@@ -40,21 +40,24 @@ noremap <Plug>(vim-basic-front) ^
 noremap <Plug>(vim-basic-tail) g_
 
 map mp %
+map $ %
 map mmp ^%
-nmap dmp <Plug>(delete_for_match)
 nnoremap ,i ".p
 nnoremap ,p "0p
 nnoremap ,v '[<S-v>']
+nmap dmp <Plug>(delete_for_match)
 nmap <Space>J <Plug>(MoveDown)kJ
-nnoremap ( {j
-nnoremap ) }k
-xnoremap <silent>( {:<C-u>exec 'normal!' (line('.') == 1? 'gv' : 'gvj')<CR>
-xnoremap <silent>) }:<C-u>exec 'normal!' (line('.') == line('$')? 'gv' : 'gvk')<CR>
+nnoremap <silent>( {:<c-u>exec ('' ==# getline('.')? 'normal! j' : '')<CR>
+nnoremap <silent>) }:<c-u>exec ('' ==# getline('.')? 'normal! k' : '')<CR>
+xnoremap <silent>( {:<c-u>exec 'normal! gv' . ('' ==# getline("'<")? 'j' : '')<CR>
+xnoremap <silent>) }:<c-u>exec 'normal! gv' . ('' ==# getline("'>")? 'k' : '')<CR>
 nmap >p p:'[,']><CR>
 nmap <p p:'[,']<<CR>
-nmap =p p:'[,']=<CR>
+nmap =p p=']
 nnoremap <space>{ {o
 nnoremap <space>} }O
+nnoremap d{ V{d
+nnoremap d} V}d
 inoremap <silent><C-s> <ESC>:update<CR>
 nnoremap <silent><C-s> :update<CR>
 nnoremap <silent><C-q>w :wq<CR>
@@ -95,8 +98,6 @@ nnoremap - $
 xnoremap 0 ^
 xnoremap ^ 0
 xnoremap - $
-nnoremap d{ V{d
-nnoremap d} V}d
 
 " #toggle options
 nnoremap \toc :set cursorcolumn!<CR>
@@ -220,8 +221,12 @@ inoremap <nowait><ESC> <ESC>
 " TODO: Move those settings to right section
 
 " #non register delete "{{{
+nnoremap _c "_c
+vnoremap _c "_c
 nnoremap _d "_d
 vnoremap _d "_d
+nnoremap _C "_C
+vnoremap _C "_C
 nnoremap _D "_D
 vnoremap _D "_D
 nnoremap _x "_x
