@@ -10,7 +10,7 @@ function! s:is_lastline(is_visual)
 endfunction
 
 function! s:removestr(str, pattern) abort
-  return substitute(a:str, a:pattern, '', 'g')
+  return substitute(a:str, '[' . a:pattern . ']', '', 'g')
 endfunction
 
 " #OptionStack "{{{
