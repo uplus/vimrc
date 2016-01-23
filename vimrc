@@ -220,20 +220,32 @@ au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('')
 au uAutoCmd FileType    * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
 
+function! s:colorscheme(name) abort
+  if g:colors_name !=# a:name
+    execute 'colorscheme' a:name
+  endif
+endfunction
+
 function! s:set_colors() "{{{
+  if -1 != index(['', 'unite', 'quickrun', 'qf'], &filetype)
+    return
+  endif
+
   if &filetype == 'cpp' || &filetype == 'c'
-    colorscheme lettuce
-    " colorscheme kalisi
+    call s:colorscheme('lettuce')
+    " call s:colorscheme('kalisi')
     hi Pmenu ctermfg=36 ctermbg=235
   elseif &filetype == 'ruby'
-    colorscheme railscasts_u10
+    call s:colorscheme('railscasts_u10')
   elseif &filetype == 'vim'
-    colorscheme BusyBee
+    call s:colorscheme('BusyBee')
   elseif &filetype == 'gitcommit'
-    colorscheme gitcommit_u10
-  else
-    colorscheme molokai
+    call s:colorscheme('gitcommit_u10')
+  elseif !exists('g:colors_seted')
+    call s:colorscheme('molokai')
   endif
+
+  let g:colors_seted = 1
 endfunction "}}}
 
 function! s:set_highlights() "{{{
@@ -250,7 +262,7 @@ function! s:set_highlights() "{{{
 
   colorscheme vimfiler_color
 
-  if ! has('vim_starting')
+  if !has('vim_starting')
     execute 'AirlineTheme' g:airline_theme
   endif
 
