@@ -1,5 +1,6 @@
-*/
 .*
-!rc/
-!after/
 core
+bundle/
+colors/
+dict/
+tmp/
