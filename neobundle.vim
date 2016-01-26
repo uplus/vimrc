@@ -4,9 +4,7 @@ if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
   silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 endif
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-endif
+set runtimepath+=~/.vim/bundle/neobundle.vim
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
