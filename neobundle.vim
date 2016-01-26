@@ -376,6 +376,7 @@ endif
 if neobundle#tap('textobj-lastpaste') "{{{
   let g:textobj_lastpaste_no_default_key_mappings = 1
   omap p <Plug>(textobj-lastpaste-i)
+  omap ,v <Plug>(textobj-lastpaste-i)
 
   call neobundle#untap()
 endif "}}}
