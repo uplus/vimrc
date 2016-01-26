@@ -1390,19 +1390,27 @@ if neobundle#tap('sudo.vim') "{{{
 endif "}}}
 
 if neobundle#tap('webapi-vim') "{{{
-  command! URIencode :call URIencode()
-  command! URIdecode :call URIdecode()
+  command! -nargs=* URIencode :call URIencode(<q-args>)
+  command! -nargs=* URIdecode :call URIdecode(<q-args>)
 
-  function! URIencode() abort
-    let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-    let url = webapi#http#encodeURI(list[1])
-    call setline('.', list[0] . url)
+  function! URIencode(...) abort
+    if a:0 == 0 || '' ==# a:1
+      let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
+      let url = webapi#http#encodeURI(list[1])
+      call setline('.', list[0] . url)
+    else
+      echo webapi#http#encodeURI(a:1)
+    endif
   endfunction
 
-  function! URIdecode() abort
-    let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-    let url = webapi#http#dencodeURI(list[1])
-    call setline('.', list[0] . url)
+  function! URIdecode(...) abort
+    if a:0 == 0 || '' ==# a:1
+      let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
+      let url = webapi#http#dencodeURI(list[1])
+      call setline('.', list[0] . url)
+    else
+      echo webapi#http#decodeURI(a:1)
+    endif
   endfunction
 
   call neobundle#untap()
