@@ -1178,7 +1178,7 @@ if neobundle#tap('vim-altercmd') "{{{
 endif "}}}
 
 if neobundle#tap('vim-abolish') "{{{
-  nmap <space>c <Plug>Coerce
+  nmap sc <plug>Coerce
 
   function! neobundle#tapped.hooks.on_post_source(bundle)
     unmap cr
