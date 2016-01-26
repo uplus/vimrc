@@ -47,14 +47,8 @@ nnoremap s <Nop>
 xnoremap s <Nop>
 nnoremap gs <Nop>
 xnoremap gs <Nop>
-nnoremap gr <Nop>
-xnoremap gr <Nop>
 nnoremap gR <Nop>
 xnoremap gR <Nop>
-nnoremap gh <Nop>
-xnoremap gh <Nop>
-nnoremap gm <Nop>
-xnoremap gm <Nop>
 nnoremap g8 <Nop>
 xnoremap g8 <Nop>
 nnoremap g<C-G> <Nop>
