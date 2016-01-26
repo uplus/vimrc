@@ -333,6 +333,7 @@ function! s:gitcommit_config() abort
   goto 1
   setlocal spell
   setl nofoldenable
+  setl foldcolumn=0
   nnoremap <silent><buffer>a gga
   nnoremap <silent><buffer>A ggA
   nnoremap <silent><buffer>i ggi
