@@ -56,8 +56,8 @@ nmap <p p:'[,']<<CR>
 nmap =p p=']
 nnoremap <space>{ {o
 nnoremap <space>} }O
-nnoremap d{ V{d
-nnoremap d} V}d
+nnoremap <silent>d{ :<c-u>normal! V{d<CR>
+nnoremap <silent>d} :<c-u>normal! V}d<CR>
 inoremap <silent><C-s> <ESC>:update<CR>
 nnoremap <silent><C-s> :update<CR>
 nnoremap <silent><C-q>w :wq<CR>
