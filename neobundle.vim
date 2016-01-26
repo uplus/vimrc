@@ -1383,6 +1383,7 @@ endif "}}}
 
 if neobundle#tap('sudo.vim') "{{{
   command! Swrite SudoWrite %
+  command! Sw SudoWrite %
 
   call neobundle#untap()
 endif "}}}
