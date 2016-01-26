@@ -55,6 +55,7 @@ au FileType vim let g:switch_custom_definitions +=
       \   [ '==?', '!=?' ],
       \   [ '=~#', '!~#' ],
       \   [ '=~?', '!~?' ],
+      \   [ 'if', 'elseif' ],
       \ ]
 
 au FileType gitrebase let g:switch_custom_definitions += [
