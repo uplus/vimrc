@@ -6,7 +6,7 @@ let g:unite#filters#converter_quickfix_highlight#enable_bold_for_message = 1
 
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 xnoremap \r :QuickRun -mode v<CR>
-nmap \R <Plug>(quickrun)
+nmap \R <Plug>(quickrun-op)
 
 nnoremap <silent>\r :call SmartQuickRun()<CR>
 function! g:SmartQuickRun()
