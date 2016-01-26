@@ -267,27 +267,39 @@ function! OpenGitDiff(type)
   endfunction
 endfunction "}}}
 
-" #High "{{{
-command! -complete=highlight -nargs=* Hi call High(<f-args>)
-command! -complete=highlight -nargs=* High call High(<f-args>)
-function! High(...)
+" #Highlight "{{{
+command! -complete=highlight -nargs=* Hi call Highlight(<f-args>)
+function! Highlight(...)
   if 0 == a:0
     Unite highlight
-  else
-    let cmd = "highlight " . a:1
+    return
+  endif
 
-    if 2 <= a:0
-      if a:2 !=# '_'
-        execute cmd "ctermfg=" . a:2
-      endif
+  let cmd = "highlight " . a:1
 
-      if 3 <= a:0
-        execute  cmd "ctermbg=" . a:3
+  if 2 <= a:0
+    let args = copy(a:000[1:])
+
+    if args[0] =~# 'term'
+      execute cmd args[0]
+
+      if len(args) <= 1
+        return
       endif
+      call remove(args, 0)
     endif
 
-    execute cmd
+    if args[0] !=# '_'
+      execute cmd "ctermfg=" . args[0]
+    endif
+
+    if 2 <= len(args)
+      execute  cmd "ctermbg=" . args[1]
+    endif
   endif
+
+  " output a current highlight
+  execute cmd
 endfunction
 "}}}
 
