@@ -354,8 +354,7 @@ function! WordTranslate(...)
   if found !=# ''
     echo found
   else
-    echo "Not found " . word
-    call openbrowser#smart_search(expand("<cword>"))
+    echo WordTranslateSmartWeblio(word)
   endif
 endfunction
 "}}}
