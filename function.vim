@@ -361,7 +361,7 @@ endfunction
 
 " #GotoVimFunction "{{{
 function! GotoVimFunction()
-  let func_name = matchstr(getline('.'),  '\vcall\s+%(.\:)?\zs(.*)\ze\(.*\)')
+  let func_name = matchstr(getline('.'),  '\v%(.\:)?\zs(%(\w|_|#|\.)*)\ze\(.*\)')
   if empty(func_name)
     return 1
   endif
