@@ -308,7 +308,7 @@ function! WordTranslateWeblio(word) abort
   return l:body
 endfunction
 
-command! -nargs=? WTransLocal call WordTranslateLocalDict(<f-args>)
+command! -nargs=? WtransLocal call WordTranslateLocalDict(<f-args>)
 let g:word_translate_local_dict = '~/.vim/dict/gene.dict'
 function! WordTranslateLocalDict(word) abort
   let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
