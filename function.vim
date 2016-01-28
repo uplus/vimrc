@@ -317,6 +317,18 @@ function! WordTranslateWeblio(word) abort
   return l:body
 endfunction
 
+command! -nargs=1 Weblios echo WordTranslateSmartWeblio(<f-args>)
+function! WordTranslateSmartWeblio(word) abort
+  let l:reason = WordTranslateWeblio(a:word)
+  let l:prototype = matchstr(l:reason, '\v(\w+)\ze\s*の%(現在|過去|複数|三人称|直接法|間接法)')
+
+  if '' !=# l:prototype
+    let l:reason .= "\n" . WordTranslateWeblio(l:prototype)
+  endif
+
+  return l:reason
+endfunction
+
 command! -nargs=? WtransLocal call WordTranslateLocalDict(<f-args>)
 let g:word_translate_local_dict = '~/.vim/dict/gene.dict'
 function! WordTranslateLocalDict(word) abort
