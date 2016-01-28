@@ -137,7 +137,7 @@ set wildmode=list:longest,full
 set gdefault
 set ignorecase smartcase
 set incsearch
-set hlsearch | nohlsearch "Highlight search patterns, support reloading
+set nohlsearch | nohlsearch "Highlight search patterns, support reloading
 
 " #tab
 set shiftround
