@@ -295,17 +295,6 @@ function! s:stdin_config()
   silent! %foldopen!
 endfunction
 
-" #autosave "{{{
-au uAutoCmd InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
-nnoremap <silent><F2> :call AutoSave()<CR>
-command! AutoSave call AutoSave()
-
-let g:u10_autosave = 0
-function! AutoSave()
-  silent update
-  let g:u10_autosave = !g:u10_autosave
-  echo "autosave" g:u10_autosave? "enabled" : "disabled"
-endfunction
 "}}}
 
 if filereadable(expand('~/.vimrc.after'))

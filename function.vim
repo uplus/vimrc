@@ -450,5 +450,13 @@ function! ResetHightlights() abort
   silent! RCReset
   call clearmatches()
 endfunction
+
+let g:u10_autosave = 0
+nnoremap <silent><F2> :call AutoSave()<CR>
+function! AutoSave()
+  silent update
+  let g:u10_autosave = !g:u10_autosave
+  echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
+endfunction
 "}}}
 
