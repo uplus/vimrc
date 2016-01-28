@@ -1407,7 +1407,7 @@ if neobundle#tap('webapi-vim') "{{{
   function! URIdecode(...) abort
     if a:0 == 0 || '' ==# a:1
       let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-      let url = webapi#http#dencodeURI(list[1])
+      let url = webapi#http#decodeURI(list[1])
       call setline('.', list[0] . url)
     else
       echo webapi#http#decodeURI(a:1)
