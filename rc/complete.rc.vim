@@ -1,9 +1,8 @@
 " Complete:
 
+let g:neocomplete#enable_auto_select     = 0 " noinsertがあると無視
 let g:neocomplete#disable_auto_complete  = 0
 let g:neocomplete#enable_insert_char_pre = 0
-
-let g:neocomplete#enable_auto_select = 1
 
 let g:neocomplete#enable_auto_close_preview = 1 " preview windowを補完完了後に自動で閉じる
 let g:neocomplete#enable_auto_delimiter     = 1

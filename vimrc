@@ -91,7 +91,7 @@ set completeopt=menuone
 set switchbuf=usetab
 
 if has('patch755')
-  set completeopt+=noinsert
+  " set completeopt+=noinsert
 endif
 
 if has('linebreak')
