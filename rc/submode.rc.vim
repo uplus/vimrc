@@ -8,10 +8,10 @@ call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " undo/redo
-call submode#enter_with('undo/redo', 'n', '', '<C-r>', '<C-r>')
-call submode#enter_with('undo/redo', 'n', '', 'u', 'u')
-call submode#map('undo/redo', 'n', '', '<C-r>', '<C-r>')
-call submode#map('undo/redo', 'n', '', 'u', 'u')
+" call submode#enter_with('undo/redo', 'n', '', '<C-r>', '<C-r>')
+" call submode#enter_with('undo/redo', 'n', '', 'u', 'u')
+" call submode#map('undo/redo', 'n', '', '<C-r>', '<C-r>')
+" call submode#map('undo/redo', 'n', '', 'u', 'u')
 
 " move between fold
 call submode#enter_with('movefold', 'n', '', 'zk', 'zkzMzv[zzz')
