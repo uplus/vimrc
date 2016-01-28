@@ -644,6 +644,7 @@ if neobundle#tap('unite.vim') "{{{
     inoremap <buffer><C-f> <Right>
     nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
 
+    " TDOO: unite#get_current_unite()を使うべき
     let context = unite#get_context()
 
     " unite-quickfixの設定色々

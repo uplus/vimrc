@@ -61,9 +61,8 @@ function! Capture(cmd)
   let g:capture = substitute(l:out, '\%^\n', '', '')
   return g:capture
 endfunction
-" }}}
 
-" #Capture New window {{{
+" #Capture New window
 command! -nargs=+ -complete=command
       \ CaptureWin call CaptureWin(<q-args>)
 

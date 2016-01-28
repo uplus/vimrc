@@ -20,9 +20,6 @@ augroup uAutoCmd
   autocmd!
 augroup END
 
-set all&
-let g:colors_name = ''
-
 let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
 set undodir=~/.vim/tmp/undo.txt
@@ -181,10 +178,13 @@ endif
 call s:source('function')
 call s:source('keymap')
 
-" #auto commands
+" #autocmds
 au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au uAutoCmd VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
 au uAutoCmd BufWritePre * call EraseSpace()
+au uAutoCmd InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
+" windowの行数の10%にセットする
+au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
 if executable('fcitx-remote')
   command! FcitxOff call system('fcitx-remote -c')
@@ -206,12 +206,10 @@ function! s:vimenter()
   endif
 endfunction
 
-" windowの行数の10%にセットする
-au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
-
 au uAutoCmd FileType    * nested call s:set_colors()
 au uAutoCmd ColorScheme * call s:set_highlights()
 
+let g:colors_name = ''
 function! s:colorscheme(name) abort
   if g:colors_name !=# a:name
     execute 'colorscheme' a:name

@@ -44,6 +44,7 @@ call submode#map('time-travel', 'n', '', '-', 'g-')
 call submode#map('time-travel', 'n', '', '+', 'g+')
 
 " continuous x
+" TODO: cannot restore first one char.
 nnoremap <silent> <Plug>(continuous-x) :<C-u>undojoin \| normal! x<CR>
 call submode#enter_with('continuous-x', 'n', '', 'x', 'x')
 call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
