@@ -76,6 +76,7 @@ set report=0  " コマンド似よって0行以上変更されたらmessage
 set nonumber
 set hidden
 set showcmd
+set noshowmode
 set cursorline
 set noshowmatch matchtime=0 " 括弧を入力した時に移動しないようにする
 set laststatus=2
