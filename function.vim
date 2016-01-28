@@ -295,15 +295,24 @@ endfunction
 "}}}
 
 " #WordTranslate "{{{
-command! -nargs=1 WtransWeblio echo WordTranslateWeblio(<f-args>)
+command! -nargs=1 Weblio echo WordTranslateWeblio(<f-args>)
 function! WordTranslateWeblio(word) abort
   let l:html = webapi#http#get('ejje.weblio.jp/content/' . a:word)
-  " let l:body = matchstr(l:html.content, '\vname\="description"\s+content\="[^\s]{-}\s\zs.{-1,}\ze\s\-\s', 0, 1)
-  let l:body = matchstr(l:html.content, '\vname\="description".{-}\=.{-}\s\zs.{-1,}\ze\s\-\s', 0, 1)
+  let l:body = matchstr(l:html.content, '\Vname="description"\v.{-}\=.{-}\s\zs.{-1,}\ze\s\-\s', 0, 1)
   let l:body = tr(l:body, '《》【】', '<>[]')
-  if l:body =~# '\.\.\.$'
-    let l:body = l:body[0:strridx(l:body, ';')-1]
   let l:body = s:removechars(l:body, '★→１２')
+  let l:body = substitute(l:body, '\v(\d+)\s*', '\1', 'g')
+  let l:body = substitute(l:body, '\V&#034;', '"', 'g')
+  let l:body = substitute(l:body, '\V&#038;', '&', 'g')
+  let l:body = substitute(l:body, '\V&#039;', "'", 'g')
+  let l:body = substitute(l:body, '\V&#060;', '<', 'g')
+  let l:body = substitute(l:body, '\V&#039;', '>', 'g')
+
+  if l:body =~# '\.\.\.\s*$'
+    let l:idx = strridx(l:body, ';')
+    if 0 < l:idx
+      let l:body = l:body[0:l:idx-1]
+    endif
   endif
   return l:body
 endfunction
