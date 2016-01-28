@@ -283,16 +283,6 @@ au uAutoCmd FileType c,cpp    setl commentstring=//\ %s
 au uAutoCmd FileType html,css setl foldmethod=indent
 au uAutoCmd FileType qf       nnoremap <silent><buffer>q :quit<CR>
 
-au uAutoCmd FileType vim call s:vim_config()
-function! s:vim_config() abort
-  setl keywordprg=:help
-  nnoremap <silent><buffer>gd :call GotoVimFunction()<CR>
-  nmap <buffer>[m [[
-  nmap <buffer>]m ]]
-  nmap <buffer>[M []
-  nmap <buffer>]M ][
-endfunction
-
 au uAutoCmd StdinReadPost * call s:stdin_config()
 function! s:stdin_config()
   nnoremap <buffer>q :quit<CR>
@@ -304,45 +294,6 @@ function! s:stdin_config()
   goto
   silent! %foldopen!
 endfunction
-
-au uAutoCmd FileType diff call s:diff_config()
-function! s:diff_config()
-  nnoremap <silent><buffer> q :q<CR>
-  setl foldmethod=diff
-  setl foldcolumn=0
-endfunction
-
-au uAutoCmd FileType help call s:help_config()
-function! s:help_config()
-  nnoremap <silent><buffer> q :q<CR>
-  setl nofoldenable
-  setl foldcolumn=0
-  setl number
-endfunction
-
-au uAutoCmd FileType gitrebase call s:gitrebase_config()
-function! s:gitrebase_config() abort
-  noremap <silent><buffer><nowait>gp :Pick<CR>
-  noremap <silent><buffer><nowait>gr :Reword<CR>
-  noremap <silent><buffer><nowait>ge :Edit<CR>
-  noremap <silent><buffer><nowait>gs :Squash<CR>
-  noremap <silent><buffer><nowait>gf :Fixup<CR>
-endfunction
-
-au uAutoCmd FileType gitcommit call s:gitcommit_config()
-function! s:gitcommit_config() abort
-  goto 1
-  setlocal spell
-  setl nofoldenable
-  setl foldcolumn=0
-  nnoremap <silent><buffer>a gga
-  nnoremap <silent><buffer>A ggA
-  nnoremap <silent><buffer>i ggi
-  nnoremap <silent><buffer>I ggI
-  nnoremap <silent><buffer>c ggc
-  nnoremap <silent><buffer>d ggd
-endfunction
-"}}}
 
 " #autosave "{{{
 au uAutoCmd InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
