@@ -406,8 +406,8 @@ if neobundle#tap('vim-textobj-function') "{{{
   let g:textobj_function_no_default_key_mappings = 1
   omap im <Plug>(textobj-function-i)
   omap am <Plug>(textobj-function-a)
-  vmap im <Plug>(textobj-function-i)
-  vmap am <Plug>(textobj-function-a)
+  xmap im <Plug>(textobj-function-i)
+  xmap am <Plug>(textobj-function-a)
 
   " I A でvisual-blockの挿入ができない
   " omap IF <Plug>(textobj-function-I)
