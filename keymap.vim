@@ -7,6 +7,8 @@ command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 cabbr w!! w !sudo tee > /dev/null %
+command! Cdbuffer cd %:h
+command! Lcdbuffer lcd %:h
 
 " Opening with a specific character code again."{{{
 " In particular effective when I am garbled in a terminal.
