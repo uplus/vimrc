@@ -140,11 +140,11 @@ nnoremap <silent>,bq :q<CR>
 "}}}
 
 " #window"{{{
-nnoremap <C-W>gs :vertical wincmd f<CR>
 nnoremap gfb gf
-nnoremap gft :tab wincmd f<CR>
-nnoremap gfv :vertical wincmd f<CR>
-nnoremap gfs :botright wincmd f<CR>
+nnoremap <silent>gft :tab wincmd f<CR>
+nnoremap <silent>gfv :vertical wincmd f<CR>
+nnoremap <silent>gfs :botright wincmd f<CR>
+nnoremap gf <NOP>
 
 au uAutoCmd CmdwinEnter  * call s:cmdwin_config()
 function! s:cmdwin_config()
