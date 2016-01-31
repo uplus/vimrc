@@ -79,7 +79,7 @@ NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace'
 " NeoBundle 'itchyny/lightline.vim'
 NeoBundleLazy 'Yggdroot/indentLine', { 'commands' : ['IndentLinesToggle', 'LeadingSpaceToggle']  }
-NeoBundleLazy 't9md/vim-quickhl',    { 'mappings' : ['<Plug>(quickhl'] }
+NeoBundleLazy 't9md/vim-quickhl',    { 'mappings' : ['<Plug>(quickhl', '<Plug>(operator-quickhl'] }
 NeoBundleLazy 'oblitum/rainbow',     { 'commands' : ['RainbowToggle', 'RainbowLoad'] }
 " NeoBundle 'vimtaku/hl_matchit.vim'
 NeoBundle 'lilydjwg/colorizer'
