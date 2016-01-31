@@ -7,8 +7,6 @@ au uAutoCmd FileType * setl formatoptions+=Bn
 " B multi-byte charの結合で空白を挿入しない
 " j コメントを結合する時に可能であればコメントリーダーを削除する
 
-au uAutoCmd FileType gitcommit setl textwidth=0
-
 " elseやrescueに移動しない
 au uAutoCmd FileType ruby let b:match_words='\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!:\%(^\|[^.\:@$]\)\@<=\<end\:\@!\>,{:},\[:\],(:)'
 au uAutoCmd FileType vim  let b:match_words='\<fu\%[nction]\>:\<endf\%[unction]\>,\<\(wh\%[ile]\|for\)\>:\<end\(w\%[hile]\|fo\%[r]\)\>,\<if\>:\<en\%[dif]\>,\<try\>:\<endt\%[ry]\>,\<aug\%[roup]\s\+\%(END\>\)\@!\S:\<aug\%[roup]\s\+END\>,(:)'
