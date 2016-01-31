@@ -273,6 +273,7 @@ function! s:set_highlights() "{{{
     hi Visual       ctermfg=NONE ctermbg=NONE
     hi NonText      ctermfg=NONE ctermbg=NONE
     hi CursorLine   cterm=NONE   ctermbg=234
+    hi vimFuncVar ctermfg=198
   endif
 endfunction "}}}
 
