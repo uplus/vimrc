@@ -296,8 +296,9 @@ endfunction
 " #WordTranslate "{{{
 command! -nargs=1 Weblio echo WordTranslateWeblio(<f-args>)
 function! WordTranslateWeblio(word) abort
-  let l:html = webapi#http#get('ejje.weblio.jp/content/' . a:word)
-  let l:body = matchstr(l:html.content, '\Vname="description"\v.{-}\=.{-}\s\zs.{-1,}\ze\s\-\s', 0, 1)
+  let l:html    = webapi#http#get('ejje.weblio.jp/content/' . tolower(a:word)).content
+  let l:content = matchstr(l:html, '\Vname="description"\v.{-}content\=\"\zs.{-}\ze\"\>')
+  let l:body    = matchstr(l:content, '\v.{-1,}\ze\s{-}\-\s', 0, 1)
   let l:body = tr(l:body, '《》【】', '<>[]')
   let l:body = s:removechars(l:body, '★→１２')
   let l:body = substitute(l:body, '\v(\d+)\s*', '\1', 'g')
