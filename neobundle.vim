@@ -1459,6 +1459,12 @@ if neobundle#tap('ref-dicts-en') "{{{
   call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('previm') "{{{
+  let g:previm_open_cmd='firefox'
+
+  call neobundle#untap()
+endif "}}}
+
 " if neobundle#tap('') "{{{
 "
 "   call neobundle#untap()
