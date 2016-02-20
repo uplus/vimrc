@@ -731,7 +731,7 @@ if neobundle#tap('unite-quickfix') "{{{
 endif "}}}
 
 if neobundle#tap('vinarise') "{{{
-  let g:vinarise_enable_auto_detect = 1
+  let g:vinarise_enable_auto_detect = 0
 
   call neobundle#untap()
 endif "}}}
