@@ -146,6 +146,7 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
+au uAutoCmd FileType zsh,ruby setl foldmethod=marker " php perl perl6 javascript clojure
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか
