@@ -235,7 +235,8 @@ command! OpenGitDiffTab call OpenGitDiff('t')
 function! OpenGitDiff(type)
   silent! update
   let s:before_winnr = winnr()
-  let cmdname = 'git diff ' .  bufname('%')
+  let cmdname = 'git diff ' .  expand('%:t')
+  let filedir = expand('%:h')
   silent! execute 'bwipeout \[' . escape(cmdname, ' ') . '\]'
 
   execute 'silent!' ((a:type == 't')? 'tabnew' : printf('botright vsplit [%s]', escape(cmdname, ' ')))
@@ -247,6 +248,7 @@ function! OpenGitDiff(type)
   setl nofoldenable
   setl nonumber
   setl foldcolumn=0
+  execute 'lcd' filedir
   silent put! =system(cmdname)
   $delete
   nnoremap <silent><buffer>q :call <SID>bwipeout_and_back()<CR>
