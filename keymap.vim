@@ -3,7 +3,6 @@ command! W w!
 command! Sh update | shell
 command! -nargs=* -complete=file T tabedit <args>
 command! ReloadKeymap source ~/.vim/keymap.vim
-command! NeoBundleAllClean NeoBundleClean | NeoBundleClearCache
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 cabbr w!! w !sudo tee > /dev/null %
