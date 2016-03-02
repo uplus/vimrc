@@ -879,6 +879,7 @@ if neobundle#tap('vim-easymotion') "{{{
   map ;f <Plug>(easymotion-sl2)
   map ;t <Plug>(easymotion-repeat)
   map ;w <Plug>(easymotion-w)
+  map ;b <Plug>(easymotion-b)
 
 endif "}}}
 
