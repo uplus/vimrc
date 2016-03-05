@@ -52,7 +52,9 @@ nnoremap g<C-G> <Nop>
 xnoremap g<C-G> <Nop>
 "}}}
 
-call s:source('neobundle')
+if ! exists('g:noplugin')
+  call s:source('neobundle')
+endif
 filetype plugin indent on
 syntax enable
 
@@ -203,8 +205,10 @@ function! s:vimenter()
   endif
 endfunction
 
-au uAutoCmd FileType    * nested call s:set_colors()
-au uAutoCmd ColorScheme * call s:set_highlights()
+if !exists('g:noplugin')
+  au uAutoCmd FileType    * nested call s:set_colors()
+  au uAutoCmd ColorScheme * call s:set_highlights()
+endif
 
 let g:colors_name = ''
 function! s:colorscheme(name) abort
