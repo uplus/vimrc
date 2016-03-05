@@ -1472,6 +1472,6 @@ endif "}}}
 " endif "}}}
 
 call neobundle#end()
-
+au uAutoCmd VimEnter * NeoBundleCheck
 
 NeoBundleSource unite-quickfix

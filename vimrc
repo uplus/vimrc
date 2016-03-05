@@ -56,10 +56,6 @@ call s:source('neobundle')
 filetype plugin indent on
 syntax enable
 
-if has('vim_starting')
-  NeoBundleCheck
-endif
-
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,ucs-bom,euc-jp,eucjp-ms,cp932
