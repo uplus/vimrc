@@ -235,7 +235,7 @@ NeoBundleLazy 'rhysd/vim-clang-format',             { 'depends' : 'kana/vim-oper
 " osyo-manga/vim-operator-swap
 
 " 任意のcmdを実行するoperator
-NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operator-user' }
+" NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operator-user' }
 "}}}
 
 " #textobj "{{{
@@ -263,13 +263,12 @@ NeoBundle 'kana/vim-textobj-function',           { 'depends' : 'kana/vim-textobj
 " }}}
 
 " #colorscheme"{{{
-NeoBundle 'freeo/vim-kalisi'
-NeoBundle 'vim-scripts/Lucius'
+" NeoBundle 'freeo/vim-kalisi'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'djjcast/mirodark'
 NeoBundle 'vim-scripts/BusyBee'
 NeoBundle '1player/lettuce.vim'
-NeoBundle 'altercation/vim-colors-solarized'
+" NeoBundle 'altercation/vim-colors-solarized'
 " NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
 " NeoBundle 'cocopon/iceberg.vim'
 " NeoBundle 'w0ng/vim-hybrid'
@@ -282,7 +281,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 " #misc "{{{
 NeoBundleLazy 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1 }
-NeoBundle 'Shougo/context_filetype.vim'
+" NeoBundle 'Shougo/context_filetype.vim'
 NeoBundleLazy 'sudo.vim',        { 'commands' : ['SudoWrite', 'SudoRead'] }
 NeoBundleLazy 'mbbill/undotree', { 'commands' : ['UndotreeToggle', 'UndotreeShow'] }
 NeoBundleLazy 'sjl/gundo.vim',   { 'commands' : ['GundoToggle', 'GundoShow'] }
@@ -1472,6 +1471,6 @@ endif "}}}
 " endif "}}}
 
 call neobundle#end()
-au uAutoCmd VimEnter * NeoBundleCheck
+" au uAutoCmd VimEnter * NeoBundleCheck
 
 NeoBundleSource unite-quickfix
