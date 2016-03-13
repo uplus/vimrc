@@ -20,7 +20,6 @@ augroup uAutoCmd
   autocmd!
 augroup END
 
-let $CACHE = expand('~/.cache')
 set viminfo+=n~/.vim/tmp/info.txt
 set undodir=~/.vim/tmp/undo.txt
 set viewdir=~/.vim/tmp/view
@@ -28,6 +27,11 @@ set path+=/usr/include/c++/HEAD/
 set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
 " tags;     current-dirからtagsが見つかるまで遡る
 " tas;/dir  上記と同じだが/dirより上には行かない
+
+let $CACHE = expand('~/.cache')
+if !isdirectory($CACHE)
+  call mkdir($CACHE, 'p')
+endif
 
 if filereadable(expand('~/.vimrc.before'))
   source $HOME/.vimrc.before
@@ -52,11 +56,19 @@ nnoremap g<C-G> <Nop>
 xnoremap g<C-G> <Nop>
 "}}}
 
-if ! exists('g:noplugin')
-  call s:source('neobundle')
-endif
-filetype plugin indent on
+call s:source('dein')
+
+" if ! exists('g:noplugin')
+"   call s:source('neobundle')
+" endif
+
+" filetype plugin indent on
+" syntax enable
+
+" Lazy loading
+silent! filetype plugin indent on
 syntax enable
+" filetype detect
 
 set encoding=utf-8
 set termencoding=utf-8
