@@ -1,0 +1,379 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+#unite
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'tacroe/unite-mark'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'tsukkee/unite-tag'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-help'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'thinca/vim-unite-history'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_source = 'unite.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'osyo-manga/unite-fold'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-highlight'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-quickrun_config'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-quickfix'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'kmnk/vim-unite-giti'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Kocha/vim-unite-tig'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-airline_themes'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'pasela/unite-webcolorname'
+on_source = 'unite.vim'
+
+
+#view
+
+[[plugins]]
+repo = 'powerman/vim-plugin-AnsiEsc'
+
+[[plugins]]
+repo = 'bling/vim-airline'
+
+
+#action
+
+[[plugins]]
+repo = 'u10e10/yankround.vim'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+
+[[plugins]]
+repo = 'tyru/vim-altercmd'
+
+[[plugins]]
+repo = 'kana/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-speeddating'
+
+[[plugins]]
+repo = 'LeafCage/foldCC.vim'
+
+[[plugins]]
+repo = 'kana/vim-niceblock'
+on_map = ['<Plug>(niceblock-I)', '<Plug>(niceblock-gI)', '<Plug>(niceblock-A)']
+
+[[plugins]]
+repo = 't9md/vim-choosewin'
+
+[[plugins]]
+repo = 'bkad/CamelCaseMotion'
+
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+
+[[plugins]]
+repo = 'kana/vim-smartword'
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+[[plugins]]
+repo = 'matchit.zip'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'taku-o/vim-vis'
+
+#search and replace
+
+[[plugins]]
+# show search point on the command-line
+repo = 'osyo-manga/vim-anzu'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-over'
+
+
+#syntaxchecker
+
+[[plugins]]
+repo = 'scrooloose/syntastic.git'
+
+
+#quickrun
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'osyo-manga/quickrun-outputter-replace_region'
+
+
+#input
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+
+[[plugins]]
+repo = 'cohama/vim-smartinput-endwise'
+depends = 'vim-smartinput'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+
+
+#git
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+# gitのdiffを行に表示
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+# git log --graph
+repo = 'idanarye/vim-merginal'
+
+[[plugins]]
+# git log
+repo = 'cohama/agit.vim'
+
+[[plugins]]
+# git add -p
+repo = 'AndrewRadev/gapply.vim'
+
+[[plugins]]
+repo = 'rhysd/committia.vim'
+
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+
+
+#web
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'mattn/wwwrenderer-vim'
+
+[[plugins]]
+repo = 'thinca/vim-openbuf'
+
+
+#tag and ref
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+
+[[plugins]]
+repo = 'yuku-t/vim-ref-ri'
+
+[[plugins]]
+repo = 'mfumi/ref-dicts-en'
+
+
+#operator
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+# gr
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+
+[[plugins]]
+# yank delete changeなどのblockwise版
+repo = 'osyo-manga/vim-textobj-blockwise'
+depends = 'vim-operator-block'
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-block'
+depends = 'vim-operator-user'
+
+[[plugins]]
+# sa sd sr
+repo = 'rhysd/vim-operator-surround'
+depends = 'vim-operator-user'
+
+
+#textobj
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+# e buffer
+repo = 'kana/vim-textobj-entire'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+ # l -> i
+repo = 'kana/vim-textobj-indent'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# y syntax-highlight
+repo = 'kana/vim-textobj-syntax'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# z
+repo = 'kana/vim-textobj-fold'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# l -> L ignore last-char of current-line
+repo = 'kana/vim-textobj-line'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# u
+repo = 'mattn/vim-textobj-url'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# w use it with CamelCaseMotion
+repo = 'h1mesuke/textobj-wiw'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# c
+repo = 'thinca/vim-textobj-comment'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# f{char} select a range between character
+repo = 'thinca/vim-textobj-between'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# ip last pasted textobj. don't have ap
+repo = 'gilligan/textobj-lastpaste'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# sb some block
+repo = 'osyo-manga/vim-textobj-multiblock'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# I A 連続したtextobjを矩形選択 ciw -> cIw
+repo = 'osyo-manga/vim-textobj-blockwise'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# Can make textobj by regex
+repo = 'osyo-manga/vim-textobj-from_regexp'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# q some syntax /../ '..'
+repo = 'deris/vim-textobj-enclosedsyntax'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# 複数のtextobjを一つにまとめる
+repo = 'osyo-manga/vim-textobj-multitextobj'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+# change keymap f -> F
+repo = 'kana/vim-textobj-function'
+depends = 'vim-textobj-user'
+
+
+#colorscheme
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'djjcast/mirodark'
+
+[[plugins]]
+repo = 'vim-scripts/BusyBee'
+
+[[plugins]]
+repo = '1player/lettuce.vim'
+
+
+#misc
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+

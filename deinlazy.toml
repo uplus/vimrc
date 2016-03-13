@@ -1,0 +1,277 @@
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+on_map = '<Plug>'
+on_cmd = ['VimShell', 'VimShellTab', 'VimShellExecute', 'VimShellPop', 'VimShellInteractive']
+
+[[plugins]]
+repo = 'ujihisa/vimshell-ssh'
+on_ft = 'vimshell'
+
+
+#unite
+
+[[plugins]]
+repo = 'rhysd/unite-ruby-require.vim'
+on_source = 'unite.vim'
+on_ft= 'ruby'
+
+[[plugins]]
+repo = 'basyura/unite-rails'
+on_source = 'unite.vim'
+on_ft = 'ruby'
+
+
+#view
+
+[[plugins]]
+repo = 'Shougo/vinarise.vim'
+on_cmd = 'Vinarise'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+on_map = ['<Plug>(quickhl', '<Plug>(operator-quickhl']
+
+[[plugins]]
+repo = 'oblitum/rainbow'
+on_map = ['RainbowToggle', 'RainbowLoad']
+
+[[plugins]]
+repo = 'lilydjwg/colorizer'
+on_cmd = ['ColorClear', 'ColorToggle', 'ColorHighlight']
+
+
+#action
+
+[[plugins]]
+repo = 'AndrewRadev/linediff.vim'
+on_cmd = 'Linediff'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
+
+[[plugins]]
+repo = 'tyru/nextfile.vim'
+on_map = '<Plug>(nextfile-'
+
+[[plugins]]
+repo = 'AndrewRadev/switch.vim'
+on_cmd = 'Switch'
+
+[[plugins]]
+repo = 'osyo-manga/vim-jplus'
+on_map = '<Plug>(jplus'
+
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+on_map = ['<Plug>(expand_region_expand)', '<Plug>(expand_region_shrink)']
+
+
+#search and replace
+
+[[plugins]]
+repo = 'haya14busa/vim-asterisk'
+on_map = '<Plug>(asterisk-'
+
+[[plugins]]
+repo = 'tpope/vim-abolish'
+on_map = ['<Plug>Coerce']
+
+[[plugins]]
+repo = 'osyo-manga/vim-hopping'
+on_map = '<Plug>(hopping'
+
+[[plugins]]
+repo = 'daisuzu/rainbowcyclone.vim'
+on_map = ['<Plug>(rc_search_', '<Plug>(rc_highlight)']
+
+[[plugins]]
+# quickfixの各行を編集、反映できる
+repo = 'thinca/vim-qfreplace'
+on_ft = ['unite', 'quickfix']
+
+
+#ruby
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'todesking/ruby_hl_lvar.vim'
+on_ft = 'ruby'
+
+#python
+
+[[plugins]]
+repo = 'hdima/python-syntax'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'jpythonfold.vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+
+
+#haskell
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+on_ft = 'haskell'
+external_commands = 'ghc-mod'
+
+
+#input
+
+[[plugins]]
+repo = 'rsense/rsense'
+name = 'orig_rsense'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'NigoroJr/rsense'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'Rip-Rip/clang_complete'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+on_i = 1
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_ft = 'snippet'
+on_i = 1
+
+[[plugins]]
+repo = 'mattn/googlesuggest-complete-vim'
+on_i = 1
+
+
+#git
+
+[[plugins]]
+repo = 'lambdalisue/vim-gista'
+on_cmd = ['Gista']
+on_func = 'gista#'
+
+
+#web
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_cmd = [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ]
+on_map = [ '<Plug>(openbrowser-open)', '<Plug>(openbrowser-search)', '<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-wwwsearch)' ]
+on_func = 'openbrowser'
+
+[[plugins]]
+repo = 'tyru/open-browser-github.vim'
+depends = 'open-browser.vim'
+on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
+
+[[plugins]]
+repo = 'mattn/excitetranslate-vim'
+on_cmd = 'ExciteTranslate'
+
+
+#tags and ref
+
+[[plugins]]
+# Ruby/Bundlerに対応して、必要最低限のtagsのみを非同期生成
+repo = 'alpaca-tc/alpaca_tags'
+depends = 'vimproc.vim'
+on_cmd = ['AlpacaTagsBundle', 'AlpacaTagsUpdate', 'AlpacaTagsEnable', 'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus']
+
+
+#operator
+
+[[plugins]]
+# se evaluate textobj as expression of lambda of ruby
+repo = 'rhysd/vim-operator-evalruby'
+depends = 'vim-operator-user'
+on_map = '<Plug>(operator-evalruby)'
+
+[[plugins]]
+# command only
+repo = 'rhysd/vim-clang-format'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+# <space>j <space>k
+repo = 'osyo-manga/vim-operator-jump_side'
+depends = 'vim-operator-user'
+on_map  = '<Plug>(operator-jump'
+
+
+#misc
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+on_map = '<Plug>'
+on_path = '.*'
+
+[[plugins]]
+repo = 'sudo.vim'
+on_cmd = ['SudoWrite', 'SudoRead']
+
+[[plugins]]
+repo = 'mbbill/undotree'
+on_cmd = ['UndotreeToggle', 'UndotreeShow']
+
+[[plugins]]
+repo = 'sjl/gundo.vim'
+on_cmd = ['GundoToggle', 'GundoShow']
+
+[[plugins]]
+repo = 'rbtnn/vimconsole.vim'
+on_cmd = ['VimConsoleOpen', 'VimConsoleClose', 'VimConsoleToggle', 'VimConsoleClear', 'VimConsoleLog', 'VimConsoleRedraw', 'VimConsoleDump', 'VimConsoleLoadSession' ]
+
+[[plugins]]
+# php,htmlのindentをきれいに
+repo = 'comeonly/php.vim-html-enhanced'
+on_ft = ['php', 'html', 'xhtml']
+
+[[plugins]]
+# rangeをHTMLの実体参照に相互変換
+repo = 'inotom/str2htmlentity'
+on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
+
+[[plugins]]
+repo = 'Shougo/echodoc'
+on_i = 1
+
+[[plugins]]
+repo = 'osyo-manga/vim-stargate'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+# PP! == echomes
+repo = 'thinca/vim-prettyprint'
+on_cmd = 'PP'
+
+
+#misc
+
