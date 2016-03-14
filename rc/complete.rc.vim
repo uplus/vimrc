@@ -17,6 +17,8 @@ let g:neocomplete#min_keyword_length                = 3 " Set minimum keyword le
 let g:neocomplete#auto_completion_start_length      = 1 " 補完が自動で開始される文字数
 let g:neocomplete#manual_completion_start_length    = 0 " Set manual completion length.
 
+call neocomplete#custom#source('look', 'min_pattern_length', 3)
+
 " Enable omni completion.
 autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
