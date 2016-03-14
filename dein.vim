@@ -758,7 +758,7 @@ if dein#tap('jedi-vim') "{{{
 endif "}}}
 
 if dein#tap('open-browser.vim') "{{{
-  nmap gss <Plug>(openbrowser-wwwsearch)
+  nmap gss :<c-u>Wsearch<CR>
   nmap gsc <Plug>(openbrowser-smart-search)
   xmap gsc <Plug>(openbrowser-smart-search)
 
