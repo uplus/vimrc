@@ -66,9 +66,26 @@ call s:source('dein')
 " syntax enable
 
 " Lazy loading
-silent! filetype plugin indent on
-syntax enable
+" silent! filetype plugin indent on
+" syntax enable
 " filetype detect
+
+autocmd uAutoCmd FileType,Syntax,BufEnter,BufWinEnter * call s:my_on_filetype()
+function! s:my_on_filetype() abort "{{{
+  if &l:filetype == '' && bufname('%') == ''
+    return
+  endif
+
+  redir => filetype_out
+  silent! filetype
+  redir END
+  if filetype_out =~# 'OFF'
+    " Lazy loading
+    silent! filetype plugin indent on
+    syntax enable
+    filetype detect
+  endif
+endfunction "}}}
 
 set encoding=utf-8
 set termencoding=utf-8
