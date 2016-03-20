@@ -1,13 +1,5 @@
 " Dein.vim:
 
-function! s:on_source(cmd) abort
-  exec 'autocmd uAutoCmd User' 'dein#source#'.g:dein#name a:cmd
-endfunction
-
-function! s:post_source(cmd) abort
-  exec 'autocmd uAutoCmd User' 'dein#post_source#'.g:dein#name a:cmd
-endfunction
-
 let s:dein_dir = expand('$CACHE/dein') . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
@@ -19,14 +11,19 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 let s:path = expand('$CACHE/dein')
-let s:toml_path = '~/.vim/dein.toml'
-let s:toml_lazy_path = '~/.vim/deinlazy.toml'
+if dein#load_state(s:path)
+  let s:toml_path = '~/.vim/dein.toml'
+  let s:toml_lazy_path = '~/.vim/deinlazy.toml'
 
-call dein#begin(s:path)
-if dein#load_cache([expand('<sfile>'), s:toml_path, s:toml_lazy_path])
+  call dein#begin(s:path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path])
   call dein#load_toml(s:toml_path, {'lazy': 0})
   call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
-  call dein#save_cache()
+  call dein#end()
+  call dein#save_state()
+
+  if has('vim_starting') && dein#check_install()
+    call dein#install()
+  endif
 endif
 
 "###################### plugin config ############################"
@@ -1073,10 +1070,5 @@ if dein#tap('excitetranslate-vim') "{{{
   command! -range Trans :<line1>,<line2>:ExciteTranslate
 endif "}}}
 
-call dein#end()
-
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
 
 autocmd uAutoCmd VimEnter * call dein#call_hook('post_source')
