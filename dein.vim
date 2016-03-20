@@ -185,81 +185,17 @@ if dein#tap('vimshell.vim') "{{{
   nnoremap <space>sh :VimShellTab<CR>
 endif "}}}
 
-if dein#tap('vim-smartinput') "{{{
-
-  call s:post_source('call s:post_source_smartinput()')
-  function! s:post_source_smartinput()
-    call smartinput_endwise#define_default_rules()
-    call smartinput#map_to_trigger('i', '<Plug>(smartinput_cr)', '<Enter>', '<Enter>')
-    call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
-
-    call smartinput#define_rule({
-          \   'at'       : '\%(\<struct\>\|\<class\>\|\<enum\>\)\s*\w\+.*\%#',
-          \   'char'     : '{',
-          \   'input'    : '{};<Left><Left>',
-          \   'filetype' : ['cpp'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at'       : '\\\%(\|%\|z\)\%#',
-          \   'char'     : '(',
-          \   'input'    : '(\)<Left><Left>',
-          \   'filetype' : ['vim'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at'       : '\\(\%#\\)',
-          \   'char'     : '<BS>',
-          \   'input'    : '<Del><Del><BS><BS>',
-          \   'filetype' : ['vim'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at'       : '\\[%z](\%#\\)',
-          \   'char'     : '<BS>',
-          \   'input'    : '<Del><Del><BS><BS><BS>',
-          \   'filetype' : ['vim'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at': '\({\|\<do\>\)\s*\%#',
-          \   'char': '<Bar>',
-          \   'input': '<Bar><Bar><Left>',
-          \   'filetype': ['ruby'],
-          \ })
-
-    call smartinput#define_rule({
-          \   'at': '\({\|\<do\>\)\s*|.*\%#|',
-          \   'char': '<Bar>',
-          \   'input': '<Right>',
-          \   'filetype': ['ruby'],
-          \ })
-
-    call smartinput#define_rule({
-          \   'at': '\({\|\<do\>\)\s*|\%#|',
-          \   'char': '<BS>',
-          \   'input': '<Del><BS>',
-          \   'filetype': ['ruby'],
-          \ })
-  endfunction
-endif "}}}
-
 if dein#tap('vim-smartinput-endwise') "{{{
   let g:smartinput_endwise_avoid_neocon_conflict =  0
 
-  call s:post_source('call s:post_source_smartinput_endwise()')
-  function! s:post_source_smartinput_endwise()
-    imap <expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
-          \ pumvisible()? "\<C-y>" :
-          \ "\<Plug>(smartinput_cr)"
-  endfunction
+  imap <expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
+        \ pumvisible()? "\<C-y>" :
+        \ "\<Plug>(smartinput_cr)"
 endif "}}}
 
 if dein#tap('neocomplete.vim') && has('lua') "{{{
   let g:loaded_deoplete = 1
   let g:neocomplete#enable_at_startup = 1
-
-  call s:on_source('source ~/.vim/rc/complete.rc.vim')
 
   inoremap <expr><S-TAB> pumvisible()? "\<C-p>" : "\<S-TAB>"
   imap <expr><TAB> pumvisible()? "\<C-n>" :
@@ -270,10 +206,10 @@ if dein#tap('neocomplete.vim') && has('lua') "{{{
   imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(insert-lasttext)"
 endif "}}}
 
-if dein#tap('orig_rsense')
+if dein#tap('orig_rsense') "{{{
   let g:rsenseUseOmniFunc = 1
   let g:rsenseHome = dein#_plugins['orig_rsense'].path
-endif
+endif "}}}
 
 if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#enable_snipmate_compatibility = 1
@@ -329,7 +265,6 @@ if dein#tap('unite.vim') "{{{
 
   " unite_config "{{{
   function! s:unite_config()
-
     nmap <buffer>I 1gg<Plug>(unite_insert_head)
     nmap <buffer>A 1gg<Plug>(unite_append_end)
     nnoremap <buffer>cc ggcc
@@ -394,12 +329,6 @@ if dein#tap('unite.vim') "{{{
   endfunction "}}}
 
   au uAutoCmd FileType unite call s:unite_config()
-
-  call s:on_source('source ~/.vim/rc/unite.rc.vim')
-  call s:post_source('call s:post_source_unite()')
-  function! s:post_source_unite()
-    call unite#custom#default_action("source/vimpatches/*", "openbuf")
-  endfunction
 endif "}}}
 
 if dein#tap('unite-quickfix') "{{{
@@ -426,10 +355,6 @@ if dein#tap('vinarise') "{{{
   let g:vinarise_enable_auto_detect = 0
 endif "}}}
 
-if dein#tap('vim-quickrun') "{{{
-  call s:on_source('source ~/.vim/rc/quickrun.rc.vim')
-endif "}}}
-
 if dein#tap('vimfiler.vim') "{{{
   " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
@@ -442,8 +367,6 @@ if dein#tap('vimfiler.vim') "{{{
   nnoremap <Space>ft :VimFilerTab<CR>
   nnoremap <Space>fs :VimFilerSplit<CR>
   nnoremap <Space>fe :Vfe<CR>
-
-  call s:on_source('source ~/.vim/rc/vimfiler.rc.vim')
 endif "}}}
 
 if dein#tap('vim-easy-align') "{{{
@@ -451,7 +374,6 @@ if dein#tap('vim-easy-align') "{{{
   vmap sl <Plug>(EasyAlign)
   nmap <Space>sl <Plug>(LiveEasyAlign)
   vmap <Space>sl <Plug>(LiveEasyAlign)
-  call s:on_source('source ~/.vim/rc/easyalign.rc.vim')
 endif "}}}
 
 if dein#tap('syntastic') "{{{
@@ -484,13 +406,13 @@ if dein#tap('syntastic') "{{{
 
 endif "}}}
 
-if dein#tap('vim-hier') "{{{
-  call s:post_source('call s:post_source_hier()')
-  function! s:post_source_hier()
-    au uAutoCmd BufWritePost * HierUpdate
-  endfunction
-endif "}}}
-
+" TODO: vim-hier.
+" if dein#tap('vim-hier') "{{{
+"   call s:post_source('call s:post_source_hier()')
+"   function! s:post_source_hier()
+"     au uAutoCmd BufWritePost * HierUpdate
+"   endfunction
+" endif "}}}
 
 if dein#tap('committia.vim') "{{{
   let g:committia_open_only_vim_starting = 1
@@ -563,10 +485,6 @@ if dein#tap('vim-easymotion') "{{{
   map ;b <Plug>(easymotion-b)
 endif "}}}
 
-if dein#tap('switch.vim') "{{{
-  call s:on_source('source ~/.vim/rc/switch.rc.vim')
-endif "}}}
-
 if dein#tap('vim-airline') "{{{
   " https://github.com/bling/vim-airline/wiki/Screenshots
   let g:airline_powerline_fonts = 1
@@ -581,10 +499,6 @@ if dein#tap('vim-airline') "{{{
   let g:airline#extensions#tabline#fnamemod    = ':t' " name in tabline. second argument of fnamemodify
 endif "}}}
 
-if dein#tap('vim-submode') "{{{
-  call s:on_source('source ~/.vim/rc/submode.rc.vim')
-endif "}}}
-
 if dein#tap('hl_matchit.vim') "{{{
   let g:hl_matchit_enable_on_vim_startup = 1
   let g:hl_matchit_hl_groupname = 'Title'
@@ -593,8 +507,6 @@ if dein#tap('hl_matchit.vim') "{{{
   let g:hl_matchit_hl_groupname = 'HlMatchit'
   au uAutoCmd ColorScheme * hi HlMatchit cterm=bold,underline
 endif "}}}
-
-
 
 if dein#tap('alpaca_tags') "{{{
   let g:alpaca_tags#config = {
@@ -608,14 +520,6 @@ if dein#tap('alpaca_tags') "{{{
     " au uAutoCmd FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
     " au uAutoCmd FileReadPost,BufEnter      *       AlpacaTagsSet
   augroup END
-endif "}}}
-
-if dein#tap('vim-speeddating') "{{{
-  call s:post_source('call s:post_source_speeddating()')
-  function! s:post_source_speeddating()
-    SpeedDatingFormat! %v
-    SpeedDatingFormat! %^v
-  endfunction
 endif "}}}
 
 if dein#tap('vim-anzu') " {{{
@@ -678,7 +582,6 @@ if dein#tap('clever-f.vim') "{{{
   " <Plug>(clever-f-repeat-forward)
   " <Plug>(clever-f-repeat-back)
 endif "}}}
-
 
 if dein#tap('vim-jplus') "{{{
   nmap J <Plug>(jplus)
@@ -822,10 +725,6 @@ if dein#tap('vim-hopping') "{{{
   "   \}
 endif "}}}
 
-if dein#tap('vim-altercmd') "{{{
-  call s:post_source('source ~/.vim/rc/altercmd.rc.vim')
-endif "}}}
-
 if dein#tap('vim-abolish') "{{{
   nmap sc <plug>Coerce
 endif "}}}
@@ -854,14 +753,8 @@ if dein#tap('vim-gitgutter') "{{{
   nmap ,gh :GitGutterLineHighlightsToggle<CR>
   nmap ,gg :GitGutterSignsToggle<CR>
 
-  call s:post_source('call s:post_source_gitgutter()')
-  function! s:post_source_gitgutter()
-    hi GitGutterChangeDefault ctermfg=226
-
-    " if use vim-submode, cannot use mappings to move tab(gt gT).
-    autocmd! gitgutter TabEnter
-    autocmd! gitgutter BufEnter
-  endfunction
+  " if use vim-submode, cannot use mappings to move tab(gt gT).
+  au uAutoCmd VimEnter * au! gitgutter TabEnter,BufEnter
 endif "}}}
 
 if dein#tap('vim-gista') "{{{
@@ -969,14 +862,6 @@ if dein#tap('vim-over') "{{{
   xnoremap ss :OverCommandLine s/\v<CR>
   xnoremap sw :OverCommandLine s/\v<C-r><C-w>/<CR>
   xnoremap sW :OverCommandLine s/\v<C-r><C-a>/<CR>
-
-  " <CR>がsmartinputでマップされている
-  " それをcunmapすると色々バグる
-
-  call s:post_source('call s:post_source_over()')
-  function! s:post_source_over()
-    OverCommandLineNoremap <CR> <CR>
-  endfunction
 endif "}}}
 
 if dein#tap('vim-smartword') "{{{

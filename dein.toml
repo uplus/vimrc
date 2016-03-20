@@ -14,6 +14,10 @@ on_path = '.*'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
+hook_source = 'source ~/.vim/rc/unite.rc.vim'
+hook_post_source = '''
+  call unite#custom#default_action("source/vimpatches/*", "openbuf")
+'''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
@@ -93,15 +97,22 @@ repo = 'u10e10/yankround.vim'
 
 [[plugins]]
 repo = 'kana/vim-submode'
+hook_post_source = 'source ~/.vim/rc/submode.rc.vim'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'tyru/vim-altercmd'
+hook_post_source = 'source ~/.vim/rc/altercmd.rc.vim'
 
 [[plugins]]
 repo = 'kana/vim-repeat'
 
 [[plugins]]
 repo = 'tpope/vim-speeddating'
+hook_post_source = '''
+  SpeedDatingFormat! %v
+  SpeedDatingFormat! %^v
+'''
 
 [[plugins]]
 repo = 'LeafCage/foldCC.vim'
@@ -148,6 +159,7 @@ repo = 'haya14busa/incsearch.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'
+hook_post_source = 'OverCommandLineNoremap <CR> <CR>'
 
 
 #syntaxchecker
@@ -160,6 +172,7 @@ repo = 'scrooloose/syntastic.git'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+hook_source = 'source ~/.vim/rc/quickrun.rc.vim'
 
 [[plugins]]
 repo = 'osyo-manga/shabadou.vim'
@@ -179,6 +192,7 @@ repo = 'Shougo/neoinclude.vim'
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
+hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
 repo = 'cohama/vim-smartinput-endwise'
@@ -202,6 +216,7 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 # gitのdiffを行に表示
 repo = 'airblade/vim-gitgutter'
+hook_post_source = 'hi GitGutterChangeDefault ctermfg=226'
 
 [[plugins]]
 # git log --graph
@@ -268,6 +283,10 @@ depends = 'vim-operator-user'
 [[plugins]]
 # sa sd sr
 repo = 'rhysd/vim-operator-surround'
+depends = 'vim-operator-user'
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-exec_command'
 depends = 'vim-operator-user'
 
 
