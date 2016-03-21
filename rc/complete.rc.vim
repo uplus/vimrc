@@ -41,29 +41,3 @@ let g:neocomplete#sources#omni#input_patterns.cpp   = '[^.[:digit:] *\t]\%(\.\|-
 " let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
 " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-
-" clang_complete "{{{
-let g:clang_complete_auto = 0
-let g:clang_auto_select   = 0
-let g:clang_hl_errors     = 0
-let g:clang_use_library	  = 1
-let g:clang_user_options  = matchstr($CPP_COMP_OPT, '\V-std=c++\.\.')
-let g:clang_make_default_keymappings = 0
-let g:clang_snippets      = 1
-let g:clang_complete_optional_args_in_snippets = 1
-
-if IsMac()
-  " let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
-  let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
-  let g:clang_user_options .= ' -stdlib=libc++'
-else
-  let g:clang_library_path =  '/usr/lib/llvm-3.6/lib/libclang.so'
-endif
-
-if empty(getftype(g:clang_library_path))
-  let g:clang_use_library = 0
-  let g:clang_library_path = ""
-endif
-"}}}
-
