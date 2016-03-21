@@ -93,6 +93,9 @@ repo = 'bling/vim-airline'
 #action
 
 [[plugins]]
+repo = 'tyru/nextfile.vim'
+
+[[plugins]]
 repo = 'u10e10/yankround.vim'
 
 [[plugins]]

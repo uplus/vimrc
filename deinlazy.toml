@@ -60,10 +60,6 @@ on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
 hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 
 [[plugins]]
-repo = 'tyru/nextfile.vim'
-on_map = '<Plug>(nextfile-'
-
-[[plugins]]
 repo = 'AndrewRadev/switch.vim'
 on_cmd = 'Switch'
 on_map = '!'
