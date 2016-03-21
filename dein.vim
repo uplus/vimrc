@@ -147,9 +147,9 @@ endif "}}}
 " commentout taps "{{{
 if dein#tap('caw.vim')
   let g:caw_no_default_keymappings = 1
-  xmap gc <Plug>(caw:i:toggle)
   xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:i:toggle)
   xmap gy <Plug>(comment-toggle-yank)
+  xmap gc <Plug>(caw:i:toggle)
 endif
 
 if dein#tap('nerdcommenter')
@@ -165,19 +165,13 @@ if dein#tap('nerdcommenter')
   nmap gcc <Plug>NERDCommenterToggle
   nmap gyy <Plug>NERDCommenterYank
 
-  " Aじゃないとmotionのaが使えない
+  " Aじゃないとobjectのaと被る
   nmap gcA <Plug>NERDCommenterAppend
 endif
 
-if dein#tap('vim-operator-exec_command') && dein#tap('nerdcommenter') && dein#tap('caw.vim')
-  nmap <silent><expr> <Plug>(operator-comment-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
-
-  nmap <silent><expr> <Plug>(operator-comment-yank-toggle)
-        \ operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
-
-  nmap gc <Plug>(operator-comment-toggle)
-  nmap gy <Plug>(operator-comment-yank-toggle)
+if dein#tap('vim-operator-exec_command') && dein#tap('caw.vim')
+  nmap <silent><expr>gc operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
+  nmap <silent><expr>gy operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
 endif
 "}}}
 
