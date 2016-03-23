@@ -462,3 +462,37 @@ function! AutoSave()
 endfunction
 "}}}
 
+" #Tabedit
+" zsh like tabedit.
+cnoremap <c-y> <c-y><BS>
+cnoremap <c-g> <c-c>:<c-p>
+
+command! -nargs=1 -complete=customlist,FileCompLikeZsh T :tabedit <args>
+
+function! FileCompLikeZsh(lead, line, pos)
+  if a:lead ==# '#'
+    return map(BuffersInfo(1), 'v:val[2]')
+  elseif a:lead ==# ''
+    let query = '*'
+  elseif stridx(a:lead, '/') != -1
+    let query = a:lead . '*'
+  else
+    let pre_glob = glob(a:lead, 1, 1)
+    if len(pre_glob) == 1 && isdirectory(pre_glob[0])
+      let query = a:lead . '/*'
+    else
+      let query = '*' . a:lead . '*'
+    endif
+  endif
+
+  let cands = []
+  for path in glob(query, 1, 1)
+    if isdirectory(path)
+      let cands += [path . '/']
+    else
+      let cands += [path]
+    endif
+  endfor
+
+  return cands
+endfunction

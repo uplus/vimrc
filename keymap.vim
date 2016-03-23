@@ -1,7 +1,6 @@
 command! Q qall!
 command! W w!
 command! Sh update | shell
-command! -nargs=* -complete=file T tabedit <args>
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
