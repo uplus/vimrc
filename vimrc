@@ -108,7 +108,8 @@ set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
 set nobackup
 set modeline modelines=2
-set cedit=<C-L> " move to cmdwin key
+" TODO: <c-g>  <C-l>には補完用のマップがある。
+set cedit=<c-l> " move to cmdwin key
 set splitright nosplitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
 " set ttyfast
