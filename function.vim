@@ -109,8 +109,8 @@ endfunction
 " #BuffersInfo
 " return list [bufnr,status,name]
 command! BuffersInfo for buf in BuffersInfo() | echo buf | endfor
-function! BuffersInfo()
-  return map(split(Capture('ls!'), '\n'),
+function! BuffersInfo(...)
+  return map(split(Capture('ls' . (a:0 == 0 || a:1 == 0? '!' : '')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction
 
