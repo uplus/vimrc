@@ -488,10 +488,10 @@ function! FileCompLikeZsh(lead, line, pos)
   let cands = []
   for path in glob(query, 1, 1)
     if isdirectory(path)
-      let cands += [path . '/']
-    else
-      let cands += [path]
+      let path  .= '/'
     endif
+    let path = substitute(path, '^' . expand('~'), '~', '')
+    let cands += [path]
   endfor
 
   return cands
