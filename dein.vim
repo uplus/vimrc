@@ -182,7 +182,7 @@ endif "}}}
 if dein#tap('vim-smartinput-endwise') "{{{
   let g:smartinput_endwise_avoid_neocon_conflict =  0
 
-  imap <expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
+  imap <silent><expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
         \ pumvisible()? "\<C-y>" :
         \ "\<Plug>(smartinput_cr)"
 endif "}}}
