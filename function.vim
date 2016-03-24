@@ -94,7 +94,7 @@ function! EraseSpace()
   endif
 
   " filetypeが一致したらreturn
-  if index(['markdown', 'gitcommit'], &filetype) != -1
+  if index(['markdown', 'gitcommit', 'help'], &filetype) != -1
     return
   endif
 
