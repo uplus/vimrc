@@ -266,11 +266,13 @@ on_cmd = ['GundoToggle', 'GundoShow']
 repo = 'rbtnn/vimconsole.vim'
 on_cmd = ['VimConsoleOpen', 'VimConsoleToggle', 'VimConsoleLog']
 on_map = '<Plug>(vimconsole_'
-hook_post_source = 'VimConsoleOpen'   # auto open.
 hook_add = '''
   let g:vimconsole#auto_redraw = 1
   let g:vimconsole#height = 10
-  command! -nargs=1 Console VimConsoleOpen | VimConsoleLog <q-args>
+  let g:vimconsole#hooks = {}
+  function! g:vimconsole#hooks.on_logged(context)
+    call vimconsole#winopen()
+  endfunction
 '''
 
 [[plugins]]
