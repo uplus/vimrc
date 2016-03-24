@@ -835,10 +835,6 @@ if dein#tap('vim-milfeulle') "{{{
   let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
 endif "}}}
 
-if dein#tap('googlesuggest-complete-vim') "{{{
-  set completefunc=googlesuggest#Complete
-endif "}}}
-
 if dein#tap('vim-over') "{{{
   " let g:over_enable_auto_nohlsearch = 1
   " let g:over_command_line_prompt = "> "

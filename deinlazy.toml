@@ -175,11 +175,6 @@ on_ft = 'vim'
 on_i = 1
 
 [[plugins]]
-repo = 'kana/vim-smartinput'
-on_i = 1
-hook_post_source = 'source ~/.vim/rc/smartinput.rc.vim'
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_ft = 'snippet'
@@ -188,6 +183,7 @@ on_i = 1
 [[plugins]]
 repo = 'mattn/googlesuggest-complete-vim'
 on_i = 1
+hook_add = 'set completefunc=googlesuggest#Complete'
 
 
 #git
@@ -271,12 +267,12 @@ repo = 'rbtnn/vimconsole.vim'
 on_cmd = ['VimConsoleOpen', 'VimConsoleClose', 'VimConsoleToggle', 'VimConsoleClear', 'VimConsoleLog', 'VimConsoleRedraw', 'VimConsoleDump', 'VimConsoleLoadSession' ]
 
 [[plugins]]
-# php,htmlのindentをきれいに
+# Beautiful indent of php and html.
 repo = 'comeonly/php.vim-html-enhanced'
 on_ft = ['php', 'html', 'xhtml']
 
 [[plugins]]
-# rangeをHTMLの実体参照に相互変換
+# To convert {range} mutually HTML and Entity.
 repo = 'inotom/str2htmlentity'
 on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
 
@@ -289,10 +285,7 @@ repo = 'osyo-manga/vim-stargate'
 on_ft = ['c', 'cpp']
 
 [[plugins]]
-# PP! == echomes
+# :PP! is same as :echomes
 repo = 'thinca/vim-prettyprint'
 on_cmd = 'PP'
-
-
-#misc
 

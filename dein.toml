@@ -198,6 +198,10 @@ depends = 'context_filetype.vim'
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
+repo = 'kana/vim-smartinput'
+hook_post_source = 'source ~/.vim/rc/smartinput.rc.vim'
+
+[[plugins]]
 repo = 'cohama/vim-smartinput-endwise'
 depends = 'vim-smartinput'
 
