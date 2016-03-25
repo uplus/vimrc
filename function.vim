@@ -446,6 +446,10 @@ function! s:delete_for_match() abort
   call repeat#set("\<Plug>(delete_for_match)")
 endfunction
 
+function! s:add_slash_tail(str)
+  return substitute(a:str, '/*$', '/', '')
+endfunction
+
 function! ResetHightlights() abort
   nohlsearch
   silent! QuickhlManualReset
@@ -476,13 +480,30 @@ function! FileCompLikeZsh(lead, line, pos)
     let query = '*'
   elseif stridx(a:lead, '/') != -1
     let query = a:lead . '*'
+  elseif a:lead =~# '\v^\~[^/]+'
+    " hash -d
+    let path = split(system('grep ^' . substitute(a:lead, '^\~', '', '') . ' ~/.vim/tmp/dir_hash.txt'), "\n")
+
+    if len(path) == 0
+      return []
+    elseif len(path) == 1
+      let str = path[0]
+      let str = matchstr(str, '^.*=\zs.*')
+      let str = s:add_slash_tail(str)
+      return [str]
+    else
+      call map(path, "matchstr(v:val, '^.*=\\zs.*')")
+      call map(path, "s:add_slash_tail(v:val)")
+      return path
+    endif
   else
-    let pre_glob = glob(a:lead, 1, 1)
+    let pre_glob = glob('*' . a:lead . '*', 1, 1)
     if len(pre_glob) == 1 && isdirectory(pre_glob[0])
-      let query = a:lead . '/*'
+      let query = s:add_slash_tail(pre_glob[0]) . '*'
     else
       let query = '*' . a:lead . '*'
     endif
+    echomsg query
   endif
 
   let cands = []
