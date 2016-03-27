@@ -1,5 +1,8 @@
 " Altercmd:
 
+CAlterCommand ww w!
+CAlterCommand www w !sudo tee > /dev/null %
+CAlterCommand qq q!
 CAlterCommand movett Movett
 CAlterCommand maps Maps
 CAlterCommand tig Tig
