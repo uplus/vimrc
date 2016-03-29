@@ -949,6 +949,12 @@ endif "}}}
 
 if dein#tap('excitetranslate-vim') "{{{
   command! -range Trans :<line1>,<line2>:ExciteTranslate
+
+  autocmd BufNewFile ==Translate==* call s:trans_config()
+  function! s:trans_config() abort
+    setl nobuflisted
+    nnoremap q :bd<CR>
+  endfunction
 endif "}}}
 
 
