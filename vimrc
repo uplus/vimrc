@@ -20,7 +20,6 @@ augroup uAutoCmd
   autocmd!
 augroup END
 
-set viminfo+=n~/.vim/tmp/info.txt
 set undodir=~/.vim/tmp/undo.txt
 set viewdir=~/.vim/tmp/view
 set path+=/usr/include/c++/HEAD/
