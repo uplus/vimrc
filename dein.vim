@@ -942,7 +942,9 @@ if dein#tap('ref-dicts-en') "{{{
 endif "}}}
 
 if dein#tap('previm') "{{{
-  let g:previm_open_cmd='firefox'
+  if executable('firefox')
+    let g:previm_open_cmd='firefox'
+  endif
 endif "}}}
 
 if dein#tap('excitetranslate-vim') "{{{
