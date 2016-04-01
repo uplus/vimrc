@@ -8,6 +8,7 @@ cabbr w!! w !sudo tee > /dev/null %
 command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=? Ls !ls -F --color=always <args>
+command! -nargs=+ Calc echo eval(<q-args>)
 
 " Opening with a specific character code again."{{{
 " In particular effective when I am garbled in a terminal.
