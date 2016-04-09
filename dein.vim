@@ -151,31 +151,24 @@ endif "}}}
 " commentout taps "{{{
 if dein#tap('caw.vim')
   let g:caw_no_default_keymappings = 1
+  let g:caw_dollarpos_sp_left = " "
+  let g:caw_dollarpos_startinsert = 1
+
+  " 回数指定は gc2jみたいにやる
+  nmap gcc <Plug>(caw:hatpos:toggle)
+  " Aじゃないとobjectのaと被る
+  nmap gcA <Plug>(caw:dollarpos:toggle)
+  nmap gyy yy<Plug>(caw:hatpos:toggle)
+
   xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:i:toggle)
   xmap gy <Plug>(comment-toggle-yank)
-  xmap gc <Plug>(caw:i:toggle)
-endif
+  xmap gc <Plug>(caw:hatpos:toggle)
 
-if dein#tap('nerdcommenter')
-  let g:NERDCreateDefaultMappings = 0
-  let g:NERDSpaceDelims = 1
+  nmap gc <Plug>(operator-caw-hatpos-toggle)
 
-  " 上下で反転させるならこれが必要
-  nmap gcj 2<Plug>NERDCommenterInvert
-  nmap gck k2<Plug>NERDCommenterInvertj
-
-  " vを付けないとこっちのじゃないと先頭に回数指定できない
-  " vを先頭につけると回数指定の動作が変わる
-  nmap gcc <Plug>NERDCommenterToggle
-  nmap gyy <Plug>NERDCommenterYank
-
-  " Aじゃないとobjectのaと被る
-  nmap gcA <Plug>NERDCommenterAppend
-endif
-
-if dein#tap('vim-operator-exec_command') && dein#tap('caw.vim')
-  nmap <silent><expr>gc operator#exec_command#mapexpr_v_keymapping("\<Plug>(caw:i:toggle)")
-  nmap <silent><expr>gy operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
+  if dein#tap('vim-operator-exec_command')
+    nmap <silent><expr>gy operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
+  endif
 endif
 "}}}
 

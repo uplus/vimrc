@@ -143,9 +143,6 @@ repo = 'rhysd/clever-f.vim'
 repo = 'matchit.zip'
 
 [[plugins]]
-repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
 repo = 'tyru/caw.vim'
 
 [[plugins]]
