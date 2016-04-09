@@ -156,6 +156,8 @@ if dein#tap('caw.vim')
 
   " 回数指定は gc2jみたいにやる
   nmap gcc <Plug>(caw:hatpos:toggle)
+  nmap gcj <Plug>(caw:hatpos:toggle)j<PLug>(caw:hatpos:toggle)k
+  nmap gck <Plug>(caw:hatpos:toggle)k<PLug>(caw:hatpos:toggle)j
   " Aじゃないとobjectのaと被る
   nmap gcA <Plug>(caw:dollarpos:toggle)
   nmap gyy yy<Plug>(caw:hatpos:toggle)
