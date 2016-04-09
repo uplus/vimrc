@@ -1,5 +1,6 @@
 " after/ftplugin.vimの中じゃないとプラグインとかに上書きされる
 
+au uAutoCmd FileType toml setl commentstring=#\ %s
 au uAutoCmd FileType * setl formatoptions-=ro
 au uAutoCmd FileType * setl formatoptions+=Bn
 " r When type <return> in insert-mode auto insert commentstring
