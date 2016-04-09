@@ -319,6 +319,7 @@ if dein#tap('unite.vim') "{{{
   function! s:unite_move_pos(is_up)
     call cursor(0, a:is_up? 1 : col('$'))
     call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
+    normal! ^
   endfunction "}}}
 
   au uAutoCmd FileType unite call s:unite_config()
