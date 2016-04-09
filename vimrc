@@ -218,6 +218,17 @@ au uAutoCmd InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 " windowの行数の10%にセットする
 au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
+let g:cursor_hold_count = 0
+au uAutoCmd CursorHold,CursorHoldI * call <SID>auto_delete_hidden_buffers()
+function! s:auto_delete_hidden_buffers() abort
+  if 10 <= g:cursor_hold_count
+    ActiveOnly
+    let g:cursor_hold_count = 0
+  else
+    let g:cursor_hold_count += 1
+  endif
+endfunction
+
 if executable('fcitx-remote')
   command! FcitxOff call system('fcitx-remote -c')
   au uAutoCmd InsertLeave * FcitxOff
