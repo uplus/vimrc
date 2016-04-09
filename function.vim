@@ -464,6 +464,16 @@ function! AutoSave()
   let g:u10_autosave = !g:u10_autosave
   echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
 endfunction
+
+let g:reg_stack = []
+function! PushReg(reg) abort
+  call add(g:reg_stack, [getreg(a:reg, 1), getregtype(a:reg)])
+endfunction
+
+function! PopReg(reg) abort
+  let data = remove(g:reg_stack, -1)
+  call setreg(a:reg, data[0], data[1])
+endfunction
 "}}}
 
 " #Tabedit
