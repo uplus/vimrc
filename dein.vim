@@ -724,9 +724,9 @@ if dein#tap('vim-abolish') "{{{
 endif "}}}
 
 if dein#tap('CamelCaseMotion') "{{{
-    map <silent> <Space>w <Plug>CamelCaseMotion_w
-    map <silent> <Space>b <Plug>CamelCaseMotion_b
-    map <silent> <Space>e <Plug>CamelCaseMotion_e
+  map <silent> <Space>w <Plug>CamelCaseMotion_w
+  map <silent> <Space>b <Plug>CamelCaseMotion_b
+  map <silent> <Space>e <Plug>CamelCaseMotion_e
 endif "}}}
 
 if dein#tap('vim-gitgutter') "{{{
@@ -954,4 +954,5 @@ if dein#tap('excitetranslate-vim') "{{{
 endif "}}}
 
 
+autocmd uAutoCmd VimEnter * call dein#call_hook('source')
 autocmd uAutoCmd VimEnter * call dein#call_hook('post_source')

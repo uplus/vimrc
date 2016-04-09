@@ -180,6 +180,9 @@ repo = 'osyo-manga/shabadou.vim'
 [[plugins]]
 repo = 'osyo-manga/quickrun-outputter-replace_region'
 
+# [[plugins]]
+# repo  = 'rhysd/quickrun-unite-quickfix-outputter'
+
 
 #input
 

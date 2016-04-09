@@ -131,7 +131,7 @@ set nrformats-=octal
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
-set updatetime=500
+set updatetime=2500
 
 " #indent
 au uAutoCmd FileType conf,gitcommit,html,css set nocindent
@@ -196,6 +196,10 @@ set complete+=d,t
 
 set t_Co=256
 set background=dark
+
+if has('gui_running')
+   set guioptions=Mc
+endif
 
 " Change cursor shape.
 if &term =~ "xterm"
