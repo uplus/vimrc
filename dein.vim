@@ -220,7 +220,7 @@ if dein#tap('unite.vim') "{{{
   command! Headline Unite -auto-resize -start-insert -buffer-name=headline headline
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
   command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
-  command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix
+  command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix -buffer-name=quickfix
   command! -nargs=* Maps execute 'Unite -auto-resize -start-insert output:map\ ' . <q-args> . '|map!\ ' . <q-args>
   command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
   "}}}
@@ -271,8 +271,11 @@ if dein#tap('unite.vim') "{{{
     let context = unite#get_context()
 
     " unite-quickfixの設定色々
-    if context.buffer_name == 'quickrun-hook-unite-quickfix'
+    if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
+      let b:win_entered = 0
+      au uAutoCmd WinEnter <buffer> if b:win_entered != 1 | 0 | let b:win_entered = 1 | endif
       au uAutoCmd WinEnter <buffer> if winnr('$') == 1 | quit | endif
+      au uAutoCmd BufHidden <buffer> bdelete
       nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
       nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
     elseif context.buffer_name == 'location_list'
