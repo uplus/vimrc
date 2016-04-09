@@ -156,6 +156,9 @@ endfunction
 "}}}
 
 " #complete "{{{
+cnoremap <c-y> <c-y><BS>
+cnoremap <c-g> <c-c>:<c-p>
+
 inoremap <C-x>n <C-x><C-n>
 inoremap <C-x>i <C-x><C-i>
 inoremap <C-x>] <C-x><C-]>

@@ -479,12 +479,9 @@ function! PopReg(reg) abort
 endfunction
 "}}}
 
-" #Tabedit
+" #Tabedit "{{{
 " zsh like tabedit.
-cnoremap <c-y> <c-y><BS>
-cnoremap <c-g> <c-c>:<c-p>
-
-command! -nargs=1 -complete=customlist,FileCompLikeZsh T :tabedit <args>
+command! -nargs=1 -complete=customlist,FileCompLikeZsh T tabedit <args>
 
 function! FileCompLikeZsh(lead, line, pos)
   if a:lead ==# '#'
@@ -530,3 +527,4 @@ function! FileCompLikeZsh(lead, line, pos)
 
   return cands
 endfunction
+"}}}
