@@ -399,8 +399,10 @@ xnoremap <silent><Plug>(MoveUp)   :<C-u>call <SID>Move(v:count1, 1, 1)<CR>
 xnoremap <silent><Plug>(MoveDown) :<C-u>call <SID>Move(v:count1, 0, 1)<CR>
 
 function! s:Move(count, is_up, is_visual) abort
+  let save_reg = 'p'
+  call PushReg(save_reg)
   let pos  = getcurpos()
-  let delete = (a:is_visual? '*' : '') . 'delete'
+  let delete = (a:is_visual? '*' : '') . 'delete ' . save_reg
 
   if a:is_up
     let line = a:count
@@ -410,15 +412,16 @@ function! s:Move(count, is_up, is_visual) abort
 
     exec delete
     silent! exec 'normal!' repeat('k', line)
-    normal! P
+    execute 'put!' save_reg
   else
     exec delete
     silent! exec 'normal!' repeat('j', a:count-1)
-    normal! p
+    execute 'put' save_reg
   endif
 
   let pos[1] = line('.')
   call setpos('.', pos)
+  call PopReg(save_reg)
 
   if a:is_visual
     normal! '[V']
