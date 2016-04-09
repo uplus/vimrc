@@ -4,9 +4,9 @@ let g:unite_quickfix_is_multiline = 0
 let g:unite_quickfix_filename_is_pathshorten = 0
 let g:unite#filters#converter_quickfix_highlight#enable_bold_for_message = 1
 
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-xnoremap \r :QuickRun -mode v<CR>
+nnoremap <expr><silent><c-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<c-c>"
 nmap \R <Plug>(quickrun-op)
+xmap \r <Plug>(quickrun)
 
 nnoremap <silent>\r :call SmartQuickRun()<CR>
 function! g:SmartQuickRun()
@@ -19,10 +19,6 @@ endfunction
 
 command! QuickRunStop call quickrun#sweep_sessions()
 command! Stop QuickRunStop
-command! Spec :write | !rspec %
-au uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :Spec<CR>
-au uAutoCmd FileType vim nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
-au uAutoCmd FileType markdown noremap <silent><buffer>\r :write<CR>:PrevimOpen<CR>
 
 au uAutoCmd FileType quickrun call s:quickrun_config()
 function! s:quickrun_config()
@@ -30,6 +26,9 @@ function! s:quickrun_config()
   nnoremap <silent><buffer>q <C-w>q
   au BufEnter <buffer> if winnr('$') == 1 | quit | endif
 endfunction
+au uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :update<CR>:!rspec %<CR>
+au uAutoCmd FileType vim      nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
+au uAutoCmd FileType markdown nnoremap <silent><buffer>\r :write<CR>:PrevimOpen<CR>
 
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
@@ -97,7 +96,7 @@ let s:hook = s:make_hook_points_module({
 
 function! s:hook.hook_apply(context)
   if !empty(&g:errorformat)
-    cgetexpr ""
+    silent cgetexpr ""
   endif
 endfunction
 
@@ -107,11 +106,11 @@ unlet s:hook
 
 " Languages "{{{
 let g:quickrun_config.c = {
-      \ 'command' : '/usr/bin/clang',
+      \ 'command' : 'clang',
       \ 'cmdopt'  : $C_COMP_OPT
       \ }
 let g:quickrun_config.cpp = {
-      \ 'command' : '/usr/bin/clang++',
+      \ 'command' : 'clang++',
       \ 'cmdopt'  : $CPP_COMP_OPT
       \ }
 let g:quickrun_config.markdown = {
