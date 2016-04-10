@@ -73,6 +73,14 @@ on_map = '<Plug>(jplus'
 repo = 'terryma/vim-expand-region'
 on_map = ['<Plug>(expand_region_expand)', '<Plug>(expand_region_shrink)']
 
+[[plugins]]
+repo     = 'dhruvasagar/vim-table-mode'
+on_map   = ['<Plug>(table-mode', '\tm', '\tt']
+on_cmd   = ['TableModeToggle', 'Tableize']
+hook_add = '''
+  let g:table_mode_map_prefix = '\t'
+  xmap \tT <Plug>(table-mode-tableize-delimiter)
+'''
 
 #search and replace
 
