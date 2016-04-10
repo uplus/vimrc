@@ -953,6 +953,7 @@ if dein#tap('excitetranslate-vim') "{{{
   endfunction
 endif "}}}
 
-
+filetype plugin indent on
+syntax on
 autocmd uAutoCmd VimEnter * call dein#call_hook('source')
 autocmd uAutoCmd VimEnter * call dein#call_hook('post_source')

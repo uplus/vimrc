@@ -69,7 +69,7 @@ call s:source('dein')
 " syntax enable
 " filetype detect
 
-autocmd uAutoCmd FileType,Syntax,BufEnter,BufWinEnter * call s:my_on_filetype()
+" autocmd uAutoCmd FileType,Syntax,BufEnter,BufWinEnter * call s:my_on_filetype()
 function! s:my_on_filetype() abort "{{{
   if &l:filetype == '' && bufname('%') == ''
     return
