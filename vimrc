@@ -222,7 +222,7 @@ let g:cursor_hold_count = 0
 au u10ac CursorHold,CursorHoldI * call <SID>auto_delete_hidden_buffers()
 function! s:auto_delete_hidden_buffers() abort
   if 10 <= g:cursor_hold_count
-    ActiveOnly
+    DeleteTrashBuffers
     let g:cursor_hold_count = 0
   else
     let g:cursor_hold_count += 1
