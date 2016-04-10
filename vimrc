@@ -16,7 +16,7 @@ function! s:source(path)
   execute 'source' fnameescape(expand('~/.vim/' . a:path . '.vim'))
 endfunction
 
-augroup uAutoCmd
+augroup u10ac
   autocmd!
 augroup END
 
@@ -69,7 +69,7 @@ call s:source('dein')
 " syntax enable
 " filetype detect
 
-" autocmd uAutoCmd FileType,Syntax,BufEnter,BufWinEnter * call s:my_on_filetype()
+" autocmd u10ac FileType,Syntax,BufEnter,BufWinEnter * call s:my_on_filetype()
 function! s:my_on_filetype() abort "{{{
   if &l:filetype == '' && bufname('%') == ''
     return
@@ -134,7 +134,7 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 set updatetime=2500
 
 " #indent
-au uAutoCmd FileType conf,gitcommit,html,css set nocindent
+au u10ac FileType conf,gitcommit,html,css set nocindent
 set autoindent cindent
 set cinkeys-=0#
 " *<Return> enterするたびにreindent
@@ -145,10 +145,10 @@ set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
                       " _を除くと*での検索がやりずらい
-" au uAutoCmd FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
-" au uAutoCmd FileType zsh setl iskeyword-=-
-au uAutoCmd FileType zsh setl iskeyword-=$
-au uAutoCmd FileType ruby setl iskeyword+=?
+" au u10ac FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
+" au u10ac FileType zsh setl iskeyword-=-
+au u10ac FileType zsh setl iskeyword-=$
+au u10ac FileType ruby setl iskeyword+=?
 
 " #menu
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
@@ -173,7 +173,7 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
-au uAutoCmd FileType zsh,ruby setl foldmethod=marker " php perl perl6 javascript clojure
+au u10ac FileType zsh,ruby setl foldmethod=marker " php perl perl6 javascript clojure
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか
@@ -211,15 +211,15 @@ call s:source('function')
 call s:source('keymap')
 
 " #autocmds
-au uAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-au uAutoCmd VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
-au uAutoCmd BufWritePre * call EraseSpace()
-au uAutoCmd InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
+au u10ac BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+au u10ac VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
+au u10ac BufWritePre * call EraseSpace()
+au u10ac InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 " windowの行数の10%にセットする
-au uAutoCmd VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
+au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
 let g:cursor_hold_count = 0
-au uAutoCmd CursorHold,CursorHoldI * call <SID>auto_delete_hidden_buffers()
+au u10ac CursorHold,CursorHoldI * call <SID>auto_delete_hidden_buffers()
 function! s:auto_delete_hidden_buffers() abort
   if 10 <= g:cursor_hold_count
     ActiveOnly
@@ -231,13 +231,13 @@ endfunction
 
 if executable('fcitx-remote')
   command! FcitxOff call system('fcitx-remote -c')
-  au uAutoCmd InsertLeave * FcitxOff
+  au u10ac InsertLeave * FcitxOff
 endif
 
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
-au uAutoCmd SwapExists * let g:swapname = v:swapname
+au u10ac SwapExists * let g:swapname = v:swapname
 
-au uAutoCmd VimEnter * call s:vimenter()
+au u10ac VimEnter * call s:vimenter()
 function! s:vimenter()
   if argc() == 0
     setl buftype=nowrite
@@ -250,8 +250,8 @@ function! s:vimenter()
 endfunction
 
 if !exists('g:noplugin')
-  au uAutoCmd FileType    * nested call s:set_colors()
-  au uAutoCmd ColorScheme * call s:set_highlights()
+  au u10ac FileType    * nested call s:set_colors()
+  au u10ac ColorScheme * call s:set_highlights()
 endif
 
 let g:colors_name = ''
@@ -323,11 +323,11 @@ function! s:set_highlights() "{{{
 endfunction "}}}
 
 " #filetype config "{{{
-au uAutoCmd FileType c,cpp    setl commentstring=//\ %s
-au uAutoCmd FileType html,css setl foldmethod=indent
-au uAutoCmd FileType qf       nnoremap <silent><buffer>q :quit<CR>
+au u10ac FileType c,cpp    setl commentstring=//\ %s
+au u10ac FileType html,css setl foldmethod=indent
+au u10ac FileType qf       nnoremap <silent><buffer>q :quit<CR>
 
-au uAutoCmd StdinReadPost * call s:stdin_config()
+au u10ac StdinReadPost * call s:stdin_config()
 function! s:stdin_config()
   nnoremap <buffer>q :quit<CR>
   setl buftype=nofile

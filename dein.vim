@@ -273,13 +273,13 @@ if dein#tap('unite.vim') "{{{
     " unite-quickfixの設定色々
     if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
       let b:win_entered = 0
-      au uAutoCmd WinEnter <buffer> if b:win_entered != 1 | 0 | let b:win_entered = 1 | endif
-      au uAutoCmd WinEnter <buffer> if winnr('$') == 1 | quit | endif
-      au uAutoCmd BufHidden <buffer> bdelete
+      au u10ac WinEnter <buffer> if b:win_entered != 1 | 0 | let b:win_entered = 1 | endif
+      au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
+      au u10ac BufHidden <buffer> bdelete
       nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
       nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
     elseif context.buffer_name == 'location_list'
-      au uAutoCmd WinEnter <buffer> if winnr('$') == 1 | quit | endif
+      au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
     elseif context.buffer_name ==# 'buffer'
       nnoremap <silent><buffer><expr><nowait>s unite#do_action('split')
       nnoremap <silent><buffer><expr><nowait>v unite#do_action('vsplit')
@@ -325,7 +325,7 @@ if dein#tap('unite.vim') "{{{
     normal! ^
   endfunction "}}}
 
-  au uAutoCmd FileType unite call s:unite_config()
+  au u10ac FileType unite call s:unite_config()
 endif "}}}
 
 if dein#tap('unite-quickfix') "{{{
@@ -345,7 +345,7 @@ if dein#tap('unite-quickfix') "{{{
     Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
   endfunction
 
-  " au uAutoCmd VimEnter * au uAutoCmd BufWritePost * LocationList
+  " au u10ac VimEnter * au u10ac BufWritePost * LocationList
 endif "}}}
 
 if dein#tap('vinarise') "{{{
@@ -398,7 +398,7 @@ if dein#tap('syntastic') "{{{
   " wrteで開く
   " readで開くのはafter/plugin/の中にある
   " function! dein#tapped.hooks.on_post_source(bundle)
-  "   au uAutoCmd BufWritePost * LocationList
+  "   au u10ac BufWritePost * LocationList
   " endfunction
 
 endif "}}}
@@ -407,7 +407,7 @@ endif "}}}
 " if dein#tap('vim-hier') "{{{
 "   call s:post_source('call s:post_source_hier()')
 "   function! s:post_source_hier()
-"     au uAutoCmd BufWritePost * HierUpdate
+"     au u10ac BufWritePost * HierUpdate
 "   endfunction
 " endif "}}}
 
@@ -443,7 +443,7 @@ if dein#tap('yankround.vim') "{{{
   let g:yankround_dir           = '~/.vim/tmp/yankround_history'
   let g:yankround_use_region_hl = 1
   highlight YankRoundRegion cterm=italic
-  au uAutoCmd ColorScheme * highlight YankRoundRegion cterm=italic
+  au u10ac ColorScheme * highlight YankRoundRegion cterm=italic
 endif "}}}
 
 if dein#tap('vim-easymotion') "{{{
@@ -467,7 +467,7 @@ if dein#tap('vim-easymotion') "{{{
   endfunction
 
   call s:easymotion_highlight()
-  au uAutoCmd ColorScheme * call s:easymotion_highlight()
+  au u10ac ColorScheme * call s:easymotion_highlight()
 
   " <Plug>(easymotion-sn) 複数文字入力で絞り込み
   " <Plug>(easymotion-lineanywhere) current line上のwordの初めと終わりを選択して飛ぶ
@@ -502,7 +502,7 @@ if dein#tap('hl_matchit.vim') "{{{
   let g:hl_matchit_allow_ft     = 'html,vim,zsh,sh' " ruby上手くいかない
   let g:hl_matchit_cursor_wait  = 0.10              " 更新頻度
   let g:hl_matchit_hl_groupname = 'HlMatchit'
-  au uAutoCmd ColorScheme * hi HlMatchit cterm=bold,underline
+  au u10ac ColorScheme * hi HlMatchit cterm=bold,underline
 endif "}}}
 
 if dein#tap('alpaca_tags') "{{{
@@ -513,9 +513,9 @@ if dein#tap('alpaca_tags') "{{{
 
   augroup AlpacaTags
     autocmd!
-    " au uAutoCmd FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
-    " au uAutoCmd FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
-    " au uAutoCmd FileReadPost,BufEnter      *       AlpacaTagsSet
+    " au u10ac FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
+    " au u10ac FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
+    " au u10ac FileReadPost,BufEnter      *       AlpacaTagsSet
   augroup END
 endif "}}}
 
@@ -534,8 +534,8 @@ if dein#tap('vim-asterisk') "{{{
 endif "}}}
 
 if dein#tap('incsearch.vim') " {{{
-  au uAutoCmd ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
-  au uAutoCmd ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
+  au u10ac ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
+  au u10ac ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
 
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
@@ -646,7 +646,7 @@ if dein#tap('vim-choosewin') "{{{
 endif "}}}
 
 if dein#tap('jedi-vim') "{{{
-  autocmd uAutoCmd FileType python setlocal omnifunc=jedi#completions
+  autocmd u10ac FileType python setlocal omnifunc=jedi#completions
   let g:jedi#completions_enabled    = 0
   let g:jedi#auto_vim_configuration = 0
 endif "}}}
@@ -748,7 +748,7 @@ if dein#tap('vim-gitgutter') "{{{
   nmap ,gg :GitGutterSignsToggle<CR>
 
   " if use vim-submode, cannot use mappings to move tab(gt gT).
-  au uAutoCmd VimEnter * au! gitgutter TabEnter,BufEnter
+  au u10ac VimEnter * au! gitgutter TabEnter,BufEnter
 endif "}}}
 
 if dein#tap('vim-gista') "{{{
@@ -804,8 +804,8 @@ if dein#tap('nextfile.vim') "{{{
 endif "}}}
 
 if dein#tap('vim-qfreplace') "{{{
-  au uAutoCmd FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
-  au uAutoCmd FileType qfreplace call s:qfreplace_config()
+  au u10ac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+  au u10ac FileType qfreplace call s:qfreplace_config()
 
   function! s:qfreplace_config()
     setl nobuflisted
@@ -902,7 +902,7 @@ endif "}}}
 
 if dein#tap('ruby_hl_lvar.vim') "{{{
   let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-  au uAutoCmd ColorScheme * hi rubyLocalVariable ctermfg=38
+  au u10ac ColorScheme * hi rubyLocalVariable ctermfg=38
 endif "}}}
 
 if dein#tap('ref-dicts-en') "{{{
@@ -931,7 +931,7 @@ if dein#tap('ref-dicts-en') "{{{
     return l:body
   endfunction
 
-  au uAutoCmd FileType ref-webdict nnoremap <silent><buffer>q :quit<CR>
+  au u10ac FileType ref-webdict nnoremap <silent><buffer>q :quit<CR>
 
   command! -nargs=1 Wiki Ref webdict wiki <args>
   command! -nargs=1 Eng Ref webdict <args>
@@ -955,5 +955,5 @@ endif "}}}
 
 filetype plugin indent on
 syntax on
-autocmd uAutoCmd VimEnter * call dein#call_hook('source')
-autocmd uAutoCmd VimEnter * call dein#call_hook('post_source')
+autocmd u10ac VimEnter * call dein#call_hook('source')
+autocmd u10ac VimEnter * call dein#call_hook('post_source')

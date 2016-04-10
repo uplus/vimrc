@@ -38,7 +38,7 @@ function! s:set_vimfiler_unexpand_tree() "{{{
   execute 'nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree) :<C-u>call' l:func_name '<CR>'
 endfunction "}}}
 
-au uAutoCmd FileType vimfiler call s:vimfiler_settings()
+au u10ac FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings() "{{{
   setlocal nobuflisted
   call s:set_vimfiler_unexpand_tree()

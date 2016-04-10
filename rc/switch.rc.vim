@@ -1,7 +1,7 @@
 " switch.vim
 let g:switch_mapping = "<silent>!"
 let g:switch_find_smallest_match = 1
-au uAutoCmd FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
+au u10ac FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
 
 let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
 

@@ -18,9 +18,9 @@ endfunction
 
 command! QuickRunStop call quickrun#sweep_sessions()
 command! Stop QuickRunStop
-au uAutoCmd BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :update<CR>:!rspec %<CR>
-au uAutoCmd FileType vim      nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
-au uAutoCmd FileType markdown nnoremap <silent><buffer>\r :write<CR>:PrevimOpen<CR>
+au u10ac BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :update<CR>:!rspec %<CR>
+au u10ac FileType vim      nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
+au u10ac FileType markdown nnoremap <silent><buffer>\r :write<CR>:PrevimOpen<CR>
 
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
