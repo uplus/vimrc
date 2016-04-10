@@ -42,6 +42,30 @@ let g:quickrun_config._ = {
       " -createを指定することで再実行した時に-no-focusでもハイライトを有効に
       " topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
 
+let g:quickrun_config['watchdogs_checker/_'] = {
+      \ 'hook/close_unite_quickfix/enable_module_loaded'  : 1,
+      \ 'hook/clear_quickfix/enable_hook_loaded'          : 1,
+      \ 'hook/unite_quickfix/enable_exit'                 : 1,
+      \ 'hook/back_window/enable_exit'             : 0,
+      \ 'hook/back_window/priority_exit'           : 1,
+      \ 'hook/quickfix_status_enable/enable_exit'  : 1,
+      \ 'hook/quickfix_status_enable/priority_exit': 2,
+      \ 'hook/hier_update/enable_exit'             : 1,
+      \ 'hook/hier_update/priority_exit'           : 3,
+      \ }
+
+let g:quickrun_config['c/watchdogs_checker'] = {
+      \ 'command': 'clang',
+      \ 'exec': '%c %o -fsyntax-only %s:p',
+      \ 'cmdopt': $C_COMP_OPT,
+      \ }
+
+let g:quickrun_config['cpp/watchdogs_checker'] = {
+      \ 'command': 'clang++',
+      \ 'exec': '%c %o -fsyntax-only %s:p',
+      \ 'cmdopt': $CPP_COMP_OPT,
+      \ }
+
 function! s:make_hook_points_module(base)
   return shabadou#make_hook_points_module(a:base)
 endfunction

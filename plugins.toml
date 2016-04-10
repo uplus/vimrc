@@ -164,8 +164,18 @@ hook_post_source = 'OverCommandLineNoremap <CR> <CR>'
 
 #syntaxchecker
 
+# [[plugins]]
+# repo = 'scrooloose/syntastic.git'
+
 [[plugins]]
-repo = 'scrooloose/syntastic.git'
+repo = 'osyo-manga/vim-watchdogs'
+depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
+
+[[plugins]]
+repo = 'dannyob/quickfixstatus'
+
+[[plugins]] # forked from cohama/vim-hier
+repo = 'pocke/vim-hier'
 
 
 #quickrun

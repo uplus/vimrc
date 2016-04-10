@@ -400,6 +400,15 @@ if dein#tap('syntastic') "{{{
 
 endif "}}}
 
+if dein#tap('vim-watchdogs') "{{{
+  let g:watchdogs_check_BufWritePost_enable = 1
+  " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
+  let g:watchdogs_check_CursorHold_enable = 1
+  let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+
+  command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
+endif "}}}
+
 " TODO: vim-hier.
 " if dein#tap('vim-hier') "{{{
 "   call s:post_source('call s:post_source_hier()')
