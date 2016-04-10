@@ -63,6 +63,8 @@ au FileType gitrebase let g:switch_custom_definitions += [
       \ ]
 
 au FileType zsh,bash,sh let g:switch_custom_definitions += [
+      \  { '\v^(\s*)if ' : '\1elif ' },
+      \  { '\v^(\s*)elif ' : '\1if ' },
       \  [ ' -a ', ' -o '],
       \  [ ' -z ', ' -n '],
       \  [ ' -eq ', ' -ne '],

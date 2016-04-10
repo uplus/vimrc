@@ -600,7 +600,7 @@ if dein#tap('vim-quickhl') "{{{
   let g:quickhl_manual_keywords          = [] " Can use List and Dictionary
 
   nmap gh <Plug>(quickhl-manual-this)
-  nmap gl v<Plug>(quickhl-manual-this)
+  nmap gl <Plug>(operator-quickhl-manual-this-motion)iL
   nmap gm <Plug>(operator-quickhl-manual-this-motion)
   xmap gh <Plug>(quickhl-manual-this)
 
