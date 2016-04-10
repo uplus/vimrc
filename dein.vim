@@ -26,6 +26,8 @@ if dein#load_state(s:path)
   " endif
 endif
 
+" call dein#clear_state()
+
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
 let g:loaded_netrw             = 1
@@ -403,7 +405,7 @@ endif "}}}
 if dein#tap('vim-watchdogs') "{{{
   let g:watchdogs_check_BufWritePost_enable = 1
   " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
-  let g:watchdogs_check_CursorHold_enable = 1
+  let g:watchdogs_check_CursorHold_enable = 0
   let g:watchdogs_check_BufWritePost_enable_on_wq = 0
 
   command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
