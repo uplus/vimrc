@@ -403,3 +403,6 @@ repo = '1player/lettuce.vim'
 [[plugins]]
 repo = 'vim-jp/vital.vim'
 
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
