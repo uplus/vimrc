@@ -272,12 +272,11 @@ function! s:set_colors() "{{{
     hi Pmenu ctermfg=36 ctermbg=235
   elseif &filetype == 'ruby'
     call s:colorscheme('railscasts_u10')
-  elseif &filetype == 'vim'
-    call s:colorscheme('BusyBee')
   elseif &filetype == 'gitcommit'
     call s:colorscheme('gitcommit_u10')
   elseif !exists('g:colors_seted')
-    call s:colorscheme('molokai')
+    set background=dark
+    call s:colorscheme('PaperColor')
   endif
 
   let g:colors_seted = 1

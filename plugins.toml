@@ -391,11 +391,14 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'djjcast/mirodark'
 
-[[plugins]]
-repo = 'vim-scripts/BusyBee'
+# [[plugins]]
+# repo = 'vim-scripts/BusyBee'
 
 [[plugins]]
 repo = '1player/lettuce.vim'
+
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
 
 
 #misc
