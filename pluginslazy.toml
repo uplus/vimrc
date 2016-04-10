@@ -100,8 +100,7 @@ on_map = '<Plug>(hopping'
 repo = 'daisuzu/rainbowcyclone.vim'
 on_map = ['<Plug>(rc_search_', '<Plug>(rc_highlight)']
 
-[[plugins]]
-# quickfixの各行を編集、反映できる
+[[plugins]] # quickfixの各行を編集、反映できる
 repo = 'thinca/vim-qfreplace'
 on_ft = ['unite', 'quickfix']
 
@@ -222,8 +221,7 @@ on_cmd = 'ExciteTranslate'
 
 #tags and ref
 
-[[plugins]]
-# Ruby/Bundlerに対応して、必要最低限のtagsのみを非同期生成
+[[plugins]] # Ruby/Bundlerに対応して、必要最低限のtagsのみを非同期生成
 repo = 'alpaca-tc/alpaca_tags'
 depends = 'vimproc.vim'
 on_cmd = ['AlpacaTagsBundle', 'AlpacaTagsUpdate', 'AlpacaTagsEnable', 'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus']
@@ -231,19 +229,16 @@ on_cmd = ['AlpacaTagsBundle', 'AlpacaTagsUpdate', 'AlpacaTagsEnable', 'AlpacaTag
 
 #operator
 
-[[plugins]]
-# se evaluate textobj as expression of lambda of ruby
+[[plugins]] # se evaluate textobj as expression of lambda of ruby
 repo = 'rhysd/vim-operator-evalruby'
 depends = 'vim-operator-user'
 on_map = '<Plug>(operator-evalruby)'
 
-[[plugins]]
-# command only
+[[plugins]] # command only
 repo = 'rhysd/vim-clang-format'
 on_ft = ['c', 'cpp']
 
-[[plugins]]
-# <space>j <space>k
+[[plugins]] # <space>j <space>k
 repo = 'osyo-manga/vim-operator-jump_side'
 depends = 'vim-operator-user'
 on_map  = '<Plug>(operator-jump'
@@ -283,13 +278,11 @@ hook_add = '''
   endfunction
 '''
 
-[[plugins]]
-# Beautiful indent of php and html.
+[[plugins]] # Beautiful indent of php and html.
 repo = 'comeonly/php.vim-html-enhanced'
 on_ft = ['php', 'html', 'xhtml']
 
-[[plugins]]
-# To convert {range} mutually HTML and Entity.
+[[plugins]] # To convert {range} mutually HTML and Entity.
 repo = 'inotom/str2htmlentity'
 on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
 
@@ -301,8 +294,7 @@ on_i = 1
 repo = 'osyo-manga/vim-stargate'
 on_ft = ['c', 'cpp']
 
-[[plugins]]
-# :PP! is same as :echomes
+[[plugins]] # :PP! is same as :echomes
 repo = 'thinca/vim-prettyprint'
 on_cmd = 'PP'
 

@@ -14,6 +14,7 @@ CAlterCommand cap[ture] Capture
 CAlterCommand capwin CaptureWin
 CAlterCommand undoc[lear] UndoClear
 CAlterCommand uc[lear] UndoClear
+CAlterCommand ec[ho] PP
 
 CAlterCommand vsh[ell] Vshell
 CAlterCommand uni[te] Unite

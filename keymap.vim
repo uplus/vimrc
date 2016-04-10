@@ -150,7 +150,6 @@ au u10ac CmdwinEnter  * call s:cmdwin_config()
 function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>
   nnoremap <silent><buffer><C-W> :q<CR><C-W>
-  startinsert
 endfunction
 
 "}}}

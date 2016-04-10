@@ -182,8 +182,7 @@ if dein#tap('vim-smartinput-endwise') "{{{
   let g:smartinput_endwise_avoid_neocon_conflict =  0
 
   imap <silent><expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
-        \ pumvisible()? "\<C-y>" :
-        \ "\<Plug>(smartinput_cr)"
+        \ pumvisible()? "\<C-y>" : "\<Plug>(smartinput_cr)<c-g>u"
 endif "}}}
 
 if dein#tap('neocomplete.vim') && has('lua') "{{{
@@ -192,8 +191,7 @@ if dein#tap('neocomplete.vim') && has('lua') "{{{
 
   inoremap <expr><S-TAB> pumvisible()? "\<C-p>" : "\<S-TAB>"
   imap <expr><TAB> pumvisible()? "\<C-n>" :
-        \ neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" :
-        \ "\<TAB>"
+        \ neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<TAB>"
 
   inoremap <Plug>(insert-lasttext) <C-a>
   imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(insert-lasttext)"
@@ -227,6 +225,7 @@ if dein#tap('unite.vim') "{{{
 
   " keymap "{{{
   nnoremap <silent>,gs :Status<CR>
+  nnoremap <silent>;q :Quickfix<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty -buffer-name=mark mark<CR>
   nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty -buffer-name=bookmark bookmark<CR>
@@ -257,6 +256,7 @@ if dein#tap('unite.vim') "{{{
   "}}}
 
   " unite_config "{{{
+  au u10ac FileType unite call s:unite_config()
   function! s:unite_config()
     nmap <buffer>I 1gg<Plug>(unite_insert_head)
     nmap <buffer>A 1gg<Plug>(unite_append_end)
@@ -324,8 +324,6 @@ if dein#tap('unite.vim') "{{{
     call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
     normal! ^
   endfunction "}}}
-
-  au u10ac FileType unite call s:unite_config()
 endif "}}}
 
 if dein#tap('unite-quickfix') "{{{
@@ -600,7 +598,7 @@ if dein#tap('vim-quickhl') "{{{
   let g:quickhl_manual_keywords          = [] " Can use List and Dictionary
 
   nmap gh <Plug>(quickhl-manual-this)
-  nmap gl <Plug>(operator-quickhl-manual-this-motion)iL
+  nmap gl <Plug>(operator-quickhl-manual-this-motion)<Plug>(textobj-line-i)
   nmap gm <Plug>(operator-quickhl-manual-this-motion)
   xmap gh <Plug>(quickhl-manual-this)
 

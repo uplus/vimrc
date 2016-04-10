@@ -304,7 +304,9 @@ function! s:set_highlights() "{{{
     hi clear CursorLine
   endif
 
-  if g:colors_name == 'molokai'
+  if g:colors_name == 'PaperColor'
+    hi PmenuSel     cterm=NONE ctermfg=232 ctermbg=30
+  elseif g:colors_name == 'molokai'
     hi Folded       ctermfg=63
     hi Comment      ctermfg=245
     hi Pmenu        ctermfg=232 ctermbg=6
@@ -317,7 +319,7 @@ function! s:set_highlights() "{{{
     hi Visual       ctermfg=NONE ctermbg=NONE
     hi NonText      ctermfg=NONE ctermbg=NONE
     hi CursorLine   cterm=NONE   ctermbg=234
-    hi vimFuncVar ctermfg=198
+    hi vimFuncVar   ctermfg=198
   endif
 endfunction "}}}
 

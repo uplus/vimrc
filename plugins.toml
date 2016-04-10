@@ -5,6 +5,7 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
+
 #unite
 
 [[plugins]]
@@ -150,8 +151,7 @@ repo = 'taku-o/vim-vis'
 
 #search and replace
 
-[[plugins]]
-# show search point on the command-line
+[[plugins]] # show search point on the command-line
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
@@ -273,13 +273,11 @@ repo = 'mfumi/ref-dicts-en'
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
-[[plugins]]
-# gr
+[[plugins]] # gr
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
 
-[[plugins]]
-# yank delete changeなどのblockwise版
+[[plugins]] # yank delete changeなどのblockwise版
 repo = 'osyo-manga/vim-textobj-blockwise'
 depends = 'vim-operator-block'
 
@@ -287,8 +285,7 @@ depends = 'vim-operator-block'
 repo = 'osyo-manga/vim-operator-block'
 depends = 'vim-operator-user'
 
-[[plugins]]
-# sa sd sr
+[[plugins]] # sa sd sr
 repo = 'rhysd/vim-operator-surround'
 depends = 'vim-operator-user'
 
@@ -302,83 +299,67 @@ depends = 'vim-operator-user'
 [[plugins]]
 repo = 'kana/vim-textobj-user'
 
-[[plugins]]
-# e buffer
+[[plugins]] # e buffer
 repo = 'kana/vim-textobj-entire'
 depends = 'vim-textobj-user'
 
-[[plugins]]
- # l -> i
+[[plugins]] # l -> i
 repo = 'kana/vim-textobj-indent'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# y syntax-highlight
+[[plugins]] # y syntax-highlight
 repo = 'kana/vim-textobj-syntax'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# z
+[[plugins]] # z
 repo = 'kana/vim-textobj-fold'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# l -> L ignore last-char of current-line
+[[plugins]] # l -> L ignore last-char of current-line
 repo = 'kana/vim-textobj-line'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# u
+[[plugins]] # u
 repo = 'mattn/vim-textobj-url'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# w use it with CamelCaseMotion
+[[plugins]] # w use it with CamelCaseMotion
 repo = 'h1mesuke/textobj-wiw'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# c
+[[plugins]] # c
 repo = 'thinca/vim-textobj-comment'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# f{char} select a range between character
+[[plugins]] # f{char} select a range between character
 repo = 'thinca/vim-textobj-between'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# ip last pasted textobj. don't have ap
+[[plugins]] # ip last pasted textobj. don't have ap
 repo = 'gilligan/textobj-lastpaste'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# sb some block
+[[plugins]] # sb some block
 repo = 'osyo-manga/vim-textobj-multiblock'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# I A 連続したtextobjを矩形選択 ciw -> cIw
+[[plugins]] # I A 連続したtextobjを矩形選択 ciw -> cIw
 repo = 'osyo-manga/vim-textobj-blockwise'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# Can make textobj by regex
+[[plugins]] # Can make textobj by regex
 repo = 'osyo-manga/vim-textobj-from_regexp'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# q some syntax /../ '..'
+[[plugins]] # q some syntax /../ '..'
 repo = 'deris/vim-textobj-enclosedsyntax'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# 複数のtextobjを一つにまとめる
+[[plugins]] # 複数のtextobjを一つにまとめる
 repo = 'osyo-manga/vim-textobj-multitextobj'
 depends = 'vim-textobj-user'
 
-[[plugins]]
-# change keymap f -> F
+[[plugins]] # change keymap f -> F
 repo = 'kana/vim-textobj-function'
 depends = 'vim-textobj-user'
 
