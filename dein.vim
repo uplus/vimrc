@@ -12,8 +12,8 @@ endif
 
 let s:path = expand('$CACHE/dein')
 if dein#load_state(s:path)
-  let s:toml_path = '~/.vim/dein.toml'
-  let s:toml_lazy_path = '~/.vim/deinlazy.toml'
+  let s:toml_path = '~/.vim/plugins.toml'
+  let s:toml_lazy_path = '~/.vim/pluginslazy.toml'
 
   call dein#begin(s:path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path])
   call dein#load_toml(s:toml_path, {'lazy': 0})
