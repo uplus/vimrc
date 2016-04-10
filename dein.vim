@@ -272,8 +272,7 @@ if dein#tap('unite.vim') "{{{
 
     " unite-quickfixの設定色々
     if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
-      let b:win_entered = 0
-      au u10ac WinEnter <buffer> if b:win_entered != 1 | 0 | let b:win_entered = 1 | endif
+      au u10ac WinEnter <buffer> if !exists('b:win_entered') | 0 | let b:win_entered = 1 | endif
       au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
       au u10ac BufHidden <buffer> bdelete
       nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>

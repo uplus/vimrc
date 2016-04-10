@@ -104,23 +104,13 @@ let g:quickrun_config.markdown = {
       \ 'outputter' : 'browser'
       \ }
 
-" ruby {{{
-let s:config = {
-      \ 'ruby' : {
-      \   'cmdopt' : '-Ku',
-      \ },
-      \ 'ruby/syntax_check' : {
-      \ 'command'   : 'ruby',
-      \ 'exec'      : '%c %s:p %o',
-      \ 'cmdopt'    : '-c',
-      \ 'outputter' : 'quickfix',
-      \ 'hook/unite_quickfix/enable'       : 0,
-      \ 'hook/close_unite_quickfix/enable' : 0,
-      \ },
-      \}
+let g:quickrun_config.ruby = {
+      \ 'cmdopt' : '-Ku'
+      \ }
 
-call extend(g:quickrun_config, s:config)
-unlet s:config
+let g:quickrun_config.rspec = {
+      \ 'command': 'bundle',
+      \ 'exec': '%c exec rspec -f d %s'
+      \ }
 "}}}
 
-"}}}
