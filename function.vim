@@ -110,7 +110,7 @@ endfunction
 " return list [bufnr,status,name]
 command! BuffersInfo for buf in BuffersInfo() | echo buf | endfor
 function! BuffersInfo(...)
-  return map(split(Capture('ls' . (a:0 == 0 || a:1 == 0? '!' : '')), '\n'),
+  return map(split(Capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction
 
@@ -485,7 +485,7 @@ command! -nargs=1 -complete=customlist,FileCompLikeZsh T tabedit <args>
 
 function! FileCompLikeZsh(lead, line, pos)
   if a:lead ==# '#'
-    return map(BuffersInfo(1), 'v:val[2]')
+    return map(BuffersInfo(''), 'v:val[2]')
   elseif a:lead ==# ''
     let query = '*'
   elseif stridx(a:lead, '/') != -1
