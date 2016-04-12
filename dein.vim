@@ -620,7 +620,7 @@ if dein#tap('vim-quickhl') "{{{
   let g:quickhl_manual_hl_priority = 100
   let g:quickhl_manual_colors = [
         \ 'term=reverse ctermfg=232 ctermbg=160 gui=bold guifg=Black guibg=Red',
-        \ 'term=reverse ctermfg=232 ctermbg=135 gui=bold guifg=Black guibg=Purple',
+        \ 'term=reverse ctermfg=232 ctermbg=128 gui=bold guifg=Black guibg=Purple',
         \ 'term=reverse ctermfg=232 ctermbg=63  gui=bold guifg=Black guibg=SlateBlue',
         \ 'term=reverse ctermfg=232 ctermbg=33  gui=bold guifg=Black guibg=Blue',
         \ 'term=reverse ctermfg=232 ctermbg=34  gui=bold guifg=Black guibg=Green',

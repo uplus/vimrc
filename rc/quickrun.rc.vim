@@ -57,7 +57,7 @@ let g:quickrun_config['watchdogs_checker/_'] = {
 let g:quickrun_config['c/watchdogs_checker'] = {
       \ 'command': 'clang',
       \ 'exec': '%c %o -fsyntax-only %s:p',
-      \ 'cmdopt': $C_COMP_OPT,
+      \ 'cmdopt': substitute($C_COMP_OPT, '-lm ', '',''),
       \ }
 
 let g:quickrun_config['cpp/watchdogs_checker'] = {
