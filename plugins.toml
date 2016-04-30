@@ -386,9 +386,6 @@ repo = 'djjcast/mirodark'
 # repo = 'vim-scripts/BusyBee'
 
 [[plugins]]
-repo = '1player/lettuce.vim'
-
-[[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
 
 
