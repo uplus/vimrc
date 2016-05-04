@@ -16,7 +16,8 @@ CAlterCommand undoc[lear] UndoClear
 CAlterCommand uc[lear] UndoClear
 CAlterCommand ec[ho] PP
 
-CAlterCommand vsh[ell] Vshell
+CAlterCommand vsh[ell] VimShell
+CAlterCommand vsi VimShellInteractive
 CAlterCommand uni[te] Unite
 CAlterCommand vgr[ep] Unite vimgrep
 CAlterCommand ug[rep] Unite -auto-resize grep:%::
