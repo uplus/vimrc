@@ -34,7 +34,7 @@ let g:quickrun_config._ = {
       \ 'hook/close_unite_quickfix/enable_module_loaded' : 1,
       \ 'hook/clear_quickfix/enable_hook_loaded'         : 1,
       \ 'hook/unite_quickfix/enable_exit'    : 1,
-      \ 'hook/unite_quickfix/unite_options'  : '-no-focus -no-quit -no-empty -direction=botright -auto-resize -create',
+      \ 'hook/unite_quickfix/unite_options'  : '-no-focus -no-quit -no-empty -direction=botright -create -winheight=10',
       \ 'hook/unite_quickfix/priority_exit'  : 0,
       \ 'hook/unite_quickfix/no_focus'       : 1,
       \ }
