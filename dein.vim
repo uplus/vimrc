@@ -186,6 +186,14 @@ endif
 
 if dein#tap('vimshell.vim') "{{{
   nnoremap <space>sh :VimShellTab<CR>
+  " Initialize execute file list.
+  let g:vimshell_execute_file_list = {}
+
+  if !exists('g:vimshell_interactive_interpreter_commands')
+      let g:vimshell_interactive_interpreter_commands = {}
+  endif
+  let g:vimshell_interactive_interpreter_commands.python = 'ipython'
+  let g:vimshell_interactive_interpreter_commands.ruby   = 'pry'
 endif "}}}
 
 if dein#tap('vim-smartinput-endwise') "{{{
