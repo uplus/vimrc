@@ -36,7 +36,6 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
-let python_highlight_all = 1
 
 " vim-operator taps "{{{
 if dein#tap('vim-operator-user') "{{{
@@ -133,6 +132,10 @@ if dein#tap('vim-textobj-function') "{{{
   " omap AF <Plug>(textobj-function-A)
   " vmap IF <Plug>(textobj-function-I)
   " vmap AF <Plug>(textobj-function-A)
+endif "}}}
+
+if dein#tap('vim-textobj-python') "{{{
+  let g:textobj_python_no_default_key_mappings = 1
 endif "}}}
 
 if dein#tap('vim-textobj-multiblock') "{{{

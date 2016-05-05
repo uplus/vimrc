@@ -373,6 +373,10 @@ depends = 'vim-textobj-user'
 repo = 'kana/vim-textobj-function'
 depends = 'vim-textobj-user'
 
+[[plugins]]
+repo = 'bps/vim-textobj-python'
+depends = 'vim-textobj-user'
+
 
 #colorscheme
 
@@ -397,3 +401,8 @@ repo = 'vim-jp/vital.vim'
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
+
+[[plugins]]
+repo = 'hynek/vim-python-pep8-indent'
+on_ft = 'python'
+
