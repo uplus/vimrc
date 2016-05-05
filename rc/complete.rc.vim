@@ -29,6 +29,8 @@ let g:neocomplete#sources#omni#input_patterns = get(g:, 'g:neocomplete#sources#o
 let g:neocomplete#sources#omni#functions      = get(g:, 'g:neocomplete#sources#omni#functions', {})
 let g:neocomplete#force_omni_input_patterns   = get(g:, 'g:neocomplete#force_omni_input_patterns', {})
 
+let g:neocomplete#sources#omni#functions.go = 'gocomplete#Complete'
+
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
 let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
