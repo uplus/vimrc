@@ -42,13 +42,19 @@ let python_highlight_all = 1
 if dein#tap('vim-operator-user') "{{{
   nmap <Space>k <Plug>(operator-jump-head-out)a
   nmap <Space>j <Plug>(operator-jump-tail-out)a
-  nmap gr <Plug>(operator-replace)
-  xmap gr <Plug>(operator-replace)
 
   nmap se <Plug>(operator-evalruby)
   nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
   xmap se <Plug>(operator-evalruby)
 endif "}}}
+
+if dein#tap('vim-operator-replace')
+  nmap gr <Plug>(operator-replace)
+  xmap gr <Plug>(operator-replace)
+  for c in split("\" ' ` ( { [ <")
+    exe 'nmap gr' . c "<Plug>(operator-replace)i" . c
+  endfor
+endif
 
 if dein#tap('vim-operator-surround') "{{{
   " () {} はab aB で表す 他は記号 でもb Bは使わないかな
