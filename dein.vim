@@ -278,11 +278,9 @@ if dein#tap('unite.vim') "{{{
     " TDOO: unite#get_current_unite()を使うべき
     let context = unite#get_context()
 
-    " unite-quickfixの設定色々
     if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
       au u10ac WinEnter <buffer> if !exists('b:win_entered') | 0 | let b:win_entered = 1 | endif
       au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
-      au u10ac BufHidden <buffer> bdelete
       nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
       nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
     elseif context.buffer_name == 'location_list'
