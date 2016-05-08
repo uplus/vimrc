@@ -41,6 +41,7 @@ noremap <Plug>(vim-basic-last) $
 noremap <Plug>(vim-basic-front) ^
 noremap <Plug>(vim-basic-tail) g_
 
+nnoremap g?? Vg?
 map mp %
 map $ %
 map mmp ^%
