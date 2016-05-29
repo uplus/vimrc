@@ -218,8 +218,8 @@ depends = 'vim-smartinput'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-[[plugins]]
-repo = 'honza/vim-snippets'
+# [[plugins]]
+# repo = 'honza/vim-snippets'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
