@@ -97,7 +97,7 @@ repo = 'bling/vim-airline'
 repo = 'tyru/nextfile.vim'
 
 [[plugins]]
-repo = 'u10e10/yankround.vim'
+repo = 'LeafCage/yankround.vim'
 
 [[plugins]]
 repo = 'kana/vim-submode'
