@@ -211,8 +211,12 @@ if dein#tap('neocomplete.vim') && has('lua') "{{{
   imap <expr><TAB> pumvisible()? "\<C-n>" :
         \ neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<TAB>"
 
-  inoremap <Plug>(insert-lasttext) <C-a>
-  imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(insert-lasttext)"
+  smap <TAB> <Plug>(neosnippet_jump)
+  xmap <TAB> <Plug>(neosnippet_jump)
+
+  imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(vim-basic-insert-lasttext)"
+  smap <C-l> <Plug>(neosnippet_jump)
+  xmap <C-l> <Plug>(neosnippet_jump);
 endif "}}}
 
 if dein#tap('orig_rsense') "{{{
@@ -225,6 +229,10 @@ if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#enable_complete_done = 1
   let g:neosnippet#expand_word_boundary = 1
+
+  if has('conceal')
+    " set conceallevel=2 concealcursor=niv
+  endif
 endif "}}}
 
 if dein#tap('unite.vim') "{{{
