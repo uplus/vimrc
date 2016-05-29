@@ -283,3 +283,7 @@ on_ft = ['c', 'cpp']
 repo = 'thinca/vim-prettyprint'
 on_cmd = 'PP'
 
+[[plugins]]
+repo = 'tkhren/vim-fake'
+on_cmd = ['FakeSubstitute']
+on_func = 'fake#'
