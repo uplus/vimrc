@@ -3,6 +3,10 @@ function! Execute(cmd)
   return ""
 endfunction
 
+function! Ruby(str) abort
+  return Capture('ruby ' . a:str)
+endfunction
+
 " cursolがlastlineにあるかどうか
 function! s:is_lastline(is_visual)
   let last = line('$')
@@ -493,6 +497,10 @@ endfunction
 function! PopReg(reg) abort
   let data = remove(g:reg_stack, -1)
   call setreg(a:reg, data[0], data[1])
+endfunction
+
+function! DummyArray(start, last, times) abort
+  return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d )}.join(', ')", a:times, a:start, a:last))
 endfunction
 "}}}
 
