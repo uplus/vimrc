@@ -296,7 +296,7 @@ if dein#tap('unite.vim') "{{{
     inoremap <buffer><C-f> <Right>
     nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
 
-    " TDOO: unite#get_current_unite()を使うべき
+    " TODO unite#get_current_unite()を使うべき
     let context = unite#get_context()
 
     if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'

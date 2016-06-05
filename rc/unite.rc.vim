@@ -130,3 +130,5 @@ let g:unite_quickfix_is_multiline	= 0
 call unite#custom_source('quickfix,location_list', 'sorters', 'sorter_reverse')
 call unite#custom_source('quickfix', 'converters', 'converter_quickfix_highlight')
 call unite#custom_source('location_list', 'converters', 'converter_quickfix_highlight')
+
+call unite#custom#profile('source/kill', 'context', { 'start_insert': 1})
