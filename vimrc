@@ -261,6 +261,10 @@ function! s:colorscheme(name) abort
   endif
 endfunction
 
+hi CursorLine term=NONE cterm=NONE
+hi LineNr     term=NONE ctermfg=44
+hi FoldColumn term=NONE ctermbg=NONE
+
 function! s:set_colors() "{{{
   if -1 != index(['', 'unite', 'quickrun', 'qf'], &filetype)
     return
