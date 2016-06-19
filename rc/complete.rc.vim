@@ -5,7 +5,7 @@ let g:neocomplete#disable_auto_complete  = 0
 let g:neocomplete#enable_insert_char_pre = 0
 
 let g:neocomplete#enable_auto_close_preview = 1 " preview windowを補完完了後に自動で閉じる
-let g:neocomplete#enable_auto_delimiter     = 1
+let g:neocomplete#enable_auto_delimiter     = 0 " file-comp時のデリミタ
 let g:neocomplete#disable_auto_select_buffer_name_pattern = '\[Command Line\]'
 
 let g:neocomplete#enable_smart_case       = 1
@@ -31,16 +31,17 @@ let g:neocomplete#force_omni_input_patterns   = get(g:, 'g:neocomplete#force_omn
 
 let g:neocomplete#sources#omni#functions.go = 'gocomplete#Complete'
 
-let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" omni補完以外の候補がでなくなる(snippetとか)
+" let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
+" let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 " Enable heavy omni completion.
 let g:neocomplete#force_overwrite_completefunc = 1
 
-let g:neocomplete#sources#omni#input_patterns.c     = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#sources#omni#input_patterns.cpp   = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#sources#omni#input_patterns.c      = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#sources#omni#input_patterns.cpp    = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#sources#omni#input_patterns.ruby   = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.python = '[^. *\t]\.\w*\|\h\w*'
 
 " let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
 " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
