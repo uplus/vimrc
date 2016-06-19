@@ -46,4 +46,7 @@ snippet quicksort
 	qsort(${1:array}, sizeof($1)/sizeof(${2:int}), sizeof($2), compare_$2);
 	${0}
 
-
+snippet randint
+  int randint(min, max){
+      return rand() % (max-min+1) + min;
+  }
