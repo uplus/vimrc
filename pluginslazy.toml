@@ -293,3 +293,7 @@ on_cmd = 'PP'
 repo = 'tkhren/vim-fake'
 on_cmd = ['FakeSubstitute']
 on_func = 'fake#'
+
+[[plugins]] # Display unicode.
+repo = 'osyo-manga/vim-hideout'
+on_cmd = ['HideoutOn']
