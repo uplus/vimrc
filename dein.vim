@@ -295,6 +295,9 @@ if dein#tap('unite.vim') "{{{
     inoremap <buffer><C-b> <Left>
     inoremap <buffer><C-f> <Right>
     nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
+    nnoremap <silent><buffer><expr>r unite#do_action('replace')
+    nmap <silent><buffer>R *r
+
 
     " TODO unite#get_current_unite()を使うべき
     let context = unite#get_context()
@@ -311,9 +314,6 @@ if dein#tap('unite.vim') "{{{
       nnoremap <silent><buffer><expr><nowait>v unite#do_action('vsplit')
       nnoremap <silent><buffer><expr><nowait>t unite#do_action('tabopen')
     elseif context.buffer_name =~# '^search'
-      nnoremap <silent><buffer><expr>r unite#do_action('replace')
-      nmap <silent><buffer>R *r
-
       let s:action = { 'is_selectable' : 0 }
       function! s:action.func(candidates)
         let @/ = unite#get_input()
