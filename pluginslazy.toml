@@ -297,3 +297,18 @@ on_func = 'fake#'
 [[plugins]] # Display unicode.
 repo = 'osyo-manga/vim-hideout'
 on_cmd = ['HideoutOn']
+
+[[plugins]]
+repo = 'lervag/vim-latex'
+on_ft = ['tex', 'plaintex']
+
+[[plugins]]
+repo = 'xuhdev/vim-latex-live-preview'
+on_ft = ['tex', 'plaintex']
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'xhtml', 'css']
+hook_add = '''
+  let g:user_emmet_expandabbr_key = '<c-y><c-y>'
+'''
