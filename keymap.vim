@@ -43,6 +43,7 @@ noremap <Plug>(vim-basic-tail) g_
 
 inoremap <Plug>(vim-basic-insert-lasttext) <C-a>
 
+inoremap <c-r><c-r> <c-r>"
 nnoremap g?? Vg?
 map mp %
 map $ %
