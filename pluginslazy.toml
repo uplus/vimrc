@@ -310,5 +310,6 @@ on_ft = ['tex', 'plaintex']
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'xhtml', 'css']
 hook_add = '''
+  let g:user_emmet_mode = 'iv'
   let g:user_emmet_expandabbr_key = '<c-y><c-y>'
 '''
