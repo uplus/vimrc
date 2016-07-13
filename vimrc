@@ -96,7 +96,7 @@ set fileformats=unix,dos,mac
 
 " set undofile
 set report=0  " コマンド似よって0行以上変更されたらmessage
-set nonumber
+set number
 set hidden
 set showcmd
 set noshowmode
@@ -123,7 +123,7 @@ if has('linebreak')
   set breakindent
 endif
 set nowrap
-set sidescroll=1
+set sidescroll=0
 set sidescrolloff=12
 set virtualedit=block
 set nrformats-=octal
