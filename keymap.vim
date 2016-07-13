@@ -10,6 +10,15 @@ command! Lcdbuffer lcd %:h
 command! -nargs=? Ls !ls -F --color=always <args>
 command! -nargs=+ Calc echo eval(<q-args>)
 
+" neovim terminal
+if has('nvim')
+  tnoremap <esc> <c-\><c-n>
+  tnoremap <c-h> <c-\><c-n><c-w>h
+  tnoremap <c-j> <c-\><c-n><c-w>j
+  tnoremap <c-k> <c-\><c-n><c-w>k
+  tnoremap <c-l> <c-\><c-n><c-w>l
+endif
+
 " Opening with a specific character code again."{{{
 " In particular effective when I am garbled in a terminal.
 command! -bang -bar -complete=file -nargs=? Utf8      edit<bang> ++enc=utf-8 <args>
