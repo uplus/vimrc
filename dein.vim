@@ -905,11 +905,6 @@ if dein#tap('vim-smartword') "{{{
   map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
 endif "}}}
 
-if dein#tap('sudo.vim') "{{{
-  command! Swrite SudoWrite %
-  command! Sw SudoWrite %
-endif "}}}
-
 if dein#tap('webapi-vim') "{{{
   command! -nargs=* URIencode :call URIencode(<q-args>)
   command! -nargs=* URIdecode :call URIdecode(<q-args>)
@@ -933,11 +928,6 @@ if dein#tap('webapi-vim') "{{{
       echo webapi#http#decodeURI(a:1)
     endif
   endfunction
-endif "}}}
-
-if dein#tap('ruby_hl_lvar.vim') "{{{
-  let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-  au u10ac ColorScheme * hi rubyLocalVariable ctermfg=38
 endif "}}}
 
 if dein#tap('ref-dicts-en') "{{{
@@ -970,12 +960,6 @@ if dein#tap('ref-dicts-en') "{{{
 
   command! -nargs=1 Wiki Ref webdict wiki <args>
   command! -nargs=1 Eng Ref webdict <args>
-endif "}}}
-
-if dein#tap('previm') "{{{
-  if executable('firefox')
-    let g:previm_open_cmd='firefox'
-  endif
 endif "}}}
 
 if dein#tap('excitetranslate-vim') "{{{

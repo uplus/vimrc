@@ -30,6 +30,11 @@ on_cmd = 'Vinarise'
 [[plugins]]
 repo = 'kannokanno/previm'
 on_ft = 'markdown'
+hook_add = '''
+  if executable('firefox')
+    let g:previm_open_cmd='firefox'
+  endif
+'''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -114,6 +119,10 @@ on_ft = 'ruby'
 [[plugins]]
 repo = 'todesking/ruby_hl_lvar.vim'
 on_ft = 'ruby'
+hook_add = '''
+  let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
+  au u10ac ColorScheme * hi rubyLocalVariable ctermfg=38
+'''
 
 #python
 
@@ -247,6 +256,10 @@ hook_source = 'source ~/.vim/rc/vimfiler.rc.vim'
 [[plugins]]
 repo = 'sudo.vim'
 on_cmd = ['SudoWrite', 'SudoRead']
+hook_add = '''
+  command! Swrite SudoWrite %
+  command! Sw SudoWrite %
+'''
 
 [[plugins]]
 repo = 'mbbill/undotree'
