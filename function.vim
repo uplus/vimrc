@@ -183,8 +183,10 @@ function! DeleteTrashBuffers()
     endif
   endfor
 
-  echo l:count 'buffer deleted'
-  let &report=l:old
+  if l:count != 0
+    echo l:count 'buffer deleted'
+    let &report=l:old
+  endif
 endfunction
 
 "}}}
