@@ -289,8 +289,8 @@ endfunction "}}}
 function! s:set_highlights() "{{{
   hi Visual     cterm=reverse
   hi Title      ctermfg=118
-  hi Todo       ctermfg=0   ctermbg=226
-  hi Error      ctermfg=255 ctermbg=161
+  hi Todo       cterm=italic    ctermfg=33   ctermbg=226
+  hi Error      ctermfg=255     ctermbg=161
   hi QFError    cterm=undercurl ctermfg=198
   hi QFWarning  cterm=undercurl ctermfg=198
   hi DiffAdd    ctermfg=255     ctermbg=163
