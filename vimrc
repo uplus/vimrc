@@ -331,6 +331,7 @@ endfunction "}}}
 au u10ac FileType c,cpp    setl commentstring=//\ %s
 au u10ac FileType html,css setl foldmethod=indent
 au u10ac FileType qf       nnoremap <silent><buffer>q :quit<CR>
+au u10ac FileType text     setl nobreakindent wrap
 
 au u10ac StdinReadPost * call s:stdin_config()
 function! s:stdin_config()
