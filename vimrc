@@ -310,6 +310,7 @@ function! s:set_highlights() "{{{
 
   if g:colors_name == 'PaperColor'
     hi PmenuSel     cterm=NONE ctermfg=232 ctermbg=30
+    hi Normal       ctermbg=0
   elseif g:colors_name == 'molokai'
     hi Folded       ctermfg=63
     hi Comment      ctermfg=245
