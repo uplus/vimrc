@@ -193,6 +193,8 @@ on_ft = ['c', 'cpp']
 hook_source =  '''
   let g:clang_c_options = '-std=gnu11'
   let g:clang_cpp_options = '-std=c++1z'
+  let g:clang_c_completeopt = &completeopt
+  let g:clang_cpp_completeopt = &completeopt
   let g:clang_auto = 0
   let g:clang_diagsopt = ''
 '''

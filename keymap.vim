@@ -216,6 +216,7 @@ inoremap <DOWN> <C-O>gj
 inoremap <C-A> <C-o>^
 inoremap <C-E> <C-o>$
 imap <C-D> <Del>
+imap <c-h> <bs>
 
 inoremap <C-W> <C-g>u<C-W>
 inoremap <C-U> <C-g>u<C-U>

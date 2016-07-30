@@ -115,10 +115,6 @@ set nostartofline " Maintain a current line at the time of movement as much as p
 set completeopt=menuone
 set switchbuf=usetab
 
-if has('patch755')
-  " set completeopt+=noinsert
-endif
-
 if has('linebreak')
   set breakindent
 endif

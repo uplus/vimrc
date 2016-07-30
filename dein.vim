@@ -198,19 +198,29 @@ if dein#tap('vimshell.vim') "{{{
 endif "}}}
 
 if dein#tap('lexima.vim') "{{{
-  imap <c-h> <bs>
+  call lexima#init() " Need first
+
+  " TODO smartinput時代の遺産を回収
+  " TODO 補完候補選択した場合のみ展開したい
+  " 順序?
+  " imap <expr><silent><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : lexima#expand('<LT>CR>', 'i')
 
   " 別行で閉じる
   call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
   call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
   call lexima#add_rule({'at': '\%#\_s*]', 'char': ']', 'leave': ']'})
 
-  " 行末のみ有効
-  " call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '{', 'input': '{'})
-
   " vim
   call lexima#add_rule({'at': '{\%#}', 'char': '<CR>', 'input': '<CR><Bslash> ', 'input_after': '<CR><Bslash> ', 'filetype': 'vim'})
   call lexima#add_rule({'at': '\\\s.*\%#$', 'char': '<CR>', 'input': '<CR><Bslash> ', 'filetype': 'vim'})
+
+  " TODO  わざわざ<cr>で補完確定する必要ない
+  "       選択時   : 決定+snippet
+  "       非選択時 : 改行+lexima
+  " call lexima#insmode#map_hook('before', '<cr>', "\<C-r>=neocomplete#close_popup()\<cr>")
+  " imap <silent><expr><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : pumvisible()? "\<c-y>" : lexima#expand('<cr>', 'i')
+  " \<Plug>(lexima#expand('<cr>', 'i'))<c-g>u"
+
 endif "}}}
 
 if dein#tap('neocomplete.vim') && has('lua') "{{{
@@ -218,21 +228,17 @@ if dein#tap('neocomplete.vim') && has('lua') "{{{
   let g:neocomplete#enable_at_startup = 1
   let g:neopairs#enable = 1
 
-  inoremap <expr><S-TAB> pumvisible()? "\<C-p>" : "\<S-TAB>"
-  imap <expr><TAB> pumvisible()? "\<C-n>" :
-        \ neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<TAB>"
+  if has('patch755')
+    " TODO vim-clangがc,cppを上書きする
+    " set completeopt+=noinsert  " 第1候補を選択、非挿入
+    " set completeopt+=noselect
+  endif
 
-  smap <TAB> <Plug>(neosnippet_jump)
-  xmap <TAB> <Plug>(neosnippet_jump)
+  inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
 
-  imap <expr><C-l> neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<Plug>(vim-basic-insert-lasttext)"
-  smap <C-l> <Plug>(neosnippet_jump)
-  xmap <C-l> <Plug>(neosnippet_jump);
-endif "}}}
-
-if dein#tap('orig_rsense') "{{{
-  let g:rsenseUseOmniFunc = 1
-  let g:rsenseHome = dein#_plugins['orig_rsense'].path
+  " inoremap <expr><space> pumvisible()? "\<c-y>" : "\<space>"
+  " inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
+  " inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
 endif "}}}
 
 if dein#tap('neosnippet.vim') "{{{
@@ -240,10 +246,20 @@ if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#enable_complete_done = 1
   let g:neosnippet#expand_word_boundary = 1
+  " let g:neosnippet#scope_aliases = {}
+  " let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
 
-  if has('conceal')
-    " set conceallevel=2 concealcursor=niv
-  endif
+  " <c-l>を<c-y>に割り当てても良いかも
+  imap <expr><c-l> neosnippet#expandable_or_jumpable()? "\<Plug>(neosnippet_jump_or_expand)" : "\<Plug>(vim-basic-insert-lasttext)"
+  imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
+  smap <tab> <Plug>(neosnippet_jump)
+  xmap <tab> <Plug>(neosnippet_jump)
+  smap <c-l> <tab>
+  xmap <c-l> <tab>
+
+  " if has('conceal')
+  "   set conceallevel=2 concealcursor=niv
+  " endif
 endif "}}}
 
 if dein#tap('unite.vim') "{{{
