@@ -197,11 +197,20 @@ if dein#tap('vimshell.vim') "{{{
   let g:vimshell_interactive_interpreter_commands.ruby   = 'pry'
 endif "}}}
 
-if dein#tap('vim-smartinput-endwise') "{{{
-  let g:smartinput_endwise_avoid_neocon_conflict =  0
+if dein#tap('lexima.vim') "{{{
+  imap <c-h> <bs>
 
-  imap <silent><expr><CR> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" :
-        \ pumvisible()? "\<C-y>" : "\<Plug>(smartinput_cr)<c-g>u"
+  " 別行で閉じる
+  call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
+  call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
+  call lexima#add_rule({'at': '\%#\_s*]', 'char': ']', 'leave': ']'})
+
+  " 行末のみ有効
+  " call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '{', 'input': '{'})
+
+  " vim
+  call lexima#add_rule({'at': '{\%#}', 'char': '<CR>', 'input': '<CR><Bslash> ', 'input_after': '<CR><Bslash> ', 'filetype': 'vim'})
+  call lexima#add_rule({'at': '\\\s.*\%#$', 'char': '<CR>', 'input': '<CR><Bslash> ', 'filetype': 'vim'})
 endif "}}}
 
 if dein#tap('neocomplete.vim') && has('lua') "{{{
