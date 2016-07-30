@@ -1,37 +1,10 @@
-" NeoBundle:
 
-" neobundle vimproc vimshell "{{{
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \   'mac'  : 'make -f make_mac.mak',
-      \   'unix' : 'make -f make_unix.mak',
-      \    }
-      \ }
-
-NeoBundleLazy 'Shougo/vimshell.vim',{
-      \ 'depends' : 'Shougo/vimproc.vim',
-      \ 'autoload' : {
-      \   'commands' : [{ 'name' : 'VimShell',
-      \                   'complete' : 'customlist,vimshell#complete'},
-      \                   'VimShellExecute', 'VimShellInteractive',
-      \                   'VimShellTab', 'VimShellPop'],
-      \   'mappings' : '<Plug>',
-      \ }
-      \ }
-
-NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
-"}}}
-
-" #vital "{{{
-" NeoBundle 'vim-jp/vital.vim'
+" #vital
 " NeoBundle 'osyo-manga/vital-reunions' " プロセス実行
 " NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
-"}}}
 
 " #untie "{{{
 " NeoBundle 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vimmer',          { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
@@ -43,107 +16,37 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
 " NeoBundleLazy 'supermomonga/unite-goimport.vim',  { 'depends' : [ 'Shougo/unite.vim', 'fatih/vim-go' ] }
 "}}}
 
-" #view "{{{
-" NeoBundle 'bronson/vim-trailing-whitespace'
-" NeoBundle 'itchyny/lightline.vim'
+" #view
 " NeoBundle 'vimtaku/hl_matchit.vim'
-"}}}
 
-" #action "{{{
-" NeoBundle 'tpope/vim-repeat'
-NeoBundle 'kana/vim-repeat'
-NeoBundle 'LeafCage/foldCC.vim'
+" #action
 NeoBundle 'osyo-manga/vim-milfeulle'
 " NeoBundle 'deris/improvedft'      " ftFT can input many charactores
 " NeoBundle 'deris/vim-shot-f'      " ftFT show oneshot jump points
-NeoBundle 'taku-o/vim-vis'          " execute command for selected area with B.
-"}}}
-
 
 " #python
 NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " fold config of python
 
-" #git "{{{
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'  " gitのdiffを行に表示
-NeoBundle 'idanarye/vim-merginal'   " git log --graph
-NeoBundle 'cohama/agit.vim'         " git log
-NeoBundle 'AndrewRadev/gapply.vim'  " git add -p
-NeoBundle 'rhysd/committia.vim'
-NeoBundle 'rhysd/conflict-marker.vim'
-NeoBundleLazy 'lambdalisue/vim-gista', {
-    \ 'on_cmd': ['Gista'],
-    \ 'on_func': 'gista#',
-    \ }
-"}}}
-
-" #web "{{{
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/excitetranslate-vim'
-NeoBundle 'mattn/wwwrenderer-vim'
-NeoBundle 'thinca/vim-openbuf'
-NeoBundleLazy 'tyru/open-browser.vim', { 'autoload' : {
-      \     'commands' : [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch', ],
-      \     'function_prefix' : 'openbrowser',
-      \     'mappings' : [ '<Plug>(openbrowser-open)', '<Plug>(openbrowser-search)', '<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-wwwsearch)' ],
-      \   }
-      \ }
-NeoBundleLazy 'tyru/open-browser-github.vim', {
-      \ 'depends'  : ['tyru/open-browser.vim'],
-      \ 'commands' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ],
-      \ }
-"}}}
-
-" #tag and #ref "{{{
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'yuku-t/vim-ref-ri'
-NeoBundle 'mfumi/ref-dicts-en'
+" #tag and #ref
 " NeoBundle 'szw/vim-tags'
 " NeoBundle 'soramugi/auto-ctags.vim'
+"
 
-" Ruby/Bundlerに対応して、必要最低限のtagsのみを非同期生成
-NeoBundleLazy 'alpaca-tc/alpaca_tags', {
-      \ 'depends': ['Shougo/vimproc.vim'],
-      \ 'commands' : [
-      \    { 'name' : 'AlpacaTagsBundle', 'complete': 'customlist,alpaca_tags#complete_source' },
-      \    { 'name' : 'AlpacaTagsUpdate', 'complete': 'customlist,alpaca_tags#complete_source' },
-      \    'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsEnable', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus',
-      \ ], }
-"}}}
-
-" #operator "{{{
-" http://qiita.com/rbtnn/items/a47ed6684f1f0bc52906
-" operatorをLazyにすると読み込まない?
-
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace',         { 'depends' : 'kana/vim-operator-user' } " gr
-NeoBundle 'osyo-manga/vim-operator-blockwise', { 'depends' : 'osyo-manga/vim-textobj-blockwise' } " yank delete changeなどのblockwise版
-NeoBundle 'osyo-manga/vim-operator-block',     { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'osyo-manga/vim-operator-jump_side', { 'depends' : 'kana/vim-operator-user' } " <space>j <space>k
-NeoBundle 'rhysd/vim-operator-surround',       { 'depends' : 'kana/vim-operator-user' } " sa sd sr
-NeoBundleLazy 'rhysd/vim-operator-evalruby',        { 'depends' : 'kana/vim-operator-user', 'mappings' : ['<Plug>(operator-evalruby)'] } " se evaluate textobj as expression of lambda of ruby
-NeoBundleLazy 'rhysd/vim-clang-format',             { 'depends' : 'kana/vim-operator-user', 'filetypes' : ['c', 'cpp'] } " command only
+" #operator
 " NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
 " NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
 " emonkak/vim-operator-sort
 " osyo-manga/vim-operator-swap
 
-" 任意のcmdを実行するoperator
-" NeoBundle 'osyo-manga/vim-operator-exec_command', { 'depends' : 'kana/vim-operator-user' }
-"}}}
-
-" #textobj "{{{
-NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb some block
-NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " I A 連続したtextobjを矩形選択 ciw -> cIw
-NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " Can make textobj by regex
-NeoBundle 'deris/vim-textobj-enclosedsyntax',    { 'depends' : 'kana/vim-textobj-user' } " q some syntax /../ '..'
-
-NeoBundle 'osyo-manga/vim-textobj-multitextobj', { 'depends' : 'kana/vim-textobj-user' } " 複数のtextobjを一つにまとめる
-NeoBundle 'kana/vim-textobj-function',           { 'depends' : 'kana/vim-textobj-user' } " change keymap f -> F
-" NeoBundle 't9md/vim-textobj-function-ruby', { 'depends' : 'kana/vim-textobj-user' }
+" #textobj
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
-" }}}
+
+" #misc
+NeoBundle 'colorsel.vim' " gui only
+" NeoBundle 'thinca/vim-threes'
+" NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
+      " \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ] }}
 
 " #colorscheme"{{{
 " NeoBundle 'freeo/vim-kalisi'
@@ -158,19 +61,6 @@ NeoBundle 'kana/vim-textobj-function',           { 'depends' : 'kana/vim-textobj
 " calmar256-dark gentooish inkot mirodark mustang neverness tabula synic vividchalk
 "}}}
 
-" #misc "{{{
-NeoBundle 'comeonly/php.vim-html-enhanced'  " php,htmlのindentをきれいに
-NeoBundleLazy 'inotom/str2htmlentity',   { 'commands' : ['Str2HtmlEntity', 'Entity2HtmlString'] } " rangeをHTMLの実体参照に相互変換
-NeoBundleLazy 'Shougo/echodoc',          { 'insert' : 1 }
-NeoBundleLazy 'osyo-manga/vim-stargate', { 'filetypes' : ['c', 'cpp'] }
-NeoBundleLazy 'thinca/vim-prettyprint',  { 'commands' : ['PP'] } " PP! == echomes
-
-NeoBundle 'colorsel.vim' " gui only
-" NeoBundle 'thinca/vim-threes'
-" NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
-      " \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ] }}
-
-"}}}
 
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
