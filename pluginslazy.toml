@@ -26,6 +26,9 @@ on_ft = 'ruby'
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
 on_cmd = 'Vinarise'
+hook_add = '''
+  let g:vinarise_enable_auto_detect = 1
+'''
 
 [[plugins]]
 repo = 'kannokanno/previm'
@@ -39,6 +42,13 @@ hook_add = '''
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
+hook_add = '''
+  let g:indentLine_enabled              = 0
+  let g:indentLine_faster               = 1
+  let g:indentLine_showFirstIndentLevel = 1
+  let g:indentLine_color_term           = 208
+  nmap <silent>\tl :IndentLinesToggle<CR>
+'''
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
@@ -51,6 +61,11 @@ on_map = ['RainbowToggle', 'RainbowLoad']
 [[plugins]]
 repo = 'lilydjwg/colorizer'
 on_cmd = ['ColorClear', 'ColorToggle', 'ColorHighlight']
+hook_add = '''
+  let g:colorizer_nomap   = 1
+  let g:colorizer_startup = 0
+  nmap \hz <Plug>Colorizer
+'''
 
 
 #action
@@ -96,6 +111,9 @@ on_map = '<Plug>(asterisk-'
 [[plugins]]
 repo = 'tpope/vim-abolish'
 on_map = ['<Plug>Coerce']
+hook_add = '''
+  nmap sc <plug>Coerce
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-hopping'

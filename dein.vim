@@ -383,10 +383,6 @@ if dein#tap('unite-quickfix') "{{{
   " au u10ac VimEnter * au u10ac BufWritePost * LocationList
 endif "}}}
 
-if dein#tap('vinarise') "{{{
-  let g:vinarise_enable_auto_detect = 1
-endif "}}}
-
 if dein#tap('vimfiler.vim') "{{{
   " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
@@ -447,7 +443,7 @@ if dein#tap('vim-watchdogs') "{{{
   command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
 endif "}}}
 
-" TODO: vim-hier.
+" TODO vim-hier.
 " if dein#tap('vim-hier') "{{{
 "   call s:post_source('call s:post_source_hier()')
 "   function! s:post_source_hier()
@@ -703,7 +699,7 @@ if dein#tap('open-browser.vim') "{{{
   xmap gsc <Plug>(openbrowser-smart-search)
 
   command Wsearch :call <SID>www_search()
-  nnoremap <Plug>(openbrowser-wwwsearch) :<C-u>call <SID>www_search()<CR>
+  nnoremap <Plug>(openbrowser-wwwsearch) :<c-u>call <SID>www_search()<CR>
   function! s:www_search()
     let l:search_word = input('Please input search word: ')
     if l:search_word != ''
@@ -740,20 +736,6 @@ if dein#tap('rainbowcyclone.vim') "{{{
   " nmap * <Plug>(rc_search_forward_with_cursor_complete)
 endif "}}}
 
-if dein#tap('colorizer') "{{{
-  let g:colorizer_nomap   = 1
-  let g:colorizer_startup = 0
-  nmap \hz <Plug>Colorizer
-endif "}}}
-
-if dein#tap('indentLine') "{{{
-  let g:indentLine_enabled              = 0
-  let g:indentLine_faster               = 1
-  let g:indentLine_showFirstIndentLevel = 1
-  let g:indentLine_color_term           = 208
-  nmap <silent>\tl :IndentLinesToggle<CR>
-endif "}}}
-
 if dein#tap('vim-hopping') "{{{
   let g:hopping#prompt     = "Input:> "
   nmap \H <Plug>(hopping-start)
@@ -763,10 +745,6 @@ if dein#tap('vim-hopping') "{{{
   "   \ "\<C-u>" : "<Over>(scroll-u)",
   "   \ "\<C-d>" : "<Over>(scroll-d)",
   "   \}
-endif "}}}
-
-if dein#tap('vim-abolish') "{{{
-  nmap sc <plug>Coerce
 endif "}}}
 
 if dein#tap('CamelCaseMotion') "{{{
