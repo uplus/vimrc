@@ -207,6 +207,7 @@ endif "}}}
 if dein#tap('neocomplete.vim') && has('lua') "{{{
   let g:loaded_deoplete = 1
   let g:neocomplete#enable_at_startup = 1
+  let g:neopairs#enable = 1
 
   inoremap <expr><S-TAB> pumvisible()? "\<C-p>" : "\<S-TAB>"
   imap <expr><TAB> pumvisible()? "\<C-n>" :

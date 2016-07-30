@@ -207,6 +207,9 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'Shougo/neoinclude.vim'
 
 [[plugins]]
+repo = 'Shougo/neopairs.vim'
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
