@@ -1,13 +1,5 @@
 " NeoBundle:
 
-if !isdirectory($HOME . '/.vim/bundle/neobundle.vim/')
-  silent! !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-endif
-
-set runtimepath+=~/.vim/bundle/neobundle.vim
-
-call neobundle#begin(expand('~/.vim/bundle'))
-
 " neobundle vimproc vimshell "{{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -33,31 +25,11 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', { 'filetypes' : ['vimshell'] }
 
 " #vital "{{{
 " NeoBundle 'vim-jp/vital.vim'
-" NeoBundle 'osyo-manga/vital-reunions'
-" NeoBundle 'osyo-manga/vital-over'
-" NeoBundle 'osyo-manga/vital-unlocker'
+" NeoBundle 'osyo-manga/vital-reunions' " プロセス実行
+" NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
 "}}}
 
 " #untie "{{{
-NeoBundle 'Shougo/unite.vim',                     { 'depends' : [ 'Shougo/vimproc.vim' ] }
-NeoBundle 'Shougo/neomru.vim',                    { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'Shougo/unite-outline',                 { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'tacroe/unite-alias',                   { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'tacroe/unite-mark',                    { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'tsukkee/unite-tag',                { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'tag'       }
-NeoBundleLazy 'Shougo/unite-help',                { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'help'      }
-NeoBundleLazy 'thinca/vim-unite-history',         { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'history'   }
-NeoBundleLazy 'osyo-manga/unite-fold',            { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'fold'      }
-NeoBundleLazy 'osyo-manga/unite-highlight',       { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'highlight' }
-NeoBundleLazy 'osyo-manga/unite-quickrun_config', { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'quickrun_config' }
-NeoBundleLazy 'osyo-manga/unite-quickfix',        { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : ['location_list', 'quickfix'] }
-NeoBundle 'kmnk/vim-unite-giti',                  { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'Kocha/vim-unite-tig',                  { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'osyo-manga/unite-airline_themes',  { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'airline_themes' }
-NeoBundleLazy 'ujihisa/unite-colorscheme',        { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'colorscheme'    }
-NeoBundleLazy 'pasela/unite-webcolorname',        { 'depends' : [ 'Shougo/unite.vim' ], 'unite_source' : 'webcolorname'   }
-NeoBundle 'rhysd/unite-ruby-require.vim',         { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundle 'basyura/unite-rails',                  { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vimpatches',      { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -72,102 +44,24 @@ NeoBundle 'basyura/unite-rails',                  { 'depends' : [ 'Shougo/unite.
 "}}}
 
 " #view "{{{
-NeoBundle 'Shougo/vinarise'
-NeoBundle 'kannokanno/previm' " Markdown Previewer
-NeoBundle 'powerman/vim-plugin-AnsiEsc'
-NeoBundle 'bling/vim-airline'
 " NeoBundle 'bronson/vim-trailing-whitespace'
 " NeoBundle 'itchyny/lightline.vim'
-NeoBundleLazy 'Yggdroot/indentLine', { 'commands' : ['IndentLinesToggle', 'LeadingSpaceToggle']  }
-NeoBundleLazy 't9md/vim-quickhl',    { 'mappings' : ['<Plug>(quickhl', '<Plug>(operator-quickhl'] }
-NeoBundleLazy 'oblitum/rainbow',     { 'commands' : ['RainbowToggle', 'RainbowLoad'] }
 " NeoBundle 'vimtaku/hl_matchit.vim'
-NeoBundle 'lilydjwg/colorizer'
 "}}}
 
 " #action "{{{
-NeoBundleLazy 'AndrewRadev/linediff.vim', { 'commands' : ['Linediff'] }
-NeoBundleLazy 'junegunn/vim-easy-align', { 'mappings' : ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'] }
-NeoBundle 'tyru/nextfile.vim'
-" NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'u10e10/yankround.vim'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'tyru/vim-altercmd'
 " NeoBundle 'tpope/vim-repeat'
 NeoBundle 'kana/vim-repeat'
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'LeafCage/foldCC.vim'
-NeoBundle 'kana/vim-niceblock'
-NeoBundle 'osyo-manga/vim-jplus'
-NeoBundle 't9md/vim-choosewin'
 NeoBundle 'osyo-manga/vim-milfeulle'
-
-NeoBundle 'bkad/CamelCaseMotion'    " has textobj ,w ,b ,e
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'kana/vim-smartword'
-NeoBundle 'rhysd/clever-f.vim'      " ftFTで,;
 " NeoBundle 'deris/improvedft'      " ftFT can input many charactores
 " NeoBundle 'deris/vim-shot-f'      " ftFT show oneshot jump points
-
-NeoBundle 'matchit.zip'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tyru/caw.vim'
 NeoBundle 'taku-o/vim-vis'          " execute command for selected area with B.
 "}}}
 
-" #search and #replace "{{{
-NeoBundle 'osyo-manga/vim-anzu'      " show search point on the command-line
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'haya14busa/vim-asterisk'
-NeoBundleLazy 'haya14busa/vim-asterisk',    { 'mappings' : ['<Plug>(asterisk-'] }
-NeoBundleLazy 'tpope/vim-abolish',          { 'mappings' : ['<Plug>Coerce']  }
-NeoBundle 'osyo-manga/vim-over'
-NeoBundleLazy 'osyo-manga/vim-hopping',     { 'mappings' : ['<Plug>(hopping'] }
-NeoBundleLazy 'daisuzu/rainbowcyclone.vim', { 'mappings' : ['<Plug>(rc_search_', '<Plug>(rc_highlight)'] }
-NeoBundleLazy 'thinca/vim-qfreplace',       { 'filetypes' : ['unite', 'quickfix'] } " quickfixの各行を編集、反映できる
-"}}}
 
-" #syntaxchecker"{{{
-NeoBundle 'scrooloose/syntastic.git'
-" NeoBundle 'osyo-manga/vim-watchdogs'
-" NeoBundle 'dannyob/quickfixstatus'
-" NeoBundle 'jceb/vim-hier'
-"}}}
-
-" #quickrun "{{{
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'osyo-manga/shabadou.vim'
-NeoBundle "osyo-manga/quickrun-outputter-replace_region"
-"}}}
-
-" #ruby "{{{
-" NeoBundleLazy 'vim-ruby/vim-ruby',   { 'filetypes' : ['ruby'] } " 標準のが先に読み込まれる
-NeoBundleLazy 'tpope/vim-rails',     { 'filetypes' : ['ruby'] } " Displey model,action...
-" NeoBundle 'bbatsov/rubocop'
-NeoBundle 'todesking/ruby_hl_lvar.vim' "うまく動作しなかった
-"}}}
-
-" #python "{{{
-NeoBundleLazy 'hdima/python-syntax',  { 'filetypes' : ['python'] }
+" #python
 NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " fold config of python
-NeoBundleLazy 'davidhalter/jedi-vim', { 'filetypes' : ['python'] }
-"}}}
-
-" #input-support "{{{
-NeoBundle 'Shougo/neocomplete.vim'
-" NeoBundle 'marcus/rsense' :helpが使えなくなる
-NeoBundle 'NigoroJr/rsense'
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'depends' : ['Shougo/neocomplete.vim']}
-NeoBundleLazy 'Rip-Rip/clang_complete',              { 'filetypes' : ['c', 'cpp'] }
-NeoBundleLazy 'kana/vim-smartinput',                 { 'autoload' : { 'insert' : 1 }}
-NeoBundleLazy 'cohama/vim-smartinput-endwise',       { 'depends' : [ 'kana/vim-smartinput' ] }
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets',              { 'depends' : [ 'Shougo/neosnippet.vim' ] }
-NeoBundle 'honza/vim-snippets',                      { 'depends' : [ 'Shougo/neosnippet.vim' ] }
-NeoBundle 'mattn/googlesuggest-complete-vim'
-"}}}
 
 " #git "{{{
 NeoBundle 'tpope/vim-fugitive'
@@ -239,17 +133,6 @@ NeoBundleLazy 'rhysd/vim-clang-format',             { 'depends' : 'kana/vim-oper
 "}}}
 
 " #textobj "{{{
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-entire',   { 'depends' : 'kana/vim-textobj-user' } " e buffer
-NeoBundle 'kana/vim-textobj-indent',   { 'depends' : 'kana/vim-textobj-user' } " l -> i
-NeoBundle 'kana/vim-textobj-syntax',   { 'depends' : 'kana/vim-textobj-user' } " y syntax-highlight
-NeoBundle 'kana/vim-textobj-fold',     { 'depends' : 'kana/vim-textobj-user' } " z
-NeoBundle 'kana/vim-textobj-line',     { 'depends' : 'kana/vim-textobj-user' } " l -> L ignore last-char of current-line
-NeoBundle 'mattn/vim-textobj-url',     { 'depends' : 'kana/vim-textobj-user' } " u
-NeoBundle 'h1mesuke/textobj-wiw',      { 'depends' : 'kana/vim-textobj-user' } " ,w  use it with CamelCaseMotion
-NeoBundle 'thinca/vim-textobj-comment',          { 'depends' : 'kana/vim-textobj-user' } " c
-NeoBundle 'thinca/vim-textobj-between',          { 'depends' : 'kana/vim-textobj-user' } " f{char} select a range between character
-NeoBundle 'gilligan/textobj-lastpaste',          { 'depends' : 'kana/vim-textobj-user' } " ip last pasted textobj. don't have ap
 NeoBundle 'osyo-manga/vim-textobj-multiblock',   { 'depends' : 'kana/vim-textobj-user' } " sb some block
 NeoBundle 'osyo-manga/vim-textobj-blockwise',    { 'depends' : 'kana/vim-textobj-user' } " I A 連続したtextobjを矩形選択 ciw -> cIw
 NeoBundle 'osyo-manga/vim-textobj-from_regexp',  { 'depends' : 'kana/vim-textobj-user' } " Can make textobj by regex
@@ -264,10 +147,6 @@ NeoBundle 'kana/vim-textobj-function',           { 'depends' : 'kana/vim-textobj
 
 " #colorscheme"{{{
 " NeoBundle 'freeo/vim-kalisi'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'djjcast/mirodark'
-NeoBundle 'vim-scripts/BusyBee'
-NeoBundle '1player/lettuce.vim'
 " NeoBundle 'altercation/vim-colors-solarized'
 " NeoBundle 'Colour-Sampler-Pack' " 大量のcolorschemeセット
 " NeoBundle 'cocopon/iceberg.vim'
@@ -280,16 +159,6 @@ NeoBundle '1player/lettuce.vim'
 "}}}
 
 " #misc "{{{
-NeoBundleLazy 'Shougo/vimfiler.vim', { 'depends' : 'Shougo/unite.vim', 'explorer' : 1 }
-" NeoBundle 'Shougo/context_filetype.vim'
-NeoBundleLazy 'sudo.vim',        { 'commands' : ['SudoWrite', 'SudoRead'] }
-NeoBundleLazy 'mbbill/undotree', { 'commands' : ['UndotreeToggle', 'UndotreeShow'] }
-NeoBundleLazy 'sjl/gundo.vim',   { 'commands' : ['GundoToggle', 'GundoShow'] }
-NeoBundleLazy 'rbtnn/vimconsole.vim', { 'commands' : [
-      \ 'VimConsoleOpen', 'VimConsoleClose', 'VimConsoleToggle', 'VimConsoleClear',
-      \ 'VimConsoleLog', 'VimConsoleRedraw', 'VimConsoleDump', 'VimConsoleLoadSession',
-      \ ]}
-
 NeoBundle 'comeonly/php.vim-html-enhanced'  " php,htmlのindentをきれいに
 NeoBundleLazy 'inotom/str2htmlentity',   { 'commands' : ['Str2HtmlEntity', 'Entity2HtmlString'] } " rangeをHTMLの実体参照に相互変換
 NeoBundleLazy 'Shougo/echodoc',          { 'insert' : 1 }
@@ -298,7 +167,6 @@ NeoBundleLazy 'thinca/vim-prettyprint',  { 'commands' : ['PP'] } " PP! == echome
 
 NeoBundle 'colorsel.vim' " gui only
 " NeoBundle 'thinca/vim-threes'
-" NeoBundle 'itchyny/screensaver.vim'
 " NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
       " \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ] }}
 
@@ -768,45 +636,6 @@ if neobundle#tap('vim-easy-align') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('syntastic') "{{{
-  let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
-  let g:syntastic_loc_list_height = 10
-  let g:syntastic_auto_loc_list = 0
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq   = 0
-  let g:syntastic_enable_signs  = 0
-  let g:syntastic_auto_jump     = 0 " default is 0
-  let g:syntastic_ignore_files  = ['\m^/usr/include/', expand('~/Documents/memo/')]
-  " let g:syntastic_debug = 1
-
-  let g:syntastic_error_symbol   = "✗"
-  let g:syntastic_warning_symbol = "⚠"
-
-  let g:syntastic_cpp_compiler         = 'clang++'
-  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-  let g:syntastic_ruby_mri_args        = "-W1"
-
-  nmap \ts :SyntasticToggleMode<CR>
-  nmap gas :call SyntasticLoclistHide()<CR>
-
-  " TODO
-  " wrteで開く
-  " readで開くのはafter/plugin/の中にある
-  " function! neobundle#tapped.hooks.on_post_source(bundle)
-  "   au u10ac BufWritePost * LocationList
-  " endfunction
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('vim-hier') "{{{
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    au u10ac BufWritePost * HierUpdate
-  endfunction
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('committia.vim') "{{{
   let g:committia_open_only_vim_starting = 1
   let g:committia_hooks = {}
@@ -816,32 +645,6 @@ if neobundle#tap('committia.vim') "{{{
     imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
   endfunction
 
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('yankround.vim') "{{{
-  nmap p <Plug>(yankround-p)
-  xmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap gp <Plug>(yankround-gp)
-  xmap gp <Plug>(yankround-gp)
-  nmap gP <Plug>(yankround-gP)
-  nmap <C-n> <Plug>(yankround-next)
-
-  nmap <expr><C-p> <SID>smart_previous()
-  function! s:smart_previous()
-    if yankround#is_active()
-      return "\<Plug>(yankround-prev)"
-    else
-      return ":\<C-p>"
-    endif
-  endfunction
-
-  let g:yankround_max_history   = 30
-  let g:yankround_dir           = '~/.vim/tmp/yankround_history'
-  let g:yankround_use_region_hl = 1
-  highlight YankRoundRegion cterm=italic
-  au u10ac ColorScheme * highlight YankRoundRegion cterm=italic
   call neobundle#untap()
 endif "}}}
 
@@ -1318,23 +1121,11 @@ if neobundle#tap('vim-threes') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('rainbow') "{{{
-  let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'magenta', 'red', 'darkmagenta', 'darkblue', 'darkgreen', 'darkcyan']
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('vim-milfeulle') "{{{
   nmap <C-o> <Plug>(milfeulle-prev)
   nmap <C-i> <Plug>(milfeulle-next)
   let g:milfeulle_default_kind = "window"
   let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('googlesuggest-complete-vim') "{{{
-  set completefunc=googlesuggest#Complete
 
   call neobundle#untap()
 endif "}}}
@@ -1418,13 +1209,6 @@ if neobundle#tap('webapi-vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('ruby_hl_lvar.vim') "{{{
-  let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-  au u10ac ColorScheme * hi rubyLocalVariable ctermfg=38
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('ref-dicts-en') "{{{
   let g:ref_source_webdict_sites = {
         \ 'ej': { 'url': 'http://dictionary.infoseek.ne.jp/ejword/%s' },
@@ -1459,18 +1243,3 @@ if neobundle#tap('ref-dicts-en') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('previm') "{{{
-  let g:previm_open_cmd='firefox'
-
-  call neobundle#untap()
-endif "}}}
-
-" if neobundle#tap('') "{{{
-"
-"   call neobundle#untap()
-" endif "}}}
-
-call neobundle#end()
-" au u10ac VimEnter * NeoBundleCheck
-
-NeoBundleSource unite-quickfix
