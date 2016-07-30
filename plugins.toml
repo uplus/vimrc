@@ -95,6 +95,13 @@ repo = 'bling/vim-airline'
 
 [[plugins]]
 repo = 'tyru/nextfile.vim'
+hook_add = '''
+  let g:nf_map_next         = '[f'
+  let g:nf_map_previous     = ']f'
+  let g:nf_include_dotfiles = 0
+  let g:nf_ignore_dir       = 1
+  let g:nf_open_command     = 'edit'
+'''
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
@@ -125,6 +132,10 @@ repo = 'LeafCage/foldCC.vim'
 [[plugins]]
 repo = 'kana/vim-niceblock'
 on_map = ['<Plug>(niceblock-I)', '<Plug>(niceblock-gI)', '<Plug>(niceblock-A)']
+hook_add = '''
+  xmap I  <Plug>(niceblock-I)
+  xmap A  <Plug>(niceblock-A)
+'''
 
 [[plugins]]
 repo = 't9md/vim-choosewin'
@@ -410,3 +421,8 @@ on_ft = 'toml'
 repo = 'hynek/vim-python-pep8-indent'
 on_ft = 'python'
 
+[[plugins]]
+repo = 'Shougo/echodoc'
+hook_add = '''
+  let g:echodoc_enable_at_startup = 1
+'''

@@ -56,7 +56,10 @@ on_map = ['<Plug>(quickhl', '<Plug>(operator-quickhl']
 
 [[plugins]]
 repo = 'oblitum/rainbow'
-on_map = ['RainbowToggle', 'RainbowLoad']
+on_cmd = ['RainbowToggle', 'RainbowLoad']
+hook_add = '''
+  let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'magenta', 'red', 'darkmagenta', 'darkblue', 'darkgreen', 'darkcyan']
+'''
 
 [[plugins]]
 repo = 'lilydjwg/colorizer'
@@ -234,7 +237,16 @@ on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
 
 [[plugins]]
 repo = 'mattn/excitetranslate-vim'
-on_cmd = 'ExciteTranslate'
+on_cmd = ['ExciteTranslate', 'Trans']
+hook_source = '''
+  command! -range Trans :<line1>,<line2>:ExciteTranslate
+
+  autocmd BufNewFile ==Translate==* call s:trans_config()
+  function! s:trans_config() abort
+    setl nobuflisted
+    nnoremap q :bd<CR>
+  endfunction
+'''
 
 
 #tags and ref
@@ -307,10 +319,6 @@ on_ft = ['php', 'html', 'xhtml']
 [[plugins]] # To convert {range} mutually HTML and Entity.
 repo = 'inotom/str2htmlentity'
 on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
-
-[[plugins]]
-repo = 'Shougo/echodoc'
-on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'osyo-manga/vim-stargate'

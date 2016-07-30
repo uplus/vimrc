@@ -672,11 +672,6 @@ if dein#tap('vim-quickhl') "{{{
         \ ]
 endif "}}}
 
-if dein#tap('vim-niceblock') "{{{
-  xmap I  <Plug>(niceblock-I)
-  xmap A  <Plug>(niceblock-A)
-endif "}}}
-
 if dein#tap('vim-choosewin') "{{{
   nmap \w <Plug>(choosewin)
   let g:choosewin_overlay_enable          = 1
@@ -706,10 +701,6 @@ if dein#tap('open-browser.vim') "{{{
       execute 'OpenBrowserSearch' escape(l:search_word, '"')
     endif
   endfunction
-endif "}}}
-
-if dein#tap('echodoc.vim') "{{{
-  let g:echodoc_enable_at_startup = 1
 endif "}}}
 
 if dein#tap('rainbowcyclone.vim') "{{{
@@ -819,14 +810,6 @@ if dein#tap('shaberu.vim') "{{{
   let g:shaberu_is_mute = 0
 endif "}}}
 
-if dein#tap('nextfile.vim') "{{{
-  let g:nf_map_next         = '[f'
-  let g:nf_map_previous     = ']f'
-  let g:nf_include_dotfiles = 0
-  let g:nf_ignore_dir       = 1
-  let g:nf_open_command     = 'edit'
-endif "}}}
-
 if dein#tap('vim-qfreplace') "{{{
   au u10ac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
   au u10ac FileType qfreplace call s:qfreplace_config()
@@ -846,10 +829,6 @@ if dein#tap('vim-threes') "{{{
   let g:threes#data_directory = expand('~/.vim/tmp')
   " let g:threes#start_with_higher_tile = 1
   command! Threes ThreesStart
-endif "}}}
-
-if dein#tap('rainbow') "{{{
-  let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'magenta', 'red', 'darkmagenta', 'darkblue', 'darkgreen', 'darkcyan']
 endif "}}}
 
 if dein#tap('vim-milfeulle') "{{{
@@ -949,16 +928,6 @@ if dein#tap('ref-dicts-en') "{{{
 
   command! -nargs=1 Wiki Ref webdict wiki <args>
   command! -nargs=1 Eng Ref webdict <args>
-endif "}}}
-
-if dein#tap('excitetranslate-vim') "{{{
-  command! -range Trans :<line1>,<line2>:ExciteTranslate
-
-  autocmd BufNewFile ==Translate==* call s:trans_config()
-  function! s:trans_config() abort
-    setl nobuflisted
-    nnoremap q :bd<CR>
-  endfunction
 endif "}}}
 
 filetype plugin indent on
