@@ -65,66 +65,6 @@ NeoBundle 'colorsel.vim' " gui only
 "###################### plugin config ############################"
 let python_highlight_all = 1
 
-if neobundle#tap('vim-smartinput') "{{{
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    call smartinput_endwise#define_default_rules()
-    call smartinput#map_to_trigger('i', '<Plug>(smartinput_cr)', '<Enter>', '<Enter>')
-    call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
-
-    call smartinput#define_rule({
-          \   'at'       : '\%(\<struct\>\|\<class\>\|\<enum\>\)\s*\w\+.*\%#',
-          \   'char'     : '{',
-          \   'input'    : '{};<Left><Left>',
-          \   'filetype' : ['cpp'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at'       : '\\\%(\|%\|z\)\%#',
-          \   'char'     : '(',
-          \   'input'    : '(\)<Left><Left>',
-          \   'filetype' : ['vim'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at'       : '\\(\%#\\)',
-          \   'char'     : '<BS>',
-          \   'input'    : '<Del><Del><BS><BS>',
-          \   'filetype' : ['vim'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at'       : '\\[%z](\%#\\)',
-          \   'char'     : '<BS>',
-          \   'input'    : '<Del><Del><BS><BS><BS>',
-          \   'filetype' : ['vim'],
-          \   })
-
-    call smartinput#define_rule({
-          \   'at': '\({\|\<do\>\)\s*\%#',
-          \   'char': '<Bar>',
-          \   'input': '<Bar><Bar><Left>',
-          \   'filetype': ['ruby'],
-          \ })
-
-    call smartinput#define_rule({
-          \   'at': '\({\|\<do\>\)\s*|.*\%#|',
-          \   'char': '<Bar>',
-          \   'input': '<Right>',
-          \   'filetype': ['ruby'],
-          \ })
-
-    call smartinput#define_rule({
-          \   'at': '\({\|\<do\>\)\s*|\%#|',
-          \   'char': '<BS>',
-          \   'input': '<Del><BS>',
-          \   'filetype': ['ruby'],
-          \ })
-
-  endfunction
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('vim-smartinput-endwise') "{{{
   let g:smartinput_endwise_avoid_neocon_conflict =  0
 
@@ -153,43 +93,13 @@ if neobundle#tap('neocomplete.vim') && has('lua') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('open-browser.vim') "{{{
+if neobundle#tap('open-browser.vim')
   nmap gss <Plug>(openbrowser-wwwsearch)
-  nmap gsc <Plug>(openbrowser-smart-search)
-  xmap gsc <Plug>(openbrowser-smart-search)
-
-  function! neobundle#hooks.on_source(bundle)
-    command Wsearch :call <SID>www_search()
-    nnoremap <Plug>(openbrowser-wwwsearch) :<C-u>call <SID>www_search()<CR>
-    function! s:www_search()
-      let l:search_word = input('Please input search word: ')
-      if l:search_word != ''
-        execute 'OpenBrowserSearch' escape(l:search_word, '"')
-      endif
-    endfunction
-  endfunction
 
   call neobundle#untap()
-endif "}}}
+endif
 
-if neobundle#tap('vim-over') "{{{
-  " let g:over_enable_auto_nohlsearch = 1
-  " let g:over_command_line_prompt = "> "
-  " let g:over_command_line_key_mappings = {}
-  " <Plug>(over-cmdline-scroll-y)     |CTRL-y| 相当
-  " <Plug>(over-cmdline-scroll-u)     |CTRL-u| 相当
-  " <Plug>(over-cmdline-scroll-f)     |CTRL-f| 相当
-  " <Plug>(over-cmdline-scroll-e)     |CTRL-e| 相当
-  " <Plug>(over-cmdline-scroll-d)     |CTRL-d| 相当
-  " <Plug>(over-cmdline-scroll-b)     |CTRL-b| 相当
-
-  nnoremap ss :OverCommandLine %s/\v<CR>
-  nnoremap sw :OverCommandLine %s/\v<C-r><C-w>/<CR>
-  nnoremap sW :OverCommandLine %s/\v<C-r><C-a>/<CR>
-  xnoremap ss :OverCommandLine s/\v<CR>
-  xnoremap sw :OverCommandLine s/\v<C-r><C-w>/<CR>
-  xnoremap sW :OverCommandLine s/\v<C-r><C-a>/<CR>
-
+if neobundle#tap('vim-over')
   " <CR>がsmartinputでマップされている
   " それをcunmapすると色々バグる
   function! neobundle#tapped.hooks.on_post_source(bundle)
@@ -197,4 +107,4 @@ if neobundle#tap('vim-over') "{{{
   endfunction
 
   call neobundle#untap()
-endif "}}}
+endif
