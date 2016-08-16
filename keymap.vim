@@ -78,6 +78,12 @@ nnoremap <silent><C-s> :update<CR>
 nnoremap <silent><C-q>w :wq<CR>
 nnoremap Zz ZZ
 nnoremap Zq ZQ
+inoremap <c-z><c-z> <esc>:wq<cr>
+inoremap <c-z>z <esc>:wq<cr>
+inoremap <c-z><c-q> <esc>:q<cr>
+inoremap <c-z>q <esc>:q<cr>
+inoremap <c-z>eq <esc>:qall!<cr>
+
 
 nnoremap <silent>,uf :earlier 1f<CR>
 nnoremap <silent>,ud :earlier 1d<CR>
