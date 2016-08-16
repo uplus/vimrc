@@ -514,6 +514,7 @@ endfunction
 " zsh like tabedit.
 command! -nargs=1 -complete=customlist,FileCompLikeZsh T tabedit <args>
 
+" TODO .が展開されない ~系を展開した後補完できない
 function! FileCompLikeZsh(lead, line, pos)
   if a:lead ==# '#'
     return map(BuffersInfo(''), 'v:val[2]')
