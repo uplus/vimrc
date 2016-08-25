@@ -218,12 +218,13 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
 
-[[plugins]]
-repo = 'Shougo/neopairs.vim'
+# [[plugins]]
+# repo = 'Shougo/neopairs.vim'
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
+if = "!has('nvim')"
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
@@ -238,6 +239,32 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
+
+# deoplete
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+on_i = 1
+on_ft = 'go'
+
+# [[plugins]]
+# repo = 'fishbullet/deoplete-ruby'
+# on_ft = 'ruby'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+if = "has('nvim')"
+on_i = 1
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+hook_source = 'source ~/.vim/rc/deoplete.rc.vim'
 
 
 #git

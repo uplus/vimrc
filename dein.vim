@@ -18,6 +18,11 @@ if dein#load_state(s:path)
   call dein#begin(s:path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path])
   call dein#load_toml(s:toml_path, {'lazy': 0})
   call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
+
+  if dein#tap('deoplete.nvim') && has('nvim')
+    call dein#disable('neocomplete.vim')
+  endif
+
   call dein#end()
   call dein#save_state()
 
