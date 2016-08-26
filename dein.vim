@@ -714,7 +714,7 @@ if dein#tap('open-browser.vim') "{{{
   nmap gsc <Plug>(openbrowser-smart-search)
   xmap gsc <Plug>(openbrowser-smart-search)
 
-  command Wsearch :call <SID>www_search()
+  command! Wsearch :call <SID>www_search()
   nnoremap <Plug>(openbrowser-wwwsearch) :<c-u>call <SID>www_search()<CR>
   function! s:www_search()
     let l:search_word = input('Please input search word: ')

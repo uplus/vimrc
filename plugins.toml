@@ -456,3 +456,6 @@ repo = 'Shougo/echodoc'
 hook_add = '''
   let g:echodoc_enable_at_startup = 1
 '''
+
+# [[plugins]]
+# repo = "mattn/benchvimrc-vim"
