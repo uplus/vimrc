@@ -130,6 +130,9 @@ hook_post_source = '''
 repo = 'LeafCage/foldCC.vim'
 
 [[plugins]]
+repo = 'Konfekt/FastFold'
+
+[[plugins]]
 repo = 'kana/vim-niceblock'
 on_map = ['<Plug>(niceblock-I)', '<Plug>(niceblock-gI)', '<Plug>(niceblock-A)']
 hook_add = '''
