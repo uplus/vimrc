@@ -269,6 +269,7 @@ function! s:set_colors() "{{{
   if &filetype == 'cpp' || &filetype == 'c'
     call s:colorscheme('lettuce')
     " call s:colorscheme('kalisi')
+    hi LineNr ctermfg=245
     hi Pmenu ctermfg=36 ctermbg=235
   elseif &filetype == 'ruby'
     call s:colorscheme('railscasts_u10')
