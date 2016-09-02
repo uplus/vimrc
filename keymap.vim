@@ -9,6 +9,7 @@ command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=? Ls !ls -F --color=always <args>
 command! -nargs=+ Calc echo eval(<q-args>)
+command! Zatof normal! 0diwf=cl()lxC{Px>>o}
 
 " neovim terminal
 if has('nvim')
