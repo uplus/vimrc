@@ -20,7 +20,7 @@ if has('nvim')
   tnoremap <c-l> <c-\><c-n><c-w>l
 endif
 
-" Reopening with a specific character."{{{
+" Encode: Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
 command! -bang -bar -complete=file -nargs=? Utf8      edit<bang> ++enc=utf-8 <args>
 command! -bang -bar -complete=file -nargs=? Iso2022jp edit<bang> ++enc=iso-2022-jp <args>
@@ -56,7 +56,6 @@ inoremap <Plug>(vim-basic-insert-lasttext) <C-a>
 inoremap <c-r><c-r> <c-r>"
 nnoremap g?? Vg?
 map mp %
-map $ %
 map mmp ^%
 nnoremap ,i ".p
 nnoremap ,p "0p
@@ -114,12 +113,12 @@ nnoremap <C-y> 4<C-y>
 xnoremap <C-y> 4<C-y>
 nnoremap <C-e> 4<C-e>
 xnoremap <C-e> 4<C-e>
-nnoremap 0 ^
-nnoremap ^ 0
-nnoremap - $
-xnoremap 0 ^
-xnoremap ^ 0
-xnoremap - $
+" nnoremap 0 ^
+" nnoremap ^ 0
+" nnoremap - $
+" xnoremap 0 ^
+" xnoremap ^ 0
+" xnoremap - $
 
 " #toggle options
 nnoremap \toc :set cursorcolumn!<CR>
