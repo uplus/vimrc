@@ -227,6 +227,9 @@ repo = 'lambdalisue/vim-gista'
 on_cmd = ['Gista']
 on_func = 'gista#'
 
+[[plugins]]
+repo = 'lambdalisue/vim-gita'
+on_cmd = ['Gita']
 
 #web
 
