@@ -330,6 +330,10 @@ if dein#tap('unite.vim') "{{{
     nnoremap <silent><buffer><expr>r unite#do_action('replace')
     nmap <silent><buffer>R *r
 
+    inoremap <silent><buffer><expr><c-g>t unite#do_action('tabopen')
+    inoremap <silent><buffer><expr><c-g>s unite#do_action('split')
+    inoremap <silent><buffer><expr><c-g>v unite#do_action('vsplit')
+
 
     " TODO unite#get_current_unite()を使うべき
     let context = unite#get_context()
