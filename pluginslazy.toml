@@ -247,6 +247,9 @@ on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
 [[plugins]]
 repo = 'mattn/excitetranslate-vim'
 on_cmd = ['ExciteTranslate', 'Trans']
+hook_add = '''
+  xnoremap gst :ExciteTranslate<CR>
+'''
 hook_source = '''
   command! -range Trans :<line1>,<line2>:ExciteTranslate
 

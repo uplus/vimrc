@@ -38,7 +38,6 @@ command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
-xnoremap gst :ExciteTranslate<CR>
 
 nnoremap <silent><space>n :call ResetHightlights()<CR>
 xnoremap <Space>n :normal<Space>
