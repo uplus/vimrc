@@ -875,11 +875,11 @@ if dein#tap('vim-over') "{{{
   " <Plug>(over-cmdline-scroll-b)     |CTRL-b| 相当
 
   nnoremap ss :OverCommandLine %s/\v<CR>
-  nnoremap sw :OverCommandLine %s/\v<C-r><C-w>/<CR>
-  nnoremap sW :OverCommandLine %s/\v<C-r><C-a>/<CR>
+  nnoremap sw :OverCommandLine %s/\v<<C-r><C-w>>/<CR>
+  nnoremap sW :OverCommandLine %s/\v<<C-r><C-a>>/<CR>
   xnoremap ss :OverCommandLine s/\v<CR>
-  xnoremap sw :OverCommandLine s/\v<C-r><C-w>/<CR>
-  xnoremap sW :OverCommandLine s/\v<C-r><C-a>/<CR>
+  xnoremap sw :OverCommandLine s/\v<<C-r><C-w>>/<CR>
+  xnoremap sW :OverCommandLine s/\v<<C-r><C-a>>/<CR>
 endif "}}}
 
 if dein#tap('vim-smartword') "{{{
