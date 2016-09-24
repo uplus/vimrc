@@ -7,11 +7,6 @@ endif
 language message C
 scriptencoding=utf-8
 
-function! IsMac()
-  return (has('mac') || has('macunix') || has('gui_macvim') ||
-        \   (!executable('xdg-open') && system('uname') =~? '^darwin'))
-endfunction
-
 function! s:source(path)
   execute 'source' fnameescape(expand('~/.vim/' . a:path . '.vim'))
 endfunction
