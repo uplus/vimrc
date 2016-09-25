@@ -153,6 +153,9 @@ let s:config = {
       \   'exec': '%c %o -fsyntax-only %s:p',
       \   'cmdopt': s:c_opt . ' -std=c89',
       \ },
+      \ 'watchdogs_checker/flake8': {
+      \   'cmdopt': '--ignore=E221,F401,E302 --max-line-length=200'
+      \ },
       \}
 
 call extend(g:quickrun_config, s:config)
