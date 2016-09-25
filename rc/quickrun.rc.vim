@@ -154,7 +154,7 @@ let s:config = {
       \   'cmdopt': s:c_opt . ' -std=c89',
       \ },
       \ 'watchdogs_checker/flake8': {
-      \   'cmdopt': '--ignore=E221,F401,E302 --max-line-length=200'
+      \   'cmdopt': '--ignore=E221,E261,E302,F401 --max-line-length=200'
       \ },
       \}
 
