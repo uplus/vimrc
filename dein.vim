@@ -74,25 +74,6 @@ if dein#tap('vim-operator-surround') "{{{
   nmap saw saaw
   nmap saW saaW
 endif "}}}
-
-if dein#tap('vim-clang-format') "{{{
-  let g:clang_format#command = 'clang-format'
-  if !executable(g:clang_format#command)
-    let g:clang_format#command = 'clang-format-3.6'
-  endif
-
-  let g:clang_format#code_style = "Google"
-  let g:clang_format#style_options = {
-        \ 'AllowShortIfStatementsOnASingleLine' : 'true',
-        \ 'AllowShortLoopsOnASingleLine'        : 'true',
-        \ 'AllowShortFunctionsOnASingleLine'    : 'true',
-        \ 'AlwaysBreakTemplateDeclarations'     : 'true',
-        \ 'AccessModifierOffset' : -4,
-        \ 'ColumnLimit'          : 0,
-        \ 'Standard'             : 'C++11',
-        \ 'BreakBeforeBraces'    : 'Attach',
-        \ }
-endif "}}}
 "}}}
 
 " vim-textobj taps "{{{
