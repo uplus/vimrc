@@ -264,6 +264,9 @@ nmap ]e <Plug>(MoveDown)
 xmap [e <Plug>(MoveUp)
 xmap ]e <Plug>(MoveDown)
 
+nnoremap <silent>[c :cp<cr>
+nnoremap <silent>]c :cn<cr>
+
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
