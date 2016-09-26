@@ -161,6 +161,9 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'hynek/vim-python-pep8-indent'
+
+[[plugins]]
 repo = 'tell-k/vim-autopep8'
 on_ft = 'python'
 hook_add = '''
