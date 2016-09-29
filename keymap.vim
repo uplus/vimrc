@@ -18,6 +18,8 @@ if has('nvim')
   tnoremap <c-j> <c-\><c-n><c-w>j
   tnoremap <c-k> <c-\><c-n><c-w>k
   tnoremap <c-l> <c-\><c-n><c-w>l
+  nnoremap <c-w>ts :sp +term<cr>
+  nnoremap <c-w>tv :vsp +term<cr>
 endif
 
 " Encode: Reopening with a specific character."{{{
