@@ -305,6 +305,7 @@ function! s:set_highlights() "{{{
     hi Normal       ctermbg=0
     hi LineNr       ctermfg=244
     hi Specialkey   ctermfg=46
+    hi Comment      ctermfg=249
   elseif g:colors_name == 'molokai'
     hi Folded       ctermfg=63
     hi Comment      ctermfg=245
