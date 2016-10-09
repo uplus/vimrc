@@ -209,16 +209,12 @@ au u10ac InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 " windowの行数の10%にセットする
 au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
-let g:cursor_hold_count = 0
-au u10ac CursorHold,CursorHoldI * call <SID>auto_delete_hidden_buffers()
-function! s:auto_delete_hidden_buffers() abort
-  if 10 <= g:cursor_hold_count
+if has('timers')
+  function! HandlerDeleteTrashBuffers(timer) abort
     DeleteTrashBuffers
-    let g:cursor_hold_count = 0
-  else
-    let g:cursor_hold_count += 1
-  endif
-endfunction
+  endfunction
+  call timer_start(30000, 'HandlerDeleteTrashBuffers', {'repeat': -1})
+endif
 
 if executable('fcitx-remote')
   command! FcitxOff call system('fcitx-remote -c')
