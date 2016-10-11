@@ -14,10 +14,10 @@ command! Zatof normal! 0diwf=cl()lxC{Px>>o}
 " neovim terminal
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
-  tnoremap <c-h> <c-\><c-n><c-w>h
-  tnoremap <c-j> <c-\><c-n><c-w>j
-  tnoremap <c-k> <c-\><c-n><c-w>k
-  tnoremap <c-l> <c-\><c-n><c-w>l
+  " tnoremap <c-h> <c-\><c-n><c-w>h
+  " tnoremap <c-j> <c-\><c-n><c-w>j
+  " tnoremap <c-k> <c-\><c-n><c-w>k
+  " tnoremap <c-l> <c-\><c-n><c-w>l
   nnoremap <c-w>ts :sp +term<cr>
   nnoremap <c-w>tv :vsp +term<cr>
 endif
