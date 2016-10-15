@@ -1,5 +1,5 @@
 snippet getints
-  gets.rstrip.split.map(&:to_i)
+  gets.split.map &:to_i
 
 snippet arraytwo
   Array.new(${1:size}){|e| Array.new(${2:size}) }
