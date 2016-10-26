@@ -16,6 +16,8 @@ function! g:SmartQuickRun()
   " endif
 endfunction
 
+command! -nargs=1 QuickRunHeight let g:quickrun_config._['hook/unite_quickfix/unite_options'] = substitute(g:quickrun_config._['hook/unite_quickfix/unite_options'], '\v(-winheight\=)\d+', '\1<args>', '')
+
 command! QuickRunStop call quickrun#sweep_sessions()
 command! Stop QuickRunStop
 au u10ac BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :update<CR>:!rspec %<CR>
