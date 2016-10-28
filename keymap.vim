@@ -4,7 +4,7 @@ command! Sh update | shell
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
-cabbr www w !sudo tee > /dev/null %
+command! WWW !sudo tee > /dev/null %
 command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=? Ls !ls -F --color=always <args>
