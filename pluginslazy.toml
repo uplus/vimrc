@@ -313,8 +313,7 @@ hook_source = 'source ~/.vim/rc/vimfiler.rc.vim'
 repo = 'sudo.vim'
 on_cmd = ['SudoWrite', 'SudoRead']
 hook_add = '''
-  command! Swrite SudoWrite %
-  command! Sw SudoWrite %
+  command! Sw silent SudoWrite %
 '''
 
 [[plugins]]
