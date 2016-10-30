@@ -246,6 +246,9 @@ inoremap b <C-o>b
 inoremap <nowait><ESC> <ESC>
 " TODO: Move those settings to right section
 
+vnoremap <c-p> :<c-p>
+vnoremap <c-n> :<c-n>
+
 " #non register delete "{{{
 nnoremap _c "_c
 vnoremap _c "_c
