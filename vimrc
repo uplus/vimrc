@@ -209,7 +209,10 @@ au u10ac InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 " windowの行数の10%にセットする
 au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 " Skip return code when quit terminal.
-au u10ac TermClose * call feedkeys('\<cr>')
+
+if has('nvim')
+  au u10ac TermClose * call feedkeys('\<cr>')
+endif
 
 
 if has('timers')
