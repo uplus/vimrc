@@ -3,3 +3,11 @@ snippet getints
 
 snippet arraytwo
   Array.new(${1:size}){|e| Array.new(${2:size}) }
+
+
+snippet int?
+  class String
+    def int?
+      Integer(self) && true rescue false
+    end
+  end
