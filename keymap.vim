@@ -21,6 +21,17 @@ if has('nvim')
   " tnoremap <c-l> <c-\><c-n><c-w>l
   nnoremap <c-w>ts :botrigh split +term<cr>
   nnoremap <c-w>tv :vsp +term<cr>
+  nnoremap <space>t :botrigh split +term<cr>
+
+  tnoremap <c-t>h <c-\><c-n><c-w>h
+  tnoremap <c-t>j <c-\><c-n><c-w>j
+  tnoremap <c-t>k <c-\><c-n><c-w>k
+  tnoremap <c-t>l <c-\><c-n><c-w>l
+
+  nnoremap <c-t>h <c-w>hI
+  nnoremap <c-t>j <c-w>jI
+  nnoremap <c-t>k <c-w>kI
+  nnoremap <c-t>l <c-w>lI
 endif
 
 " Encode: Reopening with a specific character."{{{
