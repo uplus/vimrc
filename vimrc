@@ -250,7 +250,11 @@ endif
 let g:colors_name = ''
 function! s:colorscheme(name) abort
   if g:colors_name !=# a:name
-    execute 'colorscheme' a:name
+    try
+      execute 'colorscheme' a:name
+    catch /Cannot find color scheme/
+      echo printf("catch: Cannot find color scheme '%s'", a:name)
+    endtry
   endif
 endfunction
 
