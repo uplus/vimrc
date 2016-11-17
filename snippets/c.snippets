@@ -65,7 +65,22 @@ snippet randint
 #binary sort
 #binary search
 
-#print
 snippet printd
-  printf("%d\n", $1);
-  $0
+  printf("%d\n", ${1});
+  ${0}
+
+snippet mnew
+  #define mnew(type, size)  malloc(sizeof(type)*size)
+
+snippet input
+  printf("${1} ");
+  scanf("${2:%d}", ${3:&n});
+  ${0}
+
+snippet inputd
+  int inputd(const char* mess){
+    int n;
+    printf("%s", mess);
+    scanf("%d", &n);
+    return n;
+  }
