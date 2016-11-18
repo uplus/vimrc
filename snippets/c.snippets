@@ -69,18 +69,36 @@ snippet printd
   printf("%d\n", ${1});
   ${0}
 
-snippet mnew
-  #define mnew(type, size)  malloc(sizeof(type)*size)
-
 snippet input
   printf("${1} ");
   scanf("${2:%d}", ${3:&n});
   ${0}
 
+snippet mnew
+  #define mnew(type, size) (type*)(malloc_safe(sizeof(type)*(size)))
+  #define mdelete(ptr) free(ptr); (ptr) = NULL;
+
+  void* malloc_safe(size_t size){
+    void* ptr = malloc(size);
+    if(ptr == NULL){
+      puts("malloc: memory allocation failed");
+      exit(1);
+    }
+    return ptr;
+  }
+
 snippet inputd
-  int inputd(const char* mess){
+  int inputd(const char* prompt){
     int n;
-    printf("%s", mess);
+    printf("%s", prompt);
     scanf("%d", &n);
     return n;
+  }
+
+snippet inputs
+  char* inputs(const char* prompt){
+    static char tmp[MAX_TITLE];
+    printf("%s", prompt);
+    scanf("%s", tmp);
+    return strcpy(mnew(char, strlen(tmp)+1), tmp);
   }
