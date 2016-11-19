@@ -241,6 +241,14 @@ on_func = 'gista#'
 repo = 'lambdalisue/vim-gita'
 on_cmd = ['Gita']
 
+[[plugins]]
+repo = 'mattn/gist-vim'
+depends = 'webapi-vim'
+on_cmd = 'Gist'
+hook_source = '''
+  let g:gist_clip_command = 'xclip -selection clipboard'
+'''
+
 #web
 
 [[plugins]]
