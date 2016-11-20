@@ -100,6 +100,7 @@ set noshowmatch matchtime=0 " 括弧を入力した時に移動しないよう�
 set laststatus=2
 set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
+set title
 set nobackup
 set modeline modelines=2
 " TODO: <c-g>  <C-l>には補完用のマップがある。
