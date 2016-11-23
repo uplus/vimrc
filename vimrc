@@ -223,7 +223,7 @@ endif
 
 if has('timers')
   function! HandlerDeleteTrashBuffers(timer) abort
-    DeleteTrashBuffers
+    silent DeleteTrashBuffers
   endfunction
   call timer_start(30000, 'HandlerDeleteTrashBuffers', {'repeat': -1})
 endif
