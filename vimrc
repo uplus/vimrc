@@ -215,6 +215,11 @@ if has('nvim')
   au u10ac TermClose * call feedkeys('\<cr>')
 endif
 
+let @" = @*
+
+if exists('##TextYankPost')
+  au TextYankPost * let @"=@*
+endif
 
 if has('timers')
   function! HandlerDeleteTrashBuffers(timer) abort

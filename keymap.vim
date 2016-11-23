@@ -257,6 +257,7 @@ inoremap b <C-o>b
 inoremap <nowait><ESC> <ESC>
 " TODO: Move those settings to right section
 
+nnoremap <c-p> :<c-p>
 vnoremap <c-p> :<c-p>
 vnoremap <c-n> :<c-n>
 

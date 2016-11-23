@@ -107,8 +107,16 @@ hook_add = '''
   let g:nf_open_command     = 'edit'
 '''
 
+# [[plugins]]
+# repo = 'LeafCage/yankround.vim'
+
 [[plugins]]
-repo = 'LeafCage/yankround.vim'
+repo = 'bfredl/nvim-miniyank'
+hook_source = '''
+  map p <Plug>(miniyank-autoput)
+  map P <Plug>(miniyank-autoPut)
+  map <c-n> <Plug>(miniyank-cycle)
+'''
 
 [[plugins]]
 repo = 'kana/vim-submode'
