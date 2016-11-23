@@ -4,11 +4,7 @@
 " NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
 
 " #untie "{{{
-" NeoBundle 'osyo-manga/unite-filetype',        { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'osyo-manga/unite-vital-module',    { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'osyo-manga/unite-vimmer',          { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'osyo-manga/unite-vim_hacks',       { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -34,9 +30,7 @@ NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " fold config
 
 " #operator
 " NeoBundle 'tyru/operator-html-escape.vim',     { 'depends' : 'kana/vim-operator-user' }
-" NeoBundle 'thinca/vim-operator-sequence',      { 'depends' : 'kana/vim-operator-user' } " Execute two or more operators
 " emonkak/vim-operator-sort
-" osyo-manga/vim-operator-swap
 
 " #textobj
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性

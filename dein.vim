@@ -523,7 +523,7 @@ if dein#tap('vim-easymotion') "{{{
   map ;k <Plug>(easymotion-k)
   map ;; <Plug>(easymotion-s2)
   map ;f <Plug>(easymotion-sl2)
-  map ;t <Plug>(easymotion-repeat)
+  " map ;t <Plug>(easymotion-repeat)
   map ;w <Plug>(easymotion-w)
   map ;b <Plug>(easymotion-b)
 endif "}}}
