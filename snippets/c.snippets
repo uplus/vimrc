@@ -1,61 +1,61 @@
 snippet fori
-	for(int i = 0; i < ${1:count}; ++i){
-		${2}
-	}
+  for(int i = 0; i < ${1:count}; ++i){
+    ${2}
+  }
 
 snippet fork
-	for(int k = 0; k < ${1:count}; ++k){
-		${2}
-	}
+  for(int k = 0; k < ${1:count}; ++k){
+    ${2}
+  }
 
 snippet foru
-	for(unsigned i = 0; i < ${1:count}; ++i){
-		${2}
-	}
+  for(unsigned i = 0; i < ${1:count}; ++i){
+    ${2}
+  }
 
 snippet fors
-	for(size_t i = 0; i < ${1:count}; ++i){
-		${2}
-	}
+  for(size_t i = 0; i < ${1:count}; ++i){
+    ${2}
+  }
 
 
 # sort
 snippet sortfor
-	for(int ${1:i} = 0; $1 < ${4:length}-1; ++$1){
-		for(int ${2:k} = $1+1; $2 < $4; ++$2){
-			if(${3:array}[$1] ${5:>} $3[$2]){
-				int tmp = $3[$1];
-				$3[$1] = $3[$2];
-				$3[$2] = tmp;
-			}
-		}
-	}
-	${0:code}
+  for(int ${1:i} = 0; $1 < ${4:length}-1; ++$1){
+    for(int ${2:k} = $1+1; $2 < $4; ++$2){
+      if(${3:array}[$1] ${5:>} $3[$2]){
+        int tmp = $3[$1];
+        $3[$1] = $3[$2];
+        $3[$2] = tmp;
+      }
+    }
+  }
+  ${0:code}
 
 
 # output array
 snippet outarray
-	for(size_t i = 0; i < ${1:length}; ++i){
-		printf("${2:%d }", ${3:array}[i]);
-	}
-	${0}
+  for(size_t i = 0; i < ${1:length}; ++i){
+    printf("${2:%d }", ${3:array}[i]);
+  }
+  ${0}
 
 
 # function pointer
 snippet funcpoint
-	${1:return}(*${2:name})(${3:argments})
+  ${1:return}(*${2:name})(${3:argments})
 
 # quicksort
 snippet qsortcmp
-	int compare_${1:int}(const void* a, const void* b){
-		return *(const $1*)a - *(const $1*)b;
-	}
-	${0}
+  int compare_${1:int}(const void* a, const void* b){
+    return *(const $1*)a - *(const $1*)b;
+  }
+  ${0}
 
 # qsort
 snippet quicksort
-	qsort(${1:array}, sizeof($1)/sizeof(${2:int}), sizeof($2), compare_$2);
-	${0}
+  qsort(${1:array}, sizeof($1)/sizeof(${2:int}), sizeof($2), compare_$2);
+  ${0}
 
 snippet randint
   int randint(int min, int max){
