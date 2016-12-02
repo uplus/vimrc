@@ -199,7 +199,7 @@ repo = 'osyo-manga/vim-watchdogs'
 depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
 hook_source = '''
   command! WatchdogsC89 let b:watchdogs_checker_type = 'watchdogs_checker/c89'
-  au u10ac BufRead,BufNewFile ~/works/jprog/* WatchdogsC89
+  au u10ac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
 '''
 
 [[plugins]]
