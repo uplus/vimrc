@@ -19,6 +19,16 @@ snippet fors
   }
 
 
+snippet swapm
+  #define swap(a,b){ int tmp; tmp=a; a=b; b=tmp; }
+
+snippet swapf
+  void swap(${1:int} a, $1 b){
+    $1 tmp = *a;
+    *a = *b;
+    *b = tmp;
+  }
+
 # sort
 snippet sortfor
   for(int ${1:i} = 0; $1 < ${4:length}-1; ++$1){
