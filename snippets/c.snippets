@@ -23,7 +23,7 @@ snippet swapm
   #define swap(a,b){ int tmp; tmp=a; a=b; b=tmp; }
 
 snippet swapf
-  void swap(${1:int} a, $1 b){
+  void swap(${1:int}* a, $1* b){
     $1 tmp = *a;
     *a = *b;
     *b = tmp;
