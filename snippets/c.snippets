@@ -43,11 +43,8 @@ snippet sortfor
   ${0:code}
 
 
-# output array
-snippet outarray
-  for(size_t i = 0; i < ${1:length}; ++i){
-    printf("${2:%d }", ${3:array}[i]);
-  }
+snippet printarray
+  for(size_t i = 0; i < ${1:size}; ++i) printf("${2:%d }", ${3:data}[i]);
   ${0}
 
 
@@ -112,3 +109,6 @@ snippet inputs
     scanf("%s", tmp);
     return strcpy(mnew(char, strlen(tmp)+1), tmp);
   }
+
+snippet sizeoft
+  sizeof(${1})/sizeof(${2})
