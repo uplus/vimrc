@@ -25,7 +25,7 @@ highlight Pmenu	              ctermfg=214 ctermbg=236
 highlight PmenuSel            ctermfg=235 ctermbg=214
 
 highlight Normal              ctermbg=NONE
-highlight Folded              ctermfg=198 ctermbg=NONE
+highlight Folded              ctermfg=198 ctermbg=NONE cterm=reverse
 highlight FoldColumn          ctermfg=99  ctermbg=232
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=233 cterm=NONE
