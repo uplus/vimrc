@@ -218,7 +218,7 @@ endif
 let @" = @*
 
 if exists('##TextYankPost')
-  au TextYankPost * let @"=@*
+  au TextYankPost * let @*=@" | let @+=@"
 endif
 
 if has('timers')

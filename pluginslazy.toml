@@ -115,6 +115,7 @@ on_map = '<Plug>(asterisk-'
 repo = 'tpope/vim-abolish'
 on_map = ['<Plug>Coerce']
 hook_add = '''
+  let g:abolish_no_mappings = 1
   nmap sc <plug>Coerce
 '''
 
