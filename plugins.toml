@@ -1,9 +1,11 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+rtp = ''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+on_source = ['unite.vim', 'vimshell.vim']
 
 
 #unite
@@ -48,6 +50,8 @@ on_source = 'unite.vim'
 repo = 'Shougo/neoyank.vim'
 on_source = 'unite.vim'
 on_path = '.*'
+on_if = 1
+on_event = 'TextYankPost'
 
 [[plugins]]
 repo = 'osyo-manga/unite-fold'
@@ -474,6 +478,8 @@ on_ft = 'python'
 
 [[plugins]]
 repo = 'Shougo/echodoc'
+on_event = 'CompleteDone'
+# hook_source = 'call echodoc#enable()'
 hook_add = '''
   let g:echodoc_enable_at_startup = 1
 '''
