@@ -271,6 +271,12 @@ on_ft = 'python'
 repo = 'zchee/deoplete-go'
 on_i = 1
 on_ft = 'go'
+build = 'make'
+hook_source = '''
+  let g:deoplete#sources#go#align_class = 1
+  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+  let g:deoplete#sources#go#package_dot = 1
+'''
 
 # [[plugins]]
 # repo = 'fishbullet/deoplete-ruby'
