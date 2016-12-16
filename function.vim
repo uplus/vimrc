@@ -355,7 +355,7 @@ function! WordTranslateSmartWeblio(word) abort
 endfunction
 
 command! -nargs=? WtransLocal call WordTranslateLocalDict(<f-args>)
-let g:word_translate_local_dict = '~/.vim/dict/gene.dict'
+let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
 function! WordTranslateLocalDict(word) abort
   if filereadable(expand(g:word_translate_local_dict))
     let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
