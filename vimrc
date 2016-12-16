@@ -296,7 +296,7 @@ function! s:set_highlights() "{{{
   hi Todo       cterm=italic    ctermfg=226 ctermbg=0
   hi Error      ctermfg=255     ctermbg=161
   hi QFError    cterm=undercurl ctermfg=198
-  hi QFWarning  cterm=undercurl ctermfg=198
+  hi QFWarning  cterm=undercurl ctermfg=202
   hi DiffAdd    ctermfg=255     ctermbg=163
   hi DiffDelete ctermfg=200     ctermbg=56
   hi DiffChange ctermfg=252     ctermbg=22
