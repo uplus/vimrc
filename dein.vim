@@ -449,14 +449,6 @@ if dein#tap('vim-watchdogs') "{{{
   command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
 endif "}}}
 
-" TODO vim-hier.
-" if dein#tap('vim-hier') "{{{
-"   call s:post_source('call s:post_source_hier()')
-"   function! s:post_source_hier()
-"     au u10ac BufWritePost * HierUpdate
-"   endfunction
-" endif "}}}
-
 if dein#tap('committia.vim') "{{{
   let g:committia_open_only_vim_starting = 1
   let g:committia_hooks = {}
