@@ -89,10 +89,10 @@ endif "}}}
 if dein#tap('textobj-wiw') "{{{
   " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
   let g:textobj_wiw_no_default_key_mappings = 1
-  omap a,w <Plug>(textobj-wiw-a)
-  omap i,w <Plug>(textobj-wiw-i)
-  xmap a,w <Plug>(textobj-wiw-a)
-  xmap i,w <Plug>(textobj-wiw-i)
+  omap a<space>w <Plug>(textobj-wiw-a)
+  omap i<space>w <Plug>(textobj-wiw-i)
+  xmap a<space>w <Plug>(textobj-wiw-a)
+  xmap i<space>w <Plug>(textobj-wiw-i)
 endif "}}}
 
 if dein#tap('vim-textobj-line') "{{{
@@ -737,9 +737,9 @@ if dein#tap('vim-hopping') "{{{
 endif "}}}
 
 if dein#tap('CamelCaseMotion') "{{{
-  map <silent> <Space>w <Plug>CamelCaseMotion_w
-  map <silent> <Space>b <Plug>CamelCaseMotion_b
-  map <silent> <Space>e <Plug>CamelCaseMotion_e
+  nmap <silent> <space>w <plug>CamelCaseMotion_w
+  nmap <silent> <space>b <plug>CamelCaseMotion_b
+  nmap <silent> <space>e <plug>CamelCaseMotion_e
 endif "}}}
 
 if dein#tap('vim-gitgutter') "{{{
