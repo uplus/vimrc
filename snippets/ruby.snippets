@@ -35,3 +35,9 @@ snippet pager
     opt='--RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
     IO.popen(['less', opt], 'w'){|f| f.puts out.string }
   end
+
+snippet debug
+  rescue => e # TODO debug
+    puts e.message, e.backtrace
+  ensure
+    binding.pry

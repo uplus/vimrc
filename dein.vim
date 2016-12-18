@@ -737,9 +737,9 @@ if dein#tap('vim-hopping') "{{{
 endif "}}}
 
 if dein#tap('CamelCaseMotion') "{{{
-  nmap <silent> <space>w <plug>CamelCaseMotion_w
-  nmap <silent> <space>b <plug>CamelCaseMotion_b
-  nmap <silent> <space>e <plug>CamelCaseMotion_e
+  map <silent> <space>w <plug>CamelCaseMotion_w
+  map <silent> <space>b <plug>CamelCaseMotion_b
+  map <silent> <space>e <plug>CamelCaseMotion_e
 endif "}}}
 
 if dein#tap('vim-gitgutter') "{{{
