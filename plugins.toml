@@ -174,8 +174,14 @@ repo = 'kana/vim-smartword'
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
 
-[[plugins]]
-repo = 'matchit.zip'
+# [[plugins]]
+# repo = 'matchit.zip'
+
+[[plugins]] # speedy
+repo = 'itchyny/vim-parenmatch'
+hook_add = '''
+  let g:loaded_matchparen = 1
+'''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
