@@ -18,9 +18,9 @@ let g:colors_name = expand('<sfile>:t:r')
 " highlight SpellBad                  guifg=#D70000 ctermfg=160 ctermbg=NONE cterm=underline
 " highlight SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 " highlight SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline
-" highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
 
-" original
+highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
+
 highlight Pmenu	              ctermfg=214 ctermbg=236
 highlight PmenuSel            ctermfg=235 ctermbg=214
 
