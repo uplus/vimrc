@@ -194,12 +194,12 @@ external_commands = 'ghc-mod'
 # repo = 'NigoroJr/rsense'
 # on_ft = 'ruby'
 
-[[plugins]]
-repo = 'osyo-manga/vim-monster'
-on_ft = 'ruby'
-hook_source = '''
-  " let g:monster#completion#rcodetools#backend = "async_rct_complete"
-'''
+# [[plugins]]
+# repo = 'osyo-manga/vim-monster'
+# on_ft = 'ruby'
+# hook_add = '''
+#   let g:monster#completion#rcodetools#backend = "async_rct_complete"
+# '''
 
 [[plugins]]
 repo = 'justmao945/vim-clang'

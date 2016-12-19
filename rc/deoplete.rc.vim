@@ -82,12 +82,12 @@ let g:deoplete#omni#input_patterns = {
       \ }
 
 let g:deoplete#sources#omni#input_patterns = {
+      \   'ruby' : '[^. *\t]\.\w*\|\h\w*::',
       \ }
 
 let g:deoplete#omni#functions = {
       \ 'lua': 'xolox#lua#omnifunc',
       \ }
-
 
 
 " deoplete-clang
@@ -99,4 +99,3 @@ let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
 
 " deoplete-jedi
 let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
-

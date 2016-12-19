@@ -293,9 +293,9 @@ hook_source = '''
   let g:deoplete#sources#go#package_dot = 1
 '''
 
-# [[plugins]]
-# repo = 'fishbullet/deoplete-ruby'
-# on_ft = 'ruby'
+[[plugins]]
+repo = 'fishbullet/deoplete-ruby'
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
