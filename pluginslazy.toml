@@ -400,3 +400,12 @@ on_cmd = 'Mario'
 repo = 'rbtnn/puyo.vim'
 depends = 'game_engine.vim'
 on_cmd = 'Puyo'
+
+[[plugins]]
+repo = 'thinca/vim-threes'
+on_cmd = ['ThreesStart', 'ThreesShowRecord']
+hook_add = '''
+  let g:threes#data_directory = expand('~/.vim/tmp')
+  let g:threes#start_with_higher_tile = 1
+  command! Threes ThreesStart
+'''

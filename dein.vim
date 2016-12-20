@@ -823,12 +823,6 @@ if dein#tap('vim-expand-region') "{{{
   xmap gm <Plug>(expand_region_shrink)
 endif "}}}
 
-if dein#tap('vim-threes') "{{{
-  let g:threes#data_directory = expand('~/.vim/tmp')
-  " let g:threes#start_with_higher_tile = 1
-  command! Threes ThreesStart
-endif "}}}
-
 if dein#tap('vim-milfeulle') "{{{
   nmap <C-o> <Plug>(milfeulle-prev)
   nmap <C-i> <Plug>(milfeulle-next)
