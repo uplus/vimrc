@@ -219,7 +219,7 @@ hook_source = '''
 repo = 'dannyob/quickfixstatus'
 
 [[plugins]] # forked from pocke from cohama
-repo = 'u10e10/vim-hier'
+repo = 'pocke/vim-hier'
 hook_add = '''
   au u10ac ColorScheme * hi hier cterm=undercurl ctermfg=NONE ctermbg=NONE
   let g:hier_highlight_group_qf = 'hier'
