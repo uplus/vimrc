@@ -280,6 +280,8 @@ function! OpenGitDiff(type)
     bwipeout!
     execute 'normal!' s:before_winnr ."\<C-w>w"
   endfunction
+
+  execute 'normal!' s:before_winnr ."\<C-w>w"
 endfunction "}}}
 
 " #Highlight "{{{
