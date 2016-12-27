@@ -497,3 +497,6 @@ hook_add = '''
 
 # [[plugins]]
 # repo = "mattn/benchvimrc-vim"
+
+# [[plugins]]
+# repo = 'Valodim/vim-zsh-completion'

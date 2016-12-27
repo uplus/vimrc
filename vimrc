@@ -147,7 +147,8 @@ set showfulltag         " Display all the information of the tag by the suppleme
 set wildoptions=tagfile " Can supplement a tag in a command-line.
 " 補完候補を全て表示 もう一度<Tab>で巡回
 set wildmenu
-set wildmode=list:longest,full
+" set wildmode=list:longest,full
+set wildmode=longest:full,full
 
 " #search
 set gdefault
