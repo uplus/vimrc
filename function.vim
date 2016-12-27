@@ -7,16 +7,6 @@ function! Ruby(str) abort
   return Capture('ruby ' . a:str)
 endfunction
 
-" cursolがlastlineにあるかどうか
-function! s:is_lastline(is_visual)
-  let last = line('$')
-  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
-endfunction
-
-function! s:removechars(str, pattern) abort
-  return substitute(a:str, '[' . a:pattern . ']', '', 'g')
-endfunction
-
 " #OptionStack "{{{
 " 引数には = += -= 含めた値をとる
 let g:option_stack = []
@@ -474,12 +464,29 @@ function! s:delete_for_match() abort
   normal! V^
   normal %
   normal! d
-
   call repeat#set("\<Plug>(delete_for_match)")
+endfunction
+
+" cursolがlastlineにあるかどうか
+function! s:is_lastline(is_visual)
+  let last = line('$')
+  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
+endfunction
+
+function! s:removechars(str, pattern) abort
+  return substitute(a:str, '[' . a:pattern . ']', '', 'g')
+endfunction
+
+function s:home2tilde(str)
+  return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction
 
 function! s:add_slash_tail(str)
   return substitute(a:str, '/*$', '/', '')
+endfunction
+
+function! s:delete_str(str, pattern, ...)
+  return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction
 
 function! ResetHightlights() abort
