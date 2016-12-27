@@ -534,34 +534,36 @@ endif
 
 function s:expand_filename_tilde(str)
     let path = system(printf("zsh -ic 'echo -n %s'", a:str))
-    return s:add_slash_tail(s:home2tilde(path))
+    return s:home2tilde(path)
 endfunction
 
 function! ZshFileCompletion(lead, line, pos)
   if a:lead ==# '#'
     return map(BuffersInfo(''), 'v:val[2]')
   elseif a:lead ==# ''
-    let query = '*'
+    let query = ''
   elseif a:lead =~# '\v^\~[^/]+'
     echo 'zsh file completion'
     " Slow
-    let query = s:expand_filename_tilde(a:lead) . '*'
+    let parts = split(a:lead, '/')
+    let parts[0] = s:expand_filename_tilde(parts[0])
     if v:shell_error
       return []
     endif
+    let query = join(parts, '/')
   elseif stridx(a:lead, '/') != -1
-    let query = a:lead . '*'
+    let query = a:lead
   else
     let pre_glob = glob('*' . a:lead . '*', 1, 1)
     if len(pre_glob) == 1 && isdirectory(pre_glob[0])
-      let query = s:add_slash_tail(pre_glob[0]) . '*'
+      let query = s:add_slash_tail(pre_glob[0])
     else
-      let query = '*' . a:lead . '*'
+      let query = '*' . a:lead
     endif
   endif
 
   let cands = []
-  for path in glob(query, 1, 1)
+  for path in glob(query . '*', 1, 1)
     if isdirectory(path)
       let path  .= '/'
     endif
