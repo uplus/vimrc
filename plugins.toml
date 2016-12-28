@@ -500,3 +500,6 @@ hook_add = '''
 
 # [[plugins]]
 # repo = 'Valodim/vim-zsh-completion'
+
+# [[plugins]]
+# repo = 'fweep/vim-zsh-path-completion'
