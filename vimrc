@@ -222,10 +222,11 @@ if has('nvim')
   endfunction
 endif
 
-let @" = @*
-
-if exists('##TextYankPost')
-  au TextYankPost * let @*=@" | let @+=@"
+if '' != $DISPLAY
+  let @" = @*
+  if exists('##TextYankPost')
+    au TextYankPost * let @*=@" | let @+=@"
+  endif
 endif
 
 if has('timers')
