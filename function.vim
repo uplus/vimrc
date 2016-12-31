@@ -489,6 +489,12 @@ function! s:delete_str(str, pattern, ...)
   return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction
 
+function RemoveOptVal(optname, chars)
+  for c in  split(a:chars, '.\zs')
+    execute printf('setl %s-=%s', a:optname, c)
+  endfor
+endfunction
+
 function! ResetHightlights() abort
   nohlsearch
   silent! QuickhlManualReset

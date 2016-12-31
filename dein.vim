@@ -597,14 +597,17 @@ if dein#tap('vim-jplus') "{{{
   xmap J <Plug>(jplus)
 
   " 任意の1文字+両端に空白を挿入して結合を行う
-  " nmap gJ <Plug>(jplus-getchar-with-space)
-  " xmap gJ <Plug>(jplus-getchar-with-space)
   nmap gJ <Plug>(jplus-getchar)
   xmap gJ <Plug>(jplus-getchar)
 
   " 複数文字を入力したい場合
   nmap <Space>gJ <Plug>(jplus-input)
   vmap <Space>gJ <Plug>(jplus-input)
+
+  " ,での結合にスペースを挿入
+  let g:jplus#input_config = {
+        \	"," : { "delimiter_format" : "%d " }
+        \}
 endif "}}}
 
 if dein#tap('vim-quickhl') "{{{

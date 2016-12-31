@@ -6,11 +6,12 @@
    augroup END
  endif
 
-au u10ac FileType * setl formatoptions-=ro
-au u10ac FileType * setl formatoptions+=Bn
-" r When type <return> in insert-mode auto insert commentstring
+au u10ac FileType * call RemoveOptVal('formatoptions', 'jro')
+au u10ac FileType * setl formatoptions+=Bnq
+" r 改行でコメントを挿入
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 " B multi-byte charの結合で空白を挿入しない
+" q gqでコメントを結合
 " j コメントを結合する時に可能であればコメントリーダーを削除する
 
 " elseやrescueに移動しない
