@@ -98,6 +98,8 @@ set noshowmode
 set cursorline
 set noshowmatch matchtime=0 " 括弧を入力した時に移動しないようにする
 set laststatus=2
+set display=lastline,uhex
+" set ambiwidth=double " マルチバイト文字があるときのカーソル位置の調節
 set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
 set title
