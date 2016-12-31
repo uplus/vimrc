@@ -323,24 +323,33 @@ function! s:set_highlights() "{{{
   endif
 
   if g:colors_name == 'PaperColor'
-    hi PmenuSel     cterm=NONE ctermfg=232 ctermbg=30
-    hi Normal       ctermbg=0
+    hi PmenuSel     ctermfg=232   ctermbg=30    cterm=NONE
+    hi Normal                     ctermbg=234
     hi LineNr       ctermfg=244
-    hi Specialkey   ctermfg=46
-    hi Comment      ctermfg=249
+    hi SpecialKey   ctermfg=46
+    hi Comment      ctermfg=111
+    hi Number       ctermfg=75
+    hi Folded       ctermfg=0     ctermbg=32
+    hi StatusLine   ctermfg=118   ctermbg=234
+    hi WildMenu     ctermfg=16    ctermbg=118
+
+    hi vimString    ctermfg=155
+    hi vimVar       ctermfg=226
+    hi vimFuncName  ctermfg=135
+    hi vimLet       ctermfg=83
   elseif g:colors_name == 'molokai'
     hi Folded       ctermfg=63
     hi Comment      ctermfg=245
-    hi Pmenu        ctermfg=232 ctermbg=6
-    hi PmenuSel     ctermfg=232 ctermbg=32
-    hi NonText      ctermfg=NONE ctermbg=NONE
+    hi Pmenu        ctermfg=232   ctermbg=6
+    hi PmenuSel     ctermfg=232   ctermbg=32
+    hi NonText      ctermfg=NONE  ctermbg=NONE
   elseif g:colors_name == 'BusyBee'
-    hi Normal       ctermbg=233
-    hi Folded       ctermfg=0    ctermbg=4
-    hi FoldColumn   ctermfg=14   ctermbg=233
-    hi Visual       ctermfg=NONE ctermbg=NONE
-    hi NonText      ctermfg=NONE ctermbg=NONE
-    hi CursorLine   cterm=NONE   ctermbg=234
+    hi Normal                     ctermbg=233
+    hi Folded       ctermfg=0     ctermbg=4
+    hi FoldColumn   ctermfg=14    ctermbg=233
+    hi Visual       ctermfg=NONE  ctermbg=NONE
+    hi NonText      ctermfg=NONE  ctermbg=NONE
+    hi CursorLine                 ctermbg=234   cterm=NONE
     hi vimFuncVar   ctermfg=198
   endif
 endfunction "}}}
