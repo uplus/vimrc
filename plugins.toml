@@ -470,8 +470,8 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'djjcast/mirodark'
 
-# [[plugins]]
-# repo = 'vim-scripts/BusyBee'
+[[plugins]]
+repo = 'vim-scripts/BusyBee'
 
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
