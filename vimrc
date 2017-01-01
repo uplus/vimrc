@@ -330,7 +330,7 @@ function! s:set_highlights() "{{{
     hi Comment      ctermfg=111
     hi Number       ctermfg=75
     hi Folded       ctermfg=0     ctermbg=32
-    hi StatusLine   ctermfg=118   ctermbg=234
+    hi StatusLine   ctermfg=118   ctermbg=234 cterm=NONE
     hi WildMenu     ctermfg=16    ctermbg=118
 
     hi vimString    ctermfg=155
