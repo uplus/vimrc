@@ -496,7 +496,7 @@ endif "}}}
 
 if dein#tap('vim-airline') "{{{
   " https://github.com/bling/vim-airline/wiki/Screenshots
-  let g:airline_theme = 'serene'
+  let g:airline_theme = 'kalisi'
   " serene simple xtermlight kalisi badwolf light
 
   let g:airline_powerline_fonts = 1
