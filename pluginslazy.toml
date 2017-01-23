@@ -300,7 +300,7 @@ repo = 'rhysd/vim-clang-format'
 on_ft = ['c', 'cpp']
 hook_add = '''
   let g:clang_format#command = 'clang-format'
-  au u10ac FileType c,cpp map <buffer>= <Plug>(operator-clang-format)
+  " au u10ac FileType c,cpp map <buffer>= <Plug>(operator-clang-format)
 '''
 
 [[plugins]] # <space>j <space>k
