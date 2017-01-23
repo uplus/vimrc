@@ -256,8 +256,8 @@ function! s:vimenter()
     setl buftype=nowrite
   elseif argc() == 1 && !exists('g:swapname')
     " many side effect.
-    " e.g: invalid behavior smart_quit() of vimfiler.
-    " e.g: swap, grep
+    " e.g invalid behavior smart_quit() of vimfiler.
+    " e.g swap, grep
     " lcd %:p:h
   endif
 endfunction
@@ -268,7 +268,13 @@ if !exists('g:noplugin')
 endif
 
 let g:colors_name = ''
-function! s:colorscheme(name) abort
+hi CursorLine term=NONE cterm=NONE
+hi LineNr     term=NONE ctermfg=44
+hi FoldColumn term=NONE ctermbg=NONE
+hi StatusLine cterm=NONE
+hi clear TabLineFill
+
+function! s:colorscheme(name) abort "{{{
   if g:colors_name !=# a:name
     try
       execute 'colorscheme' a:name
@@ -276,11 +282,7 @@ function! s:colorscheme(name) abort
       echo printf("catch: Cannot find color scheme '%s'", a:name)
     endtry
   endif
-endfunction
-
-hi CursorLine term=NONE cterm=NONE
-hi LineNr     term=NONE ctermfg=44
-hi FoldColumn term=NONE ctermbg=NONE
+endfunction "}}}
 
 function! s:set_colors() "{{{
   if -1 != index(['', 'unite', 'quickrun', 'qf'], &filetype)
