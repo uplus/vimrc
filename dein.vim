@@ -905,8 +905,3 @@ if dein#tap('ref-dicts-en') "{{{
   command! -nargs=1 Wiki Ref webdict wiki <args>
   command! -nargs=1 Eng Ref webdict <args>
 endif "}}}
-
-filetype plugin indent on
-syntax on
-autocmd u10ac VimEnter * call dein#call_hook('source')
-autocmd u10ac VimEnter * call dein#call_hook('post_source')

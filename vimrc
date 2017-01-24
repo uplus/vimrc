@@ -11,6 +11,15 @@ function! s:source(path)
   execute 'source' fnameescape(expand('~/.vim/' . a:path . '.vim'))
 endfunction
 
+function! s:on_filetype() abort
+  if execute('filetype') =~# 'OFF'
+    " Lazy loading
+    silent! filetype plugin indent on
+    syntax enable
+    filetype detect
+  endif
+endfunction
+
 augroup u10ac
   autocmd!
 augroup END
@@ -52,34 +61,26 @@ xnoremap g<C-G> <Nop>
 
 call s:source('dein')
 
+if has('vim_starting') && !empty(argv())
+  " call s:on_filetype()
+endif
+
+" if !has('vim_starting')
+  " echomsg '!vim_starting'
+  autocmd u10ac VimEnter * call dein#call_hook('source')
+  autocmd u10ac VimEnter * call dein#call_hook('post_source')
+  syntax on
+  filetype plugin indent on
+" endif
+
 " if ! exists('g:noplugin')
 "   call s:source('neobundle')
 " endif
-
-" filetype plugin indent on
-" syntax enable
 
 " Lazy loading
 " silent! filetype plugin indent on
 " syntax enable
 " filetype detect
-
-" autocmd u10ac FileType,Syntax,BufEnter,BufWinEnter * call s:my_on_filetype()
-function! s:my_on_filetype() abort "{{{
-  if &l:filetype == '' && bufname('%') == ''
-    return
-  endif
-
-  redir => filetype_out
-  silent! filetype
-  redir END
-  if filetype_out =~# 'OFF'
-    " Lazy loading
-    silent! filetype plugin indent on
-    syntax enable
-    filetype detect
-  endif
-endfunction "}}}
 
 set encoding=utf-8
 set termencoding=utf-8
