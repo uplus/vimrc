@@ -85,6 +85,7 @@ endif
 call s:source('opts')
 call s:source('function')
 call s:source('keymap')
+call s:source('highlights')
 
 " #autocmds
 au u10ac BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -93,8 +94,8 @@ au u10ac BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseS
 au u10ac InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 " windowの行数の10%にセットする
 au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
-" Skip return code when quit terminal.
 
+" Skip return code when quit terminal.
 if has('nvim')
   au u10ac TermOpen * call s:term_config()
   au u10ac TermClose * call feedkeys('\<cr>')
@@ -113,10 +114,10 @@ if '' != $DISPLAY
 endif
 
 if has('timers')
-  function! HandlerDeleteTrashBuffers(timer) abort
+  function! s:handler_DeleteTrashBuffers(timer) abort
     silent DeleteTrashBuffers
   endfunction
-  call timer_start(30000, 'HandlerDeleteTrashBuffers', {'repeat': -1})
+  call timer_start(1000, 's:handler_DeleteTrashBuffers', {'repeat': -1})
 endif
 
 if executable('fcitx-remote')
@@ -157,8 +158,6 @@ function! s:stdin_config()
   silent! %foldopen!
 endfunction
 "}}}
-
-call s:source('highlights')
 
 if filereadable(expand('~/.vimrc.after'))
   source $HOME/.vimrc.after
