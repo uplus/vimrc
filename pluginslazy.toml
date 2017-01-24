@@ -32,12 +32,18 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kannokanno/previm'
+depends = ['open-browser.vim']
 on_ft = 'markdown'
 hook_add = '''
-  if executable('firefox')
-    let g:previm_open_cmd='firefox'
-  endif
+  " " 設定されてると非同期にならない
+  " if executable('firefox')
+  "   let g:previm_open_cmd='firefox'
+  " endif
 '''
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -256,7 +262,7 @@ hook_source = '''
 repo = 'tyru/open-browser.vim'
 on_cmd = [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ]
 on_map = [ '<Plug>(openbrowser-open)', '<Plug>(openbrowser-search)', '<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-wwwsearch)' ]
-on_func = 'openbrowser'
+on_func = 'openbrowser#'
 
 [[plugins]]
 repo = 'tyru/open-browser-github.vim'
