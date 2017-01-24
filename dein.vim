@@ -2,9 +2,12 @@
 
 let s:dein_dir = expand('$CACHE/dein') . '/repos/github.com/Shougo/dein.vim'
 
+let g:dein#install_progress_type = 'title'
+let g:dein#enable_notification = 1
+
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    call system('!git clone https://github.com/Shougo/dein.vim ' . s:dein_dir)
   endif
   execute ' set runtimepath^=' . s:dein_dir
   let g:loaded_neobundle = 1
@@ -15,7 +18,7 @@ if dein#load_state(s:path)
   let s:toml_path = '~/.vim/plugins.toml'
   let s:toml_lazy_path = '~/.vim/pluginslazy.toml'
 
-  call dein#begin(s:path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path])
+  call dein#begin(s:path, expand('<sfile>'))
   call dein#load_toml(s:toml_path, {'lazy': 0})
   call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
 
