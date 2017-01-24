@@ -5,7 +5,7 @@ rtp = ''
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
-on_source = ['unite.vim', 'vimshell.vim']
+# on_source = ['unite.vim', 'vimshell.vim']
 
 
 #unite
@@ -497,6 +497,10 @@ on_event = 'CompleteDone'
 hook_add = '''
   let g:echodoc_enable_at_startup = 1
 '''
+
+[[plugins]] # :PP! is same as :echomes
+repo = 'thinca/vim-prettyprint'
+on_cmd = 'PP'
 
 # [[plugins]]
 # repo = "mattn/benchvimrc-vim"

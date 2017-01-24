@@ -358,10 +358,6 @@ on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
 repo = 'osyo-manga/vim-stargate'
 on_ft = ['c', 'cpp']
 
-[[plugins]] # :PP! is same as :echomes
-repo = 'thinca/vim-prettyprint'
-on_cmd = 'PP'
-
 [[plugins]]
 repo = 'tkhren/vim-fake'
 on_cmd = ['FakeSubstitute']
