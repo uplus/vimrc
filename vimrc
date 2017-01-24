@@ -139,6 +139,25 @@ function! s:vimenter()
   endif
 endfunction
 
+" #filetype config "{{{
+au u10ac FileType c,cpp    setl commentstring=//\ %s
+au u10ac FileType html,css setl foldmethod=indent
+au u10ac FileType qf,help  nnoremap <silent><buffer>q :quit<CR>
+au u10ac FileType text     setl nobreakindent wrap
+
+au u10ac StdinReadPost * call s:stdin_config()
+function! s:stdin_config()
+  nnoremap <buffer>q :quit<CR>
+  setl buftype=nofile
+  setl nofoldenable
+  setl foldcolumn=0
+
+  %s/\(_\|.\)//ge
+  goto
+  silent! %foldopen!
+endfunction
+"}}}
+
 if !exists('g:noplugin')
   au u10ac FileType    * nested call s:set_colors()
   au u10ac ColorScheme * call s:set_highlights()
@@ -236,26 +255,6 @@ function! s:set_highlights() "{{{
     hi vimFuncVar   ctermfg=198
   endif
 endfunction "}}}
-
-" #filetype config "{{{
-au u10ac FileType c,cpp    setl commentstring=//\ %s
-au u10ac FileType html,css setl foldmethod=indent
-au u10ac FileType qf,help  nnoremap <silent><buffer>q :quit<CR>
-au u10ac FileType text     setl nobreakindent wrap
-
-au u10ac StdinReadPost * call s:stdin_config()
-function! s:stdin_config()
-  nnoremap <buffer>q :quit<CR>
-  setl buftype=nofile
-  setl nofoldenable
-  setl foldcolumn=0
-
-  %s/\(_\|.\)//ge
-  goto
-  silent! %foldopen!
-endfunction
-
-"}}}
 
 if filereadable(expand('~/.vimrc.after'))
   source $HOME/.vimrc.after
