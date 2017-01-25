@@ -80,10 +80,12 @@ function! s:set_highlights()
     hi vimFuncName  ctermfg=135
     hi vimLet       ctermfg=83
 
-    hi pythonInclude ctermfg=75
+    hi pythonInclude     ctermfg=75
     hi pythonConditional ctermfg=69
-    hi pythonStatement ctermfg=147
-    hi pythonString ctermfg=226
+    hi pythonStatement   ctermfg=147
+    hi pythonString      ctermfg=220
+    hi pythonBuiltin     ctermfg=111
+    hi pythonComment     ctermfg=147
 
     hi clear pythonRepeat
     hi link pythonRepeat pythonConditional
