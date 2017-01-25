@@ -79,6 +79,14 @@ function! s:set_highlights()
     hi vimVar       ctermfg=226
     hi vimFuncName  ctermfg=135
     hi vimLet       ctermfg=83
+
+    hi pythonInclude ctermfg=75
+    hi pythonConditional ctermfg=69
+    hi pythonStatement ctermfg=147
+    hi pythonString ctermfg=226
+
+    hi clear pythonRepeat
+    hi link pythonRepeat pythonConditional
   elseif g:colors_name == 'molokai'
     hi Folded       ctermfg=63
     hi Comment      ctermfg=245

@@ -476,6 +476,8 @@ repo = 'vim-scripts/BusyBee'
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
 
+[[plugins]]
+repo = 'freeo/vim-kalisi'
 
 #misc
 
