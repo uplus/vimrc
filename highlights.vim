@@ -10,17 +10,17 @@ hi FoldColumn term=NONE ctermbg=NONE
 hi StatusLine cterm=NONE
 hi clear TabLineFill
 
-function! s:colorscheme(name) abort "{{{
+function! s:colorscheme(name) abort
   if g:colors_name !=# a:name
     try
       execute 'colorscheme' a:name
     catch /Cannot find color scheme/
-      echo printf("catch: Cannot find color scheme '%s'", a:name)
+      echomsg printf("catch: Cannot find color scheme '%s'", a:name)
     endtry
   endif
-endfunction "}}}
+endfunction
 
-function! s:set_colors() "{{{
+function! s:set_colors()
   if -1 != index(['', 'unite', 'quickrun', 'qf'], &filetype)
     return
   endif
@@ -40,9 +40,9 @@ function! s:set_colors() "{{{
   endif
 
   let g:colors_seted = 1
-endfunction "}}}
+endfunction
 
-function! s:set_highlights() "{{{
+function! s:set_highlights()
   hi Visual     cterm=reverse
   hi Title      ctermfg=118
   hi Todo       cterm=italic    ctermfg=226 ctermbg=0
@@ -94,4 +94,4 @@ function! s:set_highlights() "{{{
     hi CursorLine                 ctermbg=234   cterm=NONE
     hi vimFuncVar   ctermfg=198
   endif
-endfunction "}}}
+endfunction
