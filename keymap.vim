@@ -15,6 +15,7 @@ command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 " neovim terminal
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
+  tmap jj <esc>
   " tnoremap <c-h> <c-\><c-n><c-w>h
   " tnoremap <c-j> <c-\><c-n><c-w>j
   " tnoremap <c-k> <c-\><c-n><c-w>k
