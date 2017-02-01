@@ -84,6 +84,7 @@ function! s:set_highlights()
     hi pythonConditional ctermfg=69
     hi pythonStatement   ctermfg=147
     hi pythonString      ctermfg=220
+    hi pythonEscape      ctermfg=202
     hi pythonBuiltin     ctermfg=111
     hi pythonComment     ctermfg=147
 
