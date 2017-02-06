@@ -226,7 +226,7 @@ repo = 'pocke/vim-hier'
 hook_add = '''
   au u10ac ColorScheme * hi hier cterm=undercurl ctermfg=NONE ctermbg=NONE
   let g:hier_highlight_group_qf = 'hier'
-  au u10ac InsertLeave * HierUpdate
+  au u10ac InsertLeave * silent! HierUpdate
 '''
 
 
