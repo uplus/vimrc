@@ -114,10 +114,10 @@ if '' != $DISPLAY
 endif
 
 if has('timers')
-  function! s:handler_DeleteTrashBuffers(timer) abort
+  function! Handler_DeleteTrashBuffers(timer) abort
     silent DeleteTrashBuffers
   endfunction
-  call timer_start(1000, 's:handler_DeleteTrashBuffers', {'repeat': -1})
+  call timer_start(1000, 'Handler_DeleteTrashBuffers', {'repeat': -1})
 endif
 
 if executable('fcitx-remote')
