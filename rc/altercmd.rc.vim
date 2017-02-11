@@ -17,6 +17,7 @@ CAlterCommand uc[lear] UndoClear
 CAlterCommand ec[ho] PP
 CAlterCommand br botright sp
 CAlterCommand calc Calc
+CAlterCommand note Note
 
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive
