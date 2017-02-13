@@ -162,20 +162,17 @@ endfunction
 
 command! DeleteTrashBuffers call DeleteTrashBuffers()
 function! DeleteTrashBuffers()
-  let l:old = &report
-  set report=1000
   let l:count=0
 
   for l:buf in BuffersInfo(' u')
     if -1 == stridx(l:buf[1], 'a') && -1 == stridx(l:buf[1], 'h')
-      execute 'bwipeout' l:buf[0]
+      silent execute 'bwipeout' l:buf[0]
       let l:count+=1
     endif
   endfor
 
   if l:count != 0
     echo l:count 'buffer deleted'
-    let &report=l:old
   endif
 endfunction
 
