@@ -482,6 +482,9 @@ repo = 'freeo/vim-kalisi'
 #misc
 
 [[plugins]]
+repo = 'gutenye/json5.vim'
+
+[[plugins]]
 repo = 'vim-jp/vital.vim'
 
 [[plugins]]
