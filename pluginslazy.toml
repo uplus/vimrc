@@ -111,6 +111,7 @@ on_map   = ['<Plug>(table-mode', '\tm', '\tt']
 on_cmd   = ['TableModeToggle', 'Tableize']
 hook_add = '''
   let g:table_mode_map_prefix = '\t'
+  let g:table_mode_corner = '|'
   xmap \tT <Plug>(table-mode-tableize-delimiter)
 '''
 
