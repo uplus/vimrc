@@ -373,11 +373,12 @@ if dein#tap('vimfiler.vim') "{{{
   command! Vft VimFilerTab
   command! Vf VimFiler
   command! Vimfiler Vf
-  nnoremap <silent><C-W>e :Vfe<CR>
-  nnoremap <Space>ff :VimFiler<CR>
-  nnoremap <Space>ft :VimFilerTab<CR>
-  nnoremap <Space>fs :VimFilerSplit<CR>
-  nnoremap <Space>fe :Vfe<CR>
+  nnoremap <silent><c-W>e :Vfe<cr>
+  nnoremap <silent><c-W><c-e> :Vfe<cr>
+  nnoremap <space>ff :VimFiler<cr>
+  nnoremap <space>ft :VimFilerTab<cr>
+  nnoremap <space>fs :VimFilerSplit<cr>
+  nnoremap <space>fe :Vfe<cr>
 endif "}}}
 
 if dein#tap('vim-easy-align') "{{{
