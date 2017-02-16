@@ -1,4 +1,7 @@
 
+command! YardGen !yard doc %
+nnoremap <f3> :YardGen<cr>
+
 let b:match_ignorecase = 0
 let b:match_words =
       \ '\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!' .
