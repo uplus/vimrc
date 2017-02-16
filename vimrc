@@ -98,7 +98,7 @@ au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 
 " Skip return code when quit terminal.
 if has('nvim')
   au u10ac TermOpen * call s:term_config()
-  au u10ac TermClose * call feedkeys('\<cr>')
+  au u10ac TermClose term://*$SHELL call feedkeys('\<cr>')
 
   function s:term_config()
     au u10ac BufEnter <buffer> call feedkeys('a')
