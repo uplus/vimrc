@@ -3,26 +3,53 @@ let g:quickrun_no_default_key_mappings = 1
 let g:unite_quickfix_is_multiline = 0
 let g:unite_quickfix_filename_is_pathshorten = 0
 
-nnoremap <expr><silent><c-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<c-c>"
 nmap \R <Plug>(quickrun-op)
 xmap \r <Plug>(quickrun)
+
+nnoremap <expr><c-c> SmartQuickRunStop()
+function! g:SmartQuickRunStop() abort
+  if exists('*quickrun#is_running') && quickrun#is_running()
+    call quickrun#sweep_sessions()
+    echo 'QuickRun sweeped'
+    return
+  else
+    return "\<c-c>"
+  endif
+endfunction
 
 nnoremap <silent>\r :call SmartQuickRun()<CR>
 function! g:SmartQuickRun()
   update
-  " if empty(getloclist('.'))
+
+  " if empty(getloclist('.')) " If error exists, don't run
   echo "start quickrun"
-  QuickRun -mode n
-  " endif
+  if &ft == 'vim'
+    .QuickRun
+  elseif &ft == 'markdown'
+    PrevimOpen
+  elseif expand('%') =~ '_spec.rb$'
+    !rspec %
+  else
+    QuickRun -mode n
+  endif
 endfunction
 
-command! -nargs=1 QuickRunHeight let g:quickrun_config._['hook/unite_quickfix/unite_options'] = substitute(g:quickrun_config._['hook/unite_quickfix/unite_options'], '\v(-winheight\=)\d+', '\1<args>', '')
+function! QuickRunHeight(...) abort
+  let l:key = 'hook/unite_quickfix/unite_options'
 
-command! QuickRunStop call quickrun#sweep_sessions()
+  if 0 == a:0
+    echo g:quickrun_config._[l:key]
+  else
+    let l:opts = substitute(g:quickrun_config._[l:key], '\v(-winheight\=)\d+', '\1' . a:1, '')
+    let g:quickrun_config._[l:key] = l:opts
+  endif
+
+  return
+endfunction
+
+command! -nargs=* QuickRunHeight call QuickRunHeight(<f-args>)
+command! QuickRunStop call SmartQuickRunStop()
 command! Stop QuickRunStop
-au u10ac BufWinEnter,BufNewFile *_spec.rb nnoremap <silent><buffer>\r :update<CR>:!rspec %<CR>
-au u10ac FileType vim      nnoremap <silent><buffer>\r :write<CR>:.QuickRun<CR>
-au u10ac FileType markdown nnoremap <silent><buffer>\r :write<CR>:PrevimOpen<CR>
 
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
