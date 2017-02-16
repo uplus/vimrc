@@ -632,10 +632,19 @@ function! TermRun() abort
   call termopen('ruby in.rb')
 endfunction
 
-function! GetRunConfig() abort
-  let config = {}
+function! BuildRunCommand(src, config) abort
+  let cmd = a:config.exec
+  let cmd = substitute(cmd, '%c', a:config.command, 'g')
+  let cmd = substitute(cmd, '%o', a:config.cmdopt, 'g')
+  let cmd = substitute(cmd, '%a', a:config.args, 'g')
+  let cmd = substitute(cmd, '%s', a:src, 'g')
+  return cmd
+endfunction
 
-  let type = {'type': &filetype}
+function! GetRunConfig(filetype) abort
+  let config = {}
+  let type = {'type': a:filetype}
+
   for c in [
         \ 'b:quickrun_config',
         \ 'type',
@@ -663,8 +672,8 @@ function! GetRunConfig() abort
 
   return { 'type': config.type,
         \ 'command':  get(config, 'command', config.type),
-        \ 'args':     get(config, 'args', ''),
         \ 'cmdopt':   get(config, 'cmdopt', ''),
+        \ 'args':     get(config, 'args', ''),
         \ 'exec':     get(config, 'exec',  '%c %o %s %a'),
         \ }
 endfunction
