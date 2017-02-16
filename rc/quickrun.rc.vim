@@ -55,7 +55,9 @@ command! Stop QuickRunStop
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
       \ 'runner' : 'vimproc',
-      \ 'runner/vimproc/updatetime' : 60,
+      \ 'runner/vimproc/sleep': 10,
+      \ 'runner/vimproc/updatetime' : 50,
+      \ 'runner/vimproc/read_timeout': 100,
       \ 'outputter' : 'quickfix',
       \ 'outputter/buffer/close_on_empty'   : 1,
       \ 'outputter/quickfix/into'           : 0,
