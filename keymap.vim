@@ -12,7 +12,7 @@ command! -nargs=+ Calc echo eval(<q-args>)
 command! Zatof normal! 0diwf=cl()lxC{Px>>o}
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 
-" neovim terminal
+" neovim terminal "{{{
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
   tmap jj <esc>
@@ -33,7 +33,7 @@ if has('nvim')
   nnoremap <c-t>j <c-w>jI
   nnoremap <c-t>k <c-w>kI
   nnoremap <c-t>l <c-w>lI
-endif
+endif "}}}
 
 " Encode: Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
@@ -107,7 +107,8 @@ nnoremap <silent>,u <Nop>
 
 nnoremap <silent>,dd :bd<CR>
 nnoremap <silent>,dq :q<CR>
-nnoremap <silent>,da :qa<CR>
+nnoremap <silent>,da :qall<CR>
+nnoremap <silent>,dw :wqall<CR>
 
 " #overwrite
 inoremap <c-c> <ESC>

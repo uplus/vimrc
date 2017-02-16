@@ -379,6 +379,7 @@ if dein#tap('vimfiler.vim') "{{{
   nnoremap <space>ft :VimFilerTab<cr>
   nnoremap <space>fs :VimFilerSplit<cr>
   nnoremap <space>fe :Vfe<cr>
+  nnoremap <space><space> :Vfe<cr>
 endif "}}}
 
 if dein#tap('vim-easy-align') "{{{
