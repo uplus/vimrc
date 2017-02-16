@@ -621,3 +621,50 @@ if executable('note')
   endfunction
 endif
 "}}}
+
+" TermRun
+" quickrunの設定をパースしてtermで実行する
+
+function! TermRun() abort
+  let l:src = expand('%') " :p full path
+
+  botright sp +enew
+  call termopen('ruby in.rb')
+endfunction
+
+function! GetRunConfig() abort
+  let config = {}
+
+  let type = {'type': &filetype}
+  for c in [
+        \ 'b:quickrun_config',
+        \ 'type',
+        \ 'g:quickrun_config[config.type]',
+        \ 'g:quickrun#default_config[config.type]',
+        \ 'g:quickrun_config["_"]',
+        \ 'g:quickrun_config["*"]',
+        \ 'g:quickrun#default_config["_"]',
+        \ ]
+    if exists(c)
+      let new_config = eval(c)
+      if 0 <= stridx(c, 'config.type')
+        let config_type = ''
+        while has_key(config, 'type') && has_key(new_config, 'type')
+              \   && config.type !=# '' && config.type !=# config_type
+          let config_type = config.type
+          call extend(config, new_config, 'keep')
+          let config.type = new_config.type
+          let new_config = exists(c) ? eval(c) : {}
+        endwhile
+      endif
+      call extend(config, new_config, 'keep')
+    endif
+  endfor
+
+  return { 'type': config.type,
+        \ 'command':  get(config, 'command', config.type),
+        \ 'args':     get(config, 'args', ''),
+        \ 'cmdopt':   get(config, 'cmdopt', ''),
+        \ 'exec':     get(config, 'exec',  '%c %o %s %a'),
+        \ }
+endfunction
