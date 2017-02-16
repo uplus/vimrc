@@ -178,7 +178,7 @@ repo = 'hynek/vim-python-pep8-indent'
 repo = 'tell-k/vim-autopep8'
 on_ft = 'python'
 hook_add = '''
-  let g:autopep8_ignore = 'E221,E261,E302,E303,F401'
+  let g:autopep8_ignore = 'E221,E226,E261,E302,E303,E305,F401'
   let g:autopep8_max_line_length = 200
 '''
 
