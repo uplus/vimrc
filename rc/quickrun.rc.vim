@@ -64,12 +64,13 @@ let g:quickrun_config._ = {
       \ 'hook/close_quickfix/enable_exit'   : 1,
       \ 'hook/close_unite_quickfix/enable_module_loaded' : 1,
       \ 'hook/unite_quickfix/enable_exit'    : 1,
-      \ 'hook/unite_quickfix/unite_options'  : '-no-focus -no-quit -no-empty -direction=botright -create -winheight=10',
+      \ 'hook/unite_quickfix/unite_options'  : '-no-quit -no-empty -direction=botright -winheight=10',
       \ 'hook/unite_quickfix/priority_exit'  : 0,
       \ 'hook/unite_quickfix/no_focus'       : 1,
       \ }
-      " 'outputter/quickfix/open_cmd'       : 'Quickfix',
-      " -createを指定することで再実行した時に-no-focusでもハイライトを有効に
+      " -create指定しないとハイライトされないときがある
+      "   有効にするとバッファが作られまくる
+      "   uniteで最初の行がエラーだとハイライトされる
       " topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
 
 function! s:make_hook_points_module(base)
