@@ -626,10 +626,12 @@ endif
 " quickrunの設定をパースしてtermで実行する
 
 function! TermRun() abort
-  let l:src = expand('%') " :p full path
+  let config = GetRunConfig(&ft)
+  let cmd = BuildRunCommand(expand('%'), config)
 
   botright sp +enew
-  call termopen('ruby in.rb')
+  call termopen(cmd)
+  startinsert
 endfunction
 
 function! BuildRunCommand(src, config) abort
