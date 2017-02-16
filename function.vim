@@ -622,10 +622,14 @@ if executable('note')
 endif
 "}}}
 
-" TermRun
+" #TerminalRun "{{{
 " quickrunの設定をパースしてtermで実行する
+" TODO  プラグインにしてもいいかも quickrun-terminal
 
-function! TermRun() abort
+nnoremap <silent>\tr :TermRun<cr>
+command! TermRun noautocmd w | call TerminalRun()
+
+function! TerminalRun() abort
   let config = GetRunConfig(&ft)
   let cmd = BuildRunCommand(expand('%'), config)
 
@@ -679,3 +683,4 @@ function! GetRunConfig(filetype) abort
         \ 'exec':     get(config, 'exec',  '%c %o %s %a'),
         \ }
 endfunction
+"}}}
