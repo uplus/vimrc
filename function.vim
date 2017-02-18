@@ -442,7 +442,7 @@ function! s:Move(count, is_up, is_visual) abort
   if a:is_visual
     normal! '[V']
   else
-    call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
+    silent! call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
   endif
 endfunction
 "}}}
