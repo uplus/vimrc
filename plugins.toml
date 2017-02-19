@@ -93,6 +93,14 @@ on_source = 'unite.vim'
 #view
 
 [[plugins]]
+repo = 'gutenye/json5.vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+
+[[plugins]]
 repo = 'powerman/vim-plugin-AnsiEsc'
 
 [[plugins]]
@@ -252,9 +260,6 @@ repo = 'osyo-manga/quickrun-outputter-replace_region'
 
 
 #input
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
@@ -484,21 +489,18 @@ repo = 'NLKNguyen/papercolor-theme'
 [[plugins]]
 repo = 'freeo/vim-kalisi'
 
+
 #misc
 
 [[plugins]]
-repo = 'gutenye/json5.vim'
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'hynek/vim-python-pep8-indent'
-on_ft = 'python'
 
 [[plugins]]
 repo = 'Shougo/echodoc'
