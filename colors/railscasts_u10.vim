@@ -26,7 +26,8 @@ highlight StatusLine          ctermfg=255 ctermbg=NONE cterm=NONE
 highlight WildMenu            ctermfg=0   ctermbg=214
 
 highlight Normal              ctermbg=NONE
-highlight Folded              ctermfg=198 ctermbg=NONE cterm=reverse
+" highlight Folded              ctermfg=198 ctermbg=NONE cterm=reverse
+highlight Folded              ctermfg=249 ctermbg=NONE cterm=NONE
 highlight FoldColumn          ctermfg=99  ctermbg=232
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=233 cterm=NONE

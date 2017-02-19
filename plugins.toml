@@ -160,8 +160,9 @@ hook_post_source = '''
 repo = 'LeafCage/foldCC.vim'
 hook_add = '''
   let g:foldCCtext_enable_autofdc_adjuster = 0
-  let g:foldCCtext_head = 'printf("%3d ", v:foldend - v:foldstart+1)'
-  let g:foldCCtext_tail = ''
+  " let g:foldCCtext_head = 'printf("%3d ", v:foldend - v:foldstart+1)'
+  let g:foldCCtext_head = ''
+  " let g:foldCCtext_tail = ''
 '''
 
 [[plugins]]
