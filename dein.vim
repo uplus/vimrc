@@ -132,12 +132,12 @@ if dein#tap('vim-textobj-multiblock') "{{{
   omap ab <Plug>(textobj-multiblock-a)
   xmap ab <Plug>(textobj-multiblock-a)
 
-  let g:textobj#multiblock#enable_block_in_cursor = 50
+  let g:textobj#multiblock#enable_block_in_cursor = 1
   let g:textobj_multiblock_search_limit = 40
   let g:textobj_multiblock_blocks = [
-        \   ['"', '"', 1],
-        \   ["'", "'", 1],
-        \   ['`', '`', 1],
+        \   ['"', '"', 0],
+        \   ["'", "'", 0],
+        \   ['`', '`', 0],
         \   ['(', ')', 1],
         \   ['[', ']', 1],
         \   ['{', '}', 1],
