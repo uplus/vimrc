@@ -71,7 +71,8 @@ function! s:set_highlights()
     hi SpecialKey   ctermfg=46
     hi Comment      ctermfg=111
     hi Number       ctermfg=75
-    hi Folded       ctermfg=0     ctermbg=38
+    " hi Folded       ctermfg=0     ctermbg=38
+    hi Folded       ctermfg=45     ctermbg=NONE
     hi StatusLine   ctermfg=118   ctermbg=234 cterm=NONE
     hi WildMenu     ctermfg=16    ctermbg=118
 

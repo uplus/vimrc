@@ -150,6 +150,11 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'LeafCage/foldCC.vim'
+hook_add = '''
+  let g:foldCCtext_enable_autofdc_adjuster = 0
+  let g:foldCCtext_head = 'printf("%3d ", v:foldend - v:foldstart+1)'
+  let g:foldCCtext_tail = ''
+'''
 
 [[plugins]]
 repo = 'Konfekt/FastFold'
