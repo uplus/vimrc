@@ -135,9 +135,9 @@ if dein#tap('vim-textobj-multiblock') "{{{
   let g:textobj#multiblock#enable_block_in_cursor = 1
   let g:textobj_multiblock_search_limit = 40
   let g:textobj_multiblock_blocks = [
-        \   ['"', '"', 0],
-        \   ["'", "'", 0],
-        \   ['`', '`', 0],
+        \   ['"', '"', 1],
+        \   ["'", "'", 1],
+        \   ['`', '`', 1],
         \   ['(', ')', 1],
         \   ['[', ']', 1],
         \   ['{', '}', 1],
