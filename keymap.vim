@@ -16,7 +16,7 @@ command! -nargs=* Job call jobstart(<q-args>)
 " neovim terminal "{{{
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
-  tmap jj <esc>
+  " tmap jj <esc>
   " tnoremap <c-h> <c-\><c-n><c-w>h
   " tnoremap <c-j> <c-\><c-n><c-w>j
   " tnoremap <c-k> <c-\><c-n><c-w>k
@@ -55,6 +55,7 @@ nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 
+inoremap jj <ESC>
 nnoremap <silent><space>n :call ResetHightlights()<CR>
 xnoremap <Space>n :normal<Space>
 
