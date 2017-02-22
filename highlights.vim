@@ -4,6 +4,7 @@ if !exists('g:noplugin')
 endif
 
 let g:colors_name = ''
+let g:colors_seted = 0
 hi CursorLine term=NONE cterm=NONE
 hi LineNr     term=NONE ctermfg=44
 hi FoldColumn term=NONE ctermbg=NONE
@@ -21,6 +22,10 @@ function! s:colorscheme(name) abort
 endfunction
 
 function! s:set_colors()
+  if 0 != g:colors_seted
+    return
+  endif
+
   if -1 != index(['', 'unite', 'quickrun', 'qf'], &filetype)
     return
   endif
@@ -34,7 +39,7 @@ function! s:set_colors()
     call s:colorscheme('railscasts_u10')
   elseif &filetype == 'gitcommit'
     call s:colorscheme('gitcommit_u10')
-  elseif !exists('g:colors_seted')
+  elseif g:colors_seted == 0
     set background=dark
     call s:colorscheme('PaperColor')
   endif
