@@ -62,7 +62,7 @@ endfunction
 let s:split_action = { 'is_selectable' : 1 }
 function! s:split_action.func(candidates)
   wincmd p
-  exec 'botright split '. a:candidates[0].action__path
+  exec 'rightbelow split '. a:candidates[0].action__path
 endfunction
 call unite#custom_action('file', 'split_action', s:split_action)
 
