@@ -527,6 +527,8 @@ function! AddRepo() abort
   call append(line('.'), '[[plugins]]')
   normal! }
 endfunction
+
+command Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
 "}}}
 
 " #Tabedit "{{{
