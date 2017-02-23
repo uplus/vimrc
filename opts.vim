@@ -31,7 +31,7 @@ set completeopt=menuone
 set switchbuf=usetab
 
 if has('patch338')
-  set breakindent
+  setg breakindent
 endif
 set nowrap
 set sidescroll=0

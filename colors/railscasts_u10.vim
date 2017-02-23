@@ -19,15 +19,14 @@ let g:colors_name = expand('<sfile>:t:r')
 " highlight SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 " highlight SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 
-highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
+highlight MatchParen          ctermfg=15  ctermbg=23
 highlight Pmenu	              ctermfg=214 ctermbg=236
 highlight PmenuSel            ctermfg=235 ctermbg=214
 highlight StatusLine          ctermfg=255 ctermbg=NONE cterm=NONE
 highlight WildMenu            ctermfg=0   ctermbg=214
-
 highlight Normal              ctermbg=NONE
 " highlight Folded              ctermfg=198 ctermbg=NONE cterm=reverse
-highlight Folded              ctermfg=249 ctermbg=NONE cterm=NONE
+highlight Folded              ctermfg=250 ctermbg=NONE cterm=NONE
 highlight FoldColumn          ctermfg=99  ctermbg=232
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=233 cterm=NONE

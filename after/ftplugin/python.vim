@@ -6,6 +6,8 @@ setl tabstop=4
 let &l:softtabstop = &l:tabstop
 let &l:shiftwidth = &l:tabstop
 
+setl foldmethod=manual
+
 if has('*textobj#user#map')
   call textobj#user#map('python', {
         \   'class': {
