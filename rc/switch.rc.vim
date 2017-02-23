@@ -5,7 +5,7 @@ au u10ac FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
 
 let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
 
-" Todo: \zs \ze
+" TODO \zs \ze
 let g:switch_custom_definitions += [
       \ ['enable', 'disable'],
       \ [ ' < ', ' > '],
@@ -15,7 +15,7 @@ let g:switch_custom_definitions += [
       \ { '\v''(.+)''' : '"\1"'   },
       \]
 
-" Todo: ruby-lambdaをスペースを識別できるようにする
+" TODO ruby-lambdaがスペースを識別できるようにする
 " {'''\(\k\+\)''': ':\1', '"\(\k\+\)"': '''\1''', ':\(\k\+\)\@>\%(\s*=>\)\@!': '"\1"\2'},
 au FileType ruby,eruby let g:switch_custom_definitions +=
       \ [
