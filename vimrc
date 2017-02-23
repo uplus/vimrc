@@ -117,7 +117,8 @@ if has('timers')
   function! Handler_DeleteTrashBuffers(timer) abort
     silent DeleteTrashBuffers
   endfunction
-  call timer_start(30000, 'Handler_DeleteTrashBuffers', {'repeat': -1})
+  " 運が悪いとキー入力中に割り込まれる
+  " call timer_start(30000, 'Handler_DeleteTrashBuffers', {'repeat': -1})
 endif
 
 if executable('fcitx-remote')
