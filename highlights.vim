@@ -81,6 +81,8 @@ function! s:set_highlights()
     hi StatusLine   ctermfg=118   ctermbg=234 cterm=NONE
     hi WildMenu     ctermfg=16    ctermbg=118
 
+    hi mkdLineBreak ctermbg=240
+
     hi vimString    ctermfg=155
     hi vimVar       ctermfg=226
     hi vimFuncName  ctermfg=135
