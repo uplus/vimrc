@@ -92,6 +92,11 @@ function! EraseSpace()
     return
   endif
 
+  " for vim-precious
+  if expand('%') =~# '.md$'
+    return
+  endif
+
   let l:cursor = getpos(".")
   %s/\s\+$//e
   call setpos(".", l:cursor)
