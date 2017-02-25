@@ -11,10 +11,13 @@ let g:deoplete#auto_complete_start_length = 1
 " let g:deoplete#delimiters = []
 " let b:deoplete_sources =[]
 " let g:deoplete#file#enable_buffer_path
-let g:deoplete#auto_complete_delay = 150
+" let g:deoplete#auto_complete_delay = 150
 
 " call deoplete#enable_logging('DEBUG', 'deoplete.log')
 let g:deoplete#ignore_sources = {'_': ['tag']}
+
+let g:deoplete#sources = {}
+" let g:deoplete#sources.cpp = ['buffer', 'tag']
 
 
 
@@ -72,13 +75,13 @@ call deoplete#custom#set('_', 'converters', [
 
 " call deoplete#custom#set('buffer', 'min_pattern_length', 9999)
 
-" let g:deoplete#keyword_patterns = {
-"       \ '_' : '[a-zA-Z_]\k*\(?',
-"       \ 'tex' : '[^\w|\s][a-zA-Z_]\w*',
-"       \ }
-"       \ 'tex' : '\\?[a-zA-Z_]\w*'
+let g:deoplete#keyword_patterns = {
+      \ '_' : '[a-zA-Z_]\k*\(?',
+      \ 'tex' : '[^\w|\s][a-zA-Z_]\w*',
+      \ }
 
 let g:deoplete#omni#input_patterns = {
+      \ 'python': ''
       \ }
 
 let g:deoplete#sources#omni#input_patterns = {

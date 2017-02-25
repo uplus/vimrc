@@ -286,6 +286,7 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
+depends = 'deoplete.nvim'
 
 # deoplete
 [[plugins]]
