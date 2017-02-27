@@ -205,7 +205,7 @@ if dein#tap('neocomplete.vim') && has('lua') "{{{
 endif "}}}
 
 if dein#tap('neosnippet.vim') "{{{
-  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_snipmate_compatibility = 0
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#enable_complete_done = 1
   let g:neosnippet#expand_word_boundary = 1
