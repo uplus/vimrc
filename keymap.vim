@@ -287,7 +287,7 @@ xmap [e <Plug>(MoveUp)
 xmap ]e <Plug>(MoveDown)
 
 nnoremap <silent>[c :cp<cr>
-nnoremap <silent>]c :cn<cr>
+nnoremap <silent>]c :cc<cr>
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
