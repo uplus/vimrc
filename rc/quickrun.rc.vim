@@ -151,8 +151,9 @@ let s:c_opt = substitute($C_COMP_OPT, '-lm ', '','')
 
 let s:config = {
       \ 'watchdogs_checker/_' : {
+      \   'outputter/quickfix/open_cmd' : '',
       \   'hook/close_unite_quickfix/enable_module_loaded'  : 0,
-      \   'hook/unite_quickfix/enable_exit'                 : 1,
+      \   'hook/unite_quickfix/enable_exit'                 : 0,
       \   'hook/back_window/enable_exit'             : 0,
       \   'hook/back_window/priority_exit'           : 1,
       \   'hook/quickfix_status_enable/enable_exit'  : 1,
