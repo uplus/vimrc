@@ -37,7 +37,9 @@ highlight rubySharpBang           ctermfg=103
 highlight rubyInclude             ctermfg=214
 " highlight rubyComment             ctermfg=179
 highlight rubyComment             ctermfg=247
+highlight! link rubyData rubyComment
 highlight rubyTodo                ctermfg=16  ctermbg=220
+highlight rubyDataDirective       ctermfg=111
 highlight rubyError               ctermfg=255 ctermbg=161
 highlight rubyFunction            ctermfg=226
 highlight rubyDefine              ctermfg=208
