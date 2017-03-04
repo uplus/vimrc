@@ -3,9 +3,9 @@ let g:submode_timeout          = 0
 
 " tab moving
 call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
-call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#enter_with('changetab', 'n', '', 'gr', 'gT')
 call submode#map('changetab', 'n', '', 't', 'gt')
-call submode#map('changetab', 'n', '', 'T', 'gT')
+call submode#map('changetab', 'n', '', 'r', 'gT')
 
 " undo/redo
 " call submode#enter_with('undo/redo', 'n', '', '<C-r>', '<C-r>')

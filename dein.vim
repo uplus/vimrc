@@ -56,10 +56,10 @@ if dein#tap('vim-operator-user') "{{{
 endif "}}}
 
 if dein#tap('vim-operator-replace')
-  nmap gr <Plug>(operator-replace)
-  xmap gr <Plug>(operator-replace)
+  nmap gz <Plug>(operator-replace)
+  xmap gz <Plug>(operator-replace)
   for c in split("\" ' ` ( { [ <")
-    exe 'nmap gr' . c "<Plug>(operator-replace)i" . c
+    exe 'nmap gz' . c "<Plug>(operator-replace)i" . c
   endfor
 endif
 
