@@ -45,12 +45,12 @@ snippet pwn
       @sock = TCPSocket.open(host, port)
     end
 
-    def write(str)
-      sock.write(str)
+    def set_nodelay
+      sock.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
     end
 
-    def get_stdin
-      sock.puts '%2$p'
+    def write(str)
+      sock.write(str)
     end
 
     def puts(str)
