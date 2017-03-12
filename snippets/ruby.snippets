@@ -26,9 +26,9 @@ snippet pwn
     hex_str.unpack('V')[0]
   end
 
-  def fsb_write(pos, dest_addr, value)
+  def fsa(pos, dest_addr, value)
     # 下位から書き込むためにsplit&reverse
-    data    = value.to_s(16).reverse.scan(/.{1,4}/).map{|s| s.reverse.to_hex}
+    data    = value.to_hex.reverse.scan(/.{1,4}/).map{|s| s.reverse.to_hex}
     stage   = data.size # 分割数
     dests   = stage.times.map{|i| pack(dest_addr+0x2*i)}
     num     = dests.map(&:size).inject(&:+)
@@ -72,10 +72,12 @@ snippet pwn
     def read_nb(byte=0xffff)
       sock.read_nonblock(byte) rescue nil
     end
+    alias :readnb :read_nb
 
     def io(str)
       puts(str)
-      gets(4)[0]
+      sleep 0.1
+      read_nb
     end
 
     def interact
@@ -84,7 +86,7 @@ snippet pwn
       sock.flush
       loop do
         STDOUT.print '>> '
-        sock.puts(STDIN.gets)
+        puts(STDIN.gets)
         sleep(0.1)
         STDOUT.puts read_nb(1024*5)
       end
