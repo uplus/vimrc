@@ -1,97 +1,15 @@
 
 snippet pwn
-  require 'pry'
-  require 'pp'
-  require 'socket'
+  #!/usr/bin/env ruby
+  # coding: ascii-8bit
+  require 'upwn'
 
-  # Methods {{{
-  class String
-    def to_hex
-      to_i 16
-    end
-  end
+  host = 'localhost'
+  port = 8888
 
-  class Integer
-    def to_hex
-      to_s 16
-    end
-  end
+  sl = Solver.open(host, port)
+  ${0}
 
-  def pack(hex_str)
-    [hex_str].pack('V')
-  end
-
-  def unpack(hex_str)
-    # hex_str.unpack('H*')[0]
-    hex_str.unpack('V')[0]
-  end
-
-  def fsa(pos, dest_addr, value)
-    # 下位から書き込むためにsplit&reverse
-    data    = value.to_hex.reverse.scan(/.{1,4}/).map{|s| s.reverse.to_hex}
-    stage   = data.size # 分割数
-    dests   = stage.times.map{|i| pack(dest_addr+0x2*i)}
-    num     = dests.map(&:size).inject(&:+)
-    nums    = data.unshift(num).each_cons(2).map{|val,num| (num-val)%0x10000}
-    payload = nums.map.with_index{|v,i| "%#{v}x%#{pos+i}$hn"}.inject(&:+)
-    dests.inject(&:+) + payload
-  end
-  # }}}
-
-  class Solver # {{{
-    attr_accessor :sock
-
-    def initialize(host, port)
-      @sock = TCPSocket.open(host, port)
-    end
-
-    def set_nodelay
-      sock.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1)
-    end
-
-    def write(str)
-      sock.write(str)
-    end
-
-    def puts(str)
-      sock.puts str
-    end
-
-    def gets(num=nil)
-      if num
-        num.times.map{ sock.gets }
-      else
-        sock.gets
-      end
-    end
-
-    def read(byte)
-      sock.read(byte)
-    end
-
-    def read_nb(byte=0xffff)
-      sock.read_nonblock(byte) rescue nil
-    end
-    alias :readnb :read_nb
-
-    def io(str)
-      puts(str)
-      sleep 0.1
-      read_nb
-    end
-
-    def interact
-      STDOUT.puts read_nb(1024*5)
-      STDOUT.puts('Interactive')
-      sock.flush
-      loop do
-        STDOUT.print '>> '
-        puts(STDIN.gets)
-        sleep(0.1)
-        STDOUT.puts read_nb(1024*5)
-      end
-    end
-  end # }}}
 
 snippet getints
   gets.split.map &:to_i
@@ -130,6 +48,9 @@ snippet pager
     opt='--RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
     IO.popen(['less', opt], 'w'){|f| f.puts out.string }
   end
+
+snippet pry
+  binding.pry
 
 snippet debug
   rescue => e # TODO debug
