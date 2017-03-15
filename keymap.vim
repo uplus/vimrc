@@ -12,6 +12,7 @@ command! -nargs=+ Calc echo eval(<q-args>)
 command! Zatof normal! 0diwf=cl()lxC{Px>>o}
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! -nargs=* Job call jobstart(<q-args>)
+command! -nargs=1 Char echo printf("%c", 0x<args>)
 
 " neovim terminal "{{{
 if has('nvim')
