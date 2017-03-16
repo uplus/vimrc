@@ -8,7 +8,7 @@ command! WWW w !sudo tee > /dev/null %
 command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=? Ls !ls -F --color=always <args>
-command! -nargs=+ Calc echo eval(<q-args>)
+command! -nargs=+ Cal echo eval(<q-args>)
 command! Zatof normal! 0diwf=cl()lxC{Px>>o}
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! -nargs=* Job call jobstart(<q-args>)
