@@ -5,11 +5,17 @@ snippet pwn
   require 'upwn'
   include Shellcode
 
+  class Solver
+  end
+
   host = 'localhost'
   port = 8888
 
   sl = Solver.open(host, port)
   ${0}
+
+  binding.pry
+  puts '[*] end binding'
 
 
 snippet getints
