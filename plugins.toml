@@ -309,7 +309,8 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'fishbullet/deoplete-ruby'
+# repo = 'fishbullet/deoplete-ruby'
+repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
 
 [[plugins]]
