@@ -95,6 +95,10 @@ au u10ac InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
 " windowの行数の10%にセットする
 au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
+" nohlsearchする代わりに出力が常に消える
+" visual modeがバグる
+" au u10ac CursorMoved * silent call feedkeys(":silent nohlsearch\<cr>\<c-l>")
+
 " Skip return code when quit terminal.
 if has('nvim')
   au u10ac TermOpen * call s:term_config()

@@ -113,6 +113,10 @@ if has('gui_running')
    set guioptions=Mc
 endif
 
+if has('nvim')
+  " set inccommand=split
+endif
+
 " set termguicolors
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
