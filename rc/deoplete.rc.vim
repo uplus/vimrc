@@ -20,8 +20,6 @@ let g:deoplete#sources = {}
 " let g:deoplete#sources.cpp = ['buffer', 'tag']
 
 
-
-
 " <TAB>: completion.
 " imap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
@@ -51,8 +49,6 @@ inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
 
 " inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
-
-
 
 " call deoplete#custom#set('_', 'matchers', ['matcher_head'])
 " call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
@@ -85,7 +81,7 @@ let g:deoplete#omni#input_patterns = {
       \ }
 
 let g:deoplete#sources#omni#input_patterns = {
-      \   'ruby' : '[^. *\t]\.\w*\|\h\w*::',
+      " \ 'ruby' : '[^. *\t]\.\w*\|\h\w*::',
       \ }
 
 let g:deoplete#omni#functions = {

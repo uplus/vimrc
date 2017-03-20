@@ -56,6 +56,7 @@ nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 
+imap <c-j> <cr>
 inoremap jj <ESC>
 nnoremap <silent><space>n :call ResetHightlights()<CR>
 xnoremap <Space>n :normal<Space>
