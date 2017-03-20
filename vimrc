@@ -97,7 +97,7 @@ au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 
 
 " nohlsearchする代わりに出力が常に消える
 " visual modeがバグる
-" au u10ac CursorMoved * silent call feedkeys(":silent nohlsearch\<cr>\<c-l>")
+" au u10ac CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")
 
 " Skip return code when quit terminal.
 if has('nvim')
