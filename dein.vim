@@ -212,13 +212,13 @@ if dein#tap('neosnippet.vim') "{{{
   " let g:neosnippet#scope_aliases = {}
   " let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
 
-  " <c-l>を<c-y>に割り当てても良いかも
-  imap <expr><c-l> neosnippet#expandable_or_jumpable()? "\<Plug>(neosnippet_jump_or_expand)" : "\<Plug>(vim-basic-insert-lasttext)"
+  imap <expr><c-y> neosnippet#expandable_or_jumpable()? "\<Plug>(neosnippet_jump_or_expand)" : "\<Plug>(vim-basic-insert-lasttext)"
+  smap <c-y> <tab>
+  xmap <c-y> <tab>
+
   imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
   smap <tab> <Plug>(neosnippet_jump)
   xmap <tab> <Plug>(neosnippet_jump)
-  smap <c-l> <tab>
-  xmap <c-l> <tab>
 
   " if has('conceal')
   "   set conceallevel=2 concealcursor=niv

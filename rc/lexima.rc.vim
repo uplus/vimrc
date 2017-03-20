@@ -1,5 +1,5 @@
 
-call lexima#init() " Need first
+" call lexima#init() " Need first
 
 " TODO smartinput時代の遺産を回収
 " TODO 補完候補選択した場合のみ展開したい
@@ -22,3 +22,6 @@ call lexima#add_rule({'at': '\\\s.*\%#$', 'char': '<CR>', 'input': '<CR><Bslash>
 " imap <silent><expr><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : pumvisible()? "\<c-y>" : lexima#expand('<cr>', 'i')
 " \<Plug>(lexima#expand('<cr>', 'i'))<c-g>u"
 
+
+inoremap <silent><expr><c-m> pumvisible()? "\<c-y>\<c-m>" : lexima#expand('<cr>', 'i')
+" imap <silent><expr><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : lexima#expand('<cr>', 'i')
