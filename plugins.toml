@@ -281,12 +281,9 @@ hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-# [[plugins]]
-# repo = 'honza/vim-snippets'
-
 [[plugins]]
 repo = 'ujihisa/neco-look'
-depends = 'deoplete.nvim'
+on_i = 1
 
 # deoplete
 [[plugins]]
