@@ -290,8 +290,12 @@ depends = 'deoplete.nvim'
 
 # deoplete
 [[plugins]]
-repo = 'zchee/deoplete-clang'
+# repo = 'zchee/deoplete-clang'
+repo = 'tweekmonster/deoplete-clang2'
 on_ft = ['c', 'cpp']
+hook_source = '''
+  let b:clang2_orig_maps = {}
+'''
 
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
