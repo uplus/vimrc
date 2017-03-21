@@ -512,8 +512,8 @@ repo = 'freeo/vim-kalisi'
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
+# [[plugins]]
+# repo = 'osyo-manga/vim-precious'
 
 
 [[plugins]]
