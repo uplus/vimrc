@@ -285,13 +285,26 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'ujihisa/neco-look'
 on_i = 1
 
-# deoplete
 [[plugins]]
 # repo = 'zchee/deoplete-clang'
 repo = 'tweekmonster/deoplete-clang2'
 on_ft = ['c', 'cpp']
 hook_source = '''
   let b:clang2_orig_maps = {}
+'''
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+# repo = 'wokalski/autocomplete-flow'
+on_ft = 'javascript'
+hook_source = '''
+  let g:tern_request_timeout = 1
+  let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+  let g:tern#filetypes = [
+        \ 'jsx',
+        \ 'javascript.jsx',
+        \ 'vue',
+        \ ]
 '''
 
 [[plugins]]
