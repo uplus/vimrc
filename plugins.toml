@@ -509,10 +509,9 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'vim-jp/vital.vim'
 
-[[plugins]]
+[[plugins]] # deopleteでの補完にドキュメントを表示
 repo = 'Shougo/echodoc'
 on_event = 'CompleteDone'
-# hook_source = 'call echodoc#enable()'
 hook_add = '''
   let g:echodoc_enable_at_startup = 1
 '''

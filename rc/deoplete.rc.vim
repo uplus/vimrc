@@ -71,17 +71,21 @@ call deoplete#custom#set('_', 'converters', [
 
 " call deoplete#custom#set('buffer', 'min_pattern_length', 9999)
 
+
+call deoplete#custom#set('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
+call deoplete#custom#set('clang', 'max_pattern_length', -1)
+
 let g:deoplete#keyword_patterns = {
       \ '_' : '[a-zA-Z_]\k*\(?',
       \ 'tex' : '[^\w|\s][a-zA-Z_]\w*',
       \ }
 
+" cannot call some omni functions
 let g:deoplete#omni#input_patterns = {
       \ 'python': ''
       \ }
 
 let g:deoplete#sources#omni#input_patterns = {
-      " \ 'ruby' : '[^. *\t]\.\w*\|\h\w*::',
       \ }
 
 let g:deoplete#omni#functions = {
