@@ -9,6 +9,7 @@ hi CursorLine term=NONE cterm=NONE
 hi LineNr     term=NONE ctermfg=44
 hi FoldColumn term=NONE ctermbg=NONE
 hi StatusLine cterm=NONE
+hi Visual     cterm=reverse
 hi clear TabLineFill
 
 function! s:colorscheme(name) abort
@@ -48,7 +49,6 @@ function! s:set_colors()
 endfunction
 
 function! s:set_highlights()
-  hi Visual     cterm=reverse
   hi Title      ctermfg=118
   hi Todo       cterm=italic    ctermfg=226 ctermbg=0
   hi Error      ctermfg=255     ctermbg=161

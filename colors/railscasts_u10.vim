@@ -32,6 +32,7 @@ highlight FoldColumn          ctermfg=99  ctermbg=232
 highlight LineNr              ctermfg=252 ctermbg=237
 highlight CursorLine          ctermbg=233 cterm=NONE
 highlight CursorLineNr        ctermfg=196
+highlight Visual              ctermfg=219 ctermbg=NONE cterm=NONE
 
 
 highlight rubySharpBang           ctermfg=103
