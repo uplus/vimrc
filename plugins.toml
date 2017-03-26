@@ -267,6 +267,9 @@ repo = 'Shougo/neoinclude.vim'
 
 # [[plugins]]
 # repo = 'Shougo/neopairs.vim'
+# hook_add = '''
+#   let g:neopairs#enable = 1
+# '''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'

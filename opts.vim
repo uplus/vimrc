@@ -27,13 +27,13 @@ set cedit=<c-l> " move to cmdwin key
 set splitright nosplitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
 " set ttyfast
-set completeopt=menuone
 set switchbuf=usetab
+set completeopt=menuone
 
+set nowrap
 if has('patch338')
   setg breakindent
 endif
-set nowrap
 set sidescroll=0
 set sidescrolloff=12
 set virtualedit=block

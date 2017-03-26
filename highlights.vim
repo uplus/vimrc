@@ -10,6 +10,8 @@ hi LineNr     term=NONE ctermfg=44
 hi FoldColumn term=NONE ctermbg=NONE
 hi StatusLine cterm=NONE
 hi Visual     cterm=reverse
+hi Pmenu      ctermfg=240  ctermbg=251
+hi PmenuSel   ctermfg=0    ctermbg=255
 hi clear TabLineFill
 
 function! s:colorscheme(name) abort
