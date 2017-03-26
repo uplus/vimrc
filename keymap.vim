@@ -56,10 +56,10 @@ nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 
-imap <c-j> <cr>
-inoremap jj <ESC>
-nnoremap <silent><space>n :call ResetHightlights()<CR>
-xnoremap <Space>n :normal<Space>
+inoremap <c-j> <c-y>
+inoremap jj <esc>
+nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
+xnoremap <space>n :normal<space>
 
 noremap <Plug>(vim-basic-visual) v
 noremap <Plug>(vim-basic-visualline) V

@@ -498,7 +498,7 @@ function RemoveOptVal(optname, chars)
 endfunction
 
 function! ResetHightlights() abort
-  nohlsearch
+  " nohlsearch " 関数内では動作しない
   silent! QuickhlManualReset
   silent! RCReset
   call clearmatches()
