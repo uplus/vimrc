@@ -506,10 +506,16 @@ endfunction
 
 let g:u10_autosave = 0
 nnoremap <silent><F2> :call AutoSave()<CR>
-function! AutoSave()
+function! AutoSave() abort
   silent update
   let g:u10_autosave = !g:u10_autosave
   echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
+endfunction
+
+function! DoAutoSave() abort
+  if g:u10_autosave != 0
+    update
+  endif
 endfunction
 
 let g:reg_stack = []

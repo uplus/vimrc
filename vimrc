@@ -91,7 +91,10 @@ call s:source('highlights')
 au u10ac BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 au u10ac VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
 au u10ac BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
-au u10ac InsertLeave,CursorHold * if g:u10_autosave != 0 | update | endif
+au u10ac InsertLeave,CursorHold * call DoAutoSave()
+if exists('##FocusLost')
+  au u10ac FocusLost * call DoAutoSave()
+endif
 " windowの行数の10%にセットする
 au u10ac VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
