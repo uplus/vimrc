@@ -22,9 +22,11 @@ snippet pwn
 
 snippet verbose
   $VERBOSE = (ENV['DEBUG'].to_i == 0)? nil : true
+  ${0}
 
 snippet getints
   gets.split.map &:to_i
+  ${0}
 
 snippet arraytwo
   Array.new(${1:size}){|e| Array.new(${2:size}) }
@@ -36,6 +38,7 @@ snippet int?
       Integer(self) && true rescue false
     end
   end
+  ${0}
 
 snippet puts_color
   def puts_color(color_num, str)
