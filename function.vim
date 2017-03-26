@@ -461,6 +461,11 @@ endfunction
 "}}}
 
 " #Misc "{{{
+" call from snippets
+function! Filename() abort
+  return expand('%:t:r')
+endfunction
+
 noremap <Plug>(delete_for_match) :<c-u>call <SID>delete_for_match()<CR>
 function! s:delete_for_match() abort
   normal! V^
