@@ -20,6 +20,8 @@ snippet pwn
   =begin
   =end
 
+snippet verbose
+  $VERBOSE = (ENV['DEBUG'].to_i == 0)? nil : true
 
 snippet getints
   gets.split.map &:to_i
