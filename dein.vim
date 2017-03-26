@@ -193,14 +193,7 @@ if dein#tap('neocomplete.vim') && has('lua') "{{{
   let g:neocomplete#enable_at_startup = 1
   let g:neopairs#enable = 1
 
-  if has('patch755')
-    " TODO vim-clangがc,cppを上書きする
-    " set completeopt+=noinsert  " 第1候補を選択、非挿入
-    " set completeopt+=noselect
-  endif
-
   inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
-
   " inoremap <expr><space> pumvisible()? "\<c-y>" : "\<space>"
   " inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
   " inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"

@@ -29,6 +29,10 @@ set nostartofline " Maintain a current line at the time of movement as much as p
 " set ttyfast
 set switchbuf=usetab
 set completeopt=menuone
+if has('patch755')
+  set completeopt+=noinsert  " 第1候補を選択 非挿入
+  " set completeopt+=noselect
+endif
 
 set nowrap
 if has('patch338')
