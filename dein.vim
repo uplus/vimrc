@@ -212,7 +212,7 @@ if dein#tap('neosnippet.vim') "{{{
   " let g:neosnippet#scope_aliases = {}
   " let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
 
-  imap <expr><c-l> neosnippet#expandable_or_jumpable()? "\<Plug>(neosnippet_jump_or_expand)" : "\<Plug>(vim-basic-insert-lasttext)"
+  imap <expr><c-l> "\<Plug>(neosnippet_jump_or_expand)"
   smap <c-l> <tab>
   xmap <c-l> <tab>
 
