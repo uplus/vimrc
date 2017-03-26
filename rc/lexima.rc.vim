@@ -53,7 +53,7 @@ call lexima#add_rule({
       \ 'filetype': 'vim' })
 
 call lexima#add_rule({
-      \ 'at': '',
+      \ 'at': '^\%#',
       \ 'char': '<Bslash>',
       \ 'input': '<Bslash><space>',
       \ 'filetype': 'vim'
@@ -76,32 +76,31 @@ call lexima#add_rule({
       \   })
 "}}}
 
-" " ruby
-" call lexima#add_rule({
-"       \   'at': '\({\|\<do\>\)\s*\%#',
-"       \   'char': '<Bar>',
-"       \   'input': '<Bar><Bar><Left>',
-"       \   'filetype': ['ruby'],
-"       \ })
-"
-" call lexima#add_rule({
-"       \   'at': '\({\|\<do\>\)\s*|.*\%#|',
-"       \   'char': '<Bar>',
-"       \   'input': '<Right>',
-"       \   'filetype': ['ruby'],
-"       \ })
-"
-" call lexima#add_rule({
-"       \   'at': '\({\|\<do\>\)\s*|\%#|',
-"       \   'char': '<BS>',
-"       \   'input': '<Del><BS>',
-"       \   'filetype': ['ruby'],
-"       \ })
+" ruby "{{{
+call lexima#add_rule({
+      \   'at': '\v(\{|<do>)\s*%#',
+      \   'char': '<Bar>',
+      \   'input': '<Bar><Bar><Left>',
+      \   'filetype': ['ruby'],
+      \ })
 
-" cgn .リピートに必要らしい
+call lexima#add_rule({
+      \   'at': '\({\|\<do\>\)\s*|.*\%#|',
+      \   'char': '<Bar>',
+      \   'input': '<Right>',
+      \   'filetype': ['ruby'],
+      \ })
+
+call lexima#add_rule({
+      \   'at': '\({\|\<do\>\)\s*|\%#|',
+      \   'char': '<BS>',
+      \   'input': '<Del><BS>',
+      \   'filetype': ['ruby'],
+      \ })
+"}}}
+
+" cgn .リピートに必要らしい <c-l>はneosnippet
 " inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
-
-
 
 
 
