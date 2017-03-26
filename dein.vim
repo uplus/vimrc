@@ -214,11 +214,8 @@ if dein#tap('neosnippet.vim') "{{{
   " let g:neosnippet#scope_aliases = {}
   " let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
 
-  imap <expr><c-l> "\<Plug>(neosnippet_jump_or_expand)"
-  smap <c-l> <tab>
-  xmap <c-l> <tab>
-
-  imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
+  " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
+  imap <c-l> <Plug>(neosnippet_jump_or_expand)
   smap <tab> <Plug>(neosnippet_jump)
   xmap <tab> <Plug>(neosnippet_jump)
 
