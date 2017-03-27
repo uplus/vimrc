@@ -1,0 +1,21 @@
+snippet Unit
+  [Unit]
+  Description = ${1}
+
+snippet Service
+  [Service]
+  ExecStart = ${1}
+
+snippet Install
+  [Install]
+  WantedBy = ${1:multi-user.target}
+
+snippet Simple
+  [Unit]
+  Description = ${1}
+
+  [Service]
+  ExecStart = ${2}
+
+  [Install]
+  WantedBy = ${3:multi-user.target}
