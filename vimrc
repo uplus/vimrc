@@ -150,7 +150,7 @@ if executable('fcitx-remote')
 
   if exists('##FocusGained')
     au u10ac FocusGained * FcitxOff
-  fi
+  endif
 endif
 
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
