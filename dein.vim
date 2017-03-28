@@ -222,13 +222,9 @@ endif "}}}
 if dein#tap('unite.vim') "{{{
   " commands "{{{
   command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
-  command! Bundle   Unite -auto-resize -start-insert neobundle
-  command! Update   Unite -auto-resize -no-quit -buffer-name=neobundle neobundle/update
   command! Vgrep    Unite -auto-resize -no-quit -buffer-name=vimgrep vg
   command! Mes      Unite -auto-resize -buffer-name=message message
   command! Todo     Unite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-  command! Outline  Unite -auto-resize -start-insert -resume -input= -buffer-name=outline outline
-  command! Headline Unite -auto-resize -start-insert -buffer-name=headline headline
   command! Schemes  Unite -auto-resize -auto-preview colorscheme
   command! Status   Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix -buffer-name=quickfix
@@ -237,7 +233,7 @@ if dein#tap('unite.vim') "{{{
   "}}}
 
   " keymap "{{{
-  nnoremap <silent>,gs :Status<CR>
+  nnoremap <silent>;gs :Status<CR>
   nnoremap <silent>;q :Quickfix<CR>
 
   nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty -buffer-name=mark mark<CR>
@@ -254,18 +250,16 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent><Space>r :<C-U>UniteResume -no-start-insert -force-redraw<CR>
 
   " search
-  nnoremap <silent>s/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert line:all<CR>
+  nnoremap <silent>s/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert -auto-resize line:all<CR>
   nnoremap <silent>s? :<C-u>Vgrep<CR>
   nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
   nnoremap <silent>st :Unite -start-insert tag<CR>
   nnoremap <silent>sg :Unite -start-insert grep/git:**:-i<CR>
-  nmap <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
-
-  " outline
-  nnoremap <silent>sh  :Headline<CR>
-  nnoremap <silent>;o  :Outline<CR>
-  nnoremap <silent>sot :Todo<CR>
+  nmap     <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
+  nnoremap <silent>sh :Unite -auto-resize -start-insert -buffer-name=headline headline<CR>
+  nnoremap <silent>so :Unite -auto-resize -start-insert -resume -input= -buffer-name=outline outline<CR>
+  nnoremap <silent>sT :Todo<CR>
   "}}}
 
   " unite_config "{{{
