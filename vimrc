@@ -147,6 +147,10 @@ endif
 if executable('fcitx-remote')
   command! FcitxOff call system('fcitx-remote -c')
   au u10ac InsertLeave * FcitxOff
+
+  if exists('##FocusGained')
+    au u10ac FocusGained * FcitxOff
+  fi
 endif
 
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
