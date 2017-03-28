@@ -31,6 +31,9 @@ call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '(', 'input': '('})
 call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '{', 'input': '{'})
 call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '[', 'input': '['})
 
+" jj <esc>
+call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
+
 " vim {{{
 call lexima#add_rule(
       \ {'at': '{\%#}',

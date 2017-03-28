@@ -40,8 +40,8 @@ nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 
-inoremap <c-j> <c-y>
-inoremap jj <esc>
+inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
+" inoremap jj <esc>
 nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
 xnoremap <space>n :normal<space>
 
