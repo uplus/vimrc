@@ -138,3 +138,6 @@ if &term =~ "xterm"
   " let &t_SI = "\e[5 q\e]12;Orange\x7"
   " let &t_EI = "\e[0 q\e]12;RoyalBlue1\x7"
 endif
+
+let g:python_host_prog  = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
