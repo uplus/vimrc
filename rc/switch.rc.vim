@@ -1,8 +1,4 @@
 " switch.vim
-let g:switch_mapping = "<silent>!"
-let g:switch_find_smallest_match = 1
-au u10ac FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
-
 let g:switch_custom_definitions = get(g:, 'switch_custom_definitions', [])
 
 " TODO \zs \ze
@@ -73,3 +69,6 @@ au FileType zsh,bash,sh let g:switch_custom_definitions += [
       \  [ ' -r ', ' -w ', ' -x '],
       \ ]
 
+au FileType toml let g:switch_custom_definitions += [
+      \ ['hook_add', 'hook_source', 'hook_post_source'],
+      \ ]
