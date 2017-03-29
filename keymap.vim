@@ -195,7 +195,7 @@ inoremap <C-x>u <C-x><C-u>
 inoremap <C-x>d <C-x><C-d>
 inoremap <C-x>p <C-x><C-p>
 inoremap <C-x>v <C-x><C-v>
-inoremap <C-x> <Nop>
+" inoremap <C-x> <Nop> " cannot do <c-x><c-u>
 "}}}
 
 " #move "{{{
