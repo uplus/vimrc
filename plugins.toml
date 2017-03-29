@@ -376,8 +376,8 @@ repo = 'rhysd/conflict-marker.vim'
 [[plugins]]
 repo = 'mattn/webapi-vim'
 
-[[plugins]]
-repo = 'mattn/wwwrenderer-vim'
+# [[plugins]]
+# repo = 'mattn/wwwrenderer-vim'
 
 [[plugins]]
 repo = 'thinca/vim-openbuf'
@@ -520,7 +520,6 @@ repo = 'Shougo/context_filetype.vim'
 
 # [[plugins]]
 # repo = 'osyo-manga/vim-precious'
-
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
