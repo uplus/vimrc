@@ -93,6 +93,10 @@ on_source = 'unite.vim'
 #view
 
 [[plugins]]
+repo = 'vim-scripts/Changed'
+# repo = 'kyouryuukunn/vim-changed'
+
+[[plugins]]
 repo = 'gutenye/json5.vim'
 
 [[plugins]]
