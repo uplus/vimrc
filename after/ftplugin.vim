@@ -1,13 +1,16 @@
 " after/ftplugin.vimの中じゃないとプラグインとかに上書きされる
 
 " need to old vim(probably ~7.4.160).
- if !exists('#u10ac')
-   augroup u10ac
-   augroup END
- endif
+if !exists('#u10ac')
+  augroup u10ac
+  augroup END
+endif
 
-au u10ac FileType * call RemoveOptVal('formatoptions', 'jro')
-au u10ac FileType * setl formatoptions+=Bnql
+au u10ac FileType * call s:filetype_all()
+function! s:filetype_all() abort
+  call RemoveOptVal('formatoptions', 'jro')
+  setl formatoptions+=Bnql
+endfunction
 " r 改行でコメントを挿入
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 " B multi-byte charの結合で空白を挿入しない
