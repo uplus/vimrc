@@ -7,7 +7,7 @@
  endif
 
 au u10ac FileType * call RemoveOptVal('formatoptions', 'jro')
-au u10ac FileType * setl formatoptions+=Bnq
+au u10ac FileType * setl formatoptions+=Bnql
 " r 改行でコメントを挿入
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
 " B multi-byte charの結合で空白を挿入しない
