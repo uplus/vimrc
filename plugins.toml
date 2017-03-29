@@ -154,6 +154,10 @@ hook_post_source = 'source ~/.vim/rc/altercmd.rc.vim'
 [[plugins]]
 repo = 'kana/vim-repeat'
 # repo = 'tpope/vim-repeat'
+hook_add = '''
+  let g:repeat_no_default_key_mappings = 1
+  nmap . <Plug>(repeat-.)
+'''
 
 [[plugins]]
 repo = 'tpope/vim-speeddating'
