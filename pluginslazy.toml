@@ -337,7 +337,7 @@ on_cmd = ['UndotreeToggle', 'UndotreeShow']
 repo = 'sjl/gundo.vim'
 on_cmd = ['GundoToggle', 'GundoShow']
 
-[[plugins]]
+[[plugins]] # TODO
 repo = 'rbtnn/vimconsole.vim'
 on_cmd = ['VimConsoleOpen', 'VimConsoleToggle', 'VimConsoleLog']
 on_map = '<Plug>(vimconsole_'
@@ -345,9 +345,9 @@ hook_add = '''
   let g:vimconsole#auto_redraw = 1
   let g:vimconsole#height = 10
   let g:vimconsole#hooks = {}
-  function! g:vimconsole#hooks.on_logged(context)
-    call vimconsole#winopen()
-  endfunction
+  " function! g:vimconsole#hooks.on_logged(context)
+  "   call vimconsole#winopen()
+  " endfunction
 '''
 
 [[plugins]] # Beautiful indent of php and html.
