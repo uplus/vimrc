@@ -160,24 +160,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-speeddating'
-on_map = ['<Plug>SpeedDatingUp', '<Plug>SpeedDatingDown']
-hook_add = '''
-  let g:speeddating_no_mappings = 1
-  nmap <c-a> <Plug>SpeedDatingUp
-  nmap <c-x> <Plug>SpeedDatingDown
-  xmap <c-a> <Plug>SpeedDatingUp
-  xmap <c-x> <Plug>SpeedDatingDown
-'''
-hook_post_source = '''
-  " SpeedDatingFormat! %v
-  " SpeedDatingFormat! %^v " Roman numerals
-  let g:speeddating_formats = get(g:, 'speeddating_formats', [])
-  let g:speeddating_formats += [['%v', 0, 1]]
-  let g:speeddating_formats += [['%^v', 0, 1]]
-'''
-
-[[plugins]]
 repo = 'LeafCage/foldCC.vim'
 hook_add = '''
   let g:foldCCtext_enable_autofdc_adjuster = 0
