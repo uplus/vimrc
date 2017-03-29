@@ -217,13 +217,22 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
-on_ft = 'snippet'
-on_event = 'InsertEnter'
+on_ft = ['snippet', 'neosnippet']
+on_i = 1
 
 [[plugins]]
 repo = 'mattn/googlesuggest-complete-vim'
-on_event = 'InsertEnter'
-hook_add = 'set completefunc=googlesuggest#Complete'
+on_i = 1
+hook_add = '''
+  command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
+  EnableGoogleSuggest
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-emoji'
+hook_add = '''
+  command! EnableEmoji set completefunc=emoji#complete
+'''
 
 
 #git
