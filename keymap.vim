@@ -41,6 +41,13 @@ nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 
+" #toggle options
+nnoremap \toc :set cursorcolumn!<CR>
+nnoremap \ton :set number!<CR>
+nnoremap \tor :set relativenumber!<CR>
+nnoremap \tow :set wrap!<CR>
+nnoremap \tol :set list!<CR>
+
 inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 " inoremap jj <esc>
 nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
@@ -54,7 +61,7 @@ noremap <Plug>(vim-basic-last) $
 noremap <Plug>(vim-basic-front) ^
 noremap <Plug>(vim-basic-tail) g_
 
-inoremap <Plug>(vim-basic-insert-lasttext) <C-a>
+inoremap <Plug>(vim-basic-insert-lasttext) <c-a>
 
 " Ctrl /
 imap  <plug>(vim-basic-insert-lasttext)
@@ -90,21 +97,22 @@ inoremap <c-z><c-q> <esc>:q<cr>
 inoremap <c-z>q <esc>:q<cr>
 inoremap <c-z>eq <esc>:qall!<cr>
 
-
+" #undo
 nnoremap <silent>,uf :earlier 1f<CR>
 nnoremap <silent>,ud :earlier 1d<CR>
 nnoremap <silent>,uc :UndoClear<CR>
 nnoremap <silent>,uw :e!<CR>
 nnoremap <silent>,u <Nop>
 
+" #buffer close
 nnoremap <silent>,dd :bd<CR>
 nnoremap <silent>,dq :q<CR>
 nnoremap <silent>,da :qall<CR>
 nnoremap <silent>,dw :wqall<CR>
 
 " #overwrite
-inoremap <c-c> <ESC>
-xnoremap u <ESC>u
+inoremap <c-c> <esc>
+xmap u <esc>u
 nnoremap Y y$
 nnoremap <C-]> g<C-]>
 nnoremap g<C-]> <C-]>
@@ -126,13 +134,6 @@ xnoremap <C-e> 4<C-e>
 " xnoremap 0 ^
 " xnoremap ^ 0
 " xnoremap - $
-
-" #toggle options
-nnoremap \toc :set cursorcolumn!<CR>
-nnoremap \ton :set number!<CR>
-nnoremap \tor :set relativenumber!<CR>
-nnoremap \tow :set wrap!<CR>
-nnoremap \tol :set list!<CR>
 
 " #fold "{{{
 nnoremap zr zR
@@ -225,7 +226,7 @@ inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
 "}}}
 
-" #emacs-bind "{{{
+" #emacs bind "{{{
 inoremap <C-A> <C-o>^
 inoremap <C-E> <C-o>$
 imap <C-D> <Del>
@@ -244,11 +245,11 @@ noremap! <C-B> <Left>
 noremap! <C-F> <Right>
 "}}}
 
-" #alt-keybind  はescapeとalt
-inoremap w <C-o>dw
-inoremap f <C-o>w
-inoremap b <C-o>b
-inoremap <nowait><ESC> <ESC>
+" #alt keybind
+inoremap <m-w> <c-o>dw
+inoremap <m-f> <c-o>w
+inoremap <m-b> <c-o>b
+inoremap <nowait><esc> <esc>
 " TODO: Move those settings to right section
 
 nnoremap <c-p> :<c-p>
