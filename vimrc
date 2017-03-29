@@ -103,6 +103,7 @@ au u10ac BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "nor
 au u10ac VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
 au u10ac BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
 au u10ac InsertLeave,CursorHold * call DoAutoSave()
+" au u10ac CursorHold *.toml syntax sync minlines=300
 if exists('##FocusLost')
   au u10ac FocusLost * call DoAutoSave()
 endif
