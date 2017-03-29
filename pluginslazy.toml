@@ -1,19 +1,9 @@
-[[plugins]]
-repo = 'Shougo/vimshell.vim'
-on_map = '<Plug>'
-on_cmd = ['VimShell', 'VimShellTab', 'VimShellExecute', 'VimShellPop', 'VimShellInteractive']
-
-[[plugins]]
-repo = 'ujihisa/vimshell-ssh'
-on_ft = 'vimshell'
-
-
 #unite
 
-[[plugins]]
-repo = 'rhysd/unite-ruby-require.vim'
-on_source = 'unite.vim'
-on_ft= 'ruby'
+# [[plugins]]
+# repo = 'rhysd/unite-ruby-require.vim'
+# on_source = 'unite.vim'
+# on_ft= 'ruby'
 
 [[plugins]]
 repo = 'basyura/unite-rails'
@@ -48,16 +38,16 @@ hook_add = '''
   let g:vim_markdown_folding_disabled = 1
 '''
 
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
-hook_add = '''
-  let g:indentLine_enabled              = 0
-  let g:indentLine_faster               = 1
-  let g:indentLine_showFirstIndentLevel = 1
-  let g:indentLine_color_term           = 208
-  nmap <silent>\tl :IndentLinesToggle<CR>
-'''
+# [[plugins]]
+# repo = 'Yggdroot/indentLine'
+# on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
+# hook_add = '''
+#   let g:indentLine_enabled              = 0
+#   let g:indentLine_faster               = 1
+#   let g:indentLine_showFirstIndentLevel = 1
+#   let g:indentLine_color_term           = 208
+#   nmap <silent>\tl :IndentLinesToggle<CR>
+# '''
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
@@ -119,6 +109,7 @@ hook_add = '''
   let g:table_mode_corner = '|'
   xmap \tT <Plug>(table-mode-tableize-delimiter)
 '''
+
 
 #search and replace
 

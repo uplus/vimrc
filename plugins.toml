@@ -5,7 +5,9 @@ rtp = ''
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
-# on_source = ['unite.vim', 'vimshell.vim']
+
+# [[plugins]]
+# repo = 'Shougo/deol.nvim'
 
 
 #unite
@@ -92,8 +94,8 @@ on_source = 'unite.vim'
 
 #view
 
-[[plugins]]
-repo = 'vim-scripts/Changed'
+# [[plugins]]
+# repo = 'vim-scripts/Changed'
 # repo = 'kyouryuukunn/vim-changed'
 
 [[plugins]]
@@ -504,8 +506,8 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'djjcast/mirodark'
 
-[[plugins]]
-repo = 'vim-scripts/BusyBee'
+# [[plugins]]
+# repo = 'vim-scripts/BusyBee'
 
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
@@ -526,7 +528,7 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'vim-jp/vital.vim'
 
-[[plugins]] # deopleteでの補完にドキュメントを表示
+[[plugins]] # ステータスにドキュメントをecho
 repo = 'Shougo/echodoc'
 on_event = 'CompleteDone'
 hook_add = '''
