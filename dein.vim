@@ -16,12 +16,9 @@ endif "}}}
 
 let s:path = expand('$CACHE/dein')
 if dein#load_state(s:path)
-  let s:toml_path = '~/.vim/plugins.toml'
-  let s:toml_lazy_path = '~/.vim/pluginslazy.toml'
-
   call dein#begin(s:path, expand('<sfile>'))
-  call dein#load_toml(s:toml_path, {'lazy': 0})
-  call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
+  call dein#load_toml('~/.vim/plugins.toml', {'lazy': 0})
+  call dein#load_toml('~/.vim/pluginslazy.toml', {'lazy' : 1})
 
   if dein#tap('deoplete.nvim') && has('nvim')
     call dein#disable('neocomplete.vim')
@@ -29,10 +26,6 @@ if dein#load_state(s:path)
 
   call dein#end()
   call dein#save_state()
-
-  " if has('vim_starting') && dein#check_install()
-  "   call dein#install()
-  " endif
 endif
 
 "###################### plugin config ############################"
@@ -146,8 +139,7 @@ if dein#tap('vim-textobj-multiblock') "{{{
 endif "}}}
 "}}}
 
-" commentout taps "{{{
-if dein#tap('caw.vim')
+if dein#tap('caw.vim') " {{{
   let g:caw_no_default_keymappings = 1
   let g:caw_dollarpos_sp_left = " "
   let g:caw_dollarpos_startinsert = 1
