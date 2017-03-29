@@ -1,3 +1,10 @@
+set undodir=~/.vim/tmp/undo.txt
+set viewdir=~/.vim/tmp/view
+set path+=/usr/include/c++/HEAD/
+set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
+" tags;     current-dirからtagsが見つかるまで遡る
+" tas;/dir  上記と同じだが/dirより上には行かない
+
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,ucs-bom,euc-jp,eucjp-ms,cp932
@@ -56,6 +63,7 @@ set cinkeys-=0#
 set cinoptions+=#1,J1,j1,g0,N-2
 " :0 にすると switchとcaseが同じレベルになる
 
+set commentstring=#\ %s
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,h,l
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す

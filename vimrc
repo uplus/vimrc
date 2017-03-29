@@ -7,8 +7,15 @@ endif
 language message C
 scriptencoding=utf-8
 
+augroup u10ac
+  autocmd!
+augroup END
+
 function! s:source(path)
-  execute 'source' fnameescape(expand('~/.vim/' . a:path . '.vim'))
+  let fpath = expand('~/.vim/' . a:path . '.vim')
+  if filereadable(fpath)
+    execute 'source' fnameescape(fpath)
+  endif
 endfunction
 
 function! s:on_filetype() abort
@@ -20,25 +27,12 @@ function! s:on_filetype() abort
   endif
 endfunction
 
-augroup u10ac
-  autocmd!
-augroup END
-
-set undodir=~/.vim/tmp/undo.txt
-set viewdir=~/.vim/tmp/view
-set path+=/usr/include/c++/HEAD/
-set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
-" tags;     current-dirからtagsが見つかるまで遡る
-" tas;/dir  上記と同じだが/dirより上には行かない
-
 let $CACHE = expand('~/.cache')
 if !isdirectory($CACHE)
   call mkdir($CACHE, 'p')
 endif
 
-if filereadable(expand('~/.vimrc.before'))
-  source $HOME/.vimrc.before
-endif
+call s:source('before')
 
 " #Release keymaps"{{{
 let mapleader = ";"
@@ -87,6 +81,7 @@ call s:source('function')
 call s:source('keymap')
 call s:source('highlights')
 
+command! Recache call dein#clear_state() | call dein#recache_runtimepath() | UpdateRemotePlugins
 command! Q qall!
 command! W w!
 command! Sh update | shell
@@ -187,6 +182,4 @@ function! s:stdin_config()
 endfunction
 "}}}
 
-if filereadable(expand('~/.vimrc.after'))
-  source $HOME/.vimrc.after
-endif
+call s:source('after')
