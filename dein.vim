@@ -255,7 +255,7 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
   nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
   nnoremap <silent>st :Unite -start-insert tag<CR>
-  nnoremap <silent>sg :Unite -start-insert grep/git:**:-i<CR>
+  nnoremap <silent>sg :Unite grep/git:**:-i<CR>
   nmap     <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
   nnoremap <silent>sh :Unite -auto-resize -start-insert -buffer-name=headline headline<CR>
   nnoremap <silent>so :Unite -auto-resize -start-insert -resume -input= -buffer-name=outline outline<CR>
