@@ -5,13 +5,14 @@ let s:dein_dir = expand('$CACHE/dein') . '/repos/github.com/Shougo/dein.vim'
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
 
+" setup dein "{{{
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_dir)
     call system('!git clone https://github.com/Shougo/dein.vim ' . s:dein_dir)
   endif
   execute ' set runtimepath^=' . s:dein_dir
   let g:loaded_neobundle = 1
-endif
+endif "}}}
 
 let s:path = expand('$CACHE/dein')
 if dein#load_state(s:path)
@@ -33,8 +34,6 @@ if dein#load_state(s:path)
   "   call dein#install()
   " endif
 endif
-
-" call dein#clear_state()
 
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
