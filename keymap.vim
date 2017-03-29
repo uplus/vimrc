@@ -9,6 +9,7 @@ if has('nvim')
   nnoremap <c-w>ts :botrigh split +term<cr>
   nnoremap <c-w>tv :vsp +term<cr>
   nnoremap <space>t :botrigh split +term<cr>
+  nnoremap <space>T :tabnew +term<cr>
 
   tnoremap <c-t>h <c-\><c-n><c-w>h
   tnoremap <c-t>j <c-\><c-n><c-w>j
