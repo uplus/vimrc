@@ -544,14 +544,6 @@ function! DummyArray(start, last, times) abort
   return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d )}.join(', ')", a:times, a:start, a:last))
 endfunction
 
-command! AddRepo call AddRepo()
-function! AddRepo() abort
-  call append(line('.'), printf("repo = '%s'", matchstr(@+, '\v([^/]*/[^/]*)$')))
-  call append(line('.'), '[[plugins]]')
-  normal! }
-endfunction
-
-command Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
 "}}}
 
 " #Tabedit "{{{

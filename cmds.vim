@@ -16,6 +16,7 @@ command! -nargs=* Job call jobstart(<q-args>)
 command! -nargs=1 Char echo printf("%c", 0x<args>)
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 command! FcitxOff call system('fcitx-remote -c')
+command! Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
@@ -31,3 +32,8 @@ command! -bang -bar -complete=file -nargs=? Jis     Iso2022jp<bang> <args>
 command! -bang -bar -complete=file -nargs=? Sjis    Cp932<bang> <args>
 command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 "}}}
+
+
+" #autoload
+command! AddRepo call u10#add_repo()
+
