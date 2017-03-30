@@ -34,7 +34,7 @@ endif
 
 call s:source('before')
 
-" #Release keymaps"{{{
+" #release keymaps"{{{
 let mapleader = ';'
 nnoremap Q <Nop>
 nnoremap ; <Nop>
@@ -130,7 +130,7 @@ augroup END
 "}}}
 
 au u10ac VimEnter * call s:vimenter()
-function! s:vimenter()
+function! s:vimenter() "{{{
   if argc() == 0
     setl buftype=nowrite
   elseif argc() == 1 && !exists('g:swapname')
@@ -139,11 +139,10 @@ function! s:vimenter()
     " e.g swap, grep
     " lcd %:p:h
   endif
-endfunction
+endfunction "}}}
 
 " #filetype config "{{{
 augroup u10ac
-  au FileType c,cpp    setl commentstring=//\ %s
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
   au FileType qf,help  nnoremap <silent><buffer>q :quit<CR>
   au FileType text     setl nobreakindent wrap

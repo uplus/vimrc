@@ -17,7 +17,7 @@ endif "}}}
 let s:path = expand('$CACHE/dein')
 if dein#load_state(s:path)
   call dein#begin(s:path, expand('<sfile>'))
-  " call dein#load_toml('~/.vim/deinft.toml', {'lazy': 0}) " ftpluginの後に呼ばれる
+  " call dein#load_toml('~/.vim/deinft.toml', {'lazy': 0}) " ftpluginの前に呼ばれる
   call dein#load_toml('~/.vim/plugins.toml', {'lazy': 0})
   call dein#load_toml('~/.vim/pluginslazy.toml', {'lazy' : 1})
 
