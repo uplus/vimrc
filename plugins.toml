@@ -511,6 +511,22 @@ repo = 'freeo/vim-kalisi'
 
 
 #misc
+[[plugins]]
+repo = 'kana/vim-gf-user'
+hook_add = '''
+  let g:config_flag_gf = 1
+  let g:gf_user_no_default_key_mappings = 1
+  nmap gft <Plug>(gf-user-<c-w>gF)
+  nmap gfb <Plug>(gf-user-gF)
+  nmap gfs <Plug>(gf-user-<c-w>F)
+  " :verticalが上手く動かないから雑実装
+  nmap gfv <Plug>(u10-vertical)<Plug>(gf-user-gF)
+  nmap gf <nop>
+'''
+hook_post_source = '''
+  " call built-in functions failed
+  call gf#user#extend('u10#gf_ask', 1000)
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
