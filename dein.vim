@@ -212,7 +212,7 @@ if dein#tap('neosnippet.vim') "{{{
 endif "}}}
 
 if dein#tap('unite.vim') "{{{
-  " commands "{{{
+  " commands
   command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
   command! Vgrep    Unite -auto-resize -no-quit -buffer-name=vimgrep vg
   command! Mes      Unite -auto-resize -buffer-name=message message
@@ -222,9 +222,9 @@ if dein#tap('unite.vim') "{{{
   command! Quickfix Unite -auto-resize -no-empty -no-quit -direction=botright quickfix -buffer-name=quickfix
   command! -nargs=* Maps execute 'Unite -auto-resize -start-insert output:map\ ' . <q-args> . '|map!\ ' . <q-args>
   command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
-  "}}}
 
-  " keymap "{{{
+
+  " #keymap
   nnoremap <silent>;gs :Status<CR>
   nnoremap <silent>;q :Quickfix<CR>
 
@@ -232,11 +232,11 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty -buffer-name=bookmark bookmark<CR>
   nnoremap <silent>;ma :<C-U>UniteBookmarkAdd<CR>
 
-  nnoremap <silent>;ub :<C-u>Unite buffer -auto-resize -buffer-name=buffer<CR>
   nnoremap <silent>;ut :<C-u>Unite tab    -auto-resize -select=`tabpagenr()-1` -buffer-name=tab<CR>
   nnoremap <silent>;uj :<C-u>Unite jump   -auto-resize -buffer-name=jump<CR>
   nnoremap <silent>;u <Nop>
 
+  nnoremap <silent>\b :<C-u>Unite -auto-resize -buffer-name=buffer buffer<CR>
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume -no-start-insert -force-redraw<CR>
@@ -252,78 +252,6 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent>sh :Unite -auto-resize -start-insert -buffer-name=headline headline<CR>
   nnoremap <silent>so :Unite -auto-resize -start-insert -resume -input= -buffer-name=outline outline<CR>
   nnoremap <silent>sT :Todo<CR>
-  "}}}
-
-  " unite_config "{{{
-  au u10ac FileType unite call s:unite_config()
-  function! s:unite_config()
-    nmap <buffer>I 1gg<Plug>(unite_insert_head)
-    nmap <buffer>A 1gg<Plug>(unite_append_end)
-    nnoremap <buffer>cc ggcc
-    inoremap <buffer><C-e> <C-o>$
-    inoremap <buffer><C-d> <Del>
-    inoremap <buffer><C-b> <Left>
-    inoremap <buffer><C-f> <Right>
-    nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
-    nnoremap <silent><buffer><expr>r unite#do_action('replace')
-    nmap <silent><buffer>R *r
-
-    inoremap <silent><buffer><expr><c-g>t unite#do_action('tabopen')
-    inoremap <silent><buffer><expr><c-g>s unite#do_action('split')
-    inoremap <silent><buffer><expr><c-g>v unite#do_action('vsplit')
-
-
-    " TODO unite#get_current_unite()を使うべき
-    let context = unite#get_context()
-
-    if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
-      au u10ac WinEnter <buffer> if !exists('b:win_entered') | 0 | let b:win_entered = 1 | endif
-      au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
-      nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
-      nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
-    elseif context.buffer_name == 'location_list'
-      au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
-    elseif context.buffer_name ==# 'buffer'
-      nnoremap <silent><buffer><expr><nowait>s unite#do_action('split')
-      nnoremap <silent><buffer><expr><nowait>v unite#do_action('vsplit')
-      nnoremap <silent><buffer><expr><nowait>t unite#do_action('tabopen')
-    elseif context.buffer_name =~# '^search'
-      let s:action = { 'is_selectable' : 0 }
-      function! s:action.func(candidates)
-        let @/ = unite#get_input()
-        call feedkeys(a:candidates.action__line . 'gg')
-      endfunction
-      call unite#custom#action('jump_list', 'search_jump', s:action)
-      unlet s:action
-
-      call unite#custom#default_action('source/line/*', 'search_jump')
-    endif
-  endfunction "}}}
-
-  " smart_close "{{{
-  " active-bufferならquit
-  " auto_highlightを消す
-  function! s:unite_smart_close()
-    let context = unite#get_context()
-
-    if ActiveBufferCount() == 0
-      quit
-    elseif context.auto_highlight == 1
-      if context.quit == 0
-        call feedkeys("\<Plug>(unite_exit)")
-      endif
-      call feedkeys("\<Plug>(unite_do_default_action)")
-    else
-      call feedkeys("\<Plug>(unite_exit)")
-    endif
-  endfunction "}}}
-
-  " unie_move_pos unite-quickfixで賢く移動する "{{{
-  function! s:unite_move_pos(is_up)
-    call cursor(0, a:is_up? 1 : col('$'))
-    call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
-    normal! ^
-  endfunction "}}}
 endif "}}}
 
 if dein#tap('unite-quickfix') "{{{
