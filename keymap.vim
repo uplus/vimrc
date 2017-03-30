@@ -44,13 +44,18 @@ nnoremap \tol :set list!<CR>
 "}}}
 
 " gf "{{{
-" remap is difficult
-nnoremap gfb gf
-nnoremap <silent>gft <c-w>gf
-nnoremap <silent>gfv :vertical wincmd f<cr>
-nnoremap <silent>gfs :botright wincmd f<cr>
-nnoremap gf <nop>
+" auto remap to <Plug> is difficult
+if get(g:, 'config_flag_gf', 0) == 0
+  nnoremap gfb gf
+  nnoremap <silent>gft <c-w>gf
+  nnoremap <silent>gfv :vertical wincmd f<cr>
+  nnoremap <silent>gfs :botright wincmd f<cr>
+  nnoremap gf <nop>
+endif
 "}}}
+
+nmap <silent><Plug>(u10-botright) :botright split<cr>
+nmap <silent><Plug>(u10-vertical) :vertical split<cr>
 
 nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
