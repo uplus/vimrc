@@ -41,7 +41,7 @@ set history=1000
 set modeline modelines=2
 " TODO: <c-g>  <C-l>には補完用のマップがある。
 set cedit=<c-l> " move to cmdwin key
-set splitright nosplitbelow
+set splitright splitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
 set ttyfast
 set switchbuf=usetab
