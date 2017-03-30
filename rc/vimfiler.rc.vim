@@ -48,7 +48,7 @@ function! s:vimfiler_settings() "{{{
 
   nnoremap <buffer>\ \
   nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
-
+  nmap ? <Plug>(vimfiler_help)
 endfunction "}}}
 
 function! s:smart_quit()
