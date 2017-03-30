@@ -1,24 +1,28 @@
 " after/ftplugin.vimの中じゃないとプラグインとかに上書きされる
 
-" need to old vim(probably ~7.4.160).
-if !exists('#u10ac')
-  augroup u10ac
-  augroup END
-endif
+" " need to old vim(probably ~7.4.160).
+" if !exists('#u10ac')
+"   augroup u10ac
+"   augroup END
+" endif
 
-au u10ac FileType * call s:filetype_all()
 function! s:filetype_all() abort
   call RemoveOptVal('formatoptions', 'jro')
   setl formatoptions+=Bnql
-  echomsg 'filetype_all'
-endfunction
-" r 改行でコメントを挿入
-" o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
-" B multi-byte charの結合で空白を挿入しない
-" q gqでコメントを結合
-" j コメントを結合する時に可能であればコメントリーダーを削除する
+  " r 改行でコメントを挿入
+  " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
+  " B multi-byte charの結合で空白を挿入しない
+  " q gqでコメントを結合
+  " j コメントを結合する時に可能であればコメントリーダーを削除する
 
-" elseやrescueに移動しない
-au u10ac FileType vim  let b:match_words='\<fu\%[nction]\>:\<endf\%[unction]\>,\<\(wh\%[ile]\|for\)\>:\<end\(w\%[hile]\|fo\%[r]\)\>,\<if\>:\<en\%[dif]\>,\<try\>:\<endt\%[ry]\>,\<aug\%[roup]\s\+\%(END\>\)\@!\S:\<aug\%[roup]\s\+END\>,(:)'
-au u10ac FileType sh   let b:match_words='\%(;\s*\|^\s*\)\@<=if\>:\%(;\s*\|^\s*\)\@<=fi\>,\%(;\s*\|^\s*\)\@<=\%(for\|while\)\>:\%(;\s*\|^\s*\)\@<=done\>,\%(;\s*\|^\s*\)\@<=case\>:\%(;\s*\|^\s*\)\@<=esac\>'
-au u10ac FileType zsh  let b:match_words='(:),{:},[:],\<if\>:\<fi\>,\<case\>:^\s*([^)]*):\<esac\>,\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
+  " echomsg 'filetype_all'
+endfunction
+
+augroup u10ac
+  au FileType * call s:filetype_all()
+
+  " elseやrescueに移動しない
+  au FileType vim  let b:match_words='\<fu\%[nction]\>:\<endf\%[unction]\>,\<\(wh\%[ile]\|for\)\>:\<end\(w\%[hile]\|fo\%[r]\)\>,\<if\>:\<en\%[dif]\>,\<try\>:\<endt\%[ry]\>,\<aug\%[roup]\s\+\%(END\>\)\@!\S:\<aug\%[roup]\s\+END\>,(:)'
+  au FileType sh   let b:match_words='\%(;\s*\|^\s*\)\@<=if\>:\%(;\s*\|^\s*\)\@<=fi\>,\%(;\s*\|^\s*\)\@<=\%(for\|while\)\>:\%(;\s*\|^\s*\)\@<=done\>,\%(;\s*\|^\s*\)\@<=case\>:\%(;\s*\|^\s*\)\@<=esac\>'
+  au FileType zsh  let b:match_words='(:),{:},[:],\<if\>:\<fi\>,\<case\>:^\s*([^)]*):\<esac\>,\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
+augroup END
