@@ -236,7 +236,7 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent>;uj :<C-u>Unite jump   -auto-resize -buffer-name=jump<CR>
   nnoremap <silent>;u <Nop>
 
-  nnoremap <silent>\b :<C-u>Unite -auto-resize -buffer-name=buffer buffer<CR>
+  nnoremap <silent>\b :<C-u>Unite -start-insert -auto-resize -buffer-name=buffer buffer<CR>
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume -no-start-insert -force-redraw<CR>
