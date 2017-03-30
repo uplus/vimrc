@@ -9,7 +9,7 @@ scriptencoding=utf-8
 
 augroup u10ac
   autocmd!
-  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *? call s:on_filetype()
+  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead * call s:on_filetype()
 augroup END
 
 function! s:source(path)
