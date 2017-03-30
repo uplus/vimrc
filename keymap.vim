@@ -43,10 +43,18 @@ nnoremap \tow :set wrap!<CR>
 nnoremap \tol :set list!<CR>
 "}}}
 
+" gf "{{{
+" remap is difficult
+nnoremap gfb gf
+nnoremap <silent>gft <c-w>gf
+nnoremap <silent>gfv :vertical wincmd f<cr>
+nnoremap <silent>gfs :botright wincmd f<cr>
+nnoremap gf <nop>
+"}}}
+
 nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
-
 
 inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 " inoremap jj <esc>
@@ -159,12 +167,6 @@ nnoremap <silent>,bq :q<CR>
 "}}}
 
 " #window"{{{
-nnoremap gfb gf
-nnoremap <silent>gft :tab wincmd f<CR>
-nnoremap <silent>gfv :vertical wincmd f<CR>
-nnoremap <silent>gfs :botright wincmd f<CR>
-nnoremap gf <NOP>
-
 au u10ac CmdwinEnter  * call s:cmdwin_config()
 function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>
