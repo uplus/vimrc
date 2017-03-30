@@ -29,6 +29,10 @@ if dein#load_state(s:path)
   call dein#save_state()
 endif
 
+au u10ac VimEnter * call dein#call_hook('source')
+au u10ac VimEnter * call dein#call_hook('post_source')
+
+
 "###################### plugin config ############################"
 let g:netrw_nogx=1             " 不要なkeymapを無効
 " let g:loaded_netrw             = 1

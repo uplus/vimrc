@@ -21,7 +21,7 @@ endfunction
 
 function! s:on_filetype() abort
   if execute('filetype') =~# 'OFF'
-    silent! filetype plugin indent on
+    filetype plugin indent on
     syntax enable
     filetype detect
   endif
@@ -31,8 +31,6 @@ let $CACHE = expand('~/.cache')
 if !isdirectory($CACHE)
   call mkdir($CACHE, 'p')
 endif
-
-call s:source('before')
 
 " #release keymaps"{{{
 let mapleader = ';'
@@ -53,20 +51,12 @@ nnoremap g<C-G> <Nop>
 xnoremap g<C-G> <Nop>
 "}}}
 
-set packpath= " Disable packpath
+call s:source('before')
+
+" load dein
 if !exists('g:noplugin')
   call s:source('dein')
 endif
-
-autocmd u10ac VimEnter * call dein#call_hook('source')
-autocmd u10ac VimEnter * call dein#call_hook('post_source')
-
-" " Reloadable dein
-" if !has('vim_starting')
-"   echomsg '!vim_starting'
-"   syntax on
-"   filetype plugin indent on
-" endif
 
 call s:source('function')
 call s:source('opts')
@@ -74,9 +64,7 @@ call s:source('keymap')
 call s:source('highlights')
 call s:source('cmds')
 
-if has('vim_starting') && !empty(argv())
-  call s:on_filetype()
-endif
+call s:on_filetype()
 
 " #autocmds "{{{
 augroup u10ac
