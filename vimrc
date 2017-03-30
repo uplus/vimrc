@@ -21,7 +21,6 @@ endfunction
 
 function! s:on_filetype() abort
   if execute('filetype') =~# 'OFF'
-    echomsg 'on_filetype ' . &ft
     silent! filetype plugin indent on
     syntax enable
     filetype detect
