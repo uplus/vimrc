@@ -36,31 +36,36 @@ call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
 
 " vim {{{
 call lexima#add_rule(
-      \ {'at': '{\%#}',
+      \ {'at': '\v(\{%#\}|\[%#\])',
       \ 'char': '<CR>',
       \ 'input': '<CR><Bslash> ',
       \ 'input_after': '<CR><Bslash> ',
       \ 'filetype': 'vim'})
 
+" 既に括弧がある時
 call lexima#add_rule(
-      \ {'at': '{\%#',
+      \ {'at': '[{\[]\%#',
       \ 'char': '<CR>',
       \ 'input': '<CR><Bslash> ',
-      \ 'filetype': 'vim'
-      \ })
+      \ 'filetype': 'vim'})
 
 call lexima#add_rule({
       \ 'at': '\\\s.*\%#$',
       \ 'char': '<CR>',
       \ 'input': '<CR><Bslash> ',
-      \ 'filetype': 'vim' })
+      \ 'filetype': 'vim'})
 
 call lexima#add_rule({
       \ 'at': '^\%#',
       \ 'char': '<Bslash>',
       \ 'input': '<Bslash><space>',
-      \ 'filetype': 'vim'
-      \ })
+      \ 'filetype': 'vim'})
+
+call lexima#add_rule(
+      \ {'at': "'''\\%#'''",
+      \ 'char': '<CR>',
+      \ 'input': '<CR><CR><Up><tab>',
+      \ 'filetype': ['vim', 'toml']})
 "}}}
 
 " c cpp {{{
