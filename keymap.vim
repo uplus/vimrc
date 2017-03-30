@@ -1,4 +1,17 @@
-" neovim terminal "{{{
+
+" #vim basic keymaps "{{{
+noremap <Plug>(vim-basic-visual) v
+noremap <Plug>(vim-basic-visualline) V
+noremap <Plug>(vim-basic-visualblock) <c-v>
+noremap <Plug>(vim-basic-start) 0
+noremap <Plug>(vim-basic-last) $
+noremap <Plug>(vim-basic-front) ^
+noremap <Plug>(vim-basic-tail) g_
+
+inoremap <Plug>(vim-basic-insert-lasttext) <c-a>
+"}}}
+
+" #neovim terminal "{{{
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
   " tmap jj <esc>
@@ -6,9 +19,9 @@ if has('nvim')
   " tnoremap <c-j> <c-\><c-n><c-w>j
   " tnoremap <c-k> <c-\><c-n><c-w>k
   " tnoremap <c-l> <c-\><c-n><c-w>l
-  nnoremap <c-w>ts :botrigh split +term<cr>
+  nnoremap <c-w>ts :botright split +term<cr>
   nnoremap <c-w>tv :vsp +term<cr>
-  nnoremap <space>t :botrigh split +term<cr>
+  nmap <space>t <c-w>ts
   nnoremap <space>T :tabnew +term<cr>
 
   tnoremap <c-t>h <c-\><c-n><c-w>h
@@ -22,51 +35,28 @@ if has('nvim')
   nnoremap <c-t>l <c-w>lI
 endif "}}}
 
-" Encode: Reopening with a specific character."{{{
-" In particular effective when I am garbled in a terminal.
-command! -bang -bar -complete=file -nargs=? Utf8      edit<bang> ++enc=utf-8 <args>
-command! -bang -bar -complete=file -nargs=? Iso2022jp edit<bang> ++enc=iso-2022-jp <args>
-command! -bang -bar -complete=file -nargs=? Cp932     edit<bang> ++enc=cp932 <args>
-command! -bang -bar -complete=file -nargs=? Euc       edit<bang> ++enc=euc-jp <args>
-command! -bang -bar -complete=file -nargs=? Utf16     edit<bang> ++enc=ucs-2le <args>
-command! -bang -bar -complete=file -nargs=? Utf16be   edit<bang> ++enc=ucs-2 <args>
-
-" Aliases.
-command! -bang -bar -complete=file -nargs=? Jis     Iso2022jp<bang> <args>
-command! -bang -bar -complete=file -nargs=? Sjis    Cp932<bang> <args>
-command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
+" #toggle options "{{{
+nnoremap \toc :set cursorcolumn!<CR>
+nnoremap \ton :set number!<CR>
+nnoremap \tor :set relativenumber!<CR>
+nnoremap \tow :set wrap!<CR>
+nnoremap \tol :set list!<CR>
 "}}}
 
 nnoremap ,gd :OpenGitDiffWin<CR>
 nnoremap ,gt :Tig<CR>
 nnoremap gst :WordTranslate<CR>
 
-" #toggle options
-nnoremap \toc :set cursorcolumn!<CR>
-nnoremap \ton :set number!<CR>
-nnoremap \tor :set relativenumber!<CR>
-nnoremap \tow :set wrap!<CR>
-nnoremap \tol :set list!<CR>
 
 inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 " inoremap jj <esc>
 nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
 xnoremap <space>n :normal<space>
 
-noremap <Plug>(vim-basic-visual) v
-noremap <Plug>(vim-basic-visualline) V
-noremap <Plug>(vim-basic-visualblock) <c-v>
-noremap <Plug>(vim-basic-start) 0
-noremap <Plug>(vim-basic-last) $
-noremap <Plug>(vim-basic-front) ^
-noremap <Plug>(vim-basic-tail) g_
-
-inoremap <Plug>(vim-basic-insert-lasttext) <c-a>
-
 " Ctrl /
 imap  <plug>(vim-basic-insert-lasttext)
-nnoremap <tab> gt
-nnoremap <s-tab> gT
+" nnoremap <tab> gt
+" nnoremap <s-tab> gT
 
 inoremap <c-r><c-r> <c-r>"
 nnoremap g?? Vg?
@@ -180,7 +170,6 @@ function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>
   nnoremap <silent><buffer><C-W> :q<CR><C-W>
 endfunction
-
 "}}}
 
 " #complete "{{{
@@ -309,4 +298,3 @@ xnoremap gah :SyntaxInfo<CR>
 nnoremap ga<C-G> g<C-G>
 xnoremap ga<C-G> g<C-G>
 " }}}
-
