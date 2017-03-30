@@ -83,7 +83,7 @@ augroup u10ac
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
   au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
-  au InsertLeave,CursorHold * call DoAutoSave()
+  au InsertLeave,CursorHold,WinLeave * call DoAutoSave()
   au SwapExists * let g:swapname = v:swapname
   autocmd CursorHold *.toml syntax sync minlines=300
 

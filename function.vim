@@ -517,8 +517,10 @@ function! ResetHightlights() abort
 endfunction
 
 let g:u10_autosave = 0
-nnoremap <silent><F2> :call AutoSave()<CR>
-function! AutoSave() abort
+command! EnableAutoSave let g:u10_autosave = 1
+command! DisableAutoSave let g:u10_autosave = 1
+nnoremap <silent><F2> :call ToggleAutoSave()<CR>
+function! ToggleAutoSave() abort
   silent update
   let g:u10_autosave = !g:u10_autosave
   echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
