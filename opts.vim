@@ -157,7 +157,7 @@ if has('gui_running')
 endif
 
 if exists('+termguicolors')
-  set termguicolors
+  " set termguicolors
 endif
 
 
