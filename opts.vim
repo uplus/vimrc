@@ -5,6 +5,7 @@ set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
 " tags;     current-dirからtagsが見つかるまで遡る
 " tas;/dir  上記と同じだが/dirより上には行かない
 
+" #format and encoding
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,ucs-bom,euc-jp,eucjp-ms,cp932
@@ -13,8 +14,13 @@ set fileformat=unix
 " Automatic recognition of a new line cord.
 set fileformats=unix,dos,mac
 
+" Disable bell.
+set t_vb=
+set novisualbell
+set belloff=all
+
 " set undofile
-set report=0  " コマンド似よって0行以上変更されたらmessage
+set report=0  " コマンドでN行変更されたら出力
 set number
 set hidden
 set showcmd
@@ -28,12 +34,16 @@ set cmdheight=2 cmdwinheight=4
 set mouse=      " クリックでマウスが動かないように
 set title
 set nobackup
+set nowritebackup
+set backupdir-=.
+set keywordprg=:help
+set history=1000
 set modeline modelines=2
 " TODO: <c-g>  <C-l>には補完用のマップがある。
 set cedit=<c-l> " move to cmdwin key
 set splitright nosplitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
-" set ttyfast
+set ttyfast
 set switchbuf=usetab
 set completeopt=menuone
 if has('patch755')
@@ -50,10 +60,30 @@ set sidescrolloff=12
 set virtualedit=block
 set nrformats-=octal
 
+if has('nvim')
+  set shada=!,'300,<50,s10,h
+else
+  set viminfo=!,'300,<50,s10,h
+endif
+
+" set shortmess=filnxtToO " default
+" Do not display the greetings message at the time of Vim start.
+set shortmess=aTI
+" Do not display the completion messages
+set noshowmode
+if has('patch-7.4.314')
+  set shortmess+=c
+endif
+
+" Do not display the edit messages
+if has('patch-7.4.1570')
+  set shortmess+=F
+endif
+
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
-set updatetime=2500
+set updatetime=1000
 
 " #indent
 au u10ac FileType conf,gitcommit,html,css set nocindent
@@ -103,6 +133,7 @@ set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか
 set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
+set fillchars=vert:\|
 
 " set list
 set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
@@ -125,19 +156,27 @@ if has('gui_running')
    set guioptions=Mc
 endif
 
-if has('nvim')
-  " set inccommand=split
+if exists('+termguicolors')
+  set termguicolors
 endif
 
-" set termguicolors
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+if has('nvim')
+  set inccommand=split
+  let g:python_host_prog  = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+else
+  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  " let &t_ti .= "\e[?2004h"
+  " let &t_te .= "\e[?2004l"
+  " let &t_ti .= "\e[?1004h"
+  " let &t_te .= "\e[?1004l"
+  let &pastetoggle = "\e[201~"
+endif
 
 " Change cursor shape.
 if &term =~ "xterm"
   " let &t_SI = "\e[5 q\e]12;Orange\x7"
   " let &t_EI = "\e[0 q\e]12;RoyalBlue1\x7"
 endif
-
-let g:python_host_prog  = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
