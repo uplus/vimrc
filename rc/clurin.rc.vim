@@ -30,29 +30,81 @@ endfunction
 
 let g:clurin = {
       \ '-': {'def': [
-      \   ['&&', '||'],
-      \   ['yes', 'no'],
-      \   ['abc', 'efg'],
-      \   [{'pattern': '\(-\?\d\+\)', 'replace': function('g:CountUp')}],
-      \   [{'pattern': '\<true\>', 'replace': 'true'},
-      \    {'pattern': '\<false\>', 'replace': 'false'}],
+      \   ['&&', '||'], ['yes', 'no'],
+      \   [' < ', ' > '], [' <= ', ' >= '], [' == ', ' != '],
+      \   [{'pattern': '\v''(\k+)''', 'replace': '''\1'''},
+      \    {'pattern': '\v"(\k+)"', 'replace': '"\1"'},],
+      \ ]},
+      \
+      \ 'markdown': {'def': [
+      \   ['[ ]', '[x]'],
+      \ ]},
+      \
+      \ 'gitrebase': {'def': [
+      \   [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec'],
+      \ ]},
+      \
+      \ 'toml': {'def': [
+      \   ['hook_add', 'hook_source', 'hook_post_source'],
       \ ]},
       \
       \ 'vim': {'def': [
-      \   [{'pattern': '''\(\k\+\)''', 'replace': '''\1'''},
-      \    {'pattern': '"\(\k\+\)"', 'replace': '"\1"'}],
+      \   ['echo ', 'echomsg '],
+      \   ['nnoremap ', 'nmap '],
+      \   ['inoremap ', 'imap '],
+      \   ['cnoremap ', 'cmap '],
+      \   ['xnoremap ', 'xmap '],
+      \   ['BufWritePre', 'BufWritePost', 'BufWriteCmd'],
+      \   ['BufReadPre', 'BufReadPost', 'BufReadCmd'],
+      \   ['==#', '!=#' ],
+      \   ['==?', '!=?' ],
+      \   ['=~#', '!~#' ],
+      \   ['=~?', '!~?' ],
+      \   ['if', 'elseif', 'else'],
       \   [{'pattern': '\[''\(\k\+\)''\]', 'replace': '[''\1'']'},
       \    {'pattern': '\["\(\k\+\)"\]',   'replace': '["\1"]'},
       \    {'pattern': '\.\(\k\+\)',       'replace': '.\1'}],
       \ ]},
       \
       \ 'c': {'def': [
-      \   [{'pattern': '\(\k\+\)\.', 'replace': '\1.'},
-      \    {'pattern': '\(\k\+\)->', 'replace': '\1->'}]
       \ ]},
+      \
+      \ 'zsh': {'def':[
+      \   [ ' -a ', ' -o '],
+      \   [ ' -z ', ' -n '],
+      \   [ ' -eq ', ' -ne '],
+      \   [ ' -lt ', ' -le ', ' -gt ', ' -ge '],
+      \   [ ' -e ', ' -f ', ' -d '],
+      \   [ ' -r ', ' -w ', ' -x '],
+      \ ]},
+      \
       \ 'ruby': {'def': [
-      \   [{'pattern': '''\(\k\+\)''', 'replace': '''\1'''},
-      \   {'pattern': '"\(\k\+\)"', 'replace': '"\1"'},
-      \   {'pattern': ':\(\k\+\)"', 'replace': ':\1'}],
-      \ ]}
+      \   [{'pattern': '\v"(\k+)"', 'replace': '"\1"'},
+      \    {'pattern': '\v''(\k+)''', 'replace': '''\1'''},
+      \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
+      \   ['if', 'unless' ],
+      \   ['while', 'until' ],
+      \   ['.blank?', '.present?' ],
+      \   ['include', 'extend' ],
+      \   ['class', 'module' ],
+      \   ['.inject', '.reject' ],
+      \   ['.map', '.map!' ],
+      \   ['.sub', '.sub!', '.gub', '.gub!' ],
+      \   ['.clone', '.dup' ],
+      \   ['.any?', '.none?' ],
+      \   ['.all?', '.one?' ],
+      \   ['p ', 'puts ', 'print '],
+      \   ['attr_accessor', 'attr_reader', 'attr_writer' ],
+      \   ['File.exist?', 'File.file?', 'File.directory?' ],
+      \ ]},
       \ }
+
+" TODO ruby(:a => b, a: file)配置順序注意
+
+" 複数のファイルタイプに同じ設定はできない
+" エラーが出ても出力が分かりづらい(dein)
+" []では席表現が使えない
+
+      " \   [{'pattern': '\<true\>', 'replace': 'true'},
+      " \    {'pattern': '\<false\>', 'replace': 'false'}],
+      " \   [{'pattern': '\(-\?\d\+\)', 'replace': function('g:CountUp')}],
