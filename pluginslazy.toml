@@ -252,6 +252,10 @@ hook_add = '''
 #git
 
 [[plugins]]
+repo = 'rhysd/committia.vim'
+on_ft = 'gitcommit'
+
+[[plugins]]
 repo = 'lambdalisue/vim-gista'
 on_cmd = ['Gista']
 on_func = 'gista#'

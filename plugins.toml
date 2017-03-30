@@ -365,9 +365,6 @@ repo = 'cohama/agit.vim'
 repo = 'AndrewRadev/gapply.vim'
 
 [[plugins]]
-repo = 'rhysd/committia.vim'
-
-[[plugins]]
 repo = 'rhysd/conflict-marker.vim'
 
 
