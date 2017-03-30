@@ -82,15 +82,26 @@ on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
 hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 
 [[plugins]]
-repo = 'AndrewRadev/switch.vim'
-on_cmd = 'Switch'
-on_map = '!'
-hook_source = 'source ~/.vim/rc/switch.rc.vim'
+repo = 'syngan/vim-clurin'
+on_map = ['<Plug>(clurin-next)', '<Plug>(clurin-prev)']
+hook_source = 'source ~/.vim/rc/clurin.rc.vim'
 hook_add = '''
-  let g:switch_mapping = "<silent>!"
-  let g:switch_find_smallest_match = 1
-  au u10ac FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
+  nmap ! <Plug>(clurin-next)
+  " nmap - <Plug>(clurin-prev)
+  xmap ! <Plug>(clurin-next)
+  " xmap - <Plug>(clurin-prev)
 '''
+
+# [[plugins]]
+# repo = 'AndrewRadev/switch.vim'
+# on_cmd = 'Switch'
+# on_map = '!'
+# hook_source = 'source ~/.vim/rc/switch.rc.vim'
+# hook_add = '''
+#   let g:switch_mapping = "<silent>!"
+#   let g:switch_find_smallest_match = 1
+#   au u10ac FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
+# '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-jplus'
