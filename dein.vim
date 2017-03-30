@@ -413,8 +413,8 @@ if dein#tap('committia.vim') "{{{
   let g:committia_hooks = {}
   function! g:committia_hooks.edit_open(info)
     " Scroll the diff window from insert mode
-    imap <buffer><C-k> <Plug>(committia-scroll-diff-up-half)
-    imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><m-k> <Plug>(committia-scroll-diff-up-half)
+    imap <buffer><m-j> <Plug>(committia-scroll-diff-down-half)
   endfunction
 endif "}}}
 
