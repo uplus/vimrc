@@ -129,18 +129,6 @@ augroup u10ac
 augroup END
 "}}}
 
-" FastFold
-autocmd u10ac TextChangedI,TextChanged *
-      \ if &l:foldenable && &l:foldmethod !=# 'manual' |
-      \   let b:foldmethod_save = &l:foldmethod |
-      \   let &l:foldmethod = 'manual' |
-      \ endif
-autocmd u10ac BufWritePost *
-      \ if &l:foldmethod ==# 'manual' && exists('b:foldmethod_save') |
-      \   let &l:foldmethod = b:foldmethod_save |
-      \   execute 'normal! zx' |
-      \ endif
-
 au u10ac VimEnter * call s:vimenter()
 function! s:vimenter()
   if argc() == 0
