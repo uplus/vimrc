@@ -65,6 +65,8 @@ inoremap <Plug>(vim-basic-insert-lasttext) <c-a>
 
 " Ctrl /
 imap  <plug>(vim-basic-insert-lasttext)
+nnoremap <tab> gt
+nnoremap <s-tab> gT
 
 inoremap <c-r><c-r> <c-r>"
 nnoremap g?? Vg?
