@@ -91,14 +91,17 @@ _ = '''
   "   setlocal foldtext=FoldCCtext()
   " endif
 
-  if !&l:modifiable
-    setlocal nofoldenable
-    setlocal foldcolumn=0
+  echomsg 'deinf'
+  let g:abcdefg =  'hello'
 
-    if v:version >= 703
-      setlocal colorcolumn=
-    endif
-  endif
+  " if !&l:modifiable
+  "   setlocal nofoldenable
+  "   setlocal foldcolumn=0
+  "
+  "   if v:version >= 703
+  "     setlocal colorcolumn=
+  "   endif
+  " endif
 '''
 
 python = 'setlocal foldmethod=indent'
