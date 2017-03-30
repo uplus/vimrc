@@ -461,6 +461,13 @@ endfunction
 "}}}
 
 " #Misc "{{{
+command! HTMLalign call HTMLalign()
+function! HTMLalign() abort
+  %s/\v\>\</>\r</
+  setfiletype html
+  normal gg=G
+endfunction
+
 " call from snippets
 function! Filename() abort
   return expand('%:t:r')

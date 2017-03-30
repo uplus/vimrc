@@ -10,6 +10,7 @@ au u10ac FileType * call s:filetype_all()
 function! s:filetype_all() abort
   call RemoveOptVal('formatoptions', 'jro')
   setl formatoptions+=Bnql
+  echomsg 'filetype_all'
 endfunction
 " r 改行でコメントを挿入
 " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
