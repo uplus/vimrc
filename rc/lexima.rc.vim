@@ -44,7 +44,19 @@ call lexima#add_rule(
 
 " 既に括弧がある時
 call lexima#add_rule(
-      \ {'at': '[{\[]\%#',
+      \ {'at': '[{\[]\s*\%#',
+      \ 'char': '<CR>',
+      \ 'input': '<CR><Bslash> ',
+      \ 'filetype': 'vim'})
+
+call lexima#add_rule(
+      \ {'at': '[}\]]\s*\%#',
+      \ 'char': '<CR>',
+      \ 'input': '<CR><Bslash> ',
+      \ 'filetype': 'vim'})
+
+call lexima#add_rule(
+      \ {'at': '\\.*\%#',
       \ 'char': '<CR>',
       \ 'input': '<CR><Bslash> ',
       \ 'filetype': 'vim'})
