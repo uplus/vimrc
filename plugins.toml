@@ -528,6 +528,9 @@ hook_post_source = '''
   call gf#user#extend('u10#gf_ask', 1000)
 '''
 
+[[plugins]] # jump to vim function
+repo = 'hujo/gf-user-vimfn'
+
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
