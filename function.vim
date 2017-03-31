@@ -183,64 +183,7 @@ endfunction
 
 "}}}
 
-" #UndoClear"{{{
-command! Uclear UndoClear
-command! UndoClear :call UndoClear()
-function! UndoClear()
-  let l:old = &undolevels
-  set undolevels=-1
-  exe "normal a \<BS>\<Esc>"
-  let &undolevels = l:old
-  unlet l:old
-  write
-endfunction
-"}}}
 
-" #OpenGitDiff "{{{
-command! OpenGitDiffWin call OpenGitDiff('w')
-command! OpenGitDiffTab call OpenGitDiff('t')
-function! OpenGitDiff(type)
-  silent! update
-  let s:before_winnr = winnr()
-  let cmdname = 'git diff ' .  expand('%:t')
-  let filedir = expand('%:h')
-  silent! execute 'bwipeout \[' . escape(cmdname, ' ') . '\]'
-
-  execute 'silent!' ((a:type == 't')? 'tabnew' : printf('botright vsplit [%s]', escape(cmdname, ' ')))
-
-  " diff_config()で設定しようとするとnofileのタイミングが遅い
-  setfiletype diff
-  setl buftype=nofile
-  setl undolevels=-1
-  setl nofoldenable
-  setl nonumber
-  setl foldcolumn=0
-  execute 'lcd' filedir
-  silent put! =system(cmdname)
-  $delete
-  nnoremap <silent><buffer>q :call <SID>bwipeout_and_back()<CR>
-
-  function! s:bwipeout_and_back()
-    bwipeout!
-    execute 'normal!' s:before_winnr ."\<C-w>w"
-  endfunction
-
-  " execute 'normal!' s:before_winnr ."\<C-w>w"
-endfunction "}}}
-
-" #GotoVimFunction "{{{
-function! GotoVimFunction()
-  let func_name = matchstr(getline('.'),  '\v%(.\:)?\zs(%(\w|_|#|\.)*)\ze\(.*\)')
-  if empty(func_name)
-    return 1
-  endif
-
-  exec 'lvimgrep /\vfu%[nction]\!?\s+(.\:)?' . func_name . '/' . '`git ls-files`'
-  call setloclist(0, [])
-  silent! HierUpdate
-  normal! zv
-endfunction
-"}}}
 
 " #Blank "{{{
 nnoremap <silent> <Plug>(BlankUp)   :<C-U>call <SID>BlankUp(v:count1)<CR>
@@ -320,12 +263,6 @@ function! Filename() abort
 endfunction
 
 noremap <Plug>(delete_for_match) :<c-u>call <SID>delete_for_match()<CR>
-function! s:delete_for_match() abort
-  normal! V^
-  normal %
-  normal! d
-  call repeat#set("\<Plug>(delete_for_match)")
-endfunction
 
 function RemoveOptVal(optname, chars)
   for c in  split(a:chars, '.\zs')
@@ -369,8 +306,6 @@ endfunction
 function! DummyArray(start, last, times) abort
   return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d )}.join(', ')", a:times, a:start, a:last))
 endfunction
-
-
 
 " #Tabedit "{{{
 " zsh like tabedit.

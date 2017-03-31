@@ -40,6 +40,10 @@ command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 command! AddRepo call u10#add_repo()
 command! SyntaxInfo call u10#get_syn_info()
 command! -complete=highlight -nargs=* Hi call u10#highlight(<f-args>)
+command! OpenGitDiffWin call u10#open_git_diff('w')
+command! OpenGitDiffTab call u10#open_git_diff('t')
+command! Uclear u10#undo_clear
+command! UndoClear :call u10#undo_clear()
 
 " #word translate
 let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
