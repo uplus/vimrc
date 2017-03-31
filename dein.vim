@@ -658,9 +658,6 @@ if dein#tap('vim-gitgutter') "{{{
   nmap ,grev <Plug>GitGutterRevertHunk
   nmap ,gh :GitGutterLineHighlightsToggle<CR>
   nmap ,gg :GitGutterSignsToggle<CR>
-
-  " if use vim-submode, cannot use mappings to move tab(gt gT).
-  au u10ac VimEnter * au! gitgutter TabEnter,BufEnter
 endif "}}}
 
 if dein#tap('vim-gista') "{{{
