@@ -16,43 +16,8 @@ function! Execute(cmd)
 endfunction
 
 function! Ruby(str) abort
-  return Capture('ruby ' . a:str)
+  return u10#capture('ruby ' . a:str)
 endfunction
-
-" #Capture {{{
-" cmdをクォートなしでとれる
-command! -nargs=+ -complete=command
-      \ Capture call Capture(<q-args>)
-
-" cmdをクォートで囲んでとる
-function! Capture(cmd)
-  redir => l:out
-  silent execute a:cmd
-  redir END
-  let g:capture = substitute(l:out, '\%^\n', '', '')
-  return g:capture
-endfunction
-
-" #Capture New window
-command! -nargs=+ -complete=command
-      \ CaptureWin call CaptureWin(<q-args>)
-
-function! CaptureWin(cmd)
-  redir => result
-  silent execute a:cmd
-  redir END
-
-  let bufname = 'Capture: ' . a:cmd
-  new
-  setlocal bufhidden=unload
-  setlocal nobuflisted
-  setlocal buftype=nofile
-  setlocal noswapfile
-  silent file `=bufname`
-  silent put =result
-  1,2delete _
-endfunction
-" }}}
 
 " #EraseSpace "{{{
 let g:erase_space_on = 1
@@ -87,28 +52,23 @@ command! BuffersInfo PP BuffersInfo()
 
 " return list [bufnr, status, name]
 function! BuffersInfo(...)
-  return map(split(Capture('ls' . (a:0? a:1 : '!')), '\n'),
+  return map(split(u10#capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction
 
 function! BufferCount()
-  return len(split(Capture('ls!'), "\n"))
+  return len(split(u10#capture('ls!'), "\n"))
 endfunction
 
 function! ActiveBufferCount()
-  return len(split(Capture('ls! a'), "\n"))
+  return len(split(u10#capture('ls! a'), "\n"))
 endfunction
 
 function! ListedBufferCount()
-  return len(split(Capture('ls'), "\n"))
+  return len(split(u10#capture('ls'), "\n"))
 endfunction
 
 "}}}
-
-
-"}}}
-
-
 
 " #Blank "{{{
 nnoremap <silent> <Plug>(BlankUp)   :<C-U>call <SID>BlankUp(v:count1)<CR>
@@ -166,10 +126,6 @@ function! s:Move(count, is_up, is_visual) abort
 endfunction
 "}}}
 
-" #Git
-command! CdGitTop execute 'cd' u10#git_top()
-command! Cdtop CdGitTop
-
 " #Tabedit "{{{
 " zsh like tabedit.
 if executable('zsh')
@@ -212,50 +168,6 @@ function! ZshFileCompletion(lead, line, pos)
 
   return cands
 endfunction
-"}}}
-
-" #Notes "{{{
-if executable('note')
-  let g:note_path = system('note')[0:-2]
-  command! -nargs=1 -complete=customlist,NoteFileCompletion Note call g:NoteOpen(<q-args>)
-
-  function! g:NoteOpen(name) abort
-    let l:name = system(['note', '-S', a:name])[0:-2]
-    if name ==# ''
-      echo printf('%s not found', a:name)
-    endif
-
-    exec 'tabedit' l:name
-  endfunction
-
-  function g:NoteFileCompletion(lead, line, pos) abort
-    let l:name = a:lead
-    let l:files = split(system(['note', '--list']))
-
-    if l:name ==# ''
-      return l:files
-    endif
-
-    " match filter
-    let l:files = filter(files, 'v:val =~ l:name')
-    let l:head_matched = filter(copy(files), 'v:val =~ "^" . l:name')
-    if 0 != len(l:head_matched)
-      let l:files = l:head_matched
-    endif
-
-    if 1 < len(l:files)
-      return l:files
-    endif
-
-    let l:name = files[0]
-    if l:name =~# '/$'
-      let l:files = split(system(['note', '--list', l:name]))
-      call map(l:files, 'l:name . v:val')
-    endif
-
-    return l:files
-  endfunction
-endif
 "}}}
 
 " #TerminalRun "{{{

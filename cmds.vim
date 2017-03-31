@@ -47,7 +47,20 @@ command! UndoClear :call u10#undo_clear()
 command! CurrentOnly call u10#current_only()
 command! ActiveOnly call u10#active_only()
 command! DeleteTrashBuffers call u10#delete_trash_buffers()
+command! GitTop execute 'cd' u10#git_top()
 
+command! -nargs=+ -complete=command
+      \ Capture call u10#capture(<q-args>)
+command! -nargs=+ -complete=command
+      \ CaptureWin call u10#capture_win(<q-args>)
+
+" #note
+let g:note_path = ''
+if executable('note')
+  let g:note_path = system('note')[0:-2]
+endif
+command! -nargs=1 -complete=customlist,u10#note_file_completion
+      \ Note call u10#note_open(<q-args>)
 
 " #word translate
 let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
