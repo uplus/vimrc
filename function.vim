@@ -1,3 +1,15 @@
+
+" noremap <Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
+" function! u10#delete_for_match() abort "{{{
+"   normal! V^
+"   normal %
+"   normal! d
+"   call repeat#set("\<Plug>(delete_for_match)")
+" endfunction "}}}
+
+" #OptionStack
+let g:option_stack = []
+
 function! Execute(cmd)
   execute a:cmd
   return ""
@@ -6,41 +18,6 @@ endfunction
 function! Ruby(str) abort
   return Capture('ruby ' . a:str)
 endfunction
-
-" #OptionStack "{{{
-" 引数には = += -= 含めた値をとる
-let g:option_stack = []
-
-function! OptionPush(name, expr)
-  if -1 == match(a:expr, '\v^[+-]?\=')
-    echo 'second argument need = += -= '
-    return
-  endif
-
-  if !exists('&' . a:name)
-    echo 'option not exists ' . a:name
-    return
-  endif
-
-  call add(g:option_stack, [a:name, eval('&l:' . a:name)])
-
-  try
-    execute 'setlocal' a:name . a:expr
-  catch /^Vim(setlocal):E474/
-    call remove(g:option_stack, -1)
-    echo 'Invalid argument ' . a:expr
-  endtry
-endfunction
-
-function! OptionPop()
-  let [name, value] = remove(g:option_stack, -1)
-  execute 'setl ' . name . '=' . value
-endfunction
-
-function! OptionStackClean()
-  let g:option_stack = []
-endfunction
-"}}}
 
 " #Capture {{{
 " cmdをクォートなしでとれる
@@ -106,8 +83,11 @@ endfunction
 " #Buffer functions "{{{
 
 " #BuffersInfo
-" return list [bufnr,status,name]
-command! BuffersInfo for buf in BuffersInfo() | echo buf | endfor
+command! BuffersInfo PP BuffersInfo()
+command! Conly call CurrentOnly()
+command! CurrentOnly call CurrentOnly()
+
+" return list [bufnr, status, name]
 function! BuffersInfo(...)
   return map(split(Capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
@@ -125,9 +105,6 @@ function! ListedBufferCount()
   return len(split(Capture('ls'), "\n"))
 endfunction
 
-" CurrentOnly "{{{
-command! Conly call CurrentOnly()
-command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
   let l:old = &report
   set report=1000
@@ -241,40 +218,15 @@ function! s:Move(count, is_up, is_visual) abort
 endfunction
 "}}}
 
-" #Git "{{{
-command! CdGitTop execute 'cd' g:GitTop()
+" #Git
+command! CdGitTop execute 'cd' u10#git_top()
 command! Cdtop CdGitTop
-function! g:GitTop()
-  return system('git rev-parse --show-toplevel')
-endfunction
-"}}}
 
 " #Misc
-command! HTMLalign call HTMLalign()
-function! HTMLalign() abort
-  %s/\v\>\</>\r</
-  setfiletype html
-  normal gg=G
-endfunction
-
-" call from snippets
-function! Filename() abort
-  return expand('%:t:r')
-endfunction
-
-noremap <Plug>(delete_for_match) :<c-u>call <SID>delete_for_match()<CR>
-
 function RemoveOptVal(optname, chars)
   for c in  split(a:chars, '.\zs')
     execute printf('setl %s-=%s', a:optname, c)
   endfor
-endfunction
-
-function! ResetHightlights() abort
-  " nohlsearch " 関数内では動作しない
-  silent! QuickhlManualReset
-  silent! RCReset
-  call clearmatches()
 endfunction
 
 let g:u10_autosave = 0
@@ -304,7 +256,7 @@ function! PopReg(reg) abort
 endfunction
 
 function! DummyArray(start, last, times) abort
-  return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d )}.join(', ')", a:times, a:start, a:last))
+  return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d)}.join(', ')", a:times, a:start, a:last))
 endfunction
 
 " #Tabedit "{{{
@@ -312,11 +264,6 @@ endfunction
 if executable('zsh')
   command! -nargs=1 -complete=customlist,ZshFileCompletion T tabedit <args>
 endif
-
-function s:expand_filename_tilde(str)
-    let path = system(printf("zsh -ic 'echo -n %s'", a:str))
-    return u10#home2tilde(path)
-endfunction
 
 function! ZshFileCompletion(lead, line, pos)
   if a:lead ==# '#'
@@ -327,7 +274,7 @@ function! ZshFileCompletion(lead, line, pos)
     echo 'zsh file completion'
     " Slow
     let parts = split(a:lead, '/')
-    let parts[0] = s:expand_filename_tilde(parts[0])
+    let parts[0] = u10#expand_dir_alias(parts[0])
     if v:shell_error
       return []
     endif
@@ -462,3 +409,24 @@ function! GetRunConfig(filetype) abort
         \ }
 endfunction
 "}}}
+
+
+function! ResetHightlights() abort
+  " nohlsearch " 関数内では動作しない
+  silent! QuickhlManualReset
+  silent! RCReset
+  call clearmatches()
+endfunction
+
+command! HTMLalign call HTMLalign()
+function! HTMLalign() abort
+  %s/\v\>\</>\r</
+  setfiletype html
+  normal gg=G
+endfunction
+
+" call from snippets
+function! Filename() abort
+  return expand('%:t:r')
+endfunction
+

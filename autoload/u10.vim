@@ -24,6 +24,11 @@ function! u10#delete_str(str, pattern, ...)
   return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction
 
+function u10#expand_dir_alias(str)
+    let path = system(printf("zsh -ic 'echo -n %s'", a:str))
+    return u10#home2tilde(path)
+endfunction
+
 
 " gf create new file
 function! u10#gf_ask() abort "{{{
@@ -137,11 +142,8 @@ function! u10#undo_clear() abort "{{{
   write
 endfunction "}}}
 
-function! u10#delete_for_match() abort "{{{
-  normal! V^
-  normal %
-  normal! d
-  call repeat#set("\<Plug>(delete_for_match)")
+function! u10#git_top() abort "{{{
+  return system('git rev-parse --show-toplevel')
 endfunction "}}}
 
 
@@ -256,3 +258,35 @@ function! u10#word_translate(...) abort "{{{
     echo u10#word_translate_weblio_smart(word)
   endif
 endfunction "}}}
+
+" #option stack TODO Vital.Vim.Guard
+function! u10#option_push(name, expr) " 引数に = += -= 含めた値をとる {{{
+  if -1 == match(a:expr, '\v^[+-]?\=')
+    echo 'second argument need = += -= '
+    return
+  endif
+
+  if !exists('&' . a:name)
+    echo 'option not exists ' . a:name
+    return
+  endif
+
+  call add(g:option_stack, [a:name, eval('&l:' . a:name)])
+
+  try
+    execute 'setlocal' a:name . a:expr
+  catch /^Vim(setlocal):E474/
+    call remove(g:option_stack, -1)
+    echo 'Invalid argument ' . a:expr
+  endtry
+endfunction "}}}
+
+function! u10#option_pop() "{{{
+  let [name, value] = remove(g:option_stack, -1)
+  execute 'setl ' . name . '=' . value
+endfunction "}}}
+
+function! u10#option_clear() "{{{
+  let g:option_stack = []
+endfunction "}}}
+
