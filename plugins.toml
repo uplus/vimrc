@@ -354,14 +354,14 @@ hook_source = 'source ~/.vim/rc/deoplete.rc.vim'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-[[plugins]]
-# gitのdiffを行に表示
-repo = 'airblade/vim-gitgutter'
-hook_post_source = '''
-  " if use vim-submode, cannot use mappings to move tab(gt gT).
-  au! gitgutter TabEnter,BufEnter
-  hi GitGutterChangeDefault ctermfg=226
-'''
+# [[plugins]]
+# # gitのdiffを行に表示
+# repo = 'airblade/vim-gitgutter'
+# hook_post_source = '''
+#   " if use vim-submode, cannot use mappings to move tab(gt gT).
+#   au! gitgutter TabEnter,BufEnter
+#   hi GitGutterChangeDefault ctermfg=226
+# '''
 
 [[plugins]]
 # git log --graph
