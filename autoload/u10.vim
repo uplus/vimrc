@@ -29,6 +29,12 @@ function u10#expand_dir_alias(str)
     return u10#home2tilde(path)
 endfunction
 
+function u10#remove_opt_val(optname, chars)
+  for c in  split(a:chars, '.\zs')
+    execute printf('setl %s-=%s', a:optname, c)
+  endfor
+endfunction
+
 
 " gf create new file
 function! u10#gf_ask() abort "{{{

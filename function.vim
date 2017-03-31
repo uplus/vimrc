@@ -170,43 +170,6 @@ endfunction
 command! CdGitTop execute 'cd' u10#git_top()
 command! Cdtop CdGitTop
 
-" #Misc
-function RemoveOptVal(optname, chars)
-  for c in  split(a:chars, '.\zs')
-    execute printf('setl %s-=%s', a:optname, c)
-  endfor
-endfunction
-
-let g:u10_autosave = 0
-command! EnableAutoSave let g:u10_autosave = 1
-command! DisableAutoSave let g:u10_autosave = 1
-nnoremap <silent><F2> :call ToggleAutoSave()<CR>
-function! ToggleAutoSave() abort
-  silent update
-  let g:u10_autosave = !g:u10_autosave
-  echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
-endfunction
-
-function! DoAutoSave() abort
-  if g:u10_autosave != 0
-    update
-  endif
-endfunction
-
-let g:reg_stack = []
-function! PushReg(reg) abort
-  call add(g:reg_stack, [getreg(a:reg, 1), getregtype(a:reg)])
-endfunction
-
-function! PopReg(reg) abort
-  let data = remove(g:reg_stack, -1)
-  call setreg(a:reg, data[0], data[1])
-endfunction
-
-function! DummyArray(start, last, times) abort
-  return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d)}.join(', ')", a:times, a:start, a:last))
-endfunction
-
 " #Tabedit "{{{
 " zsh like tabedit.
 if executable('zsh')
@@ -358,7 +321,7 @@ function! GetRunConfig(filetype) abort
 endfunction
 "}}}
 
-
+" #Misc
 function! ResetHightlights() abort
   " nohlsearch " 関数内では動作しない
   silent! QuickhlManualReset
@@ -376,5 +339,35 @@ endfunction
 " call from snippets
 function! Filename() abort
   return expand('%:t:r')
+endfunction
+
+let g:u10_autosave = 0
+command! EnableAutoSave let g:u10_autosave = 1
+command! DisableAutoSave let g:u10_autosave = 1
+nnoremap <silent><F2> :call ToggleAutoSave()<CR>
+function! ToggleAutoSave() abort
+  silent update
+  let g:u10_autosave = !g:u10_autosave
+  echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
+endfunction
+
+function! DoAutoSave() abort
+  if g:u10_autosave != 0
+    update
+  endif
+endfunction
+
+let g:reg_stack = []
+function! PushReg(reg) abort
+  call add(g:reg_stack, [getreg(a:reg, 1), getregtype(a:reg)])
+endfunction
+
+function! PopReg(reg) abort
+  let data = remove(g:reg_stack, -1)
+  call setreg(a:reg, data[0], data[1])
+endfunction
+
+function! DummyArray(start, last, times) abort
+  return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d)}.join(', ')", a:times, a:start, a:last))
 endfunction
 

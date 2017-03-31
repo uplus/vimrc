@@ -7,7 +7,7 @@
 " endif
 
 function! s:filetype_all() abort
-  call RemoveOptVal('formatoptions', 'jro')
+  call u10#remove_opt_val('formatoptions', 'jro')
   setl formatoptions+=Bnql
   " r 改行でコメントを挿入
   " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
