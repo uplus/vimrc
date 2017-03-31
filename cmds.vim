@@ -38,4 +38,4 @@ command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 
 " #autoload
 command! AddRepo call u10#add_repo()
-
+command! SyntaxInfo call u10#get_syn_info()
