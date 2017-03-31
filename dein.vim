@@ -70,7 +70,7 @@ if dein#tap('vim-operator-surround') "{{{
   nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
-  nmap S <Plug>(vim-basic-visual)<Plug>(vim-basic-tail)<Plug>(operator-surround-append)
+  nmap S <Plug>(vim-original-visual)<Plug>(vim-original-tail)<Plug>(operator-surround-append)
   nmap saw saaw
   nmap saW saaW
 endif "}}}

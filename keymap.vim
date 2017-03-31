@@ -1,14 +1,14 @@
 
-" #vim basic keymaps "{{{
-noremap <Plug>(vim-basic-visual) v
-noremap <Plug>(vim-basic-visualline) V
-noremap <Plug>(vim-basic-visualblock) <c-v>
-noremap <Plug>(vim-basic-start) 0
-noremap <Plug>(vim-basic-last) $
-noremap <Plug>(vim-basic-front) ^
-noremap <Plug>(vim-basic-tail) g_
+" #vim original keymaps "{{{
+noremap <Plug>(vim-original-visual) v
+noremap <Plug>(vim-original-visualline) V
+noremap <Plug>(vim-original-visualblock) <c-v>
+noremap <Plug>(vim-original-start) 0
+noremap <Plug>(vim-original-last) $
+noremap <Plug>(vim-original-front) ^
+noremap <Plug>(vim-original-tail) g_
 
-inoremap <Plug>(vim-basic-insert-lasttext) <c-a>
+inoremap <Plug>(vim-original-insert-lasttext) <c-a>
 "}}}
 
 " #neovim terminal "{{{
@@ -50,9 +50,9 @@ xnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 1)<CR>
 xnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 1)<CR>
 "}}}
 
-noremap <Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
-nmap <silent><Plug>(u10-botright) :botright split<cr>
-nmap <silent><Plug>(u10-vertical) :vertical split<cr>
+nnoremap <Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
+nnoremap <silent><Plug>(u10-botright) :botright split<cr>
+nnoremap <silent><Plug>(u10-vertical) :vertical split<cr>
 
 nnoremap <silent>\tr :TermRun<cr>
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
@@ -65,9 +65,7 @@ inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 xnoremap <space>n :normal<space>
 
 " Ctrl /
-imap  <plug>(vim-basic-insert-lasttext)
-" nnoremap <tab> gt
-" nnoremap <s-tab> gT
+imap  <plug>(vim-original-insert-lasttext)
 
 inoremap <c-r><c-r> <c-r>"
 nnoremap g?? Vg?
@@ -89,6 +87,10 @@ nnoremap <space>{ {o
 nnoremap <space>} }O
 nnoremap <silent>d{ :<c-u>normal! V{d<CR>
 nnoremap <silent>d} :<c-u>normal! V}d<CR>
+
+nnoremap <c-p> :<c-p>
+vnoremap <c-p> :<c-p>
+vnoremap <c-n> :<c-n>
 
 " #overwrite
 inoremap <c-c> <esc>
@@ -265,10 +267,6 @@ inoremap <m-f> <c-o>w
 inoremap <m-b> <c-o>b
 inoremap <nowait><esc> <esc>
 "}}}
-
-nnoremap <c-p> :<c-p>
-vnoremap <c-p> :<c-p>
-vnoremap <c-n> :<c-n>
 
 " #non register delete "{{{
 nnoremap _c "_c
