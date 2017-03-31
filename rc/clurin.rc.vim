@@ -30,7 +30,7 @@ endfunction
 
 let g:clurin = {
       \ '-': {'def': [
-      \   ['&&', '||'], ['yes', 'no'],
+      \   ['&&', '||'], ['yes', 'no'], ['Left', 'Right'], ['Up', 'Down'],
       \   [' < ', ' > '], [' <= ', ' >= '], [' == ', ' != '],
       \   [{'pattern': '\v''(\k+)''', 'replace': '''\1'''},
       \    {'pattern': '\v"(\k+)"', 'replace': '"\1"'},],
@@ -46,6 +46,7 @@ let g:clurin = {
       \
       \ 'toml': {'def': [
       \   ['hook_add', 'hook_source', 'hook_post_source'],
+      \   [{'pattern': '\v''(.+)''$', 'replace': "'''\\1'''" },],
       \ ]},
       \
       \ 'vim': {'def': [
@@ -101,6 +102,7 @@ au u10ac FileType zsh,sh,bash let b:clurin = {'def':[
 
 " TODO ruby(:a => b, a: file)配置順序注意
 " b:サポートしてた
+" 通常のリスト中でignorecaseが使いたい? yesとかは関数使ったほうがいい
 
 " 複数のファイルタイプに同じ設定はできない
 " エラーが出ても出力が分かりづらい(dein)
