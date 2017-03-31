@@ -50,20 +50,7 @@ xnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 1)<CR>
 xnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 1)<CR>
 "}}}
 
-" gf "{{{
-" auto remap to <Plug> is difficult
-if get(g:, 'config_flag_gf', 0) == 0
-  nnoremap gfb gf
-  nnoremap <silent>gft <c-w>gf
-  nnoremap <silent>gfv :vertical wincmd f<cr>
-  nnoremap <silent>gfs :botright wincmd f<cr>
-  nnoremap gf <nop>
-endif
-"}}}
-
 noremap <Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
-
-
 nmap <silent><Plug>(u10-botright) :botright split<cr>
 nmap <silent><Plug>(u10-vertical) :vertical split<cr>
 
@@ -102,29 +89,6 @@ nnoremap <space>{ {o
 nnoremap <space>} }O
 nnoremap <silent>d{ :<c-u>normal! V{d<CR>
 nnoremap <silent>d} :<c-u>normal! V}d<CR>
-inoremap <silent><C-s> <ESC>:update<CR>
-nnoremap <silent><C-s> :update<CR>
-nnoremap <silent><C-q>w :wq<CR>
-nnoremap Zz ZZ
-nnoremap Zq ZQ
-inoremap <c-z><c-z> <esc>:wq<cr>
-inoremap <c-z>z <esc>:wq<cr>
-inoremap <c-z><c-q> <esc>:q<cr>
-inoremap <c-z>q <esc>:q<cr>
-inoremap <c-z>eq <esc>:qall!<cr>
-
-" #undo
-nnoremap <silent>,uf :earlier 1f<CR>
-nnoremap <silent>,ud :earlier 1d<CR>
-nnoremap <silent>,uc :UndoClear<CR>
-nnoremap <silent>,uw :e!<CR>
-nnoremap <silent>,u <Nop>
-
-" #buffer close
-nnoremap <silent>,dd :bd<CR>
-nnoremap <silent>,dq :q<CR>
-nnoremap <silent>,da :qall<CR>
-nnoremap <silent>,dw :wqall<CR>
 
 " #overwrite
 inoremap <c-c> <esc>
@@ -150,6 +114,36 @@ xnoremap <C-e> 4<C-e>
 " xnoremap 0 ^
 " xnoremap ^ 0
 " xnoremap - $
+
+" #save "{{{
+if has('nvim')
+  inoremap <m-s> <esc>ZZ
+  nnoremap <m-s> ZZ
+else
+  inoremap s <esc>ZZ
+  nnoremap s ZZ
+end
+inoremap <silent><c-s> <esc>:update<cr>
+nnoremap <silent><c-s> :update<cr>
+nnoremap Zz ZZ
+nnoremap Zq ZQ
+" inoremap <c-z>eq <esc>:qall!<cr>
+"}}}
+
+" #undo "{{{
+nnoremap <silent>,uf :earlier 1f<CR>
+nnoremap <silent>,ud :earlier 1d<CR>
+nnoremap <silent>,uc :UndoClear<CR>
+nnoremap <silent>,uw :e!<CR>
+nnoremap <silent>,u <Nop>
+"}}}
+
+" #buffer close "{{{
+nnoremap <silent>,dd :bd<CR>
+nnoremap <silent>,dq :q<CR>
+nnoremap <silent>,da :qall<CR>
+nnoremap <silent>,dw :wqall<CR>
+"}}}
 
 " #fold "{{{
 nnoremap zr zR
@@ -188,6 +182,17 @@ function! s:cmdwin_config()
   nnoremap <silent><buffer>q :q<CR>
   nnoremap <silent><buffer><C-W> :q<CR><C-W>
 endfunction
+"}}}
+
+" #gf open file "{{{
+" auto remap to <Plug> is difficult
+if get(g:, 'config_flag_gf', 0) == 0
+  nnoremap gfb gf
+  nnoremap <silent>gft <c-w>gf
+  nnoremap <silent>gfv :vertical wincmd f<cr>
+  nnoremap <silent>gfs :botright wincmd f<cr>
+  nnoremap gf <nop>
+endif
 "}}}
 
 " #complete "{{{
@@ -254,12 +259,12 @@ noremap! <C-B> <Left>
 noremap! <C-F> <Right>
 "}}}
 
-" #alt keybind
+" #alt keybind "{{{
 inoremap <m-w> <c-o>dw
 inoremap <m-f> <c-o>w
 inoremap <m-b> <c-o>b
 inoremap <nowait><esc> <esc>
-" TODO: Move those settings to right section
+"}}}
 
 nnoremap <c-p> :<c-p>
 vnoremap <c-p> :<c-p>
