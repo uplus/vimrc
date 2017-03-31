@@ -509,9 +509,10 @@ function! u10#word_translate(...) abort "{{{
     if &l:ft == 'help'
       let word = expand('<cword>')
     else
-      call u10#option_push('iskeyword', '=@')
+      let save_iskeyword = &l:iskeyword
+      setl iskeyword=@
       let word = expand('<cword>')
-      call u10#option_pop()
+      let &l:iskeyword = save_iskeyword
     endif
   else
     let word = a:1
@@ -524,35 +525,3 @@ function! u10#word_translate(...) abort "{{{
     echo u10#word_translate_weblio_smart(word)
   endif
 endfunction "}}}
-
-" #option stack TODO Vital.Vim.Guard
-function! u10#option_push(name, expr) " 引数に = += -= 含めた値をとる {{{
-  if -1 == match(a:expr, '\v^[+-]?\=')
-    echo 'second argument need = += -= '
-    return
-  endif
-
-  if !exists('&' . a:name)
-    echo 'option not exists ' . a:name
-    return
-  endif
-
-  call add(g:option_stack, [a:name, eval('&l:' . a:name)])
-
-  try
-    execute 'setlocal' a:name . a:expr
-  catch /^Vim(setlocal):E474/
-    call remove(g:option_stack, -1)
-    echo 'Invalid argument ' . a:expr
-  endtry
-endfunction "}}}
-
-function! u10#option_pop() "{{{
-  let [name, value] = remove(g:option_stack, -1)
-  execute 'setl ' . name . '=' . value
-endfunction "}}}
-
-function! u10#option_clear() "{{{
-  let g:option_stack = []
-endfunction "}}}
-

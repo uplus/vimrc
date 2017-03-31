@@ -1,7 +1,4 @@
 
-" #OptionStack
-let g:option_stack = []
-
 function! Execute(cmd)
   execute a:cmd
   return ""
