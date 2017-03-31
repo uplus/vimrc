@@ -294,7 +294,7 @@ hook_source = '''
 repo = 'tyru/open-browser.vim'
 on_cmd = [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ]
 on_map = [ '<Plug>(openbrowser-open)', '<Plug>(openbrowser-search)', '<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-wwwsearch)' ]
-on_func = 'openbrowser#'
+on_func = ['openbrowser#open', 'openbrowser#search', 'openbrowser#smart_search']
 
 [[plugins]]
 repo = 'tyru/open-browser-github.vim'

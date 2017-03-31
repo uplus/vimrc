@@ -592,8 +592,15 @@ endif "}}}
 
 if dein#tap('open-browser.vim') "{{{
   nmap gss :<c-u>Wsearch<CR>
-  nmap gsc <Plug>(openbrowser-smart-search)
+  " nmap gsc <Plug>(openbrowser-open)
   xmap gsc <Plug>(openbrowser-smart-search)
+  nmap gsc :call <sid>smart_open()<cr>
+
+  function! s:smart_open() abort
+    let str = expand('<cWORD>')
+    let str = substitute(str, '[,.]$', '', '')
+    call openbrowser#smart_search(str)
+  endfunction
 
   command! Wsearch :call <SID>www_search()
   nnoremap <Plug>(openbrowser-wwwsearch) :<c-u>call <SID>www_search()<CR>
