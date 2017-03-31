@@ -55,6 +55,12 @@ on_path = '.*'
 on_if = 1
 on_event = 'TextYankPost'
 
+[[plugins]] # variable
+repo = 'thinca/vim-editvar'
+on_source = 'unite.vim'
+on_cmd = 'Editvar'
+on_func = 'editvar#open'
+
 [[plugins]]
 repo = 'osyo-manga/unite-fold'
 on_source = 'unite.vim'
@@ -148,6 +154,7 @@ hook_post_source = 'source ~/.vim/rc/submode.rc.vim'
 on_map = '<Plug>'
 
 [[plugins]]
+# vim-ambicmd
 repo = 'tyru/vim-altercmd'
 hook_post_source = 'source ~/.vim/rc/altercmd.rc.vim'
 
@@ -550,6 +557,15 @@ hook_add = '''
 [[plugins]] # :PP! is same as :echomes
 repo = 'thinca/vim-prettyprint'
 on_cmd = 'PP'
+hook_add = '''
+  let g:prettyprint_string = ['raw'] " [] 'raw' 'split'
+'''
+
+# [[plugins]]
+# repo = 'thinca/vim-template'
+# hook_add = '''
+#   let g:template_basedir = '~/.vim/templates'
+# '''
 
 # [[plugins]]
 # repo = "mattn/benchvimrc-vim"

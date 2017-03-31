@@ -125,7 +125,7 @@ function! ListedBufferCount()
   return len(split(Capture('ls'), "\n"))
 endfunction
 
-" #CurrentOnly "{{{
+" CurrentOnly "{{{
 command! Conly call CurrentOnly()
 command! CurrentOnly call CurrentOnly()
 function! CurrentOnly()
@@ -145,7 +145,7 @@ function! CurrentOnly()
 endfunction
 "}}}
 
-" #ActiveOnly "{{{
+" ActiveOnly "{{{
 command! Aonly call ActiveOnly()
 command! ActiveOnly call ActiveOnly()
 function! ActiveOnly()

@@ -229,6 +229,7 @@ if dein#tap('unite.vim') "{{{
 
 
   " #keymap
+  nnoremap <space>u :Unite<space>
   nnoremap <silent>;gs :Status<CR>
   nnoremap <silent>;q :Quickfix<CR>
 

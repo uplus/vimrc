@@ -1,4 +1,5 @@
 command! Recache call dein#clear_state() | call dein#recache_runtimepath() " | UpdateRemotePlugins
+command! Install call dein#install()
 command! Q qall!
 command! W w!
 command! Sh update | shell
