@@ -78,7 +78,6 @@ endif "}}}
 
 " vim-textobj taps "{{{
 if dein#tap('vim-textobj-user')
-  " let g:textobj_enclosedsyntax_no_default_key_mappings = 1
 endif
 
 if dein#tap('textobj-lastpaste') "{{{

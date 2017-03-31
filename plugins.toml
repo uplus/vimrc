@@ -470,7 +470,7 @@ depends = 'vim-textobj-user'
 repo = 'thinca/vim-textobj-between'
 depends = 'vim-textobj-user'
 
-[[plugins]] # ip last pasted textobj. don't have ap
+[[plugins]] # v last pasted textobj
 repo = 'gilligan/textobj-lastpaste'
 depends = 'vim-textobj-user'
 
@@ -494,7 +494,7 @@ depends = 'vim-textobj-user'
 repo = 'osyo-manga/vim-textobj-multitextobj'
 depends = 'vim-textobj-user'
 
-[[plugins]] # change keymap f -> F
+[[plugins]] # m
 repo = 'kana/vim-textobj-function'
 depends = 'vim-textobj-user'
 
