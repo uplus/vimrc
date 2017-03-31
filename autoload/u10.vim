@@ -7,29 +7,29 @@ function! u10#removechars(str, pattern) abort
 endfunction
 
 " cursolがlastlineにあるかどうか
-function! u10#is_lastline(is_visual)
+function! u10#is_lastline(is_visual) abort
   let last = line('$')
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction
 
-function u10#home2tilde(str)
+function u10#home2tilde(str) abort
   return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction
 
-function! u10#add_slash_tail(str)
+function! u10#add_slash_tail(str) abort
   return substitute(a:str, '/*$', '/', '')
 endfunction
 
-function! u10#delete_str(str, pattern, ...)
+function! u10#delete_str(str, pattern, ...) abort
   return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction
 
-function u10#expand_dir_alias(str)
+function u10#expand_dir_alias(str) abort
     let path = system(printf("zsh -ic 'echo -n %s'", a:str))
     return u10#home2tilde(path)
 endfunction
 
-function u10#remove_opt_val(optname, chars)
+function u10#remove_opt_val(optname, chars) abort
   for c in  split(a:chars, '.\zs')
     execute printf('setl %s-=%s', a:optname, c)
   endfor
@@ -65,7 +65,7 @@ function! u10#add_repo() abort "{{{
   endtry
 endfunction "}}}
 
-function! u10#highlight(...) "{{{
+function! u10#highlight(...) abort "{{{
   if 0 == a:0
     Unite highlight
     return
@@ -152,7 +152,7 @@ function! u10#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
 endfunction "}}}
 
-function! u10#current_only() "{{{
+function! u10#current_only() abort "{{{
   let l:old = &report
   set report=1000
   let l:count=0
@@ -168,7 +168,7 @@ function! u10#current_only() "{{{
   let &report=l:old
 endfunction "}}}
 
-function! u10#active_only() "{{{
+function! u10#active_only() abort "{{{
   let l:old = &report
   set report=1000
   let l:count=0
@@ -184,7 +184,7 @@ function! u10#active_only() "{{{
   let &report=l:old
 endfunction "}}}
 
-function! u10#delete_trash_buffers() "{{{
+function! u10#delete_trash_buffers() abort "{{{
   let l:count=0
 
   for l:buf in u10#buffers_info(' u')
@@ -236,7 +236,7 @@ function! u10#note_file_completion(lead, line, pos) abort "{{{
   return l:files
 endfunction "}}}
 
-function! u10#capture(cmd_str) "{{{
+function! u10#capture(cmd_str) abort "{{{
   redir => l:out
   silent execute a:cmd_str
   redir END
@@ -244,7 +244,7 @@ function! u10#capture(cmd_str) "{{{
   return g:capture
 endfunction "}}}
 
-function! u10#capture_win(cmd) "{{{
+function! u10#capture_win(cmd) abort "{{{
   redir => result
   silent execute a:cmd
   redir END
@@ -299,7 +299,7 @@ function! u10#text_move(count, is_up, is_visual) abort "{{{
   endif
 endfunction "}}}
 
-function! u10#zsh_file_completion(lead, line, pos) "{{{
+function! u10#zsh_file_completion(lead, line, pos) abort "{{{
   if a:lead ==# '#'
     return map(u10#buffers_info(''), 'v:val[2]')
   elseif a:lead ==# ''
@@ -336,7 +336,7 @@ function! u10#zsh_file_completion(lead, line, pos) "{{{
   return cands
 endfunction "}}}
 
-function! u10#buffer_count(...) "{{{
+function! u10#buffer_count(...) abort "{{{
   if a:0 == 0
     let cmd = 'ls!'
   elseif a:1 == 'a'   " active
@@ -351,7 +351,7 @@ function! u10#buffer_count(...) "{{{
 endfunction "}}}
 
 " return list [bufnr, status, name]
-function! u10#buffers_info(...) "{{{
+function! u10#buffers_info(...) abort "{{{
   return map(split(u10#capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction "}}}
@@ -359,7 +359,7 @@ endfunction "}}}
 
 " ---- function groups ----
 " #syntax info
-function! u10#get_syn_id(transparent) "{{{
+function! u10#get_syn_id(transparent) abort "{{{
   let synid = synID(line("."), col("."), 1)
   if a:transparent
     return synIDtrans(synid)
@@ -368,7 +368,7 @@ function! u10#get_syn_id(transparent) "{{{
   endif
 endfunction "}}}
 
-function! u10#get_syn_attr(synid) "{{{
+function! u10#get_syn_attr(synid) abort "{{{
   let name    = synIDattr(a:synid, "name")
   let ctermfg = synIDattr(a:synid, "fg", "cterm")
   let ctermbg = synIDattr(a:synid, "bg", "cterm")
@@ -382,7 +382,7 @@ function! u10#get_syn_attr(synid) "{{{
         \ "guibg"   : guibg }
 endfunction "}}}
 
-function! u10#get_syn_info() "{{{
+function! u10#get_syn_info() abort "{{{
   let baseSyn = u10#get_syn_attr(u10#get_syn_id(0))
   let base = "name: "  . baseSyn.name    .
         \ " ctermfg: " . baseSyn.ctermfg .

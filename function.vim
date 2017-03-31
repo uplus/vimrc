@@ -17,12 +17,11 @@ function! DoAutoSave() abort
 endfunction
 "}}}
 
-" #EraseSpace "{{{
 let g:erase_space_on = 1
 command! EraseSpace        call EraseSpace()
 command! EraseSpaceEnable  let g:erase_space_on=1
 command! EraseSpaceDisable let g:erase_space_on=0
-function! EraseSpace()
+function! EraseSpace() abort "{{{
   if g:erase_space_on != 1
     return
   endif
@@ -40,12 +39,11 @@ function! EraseSpace()
   let l:cursor = getpos(".")
   %s/\s\+$//e
   call setpos(".", l:cursor)
-endfunction
-"}}}
+endfunction "}}}
 
 " #Blank "{{{
-nnoremap <silent> <Plug>(BlankUp)   :<C-U>call <SID>BlankUp(v:count1)<CR>
-nnoremap <silent> <Plug>(BlankDown) :<C-U>call <SID>BlankDown(v:count1)<CR>
+nnoremap <silent><Plug>(BlankUp)   :<c-u>call <SID>BlankUp(v:count1)<cr>
+nnoremap <silent><Plug>(BlankDown) :<c-u>call <SID>BlankDown(v:count1)<cr>
 
 function! s:BlankUp(count) abort
   put! =repeat(nr2char(10), a:count)
@@ -60,9 +58,8 @@ function! s:BlankDown(count) abort
 endfunction
 "}}}
 
-
 " #Misc
-function! Execute(cmd)
+function! Execute(cmd) abort
   execute a:cmd
   return ""
 endfunction

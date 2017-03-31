@@ -83,8 +83,8 @@ xnoremap <silent>) }:<c-u>exec 'normal! gv' . ('' ==# getline("'>")? 'k' : '')<C
 nmap >p p:'[,']><CR>
 nmap <p p:'[,']<<CR>
 nmap =p p=']
-nnoremap <space>{ {o
-nnoremap <space>} }O
+" nnoremap <space>o {o
+" nnoremap <space>O }O
 nnoremap <silent>d{ :<c-u>normal! V{d<CR>
 nnoremap <silent>d} :<c-u>normal! V}d<CR>
 
