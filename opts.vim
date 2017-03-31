@@ -162,7 +162,7 @@ endif
 
 
 if has('nvim')
-  set inccommand=split
+  " set inccommand=split
   let g:python_host_prog  = '/usr/bin/python2'
   let g:python3_host_prog = '/usr/bin/python3'
 else
