@@ -1,8 +1,32 @@
 let s:V = vital#of('vital')
 let s:Vuri = s:V.import('Web.URI')
 
+" #helpers
+function! u10#removechars(str, pattern) abort
+  return substitute(a:str, '[' . a:pattern . ']', '', 'g')
+endfunction
+
+" cursolがlastlineにあるかどうか
+function! u10#is_lastline(is_visual)
+  let last = line('$')
+  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
+endfunction
+
+function u10#home2tilde(str)
+  return substitute(a:str, '^' . expand('~'), '~', '')
+endfunction
+
+function! u10#add_slash_tail(str)
+  return substitute(a:str, '/*$', '/', '')
+endfunction
+
+function! u10#delete_str(str, pattern, ...)
+  return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
+endfunction
+
+
 " gf create new file
-function! u10#gf_ask()
+function! u10#gf_ask() abort "{{{
   let path = expand('<cfile>')
   if !filereadable(path)
     echo path
@@ -12,9 +36,9 @@ function! u10#gf_ask()
     end
   endif
   return {'path': path, 'line': 0, 'col': 0,}
-endfunction
+endfunction "}}}
 
-function! u10#add_repo() abort
+function! u10#add_repo() abort "{{{
   let str = @+
   try
     let uri = s:Vuri.new(str)
@@ -28,9 +52,44 @@ function! u10#add_repo() abort
     echo str
     echo 'This string is not uri'
   endtry
-endfunction
+endfunction "}}}
 
-" #Syntaxinfo
+function! u10#highlight(...) "{{{
+  if 0 == a:0
+    Unite highlight
+    return
+  endif
+
+  let cmd = "highlight " . a:1
+
+  if 2 <= a:0
+    let args = copy(a:000[1:])
+
+    if args[0] =~# 'term'
+      execute cmd args[0]
+
+      if len(args) <= 1
+        return
+      endif
+      call remove(args, 0)
+    endif
+
+    if args[0] !=# '_'
+      execute cmd "ctermfg=" . args[0]
+    endif
+
+    if 2 <= len(args)
+      execute  cmd "ctermbg=" . args[1]
+    endif
+  endif
+
+  " output a current highlight
+  execute cmd
+endfunction "}}}
+
+
+" ---- function groups ----
+" #syntax info
 function! u10#get_syn_id(transparent) "{{{
   let synid = synID(line("."), col("."), 1)
   if a:transparent
@@ -73,5 +132,69 @@ function! u10#get_syn_info() "{{{
   if base != link
     echo "link to"
     echo link
+  endif
+endfunction "}}}
+
+" #word translate
+function! u10#word_translate_weblio(word) abort "{{{
+  let l:html    = webapi#http#get('ejje.weblio.jp/content/' . tolower(a:word)).content
+  let l:content = matchstr(l:html, '\Vname="description"\v.{-}content\=\"\zs.{-}\ze\"\>')
+  let l:body    = matchstr(l:content, '\v.{-1,}\ze\s{-}\-\s', 0, 1)
+  let l:body = tr(l:body, '《》【】', '<>[]')
+  let l:body = u10#removechars(l:body, '★→１２')
+  let l:body = substitute(l:body, '\v(\d+)\s*', '\1', 'g')
+  let l:body = substitute(l:body, '\V&#034;', '"', 'g')
+  let l:body = substitute(l:body, '\V&#038;', '&', 'g')
+  let l:body = substitute(l:body, '\V&#039;', "'", 'g')
+  let l:body = substitute(l:body, '\V&#060;', '<', 'g')
+  let l:body = substitute(l:body, '\V&#039;', '>', 'g')
+
+  if l:body =~# '\.\.\.\s*$'
+    let l:idx = strridx(l:body, ';')
+    if 0 < l:idx
+      let l:body = l:body[0:l:idx-1]
+    endif
+  endif
+  return l:body
+endfunction "}}}
+
+function! u10#word_translate_weblio_smart(word) abort "{{{
+  let l:reason = u10#word_translate_weblio(a:word)
+  let l:prototype = matchstr(l:reason, '\v(\w+)\ze\s*の%(現在|過去|複数|三人称|直接法|間接法)')
+
+  if '' !=# l:prototype
+    let l:reason .= "\n" . u10#word_translate_weblio(l:prototype)
+  endif
+
+  return l:reason
+endfunction "}}}
+
+function! u10#word_translate_local_dict(word) abort "{{{
+  if filereadable(expand(g:word_translate_local_dict))
+    let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
+    return substitute(l:str, '\v(^|\n)(--|' . a:word . ')?(\_s|$)', '', 'gi')
+  else
+    return ''
+  endif
+endfunction "}}}
+
+function! u10#word_translate(...) abort "{{{
+  if !a:0
+    if &l:ft == 'help'
+      let word = expand('<cword>')
+    else
+      call OptionPush('iskeyword', '=@')
+      let word = expand('<cword>')
+      call OptionPop()
+    endif
+  else
+    let word = a:1
+  endif
+
+  let found = u10#word_translate_local_dict(word)
+  if found !=# ''
+    echo found
+  else
+    echo u10#word_translate_weblio_smart(word)
   endif
 endfunction "}}}

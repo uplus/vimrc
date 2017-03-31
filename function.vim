@@ -228,112 +228,6 @@ function! OpenGitDiff(type)
   " execute 'normal!' s:before_winnr ."\<C-w>w"
 endfunction "}}}
 
-" #Highlight "{{{
-command! -complete=highlight -nargs=* Hi call Highlight(<f-args>)
-function! Highlight(...)
-  if 0 == a:0
-    Unite highlight
-    return
-  endif
-
-  let cmd = "highlight " . a:1
-
-  if 2 <= a:0
-    let args = copy(a:000[1:])
-
-    if args[0] =~# 'term'
-      execute cmd args[0]
-
-      if len(args) <= 1
-        return
-      endif
-      call remove(args, 0)
-    endif
-
-    if args[0] !=# '_'
-      execute cmd "ctermfg=" . args[0]
-    endif
-
-    if 2 <= len(args)
-      execute  cmd "ctermbg=" . args[1]
-    endif
-  endif
-
-  " output a current highlight
-  execute cmd
-endfunction
-"}}}
-
-" #WordTranslate "{{{
-command! -nargs=1 Weblio echo WordTranslateWeblio(<f-args>)
-function! WordTranslateWeblio(word) abort
-  let l:html    = webapi#http#get('ejje.weblio.jp/content/' . tolower(a:word)).content
-  let l:content = matchstr(l:html, '\Vname="description"\v.{-}content\=\"\zs.{-}\ze\"\>')
-  let l:body    = matchstr(l:content, '\v.{-1,}\ze\s{-}\-\s', 0, 1)
-  let l:body = tr(l:body, '《》【】', '<>[]')
-  let l:body = s:removechars(l:body, '★→１２')
-  let l:body = substitute(l:body, '\v(\d+)\s*', '\1', 'g')
-  let l:body = substitute(l:body, '\V&#034;', '"', 'g')
-  let l:body = substitute(l:body, '\V&#038;', '&', 'g')
-  let l:body = substitute(l:body, '\V&#039;', "'", 'g')
-  let l:body = substitute(l:body, '\V&#060;', '<', 'g')
-  let l:body = substitute(l:body, '\V&#039;', '>', 'g')
-
-  if l:body =~# '\.\.\.\s*$'
-    let l:idx = strridx(l:body, ';')
-    if 0 < l:idx
-      let l:body = l:body[0:l:idx-1]
-    endif
-  endif
-  return l:body
-endfunction
-
-command! -nargs=1 Weblios echo WordTranslateSmartWeblio(<f-args>)
-function! WordTranslateSmartWeblio(word) abort
-  let l:reason = WordTranslateWeblio(a:word)
-  let l:prototype = matchstr(l:reason, '\v(\w+)\ze\s*の%(現在|過去|複数|三人称|直接法|間接法)')
-
-  if '' !=# l:prototype
-    let l:reason .= "\n" . WordTranslateWeblio(l:prototype)
-  endif
-
-  return l:reason
-endfunction
-
-command! -nargs=? WtransLocal call WordTranslateLocalDict(<f-args>)
-let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
-function! WordTranslateLocalDict(word) abort
-  if filereadable(expand(g:word_translate_local_dict))
-    let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
-    return substitute(l:str, '\v(^|\n)(--|' . a:word . ')?(\_s|$)', '', 'gi')
-  else
-    return ''
-  endif
-endfunction
-
-command! -nargs=? WordTranslate call WordTranslate(<f-args>)
-function! WordTranslate(...)
-  if !a:0
-    if &l:ft == 'help'
-      let word = expand('<cword>')
-    else
-      call OptionPush('iskeyword', '=@')
-      let word = expand('<cword>')
-      call OptionPop()
-    endif
-  else
-    let word = a:1
-  endif
-
-  let found = WordTranslateLocalDict(word)
-  if found !=# ''
-    echo found
-  else
-    echo WordTranslateSmartWeblio(word)
-  endif
-endfunction
-"}}}
-
 " #GotoVimFunction "{{{
 function! GotoVimFunction()
   let func_name = matchstr(getline('.'),  '\v%(.\:)?\zs(%(\w|_|#|\.)*)\ze\(.*\)')
@@ -379,7 +273,7 @@ function! s:Move(count, is_up, is_visual) abort
 
   if a:is_up
     let line = a:count
-    if s:is_lastline(a:is_visual)
+    if u10#is_lastline(a:is_visual)
       let line -= 1
     endif
 
@@ -412,7 +306,7 @@ function! g:GitTop()
 endfunction
 "}}}
 
-" #Misc "{{{
+" #Misc
 command! HTMLalign call HTMLalign()
 function! HTMLalign() abort
   %s/\v\>\</>\r</
@@ -431,28 +325,6 @@ function! s:delete_for_match() abort
   normal %
   normal! d
   call repeat#set("\<Plug>(delete_for_match)")
-endfunction
-
-" cursolがlastlineにあるかどうか
-function! s:is_lastline(is_visual)
-  let last = line('$')
-  return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
-endfunction
-
-function! s:removechars(str, pattern) abort
-  return substitute(a:str, '[' . a:pattern . ']', '', 'g')
-endfunction
-
-function s:home2tilde(str)
-  return substitute(a:str, '^' . expand('~'), '~', '')
-endfunction
-
-function! s:add_slash_tail(str)
-  return substitute(a:str, '/*$', '/', '')
-endfunction
-
-function! s:delete_str(str, pattern, ...)
-  return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction
 
 function RemoveOptVal(optname, chars)
@@ -498,7 +370,7 @@ function! DummyArray(start, last, times) abort
   return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d )}.join(', ')", a:times, a:start, a:last))
 endfunction
 
-"}}}
+
 
 " #Tabedit "{{{
 " zsh like tabedit.
@@ -508,7 +380,7 @@ endif
 
 function s:expand_filename_tilde(str)
     let path = system(printf("zsh -ic 'echo -n %s'", a:str))
-    return s:home2tilde(path)
+    return u10#home2tilde(path)
 endfunction
 
 function! ZshFileCompletion(lead, line, pos)
@@ -530,7 +402,7 @@ function! ZshFileCompletion(lead, line, pos)
   else
     let pre_glob = glob('*' . a:lead . '*', 1, 1)
     if len(pre_glob) == 1 && isdirectory(pre_glob[0])
-      let query = s:add_slash_tail(pre_glob[0])
+      let query = u10#add_slash_tail(pre_glob[0])
     else
       let query = '*' . a:lead
     endif
@@ -541,7 +413,7 @@ function! ZshFileCompletion(lead, line, pos)
     if isdirectory(path)
       let path  .= '/'
     endif
-    let path = s:home2tilde(path)
+    let path = u10#home2tilde(path)
     let cands += [path]
   endfor
 

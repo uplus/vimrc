@@ -39,3 +39,11 @@ command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 " #autoload
 command! AddRepo call u10#add_repo()
 command! SyntaxInfo call u10#get_syn_info()
+command! -complete=highlight -nargs=* Hi call u10#highlight(<f-args>)
+
+" #word translate
+let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
+command! -nargs=1 Weblio echo u10#word_translate_weblio(<f-args>)
+command! -nargs=1 Weblios echo u10#word_translate_weblio_smart(<f-args>)
+command! -nargs=? WtransLocal call u10#word_translate_local_dict(<f-args>)
+command! -nargs=? WordTranslate call u10#word_translate(<f-args>)
