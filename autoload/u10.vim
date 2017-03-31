@@ -336,6 +336,20 @@ function! u10#zsh_file_completion(lead, line, pos) "{{{
   return cands
 endfunction "}}}
 
+function! u10#buffer_count(...) "{{{
+  if a:0 == 0
+    let cmd = 'ls!'
+  elseif a:1 == 'a'   " active
+    let cmd = 'ls! a'
+  elseif a:1 == 'l'   " listed
+    let cmd = 'ls'
+  else
+    let cmd = 'ls!'
+  endif
+  echo cmd
+  return len(split(u10#capture(cmd), "\n"))
+endfunction "}}}
+
 
 " ---- function groups ----
 " #syntax info

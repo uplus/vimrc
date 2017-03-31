@@ -52,7 +52,7 @@ function! s:vimfiler_settings() "{{{
 endfunction "}}}
 
 function! s:smart_quit()
-  if argc() == 0 || isdirectory(argv(0)) || ListedBufferCount() == 0
+  if argc() == 0 || isdirectory(argv(0)) || u10#buffer_count('l') == 0
     quit
   else
     call vimfiler#util#hide_buffer()

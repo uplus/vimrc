@@ -38,7 +38,6 @@ endfunction
 "}}}
 
 " #Buffer functions "{{{
-
 " #BuffersInfo
 command! BuffersInfo PP BuffersInfo()
 
@@ -46,18 +45,6 @@ command! BuffersInfo PP BuffersInfo()
 function! BuffersInfo(...)
   return map(split(u10#capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
-endfunction
-
-function! BufferCount()
-  return len(split(u10#capture('ls!'), "\n"))
-endfunction
-
-function! ActiveBufferCount()
-  return len(split(u10#capture('ls! a'), "\n"))
-endfunction
-
-function! ListedBufferCount()
-  return len(split(u10#capture('ls'), "\n"))
 endfunction
 
 "}}}

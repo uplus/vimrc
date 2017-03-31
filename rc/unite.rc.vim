@@ -208,7 +208,7 @@ endfunction "}}}
 function! s:unite_smart_close()
   let context = unite#get_context()
 
-  if ActiveBufferCount() == 0
+  if u10#buffer_count('a') == 0
     quit
   elseif context.auto_highlight == 1
     if context.quit == 0
