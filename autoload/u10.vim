@@ -146,6 +146,52 @@ function! u10#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
 endfunction "}}}
 
+function! u10#current_only() "{{{
+  let l:old = &report
+  set report=1000
+  let l:count=0
+
+  for l:buf in BuffersInfo()
+    if -1 == stridx(l:buf[1], '%')
+      execute "bwipeout" l:buf[0]
+      let l:count+=1
+    endif
+  endfor
+
+  echo l:count "buffer deleted"
+  let &report=l:old
+endfunction "}}}
+
+function! u10#active_only() "{{{
+  let l:old = &report
+  set report=1000
+  let l:count=0
+
+  for l:buf in BuffersInfo()
+    if -1 == stridx(l:buf[1], 'a')
+      execute "bwipeout" l:buf[0]
+      let l:count+=1
+    endif
+  endfor
+
+  echo l:count "buffer deleted"
+  let &report=l:old
+endfunction "}}}
+
+function! u10#delete_trash_buffers() "{{{
+  let l:count=0
+
+  for l:buf in BuffersInfo(' u')
+    if -1 == stridx(l:buf[1], 'a') && -1 == stridx(l:buf[1], 'h')
+      silent execute 'bwipeout' l:buf[0]
+      let l:count+=1
+    endif
+  endfor
+
+  if l:count != 0
+    echo l:count 'buffer deleted'
+  endif
+endfunction "}}}
 
 
 " ---- function groups ----

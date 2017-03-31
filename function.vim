@@ -84,8 +84,6 @@ endfunction
 
 " #BuffersInfo
 command! BuffersInfo PP BuffersInfo()
-command! Conly call CurrentOnly()
-command! CurrentOnly call CurrentOnly()
 
 " return list [bufnr, status, name]
 function! BuffersInfo(...)
@@ -105,58 +103,8 @@ function! ListedBufferCount()
   return len(split(Capture('ls'), "\n"))
 endfunction
 
-function! CurrentOnly()
-  let l:old = &report
-  set report=1000
-  let l:count=0
-
-  for l:buf in BuffersInfo()
-    if -1 == stridx(l:buf[1], '%')
-      execute "bwipeout" l:buf[0]
-      let l:count+=1
-    endif
-  endfor
-
-  echo l:count "buffer deleted"
-  let &report=l:old
-endfunction
 "}}}
 
-" ActiveOnly "{{{
-command! Aonly call ActiveOnly()
-command! ActiveOnly call ActiveOnly()
-function! ActiveOnly()
-  let l:old = &report
-  set report=1000
-  let l:count=0
-
-  for l:buf in BuffersInfo()
-    if -1 == stridx(l:buf[1], 'a')
-      execute "bwipeout" l:buf[0]
-      let l:count+=1
-    endif
-  endfor
-
-  echo l:count "buffer deleted"
-  let &report=l:old
-endfunction
-"}}}
-
-command! DeleteTrashBuffers call DeleteTrashBuffers()
-function! DeleteTrashBuffers()
-  let l:count=0
-
-  for l:buf in BuffersInfo(' u')
-    if -1 == stridx(l:buf[1], 'a') && -1 == stridx(l:buf[1], 'h')
-      silent execute 'bwipeout' l:buf[0]
-      let l:count+=1
-    endif
-  endfor
-
-  if l:count != 0
-    echo l:count 'buffer deleted'
-  endif
-endfunction
 
 "}}}
 

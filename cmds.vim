@@ -44,6 +44,10 @@ command! OpenGitDiffWin call u10#open_git_diff('w')
 command! OpenGitDiffTab call u10#open_git_diff('t')
 command! Uclear u10#undo_clear
 command! UndoClear :call u10#undo_clear()
+command! CurrentOnly call u10#current_only()
+command! ActiveOnly call u10#active_only()
+command! DeleteTrashBuffers call u10#delete_trash_buffers()
+
 
 " #word translate
 let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
