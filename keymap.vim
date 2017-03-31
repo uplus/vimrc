@@ -43,6 +43,13 @@ nnoremap \tow :set wrap!<CR>
 nnoremap \tol :set list!<CR>
 "}}}
 
+" #text_move "{{{
+nnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 0)<CR>
+nnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 0)<CR>
+xnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 1)<CR>
+xnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 1)<CR>
+"}}}
+
 " gf "{{{
 " auto remap to <Plug> is difficult
 if get(g:, 'config_flag_gf', 0) == 0
@@ -54,16 +61,20 @@ if get(g:, 'config_flag_gf', 0) == 0
 endif
 "}}}
 
+noremap <Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
+
+
 nmap <silent><Plug>(u10-botright) :botright split<cr>
 nmap <silent><Plug>(u10-vertical) :vertical split<cr>
 
-nnoremap ,gd :OpenGitDiffWin<CR>
-nnoremap ,gt :Tig<CR>
-nnoremap gst :WordTranslate<CR>
+nnoremap <silent>\tr :TermRun<cr>
+nnoremap <silent>,gd :OpenGitDiffWin<cr>
+nnoremap <silent>,gt :Tig<cr>
+nnoremap <silent>gst :WordTranslate<cr>
+nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
 
 inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 " inoremap jj <esc>
-nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
 xnoremap <space>n :normal<space>
 
 " Ctrl /
@@ -160,8 +171,8 @@ nnoremap <Space>z za
 "}}}
 
 " #buffer "{{{
-nnoremap <silent>,ba :call ActiveOnly()<CR>
-nnoremap <silent>,bc :call CurrentOnly()<CR>
+nnoremap <silent>,ba :ActiveOnly<CR>
+nnoremap <silent>,bc :CurrentOnly<CR>
 nnoremap <silent>,bo :only<CR>
 nnoremap <silent>,bt :tabonly<CR>
 nnoremap <silent>,bl :ls<CR>

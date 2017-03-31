@@ -260,6 +260,81 @@ function! u10#capture_win(cmd) "{{{
   1,2delete _
 endfunction "}}}
 
+function! u10#delete_for_match() abort "{{{
+  normal! V^
+  normal %
+  normal! d
+  call repeat#set("\<Plug>(delete_for_match)")
+endfunction "}}}
+
+function! u10#text_move(count, is_up, is_visual) abort "{{{
+  let save_lazyredraw = &l:lazyredraw
+  setl lazyredraw
+  let pos  = getcurpos()
+  let delete = (a:is_visual? '*' : '') . 'delete ' . g:working_register
+
+  if a:is_up
+    let line = a:count
+    if u10#is_lastline(a:is_visual)
+      let line -= 1
+    endif
+
+    noautocmd exec delete
+    silent! exec 'normal!' repeat('k', line)
+    execute 'put!' g:working_register
+  else
+    noautocmd exec delete
+    silent! exec 'normal!' repeat('j', a:count-1)
+    execute 'put' g:working_register
+  endif
+
+  let pos[1] = line('.')
+  call setpos('.', pos)
+  let &l:lazyredraw = save_lazyredraw
+
+  if a:is_visual
+    normal! '[V']
+  else
+    silent! call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
+  endif
+endfunction "}}}
+
+function! u10#zsh_file_completion(lead, line, pos) "{{{
+  if a:lead ==# '#'
+    return map(BuffersInfo(''), 'v:val[2]')
+  elseif a:lead ==# ''
+    let query = ''
+  elseif a:lead =~# '\v^\~[^/]+'
+    echo 'zsh file completion'
+    " Slow
+    let parts = split(a:lead, '/')
+    let parts[0] = u10#expand_dir_alias(parts[0])
+    if v:shell_error
+      return []
+    endif
+    let query = join(parts, '/')
+  elseif stridx(a:lead, '/') != -1
+    let query = a:lead
+  else
+    let pre_glob = glob('*' . a:lead . '*', 1, 1)
+    if len(pre_glob) == 1 && isdirectory(pre_glob[0])
+      let query = u10#add_slash_tail(pre_glob[0])
+    else
+      let query = '*' . a:lead
+    endif
+  endif
+
+  let cands = []
+  for path in glob(query . '*', 1, 1)
+    if isdirectory(path)
+      let path  .= '/'
+    endif
+    let path = u10#home2tilde(path)
+    let cands += [path]
+  endfor
+
+  return cands
+endfunction "}}}
 
 
 " ---- function groups ----
@@ -307,6 +382,63 @@ function! u10#get_syn_info() "{{{
     echo "link to"
     echo link
   endif
+endfunction "}}}
+
+" #terminal run
+" quickrunの設定をパースしてbuiltin-termで実行する
+function! u10#terminal_run() abort "{{{
+  let config = u10#get_run_config(&ft)
+  let cmd = u10#build_run_command(expand('%'), config)
+
+  botright sp +enew
+  call termopen(cmd)
+  startinsert
+endfunction "}}}
+
+function! u10#build_run_command(src, config) abort "{{{
+  let cmd = a:config.exec
+  let cmd = substitute(cmd, '%c', a:config.command, 'g')
+  let cmd = substitute(cmd, '%o', a:config.cmdopt, 'g')
+  let cmd = substitute(cmd, '%a', a:config.args, 'g')
+  let cmd = substitute(cmd, '%s', a:src, 'g')
+  return cmd
+endfunction "}}}
+
+function! u10#get_run_config(filetype) abort "{{{
+  let config = {}
+  let type = {'type': a:filetype}
+
+  for c in [
+        \ 'b:quickrun_config',
+        \ 'type',
+        \ 'g:quickrun_config[config.type]',
+        \ 'g:quickrun#default_config[config.type]',
+        \ 'g:quickrun_config["_"]',
+        \ 'g:quickrun_config["*"]',
+        \ 'g:quickrun#default_config["_"]',
+        \ ]
+    if exists(c)
+      let new_config = eval(c)
+      if 0 <= stridx(c, 'config.type')
+        let config_type = ''
+        while has_key(config, 'type') && has_key(new_config, 'type')
+              \   && config.type !=# '' && config.type !=# config_type
+          let config_type = config.type
+          call extend(config, new_config, 'keep')
+          let config.type = new_config.type
+          let new_config = exists(c) ? eval(c) : {}
+        endwhile
+      endif
+      call extend(config, new_config, 'keep')
+    endif
+  endfor
+
+  return { 'type': config.type,
+        \ 'command':  get(config, 'command', config.type),
+        \ 'cmdopt':   get(config, 'cmdopt', ''),
+        \ 'args':     get(config, 'args', ''),
+        \ 'exec':     get(config, 'exec',  '%c %o %s %a'),
+        \ }
 endfunction "}}}
 
 " #word translate
@@ -357,9 +489,9 @@ function! u10#word_translate(...) abort "{{{
     if &l:ft == 'help'
       let word = expand('<cword>')
     else
-      call OptionPush('iskeyword', '=@')
+      call u10#option_push('iskeyword', '=@')
       let word = expand('<cword>')
-      call OptionPop()
+      call u10#option_pop()
     endif
   else
     let word = a:1

@@ -12,6 +12,8 @@ augroup u10ac
   autocmd FileType,Syntax,BufNewFile,BufNew,BufRead * call s:on_filetype()
 augroup END
 
+let g:working_register = 'p'
+
 function! s:source(path)
   let fpath = expand('~/.vim/' . a:path . '.vim')
   if filereadable(fpath)

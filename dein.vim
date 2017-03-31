@@ -740,6 +740,7 @@ endif "}}}
 
 if dein#tap('vim-over') "{{{
   " let g:over_enable_auto_nohlsearch = 1
+  let g:over_enable_cmd_window = 0
   " let g:over_command_line_prompt = "> "
   " let g:over_command_line_key_mappings = {}
   " <Plug>(over-cmdline-scroll-y)     |CTRL-y| 相当

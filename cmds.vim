@@ -48,11 +48,17 @@ command! CurrentOnly call u10#current_only()
 command! ActiveOnly call u10#active_only()
 command! DeleteTrashBuffers call u10#delete_trash_buffers()
 command! GitTop execute 'cd' u10#git_top()
+command! TermRun noautocmd w | call u10#terminal_run()
 
 command! -nargs=+ -complete=command
       \ Capture call u10#capture(<q-args>)
 command! -nargs=+ -complete=command
       \ CaptureWin call u10#capture_win(<q-args>)
+
+" zsh like tabedit.
+if executable('zsh')
+  command! -nargs=1 -complete=customlist,u10#zsh_file_completion T tabedit <args>
+endif
 
 " #note
 let g:note_path = ''
