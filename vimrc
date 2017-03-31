@@ -132,7 +132,7 @@ endfunction "}}}
 " #filetype config "{{{
 augroup u10ac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
-  au FileType qf,help  nnoremap <silent><buffer>q :quit<CR>
+  au FileType qf,help,vimconsole  nnoremap <silent><buffer>q :quit<CR>
   au FileType text     setl nobreakindent wrap
   au StdinReadPost * call s:stdin_config()
 augroup END
