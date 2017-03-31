@@ -49,6 +49,7 @@ command! ActiveOnly call u10#active_only()
 command! DeleteTrashBuffers call u10#delete_trash_buffers()
 command! GitTop execute 'cd' u10#git_top()
 command! TermRun noautocmd w | call u10#terminal_run()
+command! BuffersInfo PP u10#buffers_info()
 
 command! -nargs=+ -complete=command
       \ Capture call u10#capture(<q-args>)

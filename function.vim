@@ -37,18 +37,6 @@ function! EraseSpace()
 endfunction
 "}}}
 
-" #Buffer functions "{{{
-" #BuffersInfo
-command! BuffersInfo PP BuffersInfo()
-
-" return list [bufnr, status, name]
-function! BuffersInfo(...)
-  return map(split(u10#capture('ls' . (a:0? a:1 : '!')), '\n'),
-        \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
-endfunction
-
-"}}}
-
 " #Blank "{{{
 nnoremap <silent> <Plug>(BlankUp)   :<C-U>call <SID>BlankUp(v:count1)<CR>
 nnoremap <silent> <Plug>(BlankDown) :<C-U>call <SID>BlankDown(v:count1)<CR>
@@ -89,7 +77,7 @@ endfunction
 
 let g:u10_autosave = 0
 command! EnableAutoSave let g:u10_autosave = 1
-command! DisableAutoSave let g:u10_autosave = 1
+command! DisableAutoSave let g:u10_autosave = 0
 nnoremap <silent><F2> :call ToggleAutoSave()<CR>
 function! ToggleAutoSave() abort
   silent update

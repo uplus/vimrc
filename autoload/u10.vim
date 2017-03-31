@@ -157,7 +157,7 @@ function! u10#current_only() "{{{
   set report=1000
   let l:count=0
 
-  for l:buf in BuffersInfo()
+  for l:buf in u10#buffers_info()
     if -1 == stridx(l:buf[1], '%')
       execute "bwipeout" l:buf[0]
       let l:count+=1
@@ -173,7 +173,7 @@ function! u10#active_only() "{{{
   set report=1000
   let l:count=0
 
-  for l:buf in BuffersInfo()
+  for l:buf in u10#buffers_info()
     if -1 == stridx(l:buf[1], 'a')
       execute "bwipeout" l:buf[0]
       let l:count+=1
@@ -187,7 +187,7 @@ endfunction "}}}
 function! u10#delete_trash_buffers() "{{{
   let l:count=0
 
-  for l:buf in BuffersInfo(' u')
+  for l:buf in u10#buffers_info(' u')
     if -1 == stridx(l:buf[1], 'a') && -1 == stridx(l:buf[1], 'h')
       silent execute 'bwipeout' l:buf[0]
       let l:count+=1
@@ -301,7 +301,7 @@ endfunction "}}}
 
 function! u10#zsh_file_completion(lead, line, pos) "{{{
   if a:lead ==# '#'
-    return map(BuffersInfo(''), 'v:val[2]')
+    return map(u10#buffers_info(''), 'v:val[2]')
   elseif a:lead ==# ''
     let query = ''
   elseif a:lead =~# '\v^\~[^/]+'
@@ -348,6 +348,12 @@ function! u10#buffer_count(...) "{{{
   endif
   echo cmd
   return len(split(u10#capture(cmd), "\n"))
+endfunction "}}}
+
+" return list [bufnr, status, name]
+function! u10#buffers_info(...) "{{{
+  return map(split(u10#capture('ls' . (a:0? a:1 : '!')), '\n'),
+        \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction "}}}
 
 
