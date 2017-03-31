@@ -124,6 +124,7 @@ if dein#tap('vim-textobj-python') "{{{
 endif "}}}
 
 if dein#tap('vim-textobj-multiblock') "{{{
+  let g:textobj_multiblock_no_default_key_mappings = 1
   omap ib <Plug>(textobj-multiblock-i)
   xmap ib <Plug>(textobj-multiblock-i)
   omap ab <Plug>(textobj-multiblock-a)

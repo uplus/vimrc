@@ -474,7 +474,7 @@ depends = 'vim-textobj-user'
 repo = 'gilligan/textobj-lastpaste'
 depends = 'vim-textobj-user'
 
-[[plugins]] # sb some block
+[[plugins]] # b some block
 repo = 'osyo-manga/vim-textobj-multiblock'
 depends = 'vim-textobj-user'
 
