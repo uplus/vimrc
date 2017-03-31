@@ -1,12 +1,21 @@
 
-function! Execute(cmd)
-  execute a:cmd
-  return ""
+" #AutoSave "{{{
+let g:u10_autosave = 0
+command! EnableAutoSave let g:u10_autosave = 1
+command! DisableAutoSave let g:u10_autosave = 0
+nnoremap <silent><F2> :call ToggleAutoSave()<CR>
+function! ToggleAutoSave() abort
+  silent update
+  let g:u10_autosave = !g:u10_autosave
+  echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
 endfunction
 
-function! Ruby(str) abort
-  return u10#capture('ruby ' . a:str)
+function! DoAutoSave() abort
+  if g:u10_autosave != 0
+    silent! update
+  endif
 endfunction
+"}}}
 
 " #EraseSpace "{{{
 let g:erase_space_on = 1
@@ -53,6 +62,15 @@ endfunction
 
 
 " #Misc
+function! Execute(cmd)
+  execute a:cmd
+  return ""
+endfunction
+
+function! Ruby(str) abort
+  return u10#capture('ruby ' . a:str)
+endfunction
+
 function! ResetHightlights() abort
   " nohlsearch " 関数内では動作しない
   silent! QuickhlManualReset
@@ -70,22 +88,6 @@ endfunction
 " call from snippets
 function! Filename() abort
   return expand('%:t:r')
-endfunction
-
-let g:u10_autosave = 0
-command! EnableAutoSave let g:u10_autosave = 1
-command! DisableAutoSave let g:u10_autosave = 0
-nnoremap <silent><F2> :call ToggleAutoSave()<CR>
-function! ToggleAutoSave() abort
-  silent update
-  let g:u10_autosave = !g:u10_autosave
-  echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
-endfunction
-
-function! DoAutoSave() abort
-  if g:u10_autosave != 0
-    silent! update
-  endif
 endfunction
 
 function! DummyArray(start, last, times) abort
