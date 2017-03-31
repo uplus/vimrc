@@ -72,6 +72,11 @@ hook_add = '''
 
 #action
 
+[[plugins]] # has textobj
+repo = 'AndrewRadev/sideways.vim'
+on_map = ['<Plug>Sideways']
+on_cmd = ['SidewaysLeft', 'SidewaysRight', 'SidewaysJumpLeft', 'SidewaysJumpRight']
+
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 on_cmd = 'Linediff'

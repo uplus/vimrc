@@ -119,6 +119,11 @@ if dein#tap('vim-textobj-function') "{{{
   " vmap AF <Plug>(textobj-function-A)
 endif "}}}
 
+if dein#tap('sideways.vim') "{{{
+  nmap <space>l <Plug>SidewaysRight
+  nmap <space>h <Plug>SidewaysLeft
+endif "}}}
+
 if dein#tap('vim-textobj-python') "{{{
   let g:textobj_python_no_default_key_mappings = 1
 endif "}}}
