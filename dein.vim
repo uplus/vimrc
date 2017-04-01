@@ -42,6 +42,21 @@ let g:netrw_nogx=1             " 不要なkeymapを無効
 let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
 
+let g:no_ruby_maps = 1
+" 自動探査だと重い
+let g:ruby_version = '2.4.0'
+let g:ruby_path = [
+      \ expand('~/.rubylib/'),
+      \ expand('~/.gem/ruby/'.g:ruby_version),
+      \ expand('~/.gem/ruby/'.g:ruby_version.'/gems'),
+      \ '/usr/lib/ruby/vendor_ruby/'.g:ruby_version,
+      \ '/usr/lib/ruby/vendor_ruby/'.g:ruby_version.'/x86_64-linux',
+      \ '/usr/lib/ruby/vendor_ruby',
+      \ '/usr/lib/ruby/'.g:ruby_version,
+      \ '/usr/lib/ruby/'.g:ruby_version.'/x86_64-linux',
+      \ ]
+      " \ '~/.gem/ruby/'.g:ruby_version.'/gems/did_you_mean-1.1.2/lib',
+
 " vim-operator taps "{{{
 if dein#tap('vim-operator-user') "{{{
   nmap <Space>k <Plug>(operator-jump-head-out)a

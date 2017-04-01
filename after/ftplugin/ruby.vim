@@ -1,6 +1,6 @@
 if exists("b:did_u10_ftplugin")
   " 標準が呼ばれまくるから無効に出来ない
-  " finish
+  finish
 endif
 let b:did_u10_ftplugin = 1
 " let b:did_ftplugin = 1
