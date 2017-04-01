@@ -62,10 +62,6 @@ if executable('zsh')
 endif
 
 " #note
-let g:note_path = ''
-if executable('note')
-  let g:note_path = system('note')[0:-2]
-endif
 command! -nargs=1 -complete=customlist,u10#note_file_completion
       \ Note call u10#note_open(<q-args>)
 
