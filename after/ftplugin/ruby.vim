@@ -1,3 +1,7 @@
+if exists("b:did_u10_ftplugin")
+endif
+let b:did_u10_ftplugin = 1
+" let b:did_ftplugin = 1
 
 command! YardGen !yard doc %
 nnoremap <f3> :YardGen<cr>
@@ -8,7 +12,6 @@ let b:match_words =
       \ ':' .
       \ '\%(^\|[^.\:@$]\)\@<=\<end\:\@!\>' .
       \ ',{:},\[:\],(:)'
-
 
 let b:match_skip =
       \ "synIDattr(synID(line('.'),col('.'),0),'name') =~ '" .
@@ -91,7 +94,7 @@ onoremap <silent><buffer>aM :<C-U>call <SID>ruby_wrap_a("\<Plug>(ruby_prev_cm)",
 xnoremap <silent><buffer>iM :<C-U>call <SID>ruby_wrap_i("\<Plug>(ruby_prev_cm)", "\<Plug>(ruby_next_cm_end)")<CR>
 xnoremap <silent><buffer>aM :<C-U>call <SID>ruby_wrap_a("\<Plug>(ruby_prev_cm)", "\<Plug>(ruby_next_cm_end)")<CR>
 
-function! s:ruby_wrap_i(begin, end) abort
+function! s:ruby_wrap_i(begin, end) abort "{{{
   norm! k
   exec 'norm' a:end
   let last = line('.')
@@ -104,9 +107,9 @@ function! s:ruby_wrap_i(begin, end) abort
   norm! jV
   exe 'norm' a:end
   norm! k
-endfunction
+endfunction "}}}
 
-function! s:ruby_wrap_a(begin, end) abort
+function! s:ruby_wrap_a(begin, end) abort "{{{
   exec 'norm' a:end
   if line('.') < line('$') && '' ==# getline(line('.')+1)
     let after = 1
@@ -128,9 +131,9 @@ function! s:ruby_wrap_a(begin, end) abort
     norm! V
     exec 'norm' a:end
   endif
-endfunction
+endfunction "}}}
 
-function! s:searchsyn(pattern, syn, flags, mode) abort
+function! s:searchsyn(pattern, syn, flags, mode) abort "{{{
   let cnt = v:count1
   norm! m'
 
@@ -155,8 +158,8 @@ function! s:searchsyn(pattern, syn, flags, mode) abort
       return
     endif
   endwhile
-endfunction
+endfunction "}}}
 
-function! s:synname() abort
+function! s:synname() abort "{{{
   return synIDattr(synID(line('.'), col('.'), 0), 'name')
-endfunction
+endfunction "}}}
