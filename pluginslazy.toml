@@ -238,6 +238,11 @@ on_ft = ['snippet', 'neosnippet']
 on_i = 1
 
 [[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
+
+[[plugins]]
 repo = 'mattn/googlesuggest-complete-vim'
 on_i = 1
 hook_add = '''

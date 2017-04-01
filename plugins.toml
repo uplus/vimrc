@@ -288,10 +288,6 @@ if = "!has('nvim')"
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
-repo = 'cohama/lexima.vim'
-hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
-
-[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
