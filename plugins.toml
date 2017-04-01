@@ -528,7 +528,9 @@ hook_add = '''
   nmap gfs <Plug>(gf-user-<c-w>F)
   " :verticalが上手く動かないから雑実装
   nmap gfv <Plug>(u10-vertical)<Plug>(gf-user-gF)
-  nmap gf <nop>
+  " ftpluginで上書きを阻止するために必要
+  nmap gf <Plug>(gf-user-gF)
+  nmap gf<esc> <nop>
 '''
 hook_post_source = '''
   " call built-in functions failed
@@ -540,6 +542,9 @@ repo = 'sgur/vim-gf-autoload'
 
 [[plugins]] # jump to vim function
 repo = 'hujo/gf-user-vimfn'
+
+[[plugins]]
+repo = 'pekepeke/vim-gf-ruby-require'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

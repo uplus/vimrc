@@ -1,3 +1,4 @@
+" TODO Vitalizeする?
 let s:V = vital#of('vital')
 let s:Vuri = s:V.import('Web.URI')
 
@@ -407,7 +408,7 @@ endfunction "}}}
 " #terminal run
 " quickrunの設定をパースしてbuiltin-termで実行する
 function! u10#terminal_run() abort "{{{
-  let config = u10#get_run_config(&ft)
+  let config = u10#parse_quickrun_config(&ft)
   let cmd = u10#build_run_command(expand('%'), config)
 
   botright sp +enew
@@ -424,7 +425,7 @@ function! u10#build_run_command(src, config) abort "{{{
   return cmd
 endfunction "}}}
 
-function! u10#get_run_config(filetype) abort "{{{
+function! u10#parse_quickrun_config(filetype) abort "{{{
   let config = {}
   let type = {'type': a:filetype}
 

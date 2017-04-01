@@ -59,11 +59,6 @@ endfunction
 "}}}
 
 " #Misc
-function! Execute(cmd) abort
-  execute a:cmd
-  return ""
-endfunction
-
 function! Ruby(str) abort
   return u10#capture('ruby ' . a:str)
 endfunction
