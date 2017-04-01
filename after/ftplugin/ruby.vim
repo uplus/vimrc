@@ -1,4 +1,6 @@
 if exists("b:did_u10_ftplugin")
+  " 標準が呼ばれまくるから無効に出来ない
+  " finish
 endif
 let b:did_u10_ftplugin = 1
 " let b:did_ftplugin = 1
@@ -21,34 +23,6 @@ let b:match_skip =
       \ "ConditionalModifier\\|RepeatModifier\\|OptionalDo\\|" .
       \ "Function\\|BlockArgument\\|KeywordAsMethod\\|ClassVariable\\|" .
       \ "InstanceVariable\\|GlobalVariable\\|Symbol\\)\\>'"
-
-nnoremap <silent><buffer>gfb :<c-u>exe <SID>ruby_gf(v:count1, 'edit')<CR>
-nnoremap <silent><buffer>gfs :<c-u>exe <SID>ruby_gf(v:count1, 'belowright split')<CR>
-nnoremap <silent><buffer>gfv :<c-u>exe <SID>ruby_gf(v:count1, 'vsplit')<CR>
-nnoremap <silent><buffer>gft :<c-u>exe <SID>ruby_gf(v:count1, 'tabedit')<CR>
-nnoremap <silent><buffer>gf <nop>
-
-function! s:ruby_gf(count, edit) abort
-  if getline('.') =~# '^\s*require_relative\s*\(["'']\).*\1\s*$'
-    let target = matchstr(getline('.'), '\(["'']\)\zs.\{-\}\ze\1')
-    return a:edit . ' %:h/' . target . '.rb'
-  elseif getline('.') =~# '^\s*\%(require[( ]\|load[( ]\|autoload[( ]:\w\+,\)\s*\s*\%(::\)\=File\.expand_path(\(["'']\)\.\./.*\1,\s*__FILE__)\s*$'
-    let target = matchstr(getline('.'), '\(["'']\)\.\./\zs.\{-\}\ze\1')
-    return a:edit . ' %:h/' . target . '.rb'
-  elseif getline('.') =~# '^\s*\%(require \|load \|autoload :\w\+,\)\s*\(["'']\).*\1\s*$'
-    let target = matchstr(getline('.'), '\(["'']\)\zs.\{-\}\ze\1')
-  else
-    let target = expand('<cfile>')
-  endif
-
-  let found = findfile(target, &path, a:count)
-
-  if found ==# ''
-    echomsg 'not found'
-  else
-    return a:edit . ' ' . fnameescape(found)
-  endif
-endfunction
 
 nnoremap <silent><buffer><Plug>(ruby_prev_def)     :<C-U>call <SID>searchsyn('\<def\>','rubyDefine','b','n')<CR>
 nnoremap <silent><buffer><Plug>(ruby_next_def)     :<C-U>call <SID>searchsyn('\<def\>','rubyDefine','','n')<CR>
