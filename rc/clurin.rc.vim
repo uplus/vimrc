@@ -92,12 +92,13 @@ let g:clurin = {
       \ }
 
 au u10ac FileType zsh,sh,bash let b:clurin = {'def':[
-      \   [ ' -a ', ' -o '],
-      \   [ ' -z ', ' -n '],
-      \   [ ' -eq ', ' -ne '],
-      \   [ ' -lt ', ' -le ', ' -gt ', ' -ge '],
-      \   [ ' -e ', ' -f ', ' -d '],
-      \   [ ' -r ', ' -w ', ' -x '],
+      \   ['if', 'elif', 'else'],
+      \   [' -a ', ' -o '],
+      \   [' -z ', ' -n '],
+      \   [' -eq ', ' -ne '],
+      \   [' -lt ', ' -le ', ' -gt ', ' -ge '],
+      \   [' -e ', ' -f ', ' -d '],
+      \   [' -r ', ' -w ', ' -x '],
       \ ]}
 
 " TODO ruby(:a => b, a: file)配置順序注意
