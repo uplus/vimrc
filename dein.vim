@@ -138,8 +138,15 @@ if dein#tap('sideways.vim') "{{{
   nmap <space>h <Plug>SidewaysLeft
 endif "}}}
 
-if dein#tap('vim-textobj-python') "{{{
-  let g:textobj_python_no_default_key_mappings = 1
+if dein#tap('vim-textobj-ruby') "{{{
+  let g:textobj_ruby_no_default_key_mappings = 1
+  " do-endとかのブロックもある
+
+  " TODO プルリク送る?
+  function! s:textobj_function_ruby_select(object_type)
+    return textobj#ruby#object_definition_select_{a:object_type}()
+  endfunction
+  au u10ac FileType ruby let b:textobj_function_select = function('s:textobj_function_ruby_select')
 endif "}}}
 
 if dein#tap('vim-textobj-multiblock') "{{{

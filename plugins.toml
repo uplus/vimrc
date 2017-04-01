@@ -497,6 +497,19 @@ depends = 'vim-textobj-user'
 [[plugins]]
 repo = 'bps/vim-textobj-python'
 depends = 'vim-textobj-user'
+hook_add = 'let g:textobj_python_no_default_key_mappings = 1'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'thinca/vim-textobj-function-javascript'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'kamichidu/vim-textobj-function-go'
+depends = 'vim-textobj-user'
 
 
 #colorscheme
