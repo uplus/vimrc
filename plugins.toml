@@ -531,6 +531,9 @@ hook_add = '''
   " ftpluginで上書きを阻止するために必要
   nmap gf <Plug>(gf-user-gF)
   nmap gf<esc> <nop>
+
+  " TODO 標準gfがpathに含まれてるディレクトリから探索して空のディレクトリを開いたりする
+  au u10ac FileType ruby call gf#user#extend('u10#gf_ruby', 1000)
 '''
 hook_post_source = '''
   " call built-in functions failed
@@ -543,8 +546,8 @@ repo = 'sgur/vim-gf-autoload'
 [[plugins]] # jump to vim function
 repo = 'hujo/gf-user-vimfn'
 
-[[plugins]]
-repo = 'pekepeke/vim-gf-ruby-require'
+# [[plugins]]
+# repo = 'pekepeke/vim-gf-ruby-require'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

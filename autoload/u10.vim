@@ -50,6 +50,32 @@ function! u10#gf_ask() abort "{{{
   return {'path': path, 'line': 0, 'col': 0,}
 endfunction "}}}
 
+function! u10#gf_ruby() abort "{{{
+  let l:count = 1
+  if getline('.') =~# '^\s*require_relative\s*\(["'']\).*\1\s*$'
+    let target = matchstr(getline('.'),'\(["'']\)\zs.\{-\}\ze\1')
+    echomsg 'target ' . target
+    return '%:h/'.target.'.rb'
+  elseif getline('.') =~# '^\s*\%(require[( ]\|load[( ]\|autoload[( ]:\w\+,\)\s*\s*\%(::\)\=File\.expand_path(\(["'']\)\.\./.*\1,\s*__FILE__)\s*$'
+    let target = matchstr(getline('.'),'\(["'']\)\.\./\zs.\{-\}\ze\1')
+    echomsg target
+    return '%:h/'.target.'.rb'
+  elseif getline('.') =~# '^\s*\%(require \|load \|autoload :\w\+,\)\s*\(["'']\).*\1\s*$'
+    let target = matchstr(getline('.'),'\(["'']\)\zs.\{-\}\ze\1')
+  else
+    let target = expand('<cfile>')
+  endif
+
+  let found = findfile(target, &path, l:count)
+  echomsg fnameescape(found)
+
+  if found ==# ''
+    return 0
+  else
+    return fnameescape(found)
+  endif
+endfunction "}}}
+
 function! u10#add_repo() abort "{{{
   let str = @+
   try
@@ -238,11 +264,10 @@ function! u10#note_file_completion(lead, line, pos) abort "{{{
 endfunction "}}}
 
 function! u10#capture(cmd_str) abort "{{{
-  redir => l:out
+  redir => g:capture
   silent execute a:cmd_str
   redir END
-  let g:capture = substitute(l:out, '\%^\n', '', '')
-  return g:capture
+  return substitute(g:capture, '\%^\n', '', '')
 endfunction "}}}
 
 function! u10#capture_win(cmd) abort "{{{
