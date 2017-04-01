@@ -75,7 +75,8 @@ augroup u10ac
   au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
   au InsertLeave,CursorHold,WinLeave * call DoAutoSave()
   au SwapExists * let g:swapname = v:swapname
-  autocmd CursorHold *.toml syntax sync minlines=300
+  au CursorHold * ActiveOnly
+  au CursorHold *.toml syntax sync minlines=300
 
   " windowの行数の10%にセットする
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)

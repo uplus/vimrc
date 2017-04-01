@@ -536,8 +536,11 @@ hook_add = '''
 '''
 hook_post_source = '''
   " call built-in functions failed
-  call gf#user#extend('u10#gf_ask', 1000)
+  call gf#user#extend('u10#gf_ask', 1900)
 '''
+
+[[plugins]] # jump to vim autoload functions
+repo = 'sgur/vim-gf-autoload'
 
 [[plugins]] # jump to vim function
 repo = 'hujo/gf-user-vimfn'
