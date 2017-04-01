@@ -27,9 +27,9 @@ call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
 call lexima#add_rule({'at': '\%#\_s*]', 'char': ']', 'leave': ']'})
 
 " 文字の途中では無効
-call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '(', 'input': '('})
-call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '{', 'input': '{'})
-call lexima#add_rule({'at': '\%#.*[-0-9a-zA-Z_,:]', 'char': '[', 'input': '['})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '(', 'input': '('})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '{', 'input': '{'})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '[', 'input': '['})
 
 " jj <esc>
 call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
