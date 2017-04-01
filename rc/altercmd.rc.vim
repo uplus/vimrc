@@ -17,7 +17,7 @@ CAlterCommand ec[ho] PP
 CAlterCommand br botright sp
 CAlterCommand calc Calc
 CAlterCommand note Note
-CAlterCommand addr[epo]
+CAlterCommand addr[epo] AddRepo
 
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive
