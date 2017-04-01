@@ -682,13 +682,14 @@ if dein#tap('vim-fugitive') "{{{
 endif "}}}
 
 if dein#tap('linediff.vim') "{{{
-  nnoremap <silent>gsd  :Linediff<CR>
-  xnoremap <silent>gsd  :Linediff<CR>
+  nnoremap <silent>gsd  :Linediff<cr>
+  xnoremap <silent>gsd  :Linediff<cr>
+  autocmd User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
 
   let g:linediff_buffer_type = 'scratch'
-  " let g:linediff_indent = 1 " onにするとqで一発終了できない
   " let g:linediff_first_buffer_command  = 'new'
-  " let g:linediff_second_buffer_command = 'vertical new'
+  " let g:linediff_further_buffer_command = 'vertical new'
+  " let g:linediff_indent = 1
 endif "}}}
 
 if dein#tap('gundo.vim') "{{{

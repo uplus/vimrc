@@ -70,6 +70,7 @@ endfunction
 
 function! ResetHightlights() abort
   " nohlsearch " 関数内では動作しない
+  silent! LinediffReset
   silent! QuickhlManualReset
   silent! RCReset
   call clearmatches()
