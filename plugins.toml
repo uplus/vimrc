@@ -571,7 +571,7 @@ hook_add = '''
 #   let g:template_basedir = '~/.vim/templates'
 # '''
 
-# [[plugins]]
+# [[plugins]] # Need reloadble vimrc
 # repo = "mattn/benchvimrc-vim"
 
 # [[plugins]]

@@ -43,7 +43,6 @@ set modeline modelines=2
 set cedit=<c-l> " move to cmdwin key
 set splitright splitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
-set ttyfast
 set switchbuf=usetab
 set completeopt=menuone
 if has('patch755')
