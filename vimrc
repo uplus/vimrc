@@ -60,8 +60,8 @@ if !exists('g:noplugin')
   call s:source('dein')
 endif
 
-call s:source('function')
 call s:source('opts')
+call s:source('function')
 call s:source('keymap')
 call s:source('highlights')
 call s:source('cmds')

@@ -24,7 +24,7 @@ function! s:colorscheme(name) abort
   endif
 endfunction
 
-function! s:set_colors()
+function! s:set_colors() "{{{
   if 0 != g:colors_seted
     return
   endif
@@ -48,9 +48,9 @@ function! s:set_colors()
   endif
 
   let g:colors_seted = 1
-endfunction
+endfunction "}}}
 
-function! s:set_highlights()
+function! s:set_highlights() "{{{
   hi Title      ctermfg=118
   hi Todo       cterm=italic    ctermfg=226 ctermbg=0
   hi Error      ctermfg=255     ctermbg=161
@@ -115,4 +115,4 @@ function! s:set_highlights()
     hi CursorLine                 ctermbg=234   cterm=NONE
     hi vimFuncVar   ctermfg=198
   endif
-endfunction
+endfunction "}}}
