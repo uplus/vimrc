@@ -24,6 +24,8 @@ let b:match_skip =
       \ "Function\\|BlockArgument\\|KeywordAsMethod\\|ClassVariable\\|" .
       \ "InstanceVariable\\|GlobalVariable\\|Symbol\\)\\>'"
 
+finish
+
 nnoremap <silent><buffer><Plug>(ruby_prev_def)     :<C-U>call <SID>searchsyn('\<def\>','rubyDefine','b','n')<CR>
 nnoremap <silent><buffer><Plug>(ruby_next_def)     :<C-U>call <SID>searchsyn('\<def\>','rubyDefine','','n')<CR>
 nnoremap <silent><buffer><Plug>(ruby_prev_def_end) :<C-U>call <SID>searchsyn('\<end\>','rubyDefine','b','n')<CR>
@@ -58,54 +60,6 @@ xmap <buffer>[[ <Plug>(ruby_prev_cm)
 xmap <buffer>]] <Plug>(ruby_next_cm_end)
 xmap <buffer>][ <Plug>(ruby_next_cm)
 xmap <buffer>[] <Plug>(ruby_prev_cm_end)
-
-onoremap <silent><buffer>im :<C-U>call <SID>ruby_wrap_i("\<Plug>(ruby_prev_def)", "\<Plug>(ruby_next_def_end)")<CR>
-onoremap <silent><buffer>am :<C-U>call <SID>ruby_wrap_a("\<Plug>(ruby_prev_def)", "\<Plug>(ruby_next_def_end)")<CR>
-xnoremap <silent><buffer>im :<C-U>call <SID>ruby_wrap_i("\<Plug>(ruby_prev_def)", "\<Plug>(ruby_next_def_end)")<CR>
-xnoremap <silent><buffer>am :<C-U>call <SID>ruby_wrap_a("\<Plug>(ruby_prev_def)", "\<Plug>(ruby_next_def_end)")<CR>
-onoremap <silent><buffer>iM :<C-U>call <SID>ruby_wrap_i("\<Plug>(ruby_prev_cm)", "\<Plug>(ruby_next_cm_end)")<CR>
-onoremap <silent><buffer>aM :<C-U>call <SID>ruby_wrap_a("\<Plug>(ruby_prev_cm)", "\<Plug>(ruby_next_cm_end)")<CR>
-xnoremap <silent><buffer>iM :<C-U>call <SID>ruby_wrap_i("\<Plug>(ruby_prev_cm)", "\<Plug>(ruby_next_cm_end)")<CR>
-xnoremap <silent><buffer>aM :<C-U>call <SID>ruby_wrap_a("\<Plug>(ruby_prev_cm)", "\<Plug>(ruby_next_cm_end)")<CR>
-
-function! s:ruby_wrap_i(begin, end) abort "{{{
-  norm! k
-  exec 'norm' a:end
-  let last = line('.')
-  exec 'norm' a:begin
-
-  if line('.') == last-1
-    return
-  endif
-
-  norm! jV
-  exe 'norm' a:end
-  norm! k
-endfunction "}}}
-
-function! s:ruby_wrap_a(begin, end) abort "{{{
-  exec 'norm' a:end
-  if line('.') < line('$') && '' ==# getline(line('.')+1)
-    let after = 1
-  endif
-  exec 'norm' a:begin
-
-  while getline(line('.')-1) =~# '^\s*#' && line('.')
-    -
-  endwhile
-
-  if exists('after')
-    norm! V
-    exec 'norm' a:end
-    norm! j
-  elseif 1 < line('.') && getline(line('.')-1) =~# '^\s*$'
-    norm! kV
-    exec 'norm' a:end
-  else
-    norm! V
-    exec 'norm' a:end
-  endif
-endfunction "}}}
 
 function! s:searchsyn(pattern, syn, flags, mode) abort "{{{
   let cnt = v:count1
