@@ -33,6 +33,8 @@ function! s:set_colors() "{{{
     return
   endif
 
+  " set background=dark
+
   if &filetype == 'cpp' || &filetype == 'c'
     call s:colorscheme('lettuce')
     " call s:colorscheme('kalisi')
@@ -43,10 +45,11 @@ function! s:set_colors() "{{{
   elseif &filetype == 'gitcommit'
     call s:colorscheme('gitcommit_u10')
   elseif g:colors_seted == 0
-    set background=dark
     call s:colorscheme('PaperColor')
   endif
 
+  " Bug when using PaperColor(only when the zsh.snippets)
+  " set background=dark
   let g:colors_seted = 1
 endfunction "}}}
 
