@@ -122,6 +122,7 @@ call lexima#add_rule({
 " cgn .リピートに必要らしい <c-l>はneosnippet
 " inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
 
+" TODO indent('.')
 
 
 " TODO 補完候補選択した場合のみ展開したい

@@ -28,6 +28,14 @@ function! g:CtrlAX(cnt) abort
 	endif
 endfunction
 
+function g:RubyDo(str, cnt, def) abort
+  " a:strが出ないかも
+  VimConsoleLog a:str
+  VimConsoleLog a:cnt
+  VimConsoleLog a:def
+  return a:str
+endfunction
+
 let g:clurin = {
       \ '-': {'def': [
       \   ['&&', '||'], ['yes', 'no'], ['Left', 'Right'], ['Up', 'Down'],
@@ -74,6 +82,8 @@ let g:clurin = {
       \   [{'pattern': '\v"(\k+)"', 'replace': '"\1"'},
       \    {'pattern': '\v''(\k+)''', 'replace': '''\1'''},
       \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
+      \   [{'pattern': '\vdo\_s*(.*)', 'replace': function('g:RubyDo')},],
+      \   [{'pattern': '\vdo\_s*(.*)\_s*end', 'replace': '{\1}'},],
       \   ['if', 'unless' ],
       \   ['while', 'until' ],
       \   ['.blank?', '.present?' ],
@@ -102,13 +112,16 @@ au u10ac FileType zsh,sh,bash let b:clurin = {'def':[
       \ ]}
 
 " TODO ruby(:a => b, a: file)配置順序注意
-" b:サポートしてた
 " 通常のリスト中でignorecaseが使いたい? yesとかは関数使ったほうがいい
-" indent('.')
+" 改行するときは関数を呼ぶ?
+" 複数行置換できない
+"   明示的に指定したときのみやらせる?
+"   getline->matchだから複数行対応は面倒くさいかも
+"   doにマッチさせて関数読んで中で頑張る
 
 " 複数のファイルタイプに同じ設定はできない
 " エラーが出ても出力が分かりづらい(dein)
-" []では席表現が使えない
+" []では正規表現が使えない
 
       " \   [{'pattern': '\<true\>', 'replace': 'true'},
       " \    {'pattern': '\<false\>', 'replace': 'false'}],
