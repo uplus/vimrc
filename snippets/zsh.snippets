@@ -1,4 +1,3 @@
-# #!/usr/bin/env zsh
 snippet #!
 	#!/usr/bin/env zsh
 
@@ -44,15 +43,58 @@ snippet select
 	select ${1:answer} in ${2:choices}; do
 		${3:# statements}
 	done
+
 snippet (
-	( ${1:#statements} )
-snippet {
-	{ ${1:#statements} }
+	\$(( ${1} ))
 snippet [
 	[[ ${1:test} ]]
+
 snippet always
 	{ ${1:try} } always { ${2:always} }
-snippet fun
-	function ${1:name} (${2:args}) {
+
+snippet functioin
+alias   fun
+	${1:name} (${2:args}){
 		${3:# body}
 	}
+
+snippet here
+alias << here0
+  <<${1:EOS}
+    ${0}
+  $1
+
+snippet here-indent
+alias <<- here1
+  <<-${1:EOS}
+    ${0}
+  $1
+
+# leximaと絡んで'はめんどい
+snippet here-const
+alias <<\ <<' here2
+  <<'${1:EOS}'
+    ${0}
+  $1
+
+snippet here-const-indent
+alias <<-' here3
+  <<-'${1:EOS}'
+    ${0}
+  $1
+
+snippet tmp
+	${1:TMPFILE}=$(mktemp ${2:XXX})
+	trap "rm -f '${$1}'" 0               # EXIT
+	trap "rm -f '${$1}'; exit 1" 2       # INT
+	trap "rm -f '${$1}'; exit 1" 1 15    # HUP TERM
+	${0}
+
+snippet     warn
+options     head
+	echo "${0}" >&2
+
+snippet     abort
+options     head
+	echo "${0}" >&2
+	exit 1
