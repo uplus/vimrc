@@ -1,28 +1,33 @@
 snippet fori
+options     head
   for(int i = 0; i < ${1:count}; ++i){
     ${2}
   }
 
-snippet fork
-  for(int k = 0; k < ${1:count}; ++k){
-    ${2}
-  }
-
 snippet foru
+options     head
   for(unsigned i = 0; i < ${1:count}; ++i){
     ${2}
   }
 
 snippet fors
+options     head
   for(size_t i = 0; i < ${1:count}; ++i){
     ${2}
   }
 
+snippet fork
+options     head
+  for(int k = 0; k < ${1:count}; ++k){
+    ${2}
+  }
 
-snippet swapm
+snippet defm-swap
+options head
   #define swap(a,b){ int tmp; tmp=a; a=b; b=tmp; }
 
-snippet swapf
+snippet def-swap
+options head
   void swap(${1:int}* a, $1* b){
     $1 tmp = *a;
     *a = *b;
@@ -30,7 +35,8 @@ snippet swapf
   }
 
 # sort
-snippet sortfor
+snippet sort-for
+options head
   for(int ${1:i} = 0; $1 < ${4:length}-1; ++$1){
     for(int ${2:k} = $1+1; $2 < $4; ++$2){
       if(${3:array}[$1] ${5:>} $3[$2]){
@@ -44,16 +50,22 @@ snippet sortfor
 
 
 snippet printarray
+options head
   for(size_t i = 0; i < ${1:size}; ++i) printf("${2:%d }", ${3:data}[i]);
   ${0}
 
+snippet printd
+  printf("%d\n", ${1});
+  ${0}
 
 # function pointer
-snippet funcpoint
+snippet funcptr
+options head
   ${1:return}(*${2:name})(${3:argments})
 
 # quicksort
-snippet qsortcmp
+snippet def-qsortcmp
+options head
   int compare_${1:int}(const void* a, const void* b){
     return *(const $1*)a - *(const $1*)b;
   }
@@ -64,24 +76,20 @@ snippet quicksort
   qsort(${1:array}, sizeof($1)/sizeof(${2:int}), sizeof($2), compare_$2);
   ${0}
 
-snippet randint
+snippet def-randint
+options head
   int randint(int min, int max){
       return rand() % (max-min+1) + min;
   }
 
-#binary sort
-#binary search
-
-snippet printd
-  printf("%d\n", ${1});
-  ${0}
-
 snippet input
+options head
   printf("${1} ");
   scanf("${2:%d}", ${3:&n});
   ${0}
 
-snippet mnew
+snippet defm-mnew
+options head
   #define mnew(type, size) (type*)(malloc_safe(sizeof(type)*(size)))
   #define mdelete(ptr) free(ptr); (ptr) = NULL;
 
@@ -94,7 +102,8 @@ snippet mnew
     return ptr;
   }
 
-snippet inputd
+snippet def-inputd
+options head
   int inputd(const char* prompt){
     int n;
     printf("%s", prompt);
@@ -102,7 +111,8 @@ snippet inputd
     return n;
   }
 
-snippet inputs
+snippet def-inputs
+options head
   char* inputs(const char* prompt){
     static char tmp[MAX_TITLE];
     printf("%s", prompt);
@@ -111,4 +121,4 @@ snippet inputs
   }
 
 snippet sizeoft
-  sizeof(${1})/sizeof(${2})
+  sizeof(${1:size})/sizeof(${2:type})${0}
