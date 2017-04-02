@@ -288,7 +288,8 @@ if = "!has('nvim')"
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+# repo = 'Shougo/neosnippet-snippets'
+repo = 'uplus/neosnippet-snippets'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'

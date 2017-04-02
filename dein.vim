@@ -698,7 +698,7 @@ if dein#tap('vim-gitgutter') "{{{
 endif "}}}
 
 if dein#tap('vim-gista') "{{{
-  let g:gista#client#default_username = 'u10e10'
+  let g:gista#client#default_username = 'uplus'
 endif "}}}
 
 if dein#tap('vim-fugitive') "{{{
