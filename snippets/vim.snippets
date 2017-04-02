@@ -1,2 +1,23 @@
 snippet com
   command! ${0}
+
+snippet au
+  au u10ac ${1:FileType} ${0}
+
+snippet     if2
+options     head
+    if ${1}
+      ${2}
+    elseif ${3}
+      ${4}
+    endif
+
+snippet     if3
+options     head
+    if ${1}
+      ${2}
+    elseif ${3}
+      ${4}
+    else
+      ${5}
+    endif
