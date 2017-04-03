@@ -193,7 +193,9 @@ if get(g:, 'config_flag_gf', 0) == 0
   nnoremap <silent>gft <c-w>gf
   nnoremap <silent>gfv :vertical wincmd f<cr>
   nnoremap <silent>gfs :botright wincmd f<cr>
-  nnoremap gf <nop>
+  " remapping guard
+  nnoremap gf
+  nnoremap gf<esc> <nop>
 endif
 "}}}
 

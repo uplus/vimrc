@@ -29,11 +29,13 @@ function! g:CtrlAX(cnt) abort
 endfunction
 
 function g:RubyDo(str, cnt, def) abort
-  " a:strが出ないかも
-  VimConsoleLog a:str
   VimConsoleLog a:cnt
+  VimConsoleLog a:str
   VimConsoleLog a:def
-  return a:str
+
+  s/\vdo\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
+  " いらない行の削除をする
+  " 一行にして返す
 endfunction
 
 let g:clurin = {
@@ -46,6 +48,9 @@ let g:clurin = {
       \
       \ 'markdown': {'def': [
       \   ['[ ]', '[x]'],
+      \   ['#', '##', '###', '####', '#####', ],
+      \   ["-", "\t-", "\t\t-", "\t\t\t-", ],
+      \   ["+", "\t+", "\t\t+", "\t\t\t+", ],
       \ ]},
       \
       \ 'gitrebase': {'def': [
@@ -82,8 +87,7 @@ let g:clurin = {
       \   [{'pattern': '\v"(\k+)"', 'replace': '"\1"'},
       \    {'pattern': '\v''(\k+)''', 'replace': '''\1'''},
       \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
-      \   [{'pattern': '\vdo\_s*(.*)', 'replace': function('g:RubyDo')},],
-      \   [{'pattern': '\vdo\_s*(.*)\_s*end', 'replace': '{\1}'},],
+      \   [{'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyDo')},],
       \   ['if', 'unless' ],
       \   ['while', 'until' ],
       \   ['.blank?', '.present?' ],
@@ -101,7 +105,7 @@ let g:clurin = {
       \ ]},
       \ }
 
-au u10ac FileType zsh,sh,bash let b:clurin = {'def':[
+au u10ac FileType zsh,sh let b:clurin = {'def':[
       \   ['if', 'elif', 'else'],
       \   [' -a ', ' -o '],
       \   [' -z ', ' -n '],
@@ -111,6 +115,8 @@ au u10ac FileType zsh,sh,bash let b:clurin = {'def':[
       \   [' -r ', ' -w ', ' -x '],
       \ ]}
 
+" 関数とPatternだけ用意してユーザが挿入する方が良いかも
+
 " TODO ruby(:a => b, a: file)配置順序注意
 " 通常のリスト中でignorecaseが使いたい? yesとかは関数使ったほうがいい
 " 改行するときは関数を呼ぶ?
@@ -118,6 +124,10 @@ au u10ac FileType zsh,sh,bash let b:clurin = {'def':[
 "   明示的に指定したときのみやらせる?
 "   getline->matchだから複数行対応は面倒くさいかも
 "   doにマッチさせて関数読んで中で頑張る
+" replaceの関数で処理を終えたい
+"   オプションを追加するのが互換性があっていい
+"   具体例は思いつかないけど戻り値で判断するのが便利
+"   例外
 
 " 複数のファイルタイプに同じ設定はできない
 " エラーが出ても出力が分かりづらい(dein)
