@@ -296,33 +296,36 @@ endfunction "}}}
 function! u10#text_move(count, is_up, is_visual) abort "{{{
   let save_lazyredraw = &l:lazyredraw
   setl lazyredraw
-  let pos  = getcurpos()
-  let delete = (a:is_visual? '*' : '') . 'delete ' . g:working_register
+  try
+    let pos  = getcurpos()
+    let delete = (a:is_visual? '*' : '') . 'delete ' . g:working_register
 
-  if a:is_up
-    let line = a:count
-    if u10#is_lastline(a:is_visual)
-      let line -= 1
+    if a:is_up
+      let line = a:count
+      if u10#is_lastline(a:is_visual)
+        let line -= 1
+      endif
+
+      noautocmd exec delete
+      silent! exec 'normal!' repeat('k', line)
+      execute 'put!' g:working_register
+    else
+      noautocmd exec delete
+      silent! exec 'normal!' repeat('j', a:count-1)
+      execute 'put' g:working_register
     endif
 
-    noautocmd exec delete
-    silent! exec 'normal!' repeat('k', line)
-    execute 'put!' g:working_register
-  else
-    noautocmd exec delete
-    silent! exec 'normal!' repeat('j', a:count-1)
-    execute 'put' g:working_register
-  endif
+    let pos[1] = line('.')
+    call setpos('.', pos)
 
-  let pos[1] = line('.')
-  call setpos('.', pos)
-  let &l:lazyredraw = save_lazyredraw
-
-  if a:is_visual
-    normal! '[V']
-  else
-    silent! call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
-  endif
+    if a:is_visual
+      normal! '[V']
+    else
+      silent! call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
+    endif
+  finally
+    let &l:lazyredraw = save_lazyredraw
+  endtry
 endfunction "}}}
 
 function! u10#zsh_file_completion(lead, line, pos) abort "{{{
@@ -537,8 +540,11 @@ function! u10#word_translate(...) abort "{{{
     else
       let save_iskeyword = &l:iskeyword
       setl iskeyword=@
-      let word = expand('<cword>')
-      let &l:iskeyword = save_iskeyword
+      try
+        let word = expand('<cword>')
+      finally
+        let &l:iskeyword = save_iskeyword
+      endtry
     endif
   else
     let word = a:1
