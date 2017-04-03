@@ -103,8 +103,12 @@ let g:clurin = {
       \   ['attr_accessor', 'attr_reader', 'attr_writer' ],
       \   ['File.exist?', 'File.file?', 'File.directory?' ],
       \ ]},
+      \ 'zsh': {'def': [
+      \   ['chpwd', 'periodic', 'precmd', 'preexec', 'zshaddhistory', 'zshexit', 'zsh_directory_name'],
+      \ ]}
       \ }
 
+" TODO expandで同じ要素追加する?(コピーにならないかも)
 au u10ac FileType zsh,sh let b:clurin = {'def':[
       \   ['if', 'elif', 'else'],
       \   [' -a ', ' -o '],
