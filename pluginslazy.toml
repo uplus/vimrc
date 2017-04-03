@@ -87,7 +87,7 @@ on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
 hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 
 [[plugins]]
-repo = 'syngan/vim-clurin'
+repo = 'uplus/vim-clurin'
 on_map = ['<Plug>(clurin-next)', '<Plug>(clurin-prev)']
 hook_source = 'source ~/.vim/rc/clurin.rc.vim'
 hook_add = '''
