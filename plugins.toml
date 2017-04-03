@@ -586,6 +586,9 @@ hook_add = '''
   let g:prettyprint_string = ['raw'] " [] 'raw' 'split'
 '''
 
+[[plugins]]
+repo = 'bps/vim-tshark'
+
 # [[plugins]]
 # repo = 'thinca/vim-template'
 # hook_add = '''
