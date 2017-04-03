@@ -1,6 +1,10 @@
 snippet com
   command! ${0}
 
+snippet     clog
+options     head
+  ConsoleLog ${1}
+
 snippet au
   au u10ac ${1:FileType} ${0}
 
