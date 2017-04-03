@@ -117,7 +117,12 @@ au u10ac FileType zsh,sh let b:clurin = {'def':[
       \   [' -lt ', ' -le ', ' -gt ', ' -ge '],
       \   [' -e ', ' -f ', ' -d '],
       \   [' -r ', ' -w ', ' -x '],
+      \   [{'pattern': '\v\$(\w+)', 'replace': '$\1'},
+      \    {'pattern': '\V"\@<!${\(\w\+\)}"\@!', 'replace': '${\1}'},
+      \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'}, ],
       \ ]}
+
+" [{pattern,replace}]を複数指定すると次の要素に置換される
 
 " 関数とPatternだけ用意してユーザが挿入する方が良いかも
 
