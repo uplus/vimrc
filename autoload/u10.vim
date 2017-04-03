@@ -38,7 +38,7 @@ endfunction
 
 
 " gf create new file
-function! u10#gf_ask() abort "{{{
+function! u10#gf_newfile() abort "{{{
   let path = expand('<cfile>')
   if !filereadable(path)
     echo path

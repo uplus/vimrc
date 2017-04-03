@@ -550,7 +550,7 @@ hook_add = '''
 '''
 hook_post_source = '''
   " call when built-in functions failed
-  call gf#user#extend('u10#gf_ask', 1900)
+  call gf#user#extend('u10#gf_newfile', 1900)
 '''
 
 [[plugins]] # jump to vim autoload functions
