@@ -65,6 +65,7 @@ endfunction
 
 function! ResetHightlights() abort
   " nohlsearch " 関数内では動作しない
+  silent! call clever_f#reset()
   silent! LinediffReset
   silent! QuickhlManualReset
   silent! RCReset
