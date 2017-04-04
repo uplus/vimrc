@@ -13,6 +13,8 @@
 " 3. clurin.vim デフォルトの &filetype 用定義
 " 4. clurin.vim デフォルト定義 (-)
 
+
+" replaceは引数3つ
 function! g:CountUp(str, cnt, def) abort
   " a:str: matched_text
   " a:cnt: non zero.
@@ -20,6 +22,7 @@ function! g:CountUp(str, cnt, def) abort
   return str2nr(a:str) + a:cnt
 endfunction
 
+" nomatchは引数1つ
 function! g:CtrlAX(cnt) abort
 	if a:cnt >= 0
 		execute 'normal!' a:cnt . "\<C-A>"
@@ -28,14 +31,16 @@ function! g:CtrlAX(cnt) abort
 	endif
 endfunction
 
-function g:RubyDo(str, cnt, def) abort
-  VimConsoleLog a:cnt
-  VimConsoleLog a:str
-  VimConsoleLog a:def
+function g:RubyDoOneline(str, cnt, def) abort
+  s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
+endfunction
 
-  s/\vdo\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
-  " いらない行の削除をする
-  " 一行にして返す
+function g:RubyDoMultiline(str, cnt, def) abort
+  let save_pos = getpos('.')
+  " s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
+  " \1周りのスペースは=regで対応?
+  s/\v\s*\{(\|.*\|)?\_s*(.*)\_s*\}$/ do \1\r\2\rend
+  call setpos('.', save_pos)
 endfunction
 
 let g:clurin = {
@@ -87,7 +92,10 @@ let g:clurin = {
       \   [{'pattern': '\v"(\k+)"', 'replace': '"\1"'},
       \    {'pattern': '\v''(\k+)''', 'replace': '''\1'''},
       \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
-      \   [{'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyDo')},],
+      \   {'quit': 1, 'group': [
+      \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyDoMultiline')},
+      \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyDoOneline')}
+      \   ]},
       \   ['if', 'unless' ],
       \   ['while', 'until' ],
       \   ['.blank?', '.present?' ],
