@@ -40,7 +40,10 @@ function! s:vimfiler_settings() "{{{
   nnoremap <silent><buffer><expr><nowait>s vimfiler#do_action('split_action')
   nnoremap <silent><buffer><expr><nowait>v vimfiler#do_action('vsplit_action')
   nnoremap <silent><buffer><expr><nowait>t vimfiler#do_action('tabopen')
-  nmap <buffer>e <Plug>(vimfiler_edit_file)
+  " nmap <buffer>e <Plug>(vimfiler_edit_file)
+  " TODO lazyredrawすればちらつかない
+  " commitiaみたいなスクロールマッピングがしたい
+  nmap <buffer>e <Plug>(vimfiler_edit_file)<c-w>p
 
   nmap <buffer>R <Plug>(vimfiler_expand_tree_recursive)
   nmap <buffer>I <Plug>(vimfiler_set_current_mask)

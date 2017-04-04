@@ -85,7 +85,9 @@ let g:clurin = {
       \    {'pattern': '\.\(\k\+\)',       'replace': '.\1'}],
       \ ]},
       \
-      \ 'c': {'def': [
+      \ 'cpp': {'def': [
+      \   [{'pattern': '\(\k\+\)\.', 'replace': '\1.'},
+      \    {'pattern': '\(\k\+\)->', 'replace': '\1->'}],
       \ ]},
       \
       \ 'ruby': {'def': [
@@ -94,8 +96,10 @@ let g:clurin = {
       \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
       \   {'quit': 1, 'group': [
       \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyDoMultiline')},
-      \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyDoOneline')}
+      \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyDoOneline')},
       \   ]},
+      \   [{'pattern': '\vlambda\s*\{(\|.*\|)?\s*(.*)\s*\}', 'replace': '->(\1){ \2 }'},
+      \   ],
       \   ['if', 'unless' ],
       \   ['while', 'until' ],
       \   ['.blank?', '.present?' ],
@@ -115,6 +119,8 @@ let g:clurin = {
       \   ['chpwd', 'periodic', 'precmd', 'preexec', 'zshaddhistory', 'zshexit', 'zsh_directory_name'],
       \ ]}
       \ }
+      " \    {'pattern': '\v-\>': 'replace': },
+      " \    {'pattern': 'lambda': 'replace': },
 
 " TODO expandで同じ要素追加する?(コピーにならないかも)
 au u10ac FileType zsh,sh let b:clurin = {'def':[
@@ -130,9 +136,10 @@ au u10ac FileType zsh,sh let b:clurin = {'def':[
       \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'}, ],
       \ ]}
 
-" [{pattern,replace}]を複数指定すると次の要素に置換される
+" [{pattern,replace}]を複数指定すると次の要素のreplaceに置換される
 
 " 関数とPatternだけ用意してユーザが挿入する方が良いかも
+" https://github.com/AndrewRadev/switch.vim/blob/master/plugin/switch.vim
 
 " TODO ruby(:a => b, a: file)配置順序注意
 " 通常のリスト中でignorecaseが使いたい? yesとかは関数使ったほうがいい
