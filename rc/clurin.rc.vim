@@ -31,11 +31,11 @@ function! g:CtrlAX(cnt) abort
 	endif
 endfunction
 
-function g:RubyDoOneline(str, cnt, def) abort
+function g:RubyBlockOneline(str, cnt, def) abort
   s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
 endfunction
 
-function g:RubyDoMultiline(str, cnt, def) abort
+function g:RubyBlockMultiline(str, cnt, def) abort
   let save_pos = getpos('.')
   " s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
   " \1周りのスペースは=regで対応?
@@ -95,8 +95,8 @@ let g:clurin = {
       \    {'pattern': '\v''(\k+)''', 'replace': '''\1'''},
       \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
       \   {'quit': 1, 'group': [
-      \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyDoMultiline')},
-      \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyDoOneline')},
+      \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyBlockMultiline')},
+      \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyBlockOneline')},
       \   ]},
       \   [{'pattern': '\vlambda\s*\{(\|.*\|)?\s*(.*)\s*\}', 'replace': '->(\1){ \2 }'},
       \   ],
@@ -115,15 +115,12 @@ let g:clurin = {
       \   ['attr_accessor', 'attr_reader', 'attr_writer' ],
       \   ['File.exist?', 'File.file?', 'File.directory?' ],
       \ ]},
+      \
       \ 'zsh': {'def': [
       \   ['chpwd', 'periodic', 'precmd', 'preexec', 'zshaddhistory', 'zshexit', 'zsh_directory_name'],
-      \ ]}
-      \ }
-      " \    {'pattern': '\v-\>': 'replace': },
-      " \    {'pattern': 'lambda': 'replace': },
-
-" TODO expandで同じ要素追加する?(コピーにならないかも)
-au u10ac FileType zsh,sh let b:clurin = {'def':[
+      \ ]},
+      \
+      \ 'zsh sh': {'def':[
       \   ['if', 'elif', 'else'],
       \   [' -a ', ' -o '],
       \   [' -z ', ' -n '],
@@ -133,30 +130,23 @@ au u10ac FileType zsh,sh let b:clurin = {'def':[
       \   [' -r ', ' -w ', ' -x '],
       \   [{'pattern': '\v\$(\w+)', 'replace': '$\1'},
       \    {'pattern': '\V"\@<!${\(\w\+\)}"\@!', 'replace': '${\1}'},
-      \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'}, ],
-      \ ]}
+      \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'},],
+      \ ]},
+      \ }
 
-" [{pattern,replace}]を複数指定すると次の要素のreplaceに置換される
+      " \    {'pattern': '\v-\>': 'replace': },
+      " \    {'pattern': 'lambda': 'replace': },
 
 " 関数とPatternだけ用意してユーザが挿入する方が良いかも
 " https://github.com/AndrewRadev/switch.vim/blob/master/plugin/switch.vim
 
 " TODO ruby(:a => b, a: file)配置順序注意
 " 通常のリスト中でignorecaseが使いたい? yesとかは関数使ったほうがいい
-" 改行するときは関数を呼ぶ?
-" 複数行置換できない
-"   明示的に指定したときのみやらせる?
-"   getline->matchだから複数行対応は面倒くさいかも
-"   doにマッチさせて関数読んで中で頑張る
-" replaceの関数で処理を終えたい
-"   オプションを追加するのが互換性があっていい
-"   具体例は思いつかないけど戻り値で判断するのが便利
-"   例外
+" 改行が含まれてたらsplitしてリストを渡せばいいかも
+  " appendと違って置換されてしまう
 
+" 改行するときは関数を呼ぶ?
 " 複数のファイルタイプに同じ設定はできない
 " エラーが出ても出力が分かりづらい(dein)
 " []では正規表現が使えない
-
-      " \   [{'pattern': '\<true\>', 'replace': 'true'},
-      " \    {'pattern': '\<false\>', 'replace': 'false'}],
-      " \   [{'pattern': '\(-\?\d\+\)', 'replace': function('g:CountUp')}],
+" [{pattern,replace}]を複数指定すると次の要素のreplaceに置換される
