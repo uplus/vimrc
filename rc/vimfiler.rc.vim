@@ -43,6 +43,7 @@ function! s:vimfiler_settings() "{{{
   " nmap <buffer>e <Plug>(vimfiler_edit_file)
   " TODO lazyredrawすればちらつかない
   " commitiaみたいなスクロールマッピングがしたい
+  " TODO 複数あるときにchoosewinが呼ばれるからバグる
   nmap <buffer>e <Plug>(vimfiler_edit_file)<c-w>p
 
   nmap <buffer>R <Plug>(vimfiler_expand_tree_recursive)

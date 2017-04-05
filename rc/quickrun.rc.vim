@@ -23,9 +23,8 @@ function! g:SmartQuickRun()
 
   " if empty(getloclist('.')) " If error exists, don't run
   echo "start quickrun"
-  if &ft == 'vim'
-    .QuickRun
-  elseif &ft == 'markdown'
+  if &ft == 'markdown'
+    " TODO markdownの設定に追記すべき
     PrevimOpen
   elseif expand('%') =~ '_spec.rb$'
     !rspec %
