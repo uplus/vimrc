@@ -95,17 +95,6 @@ hook_add = '''
   nmap <silent><Plug>(clurin-undojoin) <Plug>(u10-undojoin)<Plug>(clurin-next)
 '''
 
-# [[plugins]]
-# repo = 'AndrewRadev/switch.vim'
-# on_cmd = 'Switch'
-# on_map = '!'
-# hook_source = 'source ~/.vim/rc/switch.rc.vim'
-# hook_add = '''
-#   let g:switch_mapping = "<silent>!"
-#   let g:switch_find_smallest_match = 1
-#   au u10ac FileType gitrebase nnoremap <buffer>! 0:Switch<CR>
-# '''
-
 [[plugins]]
 repo = 'osyo-manga/vim-jplus'
 on_map = '<Plug>(jplus'
