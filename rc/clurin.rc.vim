@@ -98,7 +98,9 @@ let g:clurin = {
       \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyBlockMultiline')},
       \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyBlockOneline')},
       \   ]},
-      \   [{'pattern': '\vlambda\s*\{(\|.*\|)?\s*(.*)\s*\}', 'replace': '->(\1){ \2 }'},
+      \   [{'pattern': '\vlambda\s*\{%(\|(.*)\|)?\s*(.*)\s*\}', 'replace': 'lambda{|\1| \2}'},
+      \    {'pattern': '\v-\>\s*\((.*)\)\s*\{\s*(.*)\s*\}', 'replace': '->(\1){ \2}'},
+      \    {'pattern': '\vproc\s*\{%(\|(.*)\|)?\s*(.*)\s*\}', 'replace': 'proc{|\1| \2}'},
       \   ],
       \   ['if', 'unless' ],
       \   ['while', 'until' ],
@@ -133,9 +135,6 @@ let g:clurin = {
       \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'},],
       \ ]},
       \ }
-
-      " \    {'pattern': '\v-\>': 'replace': },
-      " \    {'pattern': 'lambda': 'replace': },
 
 " 関数とPatternだけ用意してユーザが挿入する方が良いかも
 " https://github.com/AndrewRadev/switch.vim/blob/master/plugin/switch.vim
