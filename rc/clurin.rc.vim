@@ -14,15 +14,14 @@
 " 4. clurin.vim デフォルト定義 (-)
 
 
-" replaceは引数3つ
-function! g:CountUp(str, cnt, def) abort
-  " a:str: matched_text
+function! g:CountUp(strs, cnt, def) abort
+  " a:strs: matched text list
   " a:cnt: non zero.
   " a:def: definition
-  return str2nr(a:str) + a:cnt
+  return str2nr(a:strs[0]) + a:cnt
 endfunction
 
-" nomatchは引数1つ
+" nomatch's argument is one
 function! g:CtrlAX(cnt) abort
 	if a:cnt >= 0
 		execute 'normal!' a:cnt . "\<C-A>"
@@ -103,7 +102,8 @@ let g:clurin = {
       \   ],
       \   [{'pattern': '\v"(\w+)"', 'replace': '"\1"'},
       \    {'pattern': '\v''(\w+)''', 'replace': '''\1'''},
-      \    {'pattern': '\v:(\w+)@>(\s+\=\>)@!', 'replace': ':\1'}],
+      \    {'pattern': '\v:(\w+)@>(\s+\=\>)@!', 'replace': ':\1'},
+      \   ],
       \   {'quit': 1, 'group': [
       \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyBlockMultiline')},
       \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyBlockOneline')},
@@ -126,6 +126,10 @@ let g:clurin = {
       \   ['p ', 'puts ', 'print '],
       \   ['attr_accessor', 'attr_reader', 'attr_writer' ],
       \   ['File.exist?', 'File.file?', 'File.directory?' ],
+      \   ['should ', 'should_not '],
+      \   ['be_truthy', 'be_falsey'],
+      \   ['.to ', '.not_to '],
+      \   [{'pattern': '\.to_not ', 'replace': '.to '}]
       \ ]},
       \
       \ 'zsh': {'def': [

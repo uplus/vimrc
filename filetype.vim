@@ -6,4 +6,3 @@ augroup u10_filetypedetect
   autocmd BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
   autocmd VimEnter * if &ft == '' | filetype detect | endif
 augroup END
-
