@@ -11,6 +11,12 @@ noremap <Plug>(vim-original-tail) g_
 inoremap <Plug>(vim-original-insert-lasttext) <c-a>
 "}}}
 
+" #vim basic command keymaps "{{{
+nnoremap <silent><Plug>(u10-botright) :<c-u>botright split<cr>
+nnoremap <silent><Plug>(u10-vertical) :<c-u>vertical split<cr>
+nnoremap <silent><Plug>(u10-undojoin) :<c-u>undojoin<cr>
+"}}}
+
 " #neovim terminal "{{{
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
@@ -50,9 +56,7 @@ xnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 1)<CR>
 xnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 1)<CR>
 "}}}
 
-nnoremap <Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
-nnoremap <silent><Plug>(u10-botright) :botright split<cr>
-nnoremap <silent><Plug>(u10-vertical) :vertical split<cr>
+nnoremap <silent><Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
 
 nnoremap <silent>\tr :TermRun<cr>
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
