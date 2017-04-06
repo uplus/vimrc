@@ -42,3 +42,6 @@ nmap <silent><Plug>(continuous-x) <Plug>(u10-undojoin)"_x
 call submode#enter_with('continuous-x', 'n', '', 'x', '"_x')
 call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
 
+" clurin undojoin
+call submode#enter_with('clurin', 'n', 'r', '!', '<Plug>(clurin-next)')
+call submode#map('clurin', 'n', 'r', '!', '<Plug>(clurin-undojoin)')

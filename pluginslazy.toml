@@ -90,11 +90,9 @@ hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 repo = 'uplus/vim-clurin'
 on_map = ['<Plug>(clurin-next)', '<Plug>(clurin-prev)']
 hook_source = 'source ~/.vim/rc/clurin.rc.vim'
+# mapping in submode.rc.vim
 hook_add = '''
-  nmap ! <Plug>(clurin-next)
-  " nmap - <Plug>(clurin-prev)
-  xmap ! <Plug>(clurin-next)
-  " xmap - <Plug>(clurin-prev)
+  nmap <silent><Plug>(clurin-undojoin) <Plug>(u10-undojoin)<Plug>(clurin-next)
 '''
 
 # [[plugins]]
