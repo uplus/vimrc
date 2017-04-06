@@ -44,7 +44,7 @@ function g:RubyBlockMultiline(str, cnt, def) abort
 endfunction
 
 let g:clurin = {
-      \ '-': {'def': [
+      \ '-': {'use_default': 0, 'def': [
       \   ['true', 'false'], ['on', 'off'], ['enable', 'disable'],
       \   ['&&', '||'], ['yes', 'no'], ['Left', 'Right'], ['Up', 'Down'],
       \   [' < ', ' > '], [' <= ', ' >= '], [' == ', ' != '],
@@ -53,7 +53,7 @@ let g:clurin = {
       \   ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       \   [{'pattern': '\v''([^'']+)''', 'replace': '''\1'''},
       \    {'pattern': '\v"([^"]+)"', 'replace': '"\1"'},],
-      \ ], 'use_default': 0},
+      \ ]},
       \
       \ 'markdown': {'def': [
       \   ['[ ]', '[x]'],
@@ -89,7 +89,10 @@ let g:clurin = {
       \    {'pattern': '\.\(\k\+\)',       'replace': '.\1'}],
       \ ]},
       \
-      \ 'cpp': {'def': [
+      \ 'c': {'use_default': 0, 'def': [
+      \ ]},
+      \
+      \ 'c cpp': {'def': [
       \   [{'pattern': '\(\k\+\)\.', 'replace': '\1.'},
       \    {'pattern': '\(\k\+\)->', 'replace': '\1->'}],
       \ ]},
@@ -142,14 +145,3 @@ let g:clurin = {
       \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'},],
       \ ]},
       \ }
-
-" TODO ruby(:a => b, a: file)配置順序注意
-" 改行が含まれてたらsplitしてリストを渡せばいいかも
-  " appendと違って置換されてしまう
-
-" 改行するときは関数を呼ぶ?
-" 複数のファイルタイプに同じ設定はできない
-" エラーが出ても出力が分かりづらい(dein)
-" []では正規表現が使えない
-" [{pattern,replace}]を複数指定すると次の要素のreplaceに置換される
-" 既存の設定を個別に無効に出来きない -> ifを変える
