@@ -48,8 +48,8 @@ nnoremap <silent><Plug>(continuous-x) :<c-u>undojoin \| normal! "_x<CR>
 call submode#enter_with('continuous-x', 'n', '', 'x', '"_x')
 call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
 
-" sidescroll
-call submode#enter_with('sidescroll', 'n', '', 'zl', 'zl')
-call submode#enter_with('sidescroll', 'n', '', 'zh', 'zh')
-call submode#map('sidescroll', 'n', '', 'l', '3zl')
-call submode#map('sidescroll', 'n', '', 'h', '3zh')
+" " sidescroll
+" call submode#enter_with('sidescroll', 'n', '', 'zl', 'zl')
+" call submode#enter_with('sidescroll', 'n', '', 'zh', 'zh')
+" call submode#map('sidescroll', 'n', '', 'l', '3zl')
+" call submode#map('sidescroll', 'n', '', 'h', '3zh')

@@ -110,6 +110,8 @@ nnoremap <C-y> 4<C-y>
 xnoremap <C-y> 4<C-y>
 nnoremap <C-e> 4<C-e>
 xnoremap <C-e> 4<C-e>
+nnoremap zl 4zl
+nnoremap zh 4zh
 " nnoremap 0 ^
 " nnoremap ^ 0
 " nnoremap - $
