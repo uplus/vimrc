@@ -45,11 +45,15 @@ endfunction
 
 let g:clurin = {
       \ '-': {'def': [
+      \   ['true', 'false'], ['on', 'off'], ['enable', 'disable'],
       \   ['&&', '||'], ['yes', 'no'], ['Left', 'Right'], ['Up', 'Down'],
       \   [' < ', ' > '], [' <= ', ' >= '], [' == ', ' != '],
-      \   [{'pattern': '\v''(\k+)''', 'replace': '''\1'''},
-      \    {'pattern': '\v"(\k+)"', 'replace': '"\1"'},],
-      \ ]},
+      \   ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      \   ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      \   ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      \   [{'pattern': '\v''([^'']+)''', 'replace': '''\1'''},
+      \    {'pattern': '\v"([^"]+)"', 'replace': '"\1"'},],
+      \ ], 'use_default': 0},
       \
       \ 'markdown': {'def': [
       \   ['[ ]', '[x]'],
@@ -91,9 +95,12 @@ let g:clurin = {
       \ ]},
       \
       \ 'ruby': {'def': [
-      \   [{'pattern': '\v"(\k+)"', 'replace': '"\1"'},
-      \    {'pattern': '\v''(\k+)''', 'replace': '''\1'''},
-      \    {'pattern': '\v:(\k+)', 'replace': ':\1'}],
+      \   [{'pattern': '\v:(\k+)\s*\=\>\s*', 'replace': ':\1 => '},
+      \    {'pattern': '\v(\k+)\:\s*', 'replace': '\1: '},
+      \   ],
+      \   [{'pattern': '\v"(\w+)"', 'replace': '"\1"'},
+      \    {'pattern': '\v''(\w+)''', 'replace': '''\1'''},
+      \    {'pattern': '\v:(\w+)@>(\s+\=\>)@!', 'replace': ':\1'}],
       \   {'quit': 1, 'group': [
       \     {'pattern': '\v\s*do\s*(\|.*\|)?', 'replace': function('g:RubyBlockMultiline')},
       \     {'pattern': '\v\s*\{(\|.*\|)?\_s*.*\_s*\}$', 'replace': function('g:RubyBlockOneline')},
@@ -136,11 +143,7 @@ let g:clurin = {
       \ ]},
       \ }
 
-" 関数とPatternだけ用意してユーザが挿入する方が良いかも
-" https://github.com/AndrewRadev/switch.vim/blob/master/plugin/switch.vim
-
 " TODO ruby(:a => b, a: file)配置順序注意
-" 通常のリスト中でignorecaseが使いたい? yesとかは関数使ったほうがいい
 " 改行が含まれてたらsplitしてリストを渡せばいいかも
   " appendと違って置換されてしまう
 
@@ -149,3 +152,4 @@ let g:clurin = {
 " エラーが出ても出力が分かりづらい(dein)
 " []では正規表現が使えない
 " [{pattern,replace}]を複数指定すると次の要素のreplaceに置換される
+" 既存の設定を個別に無効に出来きない -> ifを変える
