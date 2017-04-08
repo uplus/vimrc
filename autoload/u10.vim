@@ -36,6 +36,21 @@ function u10#remove_opt_val(optname, chars) abort
   endfor
 endfunction
 
+" textobj
+" blankline "{{{
+function! u10#textobj_blankline(flags) abort
+  let l:flags = 'n' . a:flags
+  return ['V', getpos('.'), [0] + searchpos('^\s*$', l:flags) + [0]]
+endfunction
+
+function! u10#textobj_blankline_prev() abort
+  return u10#textobj_blankline('b')
+endfunction
+
+function! u10#textobj_blankline_next() abort
+  return u10#textobj_blankline('')
+endfunction
+"}}}
 
 " operator
 function! u10#operator_blank2void(motion_wise) abort "{{{

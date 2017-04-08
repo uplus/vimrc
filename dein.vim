@@ -93,6 +93,15 @@ endif "}}}
 
 " vim-textobj taps "{{{
 if dein#tap('vim-textobj-user')
+  call textobj#user#plugin(
+        \ 'blankline', {
+        \   'prev': {'select': '', 'select-function': 'u10#textobj_blankline_prev'},
+        \   'next': {'select': '', 'select-function': 'u10#textobj_blankline_next'},
+        \ },
+        \ )
+
+  omap } <Plug>(textobj-blankline-next)
+  omap { <Plug>(textobj-blankline-prev)
 endif
 
 if dein#tap('textobj-lastpaste') "{{{
