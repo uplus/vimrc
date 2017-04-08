@@ -105,6 +105,7 @@ if dein#tap('vim-textobj-line') "{{{
   " whitout last <Space> <CR>...
   nmap yY y<Plug>(textobj-line-i)
   nmap dD d<Plug>(textobj-line-i)
+  nmap cC c<Plug>(textobj-line-i)
 endif "}}}
 
 if dein#tap('vim-textobj-function') "{{{

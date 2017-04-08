@@ -1,6 +1,6 @@
 " TODO Vitalizeする?
-let s:V = vital#of('vital')
-let s:Vuri = s:V.import('Web.URI')
+silent! let s:V = vital#of('vital')
+silent! let s:Vuri = s:V.import('Web.URI')
 
 " #helpers
 function! u10#removechars(str, pattern) abort

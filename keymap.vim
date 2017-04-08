@@ -89,8 +89,6 @@ nmap <p p:'[,']<<CR>
 nmap =p p=']
 " nnoremap <space>o {o
 " nnoremap <space>O }O
-nnoremap <silent>d{ :<c-u>normal! V{d<CR>
-nnoremap <silent>d} :<c-u>normal! V}d<CR>
 
 nnoremap <c-p> :<c-p>
 vnoremap <c-p> :<c-p>
@@ -99,7 +97,7 @@ vnoremap <c-n> :<c-n>
 " #overwrite
 inoremap <c-c> <esc>
 xmap u <esc>u
-nnoremap Y y$
+nnoremap Y yg_
 nnoremap <C-]> g<C-]>
 nnoremap g<C-]> <C-]>
 nnoremap <C-w><C-]> <C-w>g<C-]>
