@@ -53,6 +53,18 @@ if dein#tap('vim-operator-user') "{{{
   nmap se <Plug>(operator-evalruby)
   nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
   xmap se <Plug>(operator-evalruby)
+
+  call operator#user#define('space-fold', 'u10#operator_space_fold')
+  call operator#user#define('blank2void', 'u10#operator_blank2void')
+
+  " 行末にスペースを一つ追加する
+  nmap zf <Plug>(operator-space-fold)
+  xmap zf <Plug>(operator-space-fold)
+
+  nmap d <Plug>(operator-blank2void)
+  xmap d <Plug>(operator-blank2void)
+  nmap <silent>dd :exec "normal \<Plug>(vim-original-visualline)d"<cr>
+  " TODO cバージョン作るのむずい 削除した場所をピンポイントで編集させるの難しい
 endif "}}}
 
 if dein#tap('vim-operator-replace')

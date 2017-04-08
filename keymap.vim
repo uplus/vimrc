@@ -156,18 +156,6 @@ nnoremap zr zR
 nnoremap zR zr
 nnoremap zm zM
 nnoremap zM zm
-" 行末にスペースを一つ追加する
-xnoremap zF zf
-xnoremap <silent>zf <ESC>:call <SID>add_fold_and_space()<CR>
-function! s:add_fold_and_space()
-  silent '<s/\v\s*$/ /
-  silent '>s/\v\s*$/ /
-  silent '>s/\v^ $//e
-  '<,'>fold
-  nohlsearch
-endfunction
-
-nnoremap <Space>z za
 "}}}
 
 " #buffer "{{{

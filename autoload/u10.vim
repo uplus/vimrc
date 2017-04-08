@@ -37,6 +37,22 @@ function u10#remove_opt_val(optname, chars) abort
 endfunction
 
 
+" operator
+function! u10#operator_blank2void(motion_wise) abort "{{{
+  let v = operator#user#visual_command_from_wise_name(a:motion_wise)
+  if join(getline("'[", "']"), '') =~ '\%^\_s*\%$'
+    execute printf('normal! `[%s`]"_d\<esc>', v)
+  else
+    execute printf('normal! `[%s`]d\<esc>', v)
+  endif
+endfunction "}}}
+
+function! u10#operator_space_fold(motion_wise) abort "{{{
+  silent! '[,']s/\v%(^)@<!\s*$/ /
+  undojoin
+  '[,']fold
+endfunction "}}}
+
 " gf create new file
 function! u10#gf_newfile() abort "{{{
   let path = expand('<cfile>')
