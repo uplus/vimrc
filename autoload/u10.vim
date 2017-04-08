@@ -444,6 +444,19 @@ function! u10#buffers_info(...) abort "{{{
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction "}}}
 
+function! u10#auto_cursorcolumn() abort "{{{
+  if &buftype != "" || &filetype == 'markdown'
+    setlocal nocursorcolumn
+    return
+  endif
+
+  if virtcol('.')-1 <= indent('.') && 1 < virtcol('.')
+    setlocal cursorcolumn
+  else
+    setlocal nocursorcolumn
+  endif
+endfunction "}}}
+
 
 " ---- function groups ----
 " #syntax info

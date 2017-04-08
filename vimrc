@@ -74,6 +74,7 @@ syntax enable
 
 " #autocmds "{{{
 augroup u10ac
+  au CursorMoved * call u10#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
   au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
