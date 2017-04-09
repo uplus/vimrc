@@ -116,8 +116,8 @@ snippet pwn
   class Solver
   end
 
-  host = 'localhost'
-  port = 8888
+  host = true ? 'localhost' : ''
+  port = ${1:8888}
 
   sl = Solver.open(host, port)
   ${0}
