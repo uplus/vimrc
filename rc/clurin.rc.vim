@@ -39,6 +39,7 @@ function g:RubyBlockMultiline(str, cnt, def) abort
   " s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
   " \1周りのスペースは=regで対応?
   s/\v\s*\{(\|.*\|)?\_s*(.*)\_s*\}$/ do \1\r\2\rend
+  call feedkeys('3==')
   call setpos('.', save_pos)
 endfunction
 
