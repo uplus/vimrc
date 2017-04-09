@@ -56,9 +56,9 @@ endfunction
 function! u10#operator_blank2void(motion_wise) abort "{{{
   let v = operator#user#visual_command_from_wise_name(a:motion_wise)
   if join(getline("'[", "']"), '') =~ '\%^\_s*\%$'
-    execute printf('normal! `[%s`]"_d\<esc>', v)
+    execute printf('normal! `[%s`]"_d', v)
   else
-    execute printf('normal! `[%s`]d\<esc>', v)
+    execute printf('normal! `[%s`]d', v)
   endif
 endfunction "}}}
 
