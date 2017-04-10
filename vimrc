@@ -80,7 +80,7 @@ augroup u10ac
   au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
   au InsertLeave,CursorHold,WinLeave * call DoAutoSave()
   au SwapExists * let g:swapname = v:swapname
-  au CursorHold * silent ActiveOnly
+  " au CursorHold * silent ActiveOnly
   au CursorHold *.toml syntax sync minlines=300
 
   " windowの行数の10%にセットする
