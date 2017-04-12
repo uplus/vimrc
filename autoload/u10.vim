@@ -518,16 +518,24 @@ endfunction "}}}
 
 function! u10#build_run_command(src, config) abort "{{{
   let cmd = a:config.exec
+  if type(cmd) == type([])
+    let cmd = join(cmd, ' && ')
+  endif
   let cmd = substitute(cmd, '%c', a:config.command, 'g')
   let cmd = substitute(cmd, '%o', a:config.cmdopt, 'g')
   let cmd = substitute(cmd, '%a', a:config.args, 'g')
   let cmd = substitute(cmd, '%s', a:src, 'g')
+  let cmd = expand(cmd)
   return cmd
 endfunction "}}}
 
 function! u10#parse_quickrun_config(filetype) abort "{{{
   let config = {}
   let type = {'type': a:filetype}
+
+  " TODO quickrunの実行前後でオプションが変わる
+  " ConsoleLog cmd
+  " ConsoleLog a:config
 
   for c in [
         \ 'b:quickrun_config',
