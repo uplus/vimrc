@@ -78,6 +78,7 @@ function! s:set_highlights() "{{{
     hi PmenuSel     ctermfg=232   ctermbg=30    cterm=NONE
     hi Normal                     ctermbg=234
     hi LineNr       ctermfg=244
+    hi CursorColumn               ctermbg=235
     hi SpecialKey   ctermfg=46
     hi Comment      ctermfg=111
     hi Number       ctermfg=75
