@@ -525,6 +525,7 @@ function! u10#build_run_command(src, config) abort "{{{
   let cmd = substitute(cmd, '%o', a:config.cmdopt, 'g')
   let cmd = substitute(cmd, '%a', a:config.args, 'g')
   let cmd = substitute(cmd, '%s', a:src, 'g')
+  " TODO :p:rが展開されない
   let cmd = expand(cmd)
   return cmd
 endfunction "}}}

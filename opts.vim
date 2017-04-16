@@ -1,5 +1,5 @@
-set undodir=~/.vim/tmp/undo.txt
-set viewdir=~/.vim/tmp/view
+" set undodir=~/.vim/tmp/undo.txt
+" set viewdir=~/.vim/tmp/view
 set path+=/usr/include/c++/HEAD/
 set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
 " tags;     current-dirからtagsが見つかるまで遡る
@@ -40,7 +40,7 @@ set backupdir-=.
 set keywordprg=:help
 set history=1000
 set modeline modelines=2
-" TODO: <c-g>  <C-l>には補完用のマップがある。
+" TODO <c-g>  <C-l>には補完用のマップがある?
 set cedit=<c-l> " move to cmdwin key
 set splitright splitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
@@ -179,4 +179,15 @@ endif
 if &term =~ "xterm"
   " let &t_SI = "\e[5 q\e]12;Orange\x7"
   " let &t_EI = "\e[0 q\e]12;RoyalBlue1\x7"
+endif
+
+if !empty($SUDO_USER) && $USER !=# $SUDO_USER
+  set viminfo=
+  if has('nvim')
+    set shada=
+  endif
+  set directory-=~/tmp
+  set backupdir-=~/tmp
+  set undodir=
+  set viewdir=
 endif

@@ -76,15 +76,17 @@ syntax enable
 augroup u10ac
   " au CursorMoved * call u10#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  au VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
-  au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
-  au InsertLeave,CursorHold,WinLeave * call DoAutoSave()
+  " au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
   au SwapExists * let g:swapname = v:swapname
   " au CursorHold * silent ActiveOnly
   au CursorHold *.toml syntax sync minlines=300
-
-  " windowの行数の10%にセットする
+  au VimResized * if &ft !=# 'help' |  wincmd = | redraw! | endif
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
+
+  au CursorHold * nested call DoAutoSave()
+  if has('##FocusLost')
+    au FocusLost * nested call DoAutoSave()
+  endif
 
   " Terminal
   if has('nvim')
@@ -125,18 +127,6 @@ augroup u10ac
 augroup END
 "}}}
 
-au u10ac VimEnter * call s:vimenter()
-function! s:vimenter() "{{{
-  if argc() == 0
-    setl buftype=nowrite
-  elseif argc() == 1 && !exists('g:swapname')
-    " many side effect.
-    " e.g invalid behavior smart_quit() of vimfiler.
-    " e.g swap, grep
-    " lcd %:p:h
-  endif
-endfunction "}}}
-
 " #filetype config "{{{
 augroup u10ac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
@@ -156,5 +146,17 @@ function! s:stdin_config()
   silent! %foldopen!
 endfunction
 "}}}
+
+au u10ac VimEnter * call s:vimenter()
+function! s:vimenter() "{{{
+  if argc() == 0
+    setl buftype=nowrite
+  elseif argc() == 1 && !exists('g:swapname')
+    " many side effect.
+    " e.g invalid behavior smart_quit() of vimfiler.
+    " e.g swap, grep
+    " lcd %:p:h
+  endif
+endfunction "}}}
 
 call s:source('after')
