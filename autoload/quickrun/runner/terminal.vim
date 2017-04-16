@@ -8,7 +8,8 @@ set cpo&vim
 
 let s:runner = {
 \   'config': {
-\     'split': 'botright'
+\     'split': 'botright',
+\     'timeout': 60*1000,
 \   }
 \ }
 

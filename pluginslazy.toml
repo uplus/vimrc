@@ -360,10 +360,11 @@ hook_add = '''
   let g:vimconsole#height = 10
   let g:vimconsole#hooks = {}
   command! -nargs=1 ConsoleLog call vimconsole#log(<args>)
+  command! Log VimConsoleOpen
 
-  function! g:vimconsole#hooks.on_logged(context)
-    call vimconsole#winopen()
-  endfunction
+  " function! g:vimconsole#hooks.on_logged(context)
+  "   call vimconsole#winopen()
+  " endfunction
 '''
 
 [[plugins]] # Beautiful indent of php and html.
