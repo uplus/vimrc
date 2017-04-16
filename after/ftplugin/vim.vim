@@ -1,6 +1,7 @@
 
 setl keywordprg=:help
-setl iskeyword+=:
+setl iskeyword-=:
+setl iskeyword-=#
 nnoremap <silent><buffer>gd :call vimrc#goto_vim_func_def()<CR>
 nmap <buffer>[m [[
 nmap <buffer>]m ][

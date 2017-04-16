@@ -30,6 +30,7 @@ function! s:on_filetype() abort "{{{
 endfunction "}}}
 
 let $CACHE = expand('~/.cache')
+
 if !isdirectory($CACHE)
   call mkdir($CACHE, 'p')
 endif
@@ -83,6 +84,7 @@ augroup myac
   au VimResized * if &ft !=# 'help' |  wincmd = | redraw! | endif
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
+  au BufLeave * nested call DoAutoSave()
   au CursorHold * nested call DoAutoSave()
   if exists('##FocusLost')
     au FocusLost * nested call DoAutoSave()

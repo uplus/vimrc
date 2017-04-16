@@ -609,3 +609,34 @@ function! vimrc#word_translate(...) abort "{{{
     echo vimrc#word_translate_weblio_smart(word)
   endif
 endfunction "}}}
+
+" #color converter
+function! vimrc#add_gui_color() range abort "{{{
+  for linenum in range(a:firstline, a:lastline)
+    let line = getline(linenum)
+    if line !~# '\v^(\"\s*)?\s*hi'
+      continue
+    end
+    call setline(linenum, line . ' ' . vimrc#get_add_gui_color(line))
+  endfor
+endfunction "}}}
+
+function! vimrc#get_add_gui_color(line) abort "{{{
+  let append = ''
+  for key  in ['fg', 'bg', '']
+    let val = matchstr(a:line, 'cterm' . key . '=\zs\v(\S+)')
+    if val !=# ''
+      let append .= printf('gui%s=%s ', key, vimrc#convert_color(val))
+    endif
+  endfor
+  return substitute(append, '\s*$', '', '')
+endfunction "}}}
+
+function! vimrc#convert_color(color) abort "{{{
+  if a:color !~# '^\d\+$'
+    return a:color
+  else
+    " TODO standalone
+    return '#' . substitute(system(['colortrans', a:color]), '\n$', '', '')
+  end
+endfunction "}}}

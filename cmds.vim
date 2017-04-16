@@ -43,6 +43,7 @@ command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 
 
 " ---- autoload ----
+command! -range AddGuiColor <line1>,<line2>call vimrc#add_gui_color()
 command! AddRepo call vimrc#add_repo()
 command! SyntaxInfo call vimrc#get_syn_info()
 command! -complete=highlight -nargs=* Hi call vimrc#highlight(<f-args>)
