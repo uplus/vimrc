@@ -20,6 +20,7 @@ set novisualbell
 set belloff=all
 
 " set undofile
+set signcolumn=yes
 set modelines=1
 set report=0  " コマンドでN行変更されたら出力
 set number
