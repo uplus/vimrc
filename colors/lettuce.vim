@@ -37,7 +37,6 @@ augroup END
 
 
 hi Character             cterm=none      ctermbg=235 ctermfg=215   gui=none guibg=#262626 guifg=#ffaf5f
-hi Comment               cterm=none      ctermfg=138 gui=none      guifg=#af8787
 hi Constant              cterm=none      ctermfg=215 gui=none      guifg=#ffaf5f
 hi CursorColumn          cterm=none      ctermbg=234 gui=none      guibg=#1c1c1c
 hi CursorLine            cterm=none      ctermbg=234 gui=none      guibg=#1c1c1c
@@ -49,7 +48,6 @@ hi Directory             ctermfg=105     guifg=#8787ff
 hi Error                 cterm=bold      ctermbg=52  ctermfg=231   gui=bold guibg=#5f0000 guifg=#ffffff
 hi ErrorMsg              cterm=none      ctermbg=88  ctermfg=255   gui=none guibg=#870000 guifg=#eeeeee
 hi Exception             cterm=bold      ctermfg=99  gui=bold      guifg=#875fff
-hi Float                 cterm=none      ctermfg=41  gui=none      guifg=#00df5f
 hi FoldColumn            cterm=none      ctermbg=236 ctermfg=103   gui=none guibg=#303030 guifg=#8787af
 hi Folded                cterm=none      ctermbg=234 ctermfg=136   gui=none guibg=#1c1c1c guifg=#af8700
 hi Function              cterm=none      ctermfg=210 gui=none      guifg=#ff8787
@@ -63,7 +61,6 @@ hi ModeMsg               cterm=bold      ctermfg=110 gui=bold      guifg=#87afdf
 hi MoreMsg               cterm=bold      ctermfg=121 gui=bold      guifg=#87ffaf
 hi NonText               cterm=bold      ctermbg=233 ctermfg=241   gui=bold guibg=#121212 guifg=#606060
 hi Normal                cterm=none      ctermbg=232 ctermfg=189   gui=none guibg=#080808 guifg=#dfdfff
-hi Number                cterm=none      ctermfg=34  gui=none      guifg=#00af00
 hi Operator              cterm=none      ctermfg=75  gui=none      guifg=#5fafff
 hi OperatorCurlyBrackets cterm=bold      ctermfg=75  gui=bold      guifg=#5fafff
 hi Pmenu                 cterm=none      ctermbg=17  ctermfg=121   gui=none guibg=#00005f guifg=#87ffaf
@@ -74,7 +71,6 @@ hi PreProc               cterm=bold      ctermfg=36  gui=bold      guifg=#00af87
 hi Question              cterm=bold      ctermfg=121 gui=bold      guifg=#87ffaf
 hi Search                cterm=none      ctermbg=36  ctermfg=232   gui=none guibg=#00af87 guifg=#080808
 hi SignColumn            cterm=none      ctermbg=236 ctermfg=103   gui=none guibg=#303030 guifg=#8787af
-hi Special               cterm=none      ctermbg=235 ctermfg=87    gui=none guibg=#262626 guifg=#5fffff
 hi SpecialKey            cterm=none      ctermfg=77  gui=none      guifg=#5fdf5f
 hi SpellBad              cterm=none      ctermbg=88  gui=none      guibg=#870000
 hi SpellCap              cterm=none      ctermbg=18  gui=none      guibg=#000087
@@ -89,7 +85,6 @@ hi TabLineFill           cterm=none      ctermbg=236 gui=none      guibg=#303030
 hi TabLineSel            cterm=none      ctermbg=240 ctermfg=253   gui=none guibg=#585858 guifg=#dadada
 hi Title                 cterm=bold      ctermfg=147 gui=bold      guifg=#afafff
 hi Todo                  cterm=bold      ctermbg=143 ctermfg=16    gui=bold guibg=#afaf5f guifg=#000000
-hi Type                  cterm=bold      ctermfg=71  gui=bold      guifg=#5faf5f
 hi Underlined            cterm=underline ctermfg=227 gui=underline guifg=#ffff5f
 hi User1                 cterm=bold      ctermbg=236 ctermfg=223   gui=bold guibg=#303030 guifg=#ffdfaf
 hi User2                 cterm=none      ctermbg=236 ctermfg=240   gui=none guibg=#303030 guifg=#585858
@@ -97,6 +92,35 @@ hi VertSplit             cterm=none      ctermbg=236 ctermfg=103   gui=none guib
 hi Visual                cterm=none      ctermbg=24  gui=none      guibg=#005f87
 hi WarningMsg            cterm=none      ctermbg=58  ctermfg=255   gui=none guibg=#5f5f00 guifg=#eeeeee
 hi WildMenu              cterm=bold      ctermbg=35  ctermfg=232   gui=bold guibg=#00af5f guifg=#080808
+
+hi cType                 cterm=bold      ctermfg=71  gui=bold     guifg=#2681df
+hi link cStructure cType
+hi link cConditional cType
+
+hi cPreProc   guifg=#5ace01
+hi link cInclude cPreProc
+hi link cDefine cPreProc
+hi link cPreCondit cPreProc
+hi link cPreConditMatch cPreProc
+hi link cOctalZero cPreProc
+hi cNumber guifg=#40dfaf
+hi link cOctal cNumber
+hi cFloat  guifg=#40cfff
+
+hi cString guifg=#f0ab05
+hi link cIncluded cString
+hi link cCommentString cString
+hi link cComment2String cString
+
+hi cSpecial guifg=#abff01 
+hi link cFormat cSpecial
+
+hi cComment guifg=#8888a0
+hi link cCommentL cComment
+hi link cCommentStart cComment
+hi link cCommentSkip cComment
+hi link cCommentError cComment
+             
 
 " highlight modes
 autocmd CmdwinLeave * hi User1      ctermbg=236 guibg=#303030
@@ -111,3 +135,47 @@ autocmd CmdwinEnter * hi StatusLine ctermbg=22  guibg=#005f00
 autocmd CmdwinLeave * hi StatusLine ctermbg=236 guibg=#303030
 autocmd InsertLeave * hi StatusLine ctermbg=236 guibg=#303030
 autocmd InsertEnter * hi StatusLine ctermbg=52  guibg=#5f0000
+
+
+" cBlock                              
+" cBracket                            cOperator
+" cCharacter                          cParen
+" cParenError
+" cPreCondit
+" cPreConditMatch
+" cCurlyError              
+" cRepeat
+" cErrInBracket            cSpaceError
+" cErrInParen              
+" CompletePlaceHolder      cError                   
+" CompletePlaceHolderEnds  
+" cConstant                cStatement
+" cStorageClass
+" ConflictMarker                       
+" cLabel                   
+" cMulti                   
+" cTodo
+" cUserCont
+" cBadBlock                            
+" cUserLabel
+" cBadContinuation                     
+
+" cCppOutIf
+" cCppBracket
+" cCppInElse
+" cCppInElse2
+" cCppInIf
+" cCppInSkip
+" cCppInWrapper
+" cCppOut
+" cCppOutElse
+" cCppParen  
+" cCppSkip   
+" cCppString 
+" cCppOutIf2    
+" cCppOutSkip   
+" cCppOutWrapper
+" 
+" cBitField
+" cNumbers
+" cNumbersCom

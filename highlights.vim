@@ -84,9 +84,8 @@ function! s:set_highlights() "{{{
     hi SpecialKey        ctermfg=46                guifg=#00ff00
     hi Comment           ctermfg=111               guifg=#87afff
     hi Number            ctermfg=75                guifg=#5fafff
-    " hi Folded       ctermfg=0     ctermbg=38
-    hi Folded            ctermfg=84   ctermbg=NONE guifg=#5fff87  guibg=NONE
-    hi FoldColumn        ctermfg=190              guifg=#d7ff00
+    hi Folded            ctermfg=84   ctermbg=NONE guifg=#8fe801  guibg=NONE
+    hi FoldColumn        ctermfg=190               guifg=#e6ff01
     hi StatusLine        ctermfg=118  ctermbg=234  cterm=NONE    guifg=#87ff00 guibg=#1c1c1c gui=NONE
     hi WildMenu          ctermfg=16   ctermbg=118  guifg=#000000 guibg=#87ff00
 
