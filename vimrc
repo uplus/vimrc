@@ -14,20 +14,20 @@ augroup END
 
 let g:working_register = 'p'
 
-function! s:source(path)
+function! s:source(path) "{{{
   let fpath = expand('~/.vim/' . a:path . '.vim')
   if filereadable(fpath)
     execute 'source' fnameescape(fpath)
   endif
-endfunction
+endfunction "}}}
 
-function! s:on_filetype() abort
+function! s:on_filetype() abort "{{{
   if execute('filetype') =~# 'OFF'
     filetype plugin indent on
     syntax enable
     filetype detect
   endif
-endfunction
+endfunction "}}}
 
 let $CACHE = expand('~/.cache')
 if !isdirectory($CACHE)
@@ -74,7 +74,7 @@ syntax enable
 
 " #autocmds "{{{
 augroup u10ac
-  au CursorMoved * call u10#auto_cursorcolumn()
+  " au CursorMoved * call u10#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au VimResized  * if &ft !=# 'help' |  wincmd = | redraw! | endif
   au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif

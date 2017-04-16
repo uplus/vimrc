@@ -1,6 +1,7 @@
 command! Recache call dein#clear_state() | call dein#recache_runtimepath() | echo 'Cached!'
 command! Install call dein#install()
 command! Clear   call dein#clear_state()
+command! Update   call dein#update()
 command! Q qall!
 command! W w!
 command! Sh update | shell
@@ -19,6 +20,11 @@ command! -nargs=1 Char echo printf("%c", 0x<args>)
 command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 command! FcitxOff call system('fcitx-remote -c')
 command! Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
+command! -nargs=1 SetTab
+      \ let &l:tabstop=<args> |
+      \ let &l:softtabstop = &l:tabstop |
+      \ let &l:shiftwidth = &l:tabstop
+
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.

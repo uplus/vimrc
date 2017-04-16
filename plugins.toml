@@ -553,6 +553,9 @@ hook_post_source = '''
   call gf#user#extend('u10#gf_newfile', 1900)
 '''
 
+[[plugins]]
+repo = 'vim-jp/vim-go-extra'
+
 [[plugins]] # jump to vim autoload functions
 repo = 'sgur/vim-gf-autoload'
 

@@ -1,10 +1,6 @@
 setl foldmethod=indent
-let python_highlight_all = 1
-let g:python_highlight_all = 1
 
-setl tabstop=4
-let &l:softtabstop = &l:tabstop
-let &l:shiftwidth = &l:tabstop
+SetTab 4
 
 setl foldmethod=manual
 
