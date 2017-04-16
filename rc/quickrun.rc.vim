@@ -118,30 +118,21 @@ call quickrun#module#register(s:hook, 1)
 unlet s:hook
 " }}}
 
-" Languages "{{{
-let g:quickrun_config.c = {
-      \ 'command' : 'clang',
-      \ 'cmdopt'  : $C_COMP_OPT
+" languages 
+let s:config = {
+      \ 'c': {'type': 'c/clang'},
+      \ 'cpp': {'type': 'cpp/clang'},
+      \ 'c/clang': {'cmdopt': $C_COMP_OPT},
+      \ 'cpp/clang': {'cmdopt': $CPP_COMP_OPT},
+      \ 'ruby': {'cmdopt' : '-Ku'},
+      \ 'ruby/rspec': {
+      \   'command': 'bundle',
+      \   'exec': '%c exec rspec -f d %s',
+      \ },
       \ }
-let g:quickrun_config.cpp = {
-      \ 'command' : 'clang++',
-      \ 'cmdopt'  : $CPP_COMP_OPT
-      \ }
-let g:quickrun_config.markdown = {
-      \ 'type'      : 'markdown/pandoc',
-      \ 'cmdopt'    : '-s',
-      \ 'outputter' : 'browser'
-      \ }
+call extend(g:quickrun_config, s:config)
+unlet s:config
 
-let g:quickrun_config.ruby = {
-      \ 'cmdopt' : '-Ku'
-      \ }
-
-let g:quickrun_config.rspec = {
-      \ 'command': 'bundle',
-      \ 'exec': '%c exec rspec -f d %s'
-      \ }
-"}}}
 
 
 " watchdogs
