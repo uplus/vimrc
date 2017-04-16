@@ -547,11 +547,11 @@ hook_add = '''
   nmap gf <Plug>(gf-user-gF)
   nmap gf<esc> <nop>
 
-  au u10ac FileType ruby call gf#user#extend('u10#gf_ruby', 1000)
+  au u10ac FileType ruby call gf#user#extend('vimrc#gf_ruby', 1000)
 '''
 hook_post_source = '''
   " call when built-in functions failed
-  call gf#user#extend('u10#gf_newfile', 1900)
+  call gf#user#extend('vimrc#gf_newfile', 1900)
 '''
 
 [[plugins]]

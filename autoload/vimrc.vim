@@ -3,34 +3,34 @@ silent! let s:V = vital#of('vital')
 silent! let s:Vuri = s:V.import('Web.URI')
 
 " #helpers
-function! u10#removechars(str, pattern) abort
+function! vimrc#removechars(str, pattern) abort
   return substitute(a:str, '[' . a:pattern . ']', '', 'g')
 endfunction
 
 " cursolがlastlineにあるかどうか
-function! u10#is_lastline(is_visual) abort
+function! vimrc#is_lastline(is_visual) abort
   let last = line('$')
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction
 
-function u10#home2tilde(str) abort
+function vimrc#home2tilde(str) abort
   return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction
 
-function! u10#add_slash_tail(str) abort
+function! vimrc#add_slash_tail(str) abort
   return substitute(a:str, '/*$', '/', '')
 endfunction
 
-function! u10#delete_str(str, pattern, ...) abort
+function! vimrc#delete_str(str, pattern, ...) abort
   return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction
 
-function u10#expand_dir_alias(str) abort
+function vimrc#expand_dir_alias(str) abort
     let path = system(printf("zsh -ic 'echo -n %s'", a:str))
-    return u10#home2tilde(path)
+    return vimrc#home2tilde(path)
 endfunction
 
-function u10#remove_opt_val(optname, chars) abort
+function vimrc#remove_opt_val(optname, chars) abort
   for c in  split(a:chars, '.\zs')
     execute printf('setl %s-=%s', a:optname, c)
   endfor
@@ -38,22 +38,22 @@ endfunction
 
 " textobj
 " blankline "{{{
-function! u10#textobj_blankline(flags) abort
+function! vimrc#textobj_blankline(flags) abort
   let l:flags = 'n' . a:flags
   return ['V', getpos('.'), [0] + searchpos('^\s*$', l:flags) + [0]]
 endfunction
 
-function! u10#textobj_blankline_prev() abort
-  return u10#textobj_blankline('b')
+function! vimrc#textobj_blankline_prev() abort
+  return vimrc#textobj_blankline('b')
 endfunction
 
-function! u10#textobj_blankline_next() abort
-  return u10#textobj_blankline('')
+function! vimrc#textobj_blankline_next() abort
+  return vimrc#textobj_blankline('')
 endfunction
 "}}}
 
 " operator
-function! u10#operator_blank2void(motion_wise) abort "{{{
+function! vimrc#operator_blank2void(motion_wise) abort "{{{
   let v = operator#user#visual_command_from_wise_name(a:motion_wise)
   if join(getline("'[", "']"), '') =~ '\%^\_s*\%$'
     execute printf('normal! `[%s`]"_d', v)
@@ -62,14 +62,14 @@ function! u10#operator_blank2void(motion_wise) abort "{{{
   endif
 endfunction "}}}
 
-function! u10#operator_space_fold(motion_wise) abort "{{{
+function! vimrc#operator_space_fold(motion_wise) abort "{{{
   silent! '[,']s/\v%(^)@<!\s*$/ /
   undojoin
   '[,']fold
 endfunction "}}}
 
 " gf create new file
-function! u10#gf_newfile() abort "{{{
+function! vimrc#gf_newfile() abort "{{{
   let path = expand('<cfile>')
   if !filereadable(path)
     echo path
@@ -81,7 +81,7 @@ function! u10#gf_newfile() abort "{{{
   return {'path': path, 'line': 0, 'col': 0,}
 endfunction "}}}
 
-function! u10#gf_ruby() abort "{{{
+function! vimrc#gf_ruby() abort "{{{
   " variables "{{{
   if !exists('g:ruby_version')
     " let g:ruby_version = matchstr(system('ruby --version'), '\v^ruby\s+\zs(\d\.?)+')
@@ -135,7 +135,7 @@ function! u10#gf_ruby() abort "{{{
   endtry
 endfunction "}}}
 
-function! u10#add_repo() abort "{{{
+function! vimrc#add_repo() abort "{{{
   let str = @+
   try
     let uri = s:Vuri.new(str)
@@ -151,7 +151,7 @@ function! u10#add_repo() abort "{{{
   endtry
 endfunction "}}}
 
-function! u10#highlight(...) abort "{{{
+function! vimrc#highlight(...) abort "{{{
   if 0 == a:0
     Unite highlight
     return
@@ -184,7 +184,7 @@ function! u10#highlight(...) abort "{{{
   execute cmd
 endfunction "}}}
 
-function! u10#open_git_diff(type) abort "{{{
+function! vimrc#open_git_diff(type) abort "{{{
   silent! update
   let s:before_winnr = winnr()
   let cmdname = 'git diff ' .  expand('%:t')
@@ -213,7 +213,7 @@ function! u10#open_git_diff(type) abort "{{{
   " execute 'normal!' s:before_winnr ."\<C-w>w"
 endfunction "}}}
 
-function! u10#goto_vim_func_def() abort "{{{
+function! vimrc#goto_vim_func_def() abort "{{{
   let func_name = matchstr(getline('.'),  '\v%(.\:)?\zs(%(\w|_|#|\.)*)\ze\(.*\)')
   if empty(func_name)
     return 1
@@ -225,7 +225,7 @@ function! u10#goto_vim_func_def() abort "{{{
   normal! zv
 endfunction "}}}
 
-function! u10#undo_clear() abort "{{{
+function! vimrc#undo_clear() abort "{{{
   let l:old = &undolevels
   set undolevels=-1
   exe "normal a \<BS>\<Esc>"
@@ -234,16 +234,16 @@ function! u10#undo_clear() abort "{{{
   write
 endfunction "}}}
 
-function! u10#git_top() abort "{{{
+function! vimrc#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
 endfunction "}}}
 
-function! u10#current_only() abort "{{{
+function! vimrc#current_only() abort "{{{
   let l:old = &report
   set report=1000
   let l:count=0
 
-  for l:buf in u10#buffers_info()
+  for l:buf in vimrc#buffers_info()
     if -1 == stridx(l:buf[1], '%')
       execute "bwipeout" l:buf[0]
       let l:count+=1
@@ -254,12 +254,12 @@ function! u10#current_only() abort "{{{
   let &report=l:old
 endfunction "}}}
 
-function! u10#active_only() abort "{{{
+function! vimrc#active_only() abort "{{{
   let l:old = &report
   set report=1000
   let l:count=0
 
-  for l:buf in u10#buffers_info()
+  for l:buf in vimrc#buffers_info()
     if -1 == stridx(l:buf[1], 'a')
       execute "bwipeout" l:buf[0]
       let l:count+=1
@@ -270,10 +270,10 @@ function! u10#active_only() abort "{{{
   let &report=l:old
 endfunction "}}}
 
-function! u10#delete_trash_buffers() abort "{{{
+function! vimrc#delete_trash_buffers() abort "{{{
   let l:count=0
 
-  for l:buf in u10#buffers_info(' u')
+  for l:buf in vimrc#buffers_info(' u')
     if -1 == stridx(l:buf[1], 'a') && -1 == stridx(l:buf[1], 'h')
       silent execute 'bwipeout' l:buf[0]
       let l:count+=1
@@ -285,7 +285,7 @@ function! u10#delete_trash_buffers() abort "{{{
   endif
 endfunction "}}}
 
-function! u10#note_open(name) abort "{{{
+function! vimrc#note_open(name) abort "{{{
   let l:name = system(['note', '-S', a:name])[0:-2]
   if name ==# ''
     echo printf('%s not found', a:name)
@@ -294,7 +294,7 @@ function! u10#note_open(name) abort "{{{
   exec 'tabedit' l:name
 endfunction "}}}
 
-function! u10#note_file_completion(lead, line, pos) abort "{{{
+function! vimrc#note_file_completion(lead, line, pos) abort "{{{
   let l:name = a:lead
   let l:files = split(system(['note', '--list']))
 
@@ -322,14 +322,14 @@ function! u10#note_file_completion(lead, line, pos) abort "{{{
   return l:files
 endfunction "}}}
 
-function! u10#capture(cmd_str) abort "{{{
+function! vimrc#capture(cmd_str) abort "{{{
   redir => g:capture
   silent execute a:cmd_str
   redir END
   return substitute(g:capture, '\%^\n', '', '')
 endfunction "}}}
 
-function! u10#capture_win(cmd) abort "{{{
+function! vimrc#capture_win(cmd) abort "{{{
   redir => result
   silent execute a:cmd
   redir END
@@ -345,14 +345,14 @@ function! u10#capture_win(cmd) abort "{{{
   1,2delete _
 endfunction "}}}
 
-function! u10#delete_for_match() abort "{{{
+function! vimrc#delete_for_match() abort "{{{
   normal! V^
   normal %
   normal! d
   call repeat#set("\<Plug>(delete_for_match)")
 endfunction "}}}
 
-function! u10#text_move(count, is_up, is_visual) abort "{{{
+function! vimrc#text_move(count, is_up, is_visual) abort "{{{
   let save_lazyredraw = &l:lazyredraw
   setl lazyredraw
   try
@@ -361,7 +361,7 @@ function! u10#text_move(count, is_up, is_visual) abort "{{{
 
     if a:is_up
       let line = a:count
-      if u10#is_lastline(a:is_visual)
+      if vimrc#is_lastline(a:is_visual)
         let line -= 1
       endif
 
@@ -387,16 +387,16 @@ function! u10#text_move(count, is_up, is_visual) abort "{{{
   endtry
 endfunction "}}}
 
-function! u10#zsh_file_completion(lead, line, pos) abort "{{{
+function! vimrc#zsh_file_completion(lead, line, pos) abort "{{{
   if a:lead ==# '#'
-    return map(u10#buffers_info(''), 'v:val[2]')
+    return map(vimrc#buffers_info(''), 'v:val[2]')
   elseif a:lead ==# ''
     let query = ''
   elseif a:lead =~# '\v^\~[^/]+'
     echo 'zsh file completion'
     " Slow
     let parts = split(a:lead, '/')
-    let parts[0] = u10#expand_dir_alias(parts[0])
+    let parts[0] = vimrc#expand_dir_alias(parts[0])
     if v:shell_error
       return []
     endif
@@ -406,7 +406,7 @@ function! u10#zsh_file_completion(lead, line, pos) abort "{{{
   else
     let pre_glob = glob('*' . a:lead . '*', 1, 1)
     if len(pre_glob) == 1 && isdirectory(pre_glob[0])
-      let query = u10#add_slash_tail(pre_glob[0])
+      let query = vimrc#add_slash_tail(pre_glob[0])
     else
       let query = '*' . a:lead
     endif
@@ -417,14 +417,14 @@ function! u10#zsh_file_completion(lead, line, pos) abort "{{{
     if isdirectory(path)
       let path  .= '/'
     endif
-    let path = u10#home2tilde(path)
+    let path = vimrc#home2tilde(path)
     let cands += [path]
   endfor
 
   return cands
 endfunction "}}}
 
-function! u10#buffer_count(...) abort "{{{
+function! vimrc#buffer_count(...) abort "{{{
   if a:0 == 0
     let cmd = 'ls!'
   elseif a:1 == 'a'   " active
@@ -435,16 +435,16 @@ function! u10#buffer_count(...) abort "{{{
     let cmd = 'ls!'
   endif
   echo cmd
-  return len(split(u10#capture(cmd), "\n"))
+  return len(split(vimrc#capture(cmd), "\n"))
 endfunction "}}}
 
 " return list [bufnr, status, name]
-function! u10#buffers_info(...) abort "{{{
-  return map(split(u10#capture('ls' . (a:0? a:1 : '!')), '\n'),
+function! vimrc#buffers_info(...) abort "{{{
+  return map(split(vimrc#capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
 endfunction "}}}
 
-function! u10#auto_cursorcolumn() abort "{{{
+function! vimrc#auto_cursorcolumn() abort "{{{
   if &buftype != "" || &filetype == 'markdown'
     setlocal nocursorcolumn
     return
@@ -460,7 +460,7 @@ endfunction "}}}
 
 " ---- function groups ----
 " #syntax info
-function! u10#get_syn_id(transparent) abort "{{{
+function! vimrc#get_syn_id(transparent) abort "{{{
   let synid = synID(line("."), col("."), 1)
   if a:transparent
     return synIDtrans(synid)
@@ -469,7 +469,7 @@ function! u10#get_syn_id(transparent) abort "{{{
   endif
 endfunction "}}}
 
-function! u10#get_syn_attr(synid) abort "{{{
+function! vimrc#get_syn_attr(synid) abort "{{{
   let name    = synIDattr(a:synid, "name")
   let ctermfg = synIDattr(a:synid, "fg", "cterm")
   let ctermbg = synIDattr(a:synid, "bg", "cterm")
@@ -483,15 +483,15 @@ function! u10#get_syn_attr(synid) abort "{{{
         \ "guibg"   : guibg }
 endfunction "}}}
 
-function! u10#get_syn_info() abort "{{{
-  let baseSyn = u10#get_syn_attr(u10#get_syn_id(0))
+function! vimrc#get_syn_info() abort "{{{
+  let baseSyn = vimrc#get_syn_attr(vimrc#get_syn_id(0))
   let base = "name: "  . baseSyn.name    .
         \ " ctermfg: " . baseSyn.ctermfg .
         \ " ctermbg: " . baseSyn.ctermbg .
         \ " guifg: "   . baseSyn.guifg   .
         \ " guibg: "   . baseSyn.guibg
 
-  let linkedSyn = u10#get_syn_attr(u10#get_syn_id(1))
+  let linkedSyn = vimrc#get_syn_attr(vimrc#get_syn_id(1))
   let link = "name: "  . linkedSyn.name    .
         \ " ctermfg: " . linkedSyn.ctermfg .
         \ " ctermbg: " . linkedSyn.ctermbg .
@@ -507,16 +507,16 @@ endfunction "}}}
 
 " #terminal run
 " quickrunの設定をパースしてbuiltin-termで実行する
-function! u10#terminal_run() abort "{{{
-  let config = u10#parse_quickrun_config(&ft)
-  let cmd = u10#build_run_command(expand('%'), config)
+function! vimrc#terminal_run() abort "{{{
+  let config = vimrc#parse_quickrun_config(&ft)
+  let cmd = vimrc#build_run_command(expand('%'), config)
 
   botright sp +enew
   call termopen(cmd)
   startinsert
 endfunction "}}}
 
-function! u10#build_run_command(src, config) abort "{{{
+function! vimrc#build_run_command(src, config) abort "{{{
   let cmd = a:config.exec
   if type(cmd) == type([])
     let cmd = join(cmd, ' && ')
@@ -530,7 +530,7 @@ function! u10#build_run_command(src, config) abort "{{{
   return cmd
 endfunction "}}}
 
-function! u10#parse_quickrun_config(filetype) abort "{{{
+function! vimrc#parse_quickrun_config(filetype) abort "{{{
   let config = {}
   let type = {'type': a:filetype}
 
@@ -572,12 +572,12 @@ function! u10#parse_quickrun_config(filetype) abort "{{{
 endfunction "}}}
 
 " #word translate
-function! u10#word_translate_weblio(word) abort "{{{
+function! vimrc#word_translate_weblio(word) abort "{{{
   let l:html    = webapi#http#get('ejje.weblio.jp/content/' . tolower(a:word)).content
   let l:content = matchstr(l:html, '\Vname="description"\v.{-}content\=\"\zs.{-}\ze\"\>')
   let l:body    = matchstr(l:content, '\v.{-1,}\ze\s{-}\-\s', 0, 1)
   let l:body = tr(l:body, '《》【】', '<>[]')
-  let l:body = u10#removechars(l:body, '★→１２')
+  let l:body = vimrc#removechars(l:body, '★→１２')
   let l:body = substitute(l:body, '\v(\d+)\s*', '\1', 'g')
   let l:body = substitute(l:body, '\V&#034;', '"', 'g')
   let l:body = substitute(l:body, '\V&#038;', '&', 'g')
@@ -594,18 +594,18 @@ function! u10#word_translate_weblio(word) abort "{{{
   return l:body
 endfunction "}}}
 
-function! u10#word_translate_weblio_smart(word) abort "{{{
-  let l:reason = u10#word_translate_weblio(a:word)
+function! vimrc#word_translate_weblio_smart(word) abort "{{{
+  let l:reason = vimrc#word_translate_weblio(a:word)
   let l:prototype = matchstr(l:reason, '\v(\w+)\ze\s*の%(現在|過去|複数|三人称|直接法|間接法)')
 
   if '' !=# l:prototype
-    let l:reason .= "\n" . u10#word_translate_weblio(l:prototype)
+    let l:reason .= "\n" . vimrc#word_translate_weblio(l:prototype)
   endif
 
   return l:reason
 endfunction "}}}
 
-function! u10#word_translate_local_dict(word) abort "{{{
+function! vimrc#word_translate_local_dict(word) abort "{{{
   if filereadable(expand(g:word_translate_local_dict))
     let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
     return substitute(l:str, '\v(^|\n)(--|' . a:word . ')?(\_s|$)', '', 'gi')
@@ -614,7 +614,7 @@ function! u10#word_translate_local_dict(word) abort "{{{
   endif
 endfunction "}}}
 
-function! u10#word_translate(...) abort "{{{
+function! vimrc#word_translate(...) abort "{{{
   if !a:0
     if &l:ft == 'help'
       let word = expand('<cword>')
@@ -631,10 +631,10 @@ function! u10#word_translate(...) abort "{{{
     let word = a:1
   endif
 
-  let found = u10#word_translate_local_dict(word)
+  let found = vimrc#word_translate_local_dict(word)
   if found !=# ''
     echo found
   else
-    echo u10#word_translate_weblio_smart(word)
+    echo vimrc#word_translate_weblio_smart(word)
   endif
 endfunction "}}}

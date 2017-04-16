@@ -43,37 +43,37 @@ command! -bang -bar -complete=file -nargs=? Unicode Utf8<bang> <args>
 
 
 " ---- autoload ----
-command! AddRepo call u10#add_repo()
-command! SyntaxInfo call u10#get_syn_info()
-command! -complete=highlight -nargs=* Hi call u10#highlight(<f-args>)
-command! OpenGitDiffWin call u10#open_git_diff('w')
-command! OpenGitDiffTab call u10#open_git_diff('t')
-command! Uclear u10#undo_clear
-command! UndoClear :call u10#undo_clear()
-command! CurrentOnly call u10#current_only()
-command! ActiveOnly call u10#active_only()
-command! DeleteTrashBuffers call u10#delete_trash_buffers()
-command! GitTop execute 'cd' u10#git_top()
-command! TermRun noautocmd w | call u10#terminal_run()
-command! BuffersInfo PP u10#buffers_info()
+command! AddRepo call vimrc#add_repo()
+command! SyntaxInfo call vimrc#get_syn_info()
+command! -complete=highlight -nargs=* Hi call vimrc#highlight(<f-args>)
+command! OpenGitDiffWin call vimrc#open_git_diff('w')
+command! OpenGitDiffTab call vimrc#open_git_diff('t')
+command! Uclear vimrc#undo_clear
+command! UndoClear :call vimrc#undo_clear()
+command! CurrentOnly call vimrc#current_only()
+command! ActiveOnly call vimrc#active_only()
+command! DeleteTrashBuffers call vimrc#delete_trash_buffers()
+command! GitTop execute 'cd' vimrc#git_top()
+command! TermRun noautocmd w | call vimrc#terminal_run()
+command! BuffersInfo PP vimrc#buffers_info()
 
 command! -nargs=+ -complete=command
-      \ Capture call u10#capture(<q-args>)
+      \ Capture call vimrc#capture(<q-args>)
 command! -nargs=+ -complete=command
-      \ CaptureWin call u10#capture_win(<q-args>)
+      \ CaptureWin call vimrc#capture_win(<q-args>)
 
 " zsh like tabedit.
 if executable('zsh')
-  command! -nargs=1 -complete=customlist,u10#zsh_file_completion T tabedit <args>
+  command! -nargs=1 -complete=customlist,vimrc#zsh_file_completion T tabedit <args>
 endif
 
 " #note
-command! -nargs=1 -complete=customlist,u10#note_file_completion
-      \ Note call u10#note_open(<q-args>)
+command! -nargs=1 -complete=customlist,vimrc#note_file_completion
+      \ Note call vimrc#note_open(<q-args>)
 
 " #word translate
 let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
-command! -nargs=1 Weblio echo u10#word_translate_weblio(<f-args>)
-command! -nargs=1 Weblios echo u10#word_translate_weblio_smart(<f-args>)
-command! -nargs=? WtransLocal call u10#word_translate_local_dict(<f-args>)
-command! -nargs=? WordTranslate call u10#word_translate(<f-args>)
+command! -nargs=1 Weblio echo vimrc#word_translate_weblio(<f-args>)
+command! -nargs=1 Weblios echo vimrc#word_translate_weblio_smart(<f-args>)
+command! -nargs=? WtransLocal call vimrc#word_translate_local_dict(<f-args>)
+command! -nargs=? WordTranslate call vimrc#word_translate(<f-args>)

@@ -54,8 +54,8 @@ if dein#tap('vim-operator-user') "{{{
   nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
   xmap se <Plug>(operator-evalruby)
 
-  call operator#user#define('space-fold', 'u10#operator_space_fold')
-  call operator#user#define('blank2void', 'u10#operator_blank2void')
+  call operator#user#define('space-fold', 'vimrc#operator_space_fold')
+  call operator#user#define('blank2void', 'vimrc#operator_blank2void')
 
   " 行末にスペースを一つ追加する
   nmap zf <Plug>(operator-space-fold)
@@ -95,8 +95,8 @@ endif "}}}
 if dein#tap('vim-textobj-user')
   call textobj#user#plugin(
         \ 'blankline', {
-        \   'prev': {'select': '', 'select-function': 'u10#textobj_blankline_prev'},
-        \   'next': {'select': '', 'select-function': 'u10#textobj_blankline_next'},
+        \   'prev': {'select': '', 'select-function': 'vimrc#textobj_blankline_prev'},
+        \   'next': {'select': '', 'select-function': 'vimrc#textobj_blankline_next'},
         \ },
         \ )
 

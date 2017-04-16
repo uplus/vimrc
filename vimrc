@@ -74,7 +74,7 @@ syntax enable
 
 " #autocmds "{{{
 augroup u10ac
-  " au CursorMoved * call u10#auto_cursorcolumn()
+  " au CursorMoved * call vimrc#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   " au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
   au SwapExists * let g:swapname = v:swapname

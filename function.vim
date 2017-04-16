@@ -60,7 +60,7 @@ endfunction
 
 " #Misc
 function! Ruby(str) abort
-  return u10#capture('ruby ' . a:str)
+  return vimrc#capture('ruby ' . a:str)
 endfunction
 
 function! ResetHightlights() abort

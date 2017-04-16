@@ -50,13 +50,13 @@ nnoremap \tol :set list!<CR>
 "}}}
 
 " #text_move "{{{
-nnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 0)<CR>
-nnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 0)<CR>
-xnoremap <silent><Plug>(MoveUp)   :<C-u>call u10#text_move(v:count1, 1, 1)<CR>
-xnoremap <silent><Plug>(MoveDown) :<C-u>call u10#text_move(v:count1, 0, 1)<CR>
+nnoremap <silent><Plug>(MoveUp)   :<C-u>call vimrc#text_move(v:count1, 1, 0)<CR>
+nnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 0)<CR>
+xnoremap <silent><Plug>(MoveUp)   :<C-u>call vimrc#text_move(v:count1, 1, 1)<CR>
+xnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 1)<CR>
 "}}}
 
-nnoremap <silent><Plug>(delete_for_match) :<c-u>call u10#delete_for_match()<cr>
+nnoremap <silent><Plug>(delete_for_match) :<c-u>call vimrc#delete_for_match()<cr>
 
 nnoremap <silent>\tr :TermRun<cr>
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
