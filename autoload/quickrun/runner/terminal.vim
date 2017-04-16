@@ -29,39 +29,20 @@ function! s:runner.run(commands, input, session) abort
     call writefile(split(a:input, "\n", 1), inputfile, 'b')
   endif
 
+  " TODO cとかだとコンパイルが終わる前に実行してえらー
+  let jobid = 0
   for cmd in a:commands
-    if cmd =~# '^\s*:'
-      " A vim command.
-      try
-        execute cmd
-      catch
-        break
-      endtry
-      continue
+    ConsoleLog 
+    if -1 == jobwait([jobid], self.config.timeout)
+      return 
     endif
-
     exec self.config.split 'new'
-    call s:execute(cmd)
+    let jobid = termopen(cmd)
+    startinsert
     if v:shell_error != 0
       break
     endif
   endfor
-endfunction
-
-function! s:execute(cmd) abort
-  let is_cmd_exe = &shell =~? 'cmd\.exe'
-  try
-    if is_cmd_exe
-      let sxq = &shellxquote
-      let &shellxquote = '"'
-    endif
-    call termopen(a:cmd)
-    startinsert
-  finally
-    if is_cmd_exe
-      let &shellxquote = sxq
-    endif
-  endtry
 endfunction
 
 
