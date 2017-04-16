@@ -32,8 +32,8 @@ function! s:runner.run(commands, input, session) abort
   " TODO cとかだとコンパイルが終わる前に実行してえらー
   let jobid = 0
   for cmd in a:commands
-    ConsoleLog 
-    if -1 == jobwait([jobid], self.config.timeout)
+    ConsoleLog cmd
+    if -1 == jobwait([jobid], self.config.timeout)[0]
       return 
     endif
     exec self.config.split 'new'
