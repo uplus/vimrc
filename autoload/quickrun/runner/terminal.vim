@@ -1,7 +1,4 @@
 " quickrun: runner/terminal Runs by termopen()
-" Author : thinca <thinca+vim@gmail.com>
-" License: zlib License
-
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -30,15 +27,14 @@ function! s:runner.run(commands, input, session) abort
   endif
 
   let cmd = join(a:commands, ' && ')
-  " ConsoleLog a:session._temp_names
-  exec self.config.split 'new'
-  let s:session = a:session
-  let sweep_lambda = { -> a:session.sweep() }
-  call termopen(cmd, {'on_exit': sweep_lambda })
-  startinsert
+  let opts = {}
+  if has('lambda')
+    let opts.on_exit = {-> a:session.sweep()}
+  endif
 
-  " TODO こうしないとsweepが発火しない
-  " au TermClose <buffer> call s:session.sweep()
+  exec self.config.split 'new'
+  call termopen(cmd, opts)
+  startinsert
 endfunction
 
 function! quickrun#runner#terminal#new() abort
