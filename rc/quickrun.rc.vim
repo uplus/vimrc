@@ -127,7 +127,8 @@ let s:config = {
       \   'command': 'bundle',
       \   'exec': '%c exec rspec -f d %s',
       \ },
-      \ 'markdown': {
+      \ 'markdown':{'type': 'markdown/previm'},
+      \ 'markdown/previm': {
       \   'runner': 'shell',
       \   'outputter': 'null',
       \   'command': ':PrevimOpen',
@@ -140,7 +141,7 @@ unlet s:config
 
 
 " watchdogs
-let s:c_opt = substitute($C_COMP_OPT, '-lm ', '','')
+let s:c_opt_watchdogs = substitute($C_COMP_OPT, '-lm ', '','')
 
 let s:config = {
       \ 'watchdogs_checker/_' : {
@@ -169,14 +170,14 @@ let s:config = {
       \			: executable('cl')          ? 'watchdogs_checker/cl'
       \			:'',
       \	},
-      \	'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt },
-      \	'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt },
+      \	'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
+      \	'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt_watchdogs },
       \	'watchdogs_checker/g++'     : { 'cmdopt': $CPP_COMP_OPT },
       \	'watchdogs_checker/clang++' : { 'cmdopt': $CPP_COMP_OPT },
       \ 'watchdogs_checker/c89' : {
       \   'command': 'gcc',
       \   'exec': '%c %o -fsyntax-only %s:p',
-      \   'cmdopt': s:c_opt . ' -std=c89',
+      \   'cmdopt': s:c_opt_watchdogs . ' -std=c89',
       \ },
       \ 'watchdogs_checker/flake8': {
       \   'cmdopt': '--ignore=' . g:autopep8_ignore  . ' --max-line-length=' . g:autopep8_max_line_length
