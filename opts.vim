@@ -152,7 +152,7 @@ set complete+=d,t
 set t_Co=256
 set background=dark
 if exists('+termguicolors') && $COLORTERM ==# 'truecolor'
-  " set termguicolors
+  set termguicolors
 endif
 
 if has('gui_running')
