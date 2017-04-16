@@ -1,7 +1,7 @@
 command! Recache call dein#clear_state() | call dein#recache_runtimepath() | echo 'Cached!'
 command! Install call dein#install()
 command! Clear   call dein#clear_state()
-command! Update   call dein#update()
+command! Update  call dein#update()
 command! Q qall!
 command! W w!
 command! Sh update | shell

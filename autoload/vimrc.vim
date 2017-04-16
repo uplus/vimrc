@@ -509,14 +509,14 @@ endfunction "}}}
 " quickrunの設定をパースしてbuiltin-termで実行する
 function! vimrc#terminal_run() abort "{{{
   let config = vimrc#parse_quickrun_config(&ft)
-  let cmd = vimrc#build_run_command(expand('%'), config)
+  let cmd = vimrc#build_run_command(config)
 
   botright sp +enew
   call termopen(cmd)
   startinsert
 endfunction "}}}
 
-function! vimrc#build_run_command(src, config) abort "{{{
+function! vimrc#build_run_command(config) abort "{{{
   let cmd = a:config.exec
   if type(cmd) == type([])
     let cmd = join(cmd, ' && ')

@@ -7,7 +7,7 @@ nmap \R <Plug>(quickrun-op)
 xmap \r <Plug>(quickrun)
 
 nnoremap <expr><c-c> SmartQuickRunStop()
-function! g:SmartQuickRunStop() abort
+function! g:SmartQuickRunStop() abort "{{{
   if exists('*quickrun#is_running') && quickrun#is_running()
     call quickrun#sweep_sessions()
     echo 'QuickRun sweeped'
@@ -15,25 +15,24 @@ function! g:SmartQuickRunStop() abort
   else
     return "\<c-c>"
   endif
-endfunction
+endfunction "}}}
 
 nnoremap <silent>\r :call SmartQuickRun()<CR>
-function! g:SmartQuickRun()
+function! g:SmartQuickRun() "{{{
   update
 
   " if empty(getloclist('.')) " If error exists, don't run
   echo "start quickrun"
   if &ft == 'markdown'
-    " TODO markdownの設定に追記すべき
     PrevimOpen
   elseif expand('%') =~ '_spec.rb$'
     !rspec %
   else
     QuickRun -mode n
   endif
-endfunction
+endfunction "}}}
 
-function! QuickRunHeight(...) abort
+function! QuickRunHeight(...) abort "{{{
   let l:key = 'hook/unite_quickfix/unite_options'
 
   if 0 == a:0
@@ -44,7 +43,7 @@ function! QuickRunHeight(...) abort
   endif
 
   return
-endfunction
+endfunction "}}}
 
 command! -nargs=* QuickRunHeight call QuickRunHeight(<f-args>)
 command! QuickRunStop call SmartQuickRunStop()
