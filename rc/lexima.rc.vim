@@ -19,8 +19,6 @@ endfunction
 " call add(rules, s:make_rule('\<\%(if\|unless\)\>.*\%#', 'end', 'ruby', 'rubyConditionalExpression'))
 
 
-" TODO smartinput時代の遺産を回収
-
 " 別行で閉じる
 call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
 call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
@@ -81,6 +79,7 @@ call lexima#add_rule(
 "}}}
 
 " c cpp {{{
+" struct {  };
 call lexima#add_rule({
       \   'at'       : '\%(\<struct\>\|\<class\>\|\<enum\>\)\s*\w\+.*\%#',
       \   'char'     : '{',
@@ -88,12 +87,22 @@ call lexima#add_rule({
       \   'filetype' : ['c','cpp'],
       \   })
 
+" #include <>
 call lexima#add_rule({
       \   'at'       : '^#i\%#',
       \   'char'     : 'n',
       \   'input'    : 'nclude <><Left>',
       \   'filetype' : ['c','cpp'],
       \   })
+
+" /* */
+call lexima#add_rule({
+      \   'at'       : '/\*\%#',
+      \   'char'     : '<cr>',
+      \   'input'    : '*/<left><left><cr><up><end><cr>',
+      \   'filetype' : ['c','cpp'],
+      \   })
+"}}}
 "}}}
 
 " ruby "{{{
