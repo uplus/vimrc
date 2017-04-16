@@ -151,15 +151,13 @@ set complete+=d,t
 
 set t_Co=256
 set background=dark
+if exists('+termguicolors') && $COLORTERM ==# 'truecolor'
+  " set termguicolors
+endif
 
 if has('gui_running')
    set guioptions=Mc
 endif
-
-if exists('+termguicolors')
-  " set termguicolors
-endif
-
 
 if has('nvim')
   " set inccommand=split
