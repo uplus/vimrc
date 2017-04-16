@@ -10,7 +10,7 @@ let g:colors_seted = 0
 hi CursorLine cterm=NONE gui=NONE
 hi LineNr     cterm=NONE ctermfg=44 guifg=#00d7d7 gui=NONE
 hi FoldColumn cterm=NONE ctermbg=NONE guibg=NONE gui=NONE
-hi StatusLine cterm=NONE gui=NONE
+hi StatusLine cterm=NONE gui=NONE guibg=#000000
 hi Visual     cterm=reverse gui=reverse
 hi Pmenu      ctermfg=240  ctermbg=251 guifg=#585858 guibg=#c6c6c6
 hi PmenuSel   ctermfg=0    ctermbg=255 guifg=#000000 guibg=#eeeeee
