@@ -29,22 +29,17 @@ function! s:runner.run(commands, input, session) abort
     call writefile(split(a:input, "\n", 1), inputfile, 'b')
   endif
 
-  " TODO cとかだとコンパイルが終わる前に実行してえらー
-  let jobid = 0
-  for cmd in a:commands
-    ConsoleLog cmd
-    if -1 == jobwait([jobid], self.config.timeout)[0]
-      return 
-    endif
-    exec self.config.split 'new'
-    let jobid = termopen(cmd)
-    startinsert
-    if v:shell_error != 0
-      break
-    endif
-  endfor
-endfunction
+  let cmd = join(a:commands, ' && ')
+  " ConsoleLog a:session._temp_names
+  exec self.config.split 'new'
+  let s:session = a:session
+  let sweep_lambda = { -> a:session.sweep() }
+  call termopen(cmd, {'on_exit': sweep_lambda })
+  startinsert
 
+  " TODO こうしないとsweepが発火しない
+  " au TermClose <buffer> call s:session.sweep()
+endfunction
 
 function! quickrun#runner#terminal#new() abort
   return deepcopy(s:runner)

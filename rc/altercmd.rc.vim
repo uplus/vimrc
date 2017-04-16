@@ -25,6 +25,7 @@ CAlterCommand uni[te] Unite
 CAlterCommand vgr[ep] Unite vimgrep
 CAlterCommand ug[rep] Unite -auto-resize grep:%::
 CAlterCommand qr QuickRun -mode
+CAlterCommand log Log
 
 CAlterCommand clear Clear
 CAlterCommand ins[tall] Install
