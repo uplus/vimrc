@@ -507,11 +507,12 @@ endfunction "}}}
 
 " #terminal run
 " quickrunの設定をパースしてbuiltin-termで実行する
+" TODO deprecated
 function! vimrc#terminal_run() abort "{{{
-  let config = vimrc#parse_quickrun_config(&ft)
+  let config = vimrc#parse_quickrun_config()
   let cmd = vimrc#build_run_command(config)
 
-  botright sp +enew
+  botright enew
   call termopen(cmd)
   startinsert
 endfunction "}}}
@@ -521,47 +522,17 @@ function! vimrc#build_run_command(config) abort "{{{
   if type(cmd) == type([])
     let cmd = join(cmd, ' && ')
   endif
+  PP! a:config
   let cmd = substitute(cmd, '%c', a:config.command, 'g')
   let cmd = substitute(cmd, '%o', a:config.cmdopt, 'g')
   let cmd = substitute(cmd, '%a', a:config.args, 'g')
-  let cmd = substitute(cmd, '%s', a:src, 'g')
-  " TODO :p:rが展開されない
-  let cmd = expand(cmd)
+  let cmd = substitute(cmd, '%s', expand('%'), 'g')
+  let cmd = expand(cmd) " TODO だめ
   return cmd
 endfunction "}}}
 
-function! vimrc#parse_quickrun_config(filetype) abort "{{{
-  let config = {}
-  let type = {'type': a:filetype}
-
-  " TODO quickrunの実行前後でオプションが変わる
-  " ConsoleLog cmd
-  " ConsoleLog a:config
-
-  for c in [
-        \ 'b:quickrun_config',
-        \ 'type',
-        \ 'g:quickrun_config[config.type]',
-        \ 'g:quickrun#default_config[config.type]',
-        \ 'g:quickrun_config["_"]',
-        \ 'g:quickrun_config["*"]',
-        \ 'g:quickrun#default_config["_"]',
-        \ ]
-    if exists(c)
-      let new_config = eval(c)
-      if 0 <= stridx(c, 'config.type')
-        let config_type = ''
-        while has_key(config, 'type') && has_key(new_config, 'type')
-              \   && config.type !=# '' && config.type !=# config_type
-          let config_type = config.type
-          call extend(config, new_config, 'keep')
-          let config.type = new_config.type
-          let new_config = exists(c) ? eval(c) : {}
-        endwhile
-      endif
-      call extend(config, new_config, 'keep')
-    endif
-  endfor
+function! vimrc#parse_quickrun_config() abort "{{{
+  let config = quickrun#new().base_config
 
   return { 'type': config.type,
         \ 'command':  get(config, 'command', config.type),

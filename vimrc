@@ -84,7 +84,7 @@ augroup myac
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
 
   au CursorHold * nested call DoAutoSave()
-  if has('##FocusLost')
+  if exists('##FocusLost')
     au FocusLost * nested call DoAutoSave()
   endif
 
