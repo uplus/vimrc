@@ -1,8 +1,8 @@
 " after/ftplugin.vimの中じゃないとプラグインとかに上書きされる
 
 " " need to old vim(probably ~7.4.160).
-" if !exists('#u10ac')
-"   augroup u10ac
+" if !exists('#myac')
+"   augroup myac
 "   augroup END
 " endif
 
@@ -18,7 +18,7 @@ function! s:filetype_all() abort
   " echomsg 'filetype_all'
 endfunction
 
-augroup u10ac
+augroup myac
   au FileType * call s:filetype_all()
 
   " elseやrescueに移動しない

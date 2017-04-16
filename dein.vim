@@ -29,8 +29,8 @@ if dein#load_state(s:path)
   call dein#save_state()
 endif
 
-au u10ac VimEnter * call dein#call_hook('source')
-au u10ac VimEnter * call dein#call_hook('post_source')
+au myac VimEnter * call dein#call_hook('source')
+au myac VimEnter * call dein#call_hook('post_source')
 
 
 "###################### plugin config ############################"
@@ -156,7 +156,7 @@ if dein#tap('vim-textobj-ruby') "{{{
   function! s:textobj_function_ruby_select(object_type)
     return textobj#ruby#object_definition_select_{a:object_type}()
   endfunction
-  au u10ac FileType ruby let b:textobj_function_select = function('s:textobj_function_ruby_select')
+  au myac FileType ruby let b:textobj_function_select = function('s:textobj_function_ruby_select')
 endif "}}}
 
 if dein#tap('vim-textobj-multiblock') "{{{
@@ -187,7 +187,7 @@ if dein#tap('caw.vim') " {{{
   let g:caw_dollarpos_startinsert = 1
 
   " for context_filetype and precious
-  au u10ac FileType * let b:caw_oneline_comment = substitute(&commentstring, '\s*%s', '', '')
+  au myac FileType * let b:caw_oneline_comment = substitute(&commentstring, '\s*%s', '', '')
 
   " 回数指定は gc2jみたいにやる
   nmap gcc <Plug>(caw:hatpos:toggle)
@@ -242,7 +242,7 @@ if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#expand_word_boundary = 1
   let g:neosnippet#scope_aliases = {}
   let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
-  au u10ac InsertLeave * NeoSnippetClearMarkers
+  au myac InsertLeave * NeoSnippetClearMarkers
   " let g:neosnippet#enable_auto_clear_markers = 1 " Don't work for multi lines
 
   " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
@@ -316,7 +316,7 @@ if dein#tap('unite-quickfix') "{{{
     Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
   endfunction
 
-  " au u10ac VimEnter * au u10ac BufWritePost * LocationList
+  " au myac VimEnter * au myac BufWritePost * LocationList
 endif "}}}
 
 if dein#tap('vimfiler.vim') "{{{
@@ -367,7 +367,7 @@ if dein#tap('syntastic') "{{{
   " wrteで開く
   " readで開くのはafter/plugin/の中にある
   " function! dein#tapped.hooks.on_post_source(bundle)
-  "   au u10ac BufWritePost * LocationList
+  "   au myac BufWritePost * LocationList
   " endfunction
 
 endif "}}}
@@ -413,7 +413,7 @@ if dein#tap('yankround.vim') "{{{
   let g:yankround_dir           = '~/.vim/tmp/yankround_history'
   let g:yankround_use_region_hl = 1
   highlight YankRoundRegion cterm=italic
-  au u10ac ColorScheme * highlight YankRoundRegion cterm=italic
+  au myac ColorScheme * highlight YankRoundRegion cterm=italic
 endif "}}}
 
 if dein#tap('vim-easymotion') "{{{
@@ -437,7 +437,7 @@ if dein#tap('vim-easymotion') "{{{
   endfunction
 
   call s:easymotion_highlight()
-  au u10ac ColorScheme * call s:easymotion_highlight()
+  au myac ColorScheme * call s:easymotion_highlight()
 
   " <Plug>(easymotion-sn) 複数文字入力で絞り込み
   " <Plug>(easymotion-lineanywhere) current line上のwordの初めと終わりを選択して飛ぶ
@@ -476,7 +476,7 @@ if dein#tap('hl_matchit.vim') "{{{
   let g:hl_matchit_allow_ft     = 'html,vim,zsh,sh' " ruby上手くいかない
   let g:hl_matchit_cursor_wait  = 0.10              " 更新頻度
   let g:hl_matchit_hl_groupname = 'HlMatchit'
-  au u10ac ColorScheme * hi HlMatchit cterm=bold,underline
+  au myac ColorScheme * hi HlMatchit cterm=bold,underline
 endif "}}}
 
 if dein#tap('alpaca_tags') "{{{
@@ -487,9 +487,9 @@ if dein#tap('alpaca_tags') "{{{
 
   augroup AlpacaTags
     autocmd!
-    " au u10ac FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
-    " au u10ac FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
-    " au u10ac FileReadPost,BufEnter      *       AlpacaTagsSet
+    " au myac FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
+    " au myac FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
+    " au myac FileReadPost,BufEnter      *       AlpacaTagsSet
   augroup END
 endif "}}}
 
@@ -508,8 +508,8 @@ if dein#tap('vim-asterisk') "{{{
 endif "}}}
 
 if dein#tap('incsearch.vim') " {{{
-  au u10ac ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
-  au u10ac ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
+  au myac ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
+  au myac ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
 
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
@@ -622,7 +622,7 @@ if dein#tap('vim-choosewin') "{{{
 endif "}}}
 
 if dein#tap('jedi-vim') "{{{
-  autocmd u10ac FileType python setlocal omnifunc=jedi#completions
+  autocmd myac FileType python setlocal omnifunc=jedi#completions
   let g:jedi#completions_enabled    = 0
   let g:jedi#auto_vim_configuration = 0
 endif "}}}
@@ -755,8 +755,8 @@ if dein#tap('shaberu.vim') "{{{
 endif "}}}
 
 if dein#tap('vim-qfreplace') "{{{
-  au u10ac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
-  au u10ac FileType qfreplace call s:qfreplace_config()
+  au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+  au myac FileType qfreplace call s:qfreplace_config()
 
   function! s:qfreplace_config()
     setl nobuflisted
@@ -863,7 +863,7 @@ if dein#tap('ref-dicts-en') "{{{
     return l:body
   endfunction
 
-  au u10ac FileType ref-webdict nnoremap <silent><buffer>q :quit<CR>
+  au myac FileType ref-webdict nnoremap <silent><buffer>q :quit<CR>
 
   command! -nargs=1 Wiki Ref webdict wiki <args>
   command! -nargs=1 Eng Ref webdict <args>

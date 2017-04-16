@@ -163,7 +163,7 @@ call unite#custom#default_action('file', 'tabopen')
 call unite#custom#default_action('neomru', 'tabopen')
 call unite#custom#default_action('source/line/*', 'search_jump')
 
-au u10ac FileType unite call s:unite_config()
+au myac FileType unite call s:unite_config()
 " unite_config "{{{
 function! s:unite_config()
   nmap <buffer>I 1gg<Plug>(unite_insert_head)
@@ -187,13 +187,13 @@ function! s:unite_config()
   let context = unite#get_context()
 
   if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
-    au u10ac WinEnter <buffer> if !exists('b:win_entered') | 0 | let b:win_entered = 1 | endif
-    au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
+    au myac WinEnter <buffer> if !exists('b:win_entered') | 0 | let b:win_entered = 1 | endif
+    au myac WinEnter <buffer> if winnr('$') == 1 | quit | endif
     nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
     nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
 
   elseif context.buffer_name == 'location_list'
-    au u10ac WinEnter <buffer> if winnr('$') == 1 | quit | endif
+    au myac WinEnter <buffer> if winnr('$') == 1 | quit | endif
 
   elseif context.buffer_name ==# 'buffer'
     nnoremap <silent><buffer><expr><nowait>s unite#do_action('split')

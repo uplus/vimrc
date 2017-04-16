@@ -22,7 +22,7 @@ let g:vimfiler_sendto = {
       \ }
 
 
-au u10ac FileType vimfiler call s:vimfiler_settings()
+au myac FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings() "{{{
   setlocal nobuflisted
 

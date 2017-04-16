@@ -1,6 +1,6 @@
 if !exists('g:noplugin')
-  au u10ac FileType    * nested call s:set_colors()
-  au u10ac ColorScheme * call s:set_highlights()
+  au myac FileType    * nested call s:set_colors()
+  au myac ColorScheme * call s:set_highlights()
 endif
 
 let g:python_highlight_all = 1

@@ -171,7 +171,7 @@ if = "!has('nvim')"
 on_ft = 'ruby'
 hook_add = '''
   let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-  au u10ac ColorScheme * hi rubyLocalVariable ctermfg=38
+  au myac ColorScheme * hi rubyLocalVariable ctermfg=38
 '''
 
 #python
@@ -317,7 +317,7 @@ repo = 'rhysd/vim-clang-format'
 on_ft = ['c', 'cpp']
 hook_add = '''
   let g:clang_format#command = 'clang-format'
-  " au u10ac FileType c,cpp map <buffer>= <Plug>(operator-clang-format)
+  " au myac FileType c,cpp map <buffer>= <Plug>(operator-clang-format)
 '''
 
 [[plugins]] # <space>j <space>k

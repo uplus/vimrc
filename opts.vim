@@ -86,7 +86,7 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 set updatetime=1000
 
 " #indent
-au u10ac FileType conf,gitcommit,html,css set nocindent
+au myac FileType conf,gitcommit,html,css set nocindent
 set autoindent cindent
 set cinkeys-=0#
 " *<Return> enterするたびにreindent
@@ -98,10 +98,10 @@ set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,h,l
 set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
                       " _を除くと*での検索がやりずらい
-" au u10ac FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
-" au u10ac FileType zsh setl iskeyword-=-
-au u10ac FileType zsh setl iskeyword-=$
-au u10ac FileType ruby setl iskeyword+=?
+" au myac FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
+" au myac FileType zsh setl iskeyword-=-
+au myac FileType zsh setl iskeyword-=$
+au myac FileType ruby setl iskeyword+=?
 
 " #menu
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
@@ -127,7 +127,7 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
-au u10ac FileType zsh,ruby setl foldmethod=marker " php perl perl6 javascript clojure
+au myac FileType zsh,ruby setl foldmethod=marker " php perl perl6 javascript clojure
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか

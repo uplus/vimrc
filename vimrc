@@ -7,7 +7,7 @@ endif
 language message C
 scriptencoding=utf-8
 
-augroup u10ac
+augroup myac
   autocmd!
   " autocmd FileType,Syntax,BufNewFile,BufNew,BufRead * call s:on_filetype()
 augroup END
@@ -73,7 +73,7 @@ syntax enable
 " call s:on_filetype()
 
 " #autocmds "{{{
-augroup u10ac
+augroup myac
   " au CursorMoved * call vimrc#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   " au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
@@ -128,7 +128,7 @@ augroup END
 "}}}
 
 " #filetype config "{{{
-augroup u10ac
+augroup myac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
   au FileType qf,help,vimconsole,ref-*  nnoremap <silent><buffer>q :quit<CR>
   au FileType text     setl nobreakindent wrap
@@ -147,7 +147,7 @@ function! s:stdin_config()
 endfunction
 "}}}
 
-au u10ac VimEnter * call s:vimenter()
+au myac VimEnter * call s:vimenter()
 function! s:vimenter() "{{{
   if argc() == 0
     setl buftype=nowrite

@@ -239,7 +239,7 @@ repo = 'osyo-manga/vim-watchdogs'
 depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
 hook_source = '''
   command! WatchdogsC89 let b:watchdogs_checker_type = 'watchdogs_checker/c89'
-  au u10ac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
+  au myac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
 '''
 
 [[plugins]]
@@ -248,10 +248,10 @@ repo = 'dannyob/quickfixstatus'
 [[plugins]] # forked from pocke from cohama
 repo = 'pocke/vim-hier'
 hook_add = '''
-  " au u10ac ColorScheme * hi hier cterm=undercurl ctermfg=NONE ctermbg=NONE
-  au u10ac ColorScheme * hi hier cterm=NONE ctermfg=NONE ctermbg=197
+  " au myac ColorScheme * hi hier cterm=undercurl ctermfg=NONE ctermbg=NONE
+  au myac ColorScheme * hi hier cterm=NONE ctermfg=NONE ctermbg=197
   let g:hier_highlight_group_qf = 'hier'
-  au u10ac InsertLeave * silent! HierUpdate
+  au myac InsertLeave * silent! HierUpdate
 '''
 
 
@@ -547,7 +547,7 @@ hook_add = '''
   nmap gf <Plug>(gf-user-gF)
   nmap gf<esc> <nop>
 
-  au u10ac FileType ruby call gf#user#extend('vimrc#gf_ruby', 1000)
+  au myac FileType ruby call gf#user#extend('vimrc#gf_ruby', 1000)
 '''
 hook_post_source = '''
   " call when built-in functions failed
