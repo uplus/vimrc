@@ -23,9 +23,7 @@ function! g:SmartQuickRun() "{{{
 
   " if empty(getloclist('.')) " If error exists, don't run
   echo "start quickrun"
-  if &ft == 'markdown'
-    PrevimOpen
-  elseif expand('%') =~ '_spec.rb$'
+  if expand('%') =~ '_spec.rb$'
     !rspec %
   else
     QuickRun -mode n
@@ -129,6 +127,12 @@ let s:config = {
       \   'command': 'bundle',
       \   'exec': '%c exec rspec -f d %s',
       \ },
+      \ 'markdown': {
+      \   'runner': 'shell',
+      \   'outputter': 'null',
+      \   'command': ':PrevimOpen',
+      \   'exec': '%c',
+      \ },
       \ }
 call extend(g:quickrun_config, s:config)
 unlet s:config
@@ -140,6 +144,7 @@ let s:c_opt = substitute($C_COMP_OPT, '-lm ', '','')
 
 let s:config = {
       \ 'watchdogs_checker/_' : {
+      \   'runner' : 'vimproc',
       \   'outputter/quickfix/open_cmd' : '',
       \   'hook/close_unite_quickfix/enable_module_loaded'  : 0,
       \   'hook/unite_quickfix/enable_exit'                 : 0,
