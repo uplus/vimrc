@@ -247,6 +247,18 @@ hook_add = '''
 #git
 
 [[plugins]]
+# git log
+repo = 'cohama/agit.vim'
+on_cmd = ['Agit', 'AgitFile']
+on_map = '<Plug>(agit-'
+
+[[plugins]]
+# git add -p
+repo = 'AndrewRadev/gapply.vim'
+on_cmd = 'Gapply'
+on_func = 'gapply#Start()'
+
+[[plugins]]
 repo = 'rhysd/committia.vim'
 on_ft = 'gitcommit'
 

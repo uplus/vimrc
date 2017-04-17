@@ -691,25 +691,6 @@ if dein#tap('CamelCaseMotion') "{{{
   map <silent> <space>e <plug>CamelCaseMotion_e
 endif "}}}
 
-if dein#tap('vim-gitgutter') "{{{
-  let g:gitgutter_enabled         = 1
-  let g:gitgutter_signs           = 0
-  let g:gitgutter_highlight_lines = 0
-  let g:gitgutter_escape_grep     = 1
-  let g:gitgutter_map_keys        = 0
-  " let g:gitgutter_diff_args = '-w'
-  command! Stage GitGutterStageHunk
-  command! Revert GitGutterRevertHunk
-
-  nmap [h <Plug>GitGutterPrevHunkzMzvzz
-  nmap ]h <Plug>GitGutterNextHunkzMzvzz
-  nmap ,gp <Plug>GitGutterPreviewHunk
-  nmap ,gadd <Plug>GitGutterStageHunk
-  nmap ,grev <Plug>GitGutterRevertHunk
-  nmap ,gh :GitGutterLineHighlightsToggle<CR>
-  nmap ,gg :GitGutterSignsToggle<CR>
-endif "}}}
-
 if dein#tap('vim-gista') "{{{
   let g:gista#client#default_username = 'uplus'
 endif "}}}

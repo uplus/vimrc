@@ -359,24 +359,37 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 # gitのdiffを行に表示
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  let g:gitgutter_enabled         = 1
+  let g:gitgutter_signs           = 1
+  let g:gitgutter_highlight_lines = 0
+  let g:gitgutter_map_keys        = 0
+  let g:gitgutter_escape_grep     = 1
+  " let g:gitgutter_diff_args = '-w'
+    
+  let g:gitgutter_sign_added    = '✚'
+  let g:gitgutter_sign_modified = '➜'
+  let g:gitgutter_sign_removed  = '✘'
+
+  command! Stage GitGutterStageHunk
+  command! Revert GitGutterUndoHunk
+
+  nmap [h <Plug>GitGutterPrevHunkzMzvzz
+  nmap ]h <Plug>GitGutterNextHunkzMzvzz
+  nmap ,gp <Plug>GitGutterPreviewHunk
+  nmap ,gadd <Plug>GitGutterStageHunk
+  nmap ,grev <Plug>GitGutterUndoHunk
+  nmap ,gh :GitGutterLineHighlightsToggle<CR>
+  " nmap ,gg :GitGutterSignsToggle<CR>
+'''
 hook_post_source = '''
   " if use vim-submode, cannot use mappings to move tab(gt gT).
-  au! gitgutter TabEnter,BufEnter
-  hi GitGutterAddDefault    guifg=#40ff80
-  hi GitGutterChangeDefault ctermfg=226 guifg=#fbff00
+  " au! gitgutter TabEnter,BufEnter
 '''
 
 [[plugins]]
-# git log --graph
+# git branch
 repo = 'idanarye/vim-merginal'
-
-[[plugins]]
-# git log
-repo = 'cohama/agit.vim'
-
-[[plugins]]
-# git add -p
-repo = 'AndrewRadev/gapply.vim'
 
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
