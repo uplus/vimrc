@@ -68,7 +68,7 @@ function! s:set_highlights() "{{{
 
   colorscheme vimfiler_color
 
-  if !has('vim_starting')
+  if !has('vim_starting') && exists('g:airline_theme')
     execute 'AirlineTheme' g:airline_theme
   endif
 
