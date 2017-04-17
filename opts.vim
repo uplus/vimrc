@@ -138,8 +138,10 @@ set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
 set fillchars=vert:\|
 
-" set list
-set listchars=tab:❯\ ,trail:˼,extends:»,precedes:«,nbsp:%
+set list
+" trail:❮,
+set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%
+
 if has('diff')
   set diffopt=filler,context:2,vertical,foldcolumn:0
 endif

@@ -14,7 +14,12 @@ hi StatusLine cterm=NONE gui=NONE guibg=#000000
 hi Visual     cterm=reverse gui=reverse
 hi Pmenu      ctermfg=240  ctermbg=251 guifg=#585858 guibg=#c6c6c6
 hi PmenuSel   ctermfg=0    ctermbg=255 guifg=#000000 guibg=#eeeeee
-hi clear TabLineFill 
+hi BadSpace   cterm=NONE
+hi clear TabLineFill
+
+autocmd myac VimEnter,WinEnter * match BadSpace /\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000/
+autocmd myac VimEnter,WinEnter * match BadSpace /\s\+$/
+autocmd myac VimEnter,WinEnter * match BadSpace /^\s*\%$/
 
 function! s:colorscheme(name) abort
   if g:colors_name !=# a:name
@@ -65,6 +70,7 @@ function! s:set_highlights() "{{{
   hi DiffDelete ctermfg=200     ctermbg=56 guifg=#ff00d7 guibg=#5f00d7
   hi DiffChange ctermfg=252     ctermbg=22 guifg=#d0d0d0 guibg=#005f00
   hi DiffText   ctermfg=226     ctermbg=29 guifg=#ffff00 guibg=#00875f
+  hi BadSpace   ctermfg=16   ctermbg=197  guifg=#000000 guibg=#ff0060
 
   colorscheme vimfiler_color
 
