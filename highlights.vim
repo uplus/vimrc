@@ -61,15 +61,15 @@ function! s:set_colors() "{{{
 endfunction "}}}
 
 function! s:set_highlights() "{{{
-  hi Title      ctermfg=118 guifg=#87ff00
-  hi Todo       cterm=italic    ctermfg=226 ctermbg=0 guifg=#ff8700 guibg=#1c1c1c
-  hi Error      ctermfg=255     ctermbg=161 guifg=#eeeeee guibg=#d7005f
-  hi QFError    cterm=undercurl ctermfg=198 guifg=#ff0087 gui=undercurl
-  hi QFWarning  cterm=undercurl ctermfg=202 guifg=#ff5f00 gui=undercurl
-  hi DiffAdd    ctermfg=255     ctermbg=163 guifg=#eeeeee guibg=#d700af
-  hi DiffDelete ctermfg=200     ctermbg=56 guifg=#ff00d7 guibg=#5f00d7
-  hi DiffChange ctermfg=252     ctermbg=22 guifg=#d0d0d0 guibg=#005f00
-  hi DiffText   ctermfg=226     ctermbg=29 guifg=#ffff00 guibg=#00875f
+  hi Title      ctermfg=118               guifg=#87ff00
+  hi Todo       ctermfg=208  ctermbg=0    guifg=#ff8700 guibg=#000000 cterm=italic gui=italic
+  hi Error      ctermfg=255  ctermbg=161  guifg=#eeeeee guibg=#d7005f
+  hi QFError    ctermfg=198               guifg=#ff0087               cterm=undercurl gui=undercurl
+  hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=undercurl gui=undercurl
+  hi DiffAdd    ctermfg=255  ctermbg=163  guifg=#eeeeee guibg=#d700af
+  hi DiffDelete ctermfg=200  ctermbg=56   guifg=#ff00d7 guibg=#5f00d7
+  hi DiffChange ctermfg=252  ctermbg=22   guifg=#d0d0d0 guibg=#005f00
+  hi DiffText   ctermfg=226  ctermbg=29   guifg=#ffff00 guibg=#00875f
   hi BadSpace   ctermfg=16   ctermbg=197  guifg=#000000 guibg=#ff0060
 
   colorscheme vimfiler_color
