@@ -186,12 +186,16 @@ endfunction "}}}
 
 function! vimrc#open_git_diff(type) abort "{{{
   silent! update
-  let s:before_winnr = winnr()
+  let s:prev_winnr = winnr()
   let cmdname = 'git diff ' .  expand('%:t')
   let filedir = expand('%:h')
-  silent! execute 'bwipeout \[' . escape(cmdname, ' ') . '\]'
 
-  execute 'silent!' ((a:type == 't')? 'tabnew' : printf('botright vsplit [%s]', escape(cmdname, ' ')))
+  if exists('s:git_diff_bufnr')
+    silent! execute 'bwipeout' s:git_diff_bufnr
+  endif
+
+  execute 'silent!' ((a:type == 't')? 'tabnew' : printf('botright vsplit git-diff-%s', escape(cmdname, ' ')))
+  let s:git_diff_bufnr = bufnr('%')
 
   " diff_config()で設定しようとするとnofileのタイミングが遅い
   setfiletype diff
@@ -200,6 +204,7 @@ function! vimrc#open_git_diff(type) abort "{{{
   setl nofoldenable
   setl nonumber
   setl foldcolumn=0
+  setl modifiable
   execute 'lcd' filedir
   silent put! =system(cmdname)
   $delete
@@ -207,10 +212,8 @@ function! vimrc#open_git_diff(type) abort "{{{
 
   function! s:bwipeout_and_back()
     bwipeout!
-    execute 'normal!' s:before_winnr ."\<C-w>w"
+    execute 'normal!' s:prev_winnr ."\<C-w>w"
   endfunction
-
-  " execute 'normal!' s:before_winnr ."\<C-w>w"
 endfunction "}}}
 
 function! vimrc#goto_vim_func_def() abort "{{{
