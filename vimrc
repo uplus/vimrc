@@ -142,6 +142,16 @@ augroup myac
   au FileType qf,help,vimconsole,ref-*  nnoremap <silent><buffer>q :quit<CR>
   au FileType text     setl nobreakindent wrap
   au StdinReadPost * call s:stdin_config()
+
+  if exists('##OptionSet')
+    au OptionSet previewwindow,diff call s:quit_map()
+
+    function! s:quit_map() abort
+      if &previewwindow || &diff
+        nnoremap <silent><buffer>q :quit<cr>
+      endif
+    endfunction
+  endif
 augroup END
 
 function! s:stdin_config()

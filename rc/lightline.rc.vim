@@ -1,7 +1,7 @@
 let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-      \     'right': [[ 'lineinfo' ], ['percent' ], ['fileformat', 'fileencoding', 'filetype']]
+      \     'right': [[ 'lineinfo' ], ['percent' ], ['fileencoding', 'filetype']]
       \   },
       \   'inactive': {
       \     'left': [['filename' ]],
@@ -19,8 +19,9 @@ let g:lightline = {
       \     'mode': '%{lightline#mode()}',
       \     'absolutepath': '%F', 'relativepath': '%f', 'filename': '%t', 'modified': '%M', 'bufnum': '%n',
       \     'paste': '%{&paste?"PASTE":""}', 'readonly': '%R', 'charvalue': '%b', 'charvaluehex': '%B',
-      \     'spell': '%{&spell?&spelllang:""}', 'fileencoding': '%{&fenc!=#""?&fenc:&enc}', 'fileformat': '%{&ff}',
-      \     'filetype': '%{&ft!=#""?&ft:"no ft"}', 'percent': '%3p%%', 'percentwin': '%P',
+      \     'spell': '%{&spell? &spelllang:""}',
+      \     'fileencoding': '%{(&fenc !=# ""? &fenc:&enc) . "[" . &ff[0] . "]"}', 
+      \     'filetype': '%{&ft!=#""?&ft:"none"}', 'percent': '%3p%%', 'percentwin': '%P',
       \     'lineinfo': '%3l:%-2v', 'line': '%l', 'column': '%c', 'close': '%999X X '
       \   },
       \   'component_visible_condition': {
@@ -41,9 +42,9 @@ let g:lightline = {
       \   },
       \   'colorscheme': 'default',
       \   'mode_map': {
-      \     'n': 'NOR', 'i': 'INS', 'R': 'REP', 'c': 'CMD', 't': 'TER',
-      \     'v': 'VIS', 'V': 'V-L', "\<C-v>": 'V-B',
-      \     's': 'SEL', 'S': 'S-L', "\<C-s>": 'S-B',
+      \     'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 't': 'T',
+      \     'v': 'V', 'V': 'V', "\<C-v>": 'V',
+      \     's': 'S', 'S': 'S', "\<C-s>": 'S',
       \   },
       \   'separator': {'left': '', 'right': ''},
       \   'subseparator': {'left': '|', 'right': '|'},
