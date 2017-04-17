@@ -25,10 +25,10 @@ if has('nvim')
   " tnoremap <c-j> <c-\><c-n><c-w>j
   " tnoremap <c-k> <c-\><c-n><c-w>k
   " tnoremap <c-l> <c-\><c-n><c-w>l
-  nnoremap <c-w>ts :botright split +term<cr>
-  nnoremap <c-w>tv :vsp +term<cr>
+  nnoremap <c-w>ts  :<c-u>botright split +Terminal<cr>
+  nnoremap <c-w>tv  :<c-u>vsp +Terminal<cr>
+  nnoremap <space>T :<c-u>tabnew +Terminal<cr>
   nmap <space>t <c-w>ts
-  nnoremap <space>T :tabnew +term<cr>
 
   tnoremap <c-t>h <c-\><c-n><c-w>h
   tnoremap <c-t>j <c-\><c-n><c-w>j

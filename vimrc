@@ -6,6 +6,8 @@ endif
 
 language message C
 scriptencoding=utf-8
+" Very very high speed! ~300ms
+set shell=/bin/sh
 
 augroup myac
   autocmd!
@@ -92,13 +94,18 @@ augroup myac
 
   " Terminal
   if has('nvim')
-    " Skip return code when quit terminal.
-    au TermClose term://*$SHELL call feedkeys('\<cr>')
+    au TermOpen * call s:term_open()
+    function s:term_open()
+      au BufEnter <buffer> call feedkeys('a') " or startinsert!
+      " call feedkeys("exec zsh\<cr>\<c-l>") " Rug
+    endfunction
 
-    au TermOpen * call s:term_config()
-    function s:term_config()
-      au BufEnter <buffer> call feedkeys('a')
-      " au InsertLeave <buffer> call feedkeys('\<c-w>q') " Don't work endfunction
+    " Skip return code when quit terminal.
+    au TermClose * call s:term_close()
+    function! s:term_close() abort
+      if bufname('%') =~ printf('\v(%s|%s)$', $SHELL, &shell)
+        call feedkeys('\<cr>')
+      endif
     endfunction
   endif
 

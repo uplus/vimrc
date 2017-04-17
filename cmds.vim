@@ -5,6 +5,7 @@ command! Update  call dein#update()
 command! Q qall!
 command! W w!
 command! Sh update | shell
+command! Terminal execute 'terminal' $SHELL
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
