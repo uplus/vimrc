@@ -90,6 +90,9 @@ repo = 'osyo-manga/unite-airline_themes'
 on_source = 'unite.vim'
 
 [[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
 repo = 'ujihisa/unite-colorscheme'
 on_source = 'unite.vim'
 
@@ -115,11 +118,12 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'powerman/vim-plugin-AnsiEsc'
 
-[[plugins]]
-repo = 'bling/vim-airline'
+# [[plugins]]
+# repo = 'bling/vim-airline'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 
 #action
