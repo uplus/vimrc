@@ -10,7 +10,7 @@ function! s:filetype_all() abort
   call vimrc#remove_opt_val('formatoptions', 'jro')
   setl formatoptions+=Bnql
   " r 改行でコメントを挿入
-  " o	ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
+  " o ノーマルモードで'o'、'O'を打った後に、現在のコメント指示を自動的に挿入する。
   " B multi-byte charの結合で空白を挿入しない
   " q gqでコメントを結合
   " j コメントを結合する時に可能であればコメントリーダーを削除する

@@ -139,8 +139,7 @@ augroup myac
     if exists('w:badspace_id')
       call matchdelete(w:badspace_id)
     endif
-    " matchだと1つしかハイライトできない
-    " ファイル末尾はシンタックスじゃできない
+    " ファイル末尾はsyn matchじゃできない
     let w:badspace_id =  matchadd('BadSpace', '^\s*\%$')
   endfunction
 

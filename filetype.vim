@@ -1,4 +1,3 @@
-
 augroup my_filetypedetect
   autocmd!
   autocmd BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h

@@ -99,10 +99,9 @@ set cinoptions+=#1,J1,j1,g0,N-2
 set commentstring=#\ %s
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,h,l
-set iskeyword+=$,@-@  "設定された文字が続く限り単語として扱われる @は英数字を表す
-                      " _を除くと*での検索がやりずらい
-" au myac FileType vim setl iskeyword-=# " #を含めると*での検索や補完が楽
-" au myac FileType zsh setl iskeyword-=-
+
+set iskeyword+=$,@-@ 
+" @ 英数字
 au myac FileType zsh setl iskeyword-=$
 au myac FileType ruby setl iskeyword+=?
 
@@ -130,7 +129,6 @@ set shiftwidth=2  "インデント幅
 
 " #fold
 set foldmethod=marker
-au myac FileType zsh,ruby setl foldmethod=marker " php perl perl6 javascript clojure
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか
