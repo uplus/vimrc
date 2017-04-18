@@ -39,11 +39,7 @@ let g:netrw_nogx=1             " 不要なkeymapを無効
 " let g:loaded_netrwPlugin       = 1
 " let g:loaded_netrwSettings     = 1
 " let g:loaded_netrwFileHandlers = 1
-let g:no_cecutil_maps=1        " AnsiEsc の中で変なマッピングをしないようにする
 let g:solarized_termcolors=256 " solarizedをCUIで使うため
-
-let g:no_ruby_maps = 1
-let g:ruby_path = [] " to fail in default gf
 
 " vim-operator taps "{{{
 if dein#tap('vim-operator-user') "{{{

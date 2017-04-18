@@ -116,6 +116,9 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'powerman/vim-plugin-AnsiEsc'
+hook_add = '''
+  let g:no_cecutil_maps = 1
+'''
 
 # [[plugins]]
 # repo = 'bling/vim-airline'

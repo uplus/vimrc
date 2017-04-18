@@ -4,6 +4,10 @@ hook_add = '''
   " python.vim
   let python_highlight_all = g:python_highlight_all
 
+  " Ruby
+  let g:no_ruby_maps = 1
+  let g:ruby_path = [] " to fail in default gf
+
   " Vim
   let g:vimsyntax_noerror = 1
   let g:vim_indent_cont = 0
