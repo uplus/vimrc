@@ -137,7 +137,7 @@ let g:clurin = {
       \   ['chpwd', 'periodic', 'precmd', 'preexec', 'zshaddhistory', 'zshexit', 'zsh_directory_name'],
       \ ]},
       \
-      \ 'zsh sh': {'def':[
+      \ 'zsh sh': {'def': [
       \   ['if', 'elif', 'else'],
       \   [' -a ', ' -o '],
       \   [' -z ', ' -n '],
@@ -148,5 +148,10 @@ let g:clurin = {
       \   [{'pattern': '\v\$(\w+)', 'replace': '$\1'},
       \    {'pattern': '\V"\@<!${\(\w\+\)}"\@!', 'replace': '${\1}'},
       \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'},],
+      \ ]},
+      \ 'go': {'def': [
+      \   ['Print', 'Println', 'Printf'],
+      \   ['Fprint', 'Fprintln', 'Fprintf'],
+      \   ['Sprint', 'Sprintln', 'Sprintf'],
       \ ]},
       \ }
