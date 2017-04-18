@@ -554,7 +554,6 @@ repo = 'freeo/vim-kalisi'
 [[plugins]]
 repo = 'kana/vim-gf-user'
 hook_add = '''
-  let g:config_flag_gf = 1
   let g:gf_user_no_default_key_mappings = 1
   nmap gft <Plug>(gf-user-<c-w>gF)
   nmap gfb <Plug>(gf-user-gF)

@@ -179,13 +179,11 @@ endfunction
 
 " #gf open file "{{{
 " auto remap to <Plug> is difficult
-if get(g:, 'config_flag_gf', 0) == 0
+if !hasmapto('gf')
   nnoremap gfb gf
   nnoremap <silent>gft <c-w>gf
   nnoremap <silent>gfv :vertical wincmd f<cr>
   nnoremap <silent>gfs :botright wincmd f<cr>
-  " remapping guard
-  nnoremap gf
   nnoremap gf<esc> <nop>
 endif
 "}}}
