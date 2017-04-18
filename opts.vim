@@ -192,3 +192,5 @@ if !empty($SUDO_USER) && $USER !=# $SUDO_USER
   set undodir=
   set viewdir=
 endif
+
+let g:my_autosave = 1
