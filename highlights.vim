@@ -58,7 +58,7 @@ endfunction "}}}
 
 function! s:set_highlights() "{{{
   hi Title      ctermfg=118               guifg=#87ff00
-  hi Todo       ctermfg=208  ctermbg=0    guifg=#ff8700 guibg=#000000 cterm=italic gui=italic
+  hi Todo       ctermfg=208  ctermbg=0    guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
   hi Error      ctermfg=255  ctermbg=161  guifg=#eeeeee guibg=#d7005f
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=undercurl gui=undercurl
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=undercurl gui=undercurl
@@ -73,7 +73,7 @@ function! s:set_highlights() "{{{
     execute 'AirlineTheme' g:airline_theme
   endif
 
-  hi GitGutterAddDefault    ctermfg=70  guifg=#41ae00 |
+  hi GitGutterAddDefault    ctermfg=70  guifg=#41be30
   hi GitGutterChangeDefault ctermfg=226 guifg=#fbff00
 
   if &diff
