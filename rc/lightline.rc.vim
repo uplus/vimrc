@@ -5,7 +5,7 @@
 
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+      \     'left': [['mode', 'paste'], ['git', 'readonly', 'filename', 'modified']],
       \     'right': [['cursor'], ['filetype'], ['fileencoding']]
       \   },
       \   'inactive': {
@@ -36,7 +36,7 @@ let g:lightline = {
       \   },
       \   'component_function': {
       \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
-      \     'cursor': 'LLcursor',
+      \     'cursor': 'LLcursor', 'git': 'LLgit',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
@@ -78,12 +78,14 @@ let g:lightline = {
 " コンポーネントから他のコンポーネントをいじる
   " 無効
   " 色
+  " gundo
+  " airline/extensionsが参考になる
 
-" TODO gundo
 function! LLmode() abort
   return  &ft == 'unite' ? 'Unite' :
         \ &ft == 'denite' ? 'Denite':
         \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'gundo' ? 'Gundo':
         \ lightline#mode()
 endfunction
 
@@ -101,6 +103,16 @@ endfunction
 
 function! LLcursor() abort
   return printf('%3d/%d %2d', line('.'), line('$'), col('.'))
+endfunction
+
+function! LLgit() abort
+  if !(exists('g:loaded_gitgutter') && exists('g:loaded_fugitive'))
+    return  ''
+  endif
+
+  let tmp = gitgutter#hunk#summary('%')
+  let summary = printf('+%d ~%d -%d', tmp[0], tmp[2], tmp[2])
+  return printf('%s  %s', summary, fugitive#head())
 endfunction
 
 " unicode symbols
