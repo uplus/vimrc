@@ -62,12 +62,42 @@ _ = '''
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
 
     " b:undo_ftpluginに '| |'があると起動時に:printされる
-    au myac FileType * if exists('b:undo_ftplugin') | let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g') | endif
+
+  au myac FileType * if exists('b:undo_ftplugin') | let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g') | endif
 '''
 
 c = '''
   SetTab 4
   setl commentstring=//\ %s
+'''
+
+diff = '''
+  setl foldmethod=diff
+  setl foldcolumn=0
+'''
+
+gitrebase = '''
+  noremap <silent><buffer><nowait>gp :Pick<CR>
+  noremap <silent><buffer><nowait>gr :Reword<CR>
+  noremap <silent><buffer><nowait>ge :Edit<CR>
+  noremap <silent><buffer><nowait>gs :Squash<CR>
+  noremap <silent><buffer><nowait>gf :Fixup<CR>
+'''
+
+gitcommit = '''
+  setl spell
+  setl nofoldenable
+  setl foldcolumn=0
+  setl textwidth=0
+  " after InsertEnter for committia.vim
+  au InsertEnter * setl lazyredraw
+  nnoremap <silent><buffer>a gga
+  nnoremap <silent><buffer>A ggA
+  nnoremap <silent><buffer>i ggi
+  nnoremap <silent><buffer>I ggI
+  nnoremap <silent><buffer>c ggc
+  nnoremap <silent><buffer>d ggd
+  goto
 '''
 
 go = '''
@@ -117,8 +147,26 @@ qfreplace = '''
 '''
 
 ruby = '''
+  command! YardGen !yard doc %
+  nnoremap <f3> :YardGen<cr>
+
   setl omnifunc=
   setl iskeyword+=?
+
+  let b:match_ignorecase = 0
+  let b:match_words =
+        \ '\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!' .
+        \ ':' .
+        \ '\%(^\|[^.\:@$]\)\@<=\<end\:\@!\>' .
+        \ ',{:},\[:\],(:)'
+  let b:match_skip =
+        \ "synIDattr(synID(line('.'),col('.'),0),'name') =~ '" .
+        \ "\\<ruby\\%(String\\|StringDelimiter\\|ASCIICode\\|Escape\\|" .
+        \ "Regexp\\|RegexpDelimiter\\|" .
+        \ "Interpolation\\|NoInterpolation\\|Comment\\|Documentation\\|" .
+        \ "ConditionalModifier\\|RepeatModifier\\|OptionalDo\\|" .
+        \ "Function\\|BlockArgument\\|KeywordAsMethod\\|ClassVariable\\|" .
+        \ "InstanceVariable\\|GlobalVariable\\|Symbol\\)\\>'"
 '''
 
 sh = '''
@@ -128,7 +176,7 @@ sh = '''
 '''
 
 toml = '''
-  syntax sync minlines=500
+  syntax sync minlines=300
 '''
 
 text = '''
@@ -137,15 +185,13 @@ text = '''
 
 vim = '''
   if 5000 < line('$')
-    syntax sync minlines=200
+    syntax sync minlines=300
   endif
 
   setl keywordprg=:help
   setl iskeyword-=:
   setl iskeyword-=#
 
-  let b:match_ignorecase = 0
-  let b:match_skip = 'synIDattr(synID(line("."),col("."),1),"name") =~? "comment\\|string\\|vimSynReg\\|vimSet\\|vimFuncName"'
   let b:match_words =
     \ '\<fu\%[nction]\>:\<endf\%[unction]\>,' .
     \ '\<\(wh\%[ile]\|for\)\>:\<end\(w\%[hile]\|fo\%[r]\)\>,' .

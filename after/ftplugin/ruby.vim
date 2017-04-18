@@ -1,29 +1,3 @@
-if exists("b:did_u10_ftplugin")
-  " 標準が呼ばれまくるから無効に出来ない
-  finish
-endif
-let b:did_u10_ftplugin = 1
-" let b:did_ftplugin = 1
-
-command! YardGen !yard doc %
-nnoremap <f3> :YardGen<cr>
-
-let b:match_ignorecase = 0
-let b:match_words =
-      \ '\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!' .
-      \ ':' .
-      \ '\%(^\|[^.\:@$]\)\@<=\<end\:\@!\>' .
-      \ ',{:},\[:\],(:)'
-
-let b:match_skip =
-      \ "synIDattr(synID(line('.'),col('.'),0),'name') =~ '" .
-      \ "\\<ruby\\%(String\\|StringDelimiter\\|ASCIICode\\|Escape\\|" .
-      \ "Regexp\\|RegexpDelimiter\\|" .
-      \ "Interpolation\\|NoInterpolation\\|Comment\\|Documentation\\|" .
-      \ "ConditionalModifier\\|RepeatModifier\\|OptionalDo\\|" .
-      \ "Function\\|BlockArgument\\|KeywordAsMethod\\|ClassVariable\\|" .
-      \ "InstanceVariable\\|GlobalVariable\\|Symbol\\)\\>'"
-
 finish
 
 nnoremap <silent><buffer><Plug>(ruby_prev_def)     :<C-U>call <SID>searchsyn('\<def\>','rubyDefine','b','n')<CR>
@@ -88,6 +62,6 @@ function! s:searchsyn(pattern, syn, flags, mode) abort "{{{
   endwhile
 endfunction "}}}
 
-function! s:synname() abort "{{{
+function! s:synname() abort 
   return synIDattr(synID(line('.'), col('.'), 0), 'name')
-endfunction "}}}
+endfunction 

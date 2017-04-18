@@ -153,7 +153,7 @@ augroup END
 " #filetype config "{{{
 augroup myac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
-  au FileType qf,help,vimconsole,ref-* nnoremap <silent><buffer>q :quit<cr>
+  au FileType qf,help,vimconsole,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType conf,gitcommit,html,css set nocindent
   au StdinReadPost * call s:stdin_config()
 
