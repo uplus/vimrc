@@ -91,7 +91,6 @@ set updatetime=1000
 
 " #indent
 set autoindent smartindent
-au myac FileType conf,gitcommit,html,css set nocindent
 " set cindent
 set cinkeys-=0#
 " *<return> enterするたびにreindent
@@ -103,9 +102,6 @@ set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,h,l
 
 set iskeyword+=$,@-@ 
-" @ 英数字
-au myac FileType zsh setl iskeyword-=$
-au myac FileType ruby setl iskeyword+=?
 
 " #menu
 set wildoptions=tagfile " Can supplement a tag in a command-line.
