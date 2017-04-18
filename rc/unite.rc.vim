@@ -113,7 +113,7 @@ function! s:unite_source_headline.gather_candidates(args, context)
     " &l:commentstring
     " let matched = matchlist(line, '\v%(^|\s+)#(#*)\s*(\w[^\{#]*)')[1:2]
     " TODO syntax info使って区別する
-    let matched = matchlist(line, '\v%(^|\s+)\#+\s*(.*)$')
+    let matched = matchlist(line, '\v%(^|\s+)\#+(\S.*)$')
     " let matched = matchlist(line, '\v^[^\w\d\#]*\#+\s*(.*)$')
     if empty(matched)
       continue

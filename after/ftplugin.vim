@@ -24,4 +24,5 @@ augroup myac
   " elseやrescueに移動しない
   au FileType sh   let b:match_words='\%(;\s*\|^\s*\)\@<=if\>:\%(;\s*\|^\s*\)\@<=fi\>,\%(;\s*\|^\s*\)\@<=\%(for\|while\)\>:\%(;\s*\|^\s*\)\@<=done\>,\%(;\s*\|^\s*\)\@<=case\>:\%(;\s*\|^\s*\)\@<=esac\>'
   au FileType zsh  let b:match_words='(:),{:},[:],\<if\>:\<fi\>,\<case\>:^\s*([^)]*):\<esac\>,\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
+  au FileType neosnippet set noexpandtab
 augroup END

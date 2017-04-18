@@ -98,3 +98,8 @@ snippet     abort
 options     head
 	echo "${0}" >&2
 	exit 1
+
+snippet while-read
+	while read ${1:line}; do
+		${0}
+	done
