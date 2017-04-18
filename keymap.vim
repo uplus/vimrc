@@ -70,7 +70,7 @@ xnoremap <space>n :normal<space>
 " Ctrl /
 imap  <plug>(vim-original-insert-lasttext)
 
-inoremap <c-r><c-r> <c-r>"
+inoremap <c-r><c-r> <c-r>*
 nnoremap g?? Vg?
 map mp %
 map mmp ^%

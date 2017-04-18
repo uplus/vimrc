@@ -736,16 +736,6 @@ if dein#tap('shaberu.vim') "{{{
   let g:shaberu_is_mute = 0
 endif "}}}
 
-if dein#tap('vim-qfreplace') "{{{
-  au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
-  au myac FileType qfreplace call s:qfreplace_config()
-
-  function! s:qfreplace_config()
-    setl nobuflisted
-    nnoremap <buffer>q <C-w>q
-  endfunction
-endif "}}}
-
 if dein#tap('vim-expand-region') "{{{
   xmap v <Plug>(expand_region_expand)
   xmap gm <Plug>(expand_region_shrink)

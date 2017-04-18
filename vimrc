@@ -137,7 +137,8 @@ augroup myac
 
   function! s:badspace() abort
     if exists('w:badspace_id')
-      call matchdelete(w:badspace_id)
+      silent! call matchdelete(w:badspace_id)
+      unlet w:badspace_id 
     endif
     " ファイル末尾はsyn matchじゃできない
     let w:badspace_id =  matchadd('BadSpace', '^\s*\%$')
@@ -152,8 +153,7 @@ augroup END
 " #filetype config "{{{
 augroup myac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
-  au FileType qf,help,vimconsole,ref-*  nnoremap <silent><buffer>q :quit<CR>
-  au FileType text     setl nobreakindent wrap
+  au FileType qf,help,vimconsole,ref-* nnoremap <silent><buffer>q :quit<cr>
   au StdinReadPost * call s:stdin_config()
 
   if exists('##OptionSet')

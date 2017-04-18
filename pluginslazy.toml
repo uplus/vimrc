@@ -157,6 +157,9 @@ on_map = ['<Plug>(rc_search_', '<Plug>(rc_highlight)']
 [[plugins]] # quickfixの各行を編集、反映できる
 repo = 'thinca/vim-qfreplace'
 on_ft = ['unite', 'quickfix']
+hook_add = '''
+  au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+'''
 
 
 #ruby
