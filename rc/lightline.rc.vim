@@ -1,11 +1,16 @@
+
+" readonly modifiable
+" カラースキームで定義されてる数だけ色が使える?
+" component_expand使えばピンポイントカラー&隠せる
+
 let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-      \     'right': [[ 'lineinfo' ], ['percent' ], ['fileencoding', 'filetype']]
+      \     'right': [['lineinfo'], ['percent'], ['fileencoding', 'filetype']]
       \   },
       \   'inactive': {
-      \     'left': [['filename' ]],
-      \     'right': [['lineinfo' ], ['percent']]
+      \     'left': [['filename']],
+      \     'right': [['lineinfo'], ['percent']]
       \   },
       \   'tabline': {
       \     'left': [['tabs']],
@@ -16,18 +21,21 @@ let g:lightline = {
       \     'inactive': ['tabnum', 'filename', 'modified']
       \   },
       \   'component': {
-      \     'mode': '%{lightline#mode()}',
       \     'absolutepath': '%F', 'relativepath': '%f', 'filename': '%t', 'modified': '%M', 'bufnum': '%n',
-      \     'paste': '%{&paste?"PASTE":""}', 'readonly': '%R', 'charvalue': '%b', 'charvaluehex': '%B',
+      \     'paste': '%{&paste?"PASTE":""}',
+      \     'charvalue': '%b',
+      \     'charvaluehex': '%B',
       \     'spell': '%{&spell? &spelllang:""}',
-      \     'fileencoding': '%{(&fenc !=# ""? &fenc:&enc) . "[" . &ff[0] . "]"}', 
-      \     'filetype': '%{&ft!=#""?&ft:"none"}', 'percent': '%3p%%', 'percentwin': '%P',
-      \     'lineinfo': '%3l:%-2v', 'line': '%l', 'column': '%c', 'close': '%999X X '
+      \     'filetype': '%{&ft!=#""?&ft:"none"}',
+      \     'percent': '%3p%%', 'percentwin': '%P',
+      \     'lineinfo': '%3l:%-2v', 'line': '%l', 'column': '%c',
+      \     'close': '%999X X ',
       \   },
       \   'component_visible_condition': {
-      \     'modified': '&modified||!&modifiable', 'readonly': '&readonly', 'paste': '&paste', 'spell': '&spell'
+      \     'modified': '&modified || !&modifiable', 'readonly': '&readonly',
+      \     'paste': '&paste', 'spell': '&spell',
       \   },
-      \   'component_function': {},
+      \   'component_function': {'mode': 'LLmode', 'fileencoding': 'LLfileencoding'},
       \   'component_function_visible_condition': {},
       \   'component_expand': {
       \     'tabs': 'lightline#tabs'
@@ -46,11 +54,11 @@ let g:lightline = {
       \     'v': 'V', 'V': 'V', "\<C-v>": 'V',
       \     's': 'S', 'S': 'S', "\<C-s>": 'S',
       \   },
-      \   'separator': {'left': '', 'right': ''},
-      \   'subseparator': {'left': '|', 'right': '|'},
-      \   'tabline_separator': {},
-      \   'tabline_subseparator': {},
-      \   'enable': { 'statusline': 1, 'tabline': 1 },
+      \   'separator': {'left': '', 'right': ''},
+      \   'subseparator': {'left': '', 'right': ''},
+      \   'tabline_separator': {'left': '', 'right': ''},
+      \   'tabline_subseparator': {'left': '', 'right': ''},
+      \   'enable': {'statusline': 1, 'tabline': 1},
       \   '_mode_': {
       \     'n': 'normal', 'i': 'insert', 'R': 'replace', 'v': 'visual', 'V': 'visual', "\<C-v>": 'visual',
       \     'c': 'command', 's': 'select', 'S': 'select', "\<C-s>": 'select', 't': 'terminal'
@@ -59,3 +67,54 @@ let g:lightline = {
       \   'palette': {},
       \   'winwidth': winwidth(0),
       \ }
+
+" TODO vim-cloverの状態を表示したい
+
+" TODO gundo
+function! LLmode() abort
+  return  &ft == 'unite' ? 'Unite' :
+        \ &ft == 'denite' ? 'Denite':
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ lightline#mode()
+endfunction
+
+function! LLfileencoding() abort
+  let enc = (&fenc !=# "")? &fenc : &enc
+  if enc ==# 'utf-8' && &ff ==# 'unix'
+    return ''
+  endif
+  return printf('%s[%s]', enc, &ff[0])
+endfunction
+
+function! LLreadonly() abort
+
+endfunction
+
+" unicode symbols
+let g:airline_symbols = {}
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
