@@ -1,14 +1,4 @@
 
-setl keywordprg=:help
-setl iskeyword-=:
-setl iskeyword-=#
-nnoremap <silent><buffer>gd :call vimrc#goto_vim_func_def()<CR>
-nmap <buffer>[m [[
-nmap <buffer>]m ][
-nmap <buffer>[M []
-nmap <buffer>]M ]]
-
-let b:match_ignorecase = 0
 let b:match_words =
       \ '\<fu\%[nction]\>:\<endf\%[unction]\>,' .
       \ '\<\(wh\%[ile]\|for\)\>:\<end\(w\%[hile]\|fo\%[r]\)\>,' .
@@ -17,4 +7,4 @@ let b:match_words =
       \ '\<aug\%[roup]\s\+\%(END\>\)\@!\S:\<aug\%[roup]\s\+END\>,' .
       \ '(:)'
 
-let b:match_skip = 'synIDattr(synID(line("."),col("."),1),"name") =~? "comment\\|string\\|vimSynReg\\|vimSet\\|vimFuncName"'
+let b:match_words='\%(;\s*\|^\s*\)\@<=if\>:\%(;\s*\|^\s*\)\@<=fi\>,\%(;\s*\|^\s*\)\@<=\%(for\|while\)\>:\%(;\s*\|^\s*\)\@<=done\>,\%(;\s*\|^\s*\)\@<=case\>:\%(;\s*\|^\s*\)\@<=esac\>'
