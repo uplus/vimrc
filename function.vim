@@ -1,17 +1,17 @@
 
 " #AutoSave "{{{
-let g:u10_autosave = 0
-command! EnableAutoSave let g:u10_autosave = 1
-command! DisableAutoSave let g:u10_autosave = 0
+let g:my_autosave = get(g:, 'my_autosave', 0)
+command! EnableAutoSave let g:my_autosave = 1
+command! DisableAutoSave let g:my_autosave = 0
 nnoremap <silent><F2> :call ToggleAutoSave()<CR>
 function! ToggleAutoSave() abort
   silent update
-  let g:u10_autosave = !g:u10_autosave
-  echo 'autosave' g:u10_autosave? 'enabled' : 'disabled'
+  let g:my_autosave = !g:my_autosave
+  echo 'autosave' g:my_autosave? 'enabled' : 'disabled'
 endfunction
 
 function! DoAutoSave() abort
-  if g:u10_autosave != 0
+  if g:my_autosave != 0
     silent! update
   endif
 endfunction
@@ -62,10 +62,6 @@ endfunction
 "}}}
 
 " #Misc
-function! Ruby(str) abort
-  return vimrc#capture('ruby ' . a:str)
-endfunction
-
 function! ResetHightlights() abort
   " nohlsearch " 関数内では動作しない
   silent! call clever_f#reset()
@@ -85,9 +81,4 @@ endfunction
 " call from snippets
 function! Filename() abort
   return expand('%:t:r')
-endfunction
-
-" TODO rubyが動かない -> Vital.Random
-function! DummyArray(start, last, times) abort
-  return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d)}.join(', ')", a:times, a:start, a:last))
 endfunction

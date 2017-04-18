@@ -398,6 +398,11 @@ on_ft = ['c', 'cpp']
 repo = 'tkhren/vim-fake'
 on_cmd = ['FakeSubstitute']
 on_func = 'fake#'
+hook_add = '''
+  function! FakeArray(start, end, times) abort
+    return join(map(range(a:times), printf('fake#int(%d, %d)', a:start, a:end)), ', ')
+  endfunction
+'''
 
 [[plugins]] # Display unicode.
 repo = 'osyo-manga/vim-hideout'
