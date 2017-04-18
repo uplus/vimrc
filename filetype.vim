@@ -1,7 +1,7 @@
 augroup my_filetypedetect
-  autocmd!
-  autocmd BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
-  autocmd BufRead,BufNewFile $HOME/Documents/notes/* setf note | lcd %:h
-  autocmd BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
-  autocmd VimEnter * if &l:ft == '' || exists('b:ftdetect') | filetype detect | endif
+  au!
+  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
+  au BufRead,BufNewFile $HOME/Documents/notes/* setf note | lcd %:h
+  au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
+  au VimEnter * if &l:ft == '' | filetype detect | endif
 augroup END

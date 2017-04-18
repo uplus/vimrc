@@ -60,6 +60,9 @@ _ = '''
     " q gqでコメントを結合
     " B マルチバイト文字同士の結合で間に空白を挿入しない
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
+
+    " b:undo_ftpluginに '| |'があると起動時に:printされる
+    au FileType * let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g')
 '''
 
 c = '''
