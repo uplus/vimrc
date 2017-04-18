@@ -6,11 +6,11 @@
 let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-      \     'right': [['lineinfo'], ['percent'], ['fileencoding', 'filetype']]
+      \     'right': [['cursor'], ['filetype'], ['fileencoding']]
       \   },
       \   'inactive': {
       \     'left': [['filename']],
-      \     'right': [['lineinfo'], ['percent']]
+      \     'right': [['cursor']]
       \   },
       \   'tabline': {
       \     'left': [['tabs']],
@@ -26,27 +26,29 @@ let g:lightline = {
       \     'charvalue': '%b',
       \     'charvaluehex': '%B',
       \     'spell': '%{&spell? &spelllang:""}',
-      \     'filetype': '%{&ft!=#""?&ft:"none"}',
+      \     'filetype': '%{&ft !=# ""? &ft : "none"}',
       \     'percent': '%3p%%', 'percentwin': '%P',
-      \     'lineinfo': '%3l:%-2v', 'line': '%l', 'column': '%c',
       \     'close': '%999X X ',
       \   },
       \   'component_visible_condition': {
-      \     'modified': '&modified || !&modifiable', 'readonly': '&readonly',
+      \     'modified': '&modified || !&modifiable',
       \     'paste': '&paste', 'spell': '&spell',
       \   },
-      \   'component_function': {'mode': 'LLmode', 'fileencoding': 'LLfileencoding'},
+      \   'component_function': {
+      \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
+      \     'cursor': 'LLcursor',
+      \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
-      \     'tabs': 'lightline#tabs'
+      \     'tabs': 'lightline#tabs',
       \   },
       \   'component_type': {
-      \     'tabs': 'tabsel', 'close': 'raw'
+      \     'tabs': 'tabsel', 'close': 'raw',
       \   },
       \   'tab_component': {},
       \   'tab_component_function': {
       \     'filename': 'lightline#tab#filename', 'modified': 'lightline#tab#modified',
-      \     'readonly': 'lightline#tab#readonly', 'tabnum': 'lightline#tab#tabnum'
+      \     'readonly': 'lightline#tab#readonly', 'tabnum': 'lightline#tab#tabnum',
       \   },
       \   'colorscheme': 'default',
       \   'mode_map': {
@@ -61,14 +63,21 @@ let g:lightline = {
       \   'enable': {'statusline': 1, 'tabline': 1},
       \   '_mode_': {
       \     'n': 'normal', 'i': 'insert', 'R': 'replace', 'v': 'visual', 'V': 'visual', "\<C-v>": 'visual',
-      \     'c': 'command', 's': 'select', 'S': 'select', "\<C-s>": 'select', 't': 'terminal'
+      \     'c': 'command', 's': 'select', 'S': 'select', "\<C-s>": 'select', 't': 'terminal',
       \   },
-      \   'mode_fallback': { 'replace': 'insert', 'terminal': 'insert', 'select': 'visual' },
+      \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \   'palette': {},
       \   'winwidth': winwidth(0),
       \ }
 
 " TODO vim-cloverの状態を表示したい
+" per line/maxline col
+" 幅があったらディレクトリ
+" branch
+" bufline
+" コンポーネントから他のコンポーネントをいじる
+  " 無効
+  " 色
 
 " TODO gundo
 function! LLmode() abort
@@ -87,7 +96,11 @@ function! LLfileencoding() abort
 endfunction
 
 function! LLreadonly() abort
+  return &readonly? '': ''
+endfunction
 
+function! LLcursor() abort
+  return printf('%3d/%d %2d', line('.'), line('$'), col('.'))
 endfunction
 
 " unicode symbols
