@@ -105,6 +105,7 @@ go = '''
   setl noexpandtab
   highlight default link goErr WarningMsg
   match goErr /\<err\>/
+  nnoremap <silent><buffer>=<cr> :Fmt<cr>:w<cr>
 '''
 
 help = '''

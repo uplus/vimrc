@@ -36,9 +36,12 @@ function! EraseSpace() abort "{{{
     return
   endif
 
-  let l:cursor = getpos(".")
+  let l:pos = getpos(".")
   %s/\s\+$//e
-  call setpos(".", l:cursor)
+  if getline('$') =~# '^\s*$'
+    $delete
+  endif
+  call setpos(".", l:pos)
 endfunction "}}}
 
 " #Blank "{{{
