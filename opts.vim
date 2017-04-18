@@ -1,6 +1,7 @@
 " set undodir=~/.vim/tmp/undo.txt
 " set viewdir=~/.vim/tmp/view
 set path+=/usr/include/c++/HEAD/
+set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
 set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
 " tags;     current-dirからtagsが見つかるまで遡る
 " tas;/dir  上記と同じだが/dirより上には行かない
@@ -89,12 +90,13 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 set updatetime=1000
 
 " #indent
+set autoindent smartindent
 au myac FileType conf,gitcommit,html,css set nocindent
-set autoindent cindent
+" set cindent
 set cinkeys-=0#
-" *<Return> enterするたびにreindent
+" *<return> enterするたびにreindent
 set cinoptions+=#1,J1,j1,g0,N-2
-" :0 にすると switchとcaseが同じレベルになる
+" :0 switchとcaseが同じレベルになる
 
 set commentstring=#\ %s
 set backspace=start,eol,indent
@@ -106,7 +108,6 @@ au myac FileType zsh setl iskeyword-=$
 au myac FileType ruby setl iskeyword+=?
 
 " #menu
-set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
 set wildoptions=tagfile " Can supplement a tag in a command-line.
 " 補完候補を全て表示 もう一度<Tab>で巡回
 set wildmenu
