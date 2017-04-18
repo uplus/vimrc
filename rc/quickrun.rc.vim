@@ -118,7 +118,7 @@ call quickrun#module#register(s:hook, 1)
 unlet s:hook
 " }}}
 
-" languages 
+" languages
 let s:config = {
       \ 'c': {'type': 'c/clang'},
       \ 'cpp': {'type': 'cpp/clang'},
