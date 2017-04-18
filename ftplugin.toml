@@ -62,7 +62,7 @@ _ = '''
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
 
     " b:undo_ftpluginに '| |'があると起動時に:printされる
-    au FileType * let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g')
+    au myac FileType * if exists('b:undo_ftplugin') | let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g') | endif
 '''
 
 c = '''

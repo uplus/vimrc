@@ -1,31 +1,31 @@
-command! Recache call dein#clear_state() | call dein#recache_runtimepath() | echo 'Cached!'
-command! Install call dein#install()
-command! Clear   call dein#clear_state()
-command! Update  call dein#update()
-command! Q qall!
-command! W w!
-command! Sh update | shell
-command! Terminal execute 'terminal' $SHELL
-command! ReloadKeymap source ~/.vim/keymap.vim
-command! Tig execute "silent! !tig status" | redraw!
-command! TmpCommit !git tmpc
-command! WWW w !sudo tee > /dev/null %
-command! Cdbuffer cd %:h
-command! Lcdbuffer lcd %:h
-command! -nargs=? Ls !ls -F --color=always <args>
-command! -nargs=+ Cal echo eval(<q-args>)
-command! Zatof normal! 0diwf=cl()lxC{Px>>o}
-command! Narrow set laststatus=0 cmdheight=1 showtabline=0
-command! -nargs=* Job call jobstart(<q-args>)
-command! -nargs=1 Char echo printf("%c", 0x<args>)
-command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
-command! FcitxOff call system('fcitx-remote -c')
-command! Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
 command! -nargs=1 SetTab
       \ let &l:tabstop=<args> |
       \ let &l:softtabstop = &l:tabstop |
       \ let &l:shiftwidth = &l:tabstop
+command! Terminal execute 'terminal' $SHELL
+command! Q qall!
+command! W w!
+command! WWW w !sudo tee > /dev/null %
+command! Rmswap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
+command! FcitxOff call system('fcitx-remote -c')
+command! -nargs=+ Cal echo eval(<q-args>)
+command! -nargs=1 Char echo printf("%c", 0x<args>)
+command! Cdbuffer cd %:h
+command! Lcdbuffer lcd %:h
+command! -nargs=* Job call jobstart(<q-args>)
 
+command! Recache call dein#clear_state() | call dein#recache_runtimepath() | echo 'Cached!'
+command! Install call dein#install()
+command! Clear   call dein#clear_state()
+command! Update  call dein#update()
+
+command! Narrow set laststatus=0 cmdheight=1 showtabline=0
+command! ReloadKeymap source ~/.vim/keymap.vim
+command! Tig execute "silent! !tig status" | redraw!
+command! TmpCommit !git tmpc
+command! -nargs=? Ls !ls -F <args>
+command! Zatof normal! 0diwf=cl()lxC{Px>>o}
+command! Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
