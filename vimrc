@@ -130,6 +130,20 @@ augroup myac
     au FocusLost * call DoAutoSave()
   endif
 
+  au Syntax * syn match BadSpace /\s\+$\|^\s*\%$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000/
+  au VimEnter,WinEnter * call s:badspace()
+  au InsertEnter * hi clear BadSpace
+  au InsertLeave,VimEnter,ColorScheme * hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
+
+  function! s:badspace() abort
+    if exists('w:badspace_id')
+      call matchdelete(w:badspace_id)
+    endif
+    " matchだと1つしかハイライトできない
+    " ファイル末尾はシンタックスじゃできない
+    let w:badspace_id =  matchadd('BadSpace', '^\s*\%$')
+  endfunction
+
   " nohlsearchする代わりに出力が常に消える
   " visual modeがバグる
   " au CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")

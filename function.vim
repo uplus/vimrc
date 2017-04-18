@@ -84,6 +84,7 @@ function! Filename() abort
   return expand('%:t:r')
 endfunction
 
+" TODO rubyが動かない -> Vital.Random
 function! DummyArray(start, last, times) abort
   return Ruby(printf("print Array.new(%d){ Random.rand(%d..%d)}.join(', ')", a:times, a:start, a:last))
 endfunction
