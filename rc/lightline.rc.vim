@@ -111,8 +111,9 @@ function! LLgit() abort
   endif
 
   let tmp = gitgutter#hunk#summary('%')
-  let summary = printf('+%d ~%d -%d', tmp[0], tmp[2], tmp[2])
-  return printf('%s  %s', summary, fugitive#head())
+  " let summary = printf('+%d ~%d -%d', tmp[0], tmp[2], tmp[2])
+  let summary = '±' . (tmp[0]+tmp[1]+tmp[2])
+  return printf(' %s %s', fugitive#head(), summary)
 endfunction
 
 " unicode symbols

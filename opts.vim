@@ -102,7 +102,7 @@ set commentstring=#\ %s
 set backspace=start,eol,indent
 set whichwrap=b,s,[,],<,>,h,l
 
-set iskeyword+=$,@-@ 
+set iskeyword+=$,@-@
 
 " #menu
 set wildoptions=tagfile " Can supplement a tag in a command-line.
@@ -135,8 +135,9 @@ set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 set fillchars=vert:\|
 
 set list
-" trail:❮,
 set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%
+" http://unicode-table.com/en/2A20/
+" ❯ ❮ ⊳ ▶ ◇ ± ◈ ▷ ➤ ⟫ ⥀ ⥁ 
 
 if has('diff')
   set diffopt=filler,context:2,vertical,foldcolumn:0
