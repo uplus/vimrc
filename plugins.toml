@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-rtp = ''
+# rtp = ''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -88,12 +88,6 @@ on_source = 'unite.vim'
 # repo = 'osyo-manga/unite-airline_themes'
 # on_source = 'unite.vim'
 
-# [[plugins]]
-# repo = 'itchyny/lightline.vim'
-
-[[plugins]]
-repo = 't9md/vim-ezbar'
-
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
 on_source = 'unite.vim'
@@ -116,6 +110,16 @@ repo = 'gutenye/json5.vim'
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+hook_add = '''
+  let g:cpp_class_scope_highlight = 1
+  let g:cpp_member_variable_highlight = 1
+  let g:cpp_experimental_simple_template_highlight = 1
+  let g:cpp_experimental_template_highlight = 1
+  let g:cpp_concepts_highlight = 1
+  " let c_no_curly_error=1
+'''
 
 [[plugins]]
 repo = 'powerman/vim-plugin-AnsiEsc'
@@ -126,9 +130,21 @@ hook_add = '''
 # [[plugins]]
 # repo = 'bling/vim-airline'
 
+# [[plugins]]
+# repo = 'vim-airline/vim-airline-themes'
+# depends = 'vim-airline'
+
 [[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-hook_add = 'source ~/.vim/rc/lightline.rc.vim'
+repo = 'itchyny/lightline.vim'
+# hook_add = 'source ~/.vim/rc/lightline.rc.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline-powerful'
+depends=  'lightline.vim'
+
+# [[plugins]]
+# repo = 't9md/vim-ezbar'
+# hook_add = 'source ~/.vim/rc/ezbar.rc.vim'
 
 
 #action

@@ -282,6 +282,18 @@ hook_source = '''
   let g:gist_clip_command = 'xclip -selection clipboard'
 '''
 
+[[plugins]]
+repo = 'junegunn/vim-github-dashboard'
+# repo = 'uplus/vim-github-dashboard'
+on_cmd = ['GHDashboard', 'GHActivity']
+hook_add = '''
+  let g:github_dashboard = {
+    \ 'username': 'uplus',
+    \ 'position': 'tab',
+    \ }
+'''
+
+
 #web
 
 [[plugins]]
