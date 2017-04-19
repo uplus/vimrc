@@ -97,30 +97,31 @@ hi cType                 cterm=bold      ctermfg=71  gui=bold     guifg=#2681df
 hi link cStructure cType
 hi link cConditional cType
 
-hi cPreProc   guifg=#5ace01
+hi cPreProc ctermfg=76  guifg=#5ace01
 hi link cInclude cPreProc
 hi link cDefine cPreProc
 hi link cPreCondit cPreProc
 hi link cPreConditMatch cPreProc
 hi link cOctalZero cPreProc
-hi cNumber guifg=#40dfaf
-hi link cOctal cNumber
-hi cFloat  guifg=#40cfff
 
-hi cString guifg=#f0ab05
+hi cNumber ctermfg=79 guifg=#40dfaf
+hi link cOctal cNumber
+hi cFloat  ctermfg=81 guifg=#40cfff
+
+hi cString ctermfg=214 guifg=#f0ab05
 hi link cIncluded cString
 hi link cCommentString cString
 hi link cComment2String cString
 
-hi cSpecial guifg=#abff01 
+hi cSpecial ctermfg=154 guifg=#abff01
 hi link cFormat cSpecial
 
-hi cComment guifg=#8888a0
+hi cComment ctermfg=103 guifg=#8888a0
 hi link cCommentL cComment
 hi link cCommentStart cComment
 hi link cCommentSkip cComment
 hi link cCommentError cComment
-             
+
 
 " highlight modes
 autocmd CmdwinLeave * hi User1      ctermbg=236 guibg=#303030
@@ -137,28 +138,28 @@ autocmd InsertLeave * hi StatusLine ctermbg=236 guibg=#303030
 autocmd InsertEnter * hi StatusLine ctermbg=52  guibg=#5f0000
 
 
-" cBlock                              
+" cBlock
 " cBracket                            cOperator
 " cCharacter                          cParen
 " cParenError
 " cPreCondit
 " cPreConditMatch
-" cCurlyError              
+" cCurlyError
 " cRepeat
 " cErrInBracket            cSpaceError
-" cErrInParen              
-" CompletePlaceHolder      cError                   
-" CompletePlaceHolderEnds  
+" cErrInParen
+" CompletePlaceHolder      cError
+" CompletePlaceHolderEnds
 " cConstant                cStatement
 " cStorageClass
-" ConflictMarker                       
-" cLabel                   
-" cMulti                   
+" ConflictMarker
+" cLabel
+" cMulti
 " cTodo
 " cUserCont
-" cBadBlock                            
+" cBadBlock
 " cUserLabel
-" cBadContinuation                     
+" cBadContinuation
 
 " cCppOutIf
 " cCppBracket
@@ -169,13 +170,13 @@ autocmd InsertEnter * hi StatusLine ctermbg=52  guibg=#5f0000
 " cCppInWrapper
 " cCppOut
 " cCppOutElse
-" cCppParen  
-" cCppSkip   
-" cCppString 
-" cCppOutIf2    
-" cCppOutSkip   
+" cCppParen
+" cCppSkip
+" cCppString
+" cCppOutIf2
+" cCppOutSkip
 " cCppOutWrapper
-" 
+"
 " cBitField
 " cNumbers
 " cNumbersCom
