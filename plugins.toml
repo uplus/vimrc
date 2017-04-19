@@ -291,7 +291,7 @@ repo = 'Shougo/neoinclude.vim'
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
-if = "!has('nvim')"
+if = "!has('nvim') && has('lua')"
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]

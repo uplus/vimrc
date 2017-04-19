@@ -82,16 +82,16 @@ function! s:set_highlights() "{{{
   endif
 
   if g:colors_name == 'PaperColor'
-    hi PmenuSel          ctermfg=232  ctermbg=30    cterm=NONE guifg=#080808 guibg=#008787 gui=NONE
-    hi Normal                         ctermbg=234              guibg=#1c1c1c
+    hi PmenuSel          ctermfg=255  ctermbg=30   guifg=#ffffff guibg=#008787 cterm=NONE gui=NONE
+    hi Normal                         ctermbg=234                guibg=#1c1c1c
     hi LineNr            ctermfg=244               guifg=#808080
     hi CursorColumn                   ctermbg=235                guibg=#262626
     hi SpecialKey        ctermfg=46                guifg=#00ff00
     hi Comment           ctermfg=111               guifg=#87afff
     hi Number            ctermfg=75                guifg=#5fafff
-    hi Folded            ctermfg=84   ctermbg=0    guifg=#8fe801  guibg=#000000
+    hi Folded            ctermfg=84   ctermbg=0    guifg=#8fe801 guibg=#000000
     hi FoldColumn        ctermfg=190               guifg=#e6ff01
-    hi StatusLine        ctermfg=118  ctermbg=234  cterm=NONE    guifg=#87ff00 guibg=#1c1c1c gui=NONE
+    hi StatusLine        ctermfg=118  ctermbg=234  guifg=#87ff00 guibg=#1c1c1c cterm=NONE gui=NONE
     hi WildMenu          ctermfg=16   ctermbg=118  guifg=#000000 guibg=#87ff00
 
     hi mkdLineBreak      ctermbg=240 guibg=#585858

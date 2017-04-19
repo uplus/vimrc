@@ -84,6 +84,7 @@ if dein#tap('vim-operator-surround') "{{{
   nmap S <Plug>(vim-original-visual)<Plug>(vim-original-tail)<Plug>(operator-surround-append)
   nmap saw saaw
   nmap saW saaW
+  nmap saL saiL
 endif "}}}
 "}}}
 
@@ -220,7 +221,7 @@ if dein#tap('vimshell.vim') "{{{
   let g:vimshell_interactive_interpreter_commands.ruby   = 'pry'
 endif "}}}
 
-if dein#tap('neocomplete.vim') && has('lua') "{{{
+if dein#tap('neocomplete.vim') "{{{
   let g:loaded_deoplete = 1
   let g:neocomplete#enable_at_startup = 1
   let g:neopairs#enable = 1
