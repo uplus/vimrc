@@ -69,6 +69,13 @@ _ = '''
 c = '''
   SetTab 4
   setl commentstring=//\ %s
+  let b:format_cmd = 'ClangFormat'
+'''
+
+cpp = '''
+  SetTab 4
+  setl commentstring=//\ %s
+  let b:format_cmd = 'ClangFormat'
 '''
 
 diff = '''
