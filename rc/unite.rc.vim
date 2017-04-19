@@ -176,6 +176,7 @@ function! s:unite_config()
   nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
   nnoremap <silent><buffer><expr>r unite#do_action('replace')
   " nnoremap <buffer> <c-p> :<c-p> " c-pは使う
+  imap <buffer><c-n> <Plug>(unite_select_next_line)<Plug>(unite_select_next_line)
   nmap <silent><buffer>R *r
 
   inoremap <silent><buffer><expr><c-g>t unite#do_action('tabopen')

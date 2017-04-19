@@ -84,12 +84,15 @@ on_source = 'unite.vim'
 repo = 'Kocha/vim-unite-tig'
 on_source = 'unite.vim'
 
-[[plugins]]
-repo = 'osyo-manga/unite-airline_themes'
-on_source = 'unite.vim'
+# [[plugins]]
+# repo = 'osyo-manga/unite-airline_themes'
+# on_source = 'unite.vim'
+
+# [[plugins]]
+# repo = 'itchyny/lightline.vim'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 't9md/vim-ezbar'
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'

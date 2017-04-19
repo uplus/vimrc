@@ -154,7 +154,7 @@ if !has('gui_running')
   set t_Co=256
 endif
 set background=dark
-if exists('+termguicolors') && $COLORTERM ==# 'truecolor'
+if has('termguicolors') && $COLORTERM ==# 'truecolor'
   set termguicolors
 endif
 
