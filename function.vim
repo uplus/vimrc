@@ -82,3 +82,11 @@ endfunction
 function! Filename() abort
   return expand('%:t:r')
 endfunction
+
+function! Format() abort
+  EraseSpace
+
+  if exists('b:format_cmd')
+    execute b:format_cmd
+  endif
+endfunction

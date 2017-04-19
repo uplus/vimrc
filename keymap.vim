@@ -57,7 +57,7 @@ xnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 1)<CR>
 "}}}
 
 nnoremap <silent><Plug>(delete_for_match) :<c-u>call vimrc#delete_for_match()<cr>
-nnoremap =<cr> :<c-u>call EraseSpace()<cr>
+nnoremap =<cr> :<c-u>call Format()<cr>
 
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
 nnoremap <silent>,gt :Tig<cr>
