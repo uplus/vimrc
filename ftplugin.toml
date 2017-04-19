@@ -104,7 +104,7 @@ go = '''
   SetTab 4
   setl noexpandtab
   highlight default link goErr WarningMsg
-  match goErr /\<err\>/
+  au myac Syntax <buffer> syn keyword goErr err
   let b:format_cmd = 'Fmt'
 '''
 

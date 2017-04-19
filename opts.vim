@@ -135,9 +135,9 @@ set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 set fillchars=vert:\|
 
 set list
-set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%
+set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%, " trail:␣
 " http://unicode-table.com/en/2A20/
-" ❯ ❮ ⊳ ▶ ◇ ± ◈ ▷ ➤ ⟫ ⥀ ⥁ 
+" ❯ ❮ ⊳ ▶ ◇ ± ◈ ▷ ➤ ⟫ ⥀ ⥁ ␣
 
 if has('diff')
   set diffopt=filler,context:2,vertical,foldcolumn:0

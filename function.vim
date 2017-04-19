@@ -68,7 +68,8 @@ function! ResetHightlights() abort
   silent! LinediffReset
   silent! QuickhlManualReset
   silent! RCReset
-  call clearmatches()
+  silent! HierClear
+  " call clearmatches()
 endfunction
 
 command! HTMLalign call HTMLalign()
