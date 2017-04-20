@@ -5,7 +5,7 @@
 
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['git', 'readonly', 'filename', 'modified']],
+      \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly', 'modified']],
       \     'right': [['cursor'], ['filetype'], ['fileencoding']]
       \   },
       \   'inactive': {
@@ -71,9 +71,7 @@ let g:lightline = {
       \ }
 
 " TODO vim-cloverの状態を表示したい
-" per line/maxline col
 " 幅があったらディレクトリ
-" branch
 " bufline
 " submode
 " repeat
@@ -88,7 +86,7 @@ let g:lightline = {
       " \ 'calendar' : "strftime('%Y/%m/%d')",
       " \ 'github-dashboard': "''",
       " \ '[Command Line]': "''",
-  " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
+      " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
 function! LLmode() abort
   return  &ft == 'unite' ? 'Unite' :
@@ -115,15 +113,25 @@ function! LLcursor() abort
 endfunction
 
 function! LLgit() abort
-  if !(exists('g:loaded_gitgutter') && exists('g:loaded_fugitive'))
+  if !exists('g:loaded_fugitive')
     return  ''
   endif
+  let status = fugitive#head()
+  if status ==# ''
+    return ''
+  endif
 
-  let tmp = gitgutter#hunk#summary('%')
-  " let summary = printf('+%d ~%d -%d', tmp[0], tmp[2], tmp[2])
-  let summary = '±' . (tmp[0]+tmp[1]+tmp[2])
-  return printf(' %s %s', fugitive#head(), summary)
+  if exists('g:loaded_gitgutter')
+    let tmp = gitgutter#hunk#summary('%')
+    let status .= ' ±' . (tmp[0]+tmp[1]+tmp[2])
+  endif
+
+  return ' ' . status
 endfunction
+
+
+
+finish
 
 " unicode symbols
 let g:airline_symbols = {}
@@ -154,8 +162,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-
-finish
 
 let g:lightline = extend(get(g:, 'lightline', {}), {
       \ 'active': {
@@ -230,7 +236,7 @@ let s:e = {
       \ }
 
 let s:f = [ 'ControlP', '__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail' ]
-let s:ro = s:utf ? "\u2b64" : 'RO'
+
 function! lightline_powerful#filename() abort
   let f = expand('%:t')
   if has_key(b:, 'lightline_filename') && get(b:, 'lightline_filename_', '') ==# f . &mod . &ma && index(s:f, &ft) < 0 && index(s:f, f) < 0
@@ -244,6 +250,7 @@ endfunction
 
 let s:fu = s:utf ? "\u2b60 " : ''
 function! lightline_powerful#gitbranch() abort
+  " TODO using cache here
   if has_key(b:, 'lightline_gitbranch') && reltimestr(reltime(b:lightline_gitbranch_)) =~# '^\s*0\.[0-3]'
     return b:lightline_gitbranch
   endif

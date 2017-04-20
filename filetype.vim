@@ -7,9 +7,9 @@ augroup my_filetypedetect
 
   " for ftplugin.toml
   au FileType toml if expand('%:p') =~# expand('~/.vim') |
-        \ let b:context_filetype_filetypes = {'toml': [ 
-        \   { 'start': '\s*=\s*\('."'''".'\|"""\)',  
-        \     'end': '\1', 'filetype': 'vim', },  
+        \ let b:context_filetype_filetypes = {'toml': [
+        \   { 'start': '\s*=\s*\('."'''".'\|"""\)',
+        \     'end': '\1', 'filetype': 'vim', },
         \ ]} |
         \ endif
 augroup END
