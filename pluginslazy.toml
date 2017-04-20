@@ -373,10 +373,47 @@ hook_add = '''
 [[plugins]]
 repo = 'mbbill/undotree'
 on_cmd = ['UndotreeToggle', 'UndotreeShow']
+hook_add = '''
+  let g:undotree_WindowLayout = 3
+  function g:Undotree_CustomMap()
+    nmap <buffer> k <plug>UndotreeGoNextState
+    nmap <buffer> j <plug>UndotreeGoPreviousState
+    " nmap <buffer> K <plug>UndotreeGoNextSaved
+    " nmap <buffer> J <plug>UndotreeGoPreviousState
+  endfunc
+'''
 
 [[plugins]]
 repo = 'sjl/gundo.vim'
+# repo = 'dsummersl/gundo.vim'
 on_cmd = ['GundoToggle', 'GundoShow']
+hook_add = '''
+  nnoremap ,ug :GundoToggle<cr>
+
+  let g:gundo_right = 1
+  " let g:gundo_preview_bottom = 1
+  let g:gundo_width = float2nr(winwidth('')*0.24)
+  let g:gundo_preview_height = 20
+
+  let g:gundo_help = 0
+  " let gundo_disable
+  let g:gundo_map_move_older = 'j'
+  let g:gundo_map_move_newer = 'k'
+  " let gundo_close_on_revert = 0
+  " let gundo_preview_statusline
+  " let gundo_tree_statusline
+  let g:gundo_auto_preview = 1
+  " let gundo_playback_delay = 60
+  let g:gundo_return_on_revert = 0
+  " let g:gundo_prefer_python3 = 1
+
+  " dsummersl
+  " let g:gundo_verbose_graph    = 1
+  " let g:gundo_playback_delay   = 1
+  " let g:gundo_mirror_graph     = 1
+  " let g:gundo_inline_graph     = 0
+'''
+
 
 [[plugins]]
 repo = 'rbtnn/vimconsole.vim'

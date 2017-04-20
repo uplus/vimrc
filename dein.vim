@@ -711,25 +711,6 @@ if dein#tap('linediff.vim') "{{{
   " let g:linediff_indent = 1
 endif "}}}
 
-if dein#tap('gundo.vim') "{{{
-  let g:gundo_width            = 45
-  let g:gundo_preview_height   = 15 " defo 15
-  let g:gundo_preview_bottom   = 0
-  let g:gundo_right            = 1
-  let g:gundo_help             = 1
-  let g:gundo_map_move_older   = "j"
-  let g:gundo_map_move_newer   = "k"
-  let g:gundo_close_on_revert  = 0
-  let g:gundo_return_on_revert = 1
-  let g:gundo_auto_preview     = 0 " defo 1
-  let g:gundo_verbose_graph    = 1
-  let g:gundo_playback_delay   = 1
-  let g:gundo_mirror_graph     = 1
-  let g:gundo_inline_graph     = 0
-
-  nnoremap ,ug :GundoToggle<CR>
-endif "}}}
-
 if dein#tap('shaberu.vim') "{{{
   command! -nargs=1 Say ShaberuSay <args>
   let g:shaberu_user_define_say_command = 'jsay "%%TEXT%%"'
