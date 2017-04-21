@@ -10,6 +10,7 @@ let g:deoplete#auto_complete_start_length = 1 " 2
 " let g:deoplete#delimiters = ['/'] " ['/']
 " let g:deoplete#auto_complete_delay = 150 " 50
 let g:deoplete#skip_chars = ['(', ')']
+let g:deoplete#file#enable_buffer_path = 1
 
 let g:deoplete#ignore_sources = {'_': ['tag']}
 " スニペット候補が出なくなる

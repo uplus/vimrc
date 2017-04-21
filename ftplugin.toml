@@ -119,6 +119,7 @@ help = '''
   setl nofoldenable
   setl foldcolumn=0
   setl number
+  setl iskeyword+=-
 '''
 
 html = '''
