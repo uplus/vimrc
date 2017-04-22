@@ -266,9 +266,21 @@ hook_post_source = 'OverCommandLineNoremap <CR> <CR>'
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
 depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
-hook_source = '''
+hook_add = '''
+  let g:watchdogs_check_BufWritePost_enable = 1
+  " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
+  let g:watchdogs_check_CursorHold_enable = 0
+  let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+
+  command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
   command! WatchdogsC89 let b:watchdogs_checker_type = 'watchdogs_checker/c89'
+
   au myac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
+'''
+hook_post_source = '''
+  if dein#is_sourced('lightline.vim')
+    au watchdogs-plugin BufWritePost * call lightline#update()
+  endif
 '''
 
 [[plugins]]

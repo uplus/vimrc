@@ -6,7 +6,7 @@
 let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['git'], ['filename', 'readonly',],],
-      \     'right': [['cursor'], ['filetype'], ['fileencoding'],]
+      \     'right': [['cursor'], ['filetype'], ['fileencoding',  'syntax_check']]
       \   },
       \   'inactive': {
       \     'left': [['filename']],
@@ -138,6 +138,15 @@ function! LLgit() abort "{{{
   return ' ' . status
 endfunction "}}}
 
+function! LLsyntax_check() abort
+  let errs = filter(getqflist(), 'v:val.bufnr == ' . bufnr('%'))
+  let num = len(errs)
+  if num == 0
+    return ''
+  endif
+  let e = errs[0]
+  return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
+endfunction
 
 
 finish

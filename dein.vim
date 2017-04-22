@@ -349,15 +349,6 @@ if dein#tap('syntastic') "{{{
 
 endif "}}}
 
-if dein#tap('vim-watchdogs') "{{{
-  let g:watchdogs_check_BufWritePost_enable = 1
-  " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
-  let g:watchdogs_check_CursorHold_enable = 0
-  let g:watchdogs_check_BufWritePost_enable_on_wq = 0
-
-  command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
-endif "}}}
-
 if dein#tap('committia.vim') "{{{
   let g:committia_open_only_vim_starting = 1
   let g:committia_hooks = {}
