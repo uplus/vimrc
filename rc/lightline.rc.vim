@@ -83,10 +83,10 @@
 " bufline
 " submode
 " buftype preview quickfix diff
+" gundo
 " コンポーネントから他のコンポーネントをいじる
   " 無効
   " 色
-  " gundo
       " \ 'vimfiler' : 'vimfiler#get_status_string()',
       " \ 'unite' : 'unite#get_status_string()',
       " \ 'calendar' : "strftime('%Y/%m/%d')",
@@ -97,7 +97,7 @@
 au myac VimEnter * call timer_start(100, {-> lightline#update()})
 
 function! LLfilename() abort
-  return bufname('%')
+  return bufname('%') . (&modified? ' +': '')
 endfunction
 
 function! LLmode() abort
