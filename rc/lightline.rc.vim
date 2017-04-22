@@ -1,16 +1,14 @@
-﻿
-" readonly modifiable
-" カラースキームで定義されてる数だけ色が使える?
-" component_expand使えばピンポイントカラー&隠せる
+﻿let s:orange = ['#ef5939', 166]
+let s:gray = ['#657b83', 236]
 
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['git'], ['filename', 'readonly',],],
+      \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly',],],
       \     'right': [['cursor'], ['filetype'], ['fileencoding',  'syntax_check']]
       \   },
       \   'inactive': {
       \     'left': [['filename']],
-      \     'right': [['cursor', 'filetype']]
+      \     'right': [['cursor'], ['filetype']]
       \   },
       \   'tabline': {
       \     'left': [['tabs']],
@@ -20,6 +18,7 @@ let g:lightline = {
       \     'active': ['tabnum', 'filename', 'modified'],
       \     'inactive': ['tabnum', 'filename', 'modified']
       \   },
+      \
       \   'component': {
       \     'absolutepath': '%F', 'relativepath': '%f', 'filename': '%t', 'modified': '%M', 'bufnum': '%n',
       \     'paste': '%{&paste?"PASTE":""}',
@@ -35,19 +34,25 @@ let g:lightline = {
       \   },
       \   'component_function': {
       \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
-      \     'cursor': 'LLcursor', 'git': 'LLgit',
+      \     'cursor': 'LLcursor',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
       \     'tabs': 'lightline#tabs',
+      \     'git': 'LLgit',
+      \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
       \     'tabs': 'tabsel', 'close': 'raw',
+      \     'git': 'warning',
+      \     'syntax_check': 'error',
       \   },
       \   'tab_component': {},
       \   'tab_component_function': {
-      \     'filename': 'lightline#tab#filename', 'modified': 'lightline#tab#modified',
-      \     'readonly': 'lightline#tab#readonly', 'tabnum': 'lightline#tab#tabnum',
+      \     'filename': 'lightline#tab#filename',
+      \     'modified': 'lightline#tab#modified',
+      \     'readonly': 'lightline#tab#readonly',
+      \     'tabnum': 'lightline#tab#tabnum',
       \   },
       \   'mode_map': {
       \     'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 't': 'T',
@@ -64,14 +69,21 @@ let g:lightline = {
       \     'c': 'command', 's': 'select', 'S': 'select', "\<C-s>": 'select', 't': 'terminal',
       \   },
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
-      \   'palette': {},
+      \
+      \   'palette': {'git': [s:orange, s:gray], 'normal': {'git': [s:orange, s:gray]}},
       \   'winwidth': winwidth(0),
       \   'colorscheme': 'solarized',
       \ }
 
 " default(powerline) molokai  darcula solarized
 
-" TODO vim-cloverの状態を表示したい
+" 'git': [[ '#dadada', '#121212', 253, 233 ]], 'solarized': {'normal': {}}, 'normal': {}
+" let g:lightline.palette.solarized.normal.git = [[s:orange, s:gray]]
+" let lightline#colorscheme#solarized#palette.normal.git = [[s:orange, s:gray]]
+
+" カラースキームで定義されてる数だけ色が使える?
+" component_expand使えばピンポイントカラー&隠せる -> need lightline#update()
+
 " 幅があったらディレクトリ
 " bufline
 " submode
@@ -80,13 +92,14 @@ let g:lightline = {
   " 無効
   " 色
   " gundo
-  " airline/extensionsが参考になる
       " \ 'vimfiler' : 'vimfiler#get_status_string()',
       " \ 'unite' : 'unite#get_status_string()',
       " \ 'calendar' : "strftime('%Y/%m/%d')",
       " \ 'github-dashboard': "''",
       " \ '[Command Line]': "''",
       " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
+
+au myac VimEnter * call timer_start(100, {-> lightline#update()})
 
 function! LLmode() abort
   return  &ft == 'unite' ? 'Unite' :
@@ -151,43 +164,10 @@ endfunction
 
 finish
 
-" unicode symbols
-let g:airline_symbols = {}
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
 
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-let g:lightline = extend(get(g:, 'lightline', {}), {
+let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'filename' ] ],
-      \   'right': [ [ 'syntastic_error', 'syntastic_warning', 'lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'filename' ] ],
-      \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
+      \   'right': [ [ 'syntastic_error', 'syntastic_warning'], ]
       \ },
       \ 'tabline': {
       \   'left': [ [ 'tabs' ] ],
@@ -265,22 +245,6 @@ function! lightline_powerful#filename() abort
   return b:lightline_filename
 endfunction
 
-let s:fu = s:utf ? "\u2b60 " : ''
-function! lightline_powerful#gitbranch() abort
-  " TODO using cache here
-  if has_key(b:, 'lightline_gitbranch') && reltimestr(reltime(b:lightline_gitbranch_)) =~# '^\s*0\.[0-3]'
-    return b:lightline_gitbranch
-  endif
-  if exists('*gitbranch#name')
-    let branch = gitbranch#name()
-  else
-    return ''
-  endif
-  let b:lightline_gitbranch = branch !=# '' ? s:fu.branch : ''
-  let b:lightline_gitbranch_ = reltime()
-  return b:lightline_gitbranch
-endfunction
-
 let s:m = { 'ControlP': 'CtrlP', '__Tagbar__': 'Tagbar', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview', '[Command Line]': 'Command Line'}
 let s:p = { 'unite': 'Unite', 'vimfiler': 'VimFiler', 'vimshell': 'VimShell', 'quickrun': 'Quickrun', 'dictionary': 'Dictionary', 'calendar': 'Calendar', 'thumbnail': 'Thumbnail', 'vimcalc': 'VimCalc', 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit', 'qf': 'QuickFix', 'github-dashboard': 'GitHub Dashboard' }
 function! lightline_powerful#mode() abort
@@ -299,19 +263,6 @@ endfunction
 let g:tagbar_status_func = 'lightline_powerful#TagbarStatusFunc'
 function! lightline_powerful#TagbarStatusFunc(current, sort, fname, ...) abort
   let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
-
-let g:ctrlp_status_func = { 'main': 'lightline_powerful#CtrlPStatusFunc_1', 'prog': 'lightline_powerful#CtrlPStatusFunc_2' }
-function! lightline_powerful#CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked) abort
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! lightline_powerful#CtrlPStatusFunc_2(str) abort
   return lightline#statusline(0)
 endfunction
 
@@ -354,4 +305,7 @@ endfunction
 " ☠ ☢ ☺
 " ☡ warning
 " ♫ ⚠ ⚡☣
-" 🔑
+" Ꞩ ∄ Ξ 
+" » « ▶ ◀
+" ␊ ␤
+" 🔒 🔑
