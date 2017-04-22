@@ -1,16 +1,16 @@
-
+﻿
 " readonly modifiable
 " カラースキームで定義されてる数だけ色が使える?
 " component_expand使えばピンポイントカラー&隠せる
 
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly', 'modified']],
-      \     'right': [['cursor'], ['filetype'], ['fileencoding']]
+      \     'left': [['mode', 'paste'], ['git'], ['filename', 'readonly',],],
+      \     'right': [['cursor'], ['filetype'], ['fileencoding'],]
       \   },
       \   'inactive': {
       \     'left': [['filename']],
-      \     'right': [['cursor']]
+      \     'right': [['cursor', 'filetype']]
       \   },
       \   'tabline': {
       \     'left': [['tabs']],
@@ -31,7 +31,6 @@ let g:lightline = {
       \     'close': '%999X X ',
       \   },
       \   'component_visible_condition': {
-      \     'modified': '&modified || !&modifiable',
       \     'paste': '&paste', 'spell': '&spell',
       \   },
       \   'component_function': {
@@ -50,7 +49,6 @@ let g:lightline = {
       \     'filename': 'lightline#tab#filename', 'modified': 'lightline#tab#modified',
       \     'readonly': 'lightline#tab#readonly', 'tabnum': 'lightline#tab#tabnum',
       \   },
-      \   'colorscheme': 'default',
       \   'mode_map': {
       \     'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 't': 'T',
       \     'v': 'V', 'V': 'V', "\<C-v>": 'V',
@@ -68,19 +66,21 @@ let g:lightline = {
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \   'palette': {},
       \   'winwidth': winwidth(0),
+      \   'colorscheme': 'solarized',
       \ }
+
+" default(powerline) molokai  darcula solarized
 
 " TODO vim-cloverの状態を表示したい
 " 幅があったらディレクトリ
 " bufline
 " submode
-" repeat
+" buftype preview quickfix diff
 " コンポーネントから他のコンポーネントをいじる
   " 無効
   " 色
   " gundo
   " airline/extensionsが参考になる
-
       " \ 'vimfiler' : 'vimfiler#get_status_string()',
       " \ 'unite' : 'unite#get_status_string()',
       " \ 'calendar' : "strftime('%Y/%m/%d')",
@@ -105,14 +105,23 @@ function! LLfileencoding() abort
 endfunction
 
 function! LLreadonly() abort
-  return &readonly? '': ''
+  " TODO &modified || !&modifiable, airlineみたいに色を変えたい
+  if &ft =~# 'help\|undotree\|gundo\|vimfiler\|unite\|denite'
+    return ''
+  endif
+
+  return &buftype !=# '' ? '':
+        \ !&modifiable ? '🔐':
+        \ !filewritable(expand('%')) ? '☢':
+        \ &readonly? '':
+        \ ''
 endfunction
 
 function! LLcursor() abort
   return printf('%3d/%d %2d', line('.'), line('$'), col('.'))
 endfunction
 
-function! LLgit() abort
+function! LLgit() abort "{{{
   if !exists('g:loaded_fugitive')
     return  ''
   endif
@@ -127,7 +136,7 @@ function! LLgit() abort
   endif
 
   return ' ' . status
-endfunction
+endfunction "}}}
 
 
 
@@ -161,7 +170,6 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-
 
 let g:lightline = extend(get(g:, 'lightline', {}), {
       \ 'active': {
@@ -332,3 +340,9 @@ function! lightline_powerful#syntasticwarning() abort
   endif
   return ''
 endfunction
+
+" 🕱  "U+1F系は表示がずれる
+" ☠ ☢ ☺
+" ☡ warning
+" ♫ ⚠ ⚡☣
+" 🔑
