@@ -555,6 +555,7 @@ function! vimrc#add_gui_color() range abort "{{{
     end
     call setline(linenum, line . ' ' . vimrc#get_add_gui_color(line))
   endfor
+  silent! call repeat#set(":call vimrc#add_gui_color()\<cr>", a:lastline - a:firstline)
 endfunction "}}}
 
 function! vimrc#get_add_gui_color(line) abort "{{{

@@ -85,8 +85,8 @@ if dein#tap('vim-operator-surround') "{{{
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
   nmap S <Plug>(vim-original-visual)<Plug>(vim-original-tail)<Plug>(operator-surround-append)
-  nmap saw saaw
-  nmap saW saaW
+  " nmap saw saaw
+  " nmap saW saaW
   nmap saL saiL
 endif "}}}
 "}}}
