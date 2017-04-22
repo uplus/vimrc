@@ -420,36 +420,42 @@ if dein#tap('vim-easymotion') "{{{
   let g:EasyMotion_do_mapping       = 0
   let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'
   let g:EasyMotion_use_upper        = 0
+  let g:EasyMotion_smartcase        = 1
   let g:EasyMotion_leader_key       = ';'
+  let g:EasyMotion_skipfoldedline   = 1
+  let g:EasyMotion_do_shade         = 1
   let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
   let g:EasyMotion_space_jump_first = 1 " Space jump to first match
-  let g:EasyMotion_smartcase        = 1
   let g:EasyMotion_add_search_history = 0
+  let g:EasyMotion_prompt           = '{n}> '
+  let g:EasyMotion_cursor_highlight = 0
 
-  function! s:easymotion_highlight()
-    hi EasyMotionTarget ctermfg=40
+  au myac ColorScheme,VimEnter * call s:easymotion_highlight()
+  function! s:easymotion_highlight() "{{{
+    hi EasyMotionTarget        ctermfg=220 guifg=#ffd700
+    hi EasyMotionTarget2First  ctermfg=220 guifg=#ffd700
+    hi EasyMotionTarget2Second ctermfg=46  guifg=#00ff00
+  endfunction "}}}
 
-    " highlight of first char when 2loop.
-    hi EasyMotionTarget2First ctermfg=220
-
-    " highlight of second char when 2loop.
-    hi EasyMotionTarget2Second ctermfg=220
-  endfunction
-
-  call s:easymotion_highlight()
-  au myac ColorScheme * call s:easymotion_highlight()
-
-  " <Plug>(easymotion-sn) 複数文字入力で絞り込み
   " <Plug>(easymotion-lineanywhere) current line上のwordの初めと終わりを選択して飛ぶ
   " <Plug>(easymotion-jumptoanywhere) スクリーン上のwordの初めと終わりを選択して飛ぶ
 
+  map ;h <Plug>(easymotion-linebackward)
+  map ;l <Plug>(easymotion-lineforward)
   map ;j <Plug>(easymotion-j)
   map ;k <Plug>(easymotion-k)
+  nmap ;L <Plug>(easymotion-overwin-line)
+
   map ;; <Plug>(easymotion-s2)
-  map ;f <Plug>(easymotion-sl2)
-  " map ;t <Plug>(easymotion-repeat)
+  " map ;f <Plug>(easymotion-sl2)
+  map ;f <Plug>(easymotion-fln)
+  map ;t <Plug>(easymotion-tln)
+
   map ;w <Plug>(easymotion-w)
+  nmap ;w <Plug>(easymotion-overwin-w)
   map ;b <Plug>(easymotion-b)
+
+  " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
 endif "}}}
 
 if dein#tap('vim-airline') "{{{

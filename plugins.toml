@@ -218,7 +218,8 @@ repo = 't9md/vim-choosewin'
 repo = 'bkad/CamelCaseMotion'
 
 [[plugins]]
-repo = 'Lokaltog/vim-easymotion'
+repo = 'easymotion/vim-easymotion'
+on_map = ['<Plug>(easymotion-']
 
 [[plugins]]
 repo = 'kana/vim-smartword'
