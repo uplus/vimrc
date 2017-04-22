@@ -94,10 +94,12 @@
       " \ '[Command Line]': "''",
       " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
+" helpとかでgitが重いかも
+
 au myac VimEnter * call timer_start(100, {-> lightline#update()})
 
 function! LLfilename() abort
-  return bufname('%') . (&modified? ' +': '')
+  return pathshorten(bufname('%')) . (&modified? ' +': '')
 endfunction
 
 function! LLmode() abort
