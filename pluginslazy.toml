@@ -542,3 +542,7 @@ hook_add = '''
   let g:threes#start_with_higher_tile = 1
   command! Threes ThreesStart
 '''
+
+[[plugins]]
+repo = 'cocopon/colorswatch.vim'
+on_cmd = 'ColorSwatchGenerate'

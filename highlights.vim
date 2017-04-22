@@ -3,8 +3,6 @@ if !exists('g:noplugin')
   au myac ColorScheme * call s:set_highlights()
 endif
 
-let g:python_highlight_all = 1
-
 let g:colors_name = ''
 let g:colors_seted = 0
 hi CursorLine cterm=NONE gui=NONE
