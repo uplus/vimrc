@@ -302,12 +302,16 @@ nmap <Space>P <Plug>(BlankUp)kP
 "}}}
 
 " # ga Info keymap and release " {{{
-nnoremap gaa ga
-xnoremap gaa ga
+if maparg('gaa') ==# ''
+  nnoremap gaa ga
+  xnoremap gaa ga
+endif
 nnoremap ga8 g8
 xnoremap ga8 g8
 nnoremap gah :SyntaxInfo<CR>
 xnoremap gah :SyntaxInfo<CR>
 nnoremap ga<C-G> g<C-G>
 xnoremap ga<C-G> g<C-G>
+nnoremap ga <nop>
+xnoremap ga <nop>
 " }}}

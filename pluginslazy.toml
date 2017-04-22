@@ -138,6 +138,13 @@ hook_post_source = '''
   let g:speeddating_formats += [['%^v', 0, 1]]
 '''
 
+[[plugins]]
+repo = 'tpope/vim-characterize'
+on_map = '<Plug>(characterize)'
+hook_add = '''
+  nmap gaa <Plug>(characterize)
+'''
+
 
 #search and replace
 
@@ -480,6 +487,16 @@ on_func = 'fake#'
 hook_add = '''
   function! FakeArray(start, end, times) abort
     return join(map(range(a:times), printf('fake#int(%d, %d)', a:start, a:end)), ', ')
+  endfunction
+
+  function! FakeArrayI() abort
+    let nums = split(input('> '))
+    let len = len(nums)
+    if 1 == len
+      return FakeArray(0, 100, nums[0])
+    elseif 3 == len
+      return FakeArray(nums[0], nums[1], nums[2])
+    endif
   endfunction
 '''
 
