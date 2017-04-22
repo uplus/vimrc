@@ -84,6 +84,13 @@ on_cmd = 'Linediff'
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
+on_cmd = ['EasyAlign', 'LiveEasyAlign']
+hook_add = '''
+  nmap sl <Plug>(EasyAlign)
+  vmap sl <Plug>(EasyAlign)
+  nmap <Space>sl <Plug>(LiveEasyAlign)
+  vmap <Space>sl <Plug>(LiveEasyAlign)
+'''
 hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 
 [[plugins]]

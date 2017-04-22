@@ -335,13 +335,6 @@ if dein#tap('vimfiler.vim') "{{{
   nnoremap <space><space> :Vfe<cr>
 endif "}}}
 
-if dein#tap('vim-easy-align') "{{{
-  nmap sl <Plug>(EasyAlign)
-  vmap sl <Plug>(EasyAlign)
-  nmap <Space>sl <Plug>(LiveEasyAlign)
-  vmap <Space>sl <Plug>(LiveEasyAlign)
-endif "}}}
-
 if dein#tap('syntastic') "{{{
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
   let g:syntastic_loc_list_height = 10
