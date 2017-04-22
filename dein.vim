@@ -515,17 +515,23 @@ if dein#tap('vim-asterisk') "{{{
 endif "}}}
 
 if dein#tap('incsearch.vim') " {{{
-  au myac ColorScheme * hi IncSearch term=NONE ctermfg=39 ctermbg=56
-  au myac ColorScheme * hi Search    term=NONE ctermbg=18 ctermfg=75
+  au myac ColorScheme * hi IncSearch ctermbg=39 ctermfg=56 guibg=#00afff guifg=#5f00d7 cterm=NONE gui=NONE
+  au myac ColorScheme * hi Search    ctermfg=75 ctermbg=18 guifg=#5fafff guibg=#000087 cterm=NONE gui=NONE
 
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
   let g:incsearch#consistent_n_direction = 0    " 1:nで常にforwardに移動
   let g:incsearch#magic                  = '\v' " very magic
 
-  map g/ <Plug>(incsearch-stay)
-  map / <Plug>(incsearch-forward)
-  map ? <Plug>(incsearch-backward)
+  if dein#is_sourced('incsearch-index.vim')
+    map / <Plug>(incsearch-index-/)
+    map ? <Plug>(incsearch-index-?)
+    map g/ <Plug>(incsearch-index-stay)
+  else
+    map / <Plug>(incsearch-forward)
+    map ? <Plug>(incsearch-backward)
+    map g/ <Plug>(incsearch-stay)
+  endif
 
   map * <Plug>(incsearch-nohl-*)<Plug>(anzu-update-search-status-with-echo)
   map # <Plug>(incsearch-nohl-#)<Plug>(anzu-update-search-status-with-echo)
