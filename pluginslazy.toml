@@ -368,6 +368,28 @@ repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 on_map = '<Plug>'
 on_path = '.*'
+hook_add = '''
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_enable_clipboard = 0
+  let g:vimfiler_readonly_file_icon = '✗'
+  let g:vimfiler_marked_file_icon = '✓'
+  let g:vimfiler_quick_look_command = 'xdg-open'
+  let g:vimfiler_force_overwrite_statusline = 0
+
+  " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
+  command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
+  command! Vfs VimFilerSplit
+  command! Vft VimFilerTab
+  command! Vf VimFiler
+  command! Vimfiler Vf
+  nnoremap <silent><c-W>e :Vfe<cr>
+  nnoremap <silent><c-W><c-e> :Vfe<cr>
+  nnoremap <space>ff :VimFiler<cr>
+  nnoremap <space>ft :VimFilerTab<cr>
+  nnoremap <space>fs :VimFilerSplit<cr>
+  nnoremap <space>fe :Vfe<cr>
+  nnoremap <space><space> :Vfe<cr>
+'''
 hook_source = 'source ~/.vim/rc/vimfiler.rc.vim'
 
 [[plugins]]

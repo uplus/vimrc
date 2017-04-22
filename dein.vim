@@ -319,22 +319,6 @@ if dein#tap('unite-quickfix') "{{{
   " au myac VimEnter * au myac BufWritePost * LocationList
 endif "}}}
 
-if dein#tap('vimfiler.vim') "{{{
-  " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
-  command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
-  command! Vfs VimFilerSplit
-  command! Vft VimFilerTab
-  command! Vf VimFiler
-  command! Vimfiler Vf
-  nnoremap <silent><c-W>e :Vfe<cr>
-  nnoremap <silent><c-W><c-e> :Vfe<cr>
-  nnoremap <space>ff :VimFiler<cr>
-  nnoremap <space>ft :VimFilerTab<cr>
-  nnoremap <space>fs :VimFilerSplit<cr>
-  nnoremap <space>fe :Vfe<cr>
-  nnoremap <space><space> :Vfe<cr>
-endif "}}}
-
 if dein#tap('syntastic') "{{{
   let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
   let g:syntastic_loc_list_height = 10
