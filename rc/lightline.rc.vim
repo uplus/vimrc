@@ -1,7 +1,4 @@
-﻿let s:orange = ['#ef5939', 166]
-let s:gray = ['#657b83', 236]
-
-let g:lightline = {
+﻿let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly',],],
       \     'right': [['cursor'], ['filetype'], ['fileencoding',  'syntax_check']]
@@ -20,7 +17,7 @@ let g:lightline = {
       \   },
       \
       \   'component': {
-      \     'absolutepath': '%F', 'relativepath': '%f', 'filename': '%t', 'modified': '%M', 'bufnum': '%n',
+      \     'absolutepath': '%F', 'relativepath': '%f', 'modified': '%M', 'bufnum': '%n',
       \     'paste': '%{&paste?"PASTE":""}',
       \     'charvalue': '%b',
       \     'charvaluehex': '%B',
@@ -35,6 +32,7 @@ let g:lightline = {
       \   'component_function': {
       \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
       \     'cursor': 'LLcursor',
+      \     'filename': 'LLfilename',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
@@ -44,7 +42,7 @@ let g:lightline = {
       \   },
       \   'component_type': {
       \     'tabs': 'tabsel', 'close': 'raw',
-      \     'git': 'warning',
+      \     'git': 'git',
       \     'syntax_check': 'error',
       \   },
       \   'tab_component': {},
@@ -70,21 +68,18 @@ let g:lightline = {
       \   },
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
-      \   'palette': {'git': [s:orange, s:gray], 'normal': {'git': [s:orange, s:gray]}},
       \   'winwidth': winwidth(0),
-      \   'colorscheme': 'solarized',
+      \   'colorscheme': 'mellow',
       \ }
 
 " default(powerline) molokai  darcula solarized
 
-" 'git': [[ '#dadada', '#121212', 253, 233 ]], 'solarized': {'normal': {}}, 'normal': {}
-" let g:lightline.palette.solarized.normal.git = [[s:orange, s:gray]]
-" let lightline#colorscheme#solarized#palette.normal.git = [[s:orange, s:gray]]
-
 " カラースキームで定義されてる数だけ色が使える?
-" component_expand使えばピンポイントカラー&隠せる -> need lightline#update()
+" component_expand使えばピンポイントカラー&隠せる -> lightline#update()
 
+" expandがリストを複数戻していいからtabは'tabs'だけで色変え出来てる?
 " 幅があったらディレクトリ
+" tab
 " bufline
 " submode
 " buftype preview quickfix diff
@@ -100,6 +95,10 @@ let g:lightline = {
       " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
 au myac VimEnter * call timer_start(100, {-> lightline#update()})
+
+function! LLfilename() abort
+  return bufname('%')
+endfunction
 
 function! LLmode() abort
   return  &ft == 'unite' ? 'Unite' :
@@ -151,7 +150,7 @@ function! LLgit() abort "{{{
   return ' ' . status
 endfunction "}}}
 
-function! LLsyntax_check() abort
+function! LLsyntax_check() abort "{{{
   let errs = filter(getqflist(), 'v:val.bufnr == ' . bufnr('%'))
   let num = len(errs)
   if num == 0
@@ -159,7 +158,7 @@ function! LLsyntax_check() abort
   endif
   let e = errs[0]
   return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
-endfunction
+endfunction "}}}
 
 
 finish
