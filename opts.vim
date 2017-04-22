@@ -132,12 +132,12 @@ set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか
 set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
-set fillchars=vert:\|
 
+set fillchars=diff:-,vert:│
 set list
 set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%, " trail:␣
 " http://unicode-table.com/en/2A20/
-" ❯ ❮ ⊳ ▶ ◇ ± ◈ ▷ ➤ ⟫ ⥀ ⥁ ␣
+" ❯ ❮ ⊳ ▶ ◇ ± ◈ ▷ ➤ ⟫ ⥀ ⥁ ␣ 》
 
 if has('diff')
   set diffopt=filler,context:2,vertical,foldcolumn:0

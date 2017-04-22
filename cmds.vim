@@ -19,6 +19,7 @@ command! Install call dein#install()
 command! Clear   call dein#clear_state()
 command! Update  call dein#update()
 
+command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! ReloadKeymap source ~/.vim/keymap.vim
 command! Tig execute "silent! !tig status" | redraw!

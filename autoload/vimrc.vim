@@ -68,6 +68,7 @@ function! vimrc#operator_space_fold(motion_wise) abort "{{{
   '[,']fold
 endfunction "}}}
 
+
 function! vimrc#add_repo() abort "{{{
   let str = @+
   try

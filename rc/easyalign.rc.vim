@@ -1,7 +1,6 @@
-" #easyalign
 let g:easy_align_ignore_groups = ['Comment', 'String']
 
-" Todo: クォート系でアラインしようとしてもうまくできなかった
+" TODO クォート系でアラインしようとしてもうまくできなかった
 let g:easy_align_delimiters = {
       \ '>' : { 'pattern' : '>>\|=>\|>' },
       \ '/' : {
