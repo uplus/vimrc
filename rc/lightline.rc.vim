@@ -215,13 +215,11 @@ let s:e = {
       \ '__Gundo_Preview__' : "''",
       \ 'vimfiler' : 'vimfiler#get_status_string()',
       \ 'unite' : 'unite#get_status_string()',
-      \ 'vimshell' : "exists('b:vimshell.current_dir') ? substitute(b:vimshell.current_dir,expand('~'),'~','') : default",
       \ 'quickrun' : "''",
       \ 'qf' : "''",
       \ 'vimcalc' : "''",
       \ 'dictionary' : "exists('b:dictionary.input') ? b:dictionary.input : default",
       \ 'calendar' : "strftime('%Y/%m/%d')",
-      \ 'thumbnail' : "exists('b:thumbnail.status') ? b:thumbnail.status : 'Thumbnail'",
       \ 'agit' : "''",
       \ 'agit_diff' : "''",
       \ 'agit_stat' : "''",
@@ -229,7 +227,7 @@ let s:e = {
       \ '[Command Line]': "''",
       \ }
 
-let s:f = [ 'ControlP', '__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail' ]
+let s:f = ['ControlP', '__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail']
 
 function! lightline_powerful#filename() abort "{{{
   let f = expand('%:t')

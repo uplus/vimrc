@@ -131,12 +131,17 @@ augroup myac
   endif
 
   " trailがあるとハイライトできない あたりまえか
-  au Syntax * call s:badspace()
+  " au Syntax * call s:badspace() " ファイルタイプ決定前だと判定できない
+  au FileType * call s:badspace()
   au InsertEnter * hi clear BadSpace
-  au InsertLeave,VimEnter,ColorScheme * hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
+  au InsertLeave,VimEnter,ColorScheme * call s:badspace_set_highlight()
+
+  function! s:badspace_set_highlight() abort
+    hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
+  endfunction
 
   function! s:badspace() abort
-    if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !~# '\v(markdown|github-dashboard)'
+    if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !=# '' && &ft !~# '\v(markdown|github-dashboard|calendar)'
       " cannot use \%$ in ':syntax match'
       3match BadSpace '^\s*\%$'
       syn match BadSpace '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
