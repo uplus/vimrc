@@ -547,7 +547,7 @@ endfunction "}}}
 
 function! vimrc#goldendict(...) abort "{{{
   let word = a:0? a:1 : vimrc#get_cword()
-  call jobstart(['goldendict', word])
+  call jobstart(['goldendict', word], {'detach': 1})
 endfunction "}}}
 
 " #color converter

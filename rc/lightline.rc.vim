@@ -227,7 +227,7 @@ let s:e = {
       \ '[Command Line]': "''",
       \ }
 
-let s:f = ['ControlP', '__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail']
+let s:f = ['__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail']
 
 function! lightline_powerful#filename() abort "{{{
   let f = expand('%:t')
@@ -240,7 +240,7 @@ function! lightline_powerful#filename() abort "{{{
   return b:lightline_filename
 endfunction "}}}
 
-let s:m = { 'ControlP': 'CtrlP', '__Tagbar__': 'Tagbar', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview', '[Command Line]': 'Command Line'}
+let s:m = {'__Tagbar__': 'Tagbar', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview', '[Command Line]': 'Command Line'}
 let s:p = { 'unite': 'Unite', 'vimfiler': 'VimFiler', 'vimshell': 'VimShell', 'quickrun': 'Quickrun', 'dictionary': 'Dictionary', 'calendar': 'Calendar', 'thumbnail': 'Thumbnail', 'vimcalc': 'VimCalc', 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit', 'qf': 'QuickFix', 'github-dashboard': 'GitHub Dashboard' }
 function! lightline_powerful#mode() abort "{{{
   if &ft ==# 'calendar'
@@ -255,11 +255,7 @@ function! lightline_powerful#mode() abort "{{{
   return get(s:m, expand('%:t'), get(s:p, &ft, lightline#mode()))
 endfunction "}}}
 
-let g:tagbar_status_func = 'lightline_powerful#TagbarStatusFunc'
-function! lightline_powerful#TagbarStatusFunc(current, sort, fname, ...) abort "{{{
-  let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction "}}}
+
 
 function! lightline_powerful#tabreadonly(n) abort "{{{
   let winnr = tabpagewinnr(a:n)

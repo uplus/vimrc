@@ -667,6 +667,15 @@ hook_add = '''
   let g:prettyprint_string = ['raw'] " [] 'raw' 'split'
 '''
 
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+hook_add = '''
+  let g:calendar_google_calendar = 1
+  let g:calendar_google_task = 1
+
+  let g:calendar_frame = 'default'
+  let g:calendar_first_day = 'sunday'
+'''
 
 # [[plugins]]
 # repo = 'thinca/vim-template'
