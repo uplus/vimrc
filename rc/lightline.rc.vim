@@ -103,6 +103,7 @@ function! LLfilename() abort
 endfunction
 
 function! LLmode() abort
+  " if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !~# '\v(markdown|github-dashboard)'
   return  &ft == 'unite' ? 'Unite' :
         \ &ft == 'denite' ? 'Denite':
         \ &ft == 'vimfiler' ? 'VimFiler' :

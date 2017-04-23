@@ -30,6 +30,10 @@ if dein#load_state(s:path)
 
   call dein#end()
   call dein#save_state()
+
+  if dein#check_install()
+    call dein#install()
+  endif
 endif
 
 au myac VimEnter * call dein#call_hook('source')

@@ -136,8 +136,8 @@ augroup myac
   au InsertLeave,VimEnter,ColorScheme * hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
 
   function! s:badspace() abort
-    if &modifiable && &ft !~# '\v^(markdown|github-dashboard)$'
-      " cannot use \%$ in syntax match
+    if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !~# '\v(markdown|github-dashboard)'
+      " cannot use \%$ in ':syntax match'
       3match BadSpace '^\s*\%$'
       syn match BadSpace '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
     endif

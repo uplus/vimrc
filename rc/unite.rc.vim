@@ -161,6 +161,7 @@ call unite#custom#profile('source/kill', 'context', { 'start_insert': 1})
 
 call unite#custom#default_action('file', 'tabopen')
 call unite#custom#default_action('neomru', 'tabopen')
+call unite#custom#default_action('grep', 'tabopen')
 call unite#custom#default_action('source/line/*', 'search_jump')
 
 au myac FileType unite call s:unite_config()

@@ -1,9 +1,9 @@
-let s:base_b = ['#df80ff', 141]
-let s:base_g = ['#61f050', 156]
+let s:base_b = ['#df90ff', 141]
+let s:base_g = ['#71f070', 156]
 let s:base_r = ['#ffb90f', 214]
 
-let s:gray = ['#20202f', '234']
-let s:black = ['#000000', '0']
+let s:gray = ['#20202f', 234]
+let s:black = ['#000000', 0]
 
 let s:yellow  = ['#f5c900', 136]
 let s:orange  = s:base_r " ['#db4b16', 166]

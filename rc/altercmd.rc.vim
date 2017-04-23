@@ -26,6 +26,7 @@ CAlterCommand vgr[ep] Unite vimgrep
 CAlterCommand ug[rep] Unite -auto-resize grep:%::
 CAlterCommand qr QuickRun -mode
 CAlterCommand log Log
+CAlterCommand colortoggle ColorToggle
 
 CAlterCommand clear Clear
 CAlterCommand ins[tall] Install

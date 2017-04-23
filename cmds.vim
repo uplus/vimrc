@@ -14,7 +14,7 @@ command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=* Job call jobstart(<q-args>)
 
-command! Recache call dein#clear_state() | call dein#recache_runtimepath() | echo 'Cached!'
+command! Recache call dein#recache_runtimepath() | echo 'Recached!'
 command! Install call dein#install()
 command! Clear   call dein#clear_state()
 command! Update  call dein#update()

@@ -346,6 +346,11 @@ repo = 'alpaca-tc/alpaca_tags'
 depends = 'vimproc.vim'
 on_cmd = ['AlpacaTagsBundle', 'AlpacaTagsUpdate', 'AlpacaTagsEnable', 'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus']
 
+[[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = ['Tagbar', 'TagbarToggle', 'TagbarOpen', 'TagbarOpenAutoClose', 'TagbarShowTag', 'TagbarCurrentTag', 'TagbarGetTypeConfig', 'TagbarDebug', 'TagbarTogglePause']
+on_func = 'tagbar#'
+
 
 #operator
 
@@ -396,7 +401,7 @@ hook_add = '''
   nnoremap <space>ft :VimFilerTab<cr>
   nnoremap <space>fs :VimFilerSplit<cr>
   nnoremap <space>fe :Vfe<cr>
-  nnoremap <space><space> :Vfe<cr>
+  " nnoremap <space><space> :Vfe<cr>
 '''
 hook_source = 'source ~/.vim/rc/vimfiler.rc.vim'
 
@@ -534,6 +539,12 @@ on_cmd = 'Mario'
 repo = 'rbtnn/puyo.vim'
 depends = 'game_engine.vim'
 on_cmd = 'Puyo'
+
+[[plugins]]
+# コマのサイズはハードコーディング
+repo = 'rbtnn/reversi.vim'
+depends = 'game_engine.vim'
+on_cmd = 'Reversi'
 
 [[plugins]]
 repo = 'thinca/vim-threes'
