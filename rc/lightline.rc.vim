@@ -163,6 +163,10 @@ function! LLsyntax_check() abort "{{{
 endfunction "}}}
 
 function! LLcfi() abort
+  " runtime! ftplugin/zsh/cfi.vim
+  if !exists('g:loaded_cfi')
+    return
+  endif
   return cfi#format('%s', '')
 endfunction
 

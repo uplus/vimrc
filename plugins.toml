@@ -140,6 +140,7 @@ hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 [[plugins]]
 repo = 'tyru/current-func-info.vim'
+repo = 'uplus/current-func-info.vim'
 
 # [[plugins]]
 # repo = 't9md/vim-ezbar'
