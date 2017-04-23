@@ -1,4 +1,5 @@
-﻿let g:lightline = {
+﻿" g:lightline {{{
+let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly',],],
       \     'right': [['cursor'], ['filetype', 'fileencoding'], ['syntax_check', 'cfi']]
@@ -71,6 +72,7 @@
       \   'winwidth': winwidth(0),
       \   'colorscheme': 'mellow',
       \ }
+"}}}
 
 " default(powerline) molokai darcula solarized
 
@@ -98,32 +100,78 @@
 "   win sizeによって変えたい
 "   'w:N b:N' from vim-ezbar
 "   レポートとか作文書いてるとき用に現在の文字数表示
-
-
 " au myac VimEnter * call timer_start(100, {-> lightline#update()})
 
 " TODO LLcheck_normal作ってmodとかbuftypeとか検査する
 
+
+let s:m = { '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview',
+          \ '[Command Line]': 'Command Line',
+          \ }
+
+let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'vimfiler': 'VimFiler',
+          \ 'quickrun': 'Quickrun',
+          \ 'dictionary': 'Dictionary',
+          \ 'calendar': 'Calendar',
+          \ 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit',
+          \ 'qf': 'QuickFix',
+          \ 'github-dashboard': 'GitHub Dashboard',
+          \ 'tagbar': 'Tagbar',
+          \ }
+
+" use in LLfilename
+let s:e = {
+      \ 'ControlP' : "get(g:lightline, 'ctrlp_item', expand('%:t'))",
+      \ '__Tagbar__' : "get(g:lightline, 'fname', expand('%:t'))",
+      \ '__Gundo__' : "''",
+      \ '__Gundo_Preview__' : "''",
+      \ 'vimfiler' : 'vimfiler#get_status_string()',
+      \ 'unite' : 'unite#get_status_string()',
+      \ 'quickrun' : "''",
+      \ 'qf' : "''",
+      \ 'dictionary' : "exists('b:dictionary.input') ? b:dictionary.input : default",
+      \ 'calendar' : "strftime('%Y/%m/%d')",
+      \ 'agit' : "''",
+      \ 'agit_diff' : "''",
+      \ 'agit_stat' : "''",
+      \ 'github-dashboard': "''",
+      \ '[Command Line]': "''",
+      \ }
+
+let s:f = ['tagbar', 'vimfiler', 'unite', 'denite', 'vimshell', 'dictionary', 'gundo']
+
 function! LLfilename() abort
+  " TODO
   return pathshorten(bufname('%')) . (&modified? ' +': '')
+
+  let f = expand('%:t')
+  if has_key(b:, 'lightline_filename')
+      \ && get(b:, 'lightline_filename_', '') ==# f . &mod . &ma
+      \ && index(s:f, &ft) < 0
+      \ && index(s:f, f) < 0
+    return b:lightline_filename
+  endif
+  let b:lightline_filename_ = f . &mod . &ma
+  let default = join(filter([&ro ? s:ro : '', f, &mod ? '+' : &ma ? '' : '-'], 'len(v:val)'), ' ')
+  let b:lightline_filename = f =~# '^\[preview' ? 'Preview' : eval(get(s:e, &ft, get(s:e, f, 'default')))
+  return b:lightline_filename
 endfunction
 
 function! LLmode() abort
-  " if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !~# '\v(markdown|github-dashboard)'
-  return  &ft == 'unite' ? 'Unite' :
-        \ &ft == 'denite' ? 'Denite':
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ &ft == 'gundo' ? 'Gundo':
-        \ lightline#mode()
+  " TODO if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !~# '\v(github-dashboard)'
+  if &ft ==# 'calendar'
+    call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
+  endif
+  return get(s:m, expand('%:t'), get(s:p, &ft, lightline#mode()))
 endfunction
 
-function! LLfileencoding() abort
+function! LLfileencoding() abort "{{{
   let enc = (&fenc !=# "")? &fenc : &enc
   if enc ==# 'utf-8' && &ff ==# 'unix'
     return ''
   endif
   return printf('%s[%s]', enc, &ff[0])
-endfunction
+endfunction "}}}
 
 function! LLreadonly() abort
   " TODO &modified || !&modifiable, airlineみたいに色を変えたい
@@ -138,9 +186,9 @@ function! LLreadonly() abort
         \ ''
 endfunction
 
-function! LLcursor() abort
+function! LLcursor() abort "{{{
   return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
-endfunction
+endfunction "}}}
 
 function! LLgit() abort "{{{
   if !exists('g:loaded_fugitive')
@@ -180,6 +228,26 @@ endfunction "}}}
 finish
 
 
+function! lightline_powerful#tabreadonly(n) abort "{{{
+  let winnr = tabpagewinnr(a:n)
+  return gettabwinvar(a:n, winnr, '&readonly') ? s:ro : ''
+endfunction "}}}
+
+function! lightline_powerful#tabfilename(n) abort "{{{
+  let bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
+  let bufname = expand('#' . bufnr . ':t')
+  let buffullname = expand('#' . bufnr . ':p')
+  let bufnrs = filter(range(1, bufnr('$')), 'v:val != bufnr && len(bufname(v:val)) && bufexists(v:val) && buflisted(v:val)')
+  let i = index(map(copy(bufnrs), 'expand("#" . v:val . ":t")'), bufname)
+  let ft = gettabwinvar(a:n, tabpagewinnr(a:n), '&ft')
+  if strlen(bufname) && i >= 0 && map(bufnrs, 'expand("#" . v:val . ":p")')[i] != buffullname
+    let fname = substitute(buffullname, '.*/\([^/]\+/\)', '\1', '')
+  else
+    let fname = bufname
+  endif
+  return fname =~# '^\[preview' ? 'Preview' : get(s:m, fname, get(s:p, ft, fname))
+endfunction "}}}
+
 let g:lightline = {
       \ 'tabline': {
       \   'left': [ [ 'tabs' ] ],
@@ -208,74 +276,7 @@ let g:lightline = {
       \ },
       \ }
 
-let s:e = {
-      \ 'ControlP' : "get(g:lightline, 'ctrlp_item', expand('%:t'))",
-      \ '__Tagbar__' : "get(g:lightline, 'fname', expand('%:t'))",
-      \ '__Gundo__' : "''",
-      \ '__Gundo_Preview__' : "''",
-      \ 'vimfiler' : 'vimfiler#get_status_string()',
-      \ 'unite' : 'unite#get_status_string()',
-      \ 'quickrun' : "''",
-      \ 'qf' : "''",
-      \ 'vimcalc' : "''",
-      \ 'dictionary' : "exists('b:dictionary.input') ? b:dictionary.input : default",
-      \ 'calendar' : "strftime('%Y/%m/%d')",
-      \ 'agit' : "''",
-      \ 'agit_diff' : "''",
-      \ 'agit_stat' : "''",
-      \ 'github-dashboard': "''",
-      \ '[Command Line]': "''",
-      \ }
 
-let s:f = ['__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail']
-
-function! lightline_powerful#filename() abort "{{{
-  let f = expand('%:t')
-  if has_key(b:, 'lightline_filename') && get(b:, 'lightline_filename_', '') ==# f . &mod . &ma && index(s:f, &ft) < 0 && index(s:f, f) < 0
-    return b:lightline_filename
-  endif
-  let b:lightline_filename_ = f . &mod . &ma
-  let default = join(filter([&ro ? s:ro : '', f, &mod ? '+' : &ma ? '' : '-'], 'len(v:val)'), ' ')
-  let b:lightline_filename = f =~# '^\[preview' ? 'Preview' : eval(get(s:e, &ft, get(s:e, f, 'default')))
-  return b:lightline_filename
-endfunction "}}}
-
-let s:m = {'__Tagbar__': 'Tagbar', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview', '[Command Line]': 'Command Line'}
-let s:p = { 'unite': 'Unite', 'vimfiler': 'VimFiler', 'vimshell': 'VimShell', 'quickrun': 'Quickrun', 'dictionary': 'Dictionary', 'calendar': 'Calendar', 'thumbnail': 'Thumbnail', 'vimcalc': 'VimCalc', 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit', 'qf': 'QuickFix', 'github-dashboard': 'GitHub Dashboard' }
-function! lightline_powerful#mode() abort "{{{
-  if &ft ==# 'calendar'
-    call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
-  elseif &ft ==# 'thumbnail'
-    if !empty(b:thumbnail.view.visual_mode)
-      call lightline#link(b:thumbnail.view.visual_mode)
-    endif
-  elseif expand('%:t') ==# 'ControlP'
-    call lightline#link('iR'[get(g:lightline, 'ctrlp_regex', 0)])
-  endif
-  return get(s:m, expand('%:t'), get(s:p, &ft, lightline#mode()))
-endfunction "}}}
-
-
-
-function! lightline_powerful#tabreadonly(n) abort "{{{
-  let winnr = tabpagewinnr(a:n)
-  return gettabwinvar(a:n, winnr, '&readonly') ? s:ro : ''
-endfunction "}}}
-
-function! lightline_powerful#tabfilename(n) abort "{{{
-  let bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-  let bufname = expand('#' . bufnr . ':t')
-  let buffullname = expand('#' . bufnr . ':p')
-  let bufnrs = filter(range(1, bufnr('$')), 'v:val != bufnr && len(bufname(v:val)) && bufexists(v:val) && buflisted(v:val)')
-  let i = index(map(copy(bufnrs), 'expand("#" . v:val . ":t")'), bufname)
-  let ft = gettabwinvar(a:n, tabpagewinnr(a:n), '&ft')
-  if strlen(bufname) && i >= 0 && map(bufnrs, 'expand("#" . v:val . ":p")')[i] != buffullname
-    let fname = substitute(buffullname, '.*/\([^/]\+/\)', '\1', '')
-  else
-    let fname = bufname
-  endif
-  return fname =~# '^\[preview' ? 'Preview' : get(s:m, fname, get(s:p, ft, fname))
-endfunction "}}}
 
 " 🕱  "U+1F系は表示がずれる
 " ☠ ☢ ☺
