@@ -72,16 +72,15 @@
       \   'colorscheme': 'mellow',
       \ }
 
-" default(powerline) molokai  darcula solarized
+" default(powerline) molokai darcula solarized
 
 " カラースキームで定義されてる数だけ色が使える?
+" *_visual_condition使えば隠せるかも
 " component_expand使えばピンポイントカラー&隠せる -> lightline#update()
 
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来てる?
-" 幅があったらディレクトリ
 " tab
-" bufline
-" submode
+  " bufline
 " buftype preview quickfix diff
 " gundo
 " コンポーネントから他のコンポーネントをいじる
@@ -97,6 +96,8 @@
 " helpとかでgitが重いかも
 
 au myac VimEnter * call timer_start(100, {-> lightline#update()})
+
+" TODO LLcheck_normal作ってmodとかbuftypeとか検査する
 
 function! LLfilename() abort
   return pathshorten(bufname('%')) . (&modified? ' +': '')
@@ -175,9 +176,6 @@ finish
 
 
 let g:lightline = {
-      \ 'active': {
-      \   'right': [ [ 'syntastic_error', 'syntastic_warning'], ]
-      \ },
       \ 'tabline': {
       \   'left': [ [ 'tabs' ] ],
       \   'right': [ [ 'close' ] ]
@@ -199,19 +197,11 @@ let g:lightline = {
       \   'filename': 'get(b:,"lightline_filename","")!=#""',
       \   'mode': '1',
       \ },
-      \ 'component_expand': {
-      \   'syntastic_error': 'lightline_powerful#syntasticerror',
-      \   'syntastic_warning': 'lightline_powerful#syntasticwarning',
-      \ },
-      \ 'component_type': {
-      \   'syntastic_error': 'error',
-      \   'syntastic_warning': 'warning',
-      \ },
       \ 'tab_component_function': {
       \   'filename': 'lightline_powerful#tabfilename',
       \   'readonly': 'lightline_powerful#tabreadonly',
       \ },
-      \ }, 'keep')
+      \ }
 
 if s:utf
   call extend(g:lightline, {
