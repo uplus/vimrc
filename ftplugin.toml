@@ -49,10 +49,10 @@ hook_add = '''
 [ftplugin]
 
 _ = '''
-  setl formatoptions=jlqMB
+  setl formatoptions=lqMB
     " http://vim-jp.org/vimdoc-ja/change.html#fo-table
-    " + jlqMB
-    " - tcrovbmw
+    " + lqMB
+    " - jtcrovbmw
     "   an12
     " setl formatoptions+=Bnqlj
     " j コメントを結合する時に可能であればコメントリーダーを削除する

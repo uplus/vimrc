@@ -77,7 +77,6 @@ let g:lightline = {
 " default(powerline) molokai darcula solarized
 
 " カラースキームで定義されてる数だけ色が使える?
-" *_visual_condition使えば隠せるかも
 " component_expand使えばピンポイントカラー&隠せる -> lightline#update()
 
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来てる?
@@ -85,9 +84,11 @@ let g:lightline = {
   " bufline
 " buftype preview quickfix diff
 " gundo
+" 'w:N b:N' from vim-ezbar
 " コンポーネントから他のコンポーネントをいじる
-  " 無効
-  " 色
+"   *_visual_condition使えば隠せるかも
+"   無効
+"   色
       " \ 'vimfiler' : 'vimfiler#get_status_string()',
       " \ 'unite' : 'unite#get_status_string()',
       " \ 'calendar' : "strftime('%Y/%m/%d')",
@@ -95,15 +96,10 @@ let g:lightline = {
       " \ '[Command Line]': "''",
       " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
-" helpとかでgitが重いかも
-" lightline
-"   win sizeによって変えたい
-"   'w:N b:N' from vim-ezbar
-"   レポートとか作文書いてるとき用に現在の文字数表示
 " au myac VimEnter * call timer_start(100, {-> lightline#update()})
-
 " TODO LLcheck_normal作ってmodとかbuftypeとか検査する
-
+" TODO &modified || !&modifiable, airlineみたいに色を変えたい
+" TODO &buflisted == 1 && &buftype ==# '' && &modifiable
 
 let s:m = { '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview',
           \ '[Command Line]': 'Command Line',
@@ -119,9 +115,7 @@ let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'vimfiler': 'VimFiler',
           \ 'tagbar': 'Tagbar',
           \ }
 
-" use in LLfilename
 let s:e = {
-      \ 'ControlP' : "get(g:lightline, 'ctrlp_item', expand('%:t'))",
       \ '__Tagbar__' : "get(g:lightline, 'fname', expand('%:t'))",
       \ '__Gundo__' : "''",
       \ '__Gundo_Preview__' : "''",
@@ -138,7 +132,7 @@ let s:e = {
       \ '[Command Line]': "''",
       \ }
 
-let s:f = ['tagbar', 'vimfiler', 'unite', 'denite', 'vimshell', 'dictionary', 'gundo']
+let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'vimshell', 'dictionary', 'gundo', 'undotree']
 
 function! LLfilename() abort
   " TODO
@@ -147,18 +141,18 @@ function! LLfilename() abort
   let f = expand('%:t')
   if has_key(b:, 'lightline_filename')
       \ && get(b:, 'lightline_filename_', '') ==# f . &mod . &ma
-      \ && index(s:f, &ft) < 0
-      \ && index(s:f, f) < 0
+      \ && index(s:ignore_ft, &ft) < 0
+      \ && index(s:ignore_ft, f) < 0
     return b:lightline_filename
   endif
   let b:lightline_filename_ = f . &mod . &ma
-  let default = join(filter([&ro ? s:ro : '', f, &mod ? '+' : &ma ? '' : '-'], 'len(v:val)'), ' ')
-  let b:lightline_filename = f =~# '^\[preview' ? 'Preview' : eval(get(s:e, &ft, get(s:e, f, 'default')))
+  let b:lightline_filename = f =~# '^\[preview' ?
+        \ 'Preview' :
+        \ eval(get(s:e, &ft, get(s:e, f, '')))
   return b:lightline_filename
 endfunction
 
 function! LLmode() abort
-  " TODO if &buflisted == 1 && &buftype ==# '' && &modifiable && &ft !~# '\v(github-dashboard)'
   if &ft ==# 'calendar'
     call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
   endif
@@ -173,9 +167,8 @@ function! LLfileencoding() abort "{{{
   return printf('%s[%s]', enc, &ff[0])
 endfunction "}}}
 
-function! LLreadonly() abort
-  " TODO &modified || !&modifiable, airlineみたいに色を変えたい
-  if &ft =~# 'help\|undotree\|gundo\|vimfiler\|unite\|denite'
+function! LLreadonly() abort "{{{
+  if index(s:ignore_ft, &ft) == -1
     return ''
   endif
 
@@ -184,7 +177,7 @@ function! LLreadonly() abort
         \ !filewritable(expand('%')) ? '☢':
         \ &readonly? '':
         \ ''
-endfunction
+endfunction "}}}
 
 function! LLcursor() abort "{{{
   return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
@@ -260,11 +253,6 @@ let g:lightline = {
       \ 'component': {
       \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
       \   'lineinfo': '%3l:%-2c',
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'lightline_powerful#gitbranch',
-      \   'filename': 'lightline_powerful#filename',
-      \   'mode': 'lightline_powerful#mode',
       \ },
       \ 'component_function_visible_condition': {
       \   'filename': 'get(b:,"lightline_filename","")!=#""',
