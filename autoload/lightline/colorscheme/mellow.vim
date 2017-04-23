@@ -52,3 +52,9 @@ let s:p.normal.warning  = [[s:base03, s:yellow]]
 let s:p.normal.git      = [[s:red, s:gray]]
 
 let g:lightline#colorscheme#mellow#palette = lightline#colorscheme#flatten(s:p)
+
+" #94d11f
+" #09d3bf
+" #00b7e0
+" #39424d
+" #656e78

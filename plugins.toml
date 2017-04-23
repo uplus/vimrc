@@ -496,7 +496,7 @@ repo = 'kana/vim-textobj-user'
 repo = 'kana/vim-textobj-entire'
 depends = 'vim-textobj-user'
 
-[[plugins]] # l -> i
+[[plugins]] # i
 repo = 'kana/vim-textobj-indent'
 depends = 'vim-textobj-user'
 
@@ -508,7 +508,7 @@ depends = 'vim-textobj-user'
 repo = 'kana/vim-textobj-fold'
 depends = 'vim-textobj-user'
 
-[[plugins]] # l -> L ignore last-char of current-line
+[[plugins]] # L ignore last-char of current-line
 repo = 'kana/vim-textobj-line'
 depends = 'vim-textobj-user'
 
@@ -544,10 +544,6 @@ depends = 'vim-textobj-user'
 repo = 'osyo-manga/vim-textobj-from_regexp'
 depends = 'vim-textobj-user'
 
-[[plugins]] # q some syntax /../ '..'
-repo = 'deris/vim-textobj-enclosedsyntax'
-depends = 'vim-textobj-user'
-
 [[plugins]] # 複数のtextobjを一つにまとめる
 repo = 'osyo-manga/vim-textobj-multitextobj'
 depends = 'vim-textobj-user'
@@ -572,6 +568,11 @@ depends = 'vim-textobj-user'
 [[plugins]]
 repo = 'kamichidu/vim-textobj-function-go'
 depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'rbonvall/vim-textobj-latex'
+depends = 'vim-textobj-user'
+hook_add = 'let g:textobj_latex_no_default_key_mappings = 1'
 
 
 #colorscheme

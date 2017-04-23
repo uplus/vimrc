@@ -164,13 +164,13 @@ function! LLsyntax_check() abort "{{{
   return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
 endfunction "}}}
 
-function! LLcfi() abort
-  " runtime! ftplugin/zsh/cfi.vim
+function! LLcfi() abort "{{{
+  " TODO runtime! ftplugin/zsh/cfi.vim
   if !exists('g:loaded_cfi')
     return
   endif
   return cfi#format('%s', '')
-endfunction
+endfunction "}}}
 
 finish
 
@@ -308,3 +308,6 @@ endfunction
 " » « ▶ ◀
 " ␊ ␤
 " 🔒 🔑
+" '⮁' '⮃' '⮀' '⮂'
+" '↩' '⭠' '⭡' '⭤'
+" '≫' '•' 'Ξ'
