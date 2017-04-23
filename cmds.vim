@@ -52,13 +52,14 @@ command! -complete=highlight -nargs=* Hi call vimrc#highlight(<f-args>)
 command! OpenGitDiffWin call vimrc#open_git_diff('w')
 command! OpenGitDiffTab call vimrc#open_git_diff('t')
 command! Uclear vimrc#undo_clear
-command! UndoClear :call vimrc#undo_clear()
+command! UndoClear call vimrc#undo_clear()
 command! CurrentOnly call vimrc#current_only()
 command! ActiveOnly call vimrc#active_only()
 command! DeleteTrashBuffers call vimrc#delete_trash_buffers()
 command! GitTop execute 'cd' vimrc#git_top()
 command! TermRun noautocmd w | call vimrc#terminal_run()
 command! BuffersInfo PP vimrc#buffers_info()
+command! -nargs=1 ColorTrans echo vimrc#trans_color(<f-args>)
 
 command! -nargs=+ -complete=command
       \ Capture call vimrc#capture(<q-args>)

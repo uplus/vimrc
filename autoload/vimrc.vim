@@ -63,9 +63,11 @@ function! vimrc#operator_blank2void(motion_wise) abort "{{{
 endfunction "}}}
 
 function! vimrc#operator_space_fold(motion_wise) abort "{{{
-  silent! '[,']s/\v%(^)@<!\s*$/ /
+  '<s/\v%(^)@<!\s*$/ /e
   undojoin
-  '[,']fold
+  '>s/\v%(^)@<!\s*$/ /e
+  undojoin
+  '<,'>fold
 endfunction "}}}
 
 
@@ -564,17 +566,17 @@ function! vimrc#get_add_gui_color(line) abort "{{{
   for key  in ['fg', 'bg', '']
     let val = matchstr(a:line, 'cterm' . key . '=\zs\v(\S+)')
     if val !=# ''
-      let append .= printf('gui%s=%s ', key, vimrc#convert_color(val))
+      let append .= printf('gui%s=%s ', key, vimrc#trans_color(val))
     endif
   endfor
   return substitute(append, '\s*$', '', '')
 endfunction "}}}
 
-function! vimrc#convert_color(color) abort "{{{
-  if a:color !~# '^\d\+$'
+" TODO standalone
+function! vimrc#trans_color(color) abort "{{{
+  if a:color !~# '^\x\+$'
     return a:color
   else
-    " TODO standalone
-    return '#' . substitute(system(['colortrans', a:color]), '\n$', '', '')
+    return substitute(system(['colortrans', a:color]), '\n$', '', '')
   end
 endfunction "}}}
