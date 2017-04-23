@@ -1,5 +1,5 @@
 let s:base_b = ['#bf60ff', 141]
-let s:base_g = ['#60ff3f', 156]
+let s:base_g = ['#60ef3f', 156]
 let s:base_r = ['#ffb90f', 214]
 
 let s:gray = ['#20202f', 234]

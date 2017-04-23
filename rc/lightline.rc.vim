@@ -2,7 +2,7 @@
 let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly',],],
-      \     'right': [['cursor'], ['filetype', 'fileencoding'], ['syntax_check', 'cfi']]
+      \     'right': [['cursor'], ['filetype', 'fileencoding'], ['syntax_check', 'current_function']]
       \   },
       \   'inactive': {
       \     'left': [['filename']],
@@ -35,7 +35,7 @@ let g:lightline = {
       \     'cursor': 'LLcursor',
       \     'filename': 'LLfilename',
       \     'git': 'LLgit',
-      \     'cfi': 'LLcfi',
+      \     'current_function': 'LLcurrent_function',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
@@ -81,20 +81,18 @@ let g:lightline = {
 
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来てる?
 " tab
-  " bufline
+"   タブがあるならデフォルトのonetab()?返してないならbuflist返す
 " buftype preview quickfix diff
 " gundo
 " 'w:N b:N' from vim-ezbar
 " コンポーネントから他のコンポーネントをいじる
-"   *_visual_condition使えば隠せるかも
+"   *_visual_condition使えば隠せるかも だめだった セパレータは消えた
 "   無効
 "   色
-      " \ 'vimfiler' : 'vimfiler#get_status_string()',
-      " \ 'unite' : 'unite#get_status_string()',
-      " \ 'calendar' : "strftime('%Y/%m/%d')",
-      " \ 'github-dashboard': "''",
-      " \ '[Command Line]': "''",
-      " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
+" 'vimfiler' : 'vimfiler#get_status_string()',
+" 'unite' : 'unite#get_status_string()',
+" 'calendar' : "strftime('%Y/%m/%d')",
+"   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
 " au myac VimEnter * call timer_start(100, {-> lightline#update()})
 " TODO LLcheck_normal作ってmodとかbuftypeとか検査する
@@ -115,78 +113,63 @@ let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'vimfiler': 'VimFiler',
           \ 'tagbar': 'Tagbar',
           \ }
 
-let s:e = {
-      \ '__Tagbar__' : "get(g:lightline, 'fname', expand('%:t'))",
-      \ '__Gundo__' : "''",
-      \ '__Gundo_Preview__' : "''",
-      \ 'vimfiler' : 'vimfiler#get_status_string()',
-      \ 'unite' : 'unite#get_status_string()',
-      \ 'quickrun' : "''",
-      \ 'qf' : "''",
-      \ 'dictionary' : "exists('b:dictionary.input') ? b:dictionary.input : default",
-      \ 'calendar' : "strftime('%Y/%m/%d')",
-      \ 'agit' : "''",
-      \ 'agit_diff' : "''",
-      \ 'agit_stat' : "''",
-      \ 'github-dashboard': "''",
-      \ '[Command Line]': "''",
-      \ }
+let s:e = { 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
+\ 'vimfiler':   'vimfiler#get_status_string()',
+\ 'unite':      'unite#get_status_string()',
+\ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
+\ 'calendar':   "strftime('%Y/%m/%d')",
+\ 'quickrun':   "''",
+\ 'agit': "''", 'agit_diff': "''", 'agit_stat': "''",
+\ '__Gundo__': "''",
+\ '__Gundo_Preview__': "''",
+\ '[Command Line]': "''",
+\ }
 
-let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'vimshell', 'dictionary', 'gundo', 'undotree']
+let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'dictionary', 'gundo', 'undotree']
+let s:ignore_fn = ['__Gundo_Preview__']
 
-function! LLfilename() abort
-  " TODO
-  return pathshorten(bufname('%')) . (&modified? ' +': '')
-
-  let f = expand('%:t')
-  if has_key(b:, 'lightline_filename')
-      \ && get(b:, 'lightline_filename_', '') ==# f . &mod . &ma
-      \ && index(s:ignore_ft, &ft) < 0
-      \ && index(s:ignore_ft, f) < 0
-    return b:lightline_filename
-  endif
-  let b:lightline_filename_ = f . &mod . &ma
-  let b:lightline_filename = f =~# '^\[preview' ?
-        \ 'Preview' :
-        \ eval(get(s:e, &ft, get(s:e, f, '')))
-  return b:lightline_filename
+function! s:is_ignore() abort
+  return index(s:ignore_ft, &ft) != -1 || index(s:ignore_fn, expand('%:t')) != -1
 endfunction
 
-function! LLmode() abort
+" #left
+
+function! LLmode() abort "{{{
   if &ft ==# 'calendar'
     call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
   endif
   return get(s:m, expand('%:t'), get(s:p, &ft, lightline#mode()))
-endfunction
+endfunction "}}}
 
-function! LLfileencoding() abort "{{{
-  let enc = (&fenc !=# "")? &fenc : &enc
-  if enc ==# 'utf-8' && &ff ==# 'unix'
-    return ''
+function! LLfilename() abort "{{{
+  " TODO
+  let f = expand('%:t')
+  let tmp = get(s:e, &ft, get(s:e, f, ''))
+  if tmp !=# ''
+    return eval(tmp)
   endif
-  return printf('%s[%s]', enc, &ff[0])
+
+  return pathshorten(bufname('%')) . (&modified? ' +': '')
 endfunction "}}}
 
 function! LLreadonly() abort "{{{
-  if index(s:ignore_ft, &ft) == -1
+  if s:is_ignore()
     return ''
   endif
 
   return &buftype !=# '' ? '':
+        \ expand('%') ==# '' ? '':
         \ !&modifiable ? '🔐':
         \ !filewritable(expand('%')) ? '☢':
         \ &readonly? '':
         \ ''
 endfunction "}}}
 
-function! LLcursor() abort "{{{
-  return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
-endfunction "}}}
-
 function! LLgit() abort "{{{
-  if !exists('g:loaded_fugitive')
+  if !exists('g:loaded_fugitive') || s:is_ignore()
     return  ''
   endif
+
   let status = fugitive#head()
   if status ==# ''
     return ''
@@ -200,6 +183,30 @@ function! LLgit() abort "{{{
   return ' ' . status
 endfunction "}}}
 
+" #right
+function! LLcursor() abort "{{{
+  if s:is_ignore()
+    return ''
+  endif
+  return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
+endfunction "}}}
+
+function! LLfileencoding() abort "{{{
+  let enc = (&fenc !=# "")? &fenc : &enc
+  if enc ==# 'utf-8' && &ff ==# 'unix'
+    return ''
+  endif
+  return printf('%s[%s]', enc, &ff[0])
+endfunction "}}}
+
+function! LLcurrent_function() abort "{{{
+  " TODO runtime! ftplugin/zsh/cfi.vim
+  if !exists('g:loaded_cfi')
+    return
+  endif
+  return cfi#format('%s', '')
+endfunction "}}}
+
 function! LLsyntax_check() abort "{{{
   let errs = filter(getqflist(), 'v:val.bufnr == ' . bufnr('%'))
   let num = len(errs)
@@ -208,14 +215,6 @@ function! LLsyntax_check() abort "{{{
   endif
   let e = errs[0]
   return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
-endfunction "}}}
-
-function! LLcfi() abort "{{{
-  " TODO runtime! ftplugin/zsh/cfi.vim
-  if !exists('g:loaded_cfi')
-    return
-  endif
-  return cfi#format('%s', '')
 endfunction "}}}
 
 finish
@@ -243,12 +242,12 @@ endfunction "}}}
 
 let g:lightline = {
       \ 'tabline': {
-      \   'left': [ [ 'tabs' ] ],
-      \   'right': [ [ 'close' ] ]
+      \   'left': [[ 'tabs' ]],
+      \   'right': [[ 'close' ]]
       \ },
       \ 'tab': {
-      \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
-      \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
+      \   'active': ['tabnum', 'readonly', 'filename', 'modified'],
+      \   'inactive': ['tabnum', 'readonly', 'filename', 'modified']
       \ },
       \ 'component': {
       \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
