@@ -297,8 +297,9 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'junegunn/vim-github-dashboard'
-# repo = 'uplus/vim-github-dashboard'
+# TODO
+# repo = 'junegunn/vim-github-dashboard'
+repo = 'uplus/vim-github-dashboard'
 on_cmd = ['GHDashboard', 'GHActivity']
 hook_add = '''
   let g:github_dashboard = {
