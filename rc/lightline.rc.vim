@@ -94,8 +94,13 @@
       " \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
 " helpとかでgitが重いかも
+" lightline
+"   win sizeによって変えたい
+"   'w:N b:N' from vim-ezbar
+"   レポートとか作文書いてるとき用に現在の文字数表示
 
-au myac VimEnter * call timer_start(100, {-> lightline#update()})
+
+" au myac VimEnter * call timer_start(100, {-> lightline#update()})
 
 " TODO LLcheck_normal作ってmodとかbuftypeとか検査する
 
@@ -203,13 +208,6 @@ let g:lightline = {
       \ },
       \ }
 
-if s:utf
-  call extend(g:lightline, {
-      \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" } })
-endif
-
-
 let s:e = {
       \ 'ControlP' : "get(g:lightline, 'ctrlp_item', expand('%:t'))",
       \ '__Tagbar__' : "get(g:lightline, 'fname', expand('%:t'))",
@@ -233,7 +231,7 @@ let s:e = {
 
 let s:f = [ 'ControlP', '__Tagbar__', 'vimfiler', 'unite', 'vimshell', 'dictionary', 'thumbnail' ]
 
-function! lightline_powerful#filename() abort
+function! lightline_powerful#filename() abort "{{{
   let f = expand('%:t')
   if has_key(b:, 'lightline_filename') && get(b:, 'lightline_filename_', '') ==# f . &mod . &ma && index(s:f, &ft) < 0 && index(s:f, f) < 0
     return b:lightline_filename
@@ -242,11 +240,11 @@ function! lightline_powerful#filename() abort
   let default = join(filter([&ro ? s:ro : '', f, &mod ? '+' : &ma ? '' : '-'], 'len(v:val)'), ' ')
   let b:lightline_filename = f =~# '^\[preview' ? 'Preview' : eval(get(s:e, &ft, get(s:e, f, 'default')))
   return b:lightline_filename
-endfunction
+endfunction "}}}
 
 let s:m = { 'ControlP': 'CtrlP', '__Tagbar__': 'Tagbar', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview', '[Command Line]': 'Command Line'}
 let s:p = { 'unite': 'Unite', 'vimfiler': 'VimFiler', 'vimshell': 'VimShell', 'quickrun': 'Quickrun', 'dictionary': 'Dictionary', 'calendar': 'Calendar', 'thumbnail': 'Thumbnail', 'vimcalc': 'VimCalc', 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit', 'qf': 'QuickFix', 'github-dashboard': 'GitHub Dashboard' }
-function! lightline_powerful#mode() abort
+function! lightline_powerful#mode() abort "{{{
   if &ft ==# 'calendar'
     call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
   elseif &ft ==# 'thumbnail'
@@ -257,20 +255,20 @@ function! lightline_powerful#mode() abort
     call lightline#link('iR'[get(g:lightline, 'ctrlp_regex', 0)])
   endif
   return get(s:m, expand('%:t'), get(s:p, &ft, lightline#mode()))
-endfunction
+endfunction "}}}
 
 let g:tagbar_status_func = 'lightline_powerful#TagbarStatusFunc'
-function! lightline_powerful#TagbarStatusFunc(current, sort, fname, ...) abort
+function! lightline_powerful#TagbarStatusFunc(current, sort, fname, ...) abort "{{{
   let g:lightline.fname = a:fname
   return lightline#statusline(0)
-endfunction
+endfunction "}}}
 
-function! lightline_powerful#tabreadonly(n) abort
+function! lightline_powerful#tabreadonly(n) abort "{{{
   let winnr = tabpagewinnr(a:n)
   return gettabwinvar(a:n, winnr, '&readonly') ? s:ro : ''
-endfunction
+endfunction "}}}
 
-function! lightline_powerful#tabfilename(n) abort
+function! lightline_powerful#tabfilename(n) abort "{{{
   let bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
   let bufname = expand('#' . bufnr . ':t')
   let buffullname = expand('#' . bufnr . ':p')
@@ -283,22 +281,7 @@ function! lightline_powerful#tabfilename(n) abort
     let fname = bufname
   endif
   return fname =~# '^\[preview' ? 'Preview' : get(s:m, fname, get(s:p, ft, fname))
-endfunction
-
-function! lightline_powerful#syntasticerror() abort
-  if exists('b:syntastic_loclist') && has_key(b:syntastic_loclist, 'errors') && len(b:syntastic_loclist.errors())
-    return substitute(substitute(substitute(substitute(b:syntastic_loclist.errors()[0].text, '%', '%%', 'g'), '\[Char\]', 'String', 'g'), '\%(note: \|\(.*unable to load package\|In the second argument of\|Declared at: \| or explicitly provide\).*\|‘\|’\|Perhaps you .*\| (imported from[^)]*)\|(visible) \|It could refer to either.*\|It is a member of the .*\|In the expression:.*\|Probable cause:.*\|GHC\.\w\+\.\|In the [a-z]\+ argument of.*\|integer-gmp:\|Data\.\w\+\.\)', '', 'g'), 'Found\zs:.*\zeWhy not:', '. ', '')
-  endif
-  return ''
-endfunction
-
-function! lightline_powerful#syntasticwarning() abort
-  if exists('b:syntastic_loclist') && has_key(b:syntastic_loclist, 'warnings') && has_key(b:syntastic_loclist, 'errors')
-        \ && len(b:syntastic_loclist.warnings()) && !len(b:syntastic_loclist.errors())
-    return substitute(substitute(substitute(substitute(substitute(b:syntastic_loclist.warnings()[0].text, '%', '%%', 'g'), '\[Char\]', 'String', 'g'), '\.hs:\d\+:\d\+-\d\+\zs.*', '', ''), '\(\(Defaulting the following constraint\|: Patterns not matched\| except perhaps to import instances from \).*\|forall [a-z]\. \|GHC\.\w\+\.\|integer-gmp:\|Data\.\w\+\.\)', '', 'g'), 'Found\zs:.*\zeWhy not:', '. ', '')
-  endif
-  return ''
-endfunction
+endfunction "}}}
 
 " 🕱  "U+1F系は表示がずれる
 " ☠ ☢ ☺
