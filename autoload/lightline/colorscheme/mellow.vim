@@ -35,7 +35,7 @@ let s:p.replace.right   = [[s:base03, s:red],    [s:red, s:gray]]
 let s:p.visual.left     = [[s:base03, s:orange], [s:orange, s:gray]]
 let s:p.visual.right    = [[s:base03, s:orange], [s:orange, s:gray]]
 " terminal
-" command
+" command 定義したらエラー出た
 
 let s:p.inactive.right  = [[s:base03, s:base00], [s:base0,  s:base02]]
 let s:p.inactive.left   = [[s:base2,  s:base02], [s:base0,  s:base02]]

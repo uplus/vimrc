@@ -25,7 +25,7 @@ let g:lightline = {
       \     'spell': '%{&spell? &spelllang:""}',
       \     'filetype': '%{&ft !=# ""? &ft : "none"}',
       \     'percent': '%3p%%', 'percentwin': '%P',
-      \     'close': '%999X X ',
+      \     'close': printf('%%999X %s ', has('multi_byte') ? '✗' : 'x'),
       \   },
       \   'component_visible_condition': {
       \     'paste': '&paste', 'spell': '&spell',
@@ -86,16 +86,10 @@ let g:lightline = {
 " gundo
 " 'w:N b:N' from vim-ezbar
 " コンポーネントから他のコンポーネントをいじる
-"   *_visual_condition使えば隠せるかも だめだった セパレータは消えた
+"   *_visual_condition使えば隠せるかも だめだった セパレータは消えた 事前に定義が必要?
 "   無効
 "   色
-" 'vimfiler' : 'vimfiler#get_status_string()',
-" 'unite' : 'unite#get_status_string()',
-" 'calendar' : "strftime('%Y/%m/%d')",
-"   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
 
-" au myac VimEnter * call timer_start(100, {-> lightline#update()})
-" TODO LLcheck_normal作ってmodとかbuftypeとか検査する
 " TODO &modified || !&modifiable, airlineみたいに色を変えたい
 " TODO &buflisted == 1 && &buftype ==# '' && &modifiable
 
@@ -249,12 +243,8 @@ let g:lightline = {
       \   'active': ['tabnum', 'readonly', 'filename', 'modified'],
       \   'inactive': ['tabnum', 'readonly', 'filename', 'modified']
       \ },
-      \ 'component': {
-      \   'close': printf('%%999X %s ', has('multi_byte') && s:utf ? "\u2717" : 'x'),
-      \   'lineinfo': '%3l:%-2c',
-      \ },
       \ 'component_function_visible_condition': {
-      \   'filename': 'get(b:,"lightline_filename","")!=#""',
+      \   'filename': 'get(b:,"lightline_filename","") !=# ""',
       \   'mode': '1',
       \ },
       \ 'tab_component_function': {
@@ -262,8 +252,6 @@ let g:lightline = {
       \   'readonly': 'lightline_powerful#tabreadonly',
       \ },
       \ }
-
-
 
 " 🕱  "U+1F系は表示がずれる
 " ☠ ☢ ☺

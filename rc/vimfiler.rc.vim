@@ -44,7 +44,7 @@ function! s:vimfiler_settings() "{{{
 
   nnoremap <buffer>\ \
   nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
-  nmap ? <Plug>(vimfiler_help)
+  nmap <buffer>? <Plug>(vimfiler_help)
 endfunction "}}}
 
 function! s:smart_quit()
@@ -68,4 +68,3 @@ function! s:vsplit_action.func(candidates)
   exec 'vsplit '. a:candidates[0].action__path
 endfunction
 call unite#custom_action('file', 'vsplit_action', s:vsplit_action)
-
