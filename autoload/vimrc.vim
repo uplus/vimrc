@@ -524,22 +524,18 @@ function! vimrc#word_translate_local_dict(word) abort "{{{
   endif
 endfunction "}}}
 
+function vimrc#get_cword() abort "{{{
+  let save_iskeyword = &l:iskeyword
+  setl iskeyword=@
+  try
+    return expand('<cword>')
+  finally
+    let &l:iskeyword = save_iskeyword
+  endtry
+endfunction "}}}
+
 function! vimrc#word_translate(...) abort "{{{
-  if !a:0
-    if &l:ft == 'help'
-      let word = expand('<cword>')
-    else
-      let save_iskeyword = &l:iskeyword
-      setl iskeyword=@
-      try
-        let word = expand('<cword>')
-      finally
-        let &l:iskeyword = save_iskeyword
-      endtry
-    endif
-  else
-    let word = a:1
-  endif
+  let word = a:0? a:1 : vimrc#get_cword()
 
   let found = vimrc#word_translate_local_dict(word)
   if found !=# ''
@@ -547,6 +543,11 @@ function! vimrc#word_translate(...) abort "{{{
   else
     echo vimrc#word_translate_weblio_smart(word)
   endif
+endfunction "}}}
+
+function! vimrc#goldendict(...) abort "{{{
+  let word = a:0? a:1 : vimrc#get_cword()
+  call jobstart(['goldendict', word])
 endfunction "}}}
 
 " #color converter

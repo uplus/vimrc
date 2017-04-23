@@ -72,6 +72,17 @@ hook_add = '''
 
 #action
 
+[[plugins]]
+repo = 'chrisbra/unicode.vim'
+on_cmd = ['Digraphs', 'SearchUnicode', 'UnicodeName', 'UnicodeTable', 'DownloadUnicode']
+on_map = ['<Plug>(DigraphComplete)', '<Plug>(UnicodeComplete)', '<Plug>(UnicodeGA)', '<Plug>(MakeDigraph)', '<Plug>(UnicodeSwapCompleteName)']
+hook_add = '''
+  imap <c-x><c-g> <Plug>(DigraphComplete)
+  imap <c-x><c-z> <Plug>(UnicodeComplete)
+  imap <c-x>g <c-x><c-g>
+  imap <c-x>z <c-x><c-z>
+'''
+
 [[plugins]] # has textobj
 repo = 'AndrewRadev/sideways.vim'
 on_map = ['<Plug>Sideways']

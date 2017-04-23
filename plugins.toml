@@ -96,19 +96,16 @@ on_source = 'unite.vim'
 repo = 'pasela/unite-webcolorname'
 on_source = 'unite.vim'
 
+[[plugins]]
+repo = 'MaryHal/unite-unicode'
+on_source = 'unite.vim'
+
 
 #view
 
 # [[plugins]]
 # repo = 'vim-scripts/Changed'
 # repo = 'kyouryuukunn/vim-changed'
-
-[[plugins]]
-repo = 'gutenye/json5.vim'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
 
 [[plugins]]
 repo = 'octol/vim-cpp-enhanced-highlight'
@@ -146,6 +143,24 @@ repo = 'uplus/current-func-info.vim'
 # [[plugins]]
 # repo = 't9md/vim-ezbar'
 # hook_add = 'source ~/.vim/rc/ezbar.rc.vim'
+
+
+#filetype
+
+[[plugins]]
+repo = 'gutenye/json5.vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+# TODO
+repo = 'chrisbra/csv.vim'
+repo = 'uplus/csv.vim'
+
+[[plugins]]
+repo = 'bps/vim-tshark'
 
 
 #action
@@ -316,14 +331,19 @@ repo = 'osyo-manga/quickrun-outputter-replace_region'
 #input
 
 [[plugins]]
-repo = 'Shougo/neoinclude.vim'
+# repo = 'Shougo/neosnippet-snippets'
+repo = 'uplus/neosnippet-snippets'
 
-# [[plugins]]
-# repo = 'Shougo/neopairs.vim'
-# hook_add = '''
-#   let g:neopairs#enable = 1
-# '''
 
+#deoplete neocomplete
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+if = "has('nvim')"
+on_i = 1
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+hook_source = 'source ~/.vim/rc/deoplete.rc.vim'
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
@@ -331,13 +351,18 @@ if = "!has('nvim') && has('lua')"
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
-# repo = 'Shougo/neosnippet-snippets'
-repo = 'uplus/neosnippet-snippets'
-
-[[plugins]]
 repo = 'ujihisa/neco-look'
 if = 0
 on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+# [[plugins]]
+# repo = 'Shougo/neopairs.vim'
+# hook_add = '''
+#   let g:neopairs#enable = 1
+# '''
 
 [[plugins]]
 # repo = 'zchee/deoplete-clang'
@@ -380,14 +405,6 @@ hook_source = '''
 # repo = 'fishbullet/deoplete-ruby'
 repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-if = "has('nvim')"
-on_i = 1
-hook_add = 'let g:deoplete#enable_at_startup = 1'
-hook_source = 'source ~/.vim/rc/deoplete.rc.vim'
 
 
 #git
@@ -650,8 +667,6 @@ hook_add = '''
   let g:prettyprint_string = ['raw'] " [] 'raw' 'split'
 '''
 
-[[plugins]]
-repo = 'bps/vim-tshark'
 
 # [[plugins]]
 # repo = 'thinca/vim-template'
