@@ -138,9 +138,8 @@ hook_add = '''
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
-# [[plugins]]
-# repo = 'itchyny/lightline-powerful'
-# depends=  'lightline.vim'
+[[plugins]]
+repo = 'tyru/current-func-info.vim'
 
 # [[plugins]]
 # repo = 't9md/vim-ezbar'

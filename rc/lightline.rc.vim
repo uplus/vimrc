@@ -1,7 +1,7 @@
 ﻿let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly',],],
-      \     'right': [['cursor'], ['filetype'], ['fileencoding',  'syntax_check']]
+      \     'right': [['cursor'], ['filetype', 'fileencoding'], ['syntax_check', 'cfi']]
       \   },
       \   'inactive': {
       \     'left': [['filename']],
@@ -33,16 +33,16 @@
       \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
       \     'cursor': 'LLcursor',
       \     'filename': 'LLfilename',
+      \     'git': 'LLgit',
+      \     'cfi': 'LLcfi',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
       \     'tabs': 'lightline#tabs',
-      \     'git': 'LLgit',
       \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
       \     'tabs': 'tabsel', 'close': 'raw',
-      \     'git': 'git',
       \     'syntax_check': 'error',
       \   },
       \   'tab_component': {},
@@ -132,7 +132,7 @@ function! LLreadonly() abort
 endfunction
 
 function! LLcursor() abort
-  return printf('%3d/%d %2d', line('.'), line('$'), col('.'))
+  return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
 endfunction
 
 function! LLgit() abort "{{{
@@ -162,6 +162,9 @@ function! LLsyntax_check() abort "{{{
   return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
 endfunction "}}}
 
+function! LLcfi() abort
+  return cfi#format('%s', '')
+endfunction
 
 finish
 
