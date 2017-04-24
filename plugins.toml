@@ -136,9 +136,7 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 [[plugins]]
-# TODO
 repo = 'tyru/current-func-info.vim'
-repo = 'uplus/current-func-info.vim'
 
 # [[plugins]]
 # repo = 't9md/vim-ezbar'
@@ -155,9 +153,7 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
-# TODO
 repo = 'chrisbra/csv.vim'
-repo = 'uplus/csv.vim'
 
 [[plugins]]
 repo = 'bps/vim-tshark'

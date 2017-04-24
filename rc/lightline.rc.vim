@@ -92,6 +92,7 @@ let g:lightline = {
 
 " TODO &modified || !&modifiable, airlineみたいに色を変えたい
 " TODO &buflisted == 1 && &buftype ==# '' && &modifiable
+" TODO qfstatusline(現状の常時1つめ表示じゃ不便)
 
 let s:m = { '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview',
           \ '[Command Line]': 'Command Line',

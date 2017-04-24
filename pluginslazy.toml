@@ -309,7 +309,7 @@ hook_source = '''
 
 [[plugins]]
 # TODO
-# repo = 'junegunn/vim-github-dashboard'
+repo = 'junegunn/vim-github-dashboard'
 repo = 'uplus/vim-github-dashboard'
 on_cmd = ['GHDashboard', 'GHActivity']
 hook_add = '''
