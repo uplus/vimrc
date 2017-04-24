@@ -2,7 +2,7 @@
 CAlterCommand ww w!
 CAlterCommand www w !sudo tee > /dev/null %
 CAlterCommand qq q!
-CAlterCommand movett Movett
+CAlterCommand movetotab MoveToTab
 CAlterCommand maps Maps
 CAlterCommand tig Tig
 CAlterCommand t T
