@@ -531,7 +531,7 @@ if dein#tap('clever-f.vim') "{{{
   let g:clever_f_smart_case        = 0
   let g:clever_f_use_migemo        = 0
   let g:clever_f_across_no_line    = 0
-  let g:clever_f_chars_match_any_signs = 0 " ;で ({\"を代用
+  let g:clever_f_chars_match_any_signs = '' " ;で ({\"を代用
   let g:clever_f_fix_key_direction = 0 " 1だとどんな時でもfで後ろにFで前に移動する
   let g:clever_f_show_prompt       = 1
   let g:clever_f_timeout_ms        = 0
