@@ -6,7 +6,6 @@ CAlterCommand movetotab MoveToTab
 CAlterCommand maps Maps
 CAlterCommand tig Tig
 CAlterCommand t T
-CAlterCommand sh Sh
 CAlterCommand ao[nly] Aonly
 CAlterCommand co[nly] Conly
 CAlterCommand cap[ture] Capture
@@ -18,6 +17,8 @@ CAlterCommand br botright sp
 CAlterCommand calc Calc
 CAlterCommand note Note
 CAlterCommand addr[epo] AddRepo
+CAlterCommand lcd Lcd
+CAlterCommand cd Cd
 
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive
