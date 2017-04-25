@@ -78,7 +78,6 @@ let g:lightline = {
 
 " カラースキームで定義されてる数だけ色が使える?
 " component_expand使えばピンポイントカラー&隠せる -> lightline#update()
-
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来てる?
 " tab
 "   タブがあるならデフォルトのonetab()?返してないならbuflist返す
@@ -93,6 +92,7 @@ let g:lightline = {
 " TODO &modified || !&modifiable, airlineみたいに色を変えたい
 " TODO &buflisted == 1 && &buftype ==# '' && &modifiable
 " TODO qfstatusline(現状の常時1つめ表示じゃ不便)
+" TODO modifiedが見づらい 色的にも
 
 let s:m = { '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview',
           \ '[Command Line]': 'Command Line',

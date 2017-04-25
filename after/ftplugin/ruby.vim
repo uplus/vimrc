@@ -62,6 +62,6 @@ function! s:searchsyn(pattern, syn, flags, mode) abort "{{{
   endwhile
 endfunction "}}}
 
-function! s:synname() abort 
+function! s:synname() abort
   return synIDattr(synID(line('.'), col('.'), 0), 'name')
-endfunction 
+endfunction
