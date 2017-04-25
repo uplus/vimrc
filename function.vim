@@ -27,7 +27,7 @@ function! EraseSpace() abort "{{{
   endif
 
   " filetypeが一致したらreturn
-  if index(['markdown', 'gitcommit', 'help'], &filetype) != -1
+  if &ft =~# 'markdown\|gitcommit\|help'
     return
   endif
 
