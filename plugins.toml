@@ -158,17 +158,22 @@ repo = 'chrisbra/csv.vim'
 [[plugins]]
 repo = 'bps/vim-tshark'
 
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
 
 #action
 
 [[plugins]]
 repo = 'tyru/nextfile.vim'
 hook_add = '''
-  let g:nf_map_next         = '[f'
-  let g:nf_map_previous     = ']f'
+  let g:nf_map_next         = ']f'
+  let g:nf_map_previous     = '[f'
   let g:nf_include_dotfiles = 0
   let g:nf_ignore_dir       = 1
   let g:nf_open_command     = 'edit'
+  let g:nf_loop_files       = 1
+  let g:nf_ignore_ext       = []
 '''
 
 # [[plugins]]
