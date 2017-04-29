@@ -42,9 +42,9 @@ function! s:set_colors() "{{{
     hi LineNr ctermfg=245 guifg=#8a8a8a
     hi Pmenu ctermfg=36 ctermbg=235 guifg=#00af87 guibg=#262626
   elseif &filetype == 'ruby'
-    call s:colorscheme('railscasts_u10')
+    call s:colorscheme('railscasts')
   elseif &filetype == 'gitcommit'
-    call s:colorscheme('gitcommit_u10')
+    call s:colorscheme('gitcommit')
   elseif g:colors_seted == 0
     call s:colorscheme('PaperColor')
   endif
