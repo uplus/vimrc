@@ -569,3 +569,11 @@ hook_add = '''
 [[plugins]]
 repo = 'cocopon/colorswatch.vim'
 on_cmd = 'ColorSwatchGenerate'
+
+[[plugins]] # Markdownのリストをツリーにする
+repo = 'shinespark/vim-list2tree'
+on_cmd = 'List2Tree'
+
+[[plugins]]
+repo = 'rhysd/try-colorscheme.vim'
+on_cmd = 'TryColorscheme'

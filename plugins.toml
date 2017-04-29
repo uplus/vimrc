@@ -262,6 +262,10 @@ repo = 'tyru/caw.vim'
 [[plugins]]
 repo = 'taku-o/vim-vis'
 
+[[plugins]]
+repo = 'tyru/visualctrlg.vim'
+
+
 #search and replace
 
 [[plugins]] # show search point on the command-line

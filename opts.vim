@@ -134,6 +134,7 @@ set foldcolumn=1
 set foldlevelstart=0     " どのレベルから折りたたむか
 set foldnestmax=3   " indent,syntaxでどの深さまで折りたたむか
 " set foldclose=all " 折りたたんでるエリアからでると自動で閉じる
+set foldopen=block,hor,mark,percent,quickfix,search,tag,undo
 
 set fillchars=diff:-,vert:│
 set list
