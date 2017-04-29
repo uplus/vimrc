@@ -212,6 +212,31 @@ function! LLsyntax_check() abort "{{{
   return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
 endfunction "}}}
 
+" #tab
+
+" TODO なぜか動かない そもそも呼び出されてない?
+function! LLtabs() abort "{{{
+  let [x, y, z] = [[], [], []]
+  let nr = tabpagenr()
+  let cnt = tabpagenr('$')
+  for i in range(1, cnt)
+    call add(i < nr ? x : i == nr ? y : z, '%'. i . 'T%{lightline#onetab(' . i . ',' . (i == nr) . ')}' . (i == cnt ? '%T' : ''))
+  endfor
+  let abbr = '...'
+  let n = min([max([s:lightline.winwidth / 40, 2]), 8])
+  if len(x) > n && len(z) > n
+    let x = extend(add(x[:n/2-1], abbr), x[-(n+1)/2:])
+    let z = extend(add(z[:(n+1)/2-1], abbr), z[-n/2:])
+  elseif len(x) + len(z) > 2 * n
+    if len(x) > n
+      let x = extend(add(x[:(2*n-len(z))/2-1], abbr), x[-(2*n-len(z)+1)/2:])
+    elseif len(z) > n
+      let z = extend(add(z[:(2*n-len(x)+1)/2-1], abbr), z[-(2*n-len(x))/2:])
+    endif
+  endif
+  return [x, y, z]
+endfunction "}}}
+
 finish
 
 
@@ -236,10 +261,6 @@ function! lightline_powerful#tabfilename(n) abort "{{{
 endfunction "}}}
 
 let g:lightline = {
-      \ 'tabline': {
-      \   'left': [[ 'tabs' ]],
-      \   'right': [[ 'close' ]]
-      \ },
       \ 'tab': {
       \   'active': ['tabnum', 'readonly', 'filename', 'modified'],
       \   'inactive': ['tabnum', 'readonly', 'filename', 'modified']
