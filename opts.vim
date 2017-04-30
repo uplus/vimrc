@@ -57,7 +57,7 @@ endif
 
 set nowrap
 if has('patch338')
-  setg breakindent
+  set breakindent
 endif
 set sidescroll=0
 set sidescrolloff=12

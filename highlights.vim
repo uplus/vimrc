@@ -99,6 +99,7 @@ function! s:set_highlights() "{{{
     hi vimVar            ctermfg=226 guifg=#ffff00
     hi vimFuncName       ctermfg=135 guifg=#af5fff
     hi vimLet            ctermfg=83  guifg=#5fff5f
+    hi! link vimOperParen vimFuncVar
 
     hi pythonInclude     ctermfg=75  guifg=#5fafff
     hi pythonConditional ctermfg=69  guifg=#5f87ff
@@ -107,9 +108,10 @@ function! s:set_highlights() "{{{
     hi pythonEscape      ctermfg=202 guifg=#ff5f00
     hi pythonBuiltin     ctermfg=111 guifg=#87afff
     hi pythonComment     ctermfg=147 guifg=#afafff
-
     hi! link pythonRepeat pythonConditional
-    hi! link vimOperParen vimFuncVar
+
+    hi! link goConditional goDeclaration
+    hi goDirective       ctermfg=35 guifg=#20af40
   elseif g:colors_name == 'molokai'
     hi   Folded        ctermfg=63   guifg=#5f5fff
     hi   Comment       ctermfg=245  guifg=#8a8a8a
