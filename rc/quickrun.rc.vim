@@ -158,6 +158,7 @@ let s:config = {
       \   'cmdopt' : './...',
       \   'exec': '%c build %o',
       \   'errorformat': '%f:%l: %m,%-G%.%#',
+      \   'hook/sweep/files': '%S:p:h/%S:p:h:t',
       \ },
       \}
 call extend(g:quickrun_config, s:config)
