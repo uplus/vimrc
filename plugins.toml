@@ -100,6 +100,10 @@ on_source = 'unite.vim'
 repo = 'MaryHal/unite-unicode'
 on_source = 'unite.vim'
 
+[[plugins]]
+repo = 'rhysd/unite-go-import.vim'
+on_source = 'unite.vim'
+
 
 #view
 
