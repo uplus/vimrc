@@ -23,7 +23,6 @@ let g:lightline = {
       \     'charvalue': '%b',
       \     'charvaluehex': '%B',
       \     'spell': '%{&spell? &spelllang:""}',
-      \     'filetype': '%{&ft !=# ""? &ft : "none"}',
       \     'percent': '%3p%%', 'percentwin': '%P',
       \     'close': printf('%%999X %s ', has('multi_byte') ? '✗' : 'x'),
       \   },
@@ -33,6 +32,7 @@ let g:lightline = {
       \   'component_function': {
       \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
       \     'cursor': 'LLcursor',
+      \     'filetype': 'LLfiletype',
       \     'filename': 'LLfilename',
       \     'git': 'LLgit',
       \     'current_function': 'LLcurrent_function',
@@ -184,6 +184,13 @@ function! LLcursor() abort "{{{
     return ''
   endif
   return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
+endfunction "}}}
+
+function! LLfiletype() abort "{{{
+  if s:is_ignore()
+    return ''
+  endif
+  return &ft !=# ''? &ft : 'none'
 endfunction "}}}
 
 function! LLfileencoding() abort "{{{
