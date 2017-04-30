@@ -298,11 +298,6 @@ hook_add = '''
 
   au myac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
 '''
-hook_post_source = '''
-  if dein#is_sourced('lightline.vim')
-    au watchdogs-plugin BufWritePost * call lightline#update()
-  endif
-'''
 
 [[plugins]]
 repo = 'dannyob/quickfixstatus'
@@ -325,6 +320,9 @@ hook_source = 'source ~/.vim/rc/quickrun.rc.vim'
 
 [[plugins]]
 repo = 'osyo-manga/shabadou.vim'
+
+# [[plugins]]
+# repo = 'KazuakiM/vim-qfstatusline'
 
 [[plugins]]
 repo = 'osyo-manga/quickrun-outputter-replace_region'

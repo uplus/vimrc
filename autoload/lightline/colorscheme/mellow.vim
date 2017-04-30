@@ -1,5 +1,5 @@
 let s:base_b = ['#bf60ff', 141]
-let s:base_g = ['#60ef3f', 156]
+let s:base_g = ['#60df3f', 156]
 let s:base_r = ['#ffb90f', 214]
 
 let s:gray = ['#20202f', 234]
@@ -47,7 +47,7 @@ let s:p.tabline.tabsel  = [[s:base03, s:base1]]
 let s:p.tabline.middle  = [[s:base0,  s:base02]]
 let s:p.tabline.right   = copy(s:p.normal.right)
 
-let s:p.normal.error    = [[s:base03, s:red]]
+let s:p.normal.error    = [[s:black, s:red]]
 let s:p.normal.warning  = [[s:base03, s:yellow]]
 let s:p.normal.git      = [[s:red, s:gray]]
 

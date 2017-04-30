@@ -75,10 +75,8 @@ let g:lightline = {
 "}}}
 
 " default(powerline) molokai darcula solarized
-
 " カラースキームで定義されてる数だけ色が使える?
-" component_expand使えばピンポイントカラー&隠せる -> lightline#update()
-" expandがリストを複数戻していいからtabは'tabs'だけで色変え出来てる?
+" expandがリストを複数戻していいからtabは'tabs'だけで色変え出来る
 " tab
 "   タブがあるならデフォルトのonetab()?返してないならbuflist返す
 " buftype preview quickfix diff
@@ -109,16 +107,16 @@ let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'vimfiler': 'VimFiler',
           \ }
 
 let s:e = { 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
-\ 'vimfiler':   'vimfiler#get_status_string()',
-\ 'unite':      'unite#get_status_string()',
-\ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
-\ 'calendar':   "strftime('%Y/%m/%d')",
-\ 'quickrun':   "''",
-\ 'agit': "''", 'agit_diff': "''", 'agit_stat': "''",
-\ '__Gundo__': "''",
-\ '__Gundo_Preview__': "''",
-\ '[Command Line]': "''",
-\ }
+          \ 'vimfiler':   'vimfiler#get_status_string()',
+          \ 'unite':      'unite#get_status_string()',
+          \ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
+          \ 'calendar':   "strftime('%Y/%m/%d')",
+          \ 'quickrun':   "''",
+          \ 'agit': "''", 'agit_diff': "''", 'agit_stat': "''",
+          \ '__Gundo__': "''",
+          \ '__Gundo_Preview__': "''",
+          \ '[Command Line]': "''",
+          \ }
 
 let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'dictionary', 'gundo', 'undotree']
 let s:ignore_fn = ['__Gundo_Preview__']
