@@ -110,10 +110,10 @@ gitcommit = '''
 go = '''
   SetTab 4
   setl noexpandtab
+  setl foldmethod=syntax
   highlight default link goErr WarningMsg
   au myac Syntax <buffer> syn keyword goErr err
   let b:format_cmd = 'Fmt'
-
   nnoremap <buffer><silent>,li :<c-u>Unite go/import -start-insert<cr>
 '''
 
