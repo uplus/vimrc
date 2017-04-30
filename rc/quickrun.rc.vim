@@ -71,11 +71,100 @@ let g:quickrun_config._ = {
       "   uniteで最初の行がエラーだとハイライトされる
       " topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
 
-function! s:make_hook_points_module(base)
-  return shabadou#make_hook_points_module(a:base)
-endfunction
+" #languages {{{
+let s:config = {
+      \ 'c': {'type': 'c/clang'},
+      \ 'cpp': {'type': 'cpp/clang'},
+      \ 'c/clang': {'cmdopt': $C_COMP_OPT},
+      \ 'cpp/clang': {'cmdopt': $CPP_COMP_OPT},
+      \ 'ruby': {'cmdopt' : '-Ku'},
+      \ 'ruby/rspec': {
+      \   'command': 'bundle',
+      \   'exec': '%c exec rspec -f d %s',
+      \ },
+      \ 'markdown':{'type': 'markdown/previm'},
+      \ 'markdown/previm': {
+      \   'runner': 'shell',
+      \   'outputter': 'null',
+      \   'command': ':PrevimOpen',
+      \   'exec': '%c',
+      \ },
+      \ 'go': {'type': 'go/run'},
+      \ 'go/run': {
+      \   'command': 'go',
+      \   'exec': '%c run %s:p:t %a',
+      \   'tempfile': '%{tempname()}.go',
+      \   'hook/output_encode/encoding': 'utf-8',
+      \   'hook/cd/directory': '%S:p:h',
+      \ },
+      \ 'go/build': {
+      \   'command': 'go',
+      \   'cmdopt': './...',
+      \   'exec': ['%c build %o', '%s:p:h:t %a'],
+      \   'hook/output_encode/encoding': 'utf-8',
+      \   'hook/cd/directory': '%S:p:h',
+      \ },
+      \ }
+call extend(g:quickrun_config, s:config)
+unlet s:config
+"}}}
 
-" replace_region {{{
+" #watchdogs {{{
+let s:c_opt_watchdogs = substitute($C_COMP_OPT, '-lm ', '','')
+let s:config = {
+      \ 'watchdogs_checker/_' : {
+      \   'runner' : 'vimproc',
+      \   'outputter/quickfix/open_cmd' : '',
+      \   'hook/close_unite_quickfix/enable_module_loaded'  : 0,
+      \   'hook/unite_quickfix/enable_exit'                 : 0,
+      \   'hook/back_window/enable_exit'             : 0,
+      \   'hook/back_window/priority_exit'           : 1,
+      \   'hook/hier_update/enable_exit'             : 1,
+      \   'hook/hier_update/priority_exit'           : 3,
+      \   'hook/lightline_update/enable_exit':   1,
+      \   'hook/lightline_update/priority_exit': 1,
+      \ },
+      \
+      \ 'c/watchdogs_checker' : {
+      \   'type'
+      \     : executable('clang') ? 'watchdogs_checker/clang'
+      \     : executable('gcc')   ? 'watchdogs_checker/gcc'
+      \     :''
+      \ },
+      \ 'cpp/watchdogs_checker' : {
+      \   'type'
+      \     : executable('clang-check') ? 'watchdogs_checker/clang_check'
+      \     : executable('clang++')     ? 'watchdogs_checker/clang++'
+      \     : executable('g++')         ? 'watchdogs_checker/g++'
+      \     : executable('cl')          ? 'watchdogs_checker/cl'
+      \     :'',
+      \ },
+      \ 'go/watchdogs_checker': {'type': 'watchdogs_checker/gobuild'},
+      \
+      \ 'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
+      \ 'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt_watchdogs },
+      \ 'watchdogs_checker/g++'     : { 'cmdopt': $CPP_COMP_OPT },
+      \ 'watchdogs_checker/clang++' : { 'cmdopt': $CPP_COMP_OPT },
+      \ 'watchdogs_checker/c89' : {
+      \   'command': 'gcc',
+      \   'exec': '%c %o -fsyntax-only %s:p',
+      \   'cmdopt': s:c_opt_watchdogs . ' -std=c89',
+      \ },
+      \ 'watchdogs_checker/flake8': {
+      \   'cmdopt': '--ignore=' . g:autopep8_ignore  . ' --max-line-length=' . g:autopep8_max_line_length
+      \ },
+      \ 'watchdogs_checker/gobuild': {
+      \   'command': 'go',
+      \   'cmdopt' : './...',
+      \   'exec': '%c build %o',
+      \   'errorformat': '%f:%l: %m,%-G%.%#',
+      \ },
+      \}
+call extend(g:quickrun_config, s:config)
+unlet s:config
+"}}}
+
+" #replace_region {{{
 let s:config = {
       \ 'replace_region' : {
       \   'outputter'                  : 'error',
@@ -102,6 +191,26 @@ command! -nargs=* -range -complete=customlist,quickrun#complete
       \   -type ruby
 " }}}
 
+
+" #hooks
+function! s:make_hook_points_module(base)
+  return shabadou#make_hook_points_module(a:base)
+endfunction
+
+" lightline_update {{{
+let s:hook = s:make_hook_points_module({
+      \ 'name' : 'lightline_update',
+      \ 'kind' : 'hook',
+      \})
+
+function! s:hook.hook_apply(context)
+  call lightline#update()
+endfunction
+
+call quickrun#module#register(s:hook, 1)
+unlet s:hook
+"}}}
+
 " quickrun-hook-clear_quickfix {{{
 let s:hook = s:make_hook_points_module({
       \ "name" : "clear_quickfix",
@@ -117,74 +226,3 @@ endfunction
 call quickrun#module#register(s:hook, 1)
 unlet s:hook
 " }}}
-
-" languages
-let s:config = {
-      \ 'c': {'type': 'c/clang'},
-      \ 'cpp': {'type': 'cpp/clang'},
-      \ 'c/clang': {'cmdopt': $C_COMP_OPT},
-      \ 'cpp/clang': {'cmdopt': $CPP_COMP_OPT},
-      \ 'ruby': {'cmdopt' : '-Ku'},
-      \ 'ruby/rspec': {
-      \   'command': 'bundle',
-      \   'exec': '%c exec rspec -f d %s',
-      \ },
-      \ 'markdown':{'type': 'markdown/previm'},
-      \ 'markdown/previm': {
-      \   'runner': 'shell',
-      \   'outputter': 'null',
-      \   'command': ':PrevimOpen',
-      \   'exec': '%c',
-      \ },
-      \ }
-call extend(g:quickrun_config, s:config)
-unlet s:config
-
-
-
-" watchdogs
-let s:c_opt_watchdogs = substitute($C_COMP_OPT, '-lm ', '','')
-
-let s:config = {
-      \ 'watchdogs_checker/_' : {
-      \   'runner' : 'vimproc',
-      \   'outputter/quickfix/open_cmd' : '',
-      \   'hook/close_unite_quickfix/enable_module_loaded'  : 0,
-      \   'hook/unite_quickfix/enable_exit'                 : 0,
-      \   'hook/back_window/enable_exit'             : 0,
-      \   'hook/back_window/priority_exit'           : 1,
-      \   'hook/quickfix_status_enable/enable_exit'  : 1,
-      \   'hook/quickfix_status_enable/priority_exit': 2,
-      \   'hook/hier_update/enable_exit'             : 1,
-      \   'hook/hier_update/priority_exit'           : 3,
-      \ },
-      \	'c/watchdogs_checker' : {
-      \		'type'
-      \			: executable('clang') ? 'watchdogs_checker/clang'
-      \			: executable('gcc')   ? 'watchdogs_checker/gcc'
-      \			:''
-      \	},
-      \	'cpp/watchdogs_checker' : {
-      \		'type'
-      \			: executable('clang-check') ? 'watchdogs_checker/clang_check'
-      \			: executable('clang++')     ? 'watchdogs_checker/clang++'
-      \			: executable('g++')         ? 'watchdogs_checker/g++'
-      \			: executable('cl')          ? 'watchdogs_checker/cl'
-      \			:'',
-      \	},
-      \	'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
-      \	'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt_watchdogs },
-      \	'watchdogs_checker/g++'     : { 'cmdopt': $CPP_COMP_OPT },
-      \	'watchdogs_checker/clang++' : { 'cmdopt': $CPP_COMP_OPT },
-      \ 'watchdogs_checker/c89' : {
-      \   'command': 'gcc',
-      \   'exec': '%c %o -fsyntax-only %s:p',
-      \   'cmdopt': s:c_opt_watchdogs . ' -std=c89',
-      \ },
-      \ 'watchdogs_checker/flake8': {
-      \   'cmdopt': '--ignore=' . g:autopep8_ignore  . ' --max-line-length=' . g:autopep8_max_line_length
-      \ },
-      \}
-
-call extend(g:quickrun_config, s:config)
-unlet s:config
