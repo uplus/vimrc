@@ -91,3 +91,7 @@ function! Format() abort
     execute b:format_cmd
   endif
 endfunction
+
+function! Tags() abort
+  call jobstart(get(b:, 'tags_cmd', 'ctags'))
+endfunction

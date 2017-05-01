@@ -19,6 +19,7 @@ command! Install call dein#install()
 command! Clear   call dein#clear_state()
 command! Update  call dein#update()
 
+command! Tags call Tags()
 command! MoveToTab exec "normal! \<c-w>T"
 command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0

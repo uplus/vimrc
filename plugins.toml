@@ -617,6 +617,23 @@ repo = 'NLKNguyen/papercolor-theme'
 repo = 'freeo/vim-kalisi'
 
 
+#go
+# [[plugins]]
+# repo = 'vim-jp/vim-go-extra'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''
+  let g:go_def_mapping_enabled = 0
+  let g:go_fmt_autosave = 0
+  let g:go_template_autocreate = 0
+'''
+
+# [[plugins]]
+# repo = 'dgryski/vim-godef'
+
+
+
 #misc
 [[plugins]]
 repo = 'kana/vim-gf-user'
@@ -637,9 +654,6 @@ hook_post_source = '''
   " call when built-in functions failed
   call gf#user#extend('gf#ext#newfile', 1900)
 '''
-
-[[plugins]]
-repo = 'vim-jp/vim-go-extra'
 
 [[plugins]] # jump to vim autoload functions
 repo = 'sgur/vim-gf-autoload'

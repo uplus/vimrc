@@ -458,20 +458,6 @@ if dein#tap('hl_matchit.vim') "{{{
   au myac ColorScheme * hi HlMatchit cterm=bold,underline
 endif "}}}
 
-if dein#tap('alpaca_tags') "{{{
-  let g:alpaca_tags#config = {
-        \    '_' : '-R --sort=yes',
-        \    'ruby': '--languages=+Ruby',
-        \ }
-
-  augroup AlpacaTags
-    autocmd!
-    " au myac FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
-    " au myac FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
-    " au myac FileReadPost,BufEnter      *       AlpacaTagsSet
-  augroup END
-endif "}}}
-
 if dein#tap('vim-anzu') " {{{
   " let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
   " Treat folding well

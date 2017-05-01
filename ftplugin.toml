@@ -113,8 +113,10 @@ go = '''
   setl foldmethod=syntax
   highlight default link goErr WarningMsg
   au myac Syntax <buffer> syn keyword goErr err
-  let b:format_cmd = 'Fmt'
   nnoremap <buffer><silent>,li :<c-u>Unite go/import -start-insert<cr>
+
+  let b:format_cmd = 'GoFmt'
+  let b:tags_cmd = 'gotags -sort -silent -f .tags *.go'
 '''
 
 help = '''
