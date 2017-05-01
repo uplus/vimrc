@@ -92,6 +92,9 @@ function! Format() abort
   endif
 endfunction
 
+let g:tags_jobs = {}
 function! Tags() abort
-  call jobstart(get(b:, 'tags_cmd', 'ctags'))
+  let dir = expand('%:p:h')
+  silent! call jobstop(get(g:tags_jobs, dir, -1))
+  let g:tags_jobs[dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
 endfunction
