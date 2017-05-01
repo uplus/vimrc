@@ -112,6 +112,8 @@ function! s:set_highlights() "{{{
 
     hi! link goConditional goDeclaration
     hi goDirective       ctermfg=35 guifg=#20af40
+    hi goFormatSpecifier ctermfg=207 guifg=#ff50ff
+    hi goSpecialString   ctermfg=226 guifg=#ffff00
   elseif g:colors_name == 'molokai'
     hi   Folded        ctermfg=63   guifg=#5f5fff
     hi   Comment       ctermfg=245  guifg=#8a8a8a

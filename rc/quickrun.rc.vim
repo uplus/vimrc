@@ -100,7 +100,21 @@ let s:config = {
       \ 'go/build': {
       \   'command': 'go',
       \   'cmdopt': './...',
+      \   'exec': '%c build %o',
+      \   'hook/output_encode/encoding': 'utf-8',
+      \   'hook/cd/directory': '%S:p:h',
+      \ },
+      \ 'go/build_run': {
+      \   'command': 'go',
+      \   'cmdopt': './...',
       \   'exec': ['%c build %o', '%s:p:h:t %a'],
+      \   'hook/output_encode/encoding': 'utf-8',
+      \   'hook/cd/directory': '%S:p:h',
+      \ },
+      \ 'go/test': {
+      \   'command': 'go',
+      \   'cmdopt': './...',
+      \   'exec': '%c test %o',
       \   'hook/output_encode/encoding': 'utf-8',
       \   'hook/cd/directory': '%S:p:h',
       \ },

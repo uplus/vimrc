@@ -630,8 +630,9 @@ repo = 'freeo/vim-kalisi'
 
 
 #go
-# [[plugins]]
-# repo = 'vim-jp/vim-go-extra'
+
+[[plugins]] # Fmtしてもホールド維持
+repo = 'vim-jp/vim-go-extra'
 
 [[plugins]]
 repo = 'fatih/vim-go'
