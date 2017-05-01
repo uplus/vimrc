@@ -692,13 +692,6 @@ if dein#tap('vim-expand-region') "{{{
   xmap gm <Plug>(expand_region_shrink)
 endif "}}}
 
-if dein#tap('vim-milfeulle') "{{{
-  nmap <C-o> <Plug>(milfeulle-prev)
-  nmap <C-i> <Plug>(milfeulle-next)
-  let g:milfeulle_default_kind = "window"
-  let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
-endif "}}}
-
 if dein#tap('vim-over') "{{{
   " let g:over_enable_auto_nohlsearch = 1
   let g:over_enable_cmd_window = 0
