@@ -620,3 +620,7 @@ on_cmd = 'List2Tree'
 [[plugins]]
 repo = 'rhysd/try-colorscheme.vim'
 on_cmd = 'TryColorscheme'
+
+[[plugins]]
+repo = 'uplus/colorsel.vim'
+on_cmd = 'ColorSel'

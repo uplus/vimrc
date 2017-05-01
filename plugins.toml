@@ -250,6 +250,8 @@ repo = 'kana/vim-smartword'
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
+# repo = 'deris/improvedft'      # can input many charactores
+# repo = 'deris/vim-shot-f'      # show oneshot jump points
 
 # [[plugins]]
 # repo = 'matchit.zip'
