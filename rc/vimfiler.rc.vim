@@ -16,7 +16,8 @@ let g:vimfiler_sendto = {
 
 au myac FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings() "{{{
-  setlocal nobuflisted
+  setl nobuflisted
+  setl numberwidth=2
 
   nmap <buffer><CR> <Plug>(vimfiler_cd_or_edit)
 

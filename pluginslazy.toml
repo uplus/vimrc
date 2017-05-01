@@ -376,6 +376,8 @@ repo = 'majutsushi/tagbar'
 on_cmd = ['Tagbar', 'TagbarToggle', 'TagbarOpen', 'TagbarOpenAutoClose', 'TagbarShowTag', 'TagbarCurrentTag', 'TagbarGetTypeConfig', 'TagbarDebug', 'TagbarTogglePause']
 on_func = 'tagbar#'
 hook_add = '''
+  nnoremap <silent>,t :<c-u>TagbarOpen<cr>
+
   let g:tagbar_type_go = {
     \   'ctagstype': 'go',
     \   'kinds': [
@@ -488,7 +490,7 @@ hook_add = '''
 
   let g:gundo_right = 1
   " let g:gundo_preview_bottom = 1
-  let g:gundo_width = 25 " float2nr(winwidth(0)*0.24)
+  let g:gundo_width = 30 " float2nr(winwidth(0)*0.24)
   let g:gundo_preview_height = 20
 
   let g:gundo_help = 0

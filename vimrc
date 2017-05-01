@@ -83,6 +83,9 @@ augroup myac
   au FileType conf,gitcommit,html,css set nocindent
   au StdinReadPost * call s:stdin_config()
 
+  au FileType gundo,vimfiler, setl foldcolumn=0
+  au FileType gundo,vimfiler,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
+
   if exists('##OptionSet')
     au OptionSet previewwindow,diff call s:quit_map()
 
