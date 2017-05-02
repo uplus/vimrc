@@ -199,8 +199,17 @@ if = "!has('nvim')"
 on_ft = 'ruby'
 hook_add = '''
   let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-  au myac ColorScheme * hi rubyLocalVariable ctermfg=38
+  au myac ColorScheme * hi rubyLocalVariable ctermfg=38 guifg=#00afd7
 '''
+
+[[plugins]]
+# plugin/に関数定義が沢山ある
+repo = 'killphi/vim-ruby-refactoring'
+on_ft = 'ruby'
+hook_add = '''
+  let g:ruby_refactoring_map_keys = 0
+'''
+
 
 #python
 
