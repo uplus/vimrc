@@ -52,24 +52,28 @@ command! Stop QuickRunStop
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
-      \ 'runner' : 'vimproc',
-      \ 'runner/vimproc/sleep': 10,
-      \ 'runner/vimproc/updatetime' : 50,
-      \ 'runner/vimproc/read_timeout': 100,
-      \ 'outputter' : 'quickfix',
-      \ 'outputter/buffer/close_on_empty'   : 1,
-      \ 'outputter/quickfix/into'           : 0,
+      \ 'runner':                       'vimproc',
+      \ 'runner/vimproc/sleep':         10,
+      \ 'runner/vimproc/updatetime':    100,
+      \ 'runner/vimproc/read_timeout':  10,
+      \ 'outputter': 'quickfix',
+      \ 'outputter/buffer/close_on_empty': 1,
+      \ 'outputter/quickfix/into':         0,
+      \ 
       \ 'hook/close_quickfix/enable_exit'   : 1,
       \ 'hook/close_unite_quickfix/enable_module_loaded' : 1,
+      \ 
       \ 'hook/unite_quickfix/enable_exit'    : 1,
-      \ 'hook/unite_quickfix/unite_options'  : '-no-quit -no-empty -direction=botright -winheight=10',
       \ 'hook/unite_quickfix/priority_exit'  : 0,
       \ 'hook/unite_quickfix/no_focus'       : 1,
+      \ 'hook/unite_quickfix/unite_options'  : '-no-quit -no-empty -direction=botright -winheight=10',
       \ }
-      " -create指定しないとハイライトされないときがある
-      "   有効にするとバッファが作られまくる
-      "   uniteで最初の行がエラーだとハイライトされる
-      " topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
+" -create指定しないとハイライトされないときがある
+"   有効にするとバッファが作られまくる
+"   uniteで最初の行がエラーだとハイライトされる
+" topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
+" error successで分けるなら処理が終了するのを待たないといけない
+" hook/{hook module}/{hook point}
 
 " #languages {{{
 let s:config = {
@@ -126,17 +130,18 @@ unlet s:config
 " #watchdogs {{{
 let s:c_opt_watchdogs = substitute($C_COMP_OPT, '-lm ', '','')
 let s:config = {
-      \ 'watchdogs_checker/_' : {
-      \   'runner' : 'vimproc',
-      \   'outputter/quickfix/open_cmd' : '',
-      \   'hook/close_unite_quickfix/enable_module_loaded'  : 0,
-      \   'hook/unite_quickfix/enable_exit'                 : 0,
-      \   'hook/back_window/enable_exit'             : 0,
-      \   'hook/back_window/priority_exit'           : 1,
-      \   'hook/hier_update/enable_exit'             : 1,
-      \   'hook/hier_update/priority_exit'           : 3,
-      \   'hook/lightline_update/enable_exit':   1,
-      \   'hook/lightline_update/priority_exit': 1,
+      \ 'watchdogs_checker/_':                              {
+      \   'runner':                                         'vimproc',
+      \   'outputter/quickfix/open_cmd':                    '',
+      \ 
+      \   'hook/close_unite_quickfix/enable_module_loaded': 0,
+      \   'hook/unite_quickfix/enable_exit':                0,
+      \   'hook/back_window/enable_exit':                   0,
+      \   'hook/back_window/priority_exit':                 1,
+      \   'hook/hier_update/enable_exit':                   1,
+      \   'hook/hier_update/priority_exit':                 3,
+      \   'hook/lightline_update/enable_exit':              1,
+      \   'hook/lightline_update/priority_exit':            1,
       \ },
       \
       \ 'c/watchdogs_checker' : {

@@ -23,7 +23,7 @@ CAlterCommand vsi VimShellInteractive
 CAlterCommand uni[te] Unite
 CAlterCommand vgr[ep] Unite vimgrep
 CAlterCommand ug[rep] Unite -auto-resize grep:%::
-CAlterCommand qr QuickRun -mode
+CAlterCommand qr QuickRun
 CAlterCommand log Log
 CAlterCommand colortoggle ColorToggle
 

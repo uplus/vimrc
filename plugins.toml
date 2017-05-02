@@ -633,6 +633,9 @@ repo = 'freeo/vim-kalisi'
 
 [[plugins]] # Fmtしてもホールド維持
 repo = 'vim-jp/vim-go-extra'
+hook_add = '''
+  let g:gofmt_command = 'goimports'
+'''
 
 [[plugins]]
 repo = 'fatih/vim-go'
