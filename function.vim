@@ -98,3 +98,26 @@ function! Tags() abort
   silent! call jobstop(get(g:tags_jobs, dir, -1))
   let g:tags_jobs[dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
 endfunction
+
+let g:clang_rename_command = 'clang-rename'
+let g:clang_reanme_flag = {
+  \ 'c': '-std=gnu11',
+  \ 'cpp': '-std=c++14',
+  \ }
+
+au myac FileType c,cpp nnoremap <buffer><silent>,lr :ClangRename<cr>
+command! ClangRename call ClangRename()
+function! ClangRename() abort
+  let flag = g:clang_reanme_flag[&ft]
+  let bufpath = expand('%:p')
+  let cmd = [g:clang_rename_command,
+    \ '-i',
+    \ '-offset=' . (line2byte(line('.'))+col('.')-2),
+    \ '-new-name=' . input('New name> '),
+    \ bufpath,
+    \ '--', flag, '...',
+    \ ]
+
+  call system(cmd)
+  exec 'checktime' bufpath
+endfunction
