@@ -117,6 +117,7 @@ go = '''
   nnoremap <buffer><silent>,li :<c-u>Unite go/import -start-insert<cr>
   nnoremap <buffer><silent>,lb :<c-u>QuickRun -mode n go/build<cr>
   nnoremap <buffer><silent>,lt :<c-u>QuickRun -mode n go/test<cr>
+  nnoremap <buffer><silent>,lr :<c-u>GoRename<cr>
 
   let b:format_cmd = 'Fmt'
   let b:tags_cmd = 'gotags -sort -silent -f .tags *.go'

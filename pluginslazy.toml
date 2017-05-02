@@ -421,7 +421,6 @@ on_ft = ['c', 'cpp']
 hook_add = '''
   let g:clang_format#command = 'clang-format'
   let g:clang_format#detect_style_file = 1
-  " au myac FileType c,cpp map <buffer>= <Plug>(operator-clang-format)
 '''
 
 [[plugins]] # <space>j <space>k

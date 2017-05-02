@@ -640,7 +640,10 @@ hook_add = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 hook_add = '''
-  au myac FileType go nnoremap <buffer><silent>gd :<c-u>call go#def#Jump('split')<cr>
+  function! s:go_config() abort
+    nnoremap <buffer><silent>gd :<c-u>call go#def#Jump('split')<cr>
+  endfunction
+  au myac FileType go call s:go_config()
   let g:go_def_mapping_enabled = 0
   let g:go_textobj_enabled = 0
   let g:go_doc_keywordprg_enabled = 1
