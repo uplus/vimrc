@@ -55,24 +55,28 @@ let g:quickrun_config._ = {
       \ 'runner':                       'vimproc',
       \ 'runner/vimproc/sleep':         10,
       \ 'runner/vimproc/updatetime':    100,
-      \ 'runner/vimproc/read_timeout':  10,
+      \ 'runner/vimproc/read_timeout':  20,
       \ 'outputter':                       'quickfix',
       \ 'outputter/buffer/close_on_empty': 1,
       \ 'outputter/quickfix/into':         0,
-      \ 
+      \
+      \ 'hook/echo/enable': 1,
+      \ 'hook/echo/output_success': 'quickrun success',
+      \ 'hook/echo/output_failure': 'quickrun failure',
+      \
+      \ 'hook/hier_update/enable_exit':        1,
+      \ 'hook/hier_update/priority_exit':      3,
+      \ 'hook/lightline_update/enable_exit':   1,
+      \ 'hook/lightline_update/priority_exit': 1,
+      \
       \ 'hook/close_quickfix/enable_exit':    1,
       \ 'hook/close_unite_quickfix/enable_module_loaded': 1,
       \ 'hook/unite_quickfix/enable_exit':    1,
       \ 'hook/unite_quickfix/priority_exit':  0,
       \ 'hook/unite_quickfix/no_focus':       1,
       \ 'hook/unite_quickfix/unite_options':  '-no-quit -no-empty -direction=botright -winheight=10',
+      \ 'hook/redraw_unite_quickfix/enable_exit': 1,
       \ }
-" -create指定しないとハイライトされないときがある
-"   有効にするとバッファが作られまくる
-"   uniteで最初の行がエラーだとハイライトされる
-" topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
-" error successで分けるなら処理が終了するのを待たないといけない
-" hook/{hook module}/{hook point}
 
 " #languages {{{
 let s:config = {
@@ -137,10 +141,6 @@ let s:config = {
       \   'hook/unite_quickfix/enable_exit':                0,
       \   'hook/back_window/enable_exit':                   0,
       \   'hook/back_window/priority_exit':                 1,
-      \   'hook/hier_update/enable_exit':                   1,
-      \   'hook/hier_update/priority_exit':                 3,
-      \   'hook/lightline_update/enable_exit':              1,
-      \   'hook/lightline_update/priority_exit':            1,
       \ },
       \
       \ 'c/watchdogs_checker' : {
@@ -210,14 +210,9 @@ command! -nargs=* -range -complete=customlist,quickrun#complete
       \   -type ruby
 " }}}
 
-
 " #hooks
-function! s:make_hook_points_module(base)
-  return shabadou#make_hook_points_module(a:base)
-endfunction
-
 " lightline_update {{{
-let s:hook = s:make_hook_points_module({
+let s:hook = shabadou#make_hook_points_module({
       \ 'name' : 'lightline_update',
       \ 'kind' : 'hook',
       \})
@@ -231,7 +226,7 @@ unlet s:hook
 "}}}
 
 " quickrun-hook-clear_quickfix {{{
-let s:hook = s:make_hook_points_module({
+let s:hook = shabadou#make_hook_points_module({
       \ "name" : "clear_quickfix",
       \ "kind" : "hook",
       \})
@@ -245,3 +240,15 @@ endfunction
 call quickrun#module#register(s:hook, 1)
 unlet s:hook
 " }}}
+
+
+
+" priority_exit enable_exitの優先順位を数値で指定
+" hook/{hook module}/{hook point}
+
+" -create指定しないとハイライトされないときがある
+"   有効にするとバッファが作られまくる
+"   uniteで最初の行がエラーだとハイライトされる
+" topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
+" error successで分けるなら処理が終了するのを待たないといけない
+" http://d.hatena.ne.jp/osyo-manga/20120919/1348054752
