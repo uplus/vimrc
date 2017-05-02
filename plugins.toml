@@ -708,6 +708,16 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'rhysd/wandbox-vim'
+hook_add = '''
+  nnoremap ,wb :<c-u>Wandbox<cr>
+  let g:wandbox#default_compiler = get(g:, 'wandbox#default_compiler', {})
+  let g:wandbox#default_compiler = {
+    \ 'cpp': 'clang-head',
+    \ }
+'''
+
+[[plugins]]
 repo = 'itchyny/calendar.vim'
 hook_add = '''
   let g:calendar_google_calendar = 1

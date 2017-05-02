@@ -5,8 +5,8 @@ let g:unite_quickfix_filename_is_pathshorten = 0
 
 nmap \R <Plug>(quickrun-op)
 xmap \r <Plug>(quickrun)
-nmap \tr :update \| QuickRun -mode n -runner terminal<cr>
-xmap \tr :update \| *QuickRun -mode v -runner terminal<cr>
+nmap <space>\r :update \| QuickRun -mode n -runner terminal<cr>
+xmap <space>\r :update \| *QuickRun -mode v -runner terminal<cr>
 
 nnoremap <expr><c-c> SmartQuickRunStop()
 function! g:SmartQuickRunStop() abort "{{{
