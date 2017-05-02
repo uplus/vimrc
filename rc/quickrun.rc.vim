@@ -56,17 +56,16 @@ let g:quickrun_config._ = {
       \ 'runner/vimproc/sleep':         10,
       \ 'runner/vimproc/updatetime':    100,
       \ 'runner/vimproc/read_timeout':  10,
-      \ 'outputter': 'quickfix',
+      \ 'outputter':                       'quickfix',
       \ 'outputter/buffer/close_on_empty': 1,
       \ 'outputter/quickfix/into':         0,
       \ 
-      \ 'hook/close_quickfix/enable_exit'   : 1,
-      \ 'hook/close_unite_quickfix/enable_module_loaded' : 1,
-      \ 
-      \ 'hook/unite_quickfix/enable_exit'    : 1,
-      \ 'hook/unite_quickfix/priority_exit'  : 0,
-      \ 'hook/unite_quickfix/no_focus'       : 1,
-      \ 'hook/unite_quickfix/unite_options'  : '-no-quit -no-empty -direction=botright -winheight=10',
+      \ 'hook/close_quickfix/enable_exit':    1,
+      \ 'hook/close_unite_quickfix/enable_module_loaded': 1,
+      \ 'hook/unite_quickfix/enable_exit':    1,
+      \ 'hook/unite_quickfix/priority_exit':  0,
+      \ 'hook/unite_quickfix/no_focus':       1,
+      \ 'hook/unite_quickfix/unite_options':  '-no-quit -no-empty -direction=botright -winheight=10',
       \ }
 " -create指定しないとハイライトされないときがある
 "   有効にするとバッファが作られまくる
