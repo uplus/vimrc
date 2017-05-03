@@ -41,12 +41,12 @@ au myac VimEnter * call dein#call_hook('post_source')
 
 
 "###################### plugin config ############################"
-let g:netrw_nogx=1             " 不要なkeymapを無効
+let g:netrw_nogx = 1 " Disable unnecessary keymaps
 " let g:loaded_netrw             = 1
 " let g:loaded_netrwPlugin       = 1
 " let g:loaded_netrwSettings     = 1
 " let g:loaded_netrwFileHandlers = 1
-let g:solarized_termcolors=256 " solarizedをCUIで使うため
+let g:solarized_termcolors = 256 " To use solarized in CLI
 
 " vim-operator taps "{{{
 if dein#tap('vim-operator-user') "{{{
@@ -60,7 +60,7 @@ if dein#tap('vim-operator-user') "{{{
   call operator#user#define('space-fold', 'vimrc#operator_space_fold')
   call operator#user#define('blank2void', 'vimrc#operator_blank2void')
 
-  " 行末にスペースを一つ追加する
+  " Add fold marker and space to end of line
   nmap zf <Plug>(operator-space-fold)
   xmap zf <Plug>(operator-space-fold)
 
@@ -73,9 +73,10 @@ endif "}}}
 if dein#tap('vim-operator-replace')
   nmap gz <Plug>(operator-replace)
   xmap gz <Plug>(operator-replace)
-  for c in split("\" ' ` ( { [ <")
-    exe 'nmap gz' . c '<Plug>(operator-replace)i' . c
+  for s:c in split("\" ' ` ( { [ <")
+    exe 'nmap gz' . s:c '<Plug>(operator-replace)i' . s:c
   endfor
+  unlet s:c
 endif
 
 if dein#tap('vim-operator-surround') "{{{

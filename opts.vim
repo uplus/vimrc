@@ -1,3 +1,6 @@
+set encoding=utf-8 " Removed in Neovim
+scriptencoding utf-8
+
 " set undodir=~/.vim/tmp/undo.txt
 " set viewdir=~/.vim/tmp/view
 set path+=/usr/include/c++/HEAD/
@@ -7,7 +10,6 @@ set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
 " tas;/dir  上記と同じだが/dirより上には行かない
 
 " #format and encoding
-set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,ucs-bom,euc-jp,eucjp-ms,cp932
 " Default fileformat.

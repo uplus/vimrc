@@ -6,11 +6,10 @@ hook_add = '''
 
   " Ruby
   let g:no_ruby_maps = 1
-  let g:ruby_path = [] " to fail in default gf
+  let g:ruby_path = [] " Force fail in default gf
 
   " Vim
-  let g:vimsyntax_noerror = 1
-  let g:vim_indent_cont = 0
+  " let g:vimsyntax_noerror = 1
 
   " Java
   let g:java_highlight_functions = 'style'
@@ -208,6 +207,8 @@ vim = '''
   setl keywordprg=:help
   setl iskeyword-=:
   setl iskeyword-=#
+
+  let g:vim_indent_cont = &l:tabstop
 
   let b:match_words =
     \ '\<fu\%[nction]\>:\<endf\%[unction]\>,' .

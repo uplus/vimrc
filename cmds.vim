@@ -1,4 +1,3 @@
-
 command! -nargs=1 SetTab
       \ let &l:tabstop=<args> |
       \ let &l:softtabstop = &l:tabstop |
