@@ -5,7 +5,7 @@
 function! s:make_rule(at, end, filetype, syntax)
   return {
   \ 'char': '<CR>',
-  \ 'input': s:cr_key,
+  \ 'input':  '<CR>',
   \ 'input_after': '<CR>' . a:end,
   \ 'at': a:at,
   \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,

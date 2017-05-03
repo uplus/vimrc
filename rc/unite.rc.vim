@@ -127,11 +127,11 @@ function! s:unite_source_headline.gather_candidates(args, context)
     endif
 
     call add(outlines,{
-          \ "word"         : oline,
-          \ "source"       : "headline",
-          \ "kind"         : "jump_list",
-          \ "action__path" : expand('%:p'),
-          \ "action__line" : num
+          \ 'word'         : oline,
+          \ 'source'       : 'headline',
+          \ 'kind'         : 'jump_list',
+          \ 'action__path' : expand('%:p'),
+          \ 'action__line' : num
           \ })
   endfor
 
@@ -188,13 +188,13 @@ function! s:unite_config()
   " TODO unite#get_current_unite()を使うべき
   let context = unite#get_context()
 
-  if context.buffer_name == 'quickrun-hook-unite-quickfix' || context.buffer_name == 'quickfix'
+  if context.buffer_name ==# 'quickrun-hook-unite-quickfix' || context.buffer_name ==# 'quickfix'
     au myac WinEnter <buffer> if !exists('b:win_entered') | 0 | let b:win_entered = 1 | endif
     au myac WinEnter <buffer> if winnr('$') == 1 | quit | endif
     nnoremap <silent><buffer>k :call <SID>unite_move_pos(1)<CR>
     nnoremap <silent><buffer>j :call <SID>unite_move_pos(0)<CR>
 
-  elseif context.buffer_name == 'location_list'
+  elseif context.buffer_name ==# 'location_list'
     au myac WinEnter <buffer> if winnr('$') == 1 | quit | endif
 
   elseif context.buffer_name ==# 'buffer'

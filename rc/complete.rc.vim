@@ -21,10 +21,10 @@ call neocomplete#custom#source('look', 'min_pattern_length', 3)
 call neocomplete#custom_source('vim', 'rank',  6)
 
 " Enable omni completion.
-autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd myac FileType css           setlocal omnifunc=csscomplete#CompleteCSS
+autocmd myac FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd myac FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd myac FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
 
 let g:neocomplete#sources#omni#input_patterns = get(g:, 'g:neocomplete#sources#omni#input_patterns', {})
 let g:neocomplete#sources#omni#functions      = get(g:, 'g:neocomplete#sources#omni#functions', {})

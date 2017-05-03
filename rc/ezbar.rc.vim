@@ -124,7 +124,7 @@ function! s:parts._filename() "{{{1
   else
     if s =~# '\[quickrun output\]'
       return {
-            \ 's' : "Run",
+            \ 's' : 'Run',
             \ 'c'  : self.__color.warn2 }
     else
       return {
@@ -177,7 +177,7 @@ endfunction
 let s:trailingWS_exclude_filetype = ['unite', 'markdown']
 
 function! s:parts.mixed_indent() "{{{1
-  if self.__filetype =~ 'help\|go'
+  if self.__filetype =~# 'help\|go'
     return
   endif
   let indents = [
@@ -195,7 +195,7 @@ endfunction
 
 function! s:parts.textmanip() "{{{1
   if !exists('g:textmanip_current_mode') | return '' | endif
-  return g:textmanip_current_mode[0] is 'r'
+  return g:textmanip_current_mode[0] is# 'r'
         \ ? { 's' : 'R', 'c': self.__.fg(self.__color._pink) }
         \ : ''
 endfunction
@@ -206,7 +206,7 @@ function! s:parts.cwd() "{{{1
   if len(_cwd) ==# 1
     return _cwd[0]
   endif
-  return join(_cwd[-2:], "/")
+  return join(_cwd[-2:], '/')
 
   " let cwd = substitute(getcwd(), expand($HOME), '~', '')
   " let cwd = substitute(cwd, '\V~/.vim/bundle/', 'BDL:', '')
@@ -221,12 +221,12 @@ function! s:parts.smalls() "{{{1
   let s = g:smalls_current_mode
   if empty(s) | return '' | endif
   return { 's': s,
-        \ 'c':  ( s is 'exc') ? 'SmallsCurrent' : 'SmallsCandidate' }
+        \ 'c':  ( s is# 'exc') ? 'SmallsCurrent' : 'SmallsCandidate' }
 endfunction
 
 function! s:parts.fugitive() "{{{1
   let s = fugitive#head()
-  if s is '' | return '' | endif
+  if s is# '' | return '' | endif
   let branch_symbol = g:ezbar.sym.branch . ' '
   if s ==# 'master'
     return { 's': branch_symbol . s }

@@ -192,7 +192,7 @@ function! LLfiletype() abort "{{{
 endfunction "}}}
 
 function! LLfileencoding() abort "{{{
-  let enc = (&fenc !=# "")? &fenc : &enc
+  let enc = (&fenc !=# '')? &fenc : &enc
   if enc ==# 'utf-8' && &ff ==# 'unix'
     return ''
   endif
@@ -228,7 +228,7 @@ function! LLtabs() abort "{{{
     call add(i < nr ? x : i == nr ? y : z, '%'. i . 'T%{lightline#onetab(' . i . ',' . (i == nr) . ')}' . (i == cnt ? '%T' : ''))
   endfor
   let abbr = '...'
-  let n = min([max([s:lightline.winwidth / 40, 2]), 8])
+  let n = min([max([g:lightline.winwidth/40, 2]), 8])
   if len(x) > n && len(z) > n
     let x = extend(add(x[:n/2-1], abbr), x[-(n+1)/2:])
     let z = extend(add(z[:(n+1)/2-1], abbr), z[-n/2:])

@@ -1,3 +1,4 @@
+
 " #quickrun
 let g:quickrun_no_default_key_mappings = 1
 let g:unite_quickfix_is_multiline = 0
@@ -24,8 +25,8 @@ function! g:SmartQuickRun() "{{{
   update
 
   " if empty(getloclist('.')) " If error exists, don't run
-  echo "start quickrun"
-  if expand('%') =~ '_spec.rb$'
+  echo 'start quickrun'
+  if expand('%') =~# '_spec.rb$'
     !rspec %
   else
     QuickRun -mode n
@@ -230,8 +231,8 @@ unlet s:hook
 
 " quickrun-hook-clear_quickfix {{{
 let s:hook = shabadou#make_hook_points_module({
-      \ "name" : "clear_quickfix",
-      \ "kind" : "hook",
+      \ 'name' : 'clear_quickfix',
+      \ 'kind' : 'hook',
       \})
 
 function! s:hook.hook_apply(context)
