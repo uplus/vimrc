@@ -31,16 +31,29 @@ function! g:CtrlAX(cnt) abort
 endfunction
 
 function g:RubyBlockOneline(str, cnt, def) abort
-  s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
+  let gdefault_save = &gdefault
+  let &gdefault = 0
+  try
+    " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+    s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}/Ie
+  finally
+    let &gdefault = gdefault_save
+  endtry
 endfunction
 
 function g:RubyBlockMultiline(str, cnt, def) abort
   let save_pos = getpos('.')
-  " s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}
-  " \1周りのスペースは=regで対応?
-  s/\v\s*\{(\|.*\|)?\_s*(.*)\_s*\}$/ do \1\r\2\rend
-  call feedkeys('3==')
-  call setpos('.', save_pos)
+  let gdefault_save = &gdefault
+  let &gdefault = 0
+  try
+    " \1周りのスペースは=regで対応?
+    " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+    s/\v\s*\{(\|.*\|)?\_s*(.*)\_s*\}$/ do \1\r\2\rend/Ie
+    call feedkeys('3==')
+  finally
+    let &gdefault = gdefault_save
+    call setpos('.', save_pos)
+  endtry
 endfunction
 
 let g:clurin = {
