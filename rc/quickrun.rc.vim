@@ -178,6 +178,9 @@ let s:config = {
       \   'errorformat': '%f:%l: %m,%-G%.%#',
       \   'hook/sweep/files': '%S:p:h/%S:p:h:t',
       \ },
+      \ 'watchdogs_checker/vint': {
+      \   'cmdopt': '--no-color',
+      \ },
       \}
 call extend(g:quickrun_config, s:config)
 unlet s:config

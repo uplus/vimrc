@@ -19,6 +19,8 @@ augroup myac
   if has('nvim')
     au TermOpen * call s:term_open()
     function s:term_open()
+      setl signcolumn=no
+      setl foldcolumn=0
       au BufEnter <buffer> call feedkeys('a') " or startinsert!
       " call feedkeys("exec zsh\<cr>\<c-l>") " Rug
     endfunction

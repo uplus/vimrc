@@ -98,7 +98,10 @@ function! s:set_highlights() "{{{
     hi vimString         ctermfg=155 guifg=#afff5f
     hi vimVar            ctermfg=226 guifg=#ffff00
     hi vimFuncName       ctermfg=135 guifg=#af5fff
-    hi vimLet            ctermfg=83  guifg=#5fff5f
+    hi vimLet            ctermfg=77  guifg=#50df3f
+    hi vimCommand        ctermfg=37  guifg=#00b0a0
+    hi clear vimFunction
+    hi! link vimNotFunc vimCommand
     hi! link vimOperParen vimFuncVar
 
     hi pythonInclude     ctermfg=75  guifg=#5fafff
