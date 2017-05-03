@@ -1,5 +1,5 @@
 set t_Co=256
-let g:colors_name = "gitcommit_u10"
+let g:colors_name = expand('<sfile>:t:r')
 
 highlight gitcommitSummary  ctermfg=190 guifg=#d7ff00
 highlight gitcommitBranch   ctermfg=199 guifg=#ff00af

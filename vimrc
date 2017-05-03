@@ -103,7 +103,7 @@ function! s:stdin_config()
   setl nofoldenable
   setl foldcolumn=0
 
-  %s/\(_\|.\)//ge
+  %s/\(_\|.\)//eI
   goto
   silent! %foldopen!
 endfunction

@@ -23,7 +23,7 @@ hi clear
 if exists('syntax_on')
   syntax reset
 endif
-let g:colors_name='lettuce'
+let g:colors_name = expand('<sfile>:t:r')
 
 augroup lettuce_syntax_extensions
   au!
@@ -124,19 +124,21 @@ hi link cCommentError cComment
 
 
 " highlight modes
-autocmd CmdwinLeave * hi User1      ctermbg=236 guibg=#303030
-autocmd CmdwinEnter * hi User1      ctermbg=22  guibg=#005f00
-autocmd InsertLeave * hi User1      ctermbg=236 guibg=#303030
-autocmd InsertEnter * hi User1      ctermbg=52  guibg=#5f0000
-autocmd CmdwinEnter * hi User2      ctermbg=22  guibg=#005f00
-autocmd CmdwinLeave * hi User2      ctermbg=236 guibg=#303030
-autocmd InsertLeave * hi User2      ctermbg=236 guibg=#303030
-autocmd InsertEnter * hi User2      ctermbg=52  guibg=#5f0000
-autocmd CmdwinEnter * hi StatusLine ctermbg=22  guibg=#005f00
-autocmd CmdwinLeave * hi StatusLine ctermbg=236 guibg=#303030
-autocmd InsertLeave * hi StatusLine ctermbg=236 guibg=#303030
-autocmd InsertEnter * hi StatusLine ctermbg=52  guibg=#5f0000
-
+augroup lettuce
+  autocmd!
+  autocmd CmdwinLeave * hi User1      ctermbg=236 guibg=#303030
+  autocmd CmdwinEnter * hi User1      ctermbg=22  guibg=#005f00
+  autocmd InsertLeave * hi User1      ctermbg=236 guibg=#303030
+  autocmd InsertEnter * hi User1      ctermbg=52  guibg=#5f0000
+  autocmd CmdwinEnter * hi User2      ctermbg=22  guibg=#005f00
+  autocmd CmdwinLeave * hi User2      ctermbg=236 guibg=#303030
+  autocmd InsertLeave * hi User2      ctermbg=236 guibg=#303030
+  autocmd InsertEnter * hi User2      ctermbg=52  guibg=#5f0000
+  autocmd CmdwinEnter * hi StatusLine ctermbg=22  guibg=#005f00
+  autocmd CmdwinLeave * hi StatusLine ctermbg=236 guibg=#303030
+  autocmd InsertLeave * hi StatusLine ctermbg=236 guibg=#303030
+  autocmd InsertEnter * hi StatusLine ctermbg=52  guibg=#5f0000
+augroup END
 
 " cBlock
 " cBracket                            cOperator
