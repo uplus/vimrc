@@ -752,3 +752,10 @@ hook_add = '''
 
 # [[plugins]]
 # repo = 'fweep/vim-zsh-path-completion'
+
+[[plugins]]
+repo = 'ynkdir/vim-vimlparser'
+
+[[plugins]]
+repo = 'syngan/vim-vimlint'
+depends = 'ynkdir/vim-vimlparser'
