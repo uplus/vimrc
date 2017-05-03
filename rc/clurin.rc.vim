@@ -1,3 +1,5 @@
+" vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+
 " http://qiita.com/syngan/items/0dd647e0f08557bbd633
 " https://github.com/syngan/vim-clurin
 
@@ -34,7 +36,6 @@ function g:RubyBlockOneline(str, cnt, def) abort
   let gdefault_save = &gdefault
   let &gdefault = 0
   try
-    " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
     s/\v\s*do\s*(\|.*\|)?\_s*(.*)\_s*end/{\1 \2}/Ie
   finally
     let &gdefault = gdefault_save
@@ -47,7 +48,6 @@ function g:RubyBlockMultiline(str, cnt, def) abort
   let &gdefault = 0
   try
     " \1周りのスペースは=regで対応?
-    " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
     s/\v\s*\{(\|.*\|)?\_s*(.*)\_s*\}$/ do \1\r\2\rend/Ie
     call feedkeys('3==')
   finally

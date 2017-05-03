@@ -35,7 +35,7 @@ augroup myac
   endif "}}}
 
   " Sync clipboard
-  if '' != $DISPLAY
+  if '' !=# $DISPLAY
     let @" = @*
     if exists('##TextYankPost')
       au TextYankPost * let @*=@" | let @+=@"

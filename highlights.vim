@@ -36,14 +36,14 @@ function! s:set_colors() "{{{
 
   " set background=dark
 
-  if &filetype == 'cpp' || &filetype == 'c'
+  if &filetype ==# 'cpp' || &filetype ==# 'c'
     call s:colorscheme('lettuce')
     " call s:colorscheme('kalisi')
     hi LineNr ctermfg=245 guifg=#8a8a8a
     hi Pmenu ctermfg=36 ctermbg=235 guifg=#00af87 guibg=#262626
-  elseif &filetype == 'ruby'
+  elseif &filetype ==# 'ruby'
     call s:colorscheme('railscasts')
-  elseif &filetype == 'gitcommit'
+  elseif &filetype ==# 'gitcommit'
     call s:colorscheme('gitcommit')
   elseif g:colors_seted == 0
     call s:colorscheme('PaperColor')
@@ -80,7 +80,7 @@ function! s:set_highlights() "{{{
     hi clear CursorLine
   endif
 
-  if g:colors_name == 'PaperColor'
+  if g:colors_name ==? 'papercolor'
     hi PmenuSel          ctermfg=255  ctermbg=30   guifg=#ffffff guibg=#008787 cterm=NONE gui=NONE
     hi Normal                         ctermbg=234                guibg=#1c1c1c
     hi LineNr            ctermfg=244               guifg=#808080
@@ -117,13 +117,13 @@ function! s:set_highlights() "{{{
     hi goDirective       ctermfg=35 guifg=#20af40
     hi goFormatSpecifier ctermfg=207 guifg=#ff50ff
     hi goSpecialString   ctermfg=226 guifg=#ffff00
-  elseif g:colors_name == 'molokai'
+  elseif g:colors_name ==? 'molokai'
     hi   Folded        ctermfg=63   guifg=#5f5fff
     hi   Comment       ctermfg=245  guifg=#8a8a8a
     hi   Pmenu         ctermfg=232  ctermbg=6    guifg=#080808 guibg=#008080
     hi   PmenuSel      ctermfg=232  ctermbg=32   guifg=#080808 guibg=#0087d7
     hi   NonText       ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE
-  elseif g:colors_name == 'BusyBee'
+  elseif g:colors_name ==? 'bUSYbee'
     hi   Normal        ctermbg=233  guibg=#121212
     hi   Folded        ctermfg=0    ctermbg=4    guifg=#000000 guibg=#000080
     hi   FoldColumn    ctermfg=14   ctermbg=233  guifg=#00ffff guibg=#121212

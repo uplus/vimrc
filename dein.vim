@@ -74,7 +74,7 @@ if dein#tap('vim-operator-replace')
   nmap gz <Plug>(operator-replace)
   xmap gz <Plug>(operator-replace)
   for c in split("\" ' ` ( { [ <")
-    exe 'nmap gz' . c "<Plug>(operator-replace)i" . c
+    exe 'nmap gz' . c '<Plug>(operator-replace)i' . c
   endfor
 endif
 
@@ -187,7 +187,7 @@ endif "}}}
 
 if dein#tap('caw.vim') " {{{
   let g:caw_no_default_keymappings = 1
-  let g:caw_dollarpos_sp_left = " "
+  let g:caw_dollarpos_sp_left = ' '
   let g:caw_dollarpos_startinsert = 1
 
   " for context_filetype and precious
@@ -310,8 +310,8 @@ if dein#tap('unite-quickfix') "{{{
     let l:bufnum = winbufnr(unite#get_unite_winnr('location_list'))
     echomsg bufnum
     if bufnum != -1
-      echomsg "delete " . l:bufnum
-      execute "bwipeout" l:bufnum
+      echomsg 'delete ' . l:bufnum
+      execute 'bwipeout' l:bufnum
     endif
 
     " -silent つかないと起動時にメッセージが出て止まる
@@ -334,12 +334,12 @@ if dein#tap('syntastic') "{{{
   let g:syntastic_ignore_files  = ['\m^/usr/include/', expand('~/Documents/note/')]
   " let g:syntastic_debug = 1
 
-  let g:syntastic_error_symbol   = "✗"
-  let g:syntastic_warning_symbol = "⚠"
+  let g:syntastic_error_symbol   = '✗'
+  let g:syntastic_warning_symbol = '⚠'
 
   let g:syntastic_cpp_compiler         = 'clang++'
   let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-  let g:syntastic_ruby_mri_args        = "-W1"
+  let g:syntastic_ruby_mri_args        = '-W1'
 
   nmap \ts :SyntasticToggleMode<CR>
   nmap gas :call SyntasticLoclistHide()<CR>
@@ -541,7 +541,7 @@ if dein#tap('vim-jplus') "{{{
 
   " ,での結合にスペースを挿入
   let g:jplus#input_config = {
-        \	"," : { "delimiter_format" : "%d " }
+        \ ',' : {'delimiter_format' : '%d '}
         \}
 endif "}}}
 
@@ -614,7 +614,7 @@ if dein#tap('open-browser.vim') "{{{
   nnoremap <Plug>(openbrowser-wwwsearch) :<c-u>call <SID>www_search()<CR>
   function! s:www_search()
     let l:search_word = input('Please input search word: ')
-    if l:search_word != ''
+    if l:search_word !=# ''
       execute 'OpenBrowserSearch' escape(l:search_word, '"')
     endif
   endfunction
@@ -645,7 +645,7 @@ if dein#tap('rainbowcyclone.vim') "{{{
 endif "}}}
 
 if dein#tap('vim-hopping') "{{{
-  let g:hopping#prompt     = "Input:> "
+  let g:hopping#prompt     = 'Input:> '
   nmap \H <Plug>(hopping-start)
   " let g:hopping#keymapping = {
   "   \ "\<C-n>" : "<Over>(hopping-next)",
@@ -673,7 +673,7 @@ endif "}}}
 if dein#tap('linediff.vim') "{{{
   nnoremap <silent>gsd  :Linediff<cr>
   xnoremap <silent>gsd  :Linediff<cr>
-  autocmd User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
+  au User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
 
   let g:linediff_buffer_type = 'scratch'
   " let g:linediff_first_buffer_command  = 'new'

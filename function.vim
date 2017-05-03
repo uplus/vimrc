@@ -1,3 +1,4 @@
+" vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
 
 " #AutoSave "{{{
 let g:my_autosave = get(g:, 'my_autosave', 0)
@@ -36,12 +37,12 @@ function! EraseSpace() abort "{{{
     return
   endif
 
-  let l:pos = getpos(".")
-  %s/\s\+$//e
+  let l:pos = getpos('.')
+  %s/\s\+$//eI
   while getline('$') =~# '^\s*$'
     $delete
   endwhile
-  call setpos(".", l:pos)
+  call setpos('.', l:pos)
 endfunction "}}}
 
 " #Blank "{{{
@@ -74,9 +75,9 @@ endfunction
 
 command! HTMLalign call HTMLalign()
 function! HTMLalign() abort
-  %s/\v\>\</>\r</
+  %s/\v\>\</>\r</eI
   setfiletype html
-  normal gg=G
+  normal! gg=G
 endfunction
 
 " call from snippets

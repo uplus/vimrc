@@ -1,3 +1,4 @@
+
 command! -nargs=1 SetTab
       \ let &l:tabstop=<args> |
       \ let &l:softtabstop = &l:tabstop |
@@ -27,8 +28,6 @@ command! ReloadKeymap source ~/.vim/keymap.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 command! -nargs=? Ls !ls -F <args>
-command! Zatof normal! 0diwf=cl()lxC{Px>>o}
-command! Let2Var s/\vlet\!?\(:([^)]*)\)\s*\{\s*([^}]*)\s*\}/\1 = \2/
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.

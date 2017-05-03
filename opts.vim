@@ -181,7 +181,7 @@ else
 endif
 
 " Change cursor shape.
-if &term =~ "xterm"
+if &term =~# 'xterm'
   " let &t_SI = "\e[5 q\e]12;Orange\x7"
   " let &t_EI = "\e[0 q\e]12;RoyalBlue1\x7"
 endif
