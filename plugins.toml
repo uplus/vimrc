@@ -700,6 +700,7 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+if = "has('nvim')"
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -759,3 +760,6 @@ repo = 'ynkdir/vim-vimlparser'
 [[plugins]]
 repo = 'syngan/vim-vimlint'
 depends = 'ynkdir/vim-vimlparser'
+
+[[plugins]]
+repo = 'thinca/vim-themis'
