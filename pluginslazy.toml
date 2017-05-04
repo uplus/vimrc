@@ -91,6 +91,16 @@ on_cmd = ['SidewaysLeft', 'SidewaysRight', 'SidewaysJumpLeft', 'SidewaysJumpRigh
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 on_cmd = 'Linediff'
+hook_add = '''
+  let g:linediff_buffer_type = 'scratch'
+  " let g:linediff_first_buffer_command  = 'new'
+  " let g:linediff_further_buffer_command = 'vertical new'
+  " let g:linediff_indent = 1
+
+  nnoremap <silent>gsd  :Linediff<cr>
+  xnoremap <silent>gsd  :Linediff<cr>
+  au User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
+'''
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'

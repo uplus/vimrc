@@ -20,7 +20,9 @@ set fileformats=unix,dos,mac
 " Disable bell.
 set t_vb=
 set novisualbell
-set belloff=all
+if has('patch-7.4.793')
+  set belloff=all
+endif
 
 " set undofile
 if has('patch-7.4.2201')

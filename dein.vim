@@ -671,17 +671,6 @@ if dein#tap('vim-fugitive') "{{{
   command! Fix Gcommit --amend -v
 endif "}}}
 
-if dein#tap('linediff.vim') "{{{
-  nnoremap <silent>gsd  :Linediff<cr>
-  xnoremap <silent>gsd  :Linediff<cr>
-  au User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
-
-  let g:linediff_buffer_type = 'scratch'
-  " let g:linediff_first_buffer_command  = 'new'
-  " let g:linediff_further_buffer_command = 'vertical new'
-  " let g:linediff_indent = 1
-endif "}}}
-
 if dein#tap('shaberu.vim') "{{{
   command! -nargs=1 Say ShaberuSay <args>
   let g:shaberu_user_define_say_command = 'jsay "%%TEXT%%"'
