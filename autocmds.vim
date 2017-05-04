@@ -2,9 +2,7 @@
 augroup myac
   " au CursorMoved * call vimrc#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  " au BufWritePre * if expand('%:p') =~ printf("^%s/.*", $HOME) | call EraseSpace() | endif
   au SwapExists * let g:swapname = v:swapname
-  " au CursorHold * silent ActiveOnly
   au CursorHold *.toml syntax sync minlines=300
   au VimResized * if &ft !=# 'help' | wincmd = | redraw! | endif
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)

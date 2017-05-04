@@ -11,6 +11,8 @@ augroup myac
 augroup END
 
 let g:working_register = 'p'
+
+" After 7.4.2071, can use v:t_*
 let g:type_int = type(0)
 let g:type_float = type(0.0)
 let g:type_char = type('')
@@ -87,10 +89,12 @@ augroup myac
   au FileType qf,help,vimconsole,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType conf,gitcommit,html,css set nocindent
   au StdinReadPost * call s:stdin_config()
+  au VimEnter * call s:vimenter()
 
   au FileType gundo,vimfiler, setl foldcolumn=0
   au FileType gundo,vimfiler,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
 
+  " preview window {{{
   if exists('##OptionSet')
     au OptionSet previewwindow,diff call s:quit_map()
 
@@ -100,30 +104,29 @@ augroup myac
       endif
     endfunction
   endif
+  "}}}
+
+  function! s:stdin_config() "{{{
+    nnoremap <buffer>q :quit<CR>
+    setl buftype=nofile
+    setl nofoldenable
+    setl foldcolumn=0
+    goto
+    silent! %foldopen!
+  endfunction "}}}
+
+  function! s:vimenter() "{{{
+    if argc() == 0
+      setl buftype=nowrite
+    elseif argc() == 1 && !exists('g:swapname')
+      " many side effect.
+      " e.g invalid behavior smart_quit() of vimfiler.
+      " e.g swap, grep
+      " lcd %:p:h
+    endif
+  endfunction "}}}
 augroup END
-
-function! s:stdin_config()
-  nnoremap <buffer>q :quit<CR>
-  setl buftype=nofile
-  setl nofoldenable
-  setl foldcolumn=0
-
-  %s/\(_\|.\)//eI
-  goto
-  silent! %foldopen!
-endfunction
 "}}}
 
-au myac VimEnter * call s:vimenter()
-function! s:vimenter() "{{{
-  if argc() == 0
-    setl buftype=nowrite
-  elseif argc() == 1 && !exists('g:swapname')
-    " many side effect.
-    " e.g invalid behavior smart_quit() of vimfiler.
-    " e.g swap, grep
-    " lcd %:p:h
-  endif
-endfunction "}}}
 
 call s:source('after')

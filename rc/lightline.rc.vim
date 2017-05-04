@@ -181,7 +181,7 @@ function! LLcursor() abort "{{{
   if s:is_ignore()
     return ''
   endif
-  return printf('%3d/%d:%-2d', line('.'), line('$'), col('.'))
+  return printf('%3d/%d:%-2d', line('.'), line('$'), virtcol('.'))
 endfunction "}}}
 
 function! LLfiletype() abort "{{{
