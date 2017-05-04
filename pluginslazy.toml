@@ -641,3 +641,10 @@ on_cmd = 'TryColorscheme'
 [[plugins]]
 repo = 'uplus/colorsel.vim'
 on_cmd = 'ColorSel'
+
+[[plugins]]
+repo = 'thinca/vim-scall'
+on_func = ['Scall', 'scall#']
+hook_add = '''
+  let g:scall_function_name = 'Scall'
+'''
