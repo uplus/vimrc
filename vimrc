@@ -11,6 +11,15 @@ augroup myac
 augroup END
 
 let g:working_register = 'p'
+let g:type_int = type(0)
+let g:type_float = type(0.0)
+let g:type_char = type('')
+let g:type_list = type([])
+let g:type_dic = type({})
+if exists('v:null')
+  let g:type_bool = type(v:true)
+  let g:type_null = type(v:null)
+endif
 
 function! s:source(path) "{{{
   let fpath = expand('~/.vim/' . a:path . '.vim')
