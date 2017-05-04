@@ -70,6 +70,7 @@ function! ResetHightlights() abort
   silent! QuickhlManualReset
   silent! RCReset
   silent! HierClear
+  silent! call lightline#update()
   " call clearmatches()
 endfunction
 
