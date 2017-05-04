@@ -71,7 +71,8 @@ inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 xnoremap <space>n :normal<space>
 
 " Ctrl /
-imap  <plug>(vim-original-insert-lasttext)
+" Use <c-r>.
+" imap  <plug>(vim-original-insert-lasttext)
 
 inoremap <c-r><c-r> <c-r>*
 nnoremap g?? Vg?

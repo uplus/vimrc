@@ -564,31 +564,17 @@ on_ft = ['c', 'cpp']
 repo = 'tkhren/vim-fake'
 on_cmd = ['FakeSubstitute']
 on_func = 'fake#'
+
+[[plugins]]
+repo = 'uplus/vim-fake-array'
+on_map = [['i', '<Plug>(fakearray)']]
+on_func = ['fakearray#get', 'fakearray#prompt', 'fakearray#val']
 hook_add = '''
-  function! FakeVal(first, second) abort
-    if type(a:first) == g:type_float || type(a:second) == g:type_float
-      return fake#float(a:first, a:second)
-    elseif type(a:second) == g:type_char && type(a:first) == g:type_int
-      return "'" . fake#chars(a:first, a:second) . "'"
-    else
-      return fake#int(a:first, a:second)
-    endif
-  endfunction
-
-  function! FakeArray(start, end, times) abort
-    return join(map(range(a:times), 'FakeVal(a:start, a:end)'), ', ')
-  endfunction
-
-  function! FakeArrayI() abort
-    let args = map(split(input('> ')), 'eval(v:val)')
-    let len = len(args)
-    if 1 == len
-      return FakeArray(0, 100, args[0])
-    elseif 3 == len
-      return FakeArray(args[0], args[1], args[2])
-    endif
-  endfunction
+  " <c-/>a
+  imap a <Plug>(fakearray)
 '''
+
+
 
 [[plugins]] # Display unicode.
 repo = 'osyo-manga/vim-hideout'
