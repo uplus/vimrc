@@ -180,6 +180,8 @@ let s:config = {
       \   'hook/sweep/files': '%S:p:h/%S:p:h:t',
       \ },
       \ 'watchdogs_checker/vint': {
+      \   'command': 'vint',
+      \   'exec' : '%c %o %s',
       \   'cmdopt': '--no-color',
       \ },
       \}

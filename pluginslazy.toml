@@ -572,6 +572,7 @@ on_func = ['fakearray#get', 'fakearray#prompt', 'fakearray#val']
 hook_add = '''
   " <c-/>a
   imap a <Plug>(fakearray)
+  imap <c-a> <Plug>(fakearray)
 '''
 
 

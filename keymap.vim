@@ -70,6 +70,8 @@ inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 " inoremap jj <esc>
 xnoremap <space>n :normal<space>
 
+nnoremap ,,,,,,,,,,,,, :<c-u>set titlestring=Hello<cr>
+
 " Ctrl /
 " Use <c-r>.
 " imap  <plug>(vim-original-insert-lasttext)
