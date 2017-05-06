@@ -159,6 +159,7 @@ let s:config = {
       \     :'',
       \ },
       \ 'go/watchdogs_checker': {'type': 'watchdogs_checker/gobuild'},
+      \ 'help/watchdogs_checker': {'type': 'watchdogs_checker/help_non_check'},
       \
       \ 'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
       \ 'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt_watchdogs },
@@ -183,6 +184,11 @@ let s:config = {
       \   'command': 'vint',
       \   'exec' : '%c %o %s',
       \   'cmdopt': '--no-color',
+      \ },
+      \ 'watchdogs_checker/help_non_check': {
+      \   'command': 'echo',
+      \   'exec': '%c %o',
+      \   'cmdopt': '',
       \ },
       \}
 call extend(g:quickrun_config, s:config)
