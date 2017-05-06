@@ -137,7 +137,7 @@ let s:config = {
       \ 'watchdogs_checker/_':                              {
       \   'runner':                                         'vimproc',
       \   'outputter/quickfix/open_cmd':                    '',
-      \ 
+      \
       \   'hook/close_unite_quickfix/enable_module_loaded': 0,
       \   'hook/unite_quickfix/enable_exit':                0,
       \   'hook/back_window/enable_exit':                   0,
