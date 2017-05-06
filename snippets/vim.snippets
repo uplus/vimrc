@@ -29,3 +29,17 @@ options     head
     else
       ${5}
     endif
+
+# themis
+snippet suite
+options head
+	function! s:suite.${1}() abort
+		${0}
+	endfunction
+
+snippet suite-sub
+options head
+	function! s:suite.__${1}__() abort
+		let $1 = themis#suite('$1')
+	${0}
+	endfunction
