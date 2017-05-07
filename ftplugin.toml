@@ -207,7 +207,7 @@ toml = '''
 '''
 
 text = '''
-  setl nobreakindent wrap
+  setl breakindent wrap
 '''
 
 vim = '''

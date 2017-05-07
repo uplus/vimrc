@@ -308,6 +308,15 @@ on_func = 'gapply#Start()'
 [[plugins]]
 repo = 'rhysd/committia.vim'
 on_ft = 'gitcommit'
+hook_add = '''
+  let g:committia_open_only_vim_starting = 1
+  let g:committia_hooks = {}
+  function! g:committia_hooks.edit_open(info)
+    " Scroll the diff window from insert mode
+    imap <buffer><m-k> <Plug>(committia-scroll-diff-up-half)
+    imap <buffer><m-j> <Plug>(committia-scroll-diff-down-half)
+  endfunction
+'''
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista'

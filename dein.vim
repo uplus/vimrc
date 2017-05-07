@@ -353,17 +353,6 @@ if dein#tap('syntastic') "{{{
   " function! dein#tapped.hooks.on_post_source(bundle)
   "   au myac BufWritePost * LocationList
   " endfunction
-
-endif "}}}
-
-if dein#tap('committia.vim') "{{{
-  let g:committia_open_only_vim_starting = 1
-  let g:committia_hooks = {}
-  function! g:committia_hooks.edit_open(info)
-    " Scroll the diff window from insert mode
-    imap <buffer><m-k> <Plug>(committia-scroll-diff-up-half)
-    imap <buffer><m-j> <Plug>(committia-scroll-diff-down-half)
-  endfunction
 endif "}}}
 
 if dein#tap('yankround.vim') "{{{
@@ -608,9 +597,15 @@ if dein#tap('open-browser.vim') "{{{
   nmap gsc :call <sid>smart_open()<cr>
 
   function! s:smart_open() abort
-    let str = expand('<cWORD>')
-    let str = substitute(str, '[,.]$', '', '')
-    call openbrowser#smart_search(str)
+    let iskeyword_save = &iskeyword
+    setl iskeyword=@,@-@,-,_,:,;,.,%,/,48-57
+    try
+      let str = expand('<cword>')
+      let str = substitute(str, '[,.]$', '', '')
+      call openbrowser#smart_search(str)
+    finally
+      let &l:iskeyword = iskeyword_save
+    endtry
   endfunction
 
   command! Wsearch :call <SID>www_search()
