@@ -633,7 +633,7 @@ repo = 'freeo/vim-kalisi'
 [[plugins]]
 repo = 'uplus/vim-clang-rename'
 hook_add = '''
-  au myac FileType c,cpp nnoremap <buffer><silent>,lr :ClangRename<cr>
+  au myac FileType c,cpp nmap <buffer><silent>,lr <Plug>(clang_rename-current)
 '''
 
 
@@ -714,7 +714,6 @@ hook_add = '''
 
 [[plugins]] # :PP! is same as :echomes
 repo = 'thinca/vim-prettyprint'
-on_cmd = 'PP'
 hook_add = '''
   let g:prettyprint_string = ['raw'] " [] 'raw' 'split'
 '''
