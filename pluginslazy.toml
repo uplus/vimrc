@@ -489,7 +489,7 @@ hook_add = '''
 hook_source = 'source ~/.vim/rc/vimfiler.rc.vim'
 
 [[plugins]]
-repo = 'sudo.vim'
+repo = 'vim-scripts/sudo.vim'
 on_cmd = ['SudoWrite', 'SudoRead']
 hook_add = '''
   command! Sw silent SudoWrite %

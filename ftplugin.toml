@@ -120,6 +120,10 @@ go = '''
 
   let b:format_cmd = 'Fmt'
   let b:tags_cmd = 'gotags -sort -silent -f .tags *.go'
+
+  if getline(1) =~ 'main'
+    let b:watchdogs_checker_type = 'watchdogs_checker/go_vet'
+  endif
 '''
 
 help = '''
