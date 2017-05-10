@@ -18,6 +18,7 @@ CAlterCommand calc Calc
 CAlterCommand note Note
 CAlterCommand addr[epo] AddRepo
 CAlterCommand rms[wap] RmSwap
+CAlterCommand pry Pry
 
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive

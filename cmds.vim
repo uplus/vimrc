@@ -3,6 +3,7 @@ command! -nargs=1 SetTab
       \ let &l:softtabstop = &l:tabstop |
       \ let &l:shiftwidth = &l:tabstop
 command! Terminal execute 'terminal' $SHELL
+command! Pry botright sp +terminal\ pry
 command! Q qall!
 command! W w!
 command! WWW w !sudo tee > /dev/null %

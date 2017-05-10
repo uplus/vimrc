@@ -26,7 +26,7 @@ augroup myac
     " Skip return code when quit terminal.
     au TermClose * call s:term_close()
     function! s:term_close() abort
-      if bufname('%') =~ printf('\v(%s|%s)$', $SHELL, &shell)
+      if bufname('%') =~ printf('\v(%s|%s|pry)$', $SHELL, &shell)
         call feedkeys('\<cr>')
       endif
     endfunction
