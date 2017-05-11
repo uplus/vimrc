@@ -139,6 +139,12 @@ hook_add = '''
   let g:table_mode_map_prefix = '\t'
   let g:table_mode_corner = '|'
   xmap \tT <Plug>(table-mode-tableize-delimiter)
+  " let g:table_mode_disable_mappings = 1
+
+  let g:table_mode_motion_up_map = ''
+  let g:table_mode_motion_down_map = ''
+  let g:table_mode_motion_left_map = ''
+  let g:table_mode_motion_right_map = ''
 '''
 
 [[plugins]]
