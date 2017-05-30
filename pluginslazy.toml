@@ -99,7 +99,7 @@ hook_add = '''
 
   nnoremap <silent>gsd  :Linediff<cr>
   xnoremap <silent>gsd  :Linediff<cr>
-  au User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
+  au myac User LinediffBufferReady nnoremap <silent><buffer>q :quit<cr>
 '''
 
 [[plugins]]
