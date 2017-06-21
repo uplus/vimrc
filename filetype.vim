@@ -1,7 +1,9 @@
-augroup my_filetypedetect
+" filetypedetectだとpreciousも平気
+augroup filetypedetect
   " preciousに上書きされることがある
   au!
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
+  au BufRead,BufNewFile Guardfile setf ruby
   au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* setf markdown | lcd %:h
   au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
   au VimEnter * if &l:ft == '' | filetype detect | endif

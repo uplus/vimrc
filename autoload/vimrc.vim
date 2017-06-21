@@ -72,7 +72,7 @@ endfunction "}}}
 
 
 function! vimrc#working_terminal() abort "{{{
-  if !bufexists(get(g:, 'vimrc#working_terminal_nr', 0))
+  if !bufexists(get(g:, 'vimrc#working_terminal_nr', -1))
     botright split +Terminal
     let g:vimrc#working_terminal_nr = bufnr('%')
     silent setl ft= nolist bufhidden
