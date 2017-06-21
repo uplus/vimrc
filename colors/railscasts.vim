@@ -71,7 +71,7 @@ hi rubyControl             ctermfg=214 guifg=#ffaf00
 " 埋め込み文字の中身
 hi rubyInterpolation           ctermfg=250 guifg=#bcbcbc
 " 埋め込み文字#{}
-hi rubyInterpolationDelimiter  ctermfg=39 guifg=#00afff
+hi rubyInterpolationDelimiter ctermfg=66 guifg=#317fff
 
 " self, super
 " hi rubyPseudoVariable        ctermfg=220 guifg=#ffd700
