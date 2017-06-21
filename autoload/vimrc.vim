@@ -71,6 +71,19 @@ function! vimrc#operator_space_fold(motion_wise) abort "{{{
 endfunction "}}}
 
 
+function! vimrc#working_terminal() abort "{{{
+  if !bufexists(get(g:, 'vimrc#working_terminal_nr', 0))
+    botright split +Terminal
+    let g:vimrc#working_terminal_nr = bufnr('%')
+    silent setl ft= nolist bufhidden
+    silent nnoremap <buffer>q <c-w>c
+    au myac TermClose <buffer> unlet g:vimrc#working_terminal_nr
+    startinsert
+  else
+    exec 'botright split' bufname(g:vimrc#working_terminal_nr)
+  endif
+endfunction "}}}
+
 function! vimrc#add_repo() abort "{{{
   let str = @+
   try

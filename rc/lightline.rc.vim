@@ -188,7 +188,7 @@ function! LLfiletype() abort "{{{
   if s:is_ignore()
     return ''
   endif
-  return &ft !=# ''? &ft : 'none'
+  return &ft !=# ''? &ft : 'NONE'
 endfunction "}}}
 
 function! LLfileencoding() abort "{{{

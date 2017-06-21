@@ -28,8 +28,9 @@ if has('nvim')
   " <c-w>tはマップが存在する
   " nnoremap <c-w>ts  :<c-u>botright split +Terminal<cr>
   " nnoremap <c-w>tv  :<c-u>vsp +Terminal<cr>
-  nnoremap <space>T :<c-u>tabnew +Terminal<cr>
-  nmap <space>t :<c-u>botright split +Terminal<cr>
+  nnoremap <silent><space>T :<c-u>tabnew +Terminal<cr>
+  " nnoremap <silent><space>t :<c-u>botright split +Terminal<cr>
+  nnoremap <silent><space>t :<c-u>call vimrc#working_terminal()<cr>
 
   tnoremap <c-t>h <c-\><c-n><c-w>h
   tnoremap <c-t>j <c-\><c-n><c-w>j
