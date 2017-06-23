@@ -701,6 +701,13 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 if = "has('nvim')"
+hook_add = '''
+  let g:precious_enable_switchers = {
+    \ 'eruby': {
+    \   'setfiletype': 0
+    \ },
+    \}
+'''
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
