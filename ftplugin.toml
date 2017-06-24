@@ -181,15 +181,15 @@ ruby = '''
   command! YardGen !yard doc %
   nnoremap <f3> :YardGen<cr>
 
-  nnoremap <buffer>,lm :Unite rails/model -start-insert <cr>
-  nnoremap <buffer>,lv :Unite rails/view -start-insert <cr>
-  nnoremap <buffer>,lc :Unite rails/controller -start-insert <cr>
-  nnoremap <buffer>,lr :Unite rails/route -start-insert <cr>
-  " nnoremap <buffer>,l :unite rails/config -start-insert <cr>
-  nnoremap <buffer>,lsp :Unite rails/spec -start-insert <cr>
-  nnoremap <buffer>,lhe :Unite rails/helper -start-insert <cr>
-  nnoremap <buffer>,lge :Unite rails/generate -start-insert <cr>
-  nnoremap <buffer>,lsc :Unite rails/schema -start-insert <cr>
+  nnoremap <buffer>,lm :Unite rails/model -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lv :Unite rails/view -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lc :Unite rails/controller -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lr :Unite rails/route -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,l :unite rails/config -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lsp :Unite rails/spec -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lhe :Unite rails/helper -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lge :Unite rails/generate -start-insert -default-action=open<cr>
+  nnoremap <buffer>,lsc :Unite rails/schema -start-insert -default-action=open<cr>
 
 
   setl omnifunc=
