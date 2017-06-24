@@ -13,15 +13,32 @@ let g:vimfiler_sendto = {
       \ 'gedit' : 'gedit',
       \ }
 
+"VimFilerを起動してからじゃないと関数が読み込まれない
+function! s:set_vimfiler_unexpand_tree() "{{{
+  if hasmapto("<Plug>(vimfiler_unexpand_tree)")
+    return
+  endif
+
+  " 名前を取得
+  Capture function /\d+*_unexpand_tree\(\)$
+  let l:func_name = substitute(g:capture, '^function ', '', '')
+
+  if empty(l:func_name)
+    return
+  endif
+
+  execute 'nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree) :<C-u>call' l:func_name '<CR>'
+endfunction "}}}
 
 au myac FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings() "{{{
   setl nobuflisted
   setl numberwidth=3
+  call s:set_vimfiler_unexpand_tree()
 
   nmap <buffer><CR> <Plug>(vimfiler_cd_or_edit)
 
-  nmap <buffer>h <Plug>(vimfiler_expand_tree)
+  nmap <buffer>h <Plug>(vimfiler_unexpand_tree)
   nmap <buffer>l <Plug>(vimfiler_expand_tree)
   nmap <buffer><C-h> <Plug>(vimfiler_switch_to_parent_directory)
   nmap <buffer><C-l> <Plug>(vimfiler_cd_file)
