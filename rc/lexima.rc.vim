@@ -132,15 +132,21 @@ call lexima#add_rule({
       \   'at': '\v%(/|\</.*)@<!%#',
       \   'char': '>',
       \   'input': '><c-r>=Lexima_HtmlCloseTag()<cr>',
-      \   'filetype': ['html'],
+      \   'filetype': ['html', 'eruby'],
       \ })
-
 
 function! Lexima_HtmlCloseTag() abort
   let str = printf('</%s>', matchstr(getline('.'), '\v^\s*\<\zs([^ >]+)\ze[ >]'))
   return str . repeat("\<left>", len(str))
 endfunction
 
+" eruby
+call lexima#add_rule({
+      \   'at': '\v%#',
+      \   'char': '<%',
+      \   'input': '<%%><LEFT><LEFT>',
+      \   'filetype': ['eruby'],
+      \ })
 
 " cgn .リピートに必要らしい <c-l>はneosnippet
 " inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
