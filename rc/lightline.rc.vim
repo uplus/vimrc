@@ -204,6 +204,7 @@ function! LLcurrent_function() abort "{{{
   if !exists('g:loaded_cfi')
     return
   endif
+  " TODO neosnippet中でエラーがでる E523 winsaveしてるのが問題?
   return cfi#format('%s', '')
 endfunction "}}}
 
