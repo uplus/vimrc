@@ -149,6 +149,11 @@ html = '''
   setlocal path+=./;/
 '''
 
+json = '''
+  command! AlignJSON %!jq '.'
+  let b:format_cmd = 'AlignJSON'
+'''
+
 neosnippet = '''
   set noexpandtab
 '''
