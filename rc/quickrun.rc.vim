@@ -83,8 +83,20 @@ let g:quickrun_config._ = {
 let s:config = {
       \ 'c': {'type': 'c/clang'},
       \ 'cpp': {'type': 'cpp/clang'},
-      \ 'c/clang': {'cmdopt': $C_COMP_OPT},
-      \ 'cpp/clang': {'cmdopt': $CPP_COMP_OPT},
+      \ 'c/clang': {
+      \   'cmdopt': $C_COMP_OPT,
+      \   'command': 'clang',
+      \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+      \   'hook/sweep/files': '%S:p:r',
+      \   'tempfile': '%{tempname()}.c',
+      \ },
+      \ 'cpp/clang': {
+      \   'cmdopt': $CPP_COMP_OPT,
+      \   'command': 'clang++',
+      \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+      \   'hook/sweep/files': '%S:p:r',
+      \   'tempfile': '%{tempname()}.cpp',
+      \ },
       \ 'ruby': {'cmdopt' : '-Ku'},
       \ 'ruby/rspec': {
       \   'command': 'bundle',
