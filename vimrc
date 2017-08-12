@@ -13,9 +13,10 @@ augroup END
 let g:working_register = 'p'
 
 " After 7.4.2071, can use v:t_*
+let g:type_func = type(function('getline'))
 let g:type_int = type(0)
 let g:type_float = type(0.0)
-let g:type_char = type('')
+let g:type_str = type('')
 let g:type_list = type([])
 let g:type_dic = type({})
 if exists('v:null')
