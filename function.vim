@@ -106,18 +106,5 @@ command! -nargs=1 -range Inject echomsg Inject(<args>)
 function! Inject(expr) range abort
   exec printf('silent normal! gv"%sy', g:working_register)
   let values = split(getreg(g:working_register))
-
-  if type(a:expr) ==# g:type_str
-    let Func = {v1, v2 -> eval(printf("%d %s %d", v1, a:expr, v2))}
-  else
-    let Func = a:expr
-  endif
-
-  let result = Func(values[0], values[1])
-  unlet values[0:1]
-
-  for v in values
-    let result += v
-  endfor
-  return result
+  return vimrc#inject(values, a:expr)
 endfunction

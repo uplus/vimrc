@@ -36,6 +36,22 @@ function vimrc#remove_opt_val(optname, chars) abort
   endfor
 endfunction
 
+function! vimrc#inject(list, expr) abort
+  if type(a:expr) ==# g:type_str
+    let Func = {memo, v -> eval(printf("%s %s %s", memo, a:expr, v))}
+  else
+    let Func = a:expr
+  endif
+
+  let result = a:list[0]
+  unlet a:list[0]
+
+  for v in a:list
+    let result = Func(result, v)
+  endfor
+  return result
+endfunction
+
 " textobj
 " blankline "{{{
 function! vimrc#textobj_blankline(flags) abort
