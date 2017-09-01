@@ -126,6 +126,13 @@ go = '''
   endif
 '''
 
+rust = '''
+  let b:format_cmd = 'RustFmt'
+  au myac FileType rust if filereadable('Cargo.toml') | 
+    \ let b:quickrun_config = {'type': 'rust/cargo' } |
+    \ endif
+'''
+
 help = '''
   setl nofoldenable
   setl foldcolumn=0

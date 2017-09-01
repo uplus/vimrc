@@ -165,6 +165,9 @@ repo = 'bps/vim-tshark'
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
 
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+
 
 #action
 
@@ -424,6 +427,9 @@ hook_source = '''
 # repo = 'fishbullet/deoplete-ruby'
 repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
+
+[[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
 
 
 #git

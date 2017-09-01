@@ -138,6 +138,19 @@ let s:config = {
       \   'hook/output_encode/encoding': 'utf-8',
       \   'hook/cd/directory': '%S:p:h',
       \ },
+      \ 'rust': {
+      \   'type': 'rust/rustc'
+      \ },
+      \ 'rust/rustc': {
+      \   'command': 'rustc',
+      \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+      \   'tempfile': '%{tempname()}.rs',
+      \   'hook/sweep/files': '%S:p:r',
+      \ },
+      \ 'rust/cargo': {
+      \   'command': 'cargo',
+      \   'exec': '%c run %o',
+      \ },
       \ }
 call extend(g:quickrun_config, s:config)
 unlet s:config
