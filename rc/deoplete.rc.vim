@@ -85,3 +85,13 @@ let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
 
 " deoplete-jedi
 let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
+
+" deoplete-rust
+" let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
+" let g:deoplete#sources#rust#rust_source_path = ''
+" let g:deoplete#sources#rust#show_duplicates = 0
+" let g:deoplete#sources#rust#disable_keymap=1
+" let g:deoplete#sources#rust#documentation_max_height=20
+
+" deoplete-racer for rust
+" let g:racer_experimental_completer = 1

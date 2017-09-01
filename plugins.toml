@@ -428,8 +428,11 @@ hook_source = '''
 repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
 
+# [[plugins]]
+# repo = 'sebastianmarkow/deoplete-rust'
+
 [[plugins]]
-repo = 'sebastianmarkow/deoplete-rust'
+repo = 'racer-rust/vim-racer'
 
 
 #git
