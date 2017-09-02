@@ -127,6 +127,7 @@ go = '''
 '''
 
 rust = '''
+  setl foldmethod=syntax
   let b:format_cmd = 'RustFmt'
   au myac FileType rust if filereadable('Cargo.toml') | 
     \ let b:quickrun_config = {'type': 'rust/cargo' } |
