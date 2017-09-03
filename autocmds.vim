@@ -56,12 +56,15 @@ augroup myac
   " #badspace {{{
   " trailがあるとハイライトできない あたりまえか
   " filetypeコマンドの後じゃないと反映されない
+  let g:badspace_enable = 1
   au VimEnter * au myac Syntax * call s:badspace()
   au InsertEnter * hi clear BadSpace
   au InsertLeave,VimEnter,ColorScheme * call s:badspace_set_highlight()
 
   function! s:badspace_set_highlight() abort
-    hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
+    if g:badspace_enable
+      hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
+    endif
   endfunction
 
   function! s:badspace() abort
