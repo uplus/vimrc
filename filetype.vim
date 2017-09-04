@@ -2,6 +2,7 @@
 augroup filetypedetect
   " preciousに上書きされることがある
   au!
+  au BufRead,BufNewFile *.hbs setf html
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
   au BufRead,BufNewFile Guardfile setf ruby
   au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* setf markdown | lcd %:h

@@ -129,7 +129,7 @@ go = '''
 rust = '''
   setl foldmethod=syntax
   let b:format_cmd = 'RustFmt'
-  au myac FileType rust if filereadable('Cargo.toml') | 
+  au myac FileType rust if filereadable('Cargo.toml') |
     \ let b:quickrun_config = {'type': 'rust/cargo' } |
     \ endif
 '''
@@ -155,6 +155,11 @@ help = '''
 html = '''
   setlocal includeexpr=substitute(v:fname,'^\\/','','')
   setlocal path+=./;/
+  SetTab 4
+'''
+
+markdown = '''
+  SetTab 2
 '''
 
 json = '''
