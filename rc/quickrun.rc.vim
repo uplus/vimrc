@@ -144,12 +144,14 @@ let s:config = {
       \ 'rust/rustc': {
       \   'command': 'rustc',
       \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+      \   'cmdopt': $RUSTFLAGS,
       \   'tempfile': '%{tempname()}.rs',
       \   'hook/sweep/files': '%S:p:r',
       \ },
       \ 'rust/cargo': {
       \   'command': 'cargo',
       \   'exec': '%c run %o',
+      \   'cmdopt': $RUSTFLAGS,
       \ },
       \ }
 call extend(g:quickrun_config, s:config)
