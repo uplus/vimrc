@@ -142,9 +142,9 @@ endfunction
 
 " eruby
 call lexima#add_rule({
-      \   'at': '\v%#',
-      \   'char': '<%',
-      \   'input': '<%%><LEFT><LEFT>',
+      \   'at': '\v\<%#',
+      \   'char': '%',
+      \   'input': '%%><LEFT><LEFT>',
       \   'filetype': ['eruby'],
       \ })
 
