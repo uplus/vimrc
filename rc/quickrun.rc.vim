@@ -151,7 +151,6 @@ let s:config = {
       \ 'rust/cargo': {
       \   'command': 'cargo',
       \   'exec': '%c run %o',
-      \   'cmdopt': $RUSTFLAGS,
       \ },
       \ }
 call extend(g:quickrun_config, s:config)
