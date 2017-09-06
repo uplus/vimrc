@@ -219,6 +219,28 @@ let s:config = {
       \   'exec': '%c %o',
       \   'cmdopt': '',
       \ },
+      \ 'watchdogs_checker/rustc' : {
+      \   'command' : 'rustc',
+      \   'exec'    : '%c %o %s:p',
+      \   'cmdopt' : '',
+      \   'errorformat'
+      \     : '%-Gerror: aborting %.%#,'
+      \     . '%-Gerror: Could not compile %.%#,'
+      \     . '%Eerror: %m,'
+      \     . '%Eerror[E%n]: %m,'
+      \     . '%Wwarning: ,'
+      \     . '%C %#--> %f:%l:%c'
+      \ },
+      \ 'watchdogs_checker/rustc_parse-only' : {
+      \   'command' : 'rustc',
+      \   'exec'    : '%c %o %s:p',
+      \   'cmdopt' : '',
+      \   'errorformat'
+      \     : '%E%f:%l:%c: %\d%#:%\d%# %.%\{-}error:%.%\{-} %m'
+      \     . ',%W%f:%l:%c: %\d%#:%\d%# %.%\{-}warning:%.%\{-} %m'
+      \     . ',%C%f:%l %m'
+      \     . ',%-Z%.%#',
+      \ },
       \}
 call extend(g:quickrun_config, s:config)
 unlet s:config
