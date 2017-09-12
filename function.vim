@@ -103,8 +103,13 @@ endfunction
 
 " If use selected text in function, need range
 command! -nargs=1 -range Inject echomsg Inject(<args>)
-function! Inject(expr) range abort
-  exec printf('silent normal! gv"%sy', g:working_register)
-  let values = split(getreg(g:working_register))
-  return vimrc#inject(values, a:expr)
+function! Inject(expr) abort
+  let pos_save = getpos('.')
+  try
+    exec printf('silent normal! gv"%sy', g:working_register)
+    let values = split(getreg(g:working_register))
+    return vimrc#inject(values, a:expr)
+  finally
+    call setpos('.', pos_save)
+  endtry
 endfunction
