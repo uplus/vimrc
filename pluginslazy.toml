@@ -253,16 +253,6 @@ hook_add = '''
   let g:autopep8_max_line_length = 200
 '''
 
-#haskell
-[[plugins]]
-repo = 'itchyny/vim-haskell-indent'
-on_ft = 'haskell'
-
-[[plugins]]
-repo = 'eagletmt/neco-ghc'
-on_ft = 'haskell'
-external_commands = 'ghc-mod'
-
 
 #input
 
