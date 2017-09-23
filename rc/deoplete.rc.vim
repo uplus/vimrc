@@ -95,3 +95,10 @@ let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
 
 " deoplete-racer for rust
 " let g:racer_experimental_completer = 1
+
+" ternjs
+let g:deoplete#sources#ternjs#filetypes = [
+  \ 'jsx',
+  \ 'javascript.jsx',
+  \ 'vue',
+  \ ]
