@@ -83,4 +83,15 @@ augroup myac
   " #tag
   " .tagsがある場合のみ更新する
   au BufWritePost * if filewritable('.tags') | call Tags() | endif
+
+  " Load settings for each location.
+  au BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+  function! s:vimrc_local(loc)
+    let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+    PP! files
+    for i in reverse(filter(files, 'filereadable(v:val)'))
+      echomsg i
+      source `=i`
+    endfor
+  endfunction
 augroup END
