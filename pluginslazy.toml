@@ -282,6 +282,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'junegunn/vim-emoji'
+on_func = 'emoji#'
 hook_add = '''
   command! EnableEmoji set completefunc=emoji#complete
 '''
