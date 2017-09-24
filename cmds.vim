@@ -14,6 +14,7 @@ command! -nargs=1 Char echo printf("%c", 0x<args>)
 command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=* Job call jobstart(<q-args>)
+command! RunInTerm let g:quickrun_config._.runner = 'terminal'
 
 command! Recache call dein#recache_runtimepath() | echo 'Recached!'
 command! Install call dein#install()
