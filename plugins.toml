@@ -33,10 +33,6 @@ repo = 'tacroe/unite-mark'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'mattn/unite-gist'
-depends = 'gist-vim'
-
-[[plugins]]
 repo = 'tsukkee/unite-tag'
 on_source = 'unite.vim'
 
