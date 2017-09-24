@@ -319,6 +319,10 @@ hook_add = '''
 repo = 'lambdalisue/vim-gista'
 on_cmd = ['Gista']
 on_func = 'gista#'
+hook_add = '''
+  let g:gista#command#post#default_public = 0
+  let g:gista#command#post#allow_empty_description = 1
+'''
 
 [[plugins]]
 repo = 'lambdalisue/vim-gita'
