@@ -240,6 +240,9 @@ let s:config = {
       \     . ',%C%f:%l %m'
       \     . ',%-Z%.%#',
       \ },
+      \ 'javascript/watchdogs_checker' : {
+      \   'type': '',
+      \ },
       \}
 call extend(g:quickrun_config, s:config)
 unlet s:config
