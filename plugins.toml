@@ -701,8 +701,10 @@ hook_add = '''
 [[plugins]]
 repo = 'ternjs/tern_for_vim'
 hook_add = '''
-  let tern#command = ['tern', '--no-port-file']
+  let tern#command = ['tern']
+  " let tern#arguments = ['--no-port-file']
   let g:tern_show_loc_after_rename = 0
+  let g:tern_set_omni_function = 0
 '''
 
 
