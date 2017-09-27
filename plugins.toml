@@ -696,6 +696,15 @@ hook_add = '''
   let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 '''
 
+#js
+
+[[plugins]]
+repo = 'ternjs/tern_for_vim'
+hook_add = '''
+  let tern#command = ['tern', '--no-port-file']
+  let tern_show_loc_after_rename = 0
+'''
+
 
 #misc
 [[plugins]]
