@@ -163,6 +163,13 @@ markdown = '''
   SetTab 2
 '''
 
+javascript = '''
+  nnoremap <buffer><silent>,lr :<c-u>TernRename<cr>
+
+  " let b:format_cmd = ''
+  " let b:tags_cmd = ''
+'''
+
 json = '''
   command! AlignJSON %!jq '.'
   let b:format_cmd = 'AlignJSON'
