@@ -15,6 +15,8 @@ hi PmenuSel   ctermfg=0    ctermbg=255 guifg=#000000 guibg=#eeeeee
 hi BadSpace   cterm=NONE
 hi clear TabLineFill
 
+autocmd myac WinEnter,BufRead,BufNew,Syntax * :silent! call matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:')
+
 function! s:colorscheme(name) abort
   if g:colors_name !=# a:name
     try
