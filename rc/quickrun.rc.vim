@@ -241,7 +241,7 @@ let s:config = {
       \     . ',%-Z%.%#',
       \ },
       \ 'javascript/watchdogs_checker' : {
-      \   'type': '',
+      \   'type': 'eslint',
       \ },
       \}
 call extend(g:quickrun_config, s:config)
