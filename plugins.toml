@@ -308,6 +308,9 @@ hook_add = '''
   let g:watchdogs_check_CursorHold_enable = 0
   let g:watchdogs_check_BufWritePost_enable_on_wq = 0
 
+  " 連続して保存した場合、前のシンタックスチェックを停止する
+  au myac BufWritePre * WatchdogsRunSweep
+
   command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
   command! WatchdogsC89 let b:watchdogs_checker_type = 'watchdogs_checker/c89'
 
