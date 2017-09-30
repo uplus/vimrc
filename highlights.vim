@@ -67,6 +67,7 @@ function! s:set_highlights() "{{{
   hi DiffChange ctermfg=252  ctermbg=22   guifg=#d0d0d0 guibg=#005f00
   hi DiffText   ctermfg=226  ctermbg=29   guifg=#ffff00 guibg=#00875f
   hi htmlBold   ctermfg=255               guifg=#ffffff               cterm=bold      gui=bold
+  hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 
   colorscheme vimfiler_color
 
