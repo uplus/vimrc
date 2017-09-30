@@ -63,7 +63,6 @@ let g:quickrun_config._ = {
       \ 'outputter/buffer/into' : 1,
       \ 'outputter/buffer/running_mark' : '(-.-)',
       \ 'outputter/buffer/close_on_empty': 0,
-      \ 'outputter/quickfix/into':         0,
       \
       \ 'hook/echo/enable': 1,
       \ 'hook/echo/output_success': 'quickrun success',
@@ -162,6 +161,7 @@ let s:config = {
       \   'runner':                          'vimproc',
       \   'outputter':                       'quickfix',
       \   'outputter/quickfix/open_cmd':     '',
+      \   'outputter/quickfix/into':         0,
       \
       \   'hook/back_window/enable_exit':    0,
       \   'hook/back_window/priority_exit':  1,
@@ -239,6 +239,7 @@ let s:config = {
       \ },
       \ 'javascript/watchdogs_checker' : {
       \   'type': 'eslint',
+      \   'outputter/quickfix/errorformat': '\ \ %l:%c\ \ error\ %m,%-G%.%#',
       \ },
       \}
 " call extend(g:quickrun_config, s:config) " これだとイマイチ上手く行かない
