@@ -699,6 +699,10 @@ hook_add = '''
 #js
 
 [[plugins]]
+# syntax fold
+repo = 'pangloss/vim-javascript'
+
+[[plugins]]
 repo = 'ternjs/tern_for_vim'
 hook_add = '''
   let tern#command = ['tern']
