@@ -142,7 +142,12 @@ function! LLfilename() abort "{{{
     return eval(tmp)
   endif
 
-  return pathshorten(bufname('%')) . (&modified? ' +': '')
+  let filename = bufname('%')
+  if winwidth(0) < 120
+    let filename = pathshorten(filename)
+  endif
+
+  return filename . (&modified? ' +': '')
 endfunction "}}}
 
 function! LLreadonly() abort "{{{
