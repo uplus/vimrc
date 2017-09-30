@@ -236,7 +236,8 @@ let s:config = {
       \   'type': 'eslint',
       \ },
       \}
-call extend(g:quickrun_config, s:config)
+" call extend(g:quickrun_config, s:config) " これだとイマイチ上手く行かない
+call watchdogs#setup(g:quickrun_config)
 unlet s:config
 "}}}
 
