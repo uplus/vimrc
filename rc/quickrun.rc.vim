@@ -71,12 +71,6 @@ let g:quickrun_config._ = {
       \ 'hook/lightline_update/priority_exit': 1,
       \
       \ 'hook/close_quickfix/enable_exit':    1,
-      \ 'hook/close_unite_quickfix/enable_module_loaded': 1,
-      \ 'hook/unite_quickfix/enable_exit':    1,
-      \ 'hook/unite_quickfix/priority_exit':  0,
-      \ 'hook/unite_quickfix/no_focus':       1,
-      \ 'hook/unite_quickfix/unite_options':  '-no-quit -no-empty -direction=botright -winheight=10',
-      \ 'hook/redraw_unite_quickfix/enable_exit': 1,
       \ }
 
 " #languages {{{
@@ -164,8 +158,6 @@ let s:config = {
       \   'runner':                                         'vimproc',
       \   'outputter/quickfix/open_cmd':                    '',
       \
-      \   'hook/close_unite_quickfix/enable_module_loaded': 0,
-      \   'hook/unite_quickfix/enable_exit':                0,
       \   'hook/back_window/enable_exit':                   0,
       \   'hook/back_window/priority_exit':                 1,
       \ },
