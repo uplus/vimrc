@@ -6,6 +6,8 @@ augroup myac
   au CursorHold *.toml syntax sync minlines=300
   au VimResized * if &ft !=# 'help' | wincmd = | redraw! | endif
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
+  " 最後のバッファがquickfixなら自動で閉じる
+  au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
 
   au BufLeave * nested call DoAutoSave()
   au CursorHold * nested call DoAutoSave()

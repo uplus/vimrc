@@ -64,6 +64,12 @@ let g:quickrun_config._ = {
       \ 'outputter/buffer/running_mark' : '(-.-)',
       \ 'outputter/buffer/close_on_empty': 0,
       \
+      \ 'outputter/quickfix/open_cmd':     'copen',
+      \ 'outputter/quickfix/into':         0,
+      \
+      \ 'hook/close_quickfix/enable_exit': 0,
+      \ 'hook/close_quickfix/enable_success': 0,
+      \
       \ 'hook/echo/enable': 1,
       \ 'hook/echo/output_success': 'quickrun success',
       \ 'hook/echo/output_failure': 'quickrun failure',
@@ -73,7 +79,8 @@ let g:quickrun_config._ = {
       \ 'hook/lightline_update/enable_exit':   1,
       \ 'hook/lightline_update/priority_exit': 1,
       \
-      \ 'hook/close_quickfix/enable_exit':    1,
+      \ 'hook/back_window/enable_exit':    0,
+      \ 'hook/back_window/priority_exit':  1,
       \ }
 
 " #languages {{{
@@ -160,11 +167,6 @@ let s:config = {
       \ 'watchdogs_checker/_': {
       \   'runner':                          'vimproc',
       \   'outputter':                       'quickfix',
-      \   'outputter/quickfix/open_cmd':     '',
-      \   'outputter/quickfix/into':         0,
-      \
-      \   'hook/back_window/enable_exit':    0,
-      \   'hook/back_window/priority_exit':  1,
       \ },
       \
       \ 'c/watchdogs_checker' : {
@@ -316,3 +318,5 @@ unlet s:hook
 " topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
 " error successで分けるなら処理が終了するのを待たないといけない
 " http://d.hatena.ne.jp/osyo-manga/20120919/1348054752
+
+" hookとoutputter/の設定はquickrunの方でやる必要がある
