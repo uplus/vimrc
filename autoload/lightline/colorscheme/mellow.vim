@@ -3,11 +3,11 @@ let s:base_g = ['#60df3f', 156]
 let s:base_r = ['#ffb90f', 214]
 
 let s:gray = ['#20202f', 234]
-let s:black = ['#000000', 0]
+let s:black = ['#202020', 0]
 
 let s:yellow  = ['#f5c900', 136]
 let s:orange  = s:base_r " ['#db4b16', 166]
-let s:red     = ['#ff0030', 124]
+let s:red     = ['#ff2040', 124]
 let s:magenta = s:base_b " ['#d33682', 125]
 let s:violet  = ['#6c71c4', 61]
 let s:blue    = ['#268bd2', 33]
