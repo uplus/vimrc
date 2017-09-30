@@ -162,9 +162,17 @@ let g:clurin = {
       \    {'pattern': '\V"\@<!${\(\w\+\)}"\@!', 'replace': '${\1}'},
       \    {'pattern': '\V"${\(\w\+\)}"', 'replace': '"${\1}"'},],
       \ ]},
+      \
       \ 'go': {'def': [
       \   ['Print', 'Println', 'Printf'],
       \   ['Fprint', 'Fprintln', 'Fprintf'],
       \   ['Sprint', 'Sprintln', 'Sprintf'],
+      \ ]},
+      \
+      \ 'javascript': {'def': [
+      \   ['===', '!=='],
+      \   ['var', 'let', 'const'],
+      \   ['if', 'else if', 'else'],
+      \   ['console.log', 'console.info', 'console.warn'],
       \ ]},
       \ }
