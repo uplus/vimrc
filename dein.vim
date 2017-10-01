@@ -608,12 +608,18 @@ if dein#tap('open-browser.vim') "{{{
     endtry
   endfunction
 
-  command! Wsearch :call <SID>www_search()
+  command! -nargs=* Wsearch :call <SID>www_search(<q-args>)
   nnoremap <Plug>(openbrowser-wwwsearch) :<c-u>call <SID>www_search()<CR>
-  function! s:www_search()
-    let l:search_word = input('Please input search word: ')
+  function! s:www_search(query)
+    if a:query !=# ''
+      let l:search_word = a:query
+    else
+      let l:search_word = input('Please input search word: ')
+    endif
+
     if l:search_word !=# ''
-      execute 'OpenBrowserSearch' escape(l:search_word, '"')
+      let l:search_word = substitute(l:search_word, "'", "''", 'g')
+      call openbrowser#search(l:search_word)
     endif
   endfunction
 endif "}}}
