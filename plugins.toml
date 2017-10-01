@@ -136,6 +136,10 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 [[plugins]]
+repo = 'mgee/lightline-bufferline'
+depends = 'lightline.vim'
+
+[[plugins]]
 repo = 'tyru/current-func-info.vim'
 
 # [[plugins]]
