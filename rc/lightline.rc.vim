@@ -9,7 +9,7 @@ let g:lightline = {
       \     'right': [['cursor'], ['filetype']]
       \   },
       \   'tabline': {
-      \     'left': [['tabs']],
+      \     'left': [['tabline']],
       \     'right': [['close']]
       \   },
       \   'tab': {
@@ -39,12 +39,13 @@ let g:lightline = {
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
-      \     'tabs': 'lightline#tabs',
+      \     'tabline': 'LLtabs_buffers',
       \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
       \     'tabs': 'tabsel', 'close': 'raw',
       \     'syntax_check': 'error',
+      \     'tabline': 'tabsel',
       \   },
       \   'tab_component': {},
       \   'tab_component_function': {
@@ -223,30 +224,16 @@ function! LLsyntax_check() abort "{{{
   return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
 endfunction "}}}
 
-" #tab
+" #tabline
 
-" TODO なぜか動かない そもそも呼び出されてない?
-function! LLtabs() abort "{{{
-  let [x, y, z] = [[], [], []]
-  let nr = tabpagenr()
-  let cnt = tabpagenr('$')
-  for i in range(1, cnt)
-    call add(i < nr ? x : i == nr ? y : z, '%'. i . 'T%{lightline#onetab(' . i . ',' . (i == nr) . ')}' . (i == cnt ? '%T' : ''))
-  endfor
-  let abbr = '...'
-  let n = min([max([g:lightline.winwidth/40, 2]), 8])
-  if len(x) > n && len(z) > n
-    let x = extend(add(x[:n/2-1], abbr), x[-(n+1)/2:])
-    let z = extend(add(z[:(n+1)/2-1], abbr), z[-n/2:])
-  elseif len(x) + len(z) > 2 * n
-    if len(x) > n
-      let x = extend(add(x[:(2*n-len(z))/2-1], abbr), x[-(2*n-len(z)+1)/2:])
-    elseif len(z) > n
-      let z = extend(add(z[:(2*n-len(x)+1)/2-1], abbr), z[-(2*n-len(x))/2:])
-    endif
+function! LLtabs_buffers() abort
+  let tabs = lightline#tabs()
+  if empty(tabs[0]) && empty(tabs[2])
+    return lightline#bufferline#buffers()
+  else
+    return tabs
   endif
-  return [x, y, z]
-endfunction "}}}
+endfunction
 
 finish
 
