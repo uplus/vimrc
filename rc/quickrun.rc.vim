@@ -60,7 +60,7 @@ let g:quickrun_config._ = {
       \
       \ 'outputter':  'buffer',
       \ 'outputter/buffer/split': '%{50 < winheight(0) ? "10" : "5"}sp | echo 1 ||',
-      \ 'outputter/buffer/into' : 1,
+      \ 'outputter/buffer/into' : 0,
       \ 'outputter/buffer/name': '[quickrun output]',
       \ 'outputter/buffer/filetype': 'quickrun',
       \ 'outputter/buffer/running_mark' : '(-.-)',
