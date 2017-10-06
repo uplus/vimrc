@@ -1,10 +1,85 @@
+snippet list
+	@<list>{${1}}${0}
+
+snippet code
+	@<code>{${1}}${0}
+
 snippet img
 	@<img>{${1}}${0}
 
-snippet list
-	@<list>{${1}}${0}
+snippet table
+	@<table>{${1}}${0}
+
+snippet fn
+alias footnote
+	@<fn>{${1}}${0}
+
 
 snippet //list
 	//list[${1}][${2}][${3}]{
 		${0}
 	//}
+
+snippet //listnum
+	//listnum[${1}][${2}][${3}]{
+		${0}
+	//}
+
+snippet //emlist
+	//emlist[${1}][${2}][${3}]{
+		${0}
+	//}
+
+snippet //emlistnum
+	//emlistnum[${1}][${2}][${3}]{
+		${0}
+	//}
+
+snippet //linenum
+alias //first
+	//firstlinenum[${1}]
+
+snippet //source
+	//source[${1:path}]{
+		${2}
+	//}${0}
+
+snippet //cmd
+	//cmd{
+		${1}
+	//}${0}
+
+snippet  //image
+	//image[${1:file}][${2:caption}][scale=${3:1.0}]{
+	//}${0}
+
+snippet //indepimage
+	//indepimage[${1}]
+
+snippet //numberlessimage
+	//numberlessimage[${1}][${2}]
+
+snippet //graph
+	//graph[${1}][${2:gnuplot}]
+		${3}
+	//}${0}
+
+snippet //table
+	//table[${1}][${2}][${3}]{
+	//}
+
+snippet //emtable
+	//emtable[${1}][${2}]{
+		${3}
+	//}${0}
+
+# snippet //tsize
+#	 //tsize[|${1:latex}||p{20mm}cr|]
+
+snippet //quote
+	//quote{
+		${1}
+	//}${0}
+
+snippet //footnote
+//footnote[${1}][${2}]

@@ -206,6 +206,7 @@ qfreplace = '''
 
 review = '''
   setl breakindent wrap
+  setl commentstring=#@#\ %s
 '''
 
 ruby = '''

@@ -69,6 +69,8 @@ function! s:set_highlights() "{{{
   hi htmlBold   ctermfg=255               guifg=#ffffff               cterm=bold      gui=bold
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 
+  hi link reviewImage PreProc
+
   colorscheme vimfiler_color
 
   if !has('vim_starting') && exists('g:airline_theme')
