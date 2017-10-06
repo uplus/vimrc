@@ -169,7 +169,11 @@ repo = 'kchmck/vim-coffee-script'
 repo = 'rust-lang/rust.vim'
 
 [[plugins]]
-repo = 'moro/vim-review'
+repo = 'uplus/vim-review'
+rev = 'tmp-develop'
+hook_add = '''
+  let g:review_no_default_key_mappings = 1
+'''
 
 
 #action
