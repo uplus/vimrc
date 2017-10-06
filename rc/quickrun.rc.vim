@@ -101,6 +101,11 @@ let s:config = {
       \   'hook/sweep/files': '%S:p:r',
       \   'tempfile': '%{tempname()}.cpp',
       \ },
+      \ 'review': {
+      \   'command': 'rake',
+      \   'cmdopt': 'clean pdf',
+      \   'exec': '%c %o >/dev/null',
+      \ },
       \ 'ruby': {'cmdopt' : '-Ku'},
       \ 'ruby/rspec': {
       \   'command': 'bundle',

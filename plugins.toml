@@ -168,6 +168,9 @@ repo = 'kchmck/vim-coffee-script'
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 
+[[plugins]]
+repo = 'moro/vim-review'
+
 
 #action
 
