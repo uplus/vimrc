@@ -59,8 +59,10 @@ let g:quickrun_config._ = {
       \ 'runner/vimproc/read_timeout':  20,
       \
       \ 'outputter':  'buffer',
-      \ 'outputter/buffer/split': '%{70 < winheight(0) ? "10sp" : "5sp"}',
+      \ 'outputter/buffer/split': '%{50 < winheight(0) ? "10" : "5"}sp | echo 1 ||',
       \ 'outputter/buffer/into' : 1,
+      \ 'outputter/buffer/name': '[quickrun output]',
+      \ 'outputter/buffer/filetype': 'quickrun',
       \ 'outputter/buffer/running_mark' : '(-.-)',
       \ 'outputter/buffer/close_on_empty': 0,
       \

@@ -92,8 +92,8 @@ augroup myac
   au StdinReadPost * call s:stdin_config()
   au VimEnter * call s:vimenter()
 
-  au FileType gundo,vimfiler, setl foldcolumn=0
-  au FileType gundo,vimfiler,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
+  au FileType gundo,vimfiler,quickrun setl foldcolumn=0
+  au FileType gundo,vimfiler,quickrun,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
 
   " preview window {{{
   if exists('##OptionSet')
