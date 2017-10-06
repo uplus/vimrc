@@ -177,7 +177,7 @@ json = '''
 '''
 
 neosnippet = '''
-  " set noexpandtab
+  set noexpandtab
 '''
 
 python = '''

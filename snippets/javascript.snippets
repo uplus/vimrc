@@ -2,39 +2,39 @@
 
 snippet if
 options head
-  if (${1}) {
-    ${0}
-  }
+	if (${1}) {
+		${0}
+	}
 
 snippet elseif
-  else if (${1}) {
-    ${0}
-  }
+	else if (${1}) {
+		${0}
+	}
 
 snippet else
-  else {
-    ${0}
-  }
+	else {
+		${0}
+	}
 
 snippet ifl
-  if (${1:true}) ${2}
+	if (${1:true}) ${2}
 
 snippet if-else
 abbr ife
 alias ife
 options head
-  if (${1:}) {
-    ${2}
-  } else {
-    ${3}
-  }
-  ${0}
+	if (${1:}) {
+		${2}
+	} else {
+		${3}
+	}
+	${0}
 
 # if ... else
 snippet ifel
-  if (${1}) ${2}
-  else ${3}
-  ${0}
+	if (${1}) ${2}
+	else ${3}
+	${0}
 
 # tertiary conditional
 snippet t
@@ -47,29 +47,29 @@ snippet t
 snippet switch
 alias sw
 options head
-  switch (${1}) {
-    case ${2}:
-      ${0}
-      break;
-  }
+	switch (${1}) {
+		case ${2}:
+			${0}
+			break;
+	}
 
 snippet switchd
 alias swd
-  switch (${1}) {
-    case ${3}:
-      ${4}
-      break;
-    ${5}
-    default:
-      ${0}
-  }
+	switch (${1}) {
+		case ${3}:
+			${4}
+			break;
+		${5}
+		default:
+			${0}
+	}
 
 snippet case
 alias ca
-  case ${1}:
-    ${2}
-    break;
-  ${0}
+	case ${1}:
+		${2}
+		break;
+	${0}
 
 # }}}
 
@@ -77,9 +77,9 @@ alias ca
 
 snippet forin
 options head
-  for (var ${1:v} in ${2}) {
-    ${0}
-  }
+	for (var ${1:v} in ${2}) {
+		${0}
+	}
 
 # for (...) {...}
 snippet fora
@@ -96,10 +96,10 @@ snippet forr
 snippet while
 alias wh
 options head
-  while (${1}) {
-    ${2}
-  }
-  $0
+	while (${1}) {
+		${2}
+	}
+	$0
 
 # while (...) {...}
 snippet whl
@@ -107,9 +107,9 @@ snippet whl
 
 # do...while
 snippet do
-  do {
-    ${2:/* code */}
-  } while (${1:/* condition */});
+	do {
+		${2:/* code */}
+	} while (${1:/* condition */});
 
 # }}}
 
@@ -118,27 +118,27 @@ snippet do
 snippet console-log
 alias cl
 options head
-  console.log(${0});
+	console.log(${0});
 
 snippet console-trace
 alias ct trace
 options head
-  console.trace();
+	console.trace();
 
 snippet console-error
 alias ce error
 options head
-  console.error(${0});
+	console.error(${0});
 
 snippet console-warn
 alias cw
 options head
-  console.warn(${0});
+	console.warn(${0});
 
 snippet console-info
 alias ci
 options head
-  console.info(${0});
+	console.info(${0});
 
 # }}}
 
@@ -147,16 +147,16 @@ options head
 
 snippet lambda
 alias lam
-  (${1}) => {
-    ${0}
-  };
+	(${1}) => {
+		${0}
+	};
 
 # Object Method
 snippet :f
 options head
-  ${1:#:method_name}: function(${2:#:attribute}){
-    ${0}
-  }
+	${1:#:method_name}: function(${2:#:attribute}){
+		${0}
+	}
 
 # Get Elements
 snippet gete
@@ -168,43 +168,43 @@ snippet gett
 snippet function
 alias fun
 options word
-  function ${1:function_name}(${2:argument}){
-    ${0}
-  }
+	function ${1:function_name}(${2:argument}){
+		${0}
+	}
 
 snippet proto
 options head
-  ${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}){
-    ${0:TARGET}
-  };
+	${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}){
+		${0:TARGET}
+	};
 
 snippet f
 options word
-  function(${1}){ ${0} };
+	function(${1}){ ${0} };
 
 snippet try
 options head
-  try {
-    ${1:TARGET}
-  } catch(${2:e}){
-    ${3}
-  }
+	try {
+		${1:TARGET}
+	} catch(${2:e}){
+		${3}
+	}
 
 snippet try_finally
 alias tryf
 options head
-  try {
-    ${1:TARGET}
-  } catch(${2:e}){
-    ${3}
-  } finally {
-    ${4}
-  }
+	try {
+		${1:TARGET}
+	} catch(${2:e}){
+		${3}
+	} finally {
+		${4}
+	}
 
 snippet key-value
 abbr :,
 options word
-  ${1:#:value_name}: ${0:#:value},
+	${1:#:value_name}: ${0:#:value},
 
 #snippet key
 #options word
@@ -218,77 +218,77 @@ options head
 snippet debugger
 alias db
 options head
-  debugger;
+	debugger;
 
 snippet iife
 options head
-  (function(${1}){
-    'use strict';
-    ${0:TARGET}
-  })(${2});
+	(function(${1}){
+		'use strict';
+		${0:TARGET}
+	})(${2});
 
 snippet js
 options head
-  JSON.stringify(${1:TARGET}, ${2:null}, ${3:2});
+	JSON.stringify(${1:TARGET}, ${2:null}, ${3:2});
 
 snippet jsc
 options head
-  console.log(JSON.stringify(${1:TARGET}, ${2:null}, ${3:2}));
+	console.log(JSON.stringify(${1:TARGET}, ${2:null}, ${3:2}));
 
 snippet     class
 abbr        class { const() ...}
 alias       cla
 options     head
-  class ${1} {
-    constructor(${2}){
-      ${3}
-    }${0}
-  }
+	class ${1} {
+		constructor(${2}){
+			${3}
+		}${0}
+	}
 
 snippet     class-extends
 abbr        class extends {...}
 alias       clae
 options     head
-  class ${1} extends ${2} {
-    constructor(${3}){
-      ${4}
-    }${0}
-  }
+	class ${1} extends ${2} {
+		constructor(${3}){
+			${4}
+		}${0}
+	}
 
 snippet     static
 options     head
-  static ${1}(${2}){
-    ${0}
-  }
+	static ${1}(${2}){
+		${0}
+	}
 
 snippet     set
 options     head
-  set ${1}(${2}){
-    ${0}
-  }
+	set ${1}(${2}){
+		${0}
+	}
 
 snippet     get
 options     head
-  get ${1}(){
-    ${0}
-  }
+	get ${1}(){
+		${0}
+	}
 
 snippet     import
 abbr        import { member, ... } from "module-name";
 options     head
-  import { ${1:MEMBERS} } from "${0:TARGET}";
+	import { ${1:MEMBERS} } from "${0:TARGET}";
 
 snippet     import-default
 abbr        import defaultMember from "module-name";
 options     head
-  import ${1:defaultMember} from "${0:TARGET}";
+	import ${1:defaultMember} from "${0:TARGET}";
 
 snippet     import-all
 abbr        import * as NAME from "...";
 options     head
-  import * as ${1:NAME} from "${0:TARGET}";
+	import * as ${1:NAME} from "${0:TARGET}";
 
 snippet     import-default-member
 abbr        import defaultMember, { member, ... } from "module-name";
 options     head
-  import ${1:defaultMember}, { ${2:MEMBERS} } from "${0:TARGET}";
+	import ${1:defaultMember}, { ${2:MEMBERS} } from "${0:TARGET}";

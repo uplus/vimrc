@@ -55,8 +55,8 @@ endfunction
 " textobj
 " blankline "{{{
 function! vimrc#textobj_blankline(flags) abort
-  let l:flags = 'n' . a:flags
-  return ['V', getpos('.'), [0] + searchpos('^\s*$', l:flags) + [0]]
+  let l:flags = 'nW' . a:flags
+  return ['V', getpos('.'), [0] + searchpos('^\s*$\|\%^\|\%$', l:flags) + [0]]
 endfunction
 
 function! vimrc#textobj_blankline_prev() abort
