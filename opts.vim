@@ -51,7 +51,7 @@ set autoindent smartindent
 " set cindent
 set cinkeys-=0#
 " *<return> enterするたびにreindent
-set cinoptions+=#1,J1,j1,g0,N-2
+set cinoptions+=#0,J1,j1,g0,N-2
 " :0 switchとcaseが同じレベルになる
 " set indentkeys=
 "}}}
