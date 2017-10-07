@@ -163,6 +163,10 @@ let s:config = {
       \   'command': 'cargo',
       \   'exec': '%c run %o',
       \ },
+      \ 'xmodmap': {
+      \   'command': 'xmodmap',
+      \   'exec': '%c %o %s',
+      \ },
       \ }
 call extend(g:quickrun_config, s:config)
 unlet s:config
