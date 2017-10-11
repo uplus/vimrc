@@ -154,7 +154,7 @@ alias lam
 # Object Method
 snippet :f
 options head
-	${1:#:method_name}: function(${2:#:attribute}){
+	${1:#:method_name}: function(${2:#:attribute}) {
 		${0}
 	}
 
@@ -168,25 +168,25 @@ snippet gett
 snippet function
 alias fun
 options word
-	function ${1:function_name}(${2:argument}){
+	function ${1:function_name}(${2:argument}) {
 		${0}
 	}
 
 snippet proto
 options head
-	${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}){
+	${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}) {
 		${0:TARGET}
 	};
 
 snippet f
 options word
-	function(${1}){ ${0} };
+	function(${1}) { ${0} };
 
 snippet try
 options head
 	try {
 		${1:TARGET}
-	} catch(${2:e}){
+	} catch(${2:e}) {
 		${3}
 	}
 
@@ -195,7 +195,7 @@ alias tryf
 options head
 	try {
 		${1:TARGET}
-	} catch(${2:e}){
+	} catch(${2:e}) {
 		${3}
 	} finally {
 		${4}
@@ -213,7 +213,7 @@ options word
 snippet setTimeout-function
 alias timeout
 options head
-	setTimeout(function(){${3}}${2}, ${1:10};
+	setTimeout(function() {${3}}${2}, ${1:10};
 
 snippet debugger
 alias db
@@ -222,7 +222,7 @@ options head
 
 snippet iife
 options head
-	(function(${1}){
+	(function(${1}) {
 		'use strict';
 		${0:TARGET}
 	})(${2});
@@ -240,7 +240,7 @@ abbr        class { const() ...}
 alias       cla
 options     head
 	class ${1} {
-		constructor(${2}){
+		constructor(${2}) {
 			${3}
 		}${0}
 	}
@@ -257,19 +257,19 @@ options     head
 
 snippet     static
 options     head
-	static ${1}(${2}){
+	static ${1}(${2}) {
 		${0}
 	}
 
 snippet     set
 options     head
-	set ${1}(${2}){
+	set ${1}(${2}) {
 		${0}
 	}
 
 snippet     get
 options     head
-	get ${1}(){
+	get ${1}() {
 		${0}
 	}
 
