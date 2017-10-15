@@ -165,6 +165,7 @@ markdown = '''
 
 javascript = '''
   setl foldmethod=syntax
+  setl commentstring=//\ %s
   nnoremap <buffer><silent>,lr :<c-u>TernRename<cr>
 
   " let b:format_cmd = ''
