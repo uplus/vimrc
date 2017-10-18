@@ -150,7 +150,9 @@ let s:config = {
       \   'hook/cd/directory': '%S:p:h',
       \ },
       \ 'rust': {
-      \   'type': 'rust/rustc'
+      \   'type':
+      \     filereadable('Cargo.toml') ? 'rust/cargo' :
+      \     'rust/rustc',
       \ },
       \ 'rust/rustc': {
       \   'command': 'rustc',
@@ -197,6 +199,11 @@ let s:config = {
       \ 'go/watchdogs_checker': {'type': 'watchdogs_checker/gobuild'},
       \ 'help/watchdogs_checker': {'type': 'watchdogs_checker/non_check'},
       \ 'markdown/watchdogs_checker': {'type': 'watchdogs_checker/non_check'},
+      \ 'rust/watchdogs_checker': {
+      \   'type':
+      \     filereadable('Cargo.toml') ? 'watchdogs_checker/cargo' :
+      \     'watchdogs_checker/rustc',
+      \ },
       \ 'toml/watchdogs_checker': {'type': 'watchdogs_checker/non_check'},
       \
       \ 'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
@@ -232,6 +239,18 @@ let s:config = {
       \   'command' : 'rustc',
       \   'exec'    : '%c %o %s:p',
       \   'cmdopt' : '',
+      \   'errorformat'
+      \     : '%-Gerror: aborting %.%#,'
+      \     . '%-Gerror: Could not compile %.%#,'
+      \     . '%Eerror: %m,'
+      \     . '%Eerror[E%n]: %m,'
+      \     . '%Wwarning: ,'
+      \     . '%C %#--> %f:%l:%c'
+      \ },
+      \ 'watchdogs_checker/cargo' : {
+      \   'command' : 'cargo',
+      \   'exec'    : '%c %o',
+      \   'cmdopt' : 'build',
       \   'errorformat'
       \     : '%-Gerror: aborting %.%#,'
       \     . '%-Gerror: Could not compile %.%#,'
