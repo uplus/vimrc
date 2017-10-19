@@ -159,6 +159,10 @@ markdown = '''
   SetTab 2
 '''
 
+java = '''
+  SetTab 4
+'''
+
 javascript = '''
   setl foldmethod=syntax
   setl commentstring=//\ %s
