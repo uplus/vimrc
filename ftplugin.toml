@@ -251,6 +251,7 @@ sh = '''
 
 toml = '''
   syntax sync minlines=300
+  let b:watchdogs_checker_type = 'watchdogs_checker/null'
 '''
 
 text = '''

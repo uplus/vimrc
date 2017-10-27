@@ -767,7 +767,10 @@ if = "has('nvim')"
 hook_add = '''
   let g:precious_enable_switchers = {
     \ 'eruby': {
-    \   'setfiletype': 0
+    \   'setfiletype': 0,
+    \ },
+    \ 'markdown': {
+    \   'setfiletype': 0,
     \ },
     \}
 '''

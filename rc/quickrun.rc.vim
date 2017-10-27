@@ -197,14 +197,14 @@ let s:config = {
       \     :'',
       \ },
       \ 'go/watchdogs_checker': {'type': 'watchdogs_checker/gobuild'},
-      \ 'help/watchdogs_checker': {'type': 'watchdogs_checker/non_check'},
-      \ 'markdown/watchdogs_checker': {'type': 'watchdogs_checker/non_check'},
+      \ 'help/watchdogs_checker': {'type': 'watchdogs_checker/null'},
+      \ 'markdown/watchdogs_checker': {'type': 'watchdogs_checker/null'},
       \ 'rust/watchdogs_checker': {
       \   'type':
       \     filereadable('Cargo.toml') ? 'watchdogs_checker/cargo' :
       \     'watchdogs_checker/rustc',
       \ },
-      \ 'toml/watchdogs_checker': {'type': 'watchdogs_checker/non_check'},
+      \ 'toml/watchdogs_checker': {'type': 'watchdogs_checker/null'},
       \
       \ 'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
       \ 'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt_watchdogs },
@@ -230,7 +230,7 @@ let s:config = {
       \   'exec' : '%c %o %s',
       \   'cmdopt': '--no-color',
       \ },
-      \ 'watchdogs_checker/non_check': {
+      \ 'watchdogs_checker/null': {
       \   'command': 'echo',
       \   'exec': '%c %o',
       \   'cmdopt': '',
