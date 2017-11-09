@@ -269,10 +269,6 @@ let s:config = {
       \     . ',%C%f:%l %m'
       \     . ',%-Z%.%#',
       \ },
-      \ 'javascript/watchdogs_checker' : {
-      \   'type': 'eslint',
-      \   'outputter/quickfix/errorformat': '\ \ %l:%c\ \ error\ %m,%-G%.%#',
-      \ },
       \}
 
 call extend(g:quickrun_config, s:config) " これだけだと上手く行かない

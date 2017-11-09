@@ -77,20 +77,27 @@ alias ca
 
 snippet forin
 options head
-	for (var ${1:v} in ${2}) {
+	for (let ${1:v} in ${2}) {
 		${0}
 	}
 
+snippet forof
+options head
+	for (let ${1:v} of ${2}) {
+		${0}
+	}
+
+
 # for (...) {...}
 snippet fora
-	for (var ${1:i} = 0; $1 < ${2:Things}.length; $1${3:++}) {
-		${4:$2[$1]}
+	for (let ${1:i} = 0; $1 <${2}.length; $1${3:++}) {
+		${0}
 	}
 
 # for (...) {...} (Improved Native For-Loop)
-snippet forr
-	for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2${3:--}) {
-		${4:$1[$2]}
+snippet forar
+	for (let ${1:i} = ${2}.length - 1; 0 <= $2; $2${3:--}) {
+		${0}
 	}
 
 snippet while
