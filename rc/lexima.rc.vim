@@ -148,6 +148,29 @@ call lexima#add_rule({
       \   'filetype': ['eruby'],
       \ })
 
+" " casl2
+" let s:casl_pattern = '\v(ret|nop|start|end|pop|ds|dc|ld|st|adda|suba|addl|subl|and|or|xor|cpa|cpl|jump|jpl|jmi|jnz|jze|jov|call|svc|lad|sla|sra|sll|srl|push)'
+" " echo substitute('ret', l:casl_pattern, '\U\1', '')
+
+" call lexima#add_rule({
+"       \   'at': '\%#',
+"       \   'char': 'ret|nop',
+"       \   'input': 'RET',
+"       \   'filetype': ['casl2'],
+"       \ })
+
+" call lexima#add_rule({
+"       \   'at': '\%#',
+"       \   'char': s:casl_pattern,
+"       \   'input': '\U\1',
+"       \   'filetype': ['casl2'],
+"       \ })
+
+" unlet s:casl_pattern
+
+
+" RET NOP START END POP DS DC LD ST ADDA SUBA ADDL SUBL AND OR XOR CPA CPL JUMP JPL JMI JNZ JZE JOV CALL SVC LAD SLA SRA SLL SRL PUSH
+
 " cgn .リピートに必要らしい <c-l>はneosnippet
 " inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
 
