@@ -174,6 +174,9 @@ hook_add = '''
   let g:review_no_default_key_mappings = 1
 '''
 
+[[plugins]]
+repo = 'glabra/casl2.vim'
+
 
 #action
 

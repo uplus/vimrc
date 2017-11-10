@@ -77,6 +77,10 @@ cpp = '''
   let b:format_cmd = 'ClangFormat'
 '''
 
+casl2 = '''
+  SetTab 8
+'''
+
 diff = '''
   setl foldmethod=diff
   setl foldcolumn=0
