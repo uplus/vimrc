@@ -79,6 +79,7 @@ cpp = '''
 
 casl2 = '''
   SetTab 8
+  setl commentstring=;\ %s
 '''
 
 diff = '''
