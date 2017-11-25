@@ -162,6 +162,7 @@ html = '''
 
 markdown = '''
   SetTab 2
+  setl wrap
 '''
 
 java = '''
