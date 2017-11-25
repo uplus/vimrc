@@ -107,7 +107,7 @@ if has('patch755')
 endif
 
 set nowrap
-if has('patch338')
+if has('linebreak')
   set breakindent
 endif
 set sidescroll=0

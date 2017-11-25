@@ -211,7 +211,7 @@ qfreplace = '''
 '''
 
 review = '''
-  setl breakindent wrap
+  setl wrap
 '''
 
 ruby = '''
@@ -260,7 +260,7 @@ toml = '''
 '''
 
 text = '''
-  setl breakindent wrap
+  setl wrap
 '''
 
 vim = '''
