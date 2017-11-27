@@ -26,7 +26,7 @@ hi Pmenu	              ctermfg=214 ctermbg=236 guifg=#ffaf00 guibg=#303030
 hi PmenuSel            ctermfg=235 ctermbg=214 guifg=#262626 guibg=#ffaf00
 hi StatusLine          ctermfg=255 ctermbg=NONE cterm=NONE guifg=#eeeeee guibg=NONE gui=NONE
 hi WildMenu            ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
-hi Normal              ctermbg=NONE
+hi Normal              ctermbg=NONE guibg=#1b282b
 " hi Folded              ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
 " hi Folded              ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
 hi Folded              ctermfg=133 ctermbg=NONE cterm=NONE guifg=#af5faf guibg=NONE gui=NONE

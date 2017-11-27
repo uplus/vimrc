@@ -250,7 +250,7 @@ let s:config = {
       \ 'watchdogs_checker/cargo' : {
       \   'command' : 'cargo',
       \   'exec'    : '%c %o',
-      \   'cmdopt' : 'build',
+      \   'cmdopt' : 'check',
       \   'errorformat'
       \     : '%-Gerror: aborting %.%#,'
       \     . '%-Gerror: Could not compile %.%#,'

@@ -1,0 +1,1 @@
+syn keyword rubyKeyword class_variable_set define_singleton_method
