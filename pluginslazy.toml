@@ -622,6 +622,13 @@ depends = 'game_engine.vim'
 on_cmd = 'Puyo'
 
 [[plugins]]
+repo = 'johngrib/vim-game-code-break'
+on_cmd = ['VimGameCodeBreak', 'CodeBreak']
+hook_add = '''
+  command! CodeBreak VimGameCodeBreak
+'''
+
+[[plugins]]
 # コマのサイズはハードコーディング
 repo = 'rbtnn/reversi.vim'
 depends = 'game_engine.vim'
