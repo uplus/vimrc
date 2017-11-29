@@ -29,7 +29,7 @@ hi WildMenu            ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
 hi Normal              ctermbg=NONE guibg=#1b282b
 " hi Folded              ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
 " hi Folded              ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
-hi Folded              ctermfg=133 ctermbg=NONE cterm=NONE guifg=#af5faf guibg=NONE gui=NONE
+hi Folded              ctermfg=133 ctermbg=NONE cterm=NONE guifg=#cf8fcf guibg=NONE gui=NONE
 hi FoldColumn          ctermfg=99  ctermbg=232 guifg=#875fff guibg=#080808
 hi LineNr              ctermfg=252 ctermbg=237 guifg=#d0d0d0 guibg=#3a3a3a
 hi CursorLine          ctermbg=238 cterm=NONE guibg=#343434 gui=NONE
@@ -40,7 +40,7 @@ hi Visual              ctermfg=219 ctermbg=196 cterm=NONE guifg=#ffafff guibg=#3
 hi rubySharpBang           ctermfg=103 guifg=#8787af
 hi rubyInclude             ctermfg=214 guifg=#ffaf00
 " hi rubyComment             ctermfg=179 guifg=#d7af5f
-hi rubyComment             ctermfg=247 guifg=#9e9e9e
+hi rubyComment             ctermfg=247 guifg=#9f9fbf
 hi! link rubyData rubyComment
 hi rubyTodo                ctermfg=16  ctermbg=220 guifg=#000000 guibg=#ffd700
 hi rubyDataDirective       ctermfg=111 guifg=#87afff
