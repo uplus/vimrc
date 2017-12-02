@@ -128,11 +128,14 @@ call lexima#add_rule({
 "}}}
 
 " html
+
+" 開始タグの閉じカッコを入力したら終了タグを挿入する
+" /> \<  がなくて <.*
 call lexima#add_rule({
-      \   'at': '\v%(/|\</.*)@<!%#',
+      \   'at': '\v%(/|\</.*)@<!\<.*%#',
       \   'char': '>',
       \   'input': '><c-r>=Lexima_HtmlCloseTag()<cr>',
-      \   'filetype': ['html', 'eruby'],
+      \   'filetype': ['html', 'eruby', 'vue'],
       \ })
 
 function! Lexima_HtmlCloseTag() abort

@@ -177,6 +177,9 @@ hook_add = '''
 [[plugins]]
 repo = 'glabra/casl2.vim'
 
+[[plugins]]
+repo = 'posva/vim-vue'
+
 
 #action
 
@@ -773,6 +776,9 @@ hook_add = '''
     \   'setfiletype': 0,
     \ },
     \ 'markdown': {
+    \   'setfiletype': 0,
+    \ },
+    \ 'vue': {
     \   'setfiletype': 0,
     \ },
     \}
