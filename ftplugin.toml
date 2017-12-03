@@ -229,7 +229,7 @@ ruby = '''
   nnoremap <buffer>,lge :Unite rails/generate -start-insert -default-action=open<cr>
   nnoremap <buffer>,lsc :Unite rails/schema -start-insert -default-action=open<cr>
 
-
+  setl fdm=syntax
   setl omnifunc=
   setl iskeyword+=?
 

@@ -1,4 +1,12 @@
-# basic
+snippet #!
+abbr    #!/usr/bin/env ruby
+alias   shebang
+options head
+  #!/usr/bin/env ruby
+  ${0}
+
+
+# basic {{{
 
 snippet ife
 	if ${1:condition}
@@ -50,6 +58,7 @@ snippet req
 snippet abort
   abort "${1}"${0}
 
+#}}}
 
 snippet defs
 	def self.${1:class_method_name}
@@ -348,34 +357,20 @@ snippet tim
 	times{|${1:n}| ${2} }
 snippet upt
 	upto(${1:1.0/0.0}){|${2:n}| ${3} }
-snippet ea
-	each{|${1:e}| ${2} }
-snippet eab
-	each_byte{|${1:byte}| ${2} }
+
 snippet eac- each_char{|chr| .. }
 	each_char{|${1:chr}| ${2} }
+
 snippet eac- each_cons(..){|group| .. }
 	each_cons(${1:2}){|${2:group}| ${3} }
-snippet eai
-	each_index{|${1:i}| ${2} }
-snippet eak
-	each_key{|${1:key}| ${2} }
-snippet eal
-	each_line{|${1:line}| ${2} }
-snippet eap
-	each_pair{|${1:name}, ${2:val}| ${3} }
+
 snippet eas-
 	each_slice(${1:2}){|${2:group}| ${3} }
-snippet eav
-	each_value{|${1:val}| ${2} }
-snippet eawi
-	each_with_index{|${1:e}, ${2:i}| ${3} }
 snippet reve
 	reverse_each{|${1:e}| ${2} }
 snippet inj
-	inject(${1:init}){|${2:mem}, ${3:var}| ${4} }
-snippet map
-	map{|${1:e}| ${2} }
+	inject(${1:init}){|${2:memo}, ${3:obj}| ${4} }
+
 snippet mapwi-
 	enum_with_index.map{|${1:e}, ${2:i}| ${3} }
 snippet sor
@@ -521,3 +516,174 @@ snippet tas
 	task :${2:task_name => [:dependent, :tasks]} do
 		${3}
 	end
+
+snippet     defrescue
+alias       defr
+abbr        def ... rescue ... end
+  def ${1:#:method_name}
+    ${2:TARGET}
+  rescue ${3:StandardError} => ${4:e}
+    ${5}
+  end
+
+snippet     do
+abbr        do ... end
+  do
+    ${0}
+  end
+
+snippet     dov
+abbr        do |var| ... end
+  do |${1:var}|
+    ${0}
+  end
+
+snippet     block
+abbr        { ... }
+  {
+    ${1:TARGET}
+  }
+
+snippet     blockvar
+abbr        {|var| ... }
+  {|${1:var}| ${0} }
+
+snippet     fileopen
+alias       open
+abbr        File.open(filename) do ... end
+  File.open(${1:#:filename}, '${2:#:mode}') do |${3:io}|
+    ${0:TARGET}
+  end
+
+snippet     edn
+abbr        => end?
+  end
+
+snippet     urlencode
+  # coding: utf-8
+  require 'erb'
+  puts ERB::Util.url_encode '${1}'
+
+snippet encoding
+alias   enc
+  # coding: utf-8
+  ${0}
+
+snippet each
+options word
+  each do |${1:var}|
+    ${0}
+  end
+
+snippet each_byte
+alias eab
+options word
+  each_byte{|${1:var}| ${2} }
+
+snippet each_char
+options word
+  each_char{|${1:var}| ${2} }
+
+snippet each_index
+alias eai
+options word
+  each_index{|${1:var}| ${2} }
+
+snippet each_key
+alias eak
+options word
+  each_key{|${1:var}| ${2} }
+
+snippet each_value
+alias eav
+options word
+	each_value{|${1:val}| ${2} }
+
+snippet each_line
+alias eal
+options word
+  each_line{|${1:var}| ${2} }
+
+snippet each_with_index
+alias eawi
+options word
+  each_with_index{|${1:var}| ${2} }
+
+snippet each_with_object
+alias eawo
+	each_with_object{|${1:obj}, ${2:memo}| ${3} }
+
+snippet each_pair
+alias eap
+options word
+  each_pair{|${1:key}, ${2:value}| ${3} }
+
+snippet each_pair_do
+alias eapd
+options word
+  each_pair do |${1:key}, ${2:value}|
+    ${3}
+  end
+
+snippet map
+options word
+  map{|${1:var}| ${2} }
+
+snippet sort
+options word
+  sort{|${1:x}, ${2:y}| ${2} }
+
+snippet sort_by
+options word
+  sort_by{|${1:var}| ${2} }
+
+snippet lambda
+alias lam
+options word
+  ->(${1:#:args}){ ${2}}
+
+snippet lambda-keyword
+options word
+  lambda{|${1:#:args}| ${2}}
+
+snippet     main
+options     head
+  if __FILE__ == \$0
+    ${0:TARGET}
+  end
+
+# This idiom is only for legacy ruby such as 1.9.3
+snippet filedir-legacy-compatibility
+alias __dir__
+abbr File.dirname(...)
+  File.dirname(File.expand_path(__FILE__))
+
+snippet     glob
+options     head
+  Dir.glob(${1:'**/*'}) do |fname|
+    ${0:TARGET}
+  end
+
+snippet     case
+abbr        case ... when ... else ... end
+options     head
+  case ${1}
+  when ${2}
+    ${3}
+  else
+    ${4}
+  end
+
+snippet     class
+alias cla
+  class ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+    ${0}
+  end
+
+snippet     module
+alias mod
+  module ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+    ${0}
+  end
+
+# vim:set et ts=2 sts=2 sw=2 tw=0:
