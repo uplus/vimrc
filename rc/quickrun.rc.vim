@@ -198,6 +198,7 @@ let s:config = {
       \ },
       \ 'go/watchdogs_checker': {'type': 'watchdogs_checker/gobuild'},
       \ 'help/watchdogs_checker': {'type': 'watchdogs_checker/null'},
+      \ 'java/watchdogs_checker': {'type': 'watchdogs_checker/null'},
       \ 'markdown/watchdogs_checker': {'type': 'watchdogs_checker/null'},
       \ 'rust/watchdogs_checker': {
       \   'type':
