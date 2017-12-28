@@ -6,15 +6,25 @@ augroup filetypedetect
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
   au BufRead,BufNewFile Guardfile setf ruby
   au BufRead,BufNewFile *.cas setf casl2
-  au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* setf markdown | lcd %:h
+  au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* call s:note_config()
+
   au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
   au VimEnter * if &l:ft == '' | filetype detect | endif
 
   " for ftplugin.toml
   au FileType toml if expand('%:p') =~# expand('~/.vim') |
-        \ let b:context_filetype_filetypes = {'toml': [
-        \   { 'start': '\s*=\s*\('."'''".'\|"""\)',
-        \     'end': '\1', 'filetype': 'vim', },
-        \ ]} |
-        \ endif
+    \ let b:context_filetype_filetypes = {'toml': [
+    \   { 'start': '\s*=\s*\('."'''".'\|"""\)',
+    \     'end': '\1', 'filetype': 'vim', },
+    \ ]} |
+    \ endif
+
 augroup END
+
+function! s:note_config() abort
+  lcd %:h
+  echomsg 'set ft=markdown'
+  if vimrc#capture('verbose setl ft?') !~# 'modeline'
+    setf markdown
+  endif
+endfunction
