@@ -180,6 +180,8 @@ let s:config = {
       \ 'watchdogs_checker/_': {
       \   'runner':                          'vimproc',
       \   'outputter':                       'quickfix',
+      \   'hook/echo/output_success': 'watchdogs success',
+      \   'hook/echo/output_failure': 'watchdogs failure',
       \ },
       \
       \ 'c/watchdogs_checker' : {
