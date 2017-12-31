@@ -1,11 +1,23 @@
 " filetypedetectだとpreciousも平気
+" preciousに上書きされることがある
+
+if exists('did_load_filetypes')
+  finish
+endif
+
 augroup filetypedetect
-  " preciousに上書きされることがある
   au!
-  au BufRead,BufNewFile *.hbs setf html
-  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
-  au BufRead,BufNewFile Guardfile setf ruby
+
   au BufRead,BufNewFile *.cas setf casl2
+  au BufRead,BufNewFile Guardfile setf ruby
+
+  " Filetype detect for Assembly Language.
+  au BufRead,BufNewFile *.asm set ft=masm syntax=masm
+  au BufRead,BufNewFile *.inc set ft=masm syntax=masm
+  au BufRead,BufNewFile *.[sS] set ft=gas syntax=gas
+  au BufRead,BufNewFile *.hla set ft=hla syntax=hla
+
+  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
   au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* call s:note_config()
 
   au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif

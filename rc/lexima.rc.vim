@@ -135,7 +135,7 @@ call lexima#add_rule({
       \   'at': '\v%(/|\</.*)@<!\<.*%#',
       \   'char': '>',
       \   'input': '><c-r>=Lexima_HtmlCloseTag()<cr>',
-      \   'filetype': ['html', 'eruby', 'vue'],
+      \   'filetype': ['html', 'eruby', 'vue', 'handlebars.html'],
       \ })
 
 function! Lexima_HtmlCloseTag() abort

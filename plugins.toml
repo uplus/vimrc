@@ -180,6 +180,9 @@ repo = 'glabra/casl2.vim'
 [[plugins]]
 repo = 'posva/vim-vue'
 
+[[plugins]]
+repo = 'nono/vim-handlebars'
+
 
 #action
 
