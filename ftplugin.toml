@@ -82,6 +82,10 @@ casl2 = '''
   setl commentstring=;\ %s
 '''
 
+css = '''
+  setlocal iskeyword+=-
+'''
+
 diff = '''
   setl foldmethod=diff
   setl foldcolumn=0
@@ -173,6 +177,7 @@ javascript = '''
   setl foldmethod=syntax
   setl commentstring=//\ %s
   nnoremap <buffer><silent>,lr :<c-u>TernRename<cr>
+  " SetTab 4
 
   " let b:format_cmd = ''
   " let b:tags_cmd = ''

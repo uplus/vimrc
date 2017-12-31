@@ -183,6 +183,9 @@ repo = 'posva/vim-vue'
 [[plugins]]
 repo = 'nono/vim-handlebars'
 
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+
 
 #action
 
@@ -332,6 +335,7 @@ hook_add = '''
 
   command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
   command! WatchdogsC89 let b:watchdogs_checker_type = 'watchdogs_checker/c89'
+  command! DisableWatchdogs let b:watchdogs_checker_type = 'watchdogs_checker/null'
 
   au myac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
 '''
