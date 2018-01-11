@@ -12,6 +12,10 @@ function! ToggleAutoSave() abort
 endfunction
 
 function! DoAutoSave() abort
+  if -1 != index(['unite_exrename'], &ft)
+    return
+  endif
+
   if g:my_autosave != 0
     silent! update
   endif
