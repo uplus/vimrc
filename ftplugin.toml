@@ -91,6 +91,10 @@ diff = '''
   setl foldcolumn=0
 '''
 
+gitconfig = '''
+  setl noexpandtab
+'''
+
 gitrebase = '''
   noremap <silent><buffer><nowait>gp :Pick<CR>
   noremap <silent><buffer><nowait>gr :Reword<CR>

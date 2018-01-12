@@ -10,6 +10,7 @@ augroup filetypedetect
 
   au BufRead,BufNewFile *.cas setf casl2
   au BufRead,BufNewFile Guardfile setf ruby
+  au BufRead,BufNewFile gitconfig setf gitconfig
 
   " Filetype detect for Assembly Language.
   au BufRead,BufNewFile *.asm set ft=masm syntax=masm
