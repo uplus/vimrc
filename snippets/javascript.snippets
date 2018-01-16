@@ -241,6 +241,13 @@ options head
 		${0:TARGET}
 	})(${2});
 
+snippet jtoo
+options head
+	const obj = JSON.parse(${1});${0}
+
+snippet otoj
+	JSON.stringify(${1})${0}
+
 snippet js
 options head
 	JSON.stringify(${1:TARGET}, ${2:null}, ${3:2});
