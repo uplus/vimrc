@@ -61,6 +61,7 @@ augroup myac
   let g:badspace_enable = 1
   au VimEnter * au myac Syntax * call s:badspace()
   au InsertEnter * hi clear BadSpace
+  au BufEnter vimfiler:* hi clear BadSpace
   au InsertLeave,VimEnter,ColorScheme * call s:badspace_set_highlight()
 
   function! s:badspace_set_highlight() abort

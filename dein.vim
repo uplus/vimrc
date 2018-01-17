@@ -582,6 +582,18 @@ if dein#tap('vim-choosewin') "{{{
   let g:choosewin_blink_on_land           = 0
   let g:choosewin_statusline_replace      = 0
   let g:choosewin_tabline_replace         = 0
+
+  " TODO: Don't effect
+  " let g:choosewin_hook_enable = 1
+  "
+  " function! s:choosewin_clear_BadSpace(winnums) abort
+  "   hi clear BadSpace
+  "   return a:winnums;
+  " endfunction
+  "
+  " let g:choosewin_hook = {
+  "   \ 'filter_window': function('s:choosewin_clear_BadSpace'),
+  "   \ }
 endif "}}}
 
 if dein#tap('jedi-vim') "{{{
