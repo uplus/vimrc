@@ -310,6 +310,7 @@ vim = '''
 
 zsh = '''
   setl iskeyword-=$
+  setl iskeyword+=-
   let b:match_words='(:),{:},[:],\<if\>:\<fi\>,\<case\>:^\s*([^)]*):\<esac\>,\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
 '''
 
