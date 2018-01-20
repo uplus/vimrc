@@ -1,38 +1,43 @@
 snippet #!
 	#!/usr/bin/env zsh
 
+snippet cmdname
+	local cmdname="${0:t:r}"
+
 snippet if
 	if ${1:condition}; then
-		${2:# statements}
+		${2}
 	fi
 snippet ife
 	if ${1:condition}; then
-		${2:# statements}
+		${2}
 	else
-		${3:# statements}
+		${3}
 	fi
 snippet elif
 	elif ${1:condition} ; then
-		${2:# statements}
+		${2}
 snippet for
 	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
-		${3:# statements}
+		${3}
 	done
-snippet fore
+
+snippet forin
 	for ${1:item} in ${2:list}; do
-		${3:# statements}
+		${3}
 	done
+
 snippet wh
 	while ${1:condition}; do
-		${2:# statements}
+		${2}
 	done
 snippet until
 	until ${1:condition}; do
-		${2:# statements}
+		${2}
 	done
 snippet repeat
 	repeat ${1:integer}; do
-		${2:# statements}
+		${2}
 	done
 snippet case
 	case ${1:word} in
@@ -41,7 +46,7 @@ snippet case
 	esac
 snippet select
 	select ${1:answer} in ${2:choices}; do
-		${3:# statements}
+		${3}
 	done
 
 snippet (
