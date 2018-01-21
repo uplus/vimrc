@@ -169,6 +169,10 @@ snippet debug
 snippet deep_copy
 	Marshal.load(Marshal.dump(${1:obj_to_copy}))${0}
 
+snippet debug-out
+	rescue => e
+		File.open('tmp/error', 'a'){|file| file.write(e)}
+
 
 # define #{{{
 
