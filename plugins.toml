@@ -186,6 +186,9 @@ repo = 'nono/vim-handlebars'
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
 
 #action
 
