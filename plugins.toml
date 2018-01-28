@@ -242,8 +242,9 @@ hook_add = '''
   " let g:foldCCtext_tail = ''
 '''
 
-[[plugins]]
-repo = 'Konfekt/FastFold'
+# [[plugins]]
+# 謎挙動
+# repo = 'Konfekt/FastFold'
 
 [[plugins]]
 repo = 'kana/vim-niceblock'
