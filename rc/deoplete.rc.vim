@@ -76,13 +76,6 @@ inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
 
 " # config of sources
 
-" deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
-" let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
-
-
 " deoplete-jedi
 let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
 

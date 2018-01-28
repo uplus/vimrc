@@ -413,16 +413,16 @@ repo = 'Shougo/neoinclude.vim'
 [[plugins]]
 # repo = 'zchee/deoplete-clang'
 repo = 'tweekmonster/deoplete-clang2'
-if = 0
+if = 1
 on_ft = ['c', 'cpp']
 hook_source = '''
   let b:clang2_orig_maps = {}
-'''
 
-[[plugins]]
-if = 0
-repo = 'wokalski/autocomplete-flow'
-on_ft = 'javascript'
+  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+  let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+  let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
+  " let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
+'''
 
 [[plugins]]
 repo = 'carlitux/deoplete-ternjs'
@@ -461,6 +461,9 @@ repo = 'racer-rust/vim-racer'
 repo = 'eagletmt/neco-ghc'
 on_ft = 'haskell'
 # external_commands = 'ghc-mod'
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
 
 
 
