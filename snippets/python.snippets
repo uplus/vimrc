@@ -69,3 +69,6 @@ snippet try Try/Except/Else/Finally
 		${5:pass}
 	finally:
 		${6:pass}
+
+snippet fileread
+	''.join(open(os.path.expanduser(${1:path})).readlines())
