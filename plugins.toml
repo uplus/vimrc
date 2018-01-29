@@ -317,7 +317,13 @@ repo = 'haya14busa/incsearch.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'
-hook_post_source = 'OverCommandLineNoremap <CR> <CR>'
+hook_post_source = '''
+  if exists(':OverCommandLine') != 2
+    return
+  endif
+
+  OverCommandLineNoremap <CR> <CR>
+'''
 
 
 #syntaxchecker

@@ -1,4 +1,8 @@
 " Altercmd:
+if exists(':CAlterCommand') != 2
+  finish
+endif
+
 CAlterCommand ww w!
 CAlterCommand www w !sudo tee > /dev/null %
 CAlterCommand qq q!
