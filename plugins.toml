@@ -450,6 +450,7 @@ hook_source = '''
 
 [[plugins]]
 # repo = 'fishbullet/deoplete-ruby'
+if = 0
 repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
 
