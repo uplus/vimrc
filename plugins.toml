@@ -454,11 +454,14 @@ hook_source = '''
   let g:deoplete#sources#go#package_dot = 1
 '''
 
-[[plugins]]
-# repo = 'fishbullet/deoplete-ruby'
-if = 0
-repo = 'Shougo/deoplete-rct'
-on_ft = 'ruby'
+# [[plugins]]
+# # repo = 'fishbullet/deoplete-ruby'
+# repo = 'Shougo/deoplete-rct'
+# on_ft = 'ruby'
+
+# [[plugins]]
+# repo = 'uplus/deoplete-solargraph'
+# on_ft =  'ruby'
 
 # [[plugins]]
 # repo = 'sebastianmarkow/deoplete-rust'
