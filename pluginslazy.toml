@@ -259,6 +259,8 @@ repo = 'tmhedberg/SimpylFold'
 on_ft = 'python'
 hook_add = '''
   let g:SimpylFold_docstring_preview = 0
+  let g:SimpylFold_fold_docstring = 1
+  let g:SimpylFold_fold_import = 0
 '''
 
 

@@ -39,6 +39,9 @@ call deoplete#custom#set('neosnippet', 'rank', 9999)
 call deoplete#custom#set('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#set('clang', 'max_pattern_length', -1)
 
+call deoplete#custom#set('look', 'min_pattern_length', 4)
+call deoplete#custom#set('look', 'rank', 100)
+
 " " For buffer completion
 " let g:deoplete#keyword_patterns = {
 "       \ '_' : '[a-zA-Z_-]\k*\(?|\w*',

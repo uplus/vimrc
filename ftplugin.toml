@@ -233,8 +233,6 @@ ruby = '''
   command! YardGen !yard doc %
   nnoremap <f3> :YardGen<cr>
 
-  nnoremap <buffer>
-
   " vim-ruby-refactoring
   nnoremap <buffer>,lap :RAddParameter<cr>
   nnoremap <buffer>,lcp :RConvertPostConditional<cr>
