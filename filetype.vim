@@ -19,7 +19,7 @@ augroup filetypedetect
   au BufRead,BufNewFile *.[sS] set ft=gas syntax=gas
   au BufRead,BufNewFile *.hla set ft=hla syntax=hla
 
-  au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* call s:note_config()
+  au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
 
   au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
   au VimEnter * if &l:ft ==# '' | filetype detect | endif
@@ -29,5 +29,6 @@ function! s:note_config() abort
   lcd %:h
   if vimrc#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
+    setl fdm=marker
   endif
 endfunction

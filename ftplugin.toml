@@ -198,7 +198,7 @@ neosnippet = '''
 
 python = '''
   SetTab 4
-  setl foldmethod=indent
+  " setl foldmethod=indent
   setl nosmartindent
 
   if has('*textobj#user#map')
