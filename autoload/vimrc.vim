@@ -71,7 +71,7 @@ endfunction
 " operator
 function! vimrc#operator_blank2void(motion_wise) abort "{{{
   let v = operator#user#visual_command_from_wise_name(a:motion_wise)
-  if join(getline("'[", "']"), '') =~ '\%^\_s*\%$'
+  if join(getline("'[", "']"), '') =~# '\%^\_s*\%$'
     execute printf('normal! `[%s`]"_d', v)
   else
     execute printf('normal! `[%s`]d', v)
@@ -105,9 +105,9 @@ function! vimrc#add_repo() abort "{{{
   try
     let uri = s:Vuri.new(str)
     call append(line('.'), [
+          \ '',
           \ '[[plugins]]',
           \ printf("repo = '%s'", join(split(uri.path(), '/')[:1], '/')),
-          \ '',
           \ ])
     normal! jjj
   catch 'vital'
@@ -122,7 +122,7 @@ function! vimrc#highlight(...) abort "{{{
     return
   endif
 
-  let cmd = "highlight " . a:1
+  let cmd = 'highlight ' . a:1
 
   if 2 <= a:0
     let args = copy(a:000[1:])
@@ -137,11 +137,11 @@ function! vimrc#highlight(...) abort "{{{
     endif
 
     if args[0] !=# '_'
-      execute cmd "ctermfg=" . args[0]
+      execute cmd 'ctermfg=' . args[0]
     endif
 
     if 2 <= len(args)
-      execute  cmd "ctermbg=" . args[1]
+      execute  cmd 'ctermbg=' . args[1]
     endif
   endif
 
@@ -159,7 +159,7 @@ function! vimrc#open_git_diff(type) abort "{{{
     silent! execute 'bwipeout' s:git_diff_bufnr
   endif
 
-  execute 'silent!' ((a:type == 't')? 'tabnew' : printf('botright vsplit git-diff-%s', escape(cmdname, ' ')))
+  execute 'silent!' ((a:type ==# 't')? 'tabnew' : printf('botright vsplit git-diff-%s', escape(cmdname, ' ')))
   let s:git_diff_bufnr = bufnr('%')
 
   " diff_config()で設定しようとするとnofileのタイミングが遅い
@@ -213,12 +213,12 @@ function! vimrc#current_only() abort "{{{
 
   for l:buf in vimrc#buffers_info()
     if -1 == stridx(l:buf[1], '%')
-      execute "bwipeout" l:buf[0]
+      execute 'bwipeout' l:buf[0]
       let l:count+=1
     endif
   endfor
 
-  echo l:count "buffer deleted"
+  echo l:count 'buffer deleted'
   let &report=l:old
 endfunction "}}}
 
@@ -229,12 +229,12 @@ function! vimrc#active_only() abort "{{{
 
   for l:buf in vimrc#buffers_info()
     if -1 == stridx(l:buf[1], 'a')
-      execute "bwipeout" l:buf[0]
+      execute 'bwipeout' l:buf[0]
       let l:count+=1
     endif
   endfor
 
-  echo l:count "buffer deleted"
+  echo l:count 'buffer deleted'
   let &report=l:old
 endfunction "}}}
 
@@ -272,7 +272,7 @@ function! vimrc#note_file_completion(lead, line, pos) abort "{{{
 
   " match filter
   let l:files = filter(files, 'v:val =~ l:name')
-  let l:head_matched = filter(copy(files), 'v:val =~ "^" . l:name')
+  let l:head_matched = filter(copy(files), 'v:val =~# "^" . l:name')
   if 0 != len(l:head_matched)
     let l:files = l:head_matched
   endif
@@ -395,9 +395,9 @@ endfunction "}}}
 function! vimrc#buffer_count(...) abort "{{{
   if a:0 == 0
     let cmd = 'ls!'
-  elseif a:1 == 'a'   " active
+  elseif a:1 ==# 'a'   " active
     let cmd = 'ls! a'
-  elseif a:1 == 'l'   " listed
+  elseif a:1 ==# 'l'   " listed
     let cmd = 'ls'
   else
     let cmd = 'ls!'
@@ -413,7 +413,7 @@ function! vimrc#buffers_info(...) abort "{{{
 endfunction "}}}
 
 function! vimrc#auto_cursorcolumn() abort "{{{
-  if &buftype != "" || &filetype == 'markdown'
+  if &buftype !=# '' || &filetype ==# 'markdown'
     setlocal nocursorcolumn
     return
   endif
@@ -429,7 +429,7 @@ endfunction "}}}
 " ---- function groups ----
 " #syntax info
 function! vimrc#get_syn_id(transparent) abort "{{{
-  let synid = synID(line("."), col("."), 1)
+  let synid = synID(line('.'), col('.'), 1)
   if a:transparent
     return synIDtrans(synid)
   else
@@ -438,37 +438,37 @@ function! vimrc#get_syn_id(transparent) abort "{{{
 endfunction "}}}
 
 function! vimrc#get_syn_attr(synid) abort "{{{
-  let name    = synIDattr(a:synid, "name")
-  let ctermfg = synIDattr(a:synid, "fg", "cterm")
-  let ctermbg = synIDattr(a:synid, "bg", "cterm")
-  let guifg   = synIDattr(a:synid, "fg", "gui")
-  let guibg   = synIDattr(a:synid, "bg", "gui")
+  let name    = synIDattr(a:synid, 'name')
+  let ctermfg = synIDattr(a:synid, 'fg', 'cterm')
+  let ctermbg = synIDattr(a:synid, 'bg', 'cterm')
+  let guifg   = synIDattr(a:synid, 'fg', 'gui')
+  let guibg   = synIDattr(a:synid, 'bg', 'gui')
   return {
-        \ "name"    : name,
-        \ "ctermfg" : ctermfg,
-        \ "ctermbg" : ctermbg,
-        \ "guifg"   : guifg,
-        \ "guibg"   : guibg }
+        \ 'name'    : name,
+        \ 'ctermfg' : ctermfg,
+        \ 'ctermbg' : ctermbg,
+        \ 'guifg'   : guifg,
+        \ 'guibg'   : guibg }
 endfunction "}}}
 
 function! vimrc#get_syn_info() abort "{{{
   let baseSyn = vimrc#get_syn_attr(vimrc#get_syn_id(0))
-  let base = "name: "  . baseSyn.name    .
-        \ " ctermfg: " . baseSyn.ctermfg .
-        \ " ctermbg: " . baseSyn.ctermbg .
-        \ " guifg: "   . baseSyn.guifg   .
-        \ " guibg: "   . baseSyn.guibg
+  let base = 'name: '  . baseSyn.name    .
+        \ ' ctermfg: ' . baseSyn.ctermfg .
+        \ ' ctermbg: ' . baseSyn.ctermbg .
+        \ ' guifg: '   . baseSyn.guifg   .
+        \ ' guibg: '   . baseSyn.guibg
 
   let linkedSyn = vimrc#get_syn_attr(vimrc#get_syn_id(1))
-  let link = "name: "  . linkedSyn.name    .
-        \ " ctermfg: " . linkedSyn.ctermfg .
-        \ " ctermbg: " . linkedSyn.ctermbg .
-        \ " guifg: "   . linkedSyn.guifg   .
-        \ " guibg: "   . linkedSyn.guibg
+  let link = 'name: '  . linkedSyn.name    .
+        \ ' ctermfg: ' . linkedSyn.ctermfg .
+        \ ' ctermbg: ' . linkedSyn.ctermbg .
+        \ ' guifg: '   . linkedSyn.guifg   .
+        \ ' guibg: '   . linkedSyn.guibg
 
   echo base
   if base != link
-    echo "link to"
+    echo 'link to'
     echo link
   endif
 endfunction "}}}

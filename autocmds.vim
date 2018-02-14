@@ -96,4 +96,8 @@ augroup myac
       source `=i`
     endfor
   endfunction
+
+  " has('patch-8.0.1238')
+  " au CmdLineEnter /,\? :set hlsearch
+  " au CmdLineLeave /,\? :set nohlsearch
 augroup END
