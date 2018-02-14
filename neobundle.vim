@@ -8,9 +8,6 @@
 " NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
 
-" #python
-NeoBundleLazy 'jpythonfold.vim',      { 'filetypes' : ['python'] } " fold config of python
-
 " #textobj
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
