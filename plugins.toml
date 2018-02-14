@@ -268,14 +268,11 @@ repo = 'easymotion/vim-easymotion'
 on_map = ['<Plug>(easymotion-']
 
 [[plugins]]
-repo = 'haya14busa/incsearch-index.vim'
-
-[[plugins]]
 repo = 'kana/vim-smartword'
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
-# repo = 'deris/improvedft'      # can input many charactores
+# repo = 'chrisbra/improvedft'      # can input many charactores
 # repo = 'deris/vim-shot-f'      # show oneshot jump points
 
 # [[plugins]]
@@ -314,6 +311,9 @@ repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-index.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'

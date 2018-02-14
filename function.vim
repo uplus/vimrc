@@ -118,3 +118,10 @@ function! Inject(expr) abort
     call setpos('.', pos_save)
   endtry
 endfunction
+
+function! OpenPluginGithub(name) abort
+  call openbrowser#open('https://github.com/' . a:name)
+endfunction
+
+nnoremap <Plug>(OpenPluginGithub) :call OpenPluginGithub(expand('<cWORD>'))<cr>
+nmap gsp <Plug>(OpenPluginGithub)
