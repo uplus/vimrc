@@ -1,0 +1,39 @@
+[[plugins]]
+repo = 'gutenye/json5.vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'chrisbra/csv.vim'
+
+[[plugins]]
+repo = 'bps/vim-tshark'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+
+[[plugins]]
+repo = 'uplus/vim-review'
+hook_add = '''
+  let g:review_no_default_key_mappings = 1
+'''
+
+[[plugins]]
+repo = 'glabra/casl2.vim'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'nono/vim-handlebars'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
