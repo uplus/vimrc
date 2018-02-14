@@ -72,10 +72,10 @@ if !exists('g:noplugin')
 endif
 
 call s:source('opts')
-call s:source('function')
-call s:source('keymap')
+call s:source('functions')
+call s:source('keymaps')
 call s:source('highlights')
-call s:source('cmds')
+call s:source('commands')
 call s:source('autocmds')
 
 filetype plugin indent on
