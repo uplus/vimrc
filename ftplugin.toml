@@ -226,22 +226,37 @@ review = '''
 '''
 
 ruby = '''
-  command! YardGen !yard doc %
-  nnoremap <f3> :YardGen<cr>
-
-  nnoremap <buffer>,lm :Unite rails/model -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lv :Unite rails/view -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lc :Unite rails/controller -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lr :Unite rails/route -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lh :Unite rails/helper -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,l :unite rails/config -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lsp :Unite rails/spec -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lge :Unite rails/generate -start-insert -default-action=open<cr>
-  nnoremap <buffer>,lsc :Unite rails/schema -start-insert -default-action=open<cr>
-
   setl fdm=syntax
   setl omnifunc=
   setl iskeyword+=?
+
+  command! YardGen !yard doc %
+  nnoremap <f3> :YardGen<cr>
+
+  nnoremap <buffer>
+
+  " vim-ruby-refactoring
+  nnoremap <buffer>,lap :RAddParameter<cr>
+  nnoremap <buffer>,lcp :RConvertPostConditional<cr>
+  nnoremap <buffer>,lit :RInlineTemp<cr>
+
+  vnoremap <buffer>,lrl :RRenameLocalVariable<cr>
+  vnoremap <buffer>,lri :RRenameInstanceVariable<cr>
+
+  nnoremap <buffer>,lel :RExtractLet<cr>
+  vnoremap <buffer>,lec :RExtractConstant<cr>
+  vnoremap <buffer>,lev :RExtractLocalVariable<cr>
+  vnoremap <buffer>,lem :RExtractMethod<cr>
+
+  " nnoremap <buffer>,lm :Unite rails/model -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lv :Unite rails/view -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lc :Unite rails/controller -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lr :Unite rails/route -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lh :Unite rails/helper -start-insert -default-action=open<cr>
+  " " nnoremap <buffer>,l :unite rails/config -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lsp :Unite rails/spec -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lge :Unite rails/generate -start-insert -default-action=open<cr>
+  " nnoremap <buffer>,lsc :Unite rails/schema -start-insert -default-action=open<cr>
 
   let b:match_ignorecase = 0
   let b:match_words =
