@@ -42,6 +42,11 @@ call deoplete#custom#set('clang', 'max_pattern_length', -1)
 call deoplete#custom#set('look', 'min_pattern_length', 4)
 call deoplete#custom#set('look', 'rank', 100)
 
+call deoplete#custom#set('emoji', 'filetypes', '')
+call deoplete#custom#set('emoji', 'min_pattern_length', 9999)
+inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
+
+
 " " For buffer completion
 " let g:deoplete#keyword_patterns = {
 "       \ '_' : '[a-zA-Z_-]\k*\(?|\w*',

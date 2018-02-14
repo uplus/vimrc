@@ -80,8 +80,6 @@ on_map = [['i', '<Plug>(DigraphComplete)', '<Plug>(UnicodeComplete)', '<Plug>(Un
 hook_add = '''
   imap <c-x><c-g> <Plug>(DigraphComplete)
   imap <c-x><c-z> <Plug>(UnicodeComplete)
-  imap <c-x>g <c-x><c-g>
-  imap <c-x>z <c-x><c-z>
 '''
 
 [[plugins]] # has textobj

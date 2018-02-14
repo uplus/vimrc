@@ -437,6 +437,8 @@ on_ft = 'haskell'
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 
+[[plugins]]
+repo = 'fszymanski/deoplete-emoji'
 
 
 #git

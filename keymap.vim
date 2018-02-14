@@ -199,19 +199,23 @@ endif
 cnoremap <c-y> <c-y><BS>
 cnoremap <c-g> <c-c>:<c-p>
 
-inoremap <C-x>n <C-x><C-n>
-inoremap <C-x>i <C-x><C-i>
-inoremap <C-x>] <C-x><C-]>
-inoremap <C-x>k <C-x><C-k>
-inoremap <C-x>s <C-x><C-s>
-inoremap <C-x>l <C-x><C-l>
-inoremap <C-x>f <C-x><C-f>
-inoremap <C-x>o <C-x><C-o>
-inoremap <C-x>u <C-x><C-u>
-inoremap <C-x>d <C-x><C-d>
-inoremap <C-x>p <C-x><C-p>
-inoremap <C-x>v <C-x><C-v>
-" inoremap <C-x> <Nop> " cannot do <c-x><c-u>
+imap <c-x>n <c-x><c-n>
+imap <c-x>i <c-x><c-i>
+imap <c-x>] <c-x><c-]>
+imap <c-x>k <c-x><c-k>
+imap <c-x>s <c-x><c-s>
+imap <c-x>l <c-x><c-l>
+imap <c-x>f <c-x><c-f>
+imap <c-x>o <c-x><c-o>
+imap <c-x>u <c-x><c-u>
+imap <c-x>d <c-x><c-d>
+imap <c-x>p <c-x><c-p>
+imap <c-x>v <c-x><c-v>
+imap <c-x>e <c-x><c-e>
+imap <c-x>y <c-x><c-y>
+imap <c-x>g <c-x><c-g>
+imap <c-x>z <c-x><c-z>
+" inoremap <c-x> <nop> " cannot do <c-x><c-u>
 "}}}
 
 " #move "{{{
