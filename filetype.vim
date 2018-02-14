@@ -6,7 +6,8 @@ if exists('did_load_filetypes')
 endif
 
 augroup filetypedetect
-  au!
+  " 使い回し
+  " au!
 
   au BufRead,BufNewFile *.cas setf casl2
   au BufRead,BufNewFile Guardfile setf ruby
@@ -18,16 +19,14 @@ augroup filetypedetect
   au BufRead,BufNewFile *.[sS] set ft=gas syntax=gas
   au BufRead,BufNewFile *.hla set ft=hla syntax=hla
 
-  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
   au BufRead,BufNewFile,BufWinEnter $HOME/Documents/notes/* call s:note_config()
 
   au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
-  au VimEnter * if &l:ft == '' | filetype detect | endif
+  au VimEnter * if &l:ft ==# '' | filetype detect | endif
 augroup END
 
 function! s:note_config() abort
   lcd %:h
-  echomsg 'set ft=markdown'
   if vimrc#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
   endif

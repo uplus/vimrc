@@ -15,7 +15,7 @@ let g:vimfiler_sendto = {
 
 "VimFilerを起動してからじゃないと関数が読み込まれない
 function! s:set_vimfiler_unexpand_tree() "{{{
-  if hasmapto("<Plug>(vimfiler_unexpand_tree)")
+  if hasmapto('<Plug>(vimfiler_unexpand_tree)')
     return
   endif
 
@@ -30,11 +30,19 @@ function! s:set_vimfiler_unexpand_tree() "{{{
   execute 'nnoremap <buffer><silent> <Plug>(vimfiler_unexpand_tree) :<C-u>call' l:func_name '<CR>'
 endfunction "}}}
 
+" FileType Config
 au myac FileType vimfiler call s:vimfiler_settings()
 function! s:vimfiler_settings() "{{{
+  if exists('b:loaded_vimfiler_settings')
+    return
+  endif
+
   setl nobuflisted
   setl numberwidth=3
   call s:set_vimfiler_unexpand_tree()
+
+  " 別タブに移動する前に直前のバッファに移動
+  au myac TabLeave <buffer> wincmd p
 
   nmap <buffer><CR> <Plug>(vimfiler_cd_or_edit)
 
@@ -63,6 +71,8 @@ function! s:vimfiler_settings() "{{{
   nnoremap <buffer>\ \
   nmap <buffer>- <Plug>(vimfiler_switch_to_root_directory)
   nmap <buffer>? <Plug>(vimfiler_help)
+
+  let b:loaded_vimfiler_settings = 1
 endfunction "}}}
 
 function! s:smart_quit()
