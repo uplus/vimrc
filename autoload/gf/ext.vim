@@ -15,7 +15,7 @@ function! gf#ext#ruby() abort "{{{
   " variables "{{{
   if !exists('g:ruby_version')
     " let g:ruby_version = matchstr(system('ruby --version'), '\v^ruby\s+\zs(\d\.?)+')
-    let g:ruby_version = '2.4.0'
+    let g:ruby_version = '2.5.0'
   endif
 
   if !exists('g:gf_ruby_path')
