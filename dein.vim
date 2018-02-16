@@ -287,7 +287,7 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty -buffer-name=bookmark bookmark<CR>
   nnoremap <silent>;ma :<C-U>UniteBookmarkAdd<CR>
 
-  nnoremap <silent>;uh :<C-u>Unite history/command -auto-resize -buffer-name=history-command<CR>
+  nnoremap <silent>;: :<C-u>Unite history/command -start-insert -buffer-name=history-command<CR>
   nnoremap <silent>;uc :<C-u>Unite command -auto-resize -buffer-name=command<CR>
   nnoremap <silent>;ut :<C-u>Unite tab    -auto-resize -select=`tabpagenr()-1` -buffer-name=tab<CR>
   nnoremap <silent>;uj :<C-u>Unite jump   -auto-resize -buffer-name=jump<CR>
