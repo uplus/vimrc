@@ -275,7 +275,9 @@ let s:config = {
       \}
 
 call extend(g:quickrun_config, s:config) " これだけだと上手く行かない
-call watchdogs#setup(g:quickrun_config)
+if exists('*watchdogs#setup')
+  call watchdogs#setup(g:quickrun_config)
+endif
 unlet s:config
 "}}}
 
