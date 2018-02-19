@@ -10,10 +10,10 @@ augroup myac
   au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
 
-  au BufLeave * nested call DoAutoSave()
-  au CursorHold * nested call DoAutoSave()
+  au BufLeave * call DoAutoSave()
+  au CursorHold * call DoAutoSave()
   if exists('##FocusLost')
-    au FocusLost * nested call DoAutoSave()
+    au FocusLost * call DoAutoSave()
   endif
 
   " #terminal {{{
