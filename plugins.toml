@@ -418,6 +418,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'uplus/deoplete-solargraph'
+if = 0
 on_i = 1
 on_ft =  'ruby'
 
