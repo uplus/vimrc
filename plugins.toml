@@ -285,12 +285,42 @@ hook_post_source = '''
 
 #syntaxchecker
 
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+  let g:ale_fix_on_save = 1
+
+  let g:ale_sign_column_always = 1
+  let g:ale_sign_error = '>>'
+  let g:ale_sign_warning = '--'
+
+  let g:ale_set_loclist = 0
+  let g:ale_set_quickfix = 1
+
+  let g:ale_open_list = 1
+  let g:ale_keep_list_window_open = 1
+
+  " let g:ale_lint_on_enter = 0
+  " let g:ale_lint_on_text_changed = 'never'
+
+  " Put this in vimrc or a plugin file of your own.
+  " After this is configured, :ALEFix will try and fix your JS code with ESLint.
+  let g:ale_fixers = {
+    \   'ruby': ['ruby'],
+    \   'vim': ['']
+    \ }
+
+  highlight clear ALEErrorSign
+  highlight clear ALEWarningSign
+'''
+
 # [[plugins]]
 # repo = 'scrooloose/syntastic.git'
 
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
 depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
+if = 0
 hook_add = '''
   let g:watchdogs_check_BufWritePost_enable = 1
   " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
