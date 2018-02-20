@@ -16,6 +16,10 @@ augroup myac
     au FocusLost * call DoAutoSave()
   endif
 
+  if has('linebreak')
+    au FileType * let &l:breakindentopt = &l:tabstop
+  endif
+
   " #terminal {{{
   if has('nvim')
     au TermOpen * call s:term_open()

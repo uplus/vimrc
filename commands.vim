@@ -2,7 +2,6 @@ command! -nargs=1 SetTab
       \ let &l:tabstop=<args> |
       \ let &l:softtabstop = &l:tabstop |
       \ let &l:shiftwidth = &l:tabstop
-      \ silent! let &l:breakindentopt = &l:tabstop
 command! Terminal execute 'terminal' $SHELL
 command! Pry botright sp +terminal\ pry
 command! Q qall!

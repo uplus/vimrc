@@ -108,6 +108,7 @@ endif
 
 set nowrap
 if has('linebreak')
+  set linebreak
   set breakindent
 endif
 set sidescroll=0
