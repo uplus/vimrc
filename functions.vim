@@ -12,7 +12,7 @@ function! ToggleAutoSave() abort
 endfunction
 
 function! DoAutoSave() abort
-  if -1 != index(['unite_exrename'], &ft)
+  if -1 != index(['unite_exrename', 'vimfiler'], &ft)
     return
   endif
 

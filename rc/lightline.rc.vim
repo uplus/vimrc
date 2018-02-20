@@ -123,7 +123,7 @@ let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'dictionary', 'gundo
 let s:ignore_fn = ['__Gundo_Preview__']
 
 function! s:is_ignore() abort
-  return index(s:ignore_ft, &ft) != -1 || index(s:ignore_fn, expand('%:t')) != -1
+  return index(s:ignore_ft, &l:ft) != -1 || index(s:ignore_fn, expand('%:t')) != -1
 endfunction
 
 " #left

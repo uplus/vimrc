@@ -55,11 +55,6 @@ augroup myac
     endif
   endif "}}}
 
-  " Auto save
-  if exists('##FocusLost')
-    au FocusLost * call DoAutoSave()
-  endif
-
   " #badspace {{{
   " trailがあるとハイライトできない あたりまえか
   " filetypeコマンドの後じゃないと反映されない
