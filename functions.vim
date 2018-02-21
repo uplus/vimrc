@@ -101,9 +101,9 @@ endfunction
 
 let g:tags_jobs = {}
 function! Tags() abort
-  let dir = expand('%:p:h')
-  silent! call jobstop(get(g:tags_jobs, dir, -1))
-  let g:tags_jobs[dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
+  let l:dir = expand('%:p:h')
+  silent! call jobstop(get(g:tags_jobs, l:dir, -1))
+  let g:tags_jobs[l:dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
 endfunction
 
 " If use selected text in function, need range

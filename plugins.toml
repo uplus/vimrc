@@ -475,10 +475,12 @@ repo = 'fszymanski/deoplete-emoji'
 #git
 
 [[plugins]]
+if = 0
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 # gitのdiffを行に表示
+if = 0
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
   let g:gitgutter_enabled         = 1
@@ -508,7 +510,9 @@ hook_add = '''
 '''
 hook_post_source = '''
   " if use vim-submode, cannot use mappings to move tab(gt gT).
-  " au! gitgutter TabEnter,BufEnter
+  " TODO 動作してない気がする
+  " くっそ重い
+  " au! gitgutter TabEnter,BufEnter,CursorHold,CursorHoldI,FocusGained
 '''
 
 [[plugins]]
