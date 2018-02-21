@@ -538,8 +538,16 @@ if dein#tap('vim-jplus') "{{{
 
   " ,での結合にスペースを挿入
   let g:jplus#input_config = {
-        \ ',' : {'delimiter_format' : '%d '}
-        \}
+    \ ',' : {'delimiter_format' : '%d '}
+    \}
+
+  let g:jplus#config = {
+    \ 'dockerfile': {
+    \   'left_matchstr_pattern': '.*\ze\s\+\\\s*$',
+    \ },
+    \ }
+  " ^\s*\\\s*\zs.*\|\s*\zs.*
+
 endif "}}}
 
 if dein#tap('vim-quickhl') "{{{
