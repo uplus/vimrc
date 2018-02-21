@@ -173,6 +173,10 @@ snippet debug-out
 	rescue => e
 		File.open('tmp/error', 'a'){|file| file.write(e)}
 
+snippet pry-rspec
+	after(:each) do |example|
+		require 'pry'; binding.pry if example.exception
+	end
 
 # define #{{{
 
