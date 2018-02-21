@@ -21,20 +21,21 @@ let g:colors_name = expand('<sfile>:t:r')
 
 
 hi NonText ctermfg=248 guifg=Gray
-hi MatchParen          ctermfg=15  ctermbg=23 guifg=#ffffff guibg=#005f5f
-hi Pmenu	              ctermfg=214 ctermbg=236 guifg=#ffaf00 guibg=#303030
-hi PmenuSel            ctermfg=235 ctermbg=214 guifg=#262626 guibg=#ffaf00
-hi StatusLine          ctermfg=255 ctermbg=NONE cterm=NONE guifg=#eeeeee guibg=NONE gui=NONE
-hi WildMenu            ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
-hi Normal              ctermbg=NONE guibg=#1b282b
-" hi Folded              ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
-" hi Folded              ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
-hi Folded              ctermfg=139 ctermbg=NONE cterm=NONE guifg=#efafef guibg=NONE gui=NONE
-hi FoldColumn          ctermfg=99  ctermbg=232 guifg=#875fff guibg=#080808
-hi LineNr              ctermfg=252 ctermbg=237 guifg=#d0d0d0 guibg=#3a3a3a
-hi CursorLine          ctermbg=238 cterm=NONE guibg=#343434 gui=NONE
-hi CursorLineNr        ctermfg=196 guifg=#ff0000
-hi Visual              ctermfg=219 ctermbg=196 cterm=NONE guifg=#ffafff guibg=#343434 gui=NONE
+hi MatchParen         ctermfg=15  ctermbg=23 guifg=#ffffff guibg=#005f5f
+hi Pmenu              ctermfg=214 ctermbg=236 guifg=#ffaf00 guibg=#303030
+hi PmenuSel           ctermfg=235 ctermbg=214 guifg=#262626 guibg=#ffaf00
+hi StatusLine         ctermfg=255 ctermbg=NONE cterm=NONE guifg=#eeeeee guibg=NONE gui=NONE
+hi WildMenu           ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
+hi Normal             ctermbg=NONE guibg=#1b282b
+" hi Folded             ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
+" hi Folded             ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
+hi Folded             ctermfg=139 ctermbg=NONE cterm=NONE guifg=#efafef guibg=NONE gui=NONE
+hi FoldColumn         ctermfg=99  ctermbg=232 guifg=#875fff guibg=#080808
+hi LineNr             ctermfg=252 ctermbg=237 guifg=#d0d0d0 guibg=#3a3a3a
+hi SignColumn         ctermfg=244 guifg=#808080 guibg=#1c1c1c
+hi CursorLine         ctermbg=238 cterm=NONE guibg=#343434 gui=NONE
+hi CursorLineNr       ctermfg=196 guifg=#ff0000
+hi Visual             ctermfg=219 ctermbg=196 cterm=NONE guifg=#ffafff guibg=#343434 gui=NONE
 
 
 hi rubySharpBang           ctermfg=103 guifg=#8787af
