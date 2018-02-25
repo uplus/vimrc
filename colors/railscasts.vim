@@ -41,7 +41,7 @@ hi Visual             ctermfg=219 ctermbg=196 cterm=NONE guifg=#ffafff guibg=#34
 hi rubySharpBang           ctermfg=103 guifg=#8787af
 hi rubyInclude             ctermfg=214 guifg=#ffaf00
 " hi rubyComment             ctermfg=179 guifg=#d7af5f
-hi rubyComment             ctermfg=247 guifg=#9f9fbf
+hi rubyComment             ctermfg=247 guifg=#afafdf
 hi! link rubyData rubyComment
 hi rubyTodo                ctermfg=16  ctermbg=220 guifg=#000000 guibg=#ffd700
 hi rubyDataDirective       ctermfg=111 guifg=#87afff
