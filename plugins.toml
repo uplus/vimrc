@@ -289,6 +289,8 @@ hook_post_source = '''
 repo = 'w0rp/ale'
 hook_add = '''
   let g:ale_fix_on_save = 1
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_delay = 2000
 
   let g:ale_sign_column_always = 1
   let g:ale_sign_error = '>>'
@@ -395,7 +397,7 @@ hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-if = 1
+if = 0
 on_i = 1
 
 [[plugins]]
@@ -791,6 +793,9 @@ repo = 'osyo-manga/vim-precious'
 if = "has('nvim')"
 hook_add = '''
   let g:precious_enable_switchers = {
+    \ 'ruby': {
+    \   'setfiletype': 0,
+    \ },
     \ 'eruby': {
     \   'setfiletype': 0,
     \ },
