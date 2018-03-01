@@ -328,6 +328,10 @@ vim = '''
   nmap <buffer>]M ]]
 '''
 
+vue = '''
+  SetTab 2
+'''
+
 zsh = '''
   setl iskeyword-=$
   setl iskeyword+=-
