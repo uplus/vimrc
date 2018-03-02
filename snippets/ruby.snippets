@@ -131,8 +131,7 @@ snippet pwn
   sl = Solver.open(host, port)
   ${0}
 
-  binding.pry
-  puts '[*] end binding'
+  require 'pry'; binding.pry if example.exception; puts '[*] end binding'
 
   =begin
   =end
@@ -157,8 +156,7 @@ snippet arraytwo
   Array.new(${1:size}){|e| Array.new(${2:size}) }
 
 snippet pry
-  binding.pry
-  puts '[*] end binding'
+	require 'pry'; binding.pry if example.exception; puts '[*] end binding'
 
 snippet debug
   rescue => e # TODO debug
