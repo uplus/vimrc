@@ -131,7 +131,7 @@ snippet pwn
   sl = Solver.open(host, port)
   ${0}
 
-  require 'pry'; binding.pry if example.exception; puts '[*] end binding'
+  require 'pry'; binding.pry; puts '[*] end binding'
 
   =begin
   =end
@@ -156,7 +156,7 @@ snippet arraytwo
   Array.new(${1:size}){|e| Array.new(${2:size}) }
 
 snippet pry
-	require 'pry'; binding.pry if example.exception; puts '[*] end binding'
+	require 'pry'; binding.pry; puts '[*] end binding'
 
 snippet debug
   rescue => e # TODO debug
@@ -173,7 +173,7 @@ snippet debug-out
 
 snippet pry-rspec
 	after(:each) do |example|
-		require 'pry'; binding.pry if example.exception
+		require 'pry'; binding.pry
 	end
 
 # define #{{{
