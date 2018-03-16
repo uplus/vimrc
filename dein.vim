@@ -316,8 +316,8 @@ if dein#tap('unite-quickfix') "{{{
 
   functio! s:OpenLocationList()
     let l:bufnum = winbufnr(unite#get_unite_winnr('location_list'))
-    echomsg bufnum
-    if bufnum != -1
+    echomsg l:bufnum
+    if l:bufnum != -1
       echomsg 'delete ' . l:bufnum
       execute 'bwipeout' l:bufnum
     endif
@@ -567,23 +567,30 @@ if dein#tap('vim-quickhl') "{{{
   nmap \hc <Plug>(quickhl-cword-toggle)
 
   let g:quickhl_manual_hl_priority = 100
+  " red
+  " purple
+  " slate blue
+  " blue
+  " green
+  " yellow
+  " orange
   let g:quickhl_manual_colors = [
-        \ 'term=reverse ctermfg=232 ctermbg=160 gui=bold guifg=Black guibg=Red',
-        \ 'term=reverse ctermfg=232 ctermbg=128 gui=bold guifg=Black guibg=Purple',
-        \ 'term=reverse ctermfg=232 ctermbg=63  gui=bold guifg=Black guibg=SlateBlue',
-        \ 'term=reverse ctermfg=232 ctermbg=33  gui=bold guifg=Black guibg=Blue',
-        \ 'term=reverse ctermfg=232 ctermbg=34  gui=bold guifg=Black guibg=Green',
-        \ 'term=reverse ctermfg=232 ctermbg=226 gui=bold guifg=Black guibg=Yellow',
-        \ 'term=reverse ctermfg=232 ctermbg=202 gui=bold guifg=Black guibg=Orange',
-        \ 'term=reverse ctermfg=0   ctermbg=207',
-        \ 'term=reverse ctermfg=0   ctermbg=201',
-        \ 'term=reverse ctermfg=0   ctermbg=117',
-        \ 'term=reverse ctermfg=0   ctermbg=75',
-        \ 'term=reverse ctermfg=0   ctermbg=43',
-        \ 'term=reverse ctermfg=0   ctermbg=190',
-        \ 'term=reverse ctermfg=0   ctermbg=69',
-        \ 'term=reverse ctermfg=0   ctermbg=85',
-        \ 'term=reverse ctermfg=0   ctermbg=183',
+        \ 'term=reverse ctermfg=232 ctermbg=160  guifg=#080808 guibg=#d70000',
+        \ 'term=reverse ctermfg=232 ctermbg=128  guifg=#080808 guibg=#af00d7',
+        \ 'term=reverse ctermfg=232 ctermbg=63   guifg=#080808 guibg=#5f5fff',
+        \ 'term=reverse ctermfg=232 ctermbg=33   guifg=#080808 guibg=#0087ff',
+        \ 'term=reverse ctermfg=232 ctermbg=34   guifg=#080808 guibg=#00af00',
+        \ 'term=reverse ctermfg=232 ctermbg=226  guifg=#080808 guibg=#ffff00',
+        \ 'term=reverse ctermfg=232 ctermbg=202  guifg=#080808 guibg=#ff5f00',
+        \ 'term=reverse ctermfg=0   ctermbg=207  guifg=#080808 guibg=#ff5fff',
+        \ 'term=reverse ctermfg=0   ctermbg=201  guifg=#080808 guibg=#ff00ff',
+        \ 'term=reverse ctermfg=0   ctermbg=117  guifg=#080808 guibg=#87d7ff',
+        \ 'term=reverse ctermfg=0   ctermbg=75   guifg=#080808 guibg=#5fafff',
+        \ 'term=reverse ctermfg=0   ctermbg=43   guifg=#080808 guibg=#00d7af',
+        \ 'term=reverse ctermfg=0   ctermbg=190  guifg=#080808 guibg=#d7ff00',
+        \ 'term=reverse ctermfg=0   ctermbg=69   guifg=#080808 guibg=#5f87ff',
+        \ 'term=reverse ctermfg=0   ctermbg=85   guifg=#080808 guibg=#5fffaf',
+        \ 'term=reverse ctermfg=0   ctermbg=183  guifg=#080808 guibg=#d7afff',
         \ ]
 endif "}}}
 

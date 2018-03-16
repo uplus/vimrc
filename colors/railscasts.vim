@@ -29,7 +29,7 @@ hi WildMenu           ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
 hi Normal             ctermbg=NONE guibg=#1b282b
 " hi Folded             ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
 " hi Folded             ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
-hi Folded             ctermfg=139 ctermbg=NONE cterm=NONE guifg=#efafef guibg=NONE gui=NONE
+hi Folded             ctermfg=139 ctermbg=NONE cterm=NONE guifg=#aaccff guibg=NONE gui=NONE
 hi FoldColumn         ctermfg=99  ctermbg=232 guifg=#875fff guibg=#080808
 hi LineNr             ctermfg=252 ctermbg=237 guifg=#d0d0d0 guibg=#3a3a3a
 hi SignColumn         ctermfg=244 guifg=#808080 guibg=#1c1c1c
