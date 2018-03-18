@@ -234,6 +234,7 @@ ruby = '''
   setl fdm=syntax
   setl omnifunc=
   setl iskeyword+=?
+  setl wrap
 
   command! YardGen !yard doc %
   nnoremap <f3> :YardGen<cr>

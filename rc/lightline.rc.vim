@@ -71,9 +71,11 @@ let g:lightline = {
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
       \   'winwidth': winwidth(0),
-      \   'colorscheme': 'mellow',
+      \   'colorscheme': 'Dracula',
       \ }
 "}}}
+
+      " \   'colorscheme': 'mellow',
 
 " default(powerline) molokai darcula solarized
 " カラースキームで定義されてる数だけ色が使える?
