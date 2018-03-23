@@ -62,15 +62,13 @@ augroup myac
 
   function! s:badspace_set_highlight() abort
     if g:badspace_enable
-      hi BadSpace ctermfg=16 ctermbg=197  guifg=#000000 guibg=#ff0060
+      hi BadSpace ctermfg=197 ctermbg=197  guifg=#e00050 guibg=#e00050
     endif
   endfunction
 
   function! s:badspace() abort
-    if &buflisted && &buftype ==# '' && &modifiable && &ft !=# '' && &ft !~# '\v(markdown|github-dashboard|calendar|gitcommit)'
-      " cannot use \%$ in ':syntax match'
-      3match BadSpace '^\s*\%$'
-      syn match BadSpace '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
+    if &buflisted && &buftype ==# '' && &modifiable && &filetype !=# '' && &filetype !~# '\v(markdown|github-dashboard|calendar|gitcommit)'
+      syn match BadSpace display excludenl '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
     endif
   endfunction
 "}}}
@@ -86,8 +84,8 @@ augroup myac
   " Load settings for each location.
   au BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
   function! s:vimrc_local(loc)
-    let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-    for i in reverse(filter(files, 'filereadable(v:val)'))
+    let l:files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+    for l:i in reverse(filter(l:files, 'filereadable(v:val)'))
       source `=i`
     endfor
   endfunction

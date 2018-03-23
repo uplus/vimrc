@@ -262,6 +262,8 @@ ruby = '''
   " nnoremap <buffer>,lge :Unite rails/generate -start-insert -default-action=open<cr>
   " nnoremap <buffer>,lsc :Unite rails/schema -start-insert -default-action=open<cr>
 
+  let g:ruby_no_comment_fold = 1
+
   let b:match_ignorecase = 0
   let b:match_words =
         \ '\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!' .
