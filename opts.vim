@@ -172,6 +172,11 @@ endif
 set cpoptions-=m
 set cpoptions+=Z
 
+
+if exists('+lazyredraw')
+  set lazyredraw
+endif
+
 if !has('gui_running')
   set t_Co=256
 endif
