@@ -139,7 +139,7 @@ endif
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
-set updatetime=1000
+set updatetime=3000
 
 set commentstring=#\ %s
 set backspace=start,eol,indent
