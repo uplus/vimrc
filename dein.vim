@@ -391,7 +391,7 @@ if dein#tap('vim-easymotion') "{{{
   let g:EasyMotion_use_upper        = 0
   let g:EasyMotion_smartcase        = 1
   let g:EasyMotion_leader_key       = ';'
-  let g:EasyMotion_skipfoldedline   = 1
+  let g:EasyMotion_landing_highlight = 0
   let g:EasyMotion_do_shade         = 1
   let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
   let g:EasyMotion_space_jump_first = 1 " Space jump to first match
@@ -630,14 +630,14 @@ if dein#tap('open-browser.vim') "{{{
   nmap gsc :call <sid>smart_open()<cr>
 
   function! s:smart_open() abort
-    let iskeyword_save = &iskeyword
+    let l:iskeyword_save = &iskeyword
     setl iskeyword=@,@-@,-,_,:,;,.,%,/,48-57
     try
-      let str = expand('<cword>')
-      let str = substitute(str, '[,.]$', '', '')
-      call openbrowser#smart_search(str)
+      let l:str = expand('<cword>')
+      let l:str = substitute(l:str, '[,.]$', '', '')
+      call openbrowser#smart_search(l:str)
     finally
-      let &l:iskeyword = iskeyword_save
+      let &l:iskeyword = l:iskeyword_save
     endtry
   endfunction
 
@@ -760,9 +760,9 @@ if dein#tap('webapi-vim') "{{{
 
   function! URIencode(...) abort
     if a:0 == 0 || '' ==# a:1
-      let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-      let url = webapi#http#encodeURI(list[1])
-      call setline('.', list[0] . url)
+      let l:list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
+      let l:url = webapi#http#encodeURI(l:list[1])
+      call setline('.', l:list[0] . l:url)
     else
       echo webapi#http#encodeURI(a:1)
     endif
@@ -770,9 +770,9 @@ if dein#tap('webapi-vim') "{{{
 
   function! URIdecode(...) abort
     if a:0 == 0 || '' ==# a:1
-      let list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-      let url = webapi#http#decodeURI(list[1])
-      call setline('.', list[0] . url)
+      let l:list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
+      let l:url = webapi#http#decodeURI(l:list[1])
+      call setline('.', l:list[0] . l:url)
     else
       echo webapi#http#decodeURI(a:1)
     endif
