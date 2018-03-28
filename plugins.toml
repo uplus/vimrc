@@ -292,6 +292,7 @@ hook_add = '''
   let g:ale_history_enabled = 0
   let g:ale_completion_enabled = 0
   let g:ale_max_buffer_history_size = 10
+
   let g:ale_warn_about_trailing_whitespace = 1
   let g:ale_warn_about_trailing_blank_lines = 1
 
@@ -307,6 +308,9 @@ hook_add = '''
   let g:ale_sign_error = '>>'
   let g:ale_sign_warning = '--'
 
+  let g:ale_echo_cursor = 1
+  let g:ale_set_highlights = 0
+
   let g:ale_set_loclist = 0
   let g:ale_set_quickfix = 1
   let g:ale_open_list = 1
@@ -314,16 +318,17 @@ hook_add = '''
   let g:ale_keep_list_window_open = 1
   let g:ale_list_window_size = 5
 
+  let g:ale_linters = {
+    \ }
 
-  " Put this in vimrc or a plugin file of your own.
-  " After this is configured, :ALEFix will try and fix your JS code with ESLint.
+  let g:ale_linter_aliases = {
+    \ }
+
+  " :ALEFix
   let g:ale_fixers = {
     \   'vim': ['vint'],
     \   'javascript': ['eslint'],
     \ }
-
-  highlight clear ALEErrorSign
-  highlight clear ALEWarningSign
 '''
 
 # [[plugins]]
