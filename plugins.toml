@@ -532,7 +532,7 @@ hook_add =  '''
 '''
 
 [[plugins]]
-if = 0
+if = 1
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]

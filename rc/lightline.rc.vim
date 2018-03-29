@@ -176,9 +176,9 @@ function! LLgit() abort "{{{
     return ''
   endif
 
-  if exists('g:loaded_gitgutter')
-    let tmp = gitgutter#hunk#summary('%')
-    let status .= ' ±' . (tmp[0]+tmp[1]+tmp[2])
+  if exists('g:loaded_signify')
+    let [l:added, l:modified, l:removed] = sy#repo#get_stats()
+    let l:status .= ' ±' . (l:added + l:modified + l:removed)
   endif
 
   return ' ' . l:status

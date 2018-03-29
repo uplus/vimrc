@@ -228,11 +228,6 @@ let s:config = {
       \   'errorformat': '%f:%l: %m,%-G%.%#',
       \   'hook/sweep/files': '%S:p:h/%S:p:h:t',
       \ },
-      \ 'watchdogs_checker/vint': {
-      \   'command': 'vint',
-      \   'exec' : '%c %o %s',
-      \   'cmdopt': '--no-color',
-      \ },
       \ 'watchdogs_checker/null': {
       \   'command': 'echo',
       \   'exec': '%c %o',
