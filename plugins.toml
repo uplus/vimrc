@@ -329,6 +329,11 @@ hook_add = '''
     \   'vim': ['vint'],
     \   'javascript': ['eslint'],
     \ }
+
+  let g:ale_pattern_options = {
+    \ '\.min.js$': { 'ale_enabled': 0 },
+    \ '\.toml$': { 'ale_enabled': 0 },
+    \ }
 '''
 
 # [[plugins]]
