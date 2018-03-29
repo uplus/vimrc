@@ -77,9 +77,11 @@ function! s:set_highlights() "{{{
     execute 'AirlineTheme' g:airline_theme
   endif
 
-  hi GitGutterAdd    ctermfg=70  guifg=#41be30
-  hi GitGutterChange ctermfg=226 guifg=#fbff00
-  hi link GitGutterChangeDelete GitGutterChange
+  hi SignifySignAdd    ctermfg=70  guifg=#41be30
+  hi SignifySignChange ctermfg=226 guifg=#fbff00
+  hi SignifySignDelete ctermfg=1   guifg=#ff2222
+  hi link SignifySignChangeDelete    SignifySignDelete
+  hi link SignifySignDeleteFirstLine SignifySignDelete
 
   if &diff
     hi clear CursorLine
