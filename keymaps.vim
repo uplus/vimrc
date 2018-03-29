@@ -28,9 +28,9 @@ if has('nvim')
   " <c-w>tはマップが存在する
   " nnoremap <c-w>ts  :<c-u>botright split +Terminal<cr>
   " nnoremap <c-w>tv  :<c-u>vsp +Terminal<cr>
-  nnoremap <silent><space>T :<c-u>tabnew +Terminal<cr>
+  nnoremap <silent>,S :<c-u>tabnew +Terminal<cr>
   " nnoremap <silent><space>t :<c-u>botright split +Terminal<cr>
-  nnoremap <silent><space>t :<c-u>call vimrc#working_terminal()<cr>
+  nnoremap <silent>,s :<c-u>call vimrc#working_terminal()<cr>
 
   tnoremap <c-t>h <c-\><c-n><c-w>h
   tnoremap <c-t>j <c-\><c-n><c-w>j
@@ -135,8 +135,10 @@ else
   inoremap s <esc>ZZ
   nnoremap s ZZ
 end
-inoremap <silent><c-s> <esc>:update<cr>
-nnoremap <silent><c-s> :update<cr>
+
+" いろんなイベント発生させるからupdateよりwriteのほうがいい
+inoremap <silent><c-s> <esc>:write<cr>
+nnoremap <silent><c-s> :write<cr>
 nnoremap Zz ZZ
 nnoremap Zq ZQ
 " inoremap <c-z>eq <esc>:qall!<cr>

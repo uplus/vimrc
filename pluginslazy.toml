@@ -489,6 +489,8 @@ hook_add = '''
   command! Vimfiler Vf
   nnoremap <silent><c-W>e :Vfe<cr>
   nnoremap <silent><c-W><c-e> :Vfe<cr>
+
+  " いらないかも
   nnoremap <space>ff :VimFiler<cr>
   nnoremap <space>ft :VimFilerTab<cr>
   nnoremap <space>fs :VimFilerSplit<cr>
