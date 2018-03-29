@@ -525,15 +525,14 @@ hook_add =  '''
 '''
 
 [[plugins]]
-if = 1
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 # git branch
 repo = 'idanarye/vim-merginal'
 
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
 
 
 #web

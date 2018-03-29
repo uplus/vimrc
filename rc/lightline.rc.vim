@@ -167,11 +167,11 @@ function! LLreadonly() abort "{{{
 endfunction "}}}
 
 function! LLgit() abort "{{{
-  if !exists('g:loaded_fugitive') || s:is_ignore()
+  if !exists('g:loaded_gina') || s:is_ignore()
     return  ''
   endif
 
-  let l:status = fugitive#head()
+  let l:status = gina#component#repo#branch()
   if l:status ==# ''
     return ''
   endif
