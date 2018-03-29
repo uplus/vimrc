@@ -331,35 +331,6 @@ if dein#tap('unite-quickfix') "{{{
   " au myac VimEnter * au myac BufWritePost * LocationList
 endif "}}}
 
-if dein#tap('syntastic') "{{{
-  let g:syntastic_always_populate_loc_list = 1  " quickfixの表示を更新する
-  let g:syntastic_loc_list_height = 10
-  let g:syntastic_auto_loc_list = 0
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq   = 0
-  let g:syntastic_enable_signs  = 0
-  let g:syntastic_auto_jump     = 0 " default is 0
-  let g:syntastic_ignore_files  = ['\m^/usr/include/', expand('~/Documents/note/')]
-  " let g:syntastic_debug = 1
-
-  let g:syntastic_error_symbol   = '✗'
-  let g:syntastic_warning_symbol = '⚠'
-
-  let g:syntastic_cpp_compiler         = 'clang++'
-  let g:syntastic_cpp_compiler_options = $CPP_COMP_OPT
-  let g:syntastic_ruby_mri_args        = '-W1'
-
-  nmap \ts :SyntasticToggleMode<CR>
-  nmap gas :call SyntasticLoclistHide()<CR>
-
-  " TODO
-  " wrteで開く
-  " readで開くのはafter/plugin/の中にある
-  " function! dein#tapped.hooks.on_post_source(bundle)
-  "   au myac BufWritePost * LocationList
-  " endfunction
-endif "}}}
-
 if dein#tap('yankround.vim') "{{{
   nmap p <Plug>(yankround-p)
   xmap p <Plug>(yankround-p)

@@ -303,12 +303,19 @@ hook_add = '''
   let g:ale_lint_on_insert_leave = 0
   let g:ale_lint_delay = 2000
 
-  let g:ale_sign_column_always = 1
+  let g:ale_set_signs = 0
   let g:ale_sign_column_always = 1
   let g:ale_sign_error = '>>'
+  let g:ale_sign_style_error = '>>'
   let g:ale_sign_warning = '--'
+  let g:ale_sign_style_warning = '--'
+  let g:ale_sign_info = '--'
 
-  let g:ale_echo_cursor = 1
+  " let g:syntastic_error_symbol   = '✗'
+  " let g:syntastic_warning_symbol = '⚠'
+  " let g:syntastic_ruby_mri_args        = '-W1'
+
+  let g:ale_echo_cursor = 0
   let g:ale_set_highlights = 0
 
   let g:ale_set_loclist = 0
@@ -340,9 +347,9 @@ hook_add = '''
 # repo = 'scrooloose/syntastic.git'
 
 [[plugins]]
+if = 0
 repo = 'osyo-manga/vim-watchdogs'
 depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
-if = 0
 hook_add = '''
   let g:watchdogs_check_BufWritePost_enable = 1
   " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
@@ -358,20 +365,6 @@ hook_add = '''
 
   au myac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
 '''
-
-[[plugins]]
-repo = 'dannyob/quickfixstatus'
-
-[[plugins]] # forked from pocke from cohama
-repo = 'pocke/vim-hier'
-if = 0
-hook_add = '''
-  let g:hier_highlight_group_qf = 'hier'
-  " au myac ColorScheme * hi hier cterm=undercurl ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=undercurl
-  au myac ColorScheme * hi hier cterm=NONE ctermfg=255 ctermbg=197 guifg=#ffffff guibg=#ef0040 gui=NONE
-  au myac InsertLeave * silent! HierUpdate
-'''
-
 
 #quickrun
 

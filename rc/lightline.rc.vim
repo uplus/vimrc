@@ -176,7 +176,7 @@ function! LLgit() abort "{{{
     return ''
   endif
 
-  if exists('g:loaded_signify')
+  if exists('g:loaded_signify') && bufname('%') !=# ''
     let [l:added, l:modified, l:removed] = sy#repo#get_stats()
     let l:status .= ' ±' . (l:added + l:modified + l:removed)
   endif
