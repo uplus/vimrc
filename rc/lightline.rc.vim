@@ -131,26 +131,26 @@ endfunction
 " #left
 
 function! LLmode() abort "{{{
-  if &ft ==# 'calendar'
+  if &filetype ==# 'calendar'
     call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
   endif
-  return get(s:m, expand('%:t'), get(s:p, &ft, lightline#mode()))
+  return get(s:m, expand('%:t'), get(s:p, &filetype, lightline#mode()))
 endfunction "}}}
 
 function! LLfilename() abort "{{{
   " TODO
-  let f = expand('%:t')
-  let tmp = get(s:e, &ft, get(s:e, f, ''))
-  if tmp !=# ''
-    return eval(tmp)
+  let l:f = expand('%:t')
+  let l:tmp = get(s:e, &filetype, get(s:e, l:f, ''))
+  if l:tmp !=# ''
+    return eval(l:tmp)
   endif
 
-  let filename = bufname('%')
+  let l:filename = bufname('%')
   if winwidth(0) < 120
-    let filename = pathshorten(filename)
+    let l:filename = pathshorten(l:filename)
   endif
 
-  return filename . (&modified? ' +': '')
+  return l:filename . (&modified? ' +': '')
 endfunction "}}}
 
 function! LLreadonly() abort "{{{
@@ -171,8 +171,8 @@ function! LLgit() abort "{{{
     return  ''
   endif
 
-  let status = fugitive#head()
-  if status ==# ''
+  let l:status = fugitive#head()
+  if l:status ==# ''
     return ''
   endif
 
@@ -181,7 +181,7 @@ function! LLgit() abort "{{{
     let status .= ' ±' . (tmp[0]+tmp[1]+tmp[2])
   endif
 
-  return ' ' . status
+  return ' ' . l:status
 endfunction "}}}
 
 " #right
@@ -196,15 +196,15 @@ function! LLfiletype() abort "{{{
   if s:is_ignore()
     return ''
   endif
-  return &ft !=# ''? &ft : 'NONE'
+  return &filetype !=# ''? &filetype : 'NONE'
 endfunction "}}}
 
 function! LLfileencoding() abort "{{{
-  let enc = (&fenc !=# '')? &fenc : &enc
-  if enc ==# 'utf-8' && &ff ==# 'unix'
+  let l:enc = (&fileencoding !=# '')? &fileencoding : &encoding
+  if l:enc ==# 'utf-8' && &fileformat ==# 'unix'
     return ''
   endif
-  return printf('%s[%s]', enc, &ff[0])
+  return printf('%s[%s]', l:enc, &fileformat[0])
 endfunction "}}}
 
 function! LLcurrent_function() abort "{{{
@@ -217,23 +217,23 @@ function! LLcurrent_function() abort "{{{
 endfunction "}}}
 
 function! LLsyntax_check() abort "{{{
-  let errs = filter(getqflist(), 'v:val.bufnr == ' . bufnr('%'))
-  let num = len(errs)
-  if num == 0
+  let l:errs = filter(getqflist(), 'v:val.bufnr == ' . bufnr('%'))
+  let l:num = len(l:errs)
+  if l:num == 0
     return ''
   endif
-  let e = errs[0]
-  return printf("⚠%d %d:%d '%s'", num, e.lnum, e.vcol, substitute(e.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
+  let l:err = l:errs[0]
+  return printf("⚠%d %d:%d '%s'", l:num, l:err.lnum, l:err.vcol, substitute(l:err.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
 endfunction "}}}
 
 " #tabline
 
 function! LLtabs_buffers() abort
-  let tabs = lightline#tabs()
-  if empty(tabs[0]) && empty(tabs[2])
+  let l:tabs = lightline#tabs()
+  if empty(l:tabs[0]) && empty(l:tabs[2])
     return lightline#bufferline#buffers()
   else
-    return tabs
+    return l:tabs
   endif
 endfunction
 
