@@ -5,7 +5,7 @@ scriptencoding utf-8
 " set viewdir=~/.vim/tmp/view
 set backupdir-=.
 set path+=/usr/include/c++/HEAD/
-set noswapfile
+set swapfile
 set nobackup
 set nowritebackup
 
