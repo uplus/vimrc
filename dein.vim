@@ -4,6 +4,7 @@ let s:dein_dir = expand('$CACHE/dein') . '/repos/github.com/Shougo/dein.vim'
 
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
+let g:dein#notification_time = 5
 
 " setup dein "{{{
 if &runtimepath !~# '/dein.vim'

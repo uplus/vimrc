@@ -9,6 +9,8 @@ build = 'make'
 # [[plugins]]
 # repo = 'Shougo/deol.nvim'
 
+[[plugins]]
+repo = 'Shougo/denite.nvim'
 
 #unite
 
