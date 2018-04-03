@@ -328,6 +328,7 @@ hook_add = '''
   let g:ale_list_window_size = 5
 
   let g:ale_linters = {
+    \ 'markdown': [],
     \ }
 
   let g:ale_linter_aliases = {
