@@ -329,6 +329,7 @@ hook_add = '''
 
   let g:ale_linters = {
     \ 'markdown': [],
+    \ 'ruby': ['ruby'],
     \ }
 
   let g:ale_linter_aliases = {
