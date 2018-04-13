@@ -330,6 +330,7 @@ hook_add = '''
   let g:ale_linters = {
     \ 'markdown': [],
     \ 'ruby': ['ruby'],
+    \ 'c': ['clang'],
     \ }
 
   let g:ale_linter_aliases = {

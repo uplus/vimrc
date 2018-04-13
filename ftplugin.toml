@@ -360,3 +360,8 @@ dockerfile = '''
       \ printf('<SID>head(%s)', string(s:instruction))
   endfor
 '''
+
+make = '''
+  SetTab 4
+  set noexpandtab
+'''
