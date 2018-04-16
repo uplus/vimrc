@@ -39,6 +39,7 @@ let g:ale_linters = {
   \ 'markdown': [],
   \ 'ruby': ['ruby'],
   \ 'c': ['clang'],
+  \ 'rust': ['rustc', 'rustfmt'],
   \ }
 
 let g:ale_linter_aliases = {
@@ -51,7 +52,7 @@ let g:ale_fixers = {
   \ }
 
 let g:ale_pattern_options = {
-  \ '\.min.js$': { 'ale_enabled': 0 },
+  \ '\.min\.js$': { 'ale_enabled': 0 },
   \ '\.toml$': { 'ale_enabled': 0 },
   \ }
 
