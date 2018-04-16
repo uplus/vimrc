@@ -20,14 +20,14 @@ let g:deoplete#ignore_sources = {'_': ['tag']}
       " \ }
 
 " call deoplete#initialize()
-" call deoplete#custom#set('_', 'matchers', ['matcher_head'])
-" call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
-" call deoplete#custom#set('buffer', 'mark', '')
-" call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
-" call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
-" call deoplete#custom#set('buffer', 'mark', '*')
+" call deoplete#custom#source('_', 'matchers', ['matcher_head'])
+" call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
+" call deoplete#custom#source('buffer', 'mark', '')
+" call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+" call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+" call deoplete#custom#source('buffer', 'mark', '*')
 
-call deoplete#custom#set('_', 'converters', [
+call deoplete#custom#source('_', 'converters', [
       \ 'converter_remove_paren',
       \ 'converter_remove_overlap',
       \ 'converter_truncate_abbr',
@@ -35,15 +35,15 @@ call deoplete#custom#set('_', 'converters', [
       \ 'converter_auto_delimiter',
       \ ])
 
-call deoplete#custom#set('neosnippet', 'rank', 9999)
-call deoplete#custom#set('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-call deoplete#custom#set('clang', 'max_pattern_length', -1)
+call deoplete#custom#source('neosnippet', 'rank', 9999)
+call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
+call deoplete#custom#source('clang', 'max_pattern_length', -1)
 
-call deoplete#custom#set('look', 'min_pattern_length', 4)
-call deoplete#custom#set('look', 'rank', 100)
+call deoplete#custom#source('look', 'min_pattern_length', 4)
+call deoplete#custom#source('look', 'rank', 100)
 
-call deoplete#custom#set('emoji', 'filetypes', '')
-call deoplete#custom#set('emoji', 'min_pattern_length', 9999)
+call deoplete#custom#source('emoji', 'filetypes', '')
+call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
 
 
