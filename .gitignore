@@ -1,4 +1,5 @@
 .*
+!.gitkeep
 bundle/
 colors/
 dict/gene.dict
