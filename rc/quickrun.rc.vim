@@ -157,7 +157,7 @@ let s:config = {
       \ 'rust/rustc': {
       \   'command': 'rustc',
       \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
-      \   'cmdopt': $RUSTFLAGS,
+      \   'cmdopt': '-O ' . $RUSTFLAGS,
       \   'tempfile': '%{tempname()}.rs',
       \   'hook/sweep/files': '%S:p:r',
       \ },
