@@ -742,19 +742,12 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'osyo-manga/vim-precious'
 if = "has('nvim')"
 hook_add = '''
+  let g:context_filetype#search_offset = 200
   let g:precious_enable_switchers = {
-    \ 'ruby': {
-    \   'setfiletype': 0,
-    \ },
-    \ 'eruby': {
-    \   'setfiletype': 0,
-    \ },
-    \ 'markdown': {
-    \   'setfiletype': 0,
-    \ },
-    \ 'vue': {
-    \   'setfiletype': 0,
-    \ },
+    \ '*': { 'setfiletype': 0 },
+    \ 'markdown': { 'setfiletype': 1 },
+    \ 'toml': { 'setfiletype': 1 },
+    \ 'html': { 'setfiletype': 1 },
     \}
 '''
 
