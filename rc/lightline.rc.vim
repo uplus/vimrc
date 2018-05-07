@@ -71,13 +71,15 @@ let g:lightline = {
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
       \   'winwidth': winwidth(0),
-      \   'colorscheme': 'material',
+      \   'colorscheme': 'mellow',
       \ }
 "}}}
 
       " \   'colorscheme': 'mellow',
 
 " default(powerline) molokai darcula solarized
+" material: inactiveなバッファ名が見れなくなる
+
 " カラースキームで定義されてる数だけ色が使える?
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来る
 " tab
