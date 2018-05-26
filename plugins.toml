@@ -363,7 +363,7 @@ repo = 'Shougo/neoinclude.vim'
 [[plugins]]
 # repo = 'zchee/deoplete-clang'
 repo = 'tweekmonster/deoplete-clang2'
-if = 1
+if = 'executable("clang")'
 on_ft = ['c', 'cpp']
 hook_source = '''
   let b:clang2_orig_maps = {}
@@ -759,6 +759,9 @@ repo = 'thinca/vim-prettyprint'
 hook_add = '''
   let g:prettyprint_string = ['raw'] " [] 'raw' 'split'
 '''
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
 repo = 'rhysd/wandbox-vim'
