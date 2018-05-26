@@ -482,7 +482,7 @@ hook_add = '''
   let g:vimfiler_force_overwrite_statusline = 0
 
   " command! Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
-  command! Vfe VimFiler -split -simple -find -winwidth=26 -no-quit
+  command! Vfe VimFilerExplorer -split -simple -find -fnamewidth=40 -no-quit
   command! Vfs VimFilerSplit
   command! Vft VimFilerTab
   command! Vf VimFiler
