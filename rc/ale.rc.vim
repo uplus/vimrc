@@ -35,9 +35,12 @@ let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 1
 let g:ale_list_window_size = 5
 
+" rubocopはbundleを使うようにする
+let b:ale_ruby_rubocop_executable = 'bundle'
+
 let g:ale_linters = {
   \ 'markdown': [],
-  \ 'ruby': ['ruby'],
+  \ 'ruby': ['ruby', 'rubocop'],
   \ 'c': ['clang'],
   \ 'rust': ['rustc', 'rustfmt'],
   \ }
