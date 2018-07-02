@@ -4,7 +4,6 @@ if exists(':CAlterCommand') != 2
 endif
 
 CAlterCommand ww w!
-CAlterCommand www w !sudo tee > /dev/null %
 CAlterCommand qq q!
 CAlterCommand movetotab MoveToTab
 CAlterCommand maps Maps
@@ -38,3 +37,9 @@ CAlterCommand clear Clear
 CAlterCommand ins[tall] Install
 CAlterCommand rec[ache] Recache
 CAlterCommand me[s] mes
+
+if has('nvim')
+  CAlterCommand www w suda://%
+else
+  CAlterCommand www w !sudo tee > /dev/null %
+endif
