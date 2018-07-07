@@ -168,6 +168,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'bfredl/nvim-miniyank'
+if = 'has("clipboard")'
 hook_add = '''
   let g:miniyank_filename = $HOME . "/.vim/tmp/miniyank.mpack"
 '''
