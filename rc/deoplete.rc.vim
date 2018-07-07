@@ -4,7 +4,7 @@
 let g:neocomplete#enable_smart_case       = 1
 let g:neocomplete#enable_camel_case       = 1
 let g:neocomplete#enable_fuzzy_completion = 0
-let g:deoplete#auto_complete_start_length = 1 " 2
+let g:deoplete#auto_complete_start_length = 3 " 2
 " let g:deoplete#enable_refresh_always = 1  " 0, Note: screen flick
 " let g:deoplete#max_list = 100 " (100)
 " let g:deoplete#delimiters = ['/'] " ['/']
