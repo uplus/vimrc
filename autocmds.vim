@@ -93,4 +93,11 @@ augroup myac
   " has('patch-8.0.1238')
   " au CmdLineEnter /,\? :set hlsearch
   " au CmdLineLeave /,\? :set nohlsearch
+
+  au BufWritePre * call s:auto_mkdir(expand('%:p:h'))
+  function! s:auto_mkdir(dir)
+    if !isdirectory(a:dir) && !IsFile(a:dir)
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
 augroup END

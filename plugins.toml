@@ -362,8 +362,8 @@ repo = 'Shougo/neoinclude.vim'
 # '''
 
 [[plugins]]
-# repo = 'zchee/deoplete-clang'
-repo = 'tweekmonster/deoplete-clang2'
+repo = 'zchee/deoplete-clang'
+# repo = 'tweekmonster/deoplete-clang2'
 if = 'executable("clang")'
 on_ft = ['c', 'cpp']
 hook_source = '''

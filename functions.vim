@@ -1,5 +1,9 @@
 " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
 
+function! IsFile(path) abort
+  return !isdirectory(a:path) && glob(a:path) !=# ''
+endfunction
+
 " #AutoSave "{{{
 let g:my_autosave = get(g:, 'my_autosave', 0)
 command! EnableAutoSave let g:my_autosave = 1
@@ -12,7 +16,7 @@ function! ToggleAutoSave() abort
 endfunction
 
 function! DoAutoSave() abort
-  if -1 != index(['unite_exrename', 'vimfiler'], &ft)
+  if -1 != index(['unite_exrename', 'vimfiler'], &filetype)
     return
   endif
 
@@ -33,7 +37,7 @@ function! EraseSpace() abort "{{{
   endif
 
   " filetypeが一致したらreturn
-  if &ft =~# 'markdown\|gitcommit\|help'
+  if &filetype =~# 'markdown\|gitcommit\|help'
     return
   endif
 

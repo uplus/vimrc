@@ -6,7 +6,6 @@ command! Terminal execute 'terminal' $SHELL
 command! Pry botright sp +terminal\ pry
 command! Q qall!
 command! W w!
-command! WWW w !sudo tee > /dev/null %
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 command! FcitxOff call system('fcitx-remote -c')
 command! -nargs=+ Cal echo eval(<q-args>)

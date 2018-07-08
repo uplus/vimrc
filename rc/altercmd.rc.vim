@@ -40,6 +40,8 @@ CAlterCommand me[s] mes
 
 if has('nvim')
   CAlterCommand www w suda://%
+  command! WWW w suda://%
 else
   CAlterCommand www w !sudo tee > /dev/null %
+  command! WWW w !sudo tee > /dev/null %
 endif
