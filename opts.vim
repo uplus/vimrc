@@ -180,7 +180,9 @@ endif
 if !has('gui_running')
   set t_Co=256
 endif
+
 set background=dark
+
 if has('termguicolors') && $COLORTERM ==# 'truecolor'
   set termguicolors
 endif
@@ -218,6 +220,20 @@ if !empty($SUDO_USER) && $USER !=# $SUDO_USER
   set backupdir-=~/tmp
   set undodir=
   set viewdir=
+endif
+
+if exists('$TMUX')
+  if exists('+guicursor')
+    set guicursor=
+  endif
+
+  if exists('+lazyredraw')
+    set lazyredraw
+  endif
+
+  if exists('+termguicolors')
+    set termguicolors
+  endif
 endif
 
 let g:my_autosave = 1
