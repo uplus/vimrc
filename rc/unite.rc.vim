@@ -7,7 +7,13 @@ let g:unite_enable_smart_case   = 1
 
 " grep "{{{
 let g:unite_source_grep_max_candidates = 200
-if executable('hw')
+if executable('pt')
+  " Use pt(the platinum searcher)
+  " https://github.com/monochromegane/the_platinum_searcher
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('hw')
   " Use hw(highway)
   " https://github.com/tkengo/highway
   let g:unite_source_grep_command = 'hw'
@@ -20,12 +26,6 @@ elseif executable('ag')
   let g:unite_source_grep_default_opts =
         \ '-i --vimgrep --hidden --ignore ' .
         \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-elseif executable('pt')
-  " Use pt(the platinum searcher)
-  " https://github.com/monochromegane/the_platinum_searcher
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
 elseif executable('jvgrep')
   " For jvgrep
