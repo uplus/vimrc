@@ -234,6 +234,17 @@ snippet Forw-
 	extend Forwardable
 
 
+# misc
+
+snippet mylog
+	File.open('mylog', 'w') do |f|
+		f.puts ${0}
+	end
+
+snippet pretty_inspect
+alias pi
+	pretty_inspect
+
 # ---------- on hold ----------
 
 # Marshal.dump(.., file)
@@ -298,15 +309,11 @@ snippet mod module .. end
 #}}}
 
 # usage_if()
-snippet usai
+snippet usage
 	if ARGV.${1}
 		abort "Usage: #{$PROGRAM_NAME} ${2:ARGS_GO_HERE}"${3}
 	end
-# usage_unless()
-snippet usau
-	unless ARGV.${1}
-		abort "Usage: #{$PROGRAM_NAME} ${2:ARGS_GO_HERE}"${3}
-	end
+
 snippet array
 	Array.new(${1:10}){|${2:i}| ${3} }
 snippet hash
