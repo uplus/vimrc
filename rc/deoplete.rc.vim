@@ -65,6 +65,10 @@ let g:deoplete#omni#functions = {
       \ 'lua': 'xolox#lua#omnifunc',
       \ }
 
+let g:deoplete#omni_patterns = {
+  \ 'terraform':  '[^ *\t"{=$]\w*',
+  \ }
+
 " # keymaps
 " <s-tab>: completion back.
 inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"

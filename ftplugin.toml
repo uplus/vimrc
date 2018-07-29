@@ -304,6 +304,10 @@ text = '''
   setl wrap
 '''
 
+terraform = '''
+  setl commentstring=#%s
+'''
+
 vim = '''
   if 5000 < line('$')
     syntax sync minlines=300
