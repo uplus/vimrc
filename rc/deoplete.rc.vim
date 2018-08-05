@@ -4,11 +4,11 @@
 let g:neocomplete#enable_smart_case       = 1
 let g:neocomplete#enable_camel_case       = 1
 let g:neocomplete#enable_fuzzy_completion = 0
-let g:deoplete#auto_complete_start_length = 3 " 2
+let g:deoplete#auto_complete_start_length = 2 " 2
 " let g:deoplete#enable_refresh_always = 1  " 0, Note: screen flick
-" let g:deoplete#max_list = 100 " (100)
+let g:deoplete#max_list = 200 " (100)
 " let g:deoplete#delimiters = ['/'] " ['/']
-" let g:deoplete#auto_complete_delay = 150 " 50
+let g:deoplete#auto_complete_delay = 0 " 50
 let g:deoplete#skip_chars = ['(', ')']
 let g:deoplete#file#enable_buffer_path = 1
 
