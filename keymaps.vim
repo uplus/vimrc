@@ -77,7 +77,11 @@ nnoremap ,,,,,,,,,,,,, :<c-u>set titlestring=Hello<cr>
 " Use <c-r>.
 " imap  <plug>(vim-original-insert-lasttext)
 
-inoremap <c-r><c-r> <c-r>*
+if &clipboard ==# 'unnamedplus'
+  inoremap <c-r><c-r> <c-r>+
+else
+  inoremap <c-r><c-r> <c-r>*
+endif
 nnoremap g?? Vg?
 map mp %
 map mmp ^%
