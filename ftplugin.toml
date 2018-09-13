@@ -369,3 +369,7 @@ make = '''
   SetTab 4
   set noexpandtab
 '''
+
+yaml = '''
+  setl cursorcolumn
+'''
