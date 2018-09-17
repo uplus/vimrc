@@ -8,7 +8,7 @@ augroup myac
   au VimEnter,WinEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.1)
   " 最後のバッファがquickfixなら自動で閉じる
   au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
-  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:h
+  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:p:h
 
   au BufLeave * call DoAutoSave()
   au CursorHold * call DoAutoSave()
