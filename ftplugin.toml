@@ -376,4 +376,6 @@ yaml = '''
 
 sshconfig = '''
   setl foldmethod=marker
+  setl foldlevelstart=0
+  setl foldlevel=0
 '''
