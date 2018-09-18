@@ -373,3 +373,7 @@ make = '''
 yaml = '''
   setl cursorcolumn
 '''
+
+sshconfig = '''
+  setl foldmethod=marker
+'''
