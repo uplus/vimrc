@@ -70,11 +70,9 @@ fun gzip#read(cmd)
   " set 'write'
   let write_save = &write
   set write
-  " Reset 'foldenable', otherwise line numbers get adjusted.
-  if has('folding')
-    let fen_save = &foldenable
-    setlocal nofoldenable
-  endif
+  " set nofoldenable
+  let fen_save = &foldenable
+  setlocal nofoldenable
 
   " when filtering the whole buffer, it will become empty
   let is_empty = line("'[") == 1 && line("']") == line('$')
@@ -103,9 +101,9 @@ fun gzip#read(cmd)
   if !filereadable(tmp)
     " uncompress didn't work!  Keep the compressed file then.
     echoerr 'Error: Could not read uncompressed file'
-    let ok = 0
+    let is_ok = 0
   else
-    let ok = 1
+    let is_ok = 1
     " delete the compressed lines; remember the line number
     let l = line("'[") - 1
     if exists(':lockmarks')
@@ -136,8 +134,9 @@ fun gzip#read(cmd)
     silent! exe 'bwipe ' . tmp_esc
     silent! exe 'bwipe ' . tmpe_esc
   endif
+
   " Store the OK flag, so that we can use it when writing.
-  let b:uncompressOk = ok
+  let b:uncompressOk = is_ok
 
   " Restore saved option values.
   let &patchmode = pm_save
@@ -149,7 +148,7 @@ fun gzip#read(cmd)
   endif
 
   " When uncompressed the whole buffer, do autocommands
-  if ok && is_empty
+  if is_ok && is_empty
     if exists('*fnameescape')
       let fname = fnameescape(expand('%:r'))
     else
