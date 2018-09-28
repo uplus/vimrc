@@ -4,9 +4,9 @@
 
 " These functions are used by the gzip plugin.
 
-" Function to check that executing "cmd [-f]" works.
+" Function to check_cmd_executable that executing "cmd [-f]" works.
 " The result is cached in s:have_"cmd" for speed.
-fun s:check(cmd)
+fun s:check_cmd_executable(cmd)
   let name = substitute(a:cmd, '\(\S*\).*', '\1', '')
   if !exists('s:have_' . name)
     let e = executable(name)
@@ -26,7 +26,7 @@ endfun
 fun s:set_compression(line)
   " get the Compression Method
   let l:cm = char2nr(a:line[2])
-  " if it's 8 (DEFLATE), we can check for the compression level
+  " if it's 8 (DEFLATE), we can check_cmd_executable for the compression level
   if l:cm == 8
     " get the eXtra FLags
     let l:xfl = char2nr(a:line[8])
@@ -40,19 +40,23 @@ fun s:set_compression(line)
   endif
 endfun
 
-
-" After reading compressed file: Uncompress text in buffer with "cmd"
-fun gzip#read(cmd)
-  " don't do anything if the cmd is not supported
-  if !s:check(a:cmd)
-    return
-  endif
-
-  " for gzip check current compression level and set b:gzip_comp_arg.
+fun s:set_compression_level(cmd)
   silent! unlet b:gzip_comp_arg
   if a:cmd[0] ==# 'g'
     call s:set_compression(getline(1))
   endif
+endfun
+
+
+" After reading compressed file: Uncompress text in buffer with "cmd"
+fun gzip#read(cmd)
+  " don't do anything if the cmd is not supported
+  if !s:check_cmd_executable(a:cmd)
+    return
+  endif
+
+  " for gzip check current compression level and set b:gzip_comp_arg.
+  call s:set_compression_level(a:cmd)
 
   " make 'patchmode' empty, we don't want a copy of the written file
   let pm_save = &patchmode
@@ -73,7 +77,8 @@ fun gzip#read(cmd)
   endif
 
   " when filtering the whole buffer, it will become empty
-  let empty = line("'[") == 1 && line("']") == line('$')
+  let is_empty = line("'[") == 1 && line("']") == line('$')
+
   let tmp = tempname()
   let tmpe = tmp . '.' . expand('<afile>:e')
   if exists('*fnameescape')
@@ -94,6 +99,7 @@ fun gzip#read(cmd)
   execute "silent '[,']w " . tmpe_esc
   " uncompress the temp file: call system("gzip -dn tmp.gz")
   call system(a:cmd . ' ' . s:escape(tmpe))
+
   if !filereadable(tmp)
     " uncompress didn't work!  Keep the compressed file then.
     echoerr 'Error: Could not read uncompressed file'
@@ -111,7 +117,7 @@ fun gzip#read(cmd)
     " Use ++edit if the buffer was empty, keep the 'ff' and 'fenc' options.
     setlocal nobinary
     if exists(':lockmarks')
-      if empty
+      if is_empty
         execute 'silent lockmarks ' . l . 'r ++edit ' . tmp_esc
       else
         execute 'silent lockmarks ' . l . 'r ' . tmp_esc
@@ -121,7 +127,7 @@ fun gzip#read(cmd)
     endif
 
     " if buffer became empty, delete trailing blank line
-    if empty
+    if is_empty
       silent $delete _
       1
     endif
@@ -143,7 +149,7 @@ fun gzip#read(cmd)
   endif
 
   " When uncompressed the whole buffer, do autocommands
-  if ok && empty
+  if ok && is_empty
     if exists('*fnameescape')
       let fname = fnameescape(expand('%:r'))
     else
@@ -162,7 +168,7 @@ fun gzip#write(cmd)
   if exists('b:uncompressOk') && !b:uncompressOk
     echomsg 'Not compressing file because uncompress failed; reset b:uncompressOk to compress anyway'
     " don't do anything if the cmd is not supported
-  elseif s:check(a:cmd)
+  elseif s:check_cmd_executable(a:cmd)
     " Rename the file before compressing it.
     let nm = resolve(expand('<afile>'))
     let nmt = s:tempname(nm)
@@ -180,7 +186,7 @@ endfun
 " Before appending to compressed file: Uncompress file with "cmd"
 fun gzip#appre(cmd)
   " don't do anything if the cmd is not supported
-  if s:check(a:cmd)
+  if s:check_cmd_executable(a:cmd)
     let nm = expand('<afile>')
 
     " for gzip check current compression level and set b:gzip_comp_arg.
