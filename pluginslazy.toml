@@ -639,11 +639,11 @@ hook_add = '''
   command! CodeBreak VimGameCodeBreak
 '''
 
-[[plugins]]
-# コマのサイズはハードコーディング
-repo = 'rbtnn/reversi.vim'
-depends = 'game_engine.vim'
-on_cmd = 'Reversi'
+# [[plugins]]
+# # コマのサイズはハードコーディング
+# repo = 'rbtnn/reversi.vim'
+# depends = 'game_engine.vim'
+# on_cmd = 'Reversi'
 
 [[plugins]]
 repo = 'thinca/vim-threes'
