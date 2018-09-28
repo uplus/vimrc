@@ -102,7 +102,8 @@ set switchbuf=usetab
 set completeopt=menuone
 set complete+=d,t
 if has('patch-7.4.775')
-  set completeopt+=noinsert  " 第1候補を選択 非挿入
+  " 遅延があると操作ミスになる
+  " set completeopt+=noinsert  " 第1候補を選択 非挿入
   " set completeopt+=noselect
 endif
 
