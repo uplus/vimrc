@@ -50,6 +50,13 @@ endfun
 
 " After reading compressed file: Uncompress text in buffer with "cmd"
 fun gzip#read(cmd)
+  " これがないと、ファイルタイプが複数回検出されたときに多重実行されておかしくなる
+  " そもそも複数回検出するのがおかしいし、uncompress後は拡張子を取り除いて別バッファにしたほうがよさそう
+  if get(b:, 'uncompressOk') == 1
+    return
+  endif
+
+
   " don't do anything if the cmd is not supported
   if !s:check_cmd_executable(a:cmd)
     return
@@ -87,11 +94,11 @@ fun gzip#read(cmd)
     let tmpe_esc = escape(tmpe, ' ')
   endif
 
-  echoerr 'here'
-  echomsg string(getpos("'["))
-  echomsg string(getpos("']"))
-  echomsg string(getpos('$'))
-  echomsg string(tmpe_esc)
+  " echoerr 'here'
+  " echomsg string(getpos("'["))
+  " echomsg string(getpos("']"))
+  " echomsg string(getpos('$'))
+  " echomsg string(tmpe_esc)
 
   " write the just read lines to a temp file "'[,']w tmp.gz"
   execute "silent '[,']w " . tmpe_esc
