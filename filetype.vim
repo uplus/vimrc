@@ -19,6 +19,7 @@ augroup filetypedetect
   au BufRead,BufNewFile *.[sS] set ft=gas syntax=gas
   au BufRead,BufNewFile *.hla set ft=hla syntax=hla
   au BufRead,BufNewFile .yamllint set ft=yaml syntax=yaml
+  au BufRead,BufNewFile .env.* set ft=sh syntax=sh
 
   au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
 
