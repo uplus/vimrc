@@ -57,6 +57,7 @@ let g:ale_fixers = {
 let g:ale_pattern_options = {
   \ '\.min\.js$': { 'ale_enabled': 0 },
   \ '\.toml$': { 'ale_enabled': 0 },
+  \ '.gem/ruby/': { 'ale_enabled': 0 },
   \ }
 
 " This option prevents ALE autocmd commands from being run for particular
