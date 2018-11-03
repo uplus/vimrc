@@ -28,7 +28,8 @@ augroup filetypedetect
 augroup END
 
 function! s:note_config() abort
-  lcd %:h
+  silent! lcd %:h
+
   if vimrc#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
     setl fdm=marker
