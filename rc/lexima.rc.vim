@@ -198,5 +198,5 @@ call lexima#add_rule({
 " <c-y>させない
 inoremap <c-y> <Nop>
 " デフォルトのフックで<c-y>される
-imap <expr><cr> lexima#expand('<lt>cr>', 'i')
+imap <silent><expr><cr> lexima#expand('<lt>cr>', 'i')
 " call lexima#insmode#map_hook('before', '<lt>cr>', "\<c-r>=deoplete#close_popup()\<cr>")
