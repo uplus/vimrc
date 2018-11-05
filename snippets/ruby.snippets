@@ -18,15 +18,15 @@ snippet ife
 snippet if2
 	if ${1:condition}
 		${2}
-  elsif ${3:condition}
-    ${4}
+	elsif ${3:condition}
+		${4}
 	end
 
 snippet if3
 	if ${1:condition}
 		${2}
-  elsif ${3:condition}
-    ${4}
+	elsif ${3:condition}
+		${4}
 	else
 		${5}
 	end
@@ -145,6 +145,13 @@ snippet verbose
 snippet getints
   gets.split.map &:to_i
   ${0}
+
+snippet rubocop-disable-range
+	# rubocop:disable ${0}
+	# rubocop:enable $0
+
+snippet rubocop-disable-line
+	# rubocop:disable ${0}
 
 # unix filter{}
 snippet argf
@@ -663,8 +670,8 @@ alias cla
 
 snippet     module
 alias mod
-  module ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
-    ${0}
-  end
+	module ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+		${0}
+	end
 
-# vim:set et ts=2 sts=2 sw=2 tw=0:
+# vim:set ts=2 sts=2 sw=2 tw=0:
