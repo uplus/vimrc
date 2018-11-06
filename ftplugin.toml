@@ -70,6 +70,12 @@ _ = '''
   endif
 '''
 
+arduino = '''
+  SetTab 4
+  setl commentstring=//\ %s
+  let b:format_cmd = 'ClangFormat'
+'''
+
 c = '''
   SetTab 4
   setl commentstring=//\ %s
@@ -173,11 +179,6 @@ html = '''
   SetTab 4
 '''
 
-markdown = '''
-  SetTab 2
-  setl wrap
-'''
-
 java = '''
   SetTab 4
 '''
@@ -195,6 +196,11 @@ javascript = '''
 json = '''
   command! AlignJSON %!jq '.'
   let b:format_cmd = 'AlignJSON'
+'''
+
+markdown = '''
+  SetTab 2
+  setl wrap
 '''
 
 neosnippet = '''

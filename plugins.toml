@@ -634,14 +634,6 @@ repo = 'NLKNguyen/papercolor-theme'
 repo = 'freeo/vim-kalisi'
 
 
-#c cpp
-[[plugins]]
-repo = 'uplus/vim-clang-rename'
-hook_add = '''
-  au myac FileType c,cpp nmap <buffer><silent>,lr <Plug>(clang_rename-current)
-'''
-
-
 #go
 
 [[plugins]] # Fmtしてもホールド維持
