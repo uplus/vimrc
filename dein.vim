@@ -55,27 +55,6 @@ let g:netrw_nogx = 1 " Disable unnecessary keymaps
 let g:solarized_termcolors = 256 " To use solarized in CLI
 
 " vim-operator taps "{{{
-if dein#tap('vim-operator-user') "{{{
-  nmap <Space>k <Plug>(operator-jump-head-out)a
-  nmap <Space>j <Plug>(operator-jump-tail-out)a
-
-  nmap se <Plug>(operator-evalruby)
-  nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
-  xmap se <Plug>(operator-evalruby)
-
-  call operator#user#define('space-fold', 'vimrc#operator_space_fold')
-  call operator#user#define('blank2void', 'vimrc#operator_blank2void')
-
-  " Add fold marker and space to end of line
-  nmap zf <Plug>(operator-space-fold)
-  xmap zf <Plug>(operator-space-fold)
-
-  nmap d <Plug>(operator-blank2void)
-  xmap d <Plug>(operator-blank2void)
-  nmap <silent>dd :exec "normal \<Plug>(vim-original-visualline)d"<cr>
-  " TODO cバージョン作るのむずい 削除した場所をピンポイントで編集させるの難しい
-endif "}}}
-
 if dein#tap('vim-operator-replace')
   nmap gz <Plug>(operator-replace)
   xmap gz <Plug>(operator-replace)
