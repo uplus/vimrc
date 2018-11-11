@@ -102,6 +102,10 @@ diff = '''
   setl foldcolumn=0
 '''
 
+fstab = '''
+  SetTab 8
+'''
+
 gitconfig = '''
   setl noexpandtab
 '''
