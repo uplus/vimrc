@@ -12,6 +12,11 @@ let g:deoplete#auto_complete_delay = 0 " 50
 let g:deoplete#skip_chars = ['(', ')']
 let g:deoplete#file#enable_buffer_path = 1
 
+call deoplete#custom#option('refresh_always', v:true)
+call deoplete#custom#option('auto_complete_delay', 0)
+call deoplete#custom#option('async_timeout', 100)
+" call deoplete#custom#option('num_processes', 0)
+
 let g:deoplete#ignore_sources = {'_': ['tag']}
 " スニペット候補が出なくなる
 " let g:deoplete#sources = {
@@ -46,6 +51,8 @@ call deoplete#custom#source('emoji', 'filetypes', '')
 call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
 
+
+call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 
 " " For buffer completion
 " let g:deoplete#keyword_patterns = {
