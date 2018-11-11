@@ -7,3 +7,4 @@ tmp/
 before.vim
 after.vim
 trial.toml
+disable-plugin-list

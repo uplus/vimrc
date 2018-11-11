@@ -34,6 +34,16 @@ if dein#load_state(s:path)
     call dein#disable('neocomplete.vim')
   endif
 
+  if filereadable(expand('~/.vim/disable-plugin-list'))
+     for plugin in readfile(expand('~/.vim/disable-plugin-list'))
+       if plugin =~# '^#'
+         continue
+       endif
+
+       call dein#disable(plugin)
+     endfor
+  endif
+
   call dein#end()
   call dein#save_state()
 
