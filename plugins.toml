@@ -164,6 +164,16 @@ hook_add = '''
   let g:nf_ignore_ext       = []
 '''
 
+[[plugins]] # highlight yanked text
+repo = 'haya14busa/vim-operator-flashy'
+hook_source = '''
+  map y <Plug>(operator-flashy)
+  nmap Y <Plug>(operator-flashy)$
+  let g:operator#flashy#flash_time = 300
+  " let g:operator#flashy#group =
+  hi Flashy term=bold ctermbg=0 guibg=#13556A
+'''
+
 # [[plugins]]
 # repo = 'LeafCage/yankround.vim'
 
