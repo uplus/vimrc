@@ -243,7 +243,6 @@ if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#scope_aliases = {}
   let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
   let g:neosnippet#scope_aliases['arduino'] = 'c'
-  au myac InsertLeave * NeoSnippetClearMarkers
   " let g:neosnippet#enable_auto_clear_markers = 1 " Don't work for multi lines
 
   " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"

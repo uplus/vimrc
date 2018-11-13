@@ -342,6 +342,9 @@ depends = 'vim-quickrun'
 [[plugins]]
 # repo = 'Shougo/neosnippet-snippets'
 repo = 'uplus/neosnippet-snippets'
+hook_post_source = '''
+  au myac InsertLeave * NeoSnippetClearMarkers
+'''
 
 
 #deoplete neocomplete
