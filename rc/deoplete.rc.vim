@@ -8,7 +8,7 @@ let g:deoplete#auto_complete_start_length = 2 " 2
 " let g:deoplete#enable_refresh_always = 1  " 0, Note: screen flick
 let g:deoplete#max_list = 200 " (100)
 " let g:deoplete#delimiters = ['/'] " ['/']
-let g:deoplete#auto_complete_delay = 0 " 50
+let g:deoplete#auto_complete_delay = 100 " 50
 let g:deoplete#skip_chars = ['(', ')']
 let g:deoplete#file#enable_buffer_path = 1
 
