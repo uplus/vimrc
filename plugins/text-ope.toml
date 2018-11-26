@@ -1,0 +1,136 @@
+## operator
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+hook_source = '''
+  nmap <Space>k <Plug>(operator-jump-head-out)a
+  nmap <Space>j <Plug>(operator-jump-tail-out)a
+
+  nmap se <Plug>(operator-evalruby)
+  nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
+  xmap se <Plug>(operator-evalruby)
+'''
+
+hook_post_source = '''
+  call operator#user#define('space-fold', 'vimrc#operator_space_fold')
+  call operator#user#define('blank2void', 'vimrc#operator_blank2void')
+
+  " Add fold marker and space to end of line
+  nmap zf <Plug>(operator-space-fold)
+  xmap zf <Plug>(operator-space-fold)
+
+  nmap d <Plug>(operator-blank2void)
+  xmap d <Plug>(operator-blank2void)
+  nmap <silent>dd :exec "normal \<Plug>(vim-original-visualline)d"<cr>
+  " TODO cバージョン作るのむずい 削除した場所をピンポイントで編集させるの難しい
+'''
+
+[[plugins]] # gr
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+
+[[plugins]] # yank delete changeなどのblockwise版
+repo = 'osyo-manga/vim-textobj-blockwise'
+depends = 'vim-operator-block'
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-block'
+depends = 'vim-operator-user'
+
+[[plugins]] # sa sd sr
+repo = 'rhysd/vim-operator-surround'
+depends = 'vim-operator-user'
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-exec_command'
+depends = 'vim-operator-user'
+
+
+## textobj
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]] # e buffer
+repo = 'kana/vim-textobj-entire'
+depends = 'vim-textobj-user'
+
+[[plugins]] # i
+repo = 'kana/vim-textobj-indent'
+depends = 'vim-textobj-user'
+
+[[plugins]] # y syntax-highlight
+repo = 'kana/vim-textobj-syntax'
+depends = 'vim-textobj-user'
+
+[[plugins]] # z
+repo = 'kana/vim-textobj-fold'
+depends = 'vim-textobj-user'
+
+[[plugins]] # L ignore last-char of current-line
+repo = 'kana/vim-textobj-line'
+depends = 'vim-textobj-user'
+
+[[plugins]] # u
+repo = 'mattn/vim-textobj-url'
+depends = 'vim-textobj-user'
+
+[[plugins]] # w use it with CamelCaseMotion
+repo = 'h1mesuke/textobj-wiw'
+depends = 'vim-textobj-user'
+
+[[plugins]] # c
+repo = 'thinca/vim-textobj-comment'
+depends = 'vim-textobj-user'
+
+[[plugins]] # f{char} select a range between character
+repo = 'thinca/vim-textobj-between'
+depends = 'vim-textobj-user'
+
+[[plugins]] # v last pasted textobj
+repo = 'gilligan/textobj-lastpaste'
+depends = 'vim-textobj-user'
+
+[[plugins]] # b some block
+repo = 'osyo-manga/vim-textobj-multiblock'
+depends = 'vim-textobj-user'
+
+[[plugins]] # I A 連続したtextobjを矩形選択 ciw -> cIw
+repo = 'osyo-manga/vim-textobj-blockwise'
+depends = 'vim-textobj-user'
+
+[[plugins]] # Can make textobj by regex
+repo = 'osyo-manga/vim-textobj-from_regexp'
+depends = 'vim-textobj-user'
+
+[[plugins]] # 複数のtextobjを一つにまとめる
+repo = 'osyo-manga/vim-textobj-multitextobj'
+depends = 'vim-textobj-user'
+
+[[plugins]] # m
+repo = 'kana/vim-textobj-function'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'bps/vim-textobj-python'
+depends = 'vim-textobj-user'
+hook_add = 'let g:textobj_python_no_default_key_mappings = 1'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'thinca/vim-textobj-function-javascript'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'kamichidu/vim-textobj-function-go'
+depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'rbonvall/vim-textobj-latex'
+depends = 'vim-textobj-user'
+hook_add = 'let g:textobj_latex_no_default_key_mappings = 1'
+
+
