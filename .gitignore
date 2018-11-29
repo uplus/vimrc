@@ -6,5 +6,5 @@ dict/gene.dict
 tmp/
 before.vim
 after.vim
-trial.toml
+plugins/trial.toml
 disable-plugin-list

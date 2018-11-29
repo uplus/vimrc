@@ -24,8 +24,8 @@ if dein#load_state(s:path)
   call dein#load_toml('~/.vim/plugins/text-ope.toml', {'lazy': 0})
   call dein#load_toml('~/.vim/plugins/lazy.toml', {'lazy': 1})
 
-  if filereadable(expand('~/.vim/trial.toml'))
-    call dein#load_toml('~/.vim/trial.toml', {'lazy': 0, 'merged': 0})
+  if filereadable(expand('~/.vim/plugins/trial.toml'))
+    call dein#load_toml('~/.vim/plugins/trial.toml', {'lazy': 0, 'merged': 0})
   endif
 
   " after/ftplugin/ 扱い 要recache
