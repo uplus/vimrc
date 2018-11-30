@@ -13,7 +13,7 @@ let g:deoplete#skip_chars = ['(', ')']
 let g:deoplete#file#enable_buffer_path = 1
 
 call deoplete#custom#option('refresh_always', v:true)
-call deoplete#custom#option('auto_complete_delay', 0)
+" call deoplete#custom#option('auto_complete_delay', 0)
 call deoplete#custom#option('async_timeout', 100)
 " call deoplete#custom#option('num_processes', 0)
 
@@ -41,8 +41,11 @@ call deoplete#custom#source('_', 'converters', [
       \ ])
 
 call deoplete#custom#source('neosnippet', 'rank', 9999)
+
 call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#source('clang', 'max_pattern_length', -1)
+
+" call deoplete#custom#source('tabnine', 'rank', 200)
 
 call deoplete#custom#source('look', 'min_pattern_length', 4)
 call deoplete#custom#source('look', 'rank', 100)
@@ -51,6 +54,8 @@ call deoplete#custom#source('emoji', 'filetypes', '')
 call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
 
+" call deoplete#custom#source('LanguageClient', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
+" call deoplete#custom#source('ruby', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 
 call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 
@@ -60,10 +65,30 @@ call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 "       \ 'tex' : '[^\w|\s][a-zA-Z_]\w*',
 "       \ }
 
+" call deoplete#custom#source('LanguageClient', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
+" call deoplete#custom#source('ruby', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
+
+let g:LanguageClient_serverCommands = {
+  \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+  \ 'ruby': ['solargraph', 'stdio'],
+  \ }
+
+" \ 'ruby': ['solargraph', 'socket'],
+" \ 'ruby': ['tcp://localhost:7658'],
+
+" \ 'ruby': ['solargraph', 'socket'],
+" \ 'ruby': ['language_server-ruby'],
+" \ 'ruby': ['orbaclerun', 'file-server'],
+" \ 'rust': ['rls'],
+" \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+" \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+" \ 'javascript': ['javascript-typescript-stdio'],
+
 " cannot call some omni functions
 let g:deoplete#omni#input_patterns = {
-      \ 'python': ''
+      \ 'python': '',
       \ }
+      " \ 'ruby': ['[^. \t].\w', '[a-zA-Z_]\w*::'],
 
 let g:deoplete#sources#omni#input_patterns = {
       \ }
