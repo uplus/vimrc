@@ -447,6 +447,35 @@ hook_add = '''
   let g:terraform_registry_module_completion = 1
 '''
 
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  let g:LanguageClient_loadSettings = 1
+  let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
+
+  let g:LanguageClient_waitOutputTimeout = 20
+  let g:LanguageClient_changeThrottle = 0.5
+  " let g:LanguageClient_selectionUI = "location-list"
+
+  let g:LanguageClient_loggingLevel = 'DEBUG'
+  let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
+  " let g:LanguageClient_trace = 'verbose' " off messages verbose
+
+  let g:LanguageClient_rootMarkers = {
+    \ 'rust': [],
+    \ }
+  "    \ 'javascript': ['project.json'],
+  "    \ 'rust': ['Cargo.toml'],
+'''
+
+[[plugins]]
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
+if = 0
+
+
 #git
 
 # VCSのdiffをsigncolumnに表示

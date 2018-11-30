@@ -773,10 +773,3 @@ if dein#tap('ref-dicts-en') "{{{
   command! -nargs=1 Wiki Ref webdict wiki <args>
   command! -nargs=1 Eng Ref webdict <args>
 endif "}}}
-
-let g:LanguageClient_serverCommands = {
-  \ 'ruby': ['solargraph', 'socket'],
-  \ }
-
-" \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-" \ 'javascript': ['javascript-typescript-stdio'],

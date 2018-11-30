@@ -685,3 +685,7 @@ on_func = ['Scall', 'scall#']
 hook_add = '''
   let g:scall_function_name = 'Scall'
 '''
+
+[[plugins]]
+repo = 'mattn/httpstatus-vim'
+on_cmd = ['HttpStatus', 'CtrlPHttpStatus']
