@@ -157,6 +157,11 @@ go = '''
 rust = '''
   setl foldmethod=syntax
   let b:format_cmd = 'RustFmt'
+
+  nmap <buffer>gd <Plug>(rust-def)
+  nmap <buffer>gs <Plug>(rust-def-split)
+  nmap <buffer>gx <Plug>(rust-def-vertical)
+  " nmap <buffer>gd <Plug>(rust-doc)
 '''
 
 help = '''

@@ -22,6 +22,7 @@ if dein#load_state(s:path)
   call dein#load_toml('~/.vim/plugins/filetypes.toml', {'lazy': 0})
   call dein#load_toml('~/.vim/plugins/normal.toml', {'lazy': 0})
   call dein#load_toml('~/.vim/plugins/text-ope.toml', {'lazy': 0})
+  call dein#load_toml('~/.vim/plugins/complete.toml', {'lazy': 1})
   call dein#load_toml('~/.vim/plugins/lazy.toml', {'lazy': 1})
 
   if filereadable(expand('~/.vim/plugins/trial.toml'))
