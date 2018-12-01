@@ -3,7 +3,7 @@ if 0 | endif
 language message C
 scriptencoding=utf-8
 " Very very high speed! ~300ms
-" set shell=/bin/sh
+set shell=/bin/sh
 
 augroup myac
   autocmd!
