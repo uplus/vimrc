@@ -682,26 +682,6 @@ if dein#tap('vim-expand-region') "{{{
   xmap gm <Plug>(expand_region_shrink)
 endif "}}}
 
-if dein#tap('vim-over') "{{{
-  " let g:over_enable_auto_nohlsearch = 1
-  let g:over_enable_cmd_window = 0
-  " let g:over_command_line_prompt = "> "
-  " let g:over_command_line_key_mappings = {}
-  " <Plug>(over-cmdline-scroll-y)     |CTRL-y| 相当
-  " <Plug>(over-cmdline-scroll-u)     |CTRL-u| 相当
-  " <Plug>(over-cmdline-scroll-f)     |CTRL-f| 相当
-  " <Plug>(over-cmdline-scroll-e)     |CTRL-e| 相当
-  " <Plug>(over-cmdline-scroll-d)     |CTRL-d| 相当
-  " <Plug>(over-cmdline-scroll-b)     |CTRL-b| 相当
-
-  nnoremap ss :OverCommandLine %s/\v<CR>
-  nnoremap sw :OverCommandLine %s/\v<<C-r><C-w>>/<CR>
-  nnoremap sW :OverCommandLine %s/\v<<C-r><C-a>>/<CR>
-  xnoremap ss :OverCommandLine s/\v<CR>
-  xnoremap sw :OverCommandLine s/\v<<C-r><C-w>>/<CR>
-  xnoremap sW :OverCommandLine s/\v<<C-r><C-a>>/<CR>
-endif "}}}
-
 if dein#tap('vim-smartword') "{{{
   nmap w  <Plug>(smartword-w)
   nmap b  <Plug>(smartword-b)

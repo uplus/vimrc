@@ -175,6 +175,33 @@ hook_add = '''
 #search and replace
 
 [[plugins]]
+repo = 'osyo-manga/vim-over'
+on_cmd = ['OverCommandLine', 'OverCommandLineNoremap']
+hook_add = '''
+    " let g:over_enable_auto_nohlsearch = 1
+    let g:over_enable_cmd_window = 0
+    " let g:over_command_line_prompt = "> "
+
+    " 再帰する
+    let g:over_command_line_key_mappings = {
+      \ '@' : { 'key': '\@', 'noremap': 1 }
+      \ }
+    " <Plug>(over-cmdline-scroll-y)     |CTRL-y| 相当
+    " <Plug>(over-cmdline-scroll-u)     |CTRL-u| 相当
+    " <Plug>(over-cmdline-scroll-f)     |CTRL-f| 相当
+    " <Plug>(over-cmdline-scroll-e)     |CTRL-e| 相当
+    " <Plug>(over-cmdline-scroll-d)     |CTRL-d| 相当
+    " <Plug>(over-cmdline-scroll-b)     |CTRL-b| 相当
+
+    nnoremap ss :OverCommandLine %s/\v<CR>
+    nnoremap sw :OverCommandLine %s/\v<<C-r><C-w>>/<CR>
+    nnoremap sW :OverCommandLine %s/\v<<C-r><C-a>>/<CR>
+    xnoremap ss :OverCommandLine s/\v<CR>
+    xnoremap sw :OverCommandLine s/\v<<C-r><C-w>>/<CR>
+    xnoremap sW :OverCommandLine s/\v<<C-r><C-a>>/<CR>
+'''
+
+[[plugins]]
 repo = 'haya14busa/vim-asterisk'
 on_map = '<Plug>(asterisk-'
 

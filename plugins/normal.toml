@@ -283,12 +283,6 @@ repo = 'osyo-manga/vim-anzu'
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
 
-[[plugins]]
-repo = 'haya14busa/incsearch-index.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-over'
-
 
 #syntaxchecker
 
