@@ -248,6 +248,12 @@ snippet Forw-
 snippet log
 	Rails.logger.debug ${0}
 
+snippet log-
+	Rails.logger.debug "-------------------- $(0)"
+
+snippet logm
+	Rails.logger.debug "-------------------- #{__method__}"$(0)
+
 snippet mylog
 	File.open('mylog', 'w') do |f|
 		f.puts ${0}

@@ -8,7 +8,7 @@ let g:deoplete#auto_complete_start_length = 2 " 2
 " let g:deoplete#enable_refresh_always = 1  " 0, Note: screen flick
 let g:deoplete#max_list = 200 " (100)
 " let g:deoplete#delimiters = ['/'] " ['/']
-let g:deoplete#auto_complete_delay = 100 " 50
+let g:deoplete#auto_complete_delay = 500 " 50
 let g:deoplete#skip_chars = ['(', ')']
 let g:deoplete#file#enable_buffer_path = 1
 
@@ -40,7 +40,7 @@ call deoplete#custom#source('_', 'converters', [
       \ 'converter_auto_delimiter',
       \ ])
 
-call deoplete#custom#source('neosnippet', 'rank', 9999)
+call deoplete#custom#source('neosnippet', 'rank', 9000)
 
 call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#source('clang', 'max_pattern_length', -1)

@@ -130,5 +130,15 @@ function! OpenPluginGithub(name) abort
   call openbrowser#open('https://github.com/' . a:name)
 endfunction
 
+function! Job(...) abort
+  if exists('*jobstart')
+    call jobstart(a:000)
+  elseif exists('*job_start')
+    call job_start(a:000)
+  else
+    " echo "job not found"
+  endif
+endfunction
+
 nnoremap <Plug>(OpenPluginGithub) :call OpenPluginGithub(expand('<cWORD>'))<cr>
 nmap gsp <Plug>(OpenPluginGithub)

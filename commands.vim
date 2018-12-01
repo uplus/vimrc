@@ -7,7 +7,7 @@ command! Pry botright sp +terminal\ pry
 command! Q qall!
 command! W w!
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
-command! FcitxOff call system('fcitx-remote -c')
+command! FcitxOff call Job('fcitx-remote', '-c')
 command! -nargs=+ Cal echo eval(<q-args>)
 command! -nargs=1 Char echo printf("%c", 0x<args>)
 command! Cdbuffer cd %:h
