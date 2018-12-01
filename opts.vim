@@ -26,13 +26,13 @@ set nohlsearch | nohlsearch "Highlight search patterns, support reloading
 "}}}
 
 " #tab {{{
-set shiftround
-set expandtab     "Tabキーでスペース挿入
-set tabstop=2     "Tab表示幅
-set softtabstop=2 "Tab押下時のカーソル移動量
-set shiftwidth=2  "インデント幅
-set smarttab      "削除とかいい感じに
-set nocopyindent  "expandtabを無視して既存行のタブで判定する
+set shiftround    " >>とかのインデントがshiftwidthの倍数になる
+set expandtab     " Tabキーでスペース挿入
+set tabstop=2     " Tab表示幅
+set softtabstop=2 " Tab押下時のカーソル移動量
+set shiftwidth=2  " インデント幅
+set smarttab      " 削除とかいい感じに
+set nocopyindent  " expandtabを無視して既存行のタブで判定する
 set nopreserveindent " ==などでインデントを変更してもタブ文字を保持
 "}}}
 
