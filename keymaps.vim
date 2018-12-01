@@ -243,9 +243,8 @@ vnoremap j gj
 vnoremap gk k
 vnoremap gj j
 
-" foldopenでこの動作が出来る
-" nnoremap <silent><expr>h foldclosed('.') != -1? "zo" : "h"
-nnoremap <silent><expr>l foldclosed('.') != -1? "zO" : "l"
+nnoremap <silent><expr>h foldclosed('.') != -1? "zO" : "h"
+nnoremap <silent><expr>l foldclosed('.') != -1? "zo" : "l"
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj

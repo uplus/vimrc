@@ -25,7 +25,7 @@ command! Tags call Tags()
 command! MoveToTab exec "normal! \<c-w>T"
 command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
-command! ReloadKeymap source ~/.vim/keymap.vim
+command! ReloadKeymap source ~/.vim/keymaps.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 command! -nargs=? Ls !ls -F <args>
