@@ -53,6 +53,45 @@ hook_add = '''
 [[plugins]]
 repo = 't9md/vim-quickhl'
 on_map = ['<Plug>(quickhl', '<Plug>(operator-quickhl']
+hook_add = '''
+  let g:quickhl_manual_enable_at_startup = 1
+  let g:quickhl_cword_enable_at_startup  = 0
+  let g:quickhl_tag_enable_at_startup    = 0
+  let g:quickhl_manual_keywords          = [] " Can use List and Dictionary
+
+  nmap gh <Plug>(quickhl-manual-this)
+  nmap gH <Plug>(quickhl-manual-this-whole-word)
+  nmap gl <Plug>(operator-quickhl-manual-this-motion)<Plug>(textobj-line-i)
+  nmap gm <Plug>(operator-quickhl-manual-this-motion)
+  xmap gh <Plug>(quickhl-manual-this)
+
+  nmap \hm <Plug>(quickhl-manual-reset)
+  xmap \hm <Plug>(quickhl-manual-reset)
+  nmap \ht <Plug>(quickhl-tag-toggle)
+  nmap \hc <Plug>(quickhl-cword-toggle)
+
+  let g:quickhl_manual_hl_priority = 100
+
+  " red purple slate blue blue green yellow orange
+  let g:quickhl_manual_colors = [
+        \ 'term=reverse ctermfg=232 ctermbg=160  guifg=#080808 guibg=#d70000',
+        \ 'term=reverse ctermfg=232 ctermbg=128  guifg=#080808 guibg=#af00d7',
+        \ 'term=reverse ctermfg=232 ctermbg=63   guifg=#080808 guibg=#5f5fff',
+        \ 'term=reverse ctermfg=232 ctermbg=33   guifg=#080808 guibg=#0087ff',
+        \ 'term=reverse ctermfg=232 ctermbg=34   guifg=#080808 guibg=#00af00',
+        \ 'term=reverse ctermfg=232 ctermbg=226  guifg=#080808 guibg=#ffff00',
+        \ 'term=reverse ctermfg=232 ctermbg=202  guifg=#080808 guibg=#ff5f00',
+        \ 'term=reverse ctermfg=0   ctermbg=207  guifg=#080808 guibg=#ff5fff',
+        \ 'term=reverse ctermfg=0   ctermbg=201  guifg=#080808 guibg=#ff00ff',
+        \ 'term=reverse ctermfg=0   ctermbg=117  guifg=#080808 guibg=#87d7ff',
+        \ 'term=reverse ctermfg=0   ctermbg=75   guifg=#080808 guibg=#5fafff',
+        \ 'term=reverse ctermfg=0   ctermbg=43   guifg=#080808 guibg=#00d7af',
+        \ 'term=reverse ctermfg=0   ctermbg=190  guifg=#080808 guibg=#d7ff00',
+        \ 'term=reverse ctermfg=0   ctermbg=69   guifg=#080808 guibg=#5f87ff',
+        \ 'term=reverse ctermfg=0   ctermbg=85   guifg=#080808 guibg=#5fffaf',
+        \ 'term=reverse ctermfg=0   ctermbg=183  guifg=#080808 guibg=#d7afff',
+        \ ]
+'''
 
 [[plugins]]
 repo = 'oblitum/rainbow'

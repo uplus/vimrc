@@ -297,31 +297,6 @@ if dein#tap('unite-quickfix') "{{{
   " au myac VimEnter * au myac BufWritePost * LocationList
 endif "}}}
 
-if dein#tap('yankround.vim') "{{{
-  nmap p <Plug>(yankround-p)
-  xmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap gp <Plug>(yankround-gp)
-  xmap gp <Plug>(yankround-gp)
-  nmap gP <Plug>(yankround-gP)
-  nmap <C-n> <Plug>(yankround-next)
-
-  nmap <expr><C-p> <SID>smart_previous()
-  function! s:smart_previous()
-    if yankround#is_active()
-      return "\<Plug>(yankround-prev)"
-    else
-      return ":\<C-p>"
-    endif
-  endfunction
-
-  let g:yankround_max_history   = 30
-  let g:yankround_dir           = '~/.vim/tmp/yankround_history'
-  let g:yankround_use_region_hl = 1
-  highlight YankRoundRegion cterm=italic
-  au myac ColorScheme * highlight YankRoundRegion cterm=italic
-endif "}}}
-
 if dein#tap('vim-easymotion') "{{{
   let g:EasyMotion_do_mapping       = 0
   let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'
@@ -362,15 +337,6 @@ if dein#tap('vim-easymotion') "{{{
   map ;b <Plug>(easymotion-b)
 
   " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
-endif "}}}
-
-if dein#tap('hl_matchit.vim') "{{{
-  let g:hl_matchit_enable_on_vim_startup = 1
-  let g:hl_matchit_hl_groupname = 'Title'
-  let g:hl_matchit_allow_ft     = 'html,vim,zsh,sh' " ruby上手くいかない
-  let g:hl_matchit_cursor_wait  = 0.10              " 更新頻度
-  let g:hl_matchit_hl_groupname = 'HlMatchit'
-  au myac ColorScheme * hi HlMatchit cterm=bold,underline
 endif "}}}
 
 if dein#tap('vim-anzu') " {{{
@@ -465,74 +431,6 @@ if dein#tap('vim-jplus') "{{{
     \ },
     \ }
   " ^\s*\\\s*\zs.*\|\s*\zs.*
-
-endif "}}}
-
-if dein#tap('vim-quickhl') "{{{
-  let g:quickhl_manual_enable_at_startup = 1
-  let g:quickhl_cword_enable_at_startup  = 0
-  let g:quickhl_tag_enable_at_startup    = 0
-  let g:quickhl_manual_keywords          = [] " Can use List and Dictionary
-
-  nmap gh <Plug>(quickhl-manual-this)
-  nmap gH <Plug>(quickhl-manual-this-whole-word)
-  nmap gl <Plug>(operator-quickhl-manual-this-motion)<Plug>(textobj-line-i)
-  nmap gm <Plug>(operator-quickhl-manual-this-motion)
-  xmap gh <Plug>(quickhl-manual-this)
-
-  nmap \hm <Plug>(quickhl-manual-reset)
-  xmap \hm <Plug>(quickhl-manual-reset)
-  nmap \ht <Plug>(quickhl-tag-toggle)
-  nmap \hc <Plug>(quickhl-cword-toggle)
-
-  let g:quickhl_manual_hl_priority = 100
-  " red
-  " purple
-  " slate blue
-  " blue
-  " green
-  " yellow
-  " orange
-  let g:quickhl_manual_colors = [
-        \ 'term=reverse ctermfg=232 ctermbg=160  guifg=#080808 guibg=#d70000',
-        \ 'term=reverse ctermfg=232 ctermbg=128  guifg=#080808 guibg=#af00d7',
-        \ 'term=reverse ctermfg=232 ctermbg=63   guifg=#080808 guibg=#5f5fff',
-        \ 'term=reverse ctermfg=232 ctermbg=33   guifg=#080808 guibg=#0087ff',
-        \ 'term=reverse ctermfg=232 ctermbg=34   guifg=#080808 guibg=#00af00',
-        \ 'term=reverse ctermfg=232 ctermbg=226  guifg=#080808 guibg=#ffff00',
-        \ 'term=reverse ctermfg=232 ctermbg=202  guifg=#080808 guibg=#ff5f00',
-        \ 'term=reverse ctermfg=0   ctermbg=207  guifg=#080808 guibg=#ff5fff',
-        \ 'term=reverse ctermfg=0   ctermbg=201  guifg=#080808 guibg=#ff00ff',
-        \ 'term=reverse ctermfg=0   ctermbg=117  guifg=#080808 guibg=#87d7ff',
-        \ 'term=reverse ctermfg=0   ctermbg=75   guifg=#080808 guibg=#5fafff',
-        \ 'term=reverse ctermfg=0   ctermbg=43   guifg=#080808 guibg=#00d7af',
-        \ 'term=reverse ctermfg=0   ctermbg=190  guifg=#080808 guibg=#d7ff00',
-        \ 'term=reverse ctermfg=0   ctermbg=69   guifg=#080808 guibg=#5f87ff',
-        \ 'term=reverse ctermfg=0   ctermbg=85   guifg=#080808 guibg=#5fffaf',
-        \ 'term=reverse ctermfg=0   ctermbg=183  guifg=#080808 guibg=#d7afff',
-        \ ]
-endif "}}}
-
-if dein#tap('vim-choosewin') "{{{
-  nmap \w <Plug>(choosewin)
-  let g:choosewin_overlay_enable          = 1
-  let g:choosewin_overlay_clear_multibyte = 1
-  let g:choosewin_overlay_font_size       = 'small'
-  let g:choosewin_blink_on_land           = 0
-  let g:choosewin_statusline_replace      = 0
-  let g:choosewin_tabline_replace         = 0
-
-  " TODO: Don't effect
-  " let g:choosewin_hook_enable = 1
-  "
-  " function! s:choosewin_clear_BadSpace(winnums) abort
-  "   hi clear BadSpace
-  "   return a:winnums;
-  " endfunction
-  "
-  " let g:choosewin_hook = {
-  "   \ 'filter_window': function('s:choosewin_clear_BadSpace'),
-  "   \ }
 endif "}}}
 
 if dein#tap('open-browser.vim') "{{{
@@ -605,12 +503,6 @@ endif "}}}
 if dein#tap('vim-fugitive') "{{{
   command! Commit Gcommit -v
   command! Fix Gcommit --amend -v
-endif "}}}
-
-if dein#tap('shaberu.vim') "{{{
-  command! -nargs=1 Say ShaberuSay <args>
-  let g:shaberu_user_define_say_command = 'jsay "%%TEXT%%"'
-  let g:shaberu_is_mute = 0
 endif "}}}
 
 if dein#tap('vim-expand-region') "{{{
