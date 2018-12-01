@@ -82,10 +82,6 @@ on_source = 'unite.vim'
 repo = 'Kocha/vim-unite-tig'
 on_source = 'unite.vim'
 
-# [[plugins]]
-# repo = 'osyo-manga/unite-airline_themes'
-# on_source = 'unite.vim'
-
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
 on_source = 'unite.vim'
@@ -126,13 +122,6 @@ repo = 'powerman/vim-plugin-AnsiEsc'
 hook_add = '''
   let g:no_cecutil_maps = 1
 '''
-
-# [[plugins]]
-# repo = 'bling/vim-airline'
-
-# [[plugins]]
-# repo = 'vim-airline/vim-airline-themes'
-# depends = 'vim-airline'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'

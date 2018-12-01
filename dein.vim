@@ -261,7 +261,7 @@ if dein#tap('unite.vim') "{{{
   nnoremap <silent>\b :<C-u>Unite -start-insert -auto-resize -buffer-name=buffer buffer<CR>
   nnoremap <silent>\f :<C-U>Unite -start-insert file<CR>
   nnoremap <silent>\F :<C-U>UniteWithBufferDir -start-insert file<CR>
-  " nnoremap <silent>\F :<C-U>Unite -start-insert file neomru/file<CR>
+  nnoremap <silent>\\f :<C-U>Unite -start-insert file neomru/file<CR>
   nnoremap <silent><Space>r :<C-U>UniteResume -no-start-insert -force-redraw<CR>
 
   " search
@@ -362,25 +362,6 @@ if dein#tap('vim-easymotion') "{{{
   map ;b <Plug>(easymotion-b)
 
   " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
-endif "}}}
-
-if dein#tap('vim-airline') "{{{
-  " https://github.com/bling/vim-airline/wiki/Screenshots
-  let g:airline_theme = 'kalisi'
-  " 分割した時のファイル名とか見やすい
-  " serene simple xtermlight kalisi badwolf light
-
-  let g:airline_powerline_fonts = 1
-  " let g:airline_left_sep = ' '
-  " let g:airline_right_sep = ' '
-  let g:airline#extensions#tabline#enabled     = 1
-  let g:airline#extensions#tabline#show_tab_nr = 1
-  let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
-  " let g:airline#extensions#tabline#left_sep      = ' '
-  " let g:airline#extensions#tabline#left_alt_sep  = ' '
-  " let g:airline#extensions#tabline#right_sep     = ' '
-  " let g:airline#extensions#tabline#right_alt_sep = ' '
-  let g:airline#extensions#tabline#fnamemod    = ':t' " name in tabline. second argument of fnamemodify
 endif "}}}
 
 if dein#tap('hl_matchit.vim') "{{{
@@ -554,12 +535,6 @@ if dein#tap('vim-choosewin') "{{{
   "   \ }
 endif "}}}
 
-if dein#tap('jedi-vim') "{{{
-  autocmd myac FileType python setlocal omnifunc=jedi#completions
-  let g:jedi#completions_enabled    = 0
-  let g:jedi#auto_vim_configuration = 0
-endif "}}}
-
 if dein#tap('open-browser.vim') "{{{
   nmap gss :<c-u>Wsearch<CR>
   " nmap gsc <Plug>(openbrowser-open)
@@ -594,30 +569,6 @@ if dein#tap('open-browser.vim') "{{{
   endfunction
 endif "}}}
 
-if dein#tap('rainbowcyclone.vim') "{{{
-  let g:rainwbow_cyclone_colors = [
-        \ 'term=reverse ctermfg=232 ctermbg=196 gui=bold guifg=Black guibg=Red',
-        \ 'term=reverse ctermfg=232 ctermbg=129 gui=bold guifg=Black guibg=Purple',
-        \ 'term=reverse ctermfg=232 ctermbg=63  gui=bold guifg=Black guibg=SlateBlue',
-        \ 'term=reverse ctermfg=232 ctermbg=27  gui=bold guifg=Black guibg=Blue',
-        \ 'term=reverse ctermfg=232 ctermbg=40  gui=bold guifg=Black guibg=Green',
-        \ 'term=reverse ctermfg=232 ctermbg=226 gui=bold guifg=Black guibg=Yellow',
-        \ 'term=reverse ctermfg=232 ctermbg=202 gui=bold guifg=Black guibg=Orange',
-        \ ]
-
-  nmap co/ <Plug>(rc_search_forward)
-  nmap co? <Plug>(rc_search_backward)
-  nmap co* <Plug>(rc_search_forward_with_cursor)
-  nmap co# <Plug>(rc_search_backward_with_cursor)
-  nmap con <Plug>(rc_search_forward_with_last_pattern)
-  nmap coN <Plug>(rc_search_backward_with_last_pattern)
-
-  " nmap c/ <Plug>(rc_highlight)
-  " nmap c* <Plug>(rc_highlight_with_cursor)
-  " nmap cn <Plug>(rc_highlight_with_last_pattern)
-  " nmap * <Plug>(rc_search_forward_with_cursor_complete)
-endif "}}}
-
 if dein#tap('vim-hopping') "{{{
   let g:hopping#prompt     = 'Input:> '
   nmap \H <Plug>(hopping-start)
@@ -635,8 +586,20 @@ if dein#tap('CamelCaseMotion') "{{{
   map <silent> <space>e <plug>CamelCaseMotion_e
 endif "}}}
 
-if dein#tap('vim-gista') "{{{
-  let g:gista#client#default_username = 'uplus'
+if dein#tap('vim-smartword') "{{{
+  nmap w  <Plug>(smartword-w)
+  nmap b  <Plug>(smartword-b)
+  nmap e  <Plug>(smartword-e)
+  nmap ge  <Plug>(smartword-ge)
+  vmap w  <Plug>(smartword-w)
+  vmap b  <Plug>(smartword-b)
+  vmap e  <Plug>(smartword-e)
+  vmap ge  <Plug>(smartword-ge)
+
+  " word moveをCamelCase単位にする
+  map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
+  map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
+  map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
 endif "}}}
 
 if dein#tap('vim-fugitive') "{{{
@@ -653,22 +616,6 @@ endif "}}}
 if dein#tap('vim-expand-region') "{{{
   xmap v <Plug>(expand_region_expand)
   xmap gm <Plug>(expand_region_shrink)
-endif "}}}
-
-if dein#tap('vim-smartword') "{{{
-  nmap w  <Plug>(smartword-w)
-  nmap b  <Plug>(smartword-b)
-  nmap e  <Plug>(smartword-e)
-  nmap ge  <Plug>(smartword-ge)
-  vmap w  <Plug>(smartword-w)
-  vmap b  <Plug>(smartword-b)
-  vmap e  <Plug>(smartword-e)
-  vmap ge  <Plug>(smartword-ge)
-
-  " word moveをCamelCase単位にする
-  map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
-  map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
-  map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
 endif "}}}
 
 if dein#tap('webapi-vim') "{{{
