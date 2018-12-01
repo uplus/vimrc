@@ -32,10 +32,6 @@ if dein#load_state(s:path)
   " after/ftplugin/ 扱い 要recache
   call dein#load_toml('~/.vim/ftplugin.toml', {'lazy': 0})
 
-  if dein#tap('deoplete.nvim') && has('nvim')
-    call dein#disable('neocomplete.vim')
-  endif
-
   if filereadable(expand('~/.vim/disable-plugin-list'))
      for plugin in readfile(expand('~/.vim/disable-plugin-list'))
        if plugin =~# '^#'
@@ -49,7 +45,7 @@ if dein#load_state(s:path)
   call dein#end()
   call dein#save_state()
 
-  if dein#check_install()
+  if !has('vim_starting') && dein#check_install()
     call dein#install()
   endif
 endif
@@ -213,29 +209,6 @@ if dein#tap('caw.vim') " {{{
   endif
 endif
 "}}}
-
-if dein#tap('vimshell.vim') "{{{
-  nnoremap <space>sh :VimShellTab<CR>
-  " Initialize execute file list.
-  let g:vimshell_execute_file_list = {}
-
-  if !exists('g:vimshell_interactive_interpreter_commands')
-      let g:vimshell_interactive_interpreter_commands = {}
-  endif
-  let g:vimshell_interactive_interpreter_commands.python = 'ipython'
-  let g:vimshell_interactive_interpreter_commands.ruby   = 'pry'
-endif "}}}
-
-if dein#tap('neocomplete.vim') "{{{
-  let g:loaded_deoplete = 1
-  let g:neocomplete#enable_at_startup = 1
-  let g:neopairs#enable = 1
-
-  inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
-  " inoremap <expr><space> pumvisible()? "\<c-y>" : "\<space>"
-  " inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
-  " inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
-endif "}}}
 
 if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#enable_snipmate_compatibility = 0

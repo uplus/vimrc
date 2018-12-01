@@ -36,6 +36,16 @@ hook_source = '''
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 if = "!has('nvim') && has('lua')"
+hook_add = '''
+  let g:loaded_deoplete = 1
+  let g:neocomplete#enable_at_startup = 1
+  let g:neopairs#enable = 1
+
+  inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
+  " inoremap <expr><space> pumvisible()? "\<c-y>" : "\<space>"
+  " inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
+  " inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
+'''
 hook_source = 'source ~/.vim/rc/complete.rc.vim'
 
 
