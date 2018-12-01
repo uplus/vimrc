@@ -108,8 +108,7 @@ augroup myac
   "}}}
 
   function! s:stdin_config() "{{{
-    nnoremap <buffer>q :quit<CR>
-    setl buftype=nofile
+    call SetAsScratch()
     setl nofoldenable
     setl foldcolumn=0
     goto

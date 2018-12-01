@@ -29,6 +29,7 @@ command! ReloadKeymap source ~/.vim/keymaps.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 command! -nargs=? Ls !ls -F <args>
+command! Tmp new +call\ SetAsScratch()
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.

@@ -140,5 +140,13 @@ function! Job(...) abort
   endif
 endfunction
 
+function SetAsScratch()
+  nnoremap <buffer>q :quit<CR>
+  setl buftype=nofile
+  setl bufhidden=hide
+  setl noswapfile
+endfunction
+
+
 nnoremap <Plug>(OpenPluginGithub) :call OpenPluginGithub(expand('<cWORD>'))<cr>
 nmap gsp <Plug>(OpenPluginGithub)
