@@ -45,7 +45,7 @@ if dein#load_state(s:path)
   call dein#end()
   call dein#save_state()
 
-  if !has('vim_starting') && dein#check_install()
+  if dein#check_install()
     call dein#install()
   endif
 endif

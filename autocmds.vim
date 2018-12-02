@@ -52,6 +52,7 @@ augroup myac
   endif "}}}
 
   " #badspace {{{
+  " TODO: replace with wstrip.vim
   " trailがあるとハイライトできない あたりまえか
   " filetypeコマンドの後じゃないと反映されない
   let g:badspace_enable = 1

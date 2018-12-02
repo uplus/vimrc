@@ -729,3 +729,17 @@ hook_add = '''
 [[plugins]]
 repo = 'mattn/httpstatus-vim'
 on_cmd = ['HttpStatus', 'CtrlPHttpStatus']
+
+[[plugins]]
+repo = 'tweekmonster/helpful.vim'
+on_cmd = ['HelpfulVersion']
+on_ft = ['vim', 'help']
+
+[[plugins]]
+repo = 'tweekmonster/dyslexic.vim'
+on_cmd = ['DyslexicTracking', 'DyslexicOff']
+on_map = ['<Plug>(Dyslexic)']
+hook_add = '''
+  let g:dyslexic_map = ''
+  au myac ColorScheme hi Dyslexic ctermfg=0 ctermbg=6 guifg=#000000 guibg=#008f8f
+'''

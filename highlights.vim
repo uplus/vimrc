@@ -32,7 +32,7 @@ function! s:set_colors() "{{{
     return
   endif
 
-  if -1 != index(['', 'unite', 'quickrun', 'qf'], &filetype)
+  if -1 != index(['', 'unite', 'denite', 'quickrun', 'qf'], &filetype)
     return
   endif
 
@@ -72,10 +72,6 @@ function! s:set_highlights() "{{{
   hi link reviewImage PreProc
 
   colorscheme vimfiler_color
-
-  if !has('vim_starting') && exists('g:airline_theme')
-    execute 'AirlineTheme' g:airline_theme
-  endif
 
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
   hi SignifySignChange ctermfg=226 guifg=#fbff00

@@ -11,7 +11,18 @@ build = 'make'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
+
+[[plugins]]
+repo = 'raghur/fruzzy'
+on_source = ['denite.nvim']
+hook_post_update = 'call fruzzy#install()'
+hook_source = '''
+  let g:fruzzy#usenative=1
+  let g:fruzzy#sortonempty = 0
+'''
+
 
 #unite
 
