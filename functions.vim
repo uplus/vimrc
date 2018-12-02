@@ -141,7 +141,7 @@ function! Job(...) abort
 endfunction
 
 function SetAsScratch()
-  nnoremap <buffer>q :quit<CR>
+  nnoremap <silent><buffer>q :quit<CR>
   setl buftype=nofile
   setl bufhidden=hide
   setl noswapfile

@@ -2,7 +2,6 @@
 " NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
 
 " #untie
-" NeoBundle 'osyo-manga/unite-boost-online-doc',{ 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundle 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
@@ -11,10 +10,6 @@
 " #textobj
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
-
-" #misc
-" NeoBundleLazy 'supermomonga/shaberu.vim',  { 'autoload' : {
-      " \   'commands' : [ 'ShaberuSay', 'ShaberuMuteOn', 'ShaberuMuteOff', 'ShaberuMuteToggle' ] }}
 
 " #colorscheme
 " NeoBundle 'altercation/vim-colors-solarized'

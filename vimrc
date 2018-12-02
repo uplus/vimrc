@@ -24,7 +24,7 @@ if exists('v:null')
   let g:type_null = type(v:null)
 endif
 
-function! s:source(path) "{{{
+function! s:source(path) abort "{{{
   let fpath = expand('~/.vim/' . a:path . '.vim')
   if filereadable(fpath)
     execute 'source' fnameescape(fpath)
@@ -71,7 +71,7 @@ if !exists('g:noplugin')
   call s:source('dein')
 endif
 
-call s:source('opts')
+call s:source('options')
 call s:source('functions')
 call s:source('keymaps')
 call s:source('highlights')
@@ -127,6 +127,5 @@ augroup myac
   endfunction "}}}
 augroup END
 "}}}
-
 
 call s:source('after')
