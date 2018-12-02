@@ -27,6 +27,7 @@ CAlterCommand ftd[etect] filetype detect
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive
 CAlterCommand uni[te] Unite
+CAlterCommand den[ite] Denite
 CAlterCommand vgr[ep] Unite vimgrep
 CAlterCommand ug[rep] Unite -auto-resize grep:%::
 CAlterCommand qr QuickRun
