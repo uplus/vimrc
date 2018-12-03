@@ -144,11 +144,12 @@ hook_add = '''
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
+on_event = 'InsertEnter'
 hook_add = '''
   let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
 
-  let g:LanguageClient_waitOutputTimeout = 20
+  let g:LanguageClient_waitOutputTimeout = 200
   let g:LanguageClient_changeThrottle = 0.5
   " let g:LanguageClient_selectionUI = "location-list"
 
