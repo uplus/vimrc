@@ -23,6 +23,7 @@ CAlterCommand addr[epo] AddRepo
 CAlterCommand rms[wap] RmSwap
 CAlterCommand pry Pry
 CAlterCommand ftd[etect] filetype detect
+CAlterCommand tmp[buffer] TmpBuffer
 
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive

@@ -340,6 +340,7 @@ repo = 'rhysd/clever-f.vim'
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
   let g:loaded_matchparen = 1
+  au myac ColorScheme * hi ParenMatch guibg=#5353e0
 '''
 
 [[plugins]]
