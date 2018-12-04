@@ -72,17 +72,17 @@ let g:LanguageClient_serverCommands = {
   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
   \ 'ruby': ['solargraph', 'stdio'],
   \ }
+  "\ 'ruby': ['orbaclerun', 'file-server'],
 
-" \ 'ruby': ['solargraph', 'socket'],
-" \ 'ruby': ['tcp://localhost:7658'],
+  " \ 'ruby': ['tcp://localhost:7658'],
 
-" \ 'ruby': ['solargraph', 'socket'],
-" \ 'ruby': ['language_server-ruby'],
-" \ 'ruby': ['orbaclerun', 'file-server'],
-" \ 'rust': ['rls'],
-" \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-" \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-" \ 'javascript': ['javascript-typescript-stdio'],
+  " \ 'ruby': ['solargraph', 'socket'],
+  " \ 'ruby': ['language_server-ruby'],
+  " \ 'ruby': ['orbaclerun', 'file-server'],
+  " \ 'rust': ['rls'],
+  " \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+  " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+  " \ 'javascript': ['javascript-typescript-stdio'],
 
 " cannot call some omni functions
 let g:deoplete#omni#input_patterns = {

@@ -53,9 +53,10 @@ hook_source = 'source ~/.vim/rc/complete.rc.vim'
 ## sources
 
 [[plugins]]
-repo = 'ujihisa/neco-look'
-on_i = 1
 if = 0
+repo = 'ujihisa/neco-look'
+on_event = 'InsertEnter'
+
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
@@ -155,11 +156,33 @@ hook_add = '''
 
   let g:LanguageClient_loggingLevel = 'DEBUG'
   let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
-  " let g:LanguageClient_trace = 'verbose' " off messages verbose
+  let g:LanguageClient_trace = 'verbose' " off messages verbose
 
   let g:LanguageClient_rootMarkers = {
     \ 'rust': [],
     \ }
   "    \ 'javascript': ['project.json'],
   "    \ 'rust': ['Cargo.toml'],
+'''
+
+[[plugins]]
+if = 0
+repo = 'tbodt/deoplete-tabnine'
+on_event = 'InsertEnter'
+build = './install.sh'
+
+
+[[plugins]]
+if = 0
+repo = 'Shougo/deoplete-lsp'
+hook_source = '''
+  " https://github.com/neovim/neovim/pull/6856
+  call lsp#server#add('python', 'pyls')
+  call lsp#server#add('rust', ['rustup', 'run', 'stable', 'rls'])
+  " For go-langserver
+  call lsp#server#add('go', [expand('$GOPATH/bin/go-langserver'), '-format-tool', 'gofmt', '-lint-tool', 'golint', '-gocodecompletion'])
+
+  " For bingo
+  " https://github.com/saibing/bingo
+  call lsp#server#add('go', ['bingo', '--mode', 'stdio', '--logfile', '/tmp/lspserver.log', '--trace', '--pprof', ':6060'])
 '''
