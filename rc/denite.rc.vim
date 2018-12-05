@@ -56,7 +56,7 @@ nnoremap <silent>;u <Nop>
 if executable('rg') " ripgrep
   " https://github.com/BurntSushi/ripgrep
   call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+  call denite#custom#var('grep', 'command', ['rg', '--threads', '1', '--smart-case'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#var('grep', 'separator', ['--'])
@@ -92,8 +92,8 @@ call denite#custom#var('menu', 'menus', s:menus)
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
       \ [ '.git/', '.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
 
-call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
-call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
+" call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
+" call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
 
 
 call denite#custom#map('insert', "'", '<denite:move_to_next_line>', 'noremap')
