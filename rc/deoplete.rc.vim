@@ -32,13 +32,13 @@ let g:deoplete#ignore_sources = {'_': ['tag']}
 " call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
 " call deoplete#custom#source('buffer', 'mark', '*')
 
-call deoplete#custom#source('_', 'converters', [
-      \ 'converter_remove_paren',
-      \ 'converter_remove_overlap',
-      \ 'converter_truncate_abbr',
-      \ 'converter_truncate_menu',
-      \ 'converter_auto_delimiter',
-      \ ])
+" call deoplete#custom#source('_', 'converters', [
+"      \ 'converter_remove_paren',
+"      \ 'converter_remove_overlap',
+"      \ 'converter_truncate_abbr',
+"      \ 'converter_truncate_menu',
+"      \ 'converter_auto_delimiter',
+"      \ ])
 
 call deoplete#custom#source('neosnippet', 'rank', 9000)
 
