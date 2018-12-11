@@ -69,9 +69,9 @@ endif
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
 " call denite#custom#source('file', 'matchers', ['matcher/fruzzy'])
 " call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])
-call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/project_files'])
+" call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/project_files'])
 call denite#custom#source('file/old', 'converters', ['converter/relative_word'])
-call denite#custom#source('buffer', 'matchers', ['matcher/fuzzy', 'matcher/ignore_current_buffer'])
+" call denite#custom#source('buffer', 'matchers', ['matcher/fuzzy', 'matcher/ignore_current_buffer'])
 
 " call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 " call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
