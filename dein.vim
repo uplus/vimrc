@@ -415,11 +415,11 @@ if dein#tap('vim-jplus') "{{{
     \ ',' : {'delimiter_format' : '%d '}
     \}
 
-  let g:jplus#config = {
-    \ 'dockerfile': {
-    \   'left_matchstr_pattern': '.*\ze\s\+\\\s*$',
-    \ },
-    \ }
+  " let g:jplus#config = {
+  "  \ 'dockerfile': {
+  "  \   'left_matchstr_pattern': '.*\ze\s\+\\\s*$',
+  "  \ },
+  "  \ }
   " ^\s*\\\s*\zs.*\|\s*\zs.*
 endif "}}}
 
