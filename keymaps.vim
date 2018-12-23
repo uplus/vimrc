@@ -243,8 +243,8 @@ vnoremap j gj
 vnoremap gk k
 vnoremap gj j
 
-nnoremap <silent><expr>h foldclosed('.') != -1? "zO" : "h"
-nnoremap <silent><expr>l foldclosed('.') != -1? "zo" : "l"
+nnoremap <silent><expr>h foldclosed('.') != -1? "zo" : "h"
+nnoremap <silent><expr>l foldclosed('.') != -1? "zO" : "l"
 
 inoremap <UP> <C-O>gk
 inoremap <DOWN> <C-O>gj
