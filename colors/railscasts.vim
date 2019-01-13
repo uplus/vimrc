@@ -26,7 +26,7 @@ hi Pmenu              ctermfg=214 ctermbg=236 guifg=#ffaf00 guibg=#303030
 hi PmenuSel           ctermfg=235 ctermbg=214 guifg=#262626 guibg=#ffaf00
 hi StatusLine         ctermfg=255 ctermbg=NONE cterm=NONE guifg=#eeeeee guibg=NONE gui=NONE
 hi WildMenu           ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
-hi Normal             ctermbg=NONE guibg=#1b282b
+hi Normal             ctermbg=NONE guibg=#202020
 " hi Folded             ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
 " hi Folded             ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
 hi Folded             ctermfg=139 ctermbg=NONE cterm=NONE guifg=#aaccff guibg=NONE gui=NONE
@@ -45,12 +45,12 @@ hi rubyComment             ctermfg=247 guifg=#afafdf
 hi! link rubyData rubyComment
 hi rubyTodo                ctermfg=16  ctermbg=220 guifg=#000000 guibg=#ffd700
 hi rubyDataDirective       ctermfg=111 guifg=#87afff
-hi rubyError               ctermfg=255 ctermbg=161 guifg=#eeeeee guibg=#d7005f
+hi rubyError               ctermfg=255 ctermbg=161 guifg=#eeeeee guibg=#e7005f
 hi rubyFunction            ctermfg=226 guifg=#ffff00
 hi rubyDefine              ctermfg=208 guifg=#ff8700
 hi rubyClass               ctermfg=198 guifg=#ff0087
-hi rubyConstant            ctermfg=161 guifg=#d7005f
-hi rubyPreDefinedConstant  ctermfg=161 guifg=#d7005f
+hi rubyConstant            ctermfg=161 guifg=#e7005f
+hi link rubyPreDefinedConstant rubyConstant
 hi rubyInstanceVariable    ctermfg=75 guifg=#5fafff
 hi rubyClassVariable       ctermfg=141 guifg=#af87ff
 hi rubyAttribute           ctermfg=172 guifg=#d78700
