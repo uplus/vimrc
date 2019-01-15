@@ -108,6 +108,7 @@ fstab = '''
 
 gitconfig = '''
   setl noexpandtab
+  setl iskeyword+=_
 '''
 
 gitrebase = '''
