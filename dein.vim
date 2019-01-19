@@ -32,6 +32,7 @@ if dein#load_state(s:path)
   " after/ftplugin/ 扱い 要recache
   call dein#load_toml('~/.vim/ftplugin.toml', {'lazy': 0})
 
+  " for debug
   if filereadable(expand('~/.vim/disable-plugin-list'))
      for plugin in readfile(expand('~/.vim/disable-plugin-list'))
        if plugin =~# '^#'

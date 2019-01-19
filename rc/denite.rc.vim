@@ -6,7 +6,7 @@ nnoremap <silent>\b :<c-u>Denite buffer<cr>
 nnoremap <silent>\f :<c-u>Denite file/rec<cr>
 nnoremap <silent>\F :<c-u>DeniteBufferDir file/rec<cr>
 nnoremap <silent>\\f :<c-u>Denite file_mru<cr>
-nnoremap <silent><space>r :<c-u>Denite -resume<cr>
+nnoremap <silent><space>r :<c-u>Denite -resume -mode=insert<cr>
 
 nnoremap <silent>s/ :<c-u>Denite line:all<cr>
 " nnoremap <silent>s? :<c-u>Denite -auto-resize -no-quit vg<cr>
