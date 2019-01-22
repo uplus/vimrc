@@ -13,6 +13,7 @@ nnoremap <silent>s/ :<c-u>Denite line:all<cr>
 nnoremap <silent>s* :<c-u>DeniteCursorWord line:forward:wrap<cr>
 nnoremap <silent>s# :<c-u>DeniteCursorWord line:backward:wrap<cr>
 nnoremap <silent>sg :<c-u>Denite grep<cr>
+nnoremap <silent>g* :<c-u>DeniteCursorWord grep<cr>
 
 nnoremap <silent>;r :<c-u>Denite register neoyank<cr>
 xnoremap <silent>;r :<c-u>Denite register neoyank -default-action=replace<cr>
@@ -96,17 +97,22 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 " call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
 
 
-call denite#custom#map('insert', "'", '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('normal', 'r', '<denite:do_action:quickfix>', 'noremap')
 " call denite#custom#map('insert', ';', 'vimrc#sticky_func()', 'expr')
 " call denite#custom#map('insert', '<c-w>', '<denite:move_up_path>', 'noremap')
 call denite#custom#map('insert', '<bs>',  '<denite:smart_delete_char_before_caret>', 'noremap')
 call denite#custom#map('insert', '<c-h>', '<denite:smart_delete_char_before_caret>', 'noremap')
+
 call denite#custom#map('insert', '<c-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('normal', '<c-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('normal', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
 
 call denite#custom#map('insert', '<esc>', '<denite:leave_mode>', 'noremap')
+call denite#custom#map('normal', '<esc>', '<denite:leave_mode>', 'noremap')
 call denite#custom#map('insert', '<c-j>', '<denite:do_action:default>', 'noremap')
 
+" Action mappings
+call denite#custom#map('normal', 't', '<denite:do_action:tabopen>', 'noremap')
 call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
 call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
+call denite#custom#map('normal', 'r', '<denite:do_action:quickfix>', 'noremap')
