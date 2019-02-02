@@ -28,19 +28,18 @@ let g:ale_sign_info = '--'
 let g:ale_echo_cursor = 0
 let g:ale_set_highlights = 0
 
-let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_set_loclist = !g:ale_set_quickfix
 let g:ale_open_list = 1
-
 let g:ale_keep_list_window_open = 1
 let g:ale_list_window_size = 5
 
 " rubocopはbundleを使うようにする
-let b:ale_ruby_rubocop_executable = 'bundle'
+" let b:ale_ruby_rubocop_executable = 'bundle'
 
 let g:ale_linters = {
   \ 'markdown': [],
-  \ 'ruby': ['ruby', 'rubocop'],
+  \ 'ruby': ['rubocop'],
   \ 'c': ['clang'],
   \ 'rust': ['rustc', 'rustfmt'],
   \ }
@@ -52,12 +51,14 @@ let g:ale_linter_aliases = {
 let g:ale_fixers = {
   \   'vim': ['vint'],
   \   'javascript': ['eslint'],
+  \   'ruby': ['rubocop'],
   \ }
 
 let g:ale_pattern_options = {
   \ '\.min\.js$': { 'ale_enabled': 0 },
   \ '\.toml$': { 'ale_enabled': 0 },
   \ '.gem/ruby/': { 'ale_enabled': 0 },
+  \ 'src/gems/': { 'ale_enabled': 0 },
   \ }
 
 " This option prevents ALE autocmd commands from being run for particular

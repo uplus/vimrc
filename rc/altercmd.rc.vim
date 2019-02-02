@@ -39,6 +39,7 @@ CAlterCommand clear Clear
 CAlterCommand ins[tall] Install
 CAlterCommand rec[ache] Recache
 CAlterCommand me[s] mes
+CAlterCommand fix ALEFix
 
 if has('nvim')
   CAlterCommand www w suda://%
