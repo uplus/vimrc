@@ -150,3 +150,8 @@ endfunction
 
 nnoremap <Plug>(OpenPluginGithub) :call OpenPluginGithub(expand('<cWORD>'))<cr>
 nmap gsp <Plug>(OpenPluginGithub)
+
+function Debug(data)
+  let g:debug_data = a:data
+  PP! a:data
+endfunction

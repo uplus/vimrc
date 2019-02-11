@@ -96,11 +96,11 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 " call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
 " call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
 
-
 " call denite#custom#map('insert', ';', 'vimrc#sticky_func()', 'expr')
 " call denite#custom#map('insert', '<c-w>', '<denite:move_up_path>', 'noremap')
 call denite#custom#map('insert', '<bs>',  '<denite:smart_delete_char_before_caret>', 'noremap')
 call denite#custom#map('insert', '<c-h>', '<denite:smart_delete_char_before_caret>', 'noremap')
+call denite#custom#map('insert', '<c-a>', '<denite:move_caret_to_head>', 'noremap')
 
 call denite#custom#map('insert', '<c-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('normal', '<c-n>', '<denite:move_to_next_line>', 'noremap')
@@ -115,4 +115,15 @@ call denite#custom#map('insert', '<c-j>', '<denite:do_action:default>', 'noremap
 call denite#custom#map('normal', 't', '<denite:do_action:tabopen>', 'noremap')
 call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
 call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('normal', 'r', '<denite:do_action:quickfix>', 'noremap')
+call denite#custom#map('normal', 'r', '<denite:do_action:qfreplace>', 'noremap')
+call denite#custom#map('normal', 'R', '<denite:multiple_mappings:denite:toggle_select_all,denite:do_action:qfreplace>', 'noremap')
+
+" Custom action
+call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })
+call denite#custom#action('file', 'qfreplace', { context ->  s:action_qfreplace(context)})
+
+function s:action_qfreplace(context)
+  call denite#do_action(a:context, 'quickfix', a:context['targets'])
+  Qfreplace
+  cclose
+endfunction
