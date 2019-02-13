@@ -377,7 +377,8 @@ repo = 'haya14busa/incsearch-index.vim'
 #syntaxchecker
 
 [[plugins]]
-repo = 'w0rp/ale'
+# repo = 'w0rp/ale'
+repo = 'uplus/ale'
 hook_add = 'source ~/.vim/rc/ale.rc.vim'
 
 [[plugins]]

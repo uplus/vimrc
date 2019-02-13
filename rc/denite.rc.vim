@@ -122,7 +122,7 @@ call denite#custom#map('normal', 'R', '<denite:multiple_mappings:denite:toggle_s
 call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })
 call denite#custom#action('file', 'qfreplace', { context ->  s:action_qfreplace(context)})
 
-function s:action_qfreplace(context)
+function! s:action_qfreplace(context)
   call denite#do_action(a:context, 'quickfix', a:context['targets'])
   Qfreplace
   cclose
