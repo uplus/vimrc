@@ -211,6 +211,8 @@ json = '''
 markdown = '''
   SetTab 2
   setl wrap
+  setl foldlevel=0
+  setl foldlevelstart=0
 '''
 
 neosnippet = '''

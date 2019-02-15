@@ -1,3 +1,5 @@
+# ファイルタイプを追加する類のプラグイン
+
 [[plugins]]
 repo = 'gutenye/json5.vim'
 
