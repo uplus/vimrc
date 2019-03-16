@@ -56,7 +56,7 @@ nnoremap <silent>;u <Nop>
 
 if executable('rg') " ripgrep
   " https://github.com/BurntSushi/ripgrep
-  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg', '--threads', '1', '--smart-case'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'final_opts', [])
@@ -70,6 +70,10 @@ endif
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
 " call denite#custom#source('file', 'matchers', ['matcher/fruzzy'])
 " call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])
+" call denite#custom#source('file/rec', 'matchers', ['matcher/substring'])
+" call denite#custom#source('file', 'matchers', ['matcher/regexp'])
+" call denite#custom#source('file/rec', 'matchers', ['matcher/regexp'])
+call denite#custom#source('file/rec', 'matchers', ['matcher/regexp', 'matcher/hide_hidden_files'])
 " call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/project_files'])
 call denite#custom#source('file/old', 'converters', ['converter/relative_word'])
 " call denite#custom#source('buffer', 'matchers', ['matcher/fuzzy', 'matcher/ignore_current_buffer'])
