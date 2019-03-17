@@ -148,11 +148,10 @@ set whichwrap=b,s,[,],<,>,h,l
 set iskeyword+=$,@-@
 
 " #wild menu
-
 if exists('+pumblend')
   set pumblend=20
   set wildoptions=pum,tagfile
-  set wildmode=full:longest
+  set wildmode=full:longest,full
 else
   set wildoptions=tagfile " Can supplement a tag in a command-line.
   " 補完候補を全て表示 もう一度<Tab>で巡回
