@@ -148,11 +148,18 @@ set whichwrap=b,s,[,],<,>,h,l
 set iskeyword+=$,@-@
 
 " #wild menu
-set wildoptions=tagfile " Can supplement a tag in a command-line.
-" 補完候補を全て表示 もう一度<Tab>で巡回
-set wildmenu
-set wildmode=list:longest,full
-" set wildmode=longest:full,full
+
+if exists('+pumblend')
+  set pumblend=20
+  set wildoptions=pum,tagfile
+  set wildmode=full:longest
+else
+  set wildoptions=tagfile " Can supplement a tag in a command-line.
+  " 補完候補を全て表示 もう一度<Tab>で巡回
+  set wildmenu
+  set wildmode=list:longest,full
+  " set wildmode=longest:full,full
+endif
 
 set fillchars=diff:-,vert:│
 set list
