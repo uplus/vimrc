@@ -86,15 +86,25 @@ function! vimrc#operator_space_fold(motion_wise) abort "{{{
   '<,'>fold
 endfunction "}}}
 
+function! vimrc#terminal(...) abort
+  if empty(a:000)
+    let l:cmd = $SHELL
+  else
+    let l:cmd = $SHELL . ' -ic ' . join(a:000, ' ')
+  endif
+
+  echo l:cmd
+  execute 'botright split +terminal\' l:cmd
+  silent setl ft= nobuflisted bufhidden
+  silent nnoremap <buffer>q <c-w>c
+  startinsert
+endfunction
 
 function! vimrc#working_terminal() abort "{{{
   if !bufexists(get(g:, 'vimrc#working_terminal_nr', -1))
-    botright split +Terminal
+    call vimrc#terminal()
     let g:vimrc#working_terminal_nr = bufnr('%')
-    silent setl ft= nobuflisted bufhidden
-    silent nnoremap <buffer>q <c-w>c
     au myac TermClose <buffer> unlet g:vimrc#working_terminal_nr
-    startinsert
   else
     exec 'botright split' bufname(g:vimrc#working_terminal_nr)
   endif
