@@ -92,8 +92,8 @@ function! vimrc#terminal(...) abort
   else
     let l:cmd = $SHELL . ' -ic ' . join(a:000, ' ')
   endif
+  let l:cmd = substitute(l:cmd, ' ', '\\ ', 'g')
 
-  echo l:cmd
   execute 'botright split +terminal\' l:cmd
   silent setl ft= nobuflisted bufhidden
   silent nnoremap <buffer>q <c-w>c
