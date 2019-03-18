@@ -264,6 +264,12 @@ cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-D> <Del>
 
+" swap: upは現在の入力を元に履歴を辿る
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+cnoremap <up> <c-p>
+cnoremap <down> <c-n>
+
 " noremap! is insert+command
 noremap! <C-B> <Left>
 noremap! <C-F> <Right>
