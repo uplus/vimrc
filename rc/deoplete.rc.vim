@@ -50,7 +50,7 @@ call deoplete#custom#source('clang', 'max_pattern_length', -1)
 call deoplete#custom#source('look', 'min_pattern_length', 4)
 call deoplete#custom#source('look', 'rank', 100)
 
-call deoplete#custom#source('emoji', 'filetypes', '')
+call deoplete#custom#source('emoji', 'filetypes', ['markdown', 'text'])
 call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
 
