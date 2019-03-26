@@ -131,3 +131,19 @@ function! s:action_qfreplace(context)
   Qfreplace
   cclose
 endfunction
+
+let s:denite_win_width_percent = 0.8
+let s:denite_win_width = &columns * s:denite_win_width_percent
+let s:denite_win_col_pos = (&columns - s:denite_win_width) / 2
+let s:denite_win_height_percent = 0.6
+let s:denite_win_height = &lines * s:denite_win_height_percent
+let s:denite_win_row_pos = (&lines - s:denite_win_height) / 2
+
+" Change denite default options
+call denite#custom#option('default', {
+    \ 'split': 'floating',
+    \ 'winwidth': s:denite_win_width,
+    \ 'wincol': s:denite_win_col_pos,
+    \ 'winheight': s:denite_win_height,
+    \ 'winrow': s:denite_win_row_pos,
+    \ })
