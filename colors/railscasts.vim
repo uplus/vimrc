@@ -36,6 +36,7 @@ hi SignColumn         ctermfg=244 guifg=#808080 guibg=#1c1c1c
 hi CursorLine         ctermbg=238 cterm=NONE guibg=#343434 gui=NONE
 hi CursorLineNr       ctermfg=196 guifg=#ff0000
 hi Visual             ctermfg=219 ctermbg=196 cterm=NONE guifg=#ffafff guibg=#343434 gui=NONE
+hi NormalFloat        ctermfg=214 ctermbg=236 cterm=NONE guifg=#ffaf00 guibg=#001010 gui=NONE
 
 
 hi rubySharpBang           ctermfg=103 guifg=#8787af

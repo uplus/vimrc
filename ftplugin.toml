@@ -239,6 +239,13 @@ python = '''
   endif
 '''
 
+qf = '''
+  setl nobuflisted
+  setl nofoldenable
+  setl foldcolumn=0
+  setl signcolumn=no
+'''
+
 qfreplace = '''
   setl nofoldenable
   setl nobuflisted
