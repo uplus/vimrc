@@ -3,8 +3,14 @@ if exists(':CAlterCommand') != 2
   finish
 endif
 
+CAlterCommand ins[tall] Install
+CAlterCommand rec[ache] Recache
+
 CAlterCommand ww w!
 CAlterCommand qq q!
+CAlterCommand me[s] mes
+
+CAlterCommand fix ALEFix
 CAlterCommand movetotab MoveToTab
 CAlterCommand maps Maps
 CAlterCommand tig Tig
@@ -35,12 +41,6 @@ CAlterCommand ug[rep] Unite -auto-resize grep:%::
 CAlterCommand qr QuickRun
 CAlterCommand log Log
 CAlterCommand colortoggle ColorToggle
-
-CAlterCommand clear Clear
-CAlterCommand ins[tall] Install
-CAlterCommand rec[ache] Recache
-CAlterCommand me[s] mes
-CAlterCommand fix ALEFix
 
 if has('nvim')
   CAlterCommand www w suda://%

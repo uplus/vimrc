@@ -17,7 +17,6 @@ command! RunInTerm let g:quickrun_config._.runner = 'terminal'
 
 command! Recache call dein#recache_runtimepath() | echo 'Recached!'
 command! Install call dein#install()
-command! Clear   call dein#clear_state()
 command! Update  call dein#update()
 
 command! ClearLocList call setloclist(winnr(), [])
