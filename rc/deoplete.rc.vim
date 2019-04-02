@@ -14,7 +14,8 @@ let g:deoplete#file#enable_buffer_path = 1
 
 call deoplete#custom#option('refresh_always', v:true)
 " call deoplete#custom#option('auto_complete_delay', 0)
-call deoplete#custom#option('async_timeout', 100)
+" call deoplete#custom#option('async_timeout', 100)
+call deoplete#custom#option('async_timeout', 5000)
 " call deoplete#custom#option('num_processes', 0)
 
 let g:deoplete#ignore_sources = {'_': ['tag']}
