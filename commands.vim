@@ -1,7 +1,4 @@
-command! -nargs=1 SetTab
-      \ let &l:tabstop=<args> |
-      \ let &l:softtabstop = &l:tabstop |
-      \ let &l:shiftwidth = &l:tabstop
+command! -nargs=1 SetTab call SetTab(<args>)
 command! Terminal execute 'terminal' $SHELL
 command! Pry call vimrc#terminal('pry')
 command! Q qall!

@@ -26,14 +26,14 @@ set nohlsearch | nohlsearch "Highlight search patterns, support reloading
 "}}}
 
 " #tab {{{
-set shiftround    " >>とかのインデントがshiftwidthの倍数になる
+set shiftround    " >>とかのインデントがshiftwidthの倍数に丸められる
 set expandtab     " Tabキーでスペース挿入
 set tabstop=2     " Tab表示幅
 set softtabstop=2 " Tab押下時のカーソル移動量
 set shiftwidth=2  " インデント幅
 set smarttab      " 削除とかいい感じに
 set nocopyindent  " expandtabを無視して既存行のタブで判定する
-set nopreserveindent " ==などでインデントを変更してもタブ文字を保持
+set preserveindent " ==などでインデントを変更してもタブ文字を保持
 "}}}
 
 " #fold {{{
@@ -53,7 +53,11 @@ set cinkeys-=0#
 " *<return> enterするたびにreindent
 set cinoptions+=#0,J1,j1,g0,N-2
 " :0 switchとcaseが同じレベルになる
-" set indentkeys=
+
+" 自動インデントを発動する条件を指定する
+" oなどがあるとMarkdownのインデントで変な挙動をする
+" インデントはsmartindentとかに任せとけば良さそう
+set indentkeys=
 "}}}
 
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
@@ -111,6 +115,14 @@ set nowrap
 if has('linebreak')
   set linebreak
   set breakindent
+  " breakする場所 その文字の直後でブレークする
+  set breakat=<09>;,/?
+
+  " breakした行の先頭にうっすら挿入
+  " shift:{n} shift num
+  " sbr       ^の位置ではなく0の位置に入れる
+  set breakindentopt=shift:0
+  set showbreak=>>
 endif
 set sidescroll=0
 set sidescrolloff=12

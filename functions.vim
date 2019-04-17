@@ -140,11 +140,21 @@ function! Job(...) abort
   endif
 endfunction
 
-function SetAsScratch()
+function! SetAsScratch() abort
   nnoremap <silent><buffer>q :quit<CR>
   setl buftype=nofile
   setl bufhidden=hide
   setl noswapfile
+endfunction
+
+function! SetTab(num) abort
+  let &l:tabstop=a:num
+  let &l:softtabstop = &l:tabstop
+  let &l:shiftwidth = &l:tabstop
+
+  if exists('+breakindentopt')
+    let &l:breakindentopt = printf('shift:%d', (2 <= &l:tabstop ? &l:tabstop - 2 : 0))
+  endif
 endfunction
 
 

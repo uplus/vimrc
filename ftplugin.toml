@@ -213,6 +213,7 @@ markdown = '''
   setl wrap
   setl foldlevel=0
   setl foldlevelstart=0
+  setl conceallevel=0
 '''
 
 neosnippet = '''
