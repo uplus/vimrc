@@ -34,6 +34,7 @@ set shiftwidth=2  " インデント幅
 set smarttab      " 削除とかいい感じに
 set nocopyindent  " expandtabを無視して既存行のタブで判定する
 set preserveindent " ==などでインデントを変更してもタブ文字を保持
+" set vartabstop varsofttabstop
 "}}}
 
 " #fold {{{
@@ -62,6 +63,7 @@ set indentkeys=
 
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
 set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
+set tagcase=followscs
 " tags;     current-dirからtagsが見つかるまで遡る
 " tas;/dir  上記と同じだが/dirより上には行かない
 
@@ -101,6 +103,7 @@ set modeline modelines=2
 set cedit=<c-l> " move to cmdwin key
 set splitright splitbelow
 set nostartofline " Maintain a current line at the time of movement as much as possible.
+" 特定の方法でバッファを開いたときの動作
 set switchbuf=usetab
 
 set completeopt=menuone
@@ -127,7 +130,7 @@ endif
 set sidescroll=0
 set sidescrolloff=12
 set virtualedit=block
-set nrformats-=octal
+set nrformats=hex,bin
 
 if has('nvim')
   set shada=!,'300,<50,s10,h
@@ -150,9 +153,9 @@ if has('patch-7.4.1570')
 endif
 
 " Keymapping timeout.
-set timeout timeoutlen=3000 ttimeoutlen=100
+" set timeout timeoutlen=3000 ttimeoutlen=100
 " CursorHold time.
-set updatetime=3000
+" set updatetime=4000
 
 set commentstring=#\ %s
 set backspace=start,eol,indent
@@ -161,7 +164,7 @@ set iskeyword+=$,@-@
 
 " #wild menu
 if exists('+pumblend')
-  set pumblend=20
+  set pumblend=10
   set wildoptions=pum,tagfile
   set wildmode=full:longest,full
 else
