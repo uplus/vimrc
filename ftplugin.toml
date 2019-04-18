@@ -214,6 +214,9 @@ markdown = '''
   setl foldlevel=0
   setl foldlevelstart=0
   setl conceallevel=0
+
+  " 要らないインデントが発生する
+  set indentkeys=
 '''
 
 neosnippet = '''

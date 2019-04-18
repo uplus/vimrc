@@ -2,7 +2,7 @@ set encoding=utf-8 " Removed in Neovim
 scriptencoding utf-8
 
 " set undodir=~/.vim/tmp/undo.txt
-" set viewdir=~/.vim/tmp/view
+set viewdir=~/.vim/tmp/view
 set backupdir-=.
 set path+=/usr/include/c++/HEAD/
 set noswapfile
@@ -58,8 +58,12 @@ set cinoptions+=#0,J1,j1,g0,N-2
 " 自動インデントを発動する条件を指定する
 " oなどがあるとMarkdownのインデントで変な挙動をする
 " インデントはsmartindentとかに任せとけば良さそう
-set indentkeys=
+" set indentkeys=
 "}}}
+
+" set sessionoptions
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,winpos
+set viewoptions=folds,options,cursor,curdir
 
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
 set tags=tags;$HOME,.tags;$HOME,./tags,./.tags
@@ -163,6 +167,7 @@ set whichwrap=b,s,[,],<,>,h,l
 set iskeyword+=$,@-@
 
 " #wild menu
+set wildignorecase
 if exists('+pumblend')
   set pumblend=10
   set wildoptions=pum,tagfile
@@ -257,5 +262,9 @@ if exists('$TMUX')
     set termguicolors
   endif
 endif
+
+"  eventignore=all " 全てのイベントを無視
+" writeany " いかなるファイルも!無しで書き込み
+" confirm
 
 let g:my_autosave = 1
