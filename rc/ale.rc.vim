@@ -50,11 +50,12 @@ let g:ale_linter_aliases = {
 
 " :ALEFix
 let g:ale_fixers = {
-  \   'vim': ['vint'],
-  \   'javascript': ['eslint'],
-  \   'ruby': ['rubocop'],
-  \   'c': ['clang-format'],
-  \   'cpp': ['clang-format'],
+  \ 'vim': ['vint'],
+  \ 'javascript': ['eslint'],
+  \ 'ruby': ['rubocop'],
+  \ 'c': ['clang-format'],
+  \ 'cpp': ['clang-format'],
+  \ 'go': ['gofmt'],
   \ }
 
 let g:ale_pattern_options = {

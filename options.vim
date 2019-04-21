@@ -33,7 +33,7 @@ set softtabstop=2 " Tab押下時のカーソル移動量
 set shiftwidth=2  " インデント幅
 set smarttab      " 削除とかいい感じに
 set nocopyindent  " expandtabを無視して既存行のタブで判定する
-set preserveindent " ==などでインデントを変更してもタブ文字を保持
+set nopreserveindent " ==などでインデントを変更してもタブ文字を保持
 " set vartabstop varsofttabstop
 "}}}
 
