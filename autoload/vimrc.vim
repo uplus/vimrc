@@ -173,13 +173,14 @@ function! vimrc#open_git_diff(type) abort "{{{
   let s:git_diff_bufnr = bufnr('%')
 
   " diff_config()で設定しようとするとnofileのタイミングが遅い
-  setfiletype diff
   setl buftype=nofile
   setl undolevels=-1
   setl nofoldenable
   setl nonumber
   setl foldcolumn=0
   setl modifiable
+  " ファイルタイプをセットするとのが早いとバグる
+  setfiletype diff
   execute 'lcd' filedir
   silent put! =system(cmdname)
   $delete
