@@ -71,13 +71,13 @@ let g:lightline = {
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
       \   'winwidth': winwidth(0),
-      \   'colorscheme': 'mellow',
+      \   'colorscheme': 'PaperColor',
       \ }
 "}}}
 
       " \   'colorscheme': 'mellow',
 
-" default(powerline) molokai darcula solarized
+" default(powerline) molokai darcula solarized PaperColor one
 " material: inactiveなバッファ名が見れなくなる
 
 " カラースキームで定義されてる数だけ色が使える?
