@@ -32,7 +32,7 @@ function! s:note_config() abort
 
   if vimrc#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
-    setl fdm=marker
+    setl foldmethod=marker
   endif
 endfunction
 

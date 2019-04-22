@@ -6,12 +6,12 @@ let g:ale_max_buffer_history_size = 10
 let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_warn_about_trailing_blank_lines = 1
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_save = 0
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_delay = 2000
+let g:ale_lint_delay = 1000
 
 let g:ale_set_signs = 0
 let g:ale_sign_column_always = 1
@@ -35,8 +35,8 @@ let g:ale_keep_list_window_open = 1
 let g:ale_list_window_size = 5
 let g:ale_list_window_open_type= 'botright'
 
-" rubocopはbundleを使うようにする
-" let b:ale_ruby_rubocop_executable = 'bundle'
+" let b:ale_ruby_rubocop_executable = 'bundle exec rubocop'
+" let b:ale_ruby_rubocop_executable = 'docker-compose run --rm api bundle exec rubocop'
 
 let g:ale_linters = {
   \ 'markdown': [],

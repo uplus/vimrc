@@ -23,6 +23,7 @@ function! DoAutoSave() abort
   if g:my_autosave != 0
     silent! update
     silent! SignifyRefresh
+    silent! ALELint
   endif
 endfunction
 "}}}
