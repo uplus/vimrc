@@ -141,8 +141,8 @@ else
 end
 
 " いろんなイベント発生させるからupdateよりwriteのほうがいい
-inoremap <silent><c-s> <esc>:write<cr>
-nnoremap <silent><c-s> :write<cr>
+inoremap <silent><c-s> <esc>:write!<cr>
+nnoremap <silent><c-s> :write!<cr>
 nnoremap Zz ZZ
 nnoremap Zq ZQ
 " inoremap <c-z>eq <esc>:qall!<cr>
