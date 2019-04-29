@@ -123,7 +123,7 @@ if has('linebreak')
   set linebreak
   set breakindent
   " breakする場所 その文字の直後でブレークする
-  set breakat=<09>;,/?
+  set breakat=<09>;,/?)
 
   " breakした行の先頭にうっすら挿入
   " shift:{n} shift num
