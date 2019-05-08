@@ -144,13 +144,13 @@ endif
 
 " set shortmess=filnxtToO " default
 " Do not display the greetings message at the time of Vim start.
+" Sを消すと検索時に現在のマッチが何番目なのか分かる
 set shortmess=aTI
 " Do not display the completion messages
 set noshowmode
 if has('patch-7.4.314')
   set shortmess+=c
 endif
-
 " Do not display the edit messages
 if has('patch-7.4.1570')
   set shortmess+=F

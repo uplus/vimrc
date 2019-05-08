@@ -255,7 +255,7 @@ snippet log-
 	Rails.logger.debug "---------- ${0}".red
 
 snippet logm
-	Rails.logger.debug "---------- called: #{__method__} L#{__LINE__}".red${0}
+	Rails.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}".red${0}
 
 snippet mylog
 	File.open('mylog', 'w') do |f|
