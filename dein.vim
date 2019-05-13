@@ -324,7 +324,8 @@ if dein#tap('vim-easymotion') "{{{
   map ;t <Plug>(easymotion-tln)
 
   map ;w <Plug>(easymotion-w)
-  nmap ;w <Plug>(easymotion-overwin-w)
+  nmap ;w <Plug>(easymotion-w)
+  nmap ;W <Plug>(easymotion-overwin-w)
   map ;b <Plug>(easymotion-b)
 
   " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
