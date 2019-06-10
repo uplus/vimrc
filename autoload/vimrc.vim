@@ -95,7 +95,8 @@ function! vimrc#terminal(...) abort
   let l:cmd = substitute(l:cmd, ' ', '\\ ', 'g')
 
   execute 'botright split +terminal\' l:cmd
-  silent setl ft= nobuflisted bufhidden
+  silent setl ft= nobuflisted bufhidden undolevels=-1 nofoldenable nonumber foldcolumn=0 signcolumn=no
+
   silent nnoremap <buffer>q <c-w>c
   startinsert
 endfunction

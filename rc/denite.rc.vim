@@ -122,6 +122,11 @@ call denite#custom#map('insert', '<c-j>', '<denite:do_action:default>', 'noremap
 call denite#custom#map('normal', 't', '<denite:do_action:tabopen>', 'noremap')
 call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
 call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
+
+call denite#custom#map('insert', '<c-t>', '<denite:do_action:tabopen>', 'noremap')
+call denite#custom#map('normal', '<c-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('normal', '<c-v>', '<denite:do_action:vsplit>', 'noremap')
+
 call denite#custom#map('normal', 'r', '<denite:do_action:qfreplace>', 'noremap')
 call denite#custom#map('normal', 'R', '<denite:multiple_mappings:denite:toggle_select_all,denite:do_action:qfreplace>', 'noremap')
 
