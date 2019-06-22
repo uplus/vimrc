@@ -47,3 +47,6 @@ hook_add = '''
   let g:terraform_fold_sections=0
   let g:terraform_remap_spacebar=0
 '''
+
+[[plugins]]
+repo = 'jparise/vim-graphql'
