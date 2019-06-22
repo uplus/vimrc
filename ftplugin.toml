@@ -188,6 +188,7 @@ help = '''
 html = '''
   setlocal includeexpr=substitute(v:fname,'^\\/','','')
   setlocal path+=./;/
+  setl cursorcolumn
   SetTab 4
 '''
 
@@ -410,4 +411,8 @@ sshconfig = '''
   setl foldmethod=marker
   setl foldlevelstart=0
   setl foldlevel=0
+'''
+
+vue = '''
+  setl cursorcolumn
 '''

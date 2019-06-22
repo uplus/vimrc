@@ -111,6 +111,8 @@ let g:clurin = {
       \ ]},
       \
       \ 'ruby': {'def': [
+      \   ['Metrics/', 'Metrics/AbcSize', 'Metrics/CyclomaticComplexity', 'Metrics/PerceivedComplexity'],
+      \   ['rubocop:enable', 'rubocop:disable'],
       \   [{'pattern': '\v:(\k+)\s*\=\>\s*', 'replace': ':\1 => '},
       \    {'pattern': '\v(\k+)\:\s*', 'replace': '\1: '},
       \   ],
