@@ -1,0 +1,23 @@
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'djjcast/mirodark'
+
+[[plugins]] # 暗めの白
+repo = 'vim-scripts/newspaper.vim'
+
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
+
+[[plugins]]
+repo = 'freeo/vim-kalisi'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+hook_add = '''
+  let g:gruvbox_contrast_dark = 'hard'
+'''
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'

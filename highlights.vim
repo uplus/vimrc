@@ -47,6 +47,8 @@ function! s:set_colors() "{{{
     call s:colorscheme('railscasts')
   elseif &filetype ==# 'gitcommit'
     call s:colorscheme('gitcommit')
+  elseif &filetype =~# '\v(vue|html|css|javascript)'
+    call s:colorscheme('gruvbox')
   elseif g:colors_seted == 0
     call s:colorscheme('PaperColor')
   endif

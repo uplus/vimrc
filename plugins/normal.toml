@@ -498,24 +498,6 @@ repo = 'yuku-t/vim-ref-ri'
 repo = 'mfumi/ref-dicts-en'
 
 
-#colorscheme
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
-[[plugins]]
-repo = 'djjcast/mirodark'
-
-[[plugins]] # 暗めの白
-repo = 'vim-scripts/newspaper.vim'
-
-[[plugins]]
-repo = 'NLKNguyen/papercolor-theme'
-
-[[plugins]]
-repo = 'freeo/vim-kalisi'
-
-
 #go
 
 [[plugins]] # Fmtしてもホールド維持

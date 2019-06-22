@@ -52,6 +52,7 @@ let g:ale_linter_aliases = {
 let g:ale_fixers = {
   \ 'vim': ['vint'],
   \ 'javascript': ['eslint'],
+  \ 'vue': ['prettier'],
   \ 'ruby': ['rubocop'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
@@ -63,6 +64,7 @@ let g:ale_pattern_options = {
   \ '\.toml$': { 'ale_enabled': 0 },
   \ '.gem/ruby/': { 'ale_enabled': 0 },
   \ 'src/gems/': { 'ale_enabled': 0 },
+  \ '.gql': { 'ale_enabled': 0 },
   \ }
 
 " This option prevents ALE autocmd commands from being run for particular

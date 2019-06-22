@@ -30,6 +30,9 @@ repo = 'glabra/casl2.vim'
 
 [[plugins]]
 repo = 'posva/vim-vue'
+hook_add = '''
+  au myac FileType vue syntax sync fromstart
+'''
 
 [[plugins]]
 repo = 'nono/vim-handlebars'
