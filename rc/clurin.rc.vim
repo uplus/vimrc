@@ -112,6 +112,7 @@ let g:clurin = {
       \
       \ 'ruby': {'def': [
       \   ['Metrics/', 'Metrics/AbcSize', 'Metrics/CyclomaticComplexity', 'Metrics/PerceivedComplexity'],
+      \   ['perform_now', 'perform_later'],
       \   ['rubocop:enable', 'rubocop:disable'],
       \   [{'pattern': '\v:(\k+)\s*\=\>\s*', 'replace': ':\1 => '},
       \    {'pattern': '\v(\k+)\:\s*', 'replace': '\1: '},
@@ -139,7 +140,7 @@ let g:clurin = {
       \   ['.clone', '.dup' ],
       \   ['.any?', '.none?' ],
       \   ['.all?', '.one?' ],
-      \   ['p ', 'puts ', 'print '],
+      \   ['pp ', 'puts ', 'print '],
       \   ['attr_accessor', 'attr_reader', 'attr_writer' ],
       \   ['File.exist?', 'File.file?', 'File.directory?' ],
       \   ['should ', 'should_not '],
