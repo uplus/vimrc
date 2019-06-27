@@ -1,8 +1,8 @@
 ﻿" g:lightline {{{
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['git', 'filename', 'readonly',],],
-      \     'right': [['cursor'], ['filetype', 'fileencoding'], ['syntax_check', 'current_function']]
+      \     'left': [['mode', 'paste'], ['filename', 'readonly',],],
+      \     'right': [['cursor'], ['filetype', 'fileencoding']]
       \   },
       \   'inactive': {
       \     'left': [['filename']],

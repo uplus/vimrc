@@ -64,6 +64,11 @@ let g:netrw_nogx = 1 " Disable unnecessary keymaps
 " let g:loaded_netrwFileHandlers = 1
 let g:solarized_termcolors = 256 " To use solarized in CLI
 
+" tmp " https://github.com/w0rp/ale/issues/2021
+let g:ale_virtualenv_dir_names = []
+" let ruby_no_expensive = 1
+" let ruby_minlines = 100
+
 " vim-operator taps "{{{
 if dein#tap('vim-operator-replace')
   nmap gz <Plug>(operator-replace)

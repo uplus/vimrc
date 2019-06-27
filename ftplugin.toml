@@ -415,4 +415,5 @@ sshconfig = '''
 
 vue = '''
   setl cursorcolumn
+  SetTab 2
 '''
