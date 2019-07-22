@@ -199,6 +199,7 @@ java = '''
 javascript = '''
   setl foldmethod=syntax
   setl commentstring=//\ %s
+  setl wrap
   nnoremap <buffer><silent>,lr :<c-u>TernRename<cr>
   " SetTab 4
 
@@ -415,5 +416,6 @@ sshconfig = '''
 
 vue = '''
   setl cursorcolumn
+  setl wrap
   SetTab 2
 '''

@@ -82,6 +82,8 @@ if &clipboard ==# 'unnamedplus'
 else
   inoremap <c-r><c-r> <c-r>*
 endif
+nnoremap <silent>,ee :e!<cr>
+nnoremap <silent>,ea :bufdo e!<cr>
 nnoremap g?? Vg?
 map mp %
 map mmp ^%

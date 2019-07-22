@@ -50,7 +50,7 @@ options head
 	switch (${1}) {
 		case ${2}:
 			${0}
-			break;
+			break
 	}
 
 snippet switchd
@@ -58,7 +58,7 @@ alias swd
 	switch (${1}) {
 		case ${3}:
 			${4}
-			break;
+			break
 		${5}
 		default:
 			${0}
@@ -68,7 +68,7 @@ snippet case
 alias ca
 	case ${1}:
 		${2}
-		break;
+		break
 	${0}
 
 # }}}
@@ -116,7 +116,7 @@ snippet whl
 snippet do
 	do {
 		${2:/* code */}
-	} while (${1:/* condition */});
+	} while (${1:/* condition */})
 
 # }}}
 
@@ -125,27 +125,27 @@ snippet do
 snippet console-log
 alias cl
 options head
-	console.log(${0});
+	console.log(${0})
 
 snippet console-trace
 alias ct trace
 options head
-	console.trace();
+	console.trace()
 
 snippet console-error
 alias ce error
 options head
-	console.error(${0});
+	console.error(${0})
 
 snippet console-warn
 alias cw
 options head
-	console.warn(${0});
+	console.warn(${0})
 
 snippet console-info
 alias ci
 options head
-	console.info(${0});
+	console.info(${0})
 
 # }}}
 
@@ -163,7 +163,7 @@ snippet lambda
 alias lam
 	(${1}) => {
 		${0}
-	};
+	}
 
 # Object Method
 snippet :f
@@ -190,11 +190,11 @@ snippet proto
 options head
 	${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}) {
 		${0:TARGET}
-	};
+	}
 
 snippet f
 options word
-	function(${1}) { ${0} };
+	function(${1}) { ${0} }
 
 snippet try
 options head
@@ -227,19 +227,19 @@ options word
 snippet setTimeout-function
 alias timeout
 options head
-	setTimeout(function() {${3}}${2}, ${1:10};
+	setTimeout(function() {${3}}${2}, ${1:10}
 
 snippet debugger
 alias db
 options head
-	debugger;
+	debugger
 
 snippet iife
 options head
 	(function(${1}) {
-		'use strict';
+		'use strict'
 		${0:TARGET}
-	})(${2});
+	})(${2})
 
 snippet jtoo
 options head
@@ -250,11 +250,11 @@ snippet otoj
 
 snippet js
 options head
-	JSON.stringify(${1:TARGET}, ${2:null}, ${3:2});
+	JSON.stringify(${1:TARGET}, ${2:null}, ${3:2})
 
 snippet jsc
 options head
-	console.log(JSON.stringify(${1:TARGET}, ${2:null}, ${3:2}));
+	console.log(JSON.stringify(${1:TARGET}, ${2:null}, ${3:2}))
 
 snippet     class
 abbr        class { const() ...}
@@ -295,21 +295,21 @@ options     head
 	}
 
 snippet     import
-abbr        import { member, ... } from "module-name";
+abbr        import { member, ... } from "module-name"
 options     head
-	import { ${1:MEMBERS} } from "${0:TARGET}";
+	import { ${1:MEMBERS} } from "${0:TARGET}"
 
 snippet     import-default
-abbr        import defaultMember from "module-name";
+abbr        import defaultMember from "module-name"
 options     head
-	import ${1:defaultMember} from "${0:TARGET}";
+	import ${1:defaultMember} from "${0:TARGET}"
 
 snippet     import-all
-abbr        import * as NAME from "...";
+abbr        import * as NAME from "..."
 options     head
-	import * as ${1:NAME} from "${0:TARGET}";
+	import * as ${1:NAME} from "${0:TARGET}"
 
 snippet     import-default-member
-abbr        import defaultMember, { member, ... } from "module-name";
+abbr        import defaultMember, { member, ... } from "module-name"
 options     head
-	import ${1:defaultMember}, { ${2:MEMBERS} } from "${0:TARGET}";
+	import ${1:defaultMember}, { ${2:MEMBERS} } from "${0:TARGET}"
