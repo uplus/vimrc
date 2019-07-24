@@ -11,6 +11,7 @@ build = 'make'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+rev = '67475c70'
 on_cmd = 'Denite'
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 

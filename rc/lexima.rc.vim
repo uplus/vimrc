@@ -130,11 +130,18 @@ call lexima#add_rule({
 " html
 
 " 開始タグの閉じカッコを入力したら終了タグを挿入する
-" /> \<  がなくて <.*
+" /> <! </ は無視する
 call lexima#add_rule({
-      \   'at': '\v%(/|\</.*)@<!\<.*%#',
+      \   'at': '\v\<[^/!].*[^/]%#',
       \   'char': '>',
       \   'input': '><c-r>=Lexima_HtmlCloseTag()<cr>',
+      \   'filetype': ['html', 'eruby', 'vue', 'handlebars.html'],
+      \ })
+
+call lexima#add_rule({
+      \   'at': '\v\<%#',
+      \   'char': '!',
+      \   'input': '!--  --><left><left><left><left>',
       \   'filetype': ['html', 'eruby', 'vue', 'handlebars.html'],
       \ })
 
