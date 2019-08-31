@@ -40,26 +40,6 @@ hook_post_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'tacroe/unite-mark'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'tsukkee/unite-tag'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-help'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'thinca/vim-unite-history'
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_event = 'TextYankPost'
 on_source = ['denite.nvim']
@@ -70,47 +50,6 @@ repo = 'thinca/vim-editvar'
 on_source = 'unite.vim'
 on_cmd = 'Editvar'
 on_func = 'editvar#open'
-
-[[plugins]]
-repo = 'osyo-manga/unite-fold'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'osyo-manga/unite-highlight'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'osyo-manga/unite-quickrun_config'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'osyo-manga/unite-quickfix'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'kmnk/vim-unite-giti'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Kocha/vim-unite-tig'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'pasela/unite-webcolorname'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'MaryHal/unite-unicode'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'rhysd/unite-go-import.vim'
-on_source = 'unite.vim'
-on_ft = 'go'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -183,17 +122,6 @@ defx = '''
 # [[plugins]]
 # repo = 'vim-scripts/Changed'
 # repo = 'kyouryuukunn/vim-changed'
-
-[[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-hook_add = '''
-  let g:cpp_class_scope_highlight = 1
-  let g:cpp_member_variable_highlight = 1
-  let g:cpp_experimental_simple_template_highlight = 1
-  let g:cpp_experimental_template_highlight = 1
-  let g:cpp_concepts_highlight = 1
-  " let c_no_curly_error=1
-'''
 
 [[plugins]]
 repo = 'powerman/vim-plugin-AnsiEsc'
