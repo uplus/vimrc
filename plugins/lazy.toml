@@ -264,6 +264,15 @@ hook_add = '''
   au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
 '''
 
+[[plugins]]
+repo = 'thinca/vim-partedit'
+on_cmd = 'Partedit'
+hook_add = '''
+  vmap <silent>,n :Partedit<cr>
+  let g:partedit#opener = 'botright new'
+  let g:partedit#filetype = 'narrow'
+'''
+
 
 #c cpp
 [[plugins]]

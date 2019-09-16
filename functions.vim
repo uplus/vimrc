@@ -16,7 +16,10 @@ function! ToggleAutoSave() abort
 endfunction
 
 function! DoAutoSave() abort
-  if -1 != index(['unite_exrename', 'vimfiler'], &filetype)
+  " for debug
+  echo 'auto save at' strftime('%T')
+
+  if -1 != index(['unite_exrename', 'vimfiler', 'narrow'], &filetype)
     return
   endif
 
