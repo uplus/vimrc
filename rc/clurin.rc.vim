@@ -145,6 +145,9 @@ let g:clurin = {
       \   ['File.exist?', 'File.file?', 'File.directory?' ],
       \   ['should ', 'should_not '],
       \   ['be_truthy', 'be_falsey'],
+      \   ['create', 'build', 'build_stubbed'],
+      \   ['it_behaves_like', 'include_examples'],
+      \   ['describe', 'context'],
       \   ['.to ', '.not_to '],
       \   [{'pattern': '\.to_not ', 'replace': '.to '}]
       \ ]},
