@@ -64,3 +64,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'jparise/vim-graphql'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+hook_add = '''
+  let g:vim_markdown_folding_level= 0
+  let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_folding_style_pythonic = 0
+'''

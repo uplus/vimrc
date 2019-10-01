@@ -1,16 +1,3 @@
-#unite
-
-# [[plugins]]
-# repo = 'rhysd/unite-ruby-require.vim'
-# on_source = 'unite.vim'
-# on_ft= 'ruby'
-
-[[plugins]]
-repo = 'basyura/unite-rails'
-on_source = 'unite.vim'
-on_ft = 'ruby'
-
-
 #view
 
 [[plugins]]
@@ -32,24 +19,19 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
+if = 0
+repo = 'Yggdroot/indentLine'
+on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
 hook_add = '''
-  let g:vim_markdown_folding_level= 0
-  let g:vim_markdown_folding_disabled = 1
-  let g:vim_markdown_folding_style_pythonic = 0
+  let g:indentLine_enabled              = 0
+  let g:indentLine_faster               = 1
+  let g:indentLine_showFirstIndentLevel = 1
+  let g:indentLine_color_term           = 208
+  nmap <silent>\tl :IndentLinesToggle<CR>
 '''
 
-# [[plugins]]
-# repo = 'Yggdroot/indentLine'
-# on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
-# hook_add = '''
-#   let g:indentLine_enabled              = 0
-#   let g:indentLine_faster               = 1
-#   let g:indentLine_showFirstIndentLevel = 1
-#   let g:indentLine_color_term           = 208
-#   nmap <silent>\tl :IndentLinesToggle<CR>
-# '''
+
+# colors
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
@@ -122,7 +104,7 @@ hook_add = '''
   imap <c-x><c-z> <Plug>(UnicodeComplete)
 '''
 
-[[plugins]] # has textobj
+[[plugins]] # contain textobj
 repo = 'AndrewRadev/sideways.vim'
 on_map = ['<Plug>Sideways']
 on_cmd = ['SidewaysLeft', 'SidewaysRight', 'SidewaysJumpLeft', 'SidewaysJumpRight']
@@ -204,15 +186,8 @@ hook_post_source = '''
   let g:speeddating_formats += [['%^v', 0, 1]]
 '''
 
-[[plugins]]
-repo = 'tpope/vim-characterize'
-on_map = '<Plug>(characterize)'
-hook_add = '''
-  nmap gaa <Plug>(characterize)
-'''
 
-
-#search and replace
+# search and replace
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'
@@ -504,7 +479,7 @@ hook_add = '''
 '''
 
 
-#operator
+# operator
 
 [[plugins]] # se evaluate textobj as expression of lambda of ruby
 repo = 'rhysd/vim-operator-evalruby'
@@ -526,6 +501,13 @@ on_map  = '<Plug>(operator-jump'
 
 
 #misc
+
+[[plugins]]
+repo = 'tpope/vim-characterize'
+on_map = '<Plug>(characterize)'
+hook_add = '''
+  nmap gaa <Plug>(characterize)
+'''
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
@@ -566,50 +548,39 @@ hook_add = '''
 '''
 
 [[plugins]]
-if = 0
 repo = 'mbbill/undotree'
 on_cmd = ['UndotreeToggle', 'UndotreeShow']
 hook_add = '''
+  nnoremap ,ug :UndotreeToggle<cr>
+
   let g:undotree_WindowLayout = 3
+  " let g:undotree_CustomUndotreeCmd = 'vertical 32 new'
+  let g:undotree_SplitWidth = 50 " float2nr(winwidth(0)*0.24)
+  let g:undotree_DiffpanelHeight = 30
+  let g:undotree_SetFocusWhenToggle = 1
+  let g:undotree_ShortIndicators = 1
+
   function g:Undotree_CustomMap()
-    nmap <buffer> k <plug>UndotreeGoNextState
-    nmap <buffer> j <plug>UndotreeGoPreviousState
-    " nmap <buffer> K <plug>UndotreeGoNextSaved
-    " nmap <buffer> J <plug>UndotreeGoPreviousState
+    nmap <buffer> k <plug>UndotreeNextState
+    nmap <buffer> j <plug>UndotreePreviousState
+    nmap <buffer> K <plug>UndotreeNextSavedState
+    nmap <buffer> J <plug>UndotreePreviousSavedState
+
+    " <plug>UndotreeHelp
+    " <plug>UndotreeClose
+    " <plug>UndotreeFocusTarget
+    " <plug>UndotreeClearHistory
+    " <plug>UndotreeTimestampToggle
+    " <plug>UndotreeDiffToggle
+    " <plug>UndotreeNextState
+    " <plug>UndotreePreviousState
+    " <plug>UndotreeNextSavedState
+    " <plug>UndotreePreviousSavedState
+    " <plug>UndotreeRedo
+    " <plug>UndotreeUndo
+    " <plug>UndotreeEnter
   endfunc
 '''
-
-[[plugins]]
-repo = 'sjl/gundo.vim'
-# repo = 'dsummersl/gundo.vim'
-on_cmd = ['GundoToggle', 'GundoShow']
-hook_add = '''
-  nnoremap ,ug :GundoToggle<cr>
-
-  let g:gundo_right = 1
-  " let g:gundo_preview_bottom = 1
-  let g:gundo_width = 30 " float2nr(winwidth(0)*0.24)
-  let g:gundo_preview_height = 20
-
-  let g:gundo_help = 0
-  " let gundo_disable
-  let g:gundo_map_move_older = 'j'
-  let g:gundo_map_move_newer = 'k'
-  " let gundo_close_on_revert = 0
-  " let gundo_preview_statusline
-  " let gundo_tree_statusline
-  let g:gundo_auto_preview = 1
-  " let gundo_playback_delay = 60
-  let g:gundo_return_on_revert = 0
-  " let g:gundo_prefer_python3 = 1
-
-  " dsummersl
-  " let g:gundo_verbose_graph    = 1
-  " let g:gundo_playback_delay   = 1
-  " let g:gundo_mirror_graph     = 1
-  " let g:gundo_inline_graph     = 0
-'''
-
 
 [[plugins]]
 repo = 'rbtnn/vimconsole.vim'
@@ -654,8 +625,6 @@ hook_add = '''
   imap a <Plug>(fakearray)
   imap <c-a> <Plug>(fakearray)
 '''
-
-
 
 [[plugins]] # Display unicode.
 repo = 'osyo-manga/vim-hideout'
