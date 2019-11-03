@@ -191,8 +191,8 @@ if dein#tap('caw.vim') " {{{
   let g:caw_dollarpos_sp_left = ' '
   let g:caw_dollarpos_startinsert = 1
 
-  " for context_filetype and precious
-  au myac FileType * let b:caw_oneline_comment = substitute(&commentstring, '\s*%s', '', '')
+  " for context_filetype and precious. これがあるとHTMLで上手くいかなくなる
+  " au myac FileType * let b:caw_oneline_comment = substitute(&commentstring, '\s*%s', '', '')
 
   " 回数指定は gc2jみたいにやる
   nmap gcc <Plug>(caw:hatpos:toggle)

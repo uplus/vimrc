@@ -42,6 +42,8 @@ repo = 'glabra/casl2.vim'
 [[plugins]]
 repo = 'posva/vim-vue'
 hook_add = '''
+  " let g:vue_pre_processors = ['sass']
+  let g:vue_pre_processors = 'detect_on_enter'
   au myac FileType vue syntax sync fromstart
 '''
 

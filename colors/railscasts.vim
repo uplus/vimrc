@@ -20,7 +20,7 @@ let g:colors_name = expand('<sfile>:t:r')
 " hi SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline guifg=#d7d7ff guibg=NONE gui=underline
 
 
-hi NonText ctermfg=248 guifg=Gray
+hi NonText            ctermfg=248 guifg=Gray
 hi MatchParen         ctermfg=15  ctermbg=23 guifg=#ffffff guibg=#005f5f
 hi Pmenu              ctermfg=214 ctermbg=236 guifg=#ffaf00 guibg=#303030
 hi PmenuSel           ctermfg=235 ctermbg=214 guifg=#262626 guibg=#ffaf00

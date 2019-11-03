@@ -9,14 +9,20 @@ repo = 'vim-scripts/newspaper.vim'
 
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
-
-[[plugins]]
-repo = 'freeo/vim-kalisi'
-
-[[plugins]]
-repo = 'morhetz/gruvbox'
 hook_add = '''
-  let g:gruvbox_contrast_dark = 'hard'
+  let g:PaperColor_Theme_Options = {
+        \   'language': {
+        \     'python': {
+        \       'highlight_builtins' : 1
+        \     },
+        \     'c': {
+        \       'highlight_builtins' : 1
+        \     },
+        \     'cpp': {
+        \       'highlight_standard_library': 1
+        \     }
+        \   }
+        \ }
 '''
 
 [[plugins]]

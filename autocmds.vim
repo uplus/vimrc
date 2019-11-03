@@ -62,7 +62,7 @@ augroup myac
 
   function! s:badspace_set_highlight() abort
     if g:badspace_enable
-      hi BadSpace ctermfg=197 ctermbg=197  guifg=#e00050 guibg=#e00050
+      hi! BadSpace ctermfg=197 ctermbg=197  guifg=#e00050 guibg=#e00050
     endif
   endfunction
 
