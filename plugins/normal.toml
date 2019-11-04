@@ -66,26 +66,15 @@ hook_source = '''
 '''
 
 
-#unite
-
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_event = 'TextYankPost'
 on_source = ['denite.nvim']
 # on_path = '.*'
-
-[[plugins]] # variable
-repo = 'thinca/vim-editvar'
-on_source = 'unite.vim'
-on_cmd = 'Editvar'
-on_func = 'editvar#open'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -131,23 +120,21 @@ defx = '''
   nnoremap <silent><buffer><expr>L   defx#do_action('open_directory')
   nnoremap <silent><buffer><expr>H   defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr>R   defx#do_action('open_tree_recursive')
-  nnoremap <silent><buffer><expr>~          defx#do_action('cd')
+  nnoremap <silent><buffer><expr>~   defx#do_action('cd')
   nnoremap <silent><buffer><nowait><expr>\  defx#do_action('cd', getcwd())
   nmap <buffer><bs> H
   nmap <buffer><c-h> \
   nmap <buffer><nowait>< \
 
   " その他:
-  nnoremap <silent><buffer><expr>!   defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr>.   defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr><c-l>   defx#do_action('redraw')
+  nnoremap <silent><buffer><expr>!      defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr>.      defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr><c-l>  defx#do_action('redraw')
   nnoremap <silent><buffer><expr><nowait><space> defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr>*   defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr>q   defx#do_action('quit')
-  " 直線のバッファに戻る
-  nnoremap <silent><buffer><expr><tab> winnr('$') != 1 ? ':<c-u>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
+  nnoremap <silent><buffer><expr>*      defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr>q      defx#do_action('quit')
+  nnoremap <silent><buffer><expr><tab>  winnr('$') != 1 ? ':<c-u>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
 '''
-
 
 
 #view
@@ -379,9 +366,6 @@ depends = 'vim-quickrun'
 [[plugins]]
 repo = 'osyo-manga/quickrun-outputter-replace_region'
 depends = 'vim-quickrun'
-
-# [[plugins]]
-# repo  = 'rhysd/quickrun-unite-quickfix-outputter'
 
 
 #input

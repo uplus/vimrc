@@ -517,21 +517,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-if  = 0
-repo = 'Shougo/vimfiler.vim'
-depends = 'unite.vim'
-on_map = '<Plug>'
-on_path = '.*'
-hook_add = '''
-  let g:vimfiler_as_default_explorer = 1
-  let g:vimfiler_enable_clipboard = 0
-  let g:vimfiler_readonly_file_icon = '✗'
-  let g:vimfiler_marked_file_icon = '✓'
-  let g:vimfiler_quick_look_command = 'xdg-open'
-  let g:vimfiler_force_overwrite_statusline = 0
-'''
-
-[[plugins]]
 repo = 'vim-scripts/sudo.vim'
 on_cmd = ['SudoWrite', 'SudoRead']
 hook_add = '''
