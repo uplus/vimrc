@@ -150,56 +150,53 @@ call denite#custom#option('default', {
   \ 'prompt': '>',
   \ 'source_names': 'short',
   \ 'split': 'floating',
+  \ 'highlight_filter_background': 'CursorLine',
   \ 'winwidth': float2nr(s:denite_win_width),
   \ 'wincol': float2nr(s:denite_win_col_pos),
   \ 'winheight': float2nr(s:denite_win_height),
   \ 'winrow': float2nr(s:denite_win_row_pos),
   \ })
-"    \ 'highlight_filter_background': 'CursorLine',
 
 
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-    \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-    \ denite#do_map('do_action', 'delete')
+  setl signcolumn=yes
+
+  nnoremap <silent><buffer><expr>i denite#do_map('open_filter_buffer')
+  nmap <buffer>I i<c-a>
+
+  nnoremap <silent><buffer><nowait><expr><space> denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr>* denite#do_map('toggle_select_all')
+
+  nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
+  nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr>t denite#do_map('do_action', 'tabswitch')
+  nnoremap <silent><buffer><expr>s denite#do_map('do_action', 'splitswitch')
+  nnoremap <silent><buffer><expr>v denite#do_map('do_action', 'vsplitswitch')
+  nmap <buffer><c-j> <cr>
+
+  nnoremap <silent><buffer><expr>' denite#do_map('quick_move')
+  nnoremap <silent><buffer><expr>q denite#do_map('quit')
+  nmap <buffer><esc> q
+
+  " replace
+
   nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-    \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-   \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-    \ denite#do_map('toggle_select').'j'
+    \ denite#do_map('do_action', 'echo')
 endfunction
 
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+  imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
+  imap <silent><buffer><esc> <Plug>(denite_filter_quit)
+  nmap <silent><buffer><esc> <Plug>(denite_filter_quit)
+  " inoremap <silent><buffer><expr><esc> denite#do_map('quit')
 endfunction
 "
 " [plugins.ftplugin]
 " denite = '''
-" " Define mappings
-" nnoremap <silent><buffer><expr> <CR>
-"\ denite#do_map('do_action')
-" nnoremap <silent><buffer><expr> a
-"\ denite#do_map('choose_action')
-" nnoremap <silent><buffer><expr> d
-"\ denite#do_map('do_action', 'delete')
-" nnoremap <silent><buffer><expr> p
-"\ denite#do_map('do_action', 'preview')
-" nnoremap <silent><buffer><expr> q
-"\ denite#do_map('quit')
-" nnoremap <silent><buffer><expr> '
-"\ denite#do_map('quick_move')
-" nnoremap <silent><buffer><expr> i
-"\ denite#do_map('open_filter_buffer')
-" nnoremap <silent><buffer><expr> <Space>
-"\ denite#do_map('toggle_select').'j'
-" nnoremap <silent><buffer><expr> r
-"\ denite#do_map('do_action', 'quickfix')
-" nnoremap <silent><buffer><expr> <C-r>
-"\ denite#do_map('restore_sources')
+" nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
+" nnoremap <silent><buffer><expr>' denite#do_map('quick_move')
+" nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'quickfix')
+" nnoremap <silent><buffer><expr><c-r> denite#do_map('restore_sources')
 " '''
