@@ -227,14 +227,14 @@ imap <c-x>z <c-x><c-z>
 "}}}
 
 " #move "{{{
-nnoremap <UP> gk
-nnoremap <DOWN> gj
-nnoremap <LEFT> h
-nnoremap <RIGHT> l
-vnoremap <UP> gk
-vnoremap <DOWN> gj
-vnoremap <LEFT> h
-vnoremap <RIGHT> l
+nmap <UP> k
+nmap <DOWN> j
+nmap <LEFT> h
+nmap <RIGHT> l
+vmap <UP> k
+vmap <DOWN> j
+vmap <LEFT> h
+vmap <RIGHT> l
 
 nnoremap k gk
 nnoremap j gj

@@ -67,6 +67,7 @@ elseif executable('ag')
   call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 endif
 
+" call denite#custom#source('grep', 'args', ['', '', '!'])
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
 " call denite#custom#source('file', 'matchers', ['matcher/fruzzy'])
 " call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])
@@ -84,12 +85,6 @@ call denite#custom#source('file/old', 'converters', ['converter/relative_word'])
 " call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 " call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
-call denite#custom#option('default', {
-      \ 'auto_accel': v:true,
-      \ 'prompt': '>',
-      \ 'source_names': 'short',
-      \ })
-
 let s:menus = {}
 let s:menus.vim = { 'description': 'Vim', }
 let s:menus.vim.file_candidates = [
@@ -102,33 +97,33 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 
 " call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
 " call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
-
 " call denite#custom#map('insert', ';', 'vimrc#sticky_func()', 'expr')
 " call denite#custom#map('insert', '<c-w>', '<denite:move_up_path>', 'noremap')
-call denite#custom#map('insert', '<bs>',  '<denite:smart_delete_char_before_caret>', 'noremap')
-call denite#custom#map('insert', '<c-h>', '<denite:smart_delete_char_before_caret>', 'noremap')
-call denite#custom#map('insert', '<c-a>', '<denite:move_caret_to_head>', 'noremap')
 
-call denite#custom#map('insert', '<c-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('normal', '<c-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('normal', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
-
-call denite#custom#map('insert', '<esc>', '<denite:leave_mode>', 'noremap')
-call denite#custom#map('normal', '<esc>', '<denite:leave_mode>', 'noremap')
-call denite#custom#map('insert', '<c-j>', '<denite:do_action:default>', 'noremap')
-
-" Action mappings
-call denite#custom#map('normal', 't', '<denite:do_action:tabopen>', 'noremap')
-call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
-
-call denite#custom#map('insert', '<c-t>', '<denite:do_action:tabopen>', 'noremap')
-call denite#custom#map('normal', '<c-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('normal', '<c-v>', '<denite:do_action:vsplit>', 'noremap')
-
-call denite#custom#map('normal', 'r', '<denite:do_action:qfreplace>', 'noremap')
-call denite#custom#map('normal', 'R', '<denite:multiple_mappings:denite:toggle_select_all,denite:do_action:qfreplace>', 'noremap')
+" call denite#custom#map('insert', '<bs>',  '<denite:smart_delete_char_before_caret>', 'noremap')
+" call denite#custom#map('insert', '<c-h>', '<denite:smart_delete_char_before_caret>', 'noremap')
+" call denite#custom#map('insert', '<c-a>', '<denite:move_caret_to_head>', 'noremap')
+"
+" call denite#custom#map('insert', '<c-n>', '<denite:move_to_next_line>', 'noremap')
+" call denite#custom#map('normal', '<c-n>', '<denite:move_to_next_line>', 'noremap')
+" call denite#custom#map('insert', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
+" call denite#custom#map('normal', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
+"
+" call denite#custom#map('insert', '<esc>', '<denite:leave_mode>', 'noremap')
+" call denite#custom#map('normal', '<esc>', '<denite:leave_mode>', 'noremap')
+" call denite#custom#map('insert', '<c-j>', '<denite:do_action:default>', 'noremap')
+"
+" " Action mappings
+" call denite#custom#map('normal', 't', '<denite:do_action:tabopen>', 'noremap')
+" call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
+" call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
+"
+" call denite#custom#map('insert', '<c-t>', '<denite:do_action:tabopen>', 'noremap')
+" call denite#custom#map('normal', '<c-s>', '<denite:do_action:split>', 'noremap')
+" call denite#custom#map('normal', '<c-v>', '<denite:do_action:vsplit>', 'noremap')
+"
+" call denite#custom#map('normal', 'r', '<denite:do_action:qfreplace>', 'noremap')
+" call denite#custom#map('normal', 'R', '<denite:multiple_mappings:denite:toggle_select_all,denite:do_action:qfreplace>', 'noremap')
 
 " Custom action
 call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })
@@ -148,10 +143,63 @@ let s:denite_win_height = &lines * s:denite_win_height_percent
 let s:denite_win_row_pos = (&lines - s:denite_win_height) / 2
 
 " Change denite default options
+
 call denite#custom#option('default', {
-    \ 'split': 'floating',
-    \ 'winwidth': s:denite_win_width,
-    \ 'wincol': s:denite_win_col_pos,
-    \ 'winheight': s:denite_win_height,
-    \ 'winrow': s:denite_win_row_pos,
-    \ })
+  \ 'start_filter': v:true,
+  \ 'direction': 'dynamictop',
+  \ 'prompt': '>',
+  \ 'source_names': 'short',
+  \ 'split': 'floating',
+  \ 'winwidth': float2nr(s:denite_win_width),
+  \ 'wincol': float2nr(s:denite_win_col_pos),
+  \ 'winheight': float2nr(s:denite_win_height),
+  \ 'winrow': float2nr(s:denite_win_row_pos),
+  \ })
+"    \ 'highlight_filter_background': 'CursorLine',
+
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+    \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+    \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+    \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+    \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+   \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+    \ denite#do_map('toggle_select').'j'
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
+"
+" [plugins.ftplugin]
+" denite = '''
+" " Define mappings
+" nnoremap <silent><buffer><expr> <CR>
+"\ denite#do_map('do_action')
+" nnoremap <silent><buffer><expr> a
+"\ denite#do_map('choose_action')
+" nnoremap <silent><buffer><expr> d
+"\ denite#do_map('do_action', 'delete')
+" nnoremap <silent><buffer><expr> p
+"\ denite#do_map('do_action', 'preview')
+" nnoremap <silent><buffer><expr> q
+"\ denite#do_map('quit')
+" nnoremap <silent><buffer><expr> '
+"\ denite#do_map('quick_move')
+" nnoremap <silent><buffer><expr> i
+"\ denite#do_map('open_filter_buffer')
+" nnoremap <silent><buffer><expr> <Space>
+"\ denite#do_map('toggle_select').'j'
+" nnoremap <silent><buffer><expr> r
+"\ denite#do_map('do_action', 'quickfix')
+" nnoremap <silent><buffer><expr> <C-r>
+"\ denite#do_map('restore_sources')
+" '''

@@ -34,7 +34,7 @@ function! s:set_colors() "{{{
     return
   endif
 
-  if -1 != index(['', 'unite', 'denite', 'quickrun', 'qf'], &filetype)
+  if -1 != index(['', 'denite', 'denite-filter', 'quickrun', 'qf'], &filetype)
     return
   endif
 
