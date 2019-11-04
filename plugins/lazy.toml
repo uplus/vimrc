@@ -517,6 +517,7 @@ hook_add = '''
 '''
 
 [[plugins]]
+if  = 0
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 on_map = '<Plug>'
