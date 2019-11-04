@@ -102,7 +102,6 @@ augroup myac
   endfunction
 
   autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate * call s:browse_check(expand('<amatch>'))
-
   function! s:browse_check(path) abort
     if a:path ==# '' || bufnr('%') != expand('<abuf>')
       return

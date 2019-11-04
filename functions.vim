@@ -16,7 +16,7 @@ function! ToggleAutoSave() abort
 endfunction
 
 function! DoAutoSave() abort
-  if -1 != index(['denite', 'denite-filter', 'vimfiler', 'narrow'], &filetype)
+  if -1 != index(['denite', 'denite-filter', 'defx', 'narrow'], &filetype)
     return
   endif
 

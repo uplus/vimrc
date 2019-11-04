@@ -23,7 +23,6 @@ augroup filetypedetect
 
   au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
 
-  au BufRead * if isdirectory(expand('%')) | setf vimfiler | endif
   au VimEnter * if &l:ft ==# '' | filetype detect | endif
 augroup END
 
@@ -41,8 +40,7 @@ augroup myac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
   au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType conf,gitcommit,html,css set nocindent
-  au FileType gundo,vimfiler,quickrun,gitcommit setl foldcolumn=0
-  au FileType gundo,vimfiler,quickrun,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
+  au FileType gundo,quickrun,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
   au BufReadPost COMMIT_EDITMSG goto
 
   au StdinReadPost * call s:stdin_config()

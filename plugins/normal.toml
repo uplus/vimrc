@@ -97,6 +97,9 @@ hook_add = '''
 
 [plugins.ftplugin]
 defx = '''
+  " 別タブに移動する前に直前のバッファに移動
+  au myac TabLeave <buffer> wincmd p
+
   " 対象ファイル操作系:
   nnoremap <silent><buffer><nowait><expr>c   defx#do_action('copy')
   nnoremap <silent><buffer><nowait><expr>m   defx#do_action('move')
@@ -123,10 +126,11 @@ defx = '''
   " 移動系:
   nnoremap <silent><buffer><expr>j   line('.') == line('$') ? 'gg' : 'j'
   nnoremap <silent><buffer><expr>k   line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr>l   defx#do_action('open_tree_recursive')
+  nnoremap <silent><buffer><expr>l   defx#do_action('open_tree')
   nnoremap <silent><buffer><expr>h   defx#do_action('close_tree')
   nnoremap <silent><buffer><expr>L   defx#do_action('open_directory')
   nnoremap <silent><buffer><expr>H   defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr>R   defx#do_action('open_tree_recursive')
   nnoremap <silent><buffer><expr>~          defx#do_action('cd')
   nnoremap <silent><buffer><nowait><expr>\  defx#do_action('cd', getcwd())
   nmap <buffer><bs> H
