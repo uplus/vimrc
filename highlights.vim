@@ -6,13 +6,14 @@ endif
 
 let g:colors_name = ''
 let g:colors_seted = 0
-hi Normal       ctermfg=7 ctermbg=234 guifg=#d0d0d0 guibg=#1c1c1c
-hi CursorLine   cterm=NONE gui=NONE
+hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
+hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
 hi Visual       cterm=reverse gui=reverse
 hi Pmenu        ctermfg=240  ctermbg=251 guifg=#585858 guibg=#c6c6c6
 hi PmenuSel     ctermfg=0    ctermbg=255 guifg=#000000 guibg=#eeeeee
 hi BadSpace     cterm=NONE
 
+hi! link Statement Visual
 hi! link NormalFloat Normal
 hi! link LineNr      Normal
 hi! link FoldColumn  LineNr
@@ -55,6 +56,8 @@ function! s:set_colors() "{{{
 endfunction "}}}
 
 function! s:set_highlights() "{{{
+  hi Search     ctermfg=75   ctermbg=18   guifg=#efefef guibg=#204060 cterm=italic    gui=italic
+  hi IncSearch  ctermbg=39   ctermfg=56   guibg=#00afff guifg=#5f00d7 cterm=italic    gui=italic
   hi Title      ctermfg=118               guifg=#87ff00
   hi Todo       ctermfg=208  ctermbg=0    guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
   hi Error      ctermfg=255  ctermbg=161  guifg=#eeeeee guibg=#d7005f

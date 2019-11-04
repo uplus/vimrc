@@ -352,9 +352,6 @@ if dein#tap('vim-asterisk') "{{{
 endif "}}}
 
 if dein#tap('incsearch.vim') " {{{
-  au myac ColorScheme * hi IncSearch ctermbg=39 ctermfg=56 guibg=#00afff guifg=#5f00d7 cterm=NONE gui=NONE
-  au myac ColorScheme * hi Search    ctermfg=75 ctermbg=18 guifg=#5fafff guibg=#000087 cterm=NONE gui=NONE
-
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
   let g:incsearch#consistent_n_direction = 0    " 1:nで常にforwardに移動
