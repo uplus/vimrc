@@ -19,10 +19,10 @@ denite-filter = '''
   " <esc>が上書きされる
   let b:lexima_disabled = 1
 
-  imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
-  imap <silent><buffer><esc> <Plug>(denite_filter_quit)
   nmap <silent><buffer><esc> <Plug>(denite_filter_quit)
-  " inoremap <silent><buffer><nowait><expr><esc> denite#do_map('quit')
+  imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
+  " imap <silent><buffer><esc> <Plug>(denite_filter_quit)
+  inoremap <silent><buffer><nowait><expr><esc> denite#do_map('quit')
 '''
 
 [[plugins]]

@@ -1,4 +1,25 @@
 " Denite:
+let s:denite_win_width_percent = 0.8
+let s:denite_win_width = &columns * s:denite_win_width_percent
+let s:denite_win_col_pos = (&columns - s:denite_win_width) / 2
+let s:denite_win_height_percent = 0.6
+let s:denite_win_height = &lines * s:denite_win_height_percent
+let s:denite_win_row_pos = (&lines - s:denite_win_height) / 2
+
+call denite#custom#option('default', {
+  \ 'start_filter': v:true,
+  \ 'direction': 'dynamictop',
+  \ 'prompt': '>',
+  \ 'source_names': 'short',
+  \ 'split': 'floating',
+  \ 'highlight_filter_background': 'CursorLine',
+  \ 'winwidth': float2nr(s:denite_win_width),
+  \ 'wincol': float2nr(s:denite_win_col_pos),
+  \ 'winheight': float2nr(s:denite_win_height),
+  \ 'winrow': float2nr(s:denite_win_row_pos),
+  \ })
+
+
 
 nnoremap <space>u :Denite<space>
 
@@ -25,6 +46,10 @@ nnoremap <silent>;: :<c-u>Denite command_history<cr>
 nnoremap <silent>;uc :<c-u>Denite command<cr>
 nnoremap <silent>;u <Nop>
 
+" command! Dnext execute(':Denite -resume -cursor-pos=+1 -immediately '.join(s:denite_option_array, ' ').'')
+" command! Dprev execute(':Denite -resume -cursor-pos=-1 -immediately '.join(s:denite_option_array, ' ').'')
+
+
 " " search
 
 " nnoremap <silent>st :Denite tag<cr>
@@ -33,39 +58,19 @@ nnoremap <silent>;u <Nop>
 " nnoremap <silent>so :Denite -auto-resize -resume -input= outline<cr>
 " nnoremap <silent>sT :Todo<cr>
 
-" nnoremap <silent>;gs :Denite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status<cr>
-" nnoremap <silent>;q :Denite -auto-resize -no-empty -no-quit -direction=botright quickfix -buffer-name=quickfix<cr>
-
 " nnoremap <silent> [Window]<Space> :<C-u>Denite file/rec:~/.vim/rc<cr>
 " nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight line<cr>
 " nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal line<cr>
 " nnoremap <silent> [Window]s :<C-u>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
 
-" nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" : ":\<C-u>DeniteCursorWord -buffer-name=tag -immediately tag:include\<cr>"
-" nnoremap <silent><expr> tp  &filetype == 'help' ? ":\<C-u>pop\<cr>" : ":\<C-u>Denite -mode=normal jump\<cr>"
-" nnoremap <silent> [Window]n :<C-u>Denite dein<cr>
-" nnoremap <silent> [Window]g :<C-u>Denite ghq<cr>
 " nnoremap <silent> ;g :<C-u>Denite -buffer-name=search -no-empty -mode=normal grep<cr>
 " nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<cr>
 " nnoremap <silent> ft :<C-u>Denite filetype<cr>
 " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
 " nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<cr>
 
-" nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<cr>
 " nnoremap <silent> ;; :<C-u>Denite command command_history<cr>
 
-if executable('rg') " ripgrep
-  " https://github.com/BurntSushi/ripgrep
-  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command', ['rg', '--threads', '1', '--smart-case'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'final_opts', [])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-elseif executable('ag')
-  " https://github.com/ggreer/the_silver_searcher
-  call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-endif
 
 " call denite#custom#source('grep', 'args', ['', '', '!'])
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
@@ -85,42 +90,26 @@ call denite#custom#source('file/old', 'converters', ['converter/relative_word'])
 " call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 " call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
-let s:menus = {}
-let s:menus.vim = { 'description': 'Vim', }
-let s:menus.vim.file_candidates = [
-    \ ['    > Edit configuration file (init.vim)', '~/.config/nvim/init.vim']
-    \ ]
-call denite#custom#var('menu', 'menus', s:menus)
-
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
       \ [ '.git/', '.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
+if executable('rg') " ripgrep
+  " https://github.com/BurntSushi/ripgrep
+  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
+  call denite#custom#var('grep', 'command', ['rg', '--threads', '1', '--smart-case'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+elseif executable('ag')
+  " https://github.com/ggreer/the_silver_searcher
+  call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+endif
 
 " call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
 " call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
 " call denite#custom#map('insert', ';', 'vimrc#sticky_func()', 'expr')
 " call denite#custom#map('insert', '<c-w>', '<denite:move_up_path>', 'noremap')
-
-" call denite#custom#map('insert', '<bs>',  '<denite:smart_delete_char_before_caret>', 'noremap')
-" call denite#custom#map('insert', '<c-h>', '<denite:smart_delete_char_before_caret>', 'noremap')
-" call denite#custom#map('insert', '<c-a>', '<denite:move_caret_to_head>', 'noremap')
-"
-" call denite#custom#map('insert', '<c-n>', '<denite:move_to_next_line>', 'noremap')
-" call denite#custom#map('normal', '<c-n>', '<denite:move_to_next_line>', 'noremap')
-" call denite#custom#map('insert', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
-" call denite#custom#map('normal', '<c-p>', '<denite:move_to_previous_line>', 'noremap')
-"
-" call denite#custom#map('insert', '<esc>', '<denite:leave_mode>', 'noremap')
-" call denite#custom#map('normal', '<esc>', '<denite:leave_mode>', 'noremap')
-" call denite#custom#map('insert', '<c-j>', '<denite:do_action:default>', 'noremap')
-"
-" " Action mappings
-" call denite#custom#map('normal', 't', '<denite:do_action:tabopen>', 'noremap')
-" call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
-" call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
-"
-" call denite#custom#map('insert', '<c-t>', '<denite:do_action:tabopen>', 'noremap')
-" call denite#custom#map('normal', '<c-s>', '<denite:do_action:split>', 'noremap')
-" call denite#custom#map('normal', '<c-v>', '<denite:do_action:vsplit>', 'noremap')
 "
 " call denite#custom#map('normal', 'r', '<denite:do_action:qfreplace>', 'noremap')
 " call denite#custom#map('normal', 'R', '<denite:multiple_mappings:denite:toggle_select_all,denite:do_action:qfreplace>', 'noremap')
@@ -135,29 +124,6 @@ function! s:action_qfreplace(context)
   cclose
 endfunction
 
-let s:denite_win_width_percent = 0.8
-let s:denite_win_width = &columns * s:denite_win_width_percent
-let s:denite_win_col_pos = (&columns - s:denite_win_width) / 2
-let s:denite_win_height_percent = 0.6
-let s:denite_win_height = &lines * s:denite_win_height_percent
-let s:denite_win_row_pos = (&lines - s:denite_win_height) / 2
-
-" Change denite default options
-
-call denite#custom#option('default', {
-  \ 'start_filter': v:true,
-  \ 'direction': 'dynamictop',
-  \ 'prompt': '>',
-  \ 'source_names': 'short',
-  \ 'split': 'floating',
-  \ 'highlight_filter_background': 'CursorLine',
-  \ 'winwidth': float2nr(s:denite_win_width),
-  \ 'wincol': float2nr(s:denite_win_col_pos),
-  \ 'winheight': float2nr(s:denite_win_height),
-  \ 'winrow': float2nr(s:denite_win_row_pos),
-  \ })
-
-
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   setl signcolumn=yes
@@ -168,7 +134,9 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><nowait><expr><space> denite#do_map('toggle_select').'j'
   nnoremap <silent><buffer><expr>* denite#do_map('toggle_select_all')
 
+  nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
   nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
+
   nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
   nnoremap <silent><buffer><expr>t denite#do_map('do_action', 'tabswitch')
   nnoremap <silent><buffer><expr>s denite#do_map('do_action', 'splitswitch')
@@ -179,24 +147,14 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr>q denite#do_map('quit')
   nmap <buffer><esc> q
 
-  " replace
+  nnoremap <silent><buffer><expr>p denite#do_map('do_action', 'echo')
+  nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'qfreplace')
+  " nnoremap <silent><buffer><expr>R denite#do_map('do_action', 'echo')
+  nmap <buffer>R *r
 
-  nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'echo')
+  " [plugins.ftplugin]
+  " denite = '''
+  " nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'quickfix')
+  " nnoremap <silent><buffer><expr><c-r> denite#do_map('restore_sources')
+  " '''
 endfunction
-
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
-  imap <silent><buffer><esc> <Plug>(denite_filter_quit)
-  nmap <silent><buffer><esc> <Plug>(denite_filter_quit)
-  " inoremap <silent><buffer><expr><esc> denite#do_map('quit')
-endfunction
-"
-" [plugins.ftplugin]
-" denite = '''
-" nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
-" nnoremap <silent><buffer><expr>' denite#do_map('quick_move')
-" nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'quickfix')
-" nnoremap <silent><buffer><expr><c-r> denite#do_map('restore_sources')
-" '''

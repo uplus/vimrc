@@ -16,12 +16,12 @@ function! ToggleAutoSave() abort
 endfunction
 
 function! DoAutoSave() abort
-  " for debug
-  echo 'auto save at' strftime('%T') bufname()
-
   if -1 != index(['denite', 'denite-filter', 'vimfiler', 'narrow'], &filetype)
     return
   endif
+
+  " for debug
+  echo 'auto save at' strftime('%T') bufname() &filetype
 
   if g:my_autosave != 0
     silent! update
