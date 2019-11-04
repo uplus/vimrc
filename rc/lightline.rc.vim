@@ -101,7 +101,7 @@ let s:m = { '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview',
           \ '[Command Line]': 'Command Line',
           \ }
 
-let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'vimfiler': 'VimFiler',
+let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'Defx': 'defx',
           \ 'quickrun': 'Quickrun',
           \ 'dictionary': 'Dictionary',
           \ 'calendar': 'Calendar',
@@ -123,7 +123,7 @@ let s:e = { 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
           \ '[Command Line]': "''",
           \ }
 
-let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'denite-filter', 'dictionary', 'gundo', 'undotree']
+let s:ignore_ft = ['tagbar', 'defx', 'vimfiler', 'unite', 'denite', 'denite-filter', 'dictionary', 'gundo', 'undotree']
 let s:ignore_fn = ['__Gundo_Preview__']
 
 function! s:is_ignore() abort
