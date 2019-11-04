@@ -20,7 +20,6 @@ call denite#custom#option('default', {
   \ })
 
 
-
 nnoremap <space>u :Denite<space>
 
 nnoremap <silent>\b :<c-u>Denite buffer<cr>
@@ -68,8 +67,6 @@ nnoremap <silent>;u <Nop>
 " nnoremap <silent> ft :<C-u>Denite filetype<cr>
 " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
 " nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<cr>
-
-" nnoremap <silent> ;; :<C-u>Denite command command_history<cr>
 
 
 " call denite#custom#source('grep', 'args', ['', '', '!'])
@@ -122,39 +119,4 @@ function! s:action_qfreplace(context)
   call denite#do_action(a:context, 'quickfix', a:context['targets'])
   Qfreplace
   cclose
-endfunction
-
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  setl signcolumn=yes
-
-  nnoremap <silent><buffer><expr>i denite#do_map('open_filter_buffer')
-  nmap <buffer>I i<c-a>
-
-  nnoremap <silent><buffer><nowait><expr><space> denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr>* denite#do_map('toggle_select_all')
-
-  nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
-  nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
-
-  nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr>t denite#do_map('do_action', 'tabswitch')
-  nnoremap <silent><buffer><expr>s denite#do_map('do_action', 'splitswitch')
-  nnoremap <silent><buffer><expr>v denite#do_map('do_action', 'vsplitswitch')
-  nmap <buffer><c-j> <cr>
-
-  nnoremap <silent><buffer><expr>' denite#do_map('quick_move')
-  nnoremap <silent><buffer><expr>q denite#do_map('quit')
-  nmap <buffer><esc> q
-
-  nnoremap <silent><buffer><expr>p denite#do_map('do_action', 'echo')
-  nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'qfreplace')
-  " nnoremap <silent><buffer><expr>R denite#do_map('do_action', 'echo')
-  nmap <buffer>R *r
-
-  " [plugins.ftplugin]
-  " denite = '''
-  " nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'quickfix')
-  " nnoremap <silent><buffer><expr><c-r> denite#do_map('restore_sources')
-  " '''
 endfunction

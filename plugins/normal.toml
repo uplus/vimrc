@@ -15,6 +15,33 @@ on_cmd = 'Denite'
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 
 [plugins.ftplugin]
+denite = '''
+  setl signcolumn=yes
+
+  nnoremap <silent><buffer><expr>i denite#do_map('open_filter_buffer')
+  nmap <buffer>I i<c-a>
+
+  nnoremap <silent><buffer><nowait><expr><space> denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr>* denite#do_map('toggle_select_all')
+
+  nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
+  nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
+
+  nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr>t denite#do_map('do_action', 'tabswitch')
+  nnoremap <silent><buffer><expr>s denite#do_map('do_action', 'splitswitch')
+  nnoremap <silent><buffer><expr>v denite#do_map('do_action', 'vsplitswitch')
+  nmap <buffer><c-j> <cr>
+
+  nnoremap <silent><buffer><expr>' denite#do_map('quick_move')
+  nnoremap <silent><buffer><expr>q denite#do_map('quit')
+  nmap <buffer><esc> q
+
+  nnoremap <silent><buffer><expr>p denite#do_map('do_action', 'echo')
+  nnoremap <silent><buffer><expr>r denite#do_map('do_action', 'qfreplace')
+  nmap <buffer>R *r
+'''
+
 denite-filter = '''
   " <esc>が上書きされる
   let b:lexima_disabled = 1
