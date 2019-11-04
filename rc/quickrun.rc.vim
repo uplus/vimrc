@@ -1,8 +1,6 @@
 
 " #quickrun
 let g:quickrun_no_default_key_mappings = 1
-let g:unite_quickfix_is_multiline = 0
-let g:unite_quickfix_filename_is_pathshorten = 0
 
 nmap \R <Plug>(quickrun-op)
 xmap \r <Plug>(quickrun)
@@ -33,20 +31,6 @@ function! g:SmartQuickRun() "{{{
   endif
 endfunction "}}}
 
-function! QuickRunHeight(...) abort "{{{
-  let l:key = 'hook/unite_quickfix/unite_options'
-
-  if 0 == a:0
-    echo g:quickrun_config._[l:key]
-  else
-    let l:opts = substitute(g:quickrun_config._[l:key], '\v(-winheight\=)\d+', '\1' . a:1, '')
-    let g:quickrun_config._[l:key] = l:opts
-  endif
-
-  return
-endfunction "}}}
-
-command! -nargs=* QuickRunHeight call QuickRunHeight(<f-args>)
 command! QuickRunStop call SmartQuickRunStop()
 command! Stop QuickRunStop
 
@@ -283,7 +267,6 @@ let s:config = {
       \   'outputter/success'          : 'replace_region',
       \   'outputter/error'            : 'message',
       \   'outputter/message/log'      : 1,
-      \   'hook/unite_quickfix/enable' : 0,
       \   'type'                       : 'ruby',
       \ },
       \}
@@ -298,7 +281,6 @@ command! -nargs=* -range -complete=customlist,quickrun#complete
       \   -outputter/success replace_region
       \   -outputter/error message
       \   -outputter/message/log 1
-      \   -hook/unite_quickfix/enable 0
       \   -hook/echo/enable 0
       \   -type ruby
 " }}}
@@ -341,7 +323,6 @@ unlet s:hook
 
 " -create指定しないとハイライトされないときがある
 "   有効にするとバッファが作られまくる
-"   uniteで最初の行がエラーだとハイライトされる
 " topleft 8 にspを付けるとsplitが実行されてlistedbufferになる
 " error successで分けるなら処理が終了するのを待たないといけない
 " http://d.hatena.ne.jp/osyo-manga/20120919/1348054752

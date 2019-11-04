@@ -34,23 +34,21 @@ nnoremap <silent>s/ :<c-u>Denite line:all<cr>
 " nnoremap <silent>s? :<c-u>Denite -auto-resize -no-quit vg<cr>
 nnoremap <silent>s* :<c-u>DeniteCursorWord line:forward:wrap<cr>
 nnoremap <silent>s# :<c-u>DeniteCursorWord line:backward:wrap<cr>
-nnoremap <silent>sg :<c-u>Denite grep<cr>
 nnoremap <silent>g* :<c-u>DeniteCursorWord grep<cr>
-
+nnoremap <silent>sg :<c-u>Denite grep<cr>
+nnoremap <silent>st :<c-u>Denite tag<cr>
+nnoremap <silent>so :<c-u>Denite -auto-resize -resume outline<cr>
+nnoremap <silent>sm :<c-u>Denite -no-empty mark<cr>
 nnoremap <silent>;r :<c-u>Denite register neoyank<cr>
-nnoremap <silent><space>m :<c-u>Denite -no-empty mark<cr>
 nnoremap <silent>;uj :<c-u>Denite jump -auto-resize<cr>
-
 nnoremap <silent>;: :<c-u>Denite command_history<cr>
 nnoremap <silent>;uc :<c-u>Denite command<cr>
 nnoremap <silent>;ut :<c-u>Denite tag<cr>
 nnoremap <silent>;u <Nop>
 
-" nnoremap <silent>st :Denite tag<cr>
-" nmap     <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-force-redraw<cr><Plug>(unite_loop_cursor_down)
-" nnoremap <silent>sh :Denite -auto-resize headline<cr>
-" nnoremap <silent>so :Denite -auto-resize -resume -input= outline<cr>
-" nnoremap <silent>sT :Todo<cr>
+" command! Todo     Unite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
+" command! -nargs=* Maps execute 'Denite output:map\ ' . <q-args> . '|map!\ ' . <q-args>
+" command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
 " nnoremap <silent> [Window]<Space> :<C-u>Denite file/rec:~/.vim/rc<cr>
 " nnoremap <silent> [Window]s :<C-u>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
 " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>

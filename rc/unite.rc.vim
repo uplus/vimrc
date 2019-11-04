@@ -48,27 +48,7 @@ unlet s:unite_source_headline
 
 " on_post_sourceの中でやると起動直後に反映されてない
 au myac FileType unite call s:unite_config()
-" unite_config "{{{
 function! s:unite_config()
-  nmap <buffer>I 1gg<Plug>(unite_insert_head)
-  nmap <buffer>A 1gg<Plug>(unite_append_end)
-  nnoremap <buffer>cc ggcc
-  inoremap <buffer><C-e> <C-o>$
-  inoremap <buffer><C-d> <Del>
-  inoremap <buffer><C-b> <Left>
-  inoremap <buffer><C-f> <Right>
-  nnoremap <silent><buffer>q  :call <SID>unite_smart_close()<CR>
-  nnoremap <silent><buffer><expr>r unite#do_action('replace')
-  " nnoremap <buffer> <c-p> :<c-p> " c-pは使う
-  imap <buffer><c-n> <Plug>(unite_select_next_line)<Plug>(unite_select_next_line)
-  nmap <silent><buffer>R *r
-
-  inoremap <silent><buffer><expr><c-g>t unite#do_action('tabopen')
-  inoremap <silent><buffer><expr><c-g>s unite#do_action('split')
-  inoremap <silent><buffer><expr><c-g>v unite#do_action('vsplit')
-
-
-  " TODO unite#get_current_unite()を使うべき
   let context = unite#get_context()
 
   if context.buffer_name ==# 'quickrun-hook-unite-quickfix' || context.buffer_name ==# 'quickfix'
@@ -85,9 +65,9 @@ function! s:unite_config()
     nnoremap <silent><buffer><expr><nowait>v unite#do_action('vsplit')
     nnoremap <silent><buffer><expr><nowait>t unite#do_action('tabopen')
   endif
-endfunction "}}}
+endfunction
 
-" smart_close "{{{
+" smart_close
 " active bufferならquit
 " auto_highlightを消す
 function! s:unite_smart_close()
@@ -103,11 +83,11 @@ function! s:unite_smart_close()
   else
     call feedkeys("\<Plug>(unite_exit)")
   endif
-endfunction "}}}
+endfunction
 
-" unie_move_pos unite-quickfixで賢く移動する "{{{
+" unie_move_pos unite-quickfixで賢く移動する
 function! s:unite_move_pos(is_up)
   call cursor(0, a:is_up? 1 : col('$'))
   call search('|\d\+\D*\d*|', a:is_up? 'wb' : 'w')
   normal! ^
-endfunction "}}}
+endfunction

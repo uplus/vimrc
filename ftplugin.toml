@@ -141,7 +141,6 @@ go = '''
   highlight default link goErr WarningMsg
   au myac Syntax <buffer> syn keyword goErr err
 
-  nnoremap <buffer><silent>,li :<c-u>Unite go/import -start-insert<cr>
   nnoremap <buffer><silent>,lb :<c-u>QuickRun -mode n go/build<cr>
   nnoremap <buffer><silent>,lt :<c-u>QuickRun -mode n go/test<cr>
   nnoremap <buffer><silent>,lr :<c-u>GoRename<cr>
@@ -282,16 +281,6 @@ ruby = '''
   vnoremap <buffer>,lec :RExtractConstant<cr>
   vnoremap <buffer>,lev :RExtractLocalVariable<cr>
   vnoremap <buffer>,lem :RExtractMethod<cr>
-
-  " nnoremap <buffer>,lm :Unite rails/model -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lv :Unite rails/view -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lc :Unite rails/controller -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lr :Unite rails/route -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lh :Unite rails/helper -start-insert -default-action=open<cr>
-  " " nnoremap <buffer>,l :unite rails/config -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lsp :Unite rails/spec -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lge :Unite rails/generate -start-insert -default-action=open<cr>
-  " nnoremap <buffer>,lsc :Unite rails/schema -start-insert -default-action=open<cr>
 
   let g:ruby_no_comment_fold = 1
 

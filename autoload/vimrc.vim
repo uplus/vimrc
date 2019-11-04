@@ -129,7 +129,6 @@ endfunction "}}}
 
 function! vimrc#highlight(...) abort "{{{
   if 0 == a:0
-    Unite highlight
     return
   endif
 

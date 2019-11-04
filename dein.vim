@@ -237,63 +237,6 @@ if dein#tap('neosnippet.vim') "{{{
   endif
 endif "}}}
 
-if dein#tap('unite.vim') "{{{
-  " commands
-  command! Prefix   Unite -auto-resize -start-insert -input=^... prefix
-  command! Mes      Unite -auto-resize -buffer-name=message message
-  command! Todo     Unite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-  command! Schemes  Unite -auto-resize -auto-preview colorscheme
-  command! -nargs=* Maps execute 'Unite -auto-resize -start-insert output:map\ ' . <q-args> . '|map!\ ' . <q-args>
-  command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
-
-  " keymap
-  " nnoremap <space>u :Unite<space>
-  " nnoremap <silent>;gs :Unite -auto-resize -no-empty -no-quit -buffer-name=git/status giti/status<CR>
-  " nnoremap <silent>;q :Unite -auto-resize -no-empty -no-quit -direction=botright quickfix -buffer-name=quickfix<CR>
-
-  " nnoremap <silent><Space>m :<C-U>Unite -auto-resize -no-empty -buffer-name=mark mark<CR>
-  " nnoremap <silent>;mb :<C-U>Unite -auto-resize -no-empty -buffer-name=bookmark bookmark<CR>
-  " nnoremap <silent>;ma :<C-U>UniteBookmarkAdd<CR>
-
-  " nnoremap <silent>;: :<C-u>Unite history/command -start-insert -buffer-name=history-command<CR>
-  " nnoremap <silent>;uc :<C-u>Unite command -auto-resize -buffer-name=command<CR>
-  " nnoremap <silent>;ut :<C-u>Unite tab    -auto-resize -select=`tabpagenr()-1` -buffer-name=tab<CR>
-  " nnoremap <silent>;uj :<C-u>Unite jump   -auto-resize -buffer-name=jump<CR>
-  " nnoremap <silent>;u <Nop>
-
-  " " search
-  " nnoremap <silent>s/ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert -auto-resize line:all<CR>
-  " nnoremap <silent>s? :<C-u>Unite -auto-resize -no-quit -buffer-name=vimgrep vg<CR>
-  " nnoremap <silent>s* :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:forward:wrap<CR>
-  " nnoremap <silent>s# :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')` line:backward:wrap<CR>
-  " nnoremap <silent>st :Unite -start-insert tag<CR>
-  " nnoremap <silent>sg :Unite grep/git:**:-i<CR>
-  " nmap     <silent>sn :<C-u>UniteResume search%`bufnr('%')` -no-start-insert -force-redraw<CR><Plug>(unite_loop_cursor_down)
-  " nnoremap <silent>sh :Unite -auto-resize -start-insert -buffer-name=headline headline<CR>
-  " nnoremap <silent>so :Unite -auto-resize -start-insert -resume -input= -buffer-name=outline outline<CR>
-  " nnoremap <silent>sT :Todo<CR>
-endif "}}}
-
-if dein#tap('unite-quickfix') "{{{
-  command! LocationList call s:OpenLocationList()
-
-  functio! s:OpenLocationList()
-    let l:bufnum = winbufnr(unite#get_unite_winnr('location_list'))
-    echomsg l:bufnum
-    if l:bufnum != -1
-      echomsg 'delete ' . l:bufnum
-      execute 'bwipeout' l:bufnum
-    endif
-
-    " -silent つかないと起動時にメッセージが出て止まる
-    " -create  意図した通りに動作するがhide-bufferが大量生成される
-    "          ないとFileTypeでのマップがうまくいかなかったり、色がつかなかったり
-    Unite location_list -buffer-name=location_list -auto-resize -no-quit -no-empty -no-focus -create -direction=below -silent
-  endfunction
-
-  " au myac VimEnter * au myac BufWritePost * LocationList
-endif "}}}
-
 if dein#tap('vim-easymotion') "{{{
   let g:EasyMotion_do_mapping       = 0
   let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'

@@ -2,10 +2,7 @@
 " NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
 
 " #untie
-" NeoBundle 'Shougo/unite-build',               { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundle 'sgur/unite-qf',                    { 'depends' : [ 'Shougo/unite.vim' ] }
 " NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
-" NeoBundleLazy 'ujihisa/unite-locate',             { 'depends' : [ 'Shougo/unite.vim' ] }
 
 " #textobj
 " NeoBundle 'akiyan/vim-textobj-xml-attribute'  " axa ixa XML の属性

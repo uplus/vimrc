@@ -234,7 +234,7 @@ on_map = '<Plug>(hopping'
 
 [[plugins]] # quickfixの各行を編集、反映できる
 repo = 'thinca/vim-qfreplace'
-on_ft = ['unite', 'denite', 'qf']
+on_ft = ['denite', 'qf']
 hook_add = '''
   au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
 '''
