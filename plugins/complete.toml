@@ -26,7 +26,6 @@ repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 if = "has('nvim')"
 on_event = 'InsertEnter'
-# hook_add = 'let g:deoplete#enable_at_startup = 1'
 hook_source = '''
   source ~/.vim/rc/deoplete.rc.vim
   call deoplete#enable()

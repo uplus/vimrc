@@ -595,6 +595,3 @@ depends = 'ynkdir/vim-vimlparser'
 
 [[plugins]]
 repo = 'thinca/vim-themis'
-
-[[plugins]]
-repo = 'lambdalisue/suda.vim'
