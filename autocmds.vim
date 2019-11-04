@@ -57,7 +57,7 @@ augroup myac
   let g:badspace_enable = 1
   au VimEnter * au myac Syntax * call s:badspace()
   au InsertEnter * hi clear BadSpace
-  au BufEnter vimfiler:* hi clear BadSpace
+  au BufEnter defx:* hi clear BadSpace
   au InsertLeave,VimEnter,ColorScheme * call s:badspace_set_highlight()
 
   function! s:badspace_set_highlight() abort
@@ -98,6 +98,33 @@ augroup myac
   function! s:auto_mkdir(dir)
     if bufname() !~# '\v^.*://' && !isdirectory(a:dir) && !IsFile(a:dir)
       call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
+
+  autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate * call s:browse_check(expand('<amatch>'))
+
+  function! s:browse_check(path) abort
+    if a:path ==# '' || bufnr('%') != expand('<abuf>')
+      return
+    endif
+
+    " Disable netrw.
+    augroup FileExplorer
+      autocmd!
+    augroup END
+
+    let path = a:path
+    " For ":edit ~".
+    if fnamemodify(path, ':t') ==# '~'
+      let path = '~'
+    endif
+
+    if &filetype ==# 'defx' && line('$') != 1
+      return
+    endif
+
+    if isdirectory(expand(path))
+      exec 'Defx' path
     endif
   endfunction
 augroup END

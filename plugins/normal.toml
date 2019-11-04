@@ -93,8 +93,6 @@ hook_source = 'source ~/.vim/rc/defx.rc.vim'
 hook_add = '''
   nnoremap <silent><c-w>e :<c-u>Defx -split='vertical' -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()`<CR>
   nmap <c-w><c-e> <c-w>e
-
-  " nnoremap <silent>   [Space]f :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
 '''
 
 [plugins.ftplugin]
