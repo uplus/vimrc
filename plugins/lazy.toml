@@ -506,7 +506,7 @@ on_map  = '<Plug>(operator-jump'
 repo = 'lambdalisue/suda.vim'
 on_event = 'BufRead'
 hook_add = '''
-let g:suda_smart_edit = 1
+  let g:suda_smart_edit = 1
 '''
 
 [[plugins]]
