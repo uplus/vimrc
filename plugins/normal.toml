@@ -14,6 +14,17 @@ repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 
+[plugins.ftplugin]
+denite-filter = '''
+  " <esc>が上書きされる
+  let b:lexima_disabled = 1
+
+  imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
+  imap <silent><buffer><esc> <Plug>(denite_filter_quit)
+  nmap <silent><buffer><esc> <Plug>(denite_filter_quit)
+  " inoremap <silent><buffer><nowait><expr><esc> denite#do_map('quit')
+'''
+
 [[plugins]]
 repo = 'raghur/fruzzy'
 on_source = ['denite.nvim']

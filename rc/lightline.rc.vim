@@ -123,7 +123,7 @@ let s:e = { 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
           \ '[Command Line]': "''",
           \ }
 
-let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'dictionary', 'gundo', 'undotree']
+let s:ignore_ft = ['tagbar', 'vimfiler', 'unite', 'denite', 'denite-filter', 'dictionary', 'gundo', 'undotree']
 let s:ignore_fn = ['__Gundo_Preview__']
 
 function! s:is_ignore() abort

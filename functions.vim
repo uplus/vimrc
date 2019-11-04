@@ -17,9 +17,9 @@ endfunction
 
 function! DoAutoSave() abort
   " for debug
-  echo 'auto save at' strftime('%T')
+  echo 'auto save at' strftime('%T') bufname()
 
-  if -1 != index(['unite_exrename', 'vimfiler', 'narrow'], &filetype)
+  if -1 != index(['denite', 'denite-filter', 'vimfiler', 'narrow'], &filetype)
     return
   endif
 
