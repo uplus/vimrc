@@ -30,6 +30,7 @@ denite = '''
   nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
   nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
 
+  nnoremap <silent><buffer><expr>yy denite#do_map('do_action', 'yank')
   nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
   nnoremap <silent><buffer><expr>t denite#do_map('do_action', 'tabswitch')
   nnoremap <silent><buffer><expr>s denite#do_map('do_action', 'splitswitch')
