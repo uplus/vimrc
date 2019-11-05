@@ -249,20 +249,6 @@ if !empty($SUDO_USER) && $USER !=# $SUDO_USER
   set viewdir=
 endif
 
-if exists('$TMUX')
-  if exists('+guicursor')
-    set guicursor=
-  endif
-
-  if exists('+lazyredraw')
-    set lazyredraw
-  endif
-
-  if exists('+termguicolors')
-    set termguicolors
-  endif
-endif
-
 "  eventignore=all " 全てのイベントを無視
 " writeany " いかなるファイルも!無しで書き込み
 " confirm
