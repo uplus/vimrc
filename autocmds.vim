@@ -44,7 +44,9 @@ augroup myac
 
   " #fcitx {{{
   if executable('fcitx-remote')
+    " 最初の一度のみ先頭入れ替えバグは無関係だった
     au InsertLeave * FcitxOff
+
     if exists('##FocusGained')
       au FocusGained * FcitxOff
     endif
