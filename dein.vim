@@ -379,7 +379,8 @@ if dein#tap('open-browser.vim') "{{{
 
   function! s:smart_open() abort
     let l:iskeyword_save = &iskeyword
-    setl iskeyword=@,@-@,-,_,:,;,.,%,/,48-57
+    setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57
+
     try
       let l:str = expand('<cword>')
       let l:str = substitute(l:str, '[,.]$', '', '')
