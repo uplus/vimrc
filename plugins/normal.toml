@@ -81,7 +81,7 @@ on_source = ['denite.nvim']
 repo = 'Shougo/defx.nvim'
 hook_source = 'source ~/.vim/rc/defx.rc.vim'
 hook_add = '''
-  nnoremap <silent><c-w>e :<c-u>Defx -split='vertical' -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()`<CR>
+  nnoremap <silent><c-w>e :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()`<CR>
   nmap <c-w><c-e> <c-w>e
 '''
 
@@ -100,8 +100,8 @@ defx = '''
 
   " 対象開く系:
   nnoremap <silent><buffer><nowait><expr>x   defx#do_action('execute_system')
-  nnoremap <silent><buffer><nowait><expr>s   defx#do_action('open', 'split')
-  nnoremap <silent><buffer><nowait><expr>v   defx#do_action('open', 'vpedit')
+  nnoremap <silent><buffer><nowait><expr>s   defx#do_action('drop', 'split')
+  nnoremap <silent><buffer><nowait><expr>v   defx#do_action('drop', 'vsplit')
   " drop: 既に開かれていたらジャンプ
   nnoremap <silent><buffer><nowait><expr>t  defx#do_action('drop', 'tabedit')
   nnoremap <silent><buffer><expr>e          defx#do_action('drop')
