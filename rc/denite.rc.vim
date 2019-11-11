@@ -46,9 +46,10 @@ nnoremap <silent>;uc :<c-u>Denite command<cr>
 nnoremap <silent>;ut :<c-u>Denite tag<cr>
 nnoremap <silent>;u <Nop>
 
-" command! Todo     Unite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-" command! -nargs=* Maps execute 'Denite output:map\ ' . <q-args> . '|map!\ ' . <q-args>
-" command! -nargs=+ Out execute 'Unite output:' . escape(<q-args>, ' ')
+command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args> 
+command! -nargs=+ Out execute 'Denite output:' . escape(<q-args>, ' ')
+
+" command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
 " nnoremap <silent> [Window]<Space> :<C-u>Denite file/rec:~/.vim/rc<cr>
 " nnoremap <silent> [Window]s :<C-u>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
 " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
