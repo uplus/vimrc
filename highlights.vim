@@ -114,8 +114,9 @@ function! s:set_highlights() "{{{
     hi goSpecialString   ctermfg=226 guifg=#ffff00
     hi! link goConditional goDeclaration
   elseif g:colors_name ==? 'molokai'
-    hi   Folded        ctermfg=63   guifg=#5f5fff
-    hi   Comment       ctermfg=245  guifg=#8a8a8a
-    hi   NonText       ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE
+    hi LineNr   ctermfg=250  ctermbg=236 guifg=#869497 guibg=#232526
+    hi Folded   ctermfg=63   guifg=#5f5fff
+    hi Comment  ctermfg=245  guifg=#aaaaaa
+    hi NonText  ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE
   endif
 endfunction "}}}
