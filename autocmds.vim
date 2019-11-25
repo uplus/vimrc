@@ -38,7 +38,7 @@ augroup myac
   if '' !=# $DISPLAY
     " let @" = @*
     if exists('##TextYankPost')
-      " au TextYankPost * let @*=@" | let @+=@"
+      " au TextYankPost * let @* = @" | let @+ = @"
     endif
   endif
 
