@@ -37,7 +37,9 @@ command! Stop QuickRunStop
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
-      \ 'runner':                       'vimproc',
+      \ 'runner':                       'terminal',
+      \ 'runner/terminal/opener':       'new',
+      \ 'runner/terminal/into':         0,
       \ 'runner/vimproc/sleep':         10,
       \ 'runner/vimproc/updatetime':    100,
       \ 'runner/vimproc/read_timeout':  20,

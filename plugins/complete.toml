@@ -94,7 +94,7 @@ repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
+repo = 'deoplete-plugins/deoplete-go'
 on_ft = 'go'
 build = 'make'
 hook_source = '''
@@ -165,7 +165,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-if = 0
 repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
 build = './install.sh'

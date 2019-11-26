@@ -73,11 +73,8 @@ let g:LanguageClient_serverCommands = {
   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
   \ 'ruby': ['solargraph', 'stdio'],
   \ }
-  "\ 'ruby': ['orbaclerun', 'file-server'],
 
   " \ 'ruby': ['tcp://localhost:7658'],
-
-  " \ 'ruby': ['solargraph', 'socket'],
   " \ 'ruby': ['language_server-ruby'],
   " \ 'ruby': ['orbaclerun', 'file-server'],
   " \ 'rust': ['rls'],
@@ -104,6 +101,7 @@ let g:deoplete#omni_patterns = {
 
 " # keymaps
 " <s-tab>: completion back.
+inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
 " <bs>: close popup and delete backword char.
 " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"

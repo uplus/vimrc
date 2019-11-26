@@ -2,10 +2,6 @@
 repo = 'Shougo/dein.vim'
 # rtp = ''
 
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
 # [[plugins]]
 # repo = 'Shougo/deol.nvim'
 
