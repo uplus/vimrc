@@ -243,7 +243,7 @@ hook_add = '''
 repo = 'thinca/vim-partedit'
 on_cmd = 'Partedit'
 hook_add = '''
-  vmap <silent>,n :Partedit<cr>
+  vmap <silent>,, :Partedit<cr>
   let g:partedit#opener = 'botright new'
   let g:partedit#filetype = 'narrow'
 '''

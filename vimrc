@@ -60,8 +60,6 @@ nnoremap gR <Nop>
 xnoremap gR <Nop>
 nnoremap g8 <Nop>
 xnoremap g8 <Nop>
-nnoremap g<C-G> <Nop>
-xnoremap g<C-G> <Nop>
 "}}}
 
 call s:source('before')
