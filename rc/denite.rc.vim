@@ -37,7 +37,7 @@ nnoremap <silent>s# :<c-u>DeniteCursorWord line:backward:wrap<cr>
 nnoremap <silent>g* :<c-u>DeniteCursorWord grep<cr>
 nnoremap <silent>sg :<c-u>Denite grep<cr>
 nnoremap <silent>st :<c-u>Denite tag<cr>
-nnoremap <silent>so :<c-u>Denite -auto-resize -resume outline<cr>
+nnoremap <silent>so :<c-u>Denite -auto-resize outline<cr>
 nnoremap <silent>sm :<c-u>Denite -no-empty mark<cr>
 nnoremap <silent>;r :<c-u>Denite register neoyank<cr>
 nnoremap <silent>;uj :<c-u>Denite jump -auto-resize<cr>
