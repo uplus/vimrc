@@ -114,18 +114,15 @@ augroup myac
       autocmd!
     augroup END
 
-    let path = a:path
-    " For ":edit ~".
-    if fnamemodify(path, ':t') ==# '~'
-      let path = '~'
-    endif
-
     if &filetype ==# 'defx' && line('$') != 1
       return
     endif
 
-    if isdirectory(expand(path))
-      exec 'Defx' path
+    " For ":edit ~".
+    let l:path = fnamemodify(a:path, ':t') ==# '~' ? '~' : a:path
+
+    if isdirectory(l:path)
+      call execute('Defx', l:path)
     endif
   endfunction
 augroup END
