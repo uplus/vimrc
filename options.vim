@@ -10,7 +10,7 @@ set nobackup
 set nowritebackup
 
 " #encoding {{{
-set termencoding=utf-8
+" set termencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,ucs-bom,euc-jp,eucjp-ms,cp932
 " Default fileformat.
 set fileformat=unix

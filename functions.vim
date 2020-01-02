@@ -149,6 +149,7 @@ function! SetAsScratch() abort
   setl buftype=nofile
   setl bufhidden=hide
   setl noswapfile
+  setl nobuflisted
 endfunction
 
 function! SetTab(num) abort
