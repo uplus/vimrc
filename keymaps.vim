@@ -166,10 +166,11 @@ nnoremap <silent>,dw :wqall<CR>
 "}}}
 
 " #fold "{{{
-nnoremap zr zR
-nnoremap zR zr
-nnoremap zm zM
-nnoremap zM zm
+" こういうマッピングは良くない
+" nnoremap zr zR
+" nnoremap zR zr
+" nnoremap zm zM
+" nnoremap zM zm
 "}}}
 
 " #buffer "{{{

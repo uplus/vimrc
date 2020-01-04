@@ -25,7 +25,7 @@ command! ReloadKeymap source ~/.vim/keymaps.vim
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 command! -nargs=? Ls !ls -F <args>
-command! TmpBuffer new +call\ SetAsScratch()
+command! TmpBuffer exec winheight(0)/5 . 'new +call\ SetAsScratch()'
 
 " g<c-g>は改行を含めてしまう
 command! -range=% CountChar <line1>,<line2>s/.//ggn
