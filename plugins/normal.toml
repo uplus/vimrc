@@ -29,8 +29,10 @@ denite = '''
   nnoremap <silent><buffer><expr>yy denite#do_map('do_action', 'yank')
   nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
   nnoremap <silent><buffer><nowait><expr>t denite#do_map('do_action', 'tabswitch')
-  nnoremap <silent><buffer><nowait><expr>s denite#do_map('do_action', 'splitswitch')
-  nnoremap <silent><buffer><nowait><expr>v denite#do_map('do_action', 'vsplitswitch')
+  nnoremap <silent><buffer><nowait><expr>s denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><nowait><expr>v denite#do_map('do_action', 'vsplit')
+  " nnoremap <silent><buffer><nowait><expr>s denite#do_map('do_action', 'splitswitch')
+  " nnoremap <silent><buffer><nowait><expr>v denite#do_map('do_action', 'vsplitswitch')
   nmap <buffer><c-j> <cr>
 
   nnoremap <silent><buffer><nowait><expr>' denite#do_map('quick_move')
