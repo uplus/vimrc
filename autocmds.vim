@@ -103,7 +103,7 @@ augroup myac
     endif
   endfunction
 
-  autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate * call s:browse_check(expand('<amatch>'))
+  autocmd BufEnter,BufRead,BufNew,BufCreate * call s:browse_check(expand('<amatch>'))
   function! s:browse_check(path) abort
     if a:path ==# '' || bufnr('%') != expand('<abuf>')
       return
@@ -122,7 +122,7 @@ augroup myac
     let l:path = fnamemodify(a:path, ':t') ==# '~' ? '~' : a:path
 
     if isdirectory(l:path)
-      call execute('Defx', l:path)
+      call execute('Defx ' . l:path)
     endif
   endfunction
 augroup END

@@ -77,7 +77,7 @@ on_source = ['denite.nvim']
 repo = 'Shougo/defx.nvim'
 hook_source = 'source ~/.vim/rc/defx.rc.vim'
 hook_add = '''
-  nnoremap <silent><c-w>e :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()`<CR>
+  nnoremap <silent><c-w>e :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
   nmap <c-w><c-e> <c-w>e
 '''
 
@@ -129,7 +129,7 @@ defx = '''
   nnoremap <silent><buffer><expr><c-l>  defx#do_action('redraw')
   nnoremap <silent><buffer><expr><nowait><space> defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr>*      defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr>q      defx#do_action('quit')
+  nnoremap <silent><buffer><expr>q      (winnr() + winnr('$') == 2) ? ':quit<cr>' : defx#do_action('quit')
   nnoremap <silent><buffer><expr><tab>  winnr('$') != 1 ? ':<c-u>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
 '''
 
