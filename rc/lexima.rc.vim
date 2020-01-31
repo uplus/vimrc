@@ -106,25 +106,35 @@ call lexima#add_rule({
 
 " ruby "{{{
 call lexima#add_rule({
-      \   'at': '\v(\{|<do>)\s*%#',
-      \   'char': '<Bar>',
-      \   'input': '<Bar><Bar><Left>',
-      \   'filetype': ['ruby'],
-      \ })
+  \   'at': '\v(\{|<do>)\s*%#',
+  \   'char': '<Bar>',
+  \   'input': '<Bar><Bar><Left>',
+  \   'filetype': ['ruby'],
+  \ })
 
 call lexima#add_rule({
-      \   'at': '\({\|\<do\>\)\s*|.*\%#|',
-      \   'char': '<Bar>',
-      \   'input': '<Right>',
-      \   'filetype': ['ruby'],
-      \ })
+  \   'at': '\({\|\<do\>\)\s*|.*\%#|',
+  \   'char': '<Bar>',
+  \   'input': '<Right>',
+  \   'filetype': ['ruby'],
+  \ })
 
 call lexima#add_rule({
-      \   'at': '\({\|\<do\>\)\s*|\%#|',
-      \   'char': '<BS>',
-      \   'input': '<Del><BS>',
-      \   'filetype': ['ruby'],
-      \ })
+  \   'at': '\({\|\<do\>\)\s*|\%#|',
+  \   'char': '<BS>',
+  \   'input': '<Del><BS>',
+  \   'filetype': ['ruby'],
+  \ })
+
+" input_afterでEndが使えない
+call lexima#add_rule({
+ \ 'char': '<CR>',
+ \ 'input':  '<CR><End><CR>' . 'end' . '<Up><Left>',
+ \ 'at': '\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#.\+',
+ \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . 'end',
+ \ 'filetype': ['ruby'],
+ \ })
+
 "}}}
 
 " html
