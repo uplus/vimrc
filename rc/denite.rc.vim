@@ -44,6 +44,7 @@ nnoremap <silent>;uj :<c-u>Denite jump -auto-resize<cr>
 nnoremap <silent>;: :<c-u>Denite command_history<cr>
 nnoremap <silent>;uc :<c-u>Denite command<cr>
 nnoremap <silent>;ut :<c-u>Denite tag<cr>
+nnoremap <silent>;un :<c-u>Denite file/rec -path=`system('note --dir')`<cr>
 nnoremap <silent>;u <Nop>
 
 command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args> 
