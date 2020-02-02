@@ -194,22 +194,25 @@ if dein#tap('caw.vim') " {{{
   " for context_filetype and precious. これがあるとHTMLで上手くいかなくなる
   " au myac FileType * let b:caw_oneline_comment = substitute(&commentstring, '\s*%s', '', '')
 
-  " 回数指定は gc2jみたいにやる
+  " basic mappings, 回数指定は gc2j など
   nmap gcc <Plug>(caw:hatpos:toggle)
+  nmap gc <Plug>(operator-caw-hatpos-toggle)
+  nmap g<space> gcc
+  xmap g<space> gc
+
   nmap gcj <Plug>(caw:hatpos:toggle)j<PLug>(caw:hatpos:toggle)k
   nmap gck <Plug>(caw:hatpos:toggle)k<PLug>(caw:hatpos:toggle)j
-  " Aじゃないとobjectのaと被る
+  " append tail comment, Aじゃないとobjectのaと被る
   nmap gcA <Plug>(caw:dollarpos:toggle)
-  nmap gyy yy<Plug>(caw:hatpos:toggle)
 
-  xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:i:toggle)
+  " yank and comment out
+  nmap gyy yy<Plug>(caw:hatpos:toggle)
+  xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:hatpos:toggle)
   xmap gy <Plug>(comment-toggle-yank)
   xmap gc <Plug>(caw:hatpos:toggle)
 
-  nmap gc <Plug>(operator-caw-hatpos-toggle)
-
-  nmap g<space> gcc
-  xmap g<space> gc
+  " paste and comment out
+  nmap gcp p<Plug>(select-pasted)gc
 
   if dein#tap('vim-operator-exec_command')
     nmap <silent><expr>gy operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")

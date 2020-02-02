@@ -89,7 +89,8 @@ map mp %
 map mmp ^%
 nnoremap ,i ".p
 nnoremap ,p "0p
-nnoremap ,v '[<S-v>']
+nnoremap <Plug>(select-pasted) '[<S-v>']
+nmap ,v <Plug>(select-pasted)
 nmap dmp <Plug>(delete_for_match)
 nmap <Space>J <Plug>(MoveDown)kJ
 nnoremap <silent>( {:<c-u>exec ('' ==# getline('.')? 'normal! j' : '')<CR>
