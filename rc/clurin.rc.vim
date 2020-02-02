@@ -58,7 +58,7 @@ endfunction
 
 let g:clurin = {
       \ '-': {'use_default': 0, 'def': [
-      \   ['true', 'false'], ['on', 'off'], ['enable', 'disable'],
+      \   ['true', 'false'], ['on', 'off'], ['enable', 'disable'], ['On', 'Off'],
       \   ['&&', '||'], ['yes', 'no'], ['Left', 'Right'], ['Up', 'Down'],
       \   [' < ', ' > '], [' <= ', ' >= '], [' == ', ' != '],
       \   ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
