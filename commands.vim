@@ -16,6 +16,7 @@ command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! ReloadKeymap source ~/.vim/keymaps.vim
 command! TmpBuffer exec winheight(0)/5 . 'new +call\ SetAsScratch()'
+command! ReplacePunctuation %s/\v(、|。)/\=tr(submatch(1), '、。', '，．')
 
 " g<c-g>は改行を含めてしまう
 command! -range=% CountChar <line1>,<line2>s/.//ggn
