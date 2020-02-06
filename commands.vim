@@ -1,10 +1,7 @@
 command! -nargs=1 SetTab call SetTab(<args>)
-command! Terminal execute 'terminal' $SHELL
-command! Pry call vimrc#terminal('pry')
 command! Q qall!
 command! W w!
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
-command! FcitxOff call Job('fcitx-remote', '-c')
 command! -nargs=+ Cal echo eval(<q-args>)
 command! -nargs=1 Char echo printf("%c", 0x<args>)
 command! Cdbuffer cd %:h
@@ -12,23 +9,23 @@ command! Lcdbuffer lcd %:h
 command! -nargs=* Job call jobstart(<q-args>)
 command! RunInTerm let g:quickrun_config._.runner = 'terminal'
 
-command! Recache call dein#recache_runtimepath() | echo 'Recached!'
-command! Install call dein#install()
-command! Update  call dein#update()
-
 command! ClearLocList call setloclist(winnr(), [])
 command! Tags call Tags()
 command! MoveToTab exec "normal! \<c-w>T"
 command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! ReloadKeymap source ~/.vim/keymaps.vim
-command! Tig execute "silent! !tig status" | redraw!
-command! TmpCommit !git tmpc
-command! -nargs=? Ls !ls -F <args>
 command! TmpBuffer exec winheight(0)/5 . 'new +call\ SetAsScratch()'
 
 " g<c-g>は改行を含めてしまう
 command! -range=% CountChar <line1>,<line2>s/.//ggn
+
+" external command
+command! FcitxOff call Job('fcitx-remote', '-c')
+command! Tig execute "silent! !tig status" | redraw!
+command! TmpCommit !git tmpc
+command! -nargs=? Ls !ls -F <args>
+command! Pry call vimrc#terminal('pry')
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.

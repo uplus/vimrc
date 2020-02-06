@@ -1,6 +1,11 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 # rtp = ''
+hook_add = '''
+  command! Recache call dein#recache_runtimepath() | echo 'Recached!'
+  command! Install call dein#install()
+  command! Update  call dein#update()
+'''
 
 # [[plugins]]
 # repo = 'Shougo/deol.nvim'

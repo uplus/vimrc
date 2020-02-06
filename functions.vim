@@ -20,10 +20,10 @@ function! DoAutoSave() abort
     return
   endif
 
-  " for debug
-  echo 'auto save at' strftime('%T') bufname() &filetype
-
   if g:my_autosave != 0
+    " for debug
+    echo 'auto save at' strftime('%T') bufname() &filetype
+
     silent! update
     silent! SignifyRefresh
     silent! ALELint
