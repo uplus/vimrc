@@ -86,28 +86,36 @@ function! vimrc#operator_space_fold(motion_wise) abort "{{{
   '<,'>fold
 endfunction "}}}
 
+" arg1: command string
+" arg2: open command
 function! vimrc#terminal(...) abort
-  if empty(a:000)
-    let l:cmd = $SHELL
-  else
-    let l:cmd = $SHELL . ' -ic ' . join(a:000, ' ')
-  endif
+  " arg1
+  let l:cmd = empty(a:1) ? $SHELL : $SHELL . ' -ic ' . a:1
   let l:cmd = substitute(l:cmd, ' ', '\\ ', 'g')
 
-  execute 'botright split +terminal\' l:cmd
+  " arg2
+  let l:open_cmd = get(a:, 2, 'botright split')
+
+  execute l:open_cmd '+terminal\' l:cmd
   silent setl ft= nobuflisted bufhidden undolevels=-1 nofoldenable nonumber foldcolumn=0 signcolumn=no
 
+  silent tnoremap <esc> <c-\><c-n><c-w>c
   silent nnoremap <buffer>q <c-w>c
   startinsert
 endfunction
 
-function! vimrc#working_terminal() abort "{{{
-  if !bufexists(get(g:, 'vimrc#working_terminal_nr', -1))
-    call vimrc#terminal()
+" cmd毎にbufferを分けたい
+function! vimrc#working_terminal(...) abort "{{{
+  let l:cmd = get(a:, 1, '')
+  let l:open_cmd = get(a:, 2, 'botright split')
+
+  if bufexists(get(g:, 'vimrc#working_terminal_nr', -1))
+    " 既に存在するバッファを開く
+    exec l:open_cmd bufname(g:vimrc#working_terminal_nr)
+  else
+    call vimrc#terminal(l:cmd, l:open_cmd)
     let g:vimrc#working_terminal_nr = bufnr('%')
     au myac TermClose <buffer> unlet g:vimrc#working_terminal_nr
-  else
-    exec 'botright split' bufname(g:vimrc#working_terminal_nr)
   endif
 endfunction "}}}
 
