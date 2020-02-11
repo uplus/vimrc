@@ -265,6 +265,7 @@ ruby = '''
   setl omnifunc=
   setl iskeyword+=?
   setl wrap
+  setl foldlevelstart=5
 
   command! YardGen !yard doc %
   nnoremap <f3> :YardGen<cr>

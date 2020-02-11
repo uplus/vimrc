@@ -22,7 +22,7 @@ function! DoAutoSave() abort
 
   if g:my_autosave != 0
     " for debug
-    echo 'auto save at' strftime('%T') bufname() &filetype
+    " echo 'auto save at' strftime('%T') bufname() &filetype
 
     silent! update
     silent! SignifyRefresh
