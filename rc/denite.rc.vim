@@ -68,6 +68,7 @@ function! s:action_qfreplace(context)
 endfunction
 
 " call denite#custom#source('grep', 'args', ['', '', '!'])
+call denite#custom#source('grep', 'sorters', ['sorter/word'])
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
 call denite#custom#source('output', 'matchers', ['matcher/substring'])
 " call denite#custom#source('file', 'matchers', ['matcher/fruzzy'])
