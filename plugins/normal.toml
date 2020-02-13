@@ -57,7 +57,11 @@ denite-filter = '''
   imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
   imap <silent><buffer><nowait><esc> <Plug>(denite_filter_quit)
   " inoremap <silent><buffer><nowait><expr><esc> denite#do_map('quit')
-  inoremap <silent><buffer><expr><cr> denite#do_map('do_action')
+
+  imap <silent><buffer><cr> <Plug>(denite_filter_quit)<cr>
+  imap <silent><buffer><c-t> <Plug>(denite_filter_quit)t
+  imap <silent><buffer><c-s> <Plug>(denite_filter_quit)s
+  imap <silent><buffer><c-v> <Plug>(denite_filter_quit)v
 '''
 
 [[plugins]]
