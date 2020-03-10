@@ -71,7 +71,7 @@ let g:lightline = {
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
       \   'winwidth': winwidth(0),
-      \   'colorscheme': 'PaperColor',
+      \   'colorscheme': 'refreshing',
       \ }
 "}}}
 
