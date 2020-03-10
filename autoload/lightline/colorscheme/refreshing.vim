@@ -4,7 +4,7 @@ let s:magenta = ['#D285FF', 214]
 let s:yellow  = ['#FFEF4A', 136]
 let s:red     = ['#FF375F', 124]
 
-let s:tab_active   = ['#26EBAF', 141]
+let s:tab_active   = ['#6EA4FF', 141]
 let s:tab_inactive = ['#9aa09a', 244]
 let s:nocontent    = ['#202020', 235]
 let s:text_fg      = ['#202000', 0]
