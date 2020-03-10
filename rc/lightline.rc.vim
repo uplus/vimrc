@@ -5,12 +5,12 @@ let g:lightline = {
       \     'right': [['cursor'], ['filetype', 'fileencoding']]
       \   },
       \   'inactive': {
-      \     'left': [['filename']],
-      \     'right': [['cursor'], ['filetype']]
+      \     'left': [['mode', 'paste'], ['filename', 'readonly',],],
+      \     'right': [['cursor'], ['filetype', 'fileencoding']]
       \   },
       \   'tabline': {
       \     'left': [['tabline']],
-      \     'right': [['close']]
+      \     'right': [['close_button']]
       \   },
       \   'tab': {
       \     'active': ['tabnum', 'filename', 'modified'],
@@ -24,7 +24,7 @@ let g:lightline = {
       \     'charvaluehex': '%B',
       \     'spell': '%{&spell? &spelllang:""}',
       \     'percent': '%3p%%', 'percentwin': '%P',
-      \     'close': printf('%%999X %s ', has('multi_byte') ? '✗' : 'x'),
+      \     'close_button': printf('%%999X %s ', has('multi_byte') ? '✗' : 'x'),
       \   },
       \   'component_visible_condition': {
       \     'paste': '&paste', 'spell': '&spell',
@@ -43,7 +43,7 @@ let g:lightline = {
       \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
-      \     'tabs': 'tabsel', 'close': 'raw',
+      \     'tabs': 'tabsel', 'close_button': 'raw',
       \     'syntax_check': 'error',
       \     'tabline': 'tabsel',
       \   },
@@ -239,6 +239,8 @@ function! LLtabs_buffers() abort
   endif
 endfunction
 
+
+" ここで終了
 finish
 
 
