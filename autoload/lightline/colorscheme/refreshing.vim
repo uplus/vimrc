@@ -1,5 +1,5 @@
 let s:blue    = ['#6EA4FF', 141]
-let s:green   = ['#56FF95', 156]
+let s:green   = ['#26EBAF', 156]
 let s:magenta = ['#D285FF', 214]
 let s:yellow  = ['#FFEF4A', 136]
 let s:red     = ['#FF375F', 124]

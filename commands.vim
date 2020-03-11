@@ -1,4 +1,4 @@
-command! -nargs=1 SetTab call SetTab(<args>)
+command! -nargs=1 SetTab call vimrc#set_tab(<args>)
 command! Q qall!
 command! W w!
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif

@@ -152,17 +152,6 @@ function! SetAsScratch() abort
   setl nobuflisted
 endfunction
 
-function! SetTab(num) abort
-  let &l:tabstop=a:num
-  let &l:softtabstop = &l:tabstop
-  let &l:shiftwidth = &l:tabstop
-
-  if exists('+breakindentopt')
-    let &l:breakindentopt = printf('shift:%d', (2 <= &l:tabstop ? &l:tabstop - 2 : 0))
-  endif
-endfunction
-
-
 nnoremap <Plug>(OpenPluginGithub) :call OpenPluginGithub(expand('<cWORD>'))<cr>
 nmap gsp <Plug>(OpenPluginGithub)
 

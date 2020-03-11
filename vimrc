@@ -24,8 +24,10 @@ if exists('v:null')
   let g:type_null = type(v:null)
 endif
 
+command! -nargs=1 SetTab call vimrc#set_tab(<args>)
+
 function! s:source(path) abort "{{{
-  let fpath = expand('~/.vim/' . a:path . '.vim')
+  let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
   if filereadable(fpath)
     execute 'source' fnameescape(fpath)
   endif
@@ -33,13 +35,14 @@ endfunction "}}}
 
 function! s:on_filetype() abort "{{{
   if execute('filetype') =~# 'OFF'
-    filetype plugin indent on
+    " Lazy loading
+    silent! filetype plugin indent on
     syntax enable
     filetype detect
   endif
 endfunction "}}}
 
-let $CACHE = expand('~/.cache')
+let $CACHE = $HOME . '/.cache'
 
 if !isdirectory($CACHE)
   call mkdir($CACHE, 'p')
@@ -67,6 +70,18 @@ call s:source('before')
 " load dein
 if !exists('g:noplugin')
   call s:source('dein')
+
+  if has('vim_starting') && !empty(argv())
+    call s:on_filetype()
+  endif
+
+  if !has('vim_starting')
+    " autoloadにするとワンテンポ遅くなる
+    call dein#call_hook('source')
+    call dein#call_hook('post_source')
+  endif
+
+  call s:source('plugins-config')
 endif
 
 call s:source('options')
@@ -76,10 +91,6 @@ call s:source('highlights')
 call s:source('commands')
 call s:source('autocmds')
 
-filetype plugin indent on
-syntax enable
-
-" ftdetectいらなそう
-" call s:on_filetype()
-
 call s:source('after')
+
+set secure
