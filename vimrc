@@ -75,13 +75,11 @@ if !exists('g:noplugin')
     call s:on_filetype()
   endif
 
-  if !has('vim_starting')
-    " autoloadにするとワンテンポ遅くなる
-    call dein#call_hook('source')
-    call dein#call_hook('post_source')
-  endif
-
   call s:source('plugins-config')
+
+  " autoloadにするとワンテンポ遅くなる
+  au myac VimEnter * call dein#call_hook('source')
+  au myac VimEnter * call dein#call_hook('post_source')
 endif
 
 call s:source('options')

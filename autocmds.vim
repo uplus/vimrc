@@ -98,7 +98,7 @@ augroup myac
 
   au BufWritePre * call s:auto_mkdir(expand('%:p:h'))
   function! s:auto_mkdir(dir)
-    if bufname() !~# '\v^.*://' && !isdirectory(a:dir) && !IsFile(a:dir)
+    if bufname('%') !~# '\v^.*://' && !isdirectory(a:dir) && !IsFile(a:dir)
       call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
     endif
   endfunction
