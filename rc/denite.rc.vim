@@ -8,52 +8,20 @@ let s:denite_win_row_pos = (&lines - s:denite_win_height) / 2
 
 call denite#custom#option('default', {
   \ 'start_filter': v:true,
-  \ 'direction': 'dynamictop',
+  \ 'smartcase': v:true,
   \ 'prompt': '>',
   \ 'source_names': 'short',
-  \ 'split': 'floating',
   \ 'highlight_filter_background': 'CursorLine',
+  \ 'split': 'floating',
   \ 'winwidth': float2nr(s:denite_win_width),
   \ 'wincol': float2nr(s:denite_win_col_pos),
   \ 'winheight': float2nr(s:denite_win_height),
   \ 'winrow': float2nr(s:denite_win_row_pos),
   \ })
 
-" Mappings:
-nnoremap <space>d :Denite<space>
-nnoremap [d :Denite -resume -cursor-pos=-1 -immediately<cr>
-nnoremap ]d :Denite -resume -cursor-pos=+1 -immediately<cr>
+  "\ 'direction': 'aboveleft',
+  "\ 'highlight_window_background'
 
-nnoremap <silent>\b :<c-u>Denite buffer<cr>
-nnoremap <silent>\f :<c-u>Denite file/rec<cr>
-nnoremap <silent>\F :<c-u>DeniteBufferDir file/rec<cr>
-nnoremap <silent>\\f :<c-u>Denite file_mru<cr>
-nnoremap <silent><space>r :<c-u>Denite -resume -refresh<cr>
-
-nnoremap <silent>s/ :<c-u>Denite line:all<cr>
-" nnoremap <silent>s? :<c-u>Denite -auto-resize -no-quit vg<cr>
-nnoremap <silent>s* :<c-u>DeniteCursorWord line:forward:wrap<cr>
-nnoremap <silent>s# :<c-u>DeniteCursorWord line:backward:wrap<cr>
-nnoremap <silent>g* :<c-u>DeniteCursorWord grep<cr>
-nnoremap <silent>sg :<c-u>Denite grep<cr>
-nnoremap <silent>st :<c-u>Denite tag<cr>
-nnoremap <silent>so :<c-u>Denite -auto-resize outline<cr>
-nnoremap <silent>sm :<c-u>Denite -no-empty mark<cr>
-nnoremap <silent>;r :<c-u>Denite register neoyank<cr>
-nnoremap <silent>;uj :<c-u>Denite jump -auto-resize<cr>
-nnoremap <silent>;: :<c-u>Denite command_history<cr>
-nnoremap <silent>;uc :<c-u>Denite command<cr>
-nnoremap <silent>;ut :<c-u>Denite tag<cr>
-nnoremap <silent>;un :<c-u>Denite file/rec -path=`system('note --dir')`<cr>
-nnoremap <silent>;u <Nop>
-
-command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args> 
-command! -nargs=+ Out execute 'Denite output:' . escape(<q-args>, ' ')
-
-" command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-" nnoremap <silent> [Window]<Space> :<C-u>Denite file/rec:~/.vim/rc<cr>
-" nnoremap <silent> [Window]s :<C-u>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
-" nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
 
 " CustomActions:
 call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })

@@ -12,7 +12,7 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 " config
-let g:dein#auto_recache = 1
+" let g:dein#auto_recache = 0
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
 let g:dein#notification_time = 5
