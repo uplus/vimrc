@@ -224,95 +224,44 @@ if dein#tap('vim-easymotion') "{{{
   " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
 endif "}}}
 
-if dein#tap('vim-anzu') " {{{
-  " let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
-  " Treat folding well
-  " nnoremap <expr> n anzu#mode#mapexpr('n', '', 'zzzv')
-  " nnoremap <expr> N anzu#mode#mapexpr('N', '', 'zzzv')
-
-  " clear status
-  " nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-endif " }}}
-
-if dein#tap('vim-asterisk') "{{{
-  " let g:asterisk#keeppos = 1
-endif "}}}
-
-if dein#tap('incsearch.vim') " {{{
+if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu') " {{{
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
   let g:incsearch#consistent_n_direction = 0    " 1:nで常にforwardに移動
   let g:incsearch#magic                  = '\v' " very magic
 
+  " let g:asterisk#keeppos = 1
+  " let g:anzu_enable_CursorHold_AnzuUpdateSearchStatus = 1
+  " Treat folding well
+  " nnoremap <expr> n anzu#mode#mapexpr('n', '', 'zzzv')
+  " nnoremap <expr> N anzu#mode#mapexpr('N', '', 'zzzv')
+  " clear status
+  " nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+
   if dein#is_sourced('incsearch-index.vim')
     map / <Plug>(incsearch-index-/)
     map ? <Plug>(incsearch-index-?)
-    map g/ <Plug>(incsearch-index-stay)
+    map z/ <Plug>(incsearch-index-stay)
   else
     map / <Plug>(incsearch-forward)
     map ? <Plug>(incsearch-backward)
-    map g/ <Plug>(incsearch-stay)
+    map z/ <Plug>(incsearch-stay)
   endif
 
   map * <Plug>(incsearch-nohl-*)<Plug>(anzu-update-search-status-with-echo)
   map # <Plug>(incsearch-nohl-#)<Plug>(anzu-update-search-status-with-echo)
-  map g* <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
-  map g# <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
+  map z* <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
+  map z# <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-update-search-status-with-echo)
 
   xmap * <Plug>(incsearch-nohl)<Plug>(asterisk-g*)<Plug>(anzu-update-search-status-with-echo)
   xmap # <Plug>(incsearch-nohl)<Plug>(asterisk-g#)<Plug>(anzu-update-search-status-with-echo)
-  xmap g* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
-  xmap g# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
+  xmap z* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-update-search-status-with-echo)
+  xmap z# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-update-search-status-with-echo)
 
   map  n <Plug>(incsearch-nohl-n)
   map  N <Plug>(incsearch-nohl-N)
   nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
   nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
-
-  " g系は選択範囲を検索 zはstay asteriskはsmartcaseで*検索する
-  " nohlとnohl0の違いはたぶんCursorMovedがあるかないか
-  " map *   <Plug>(incsearch-nohl)<Plug>(asterisk-*)
-  " map #   <Plug>(incsearch-nohl)<Plug>(asterisk-#)
-endif "}}}
-
-if dein#tap('clever-f.vim') "{{{
-  let g:clever_f_ignore_case       = 0
-  let g:clever_f_smart_case        = 0
-  let g:clever_f_use_migemo        = 0
-  let g:clever_f_across_no_line    = 0
-  let g:clever_f_chars_match_any_signs = '' " ;で ({\"を代用
-  let g:clever_f_fix_key_direction = 0 " 1だとどんな時でもfで後ろにFで前に移動する
-  let g:clever_f_show_prompt       = 1
-  let g:clever_f_timeout_ms        = 0
-
-  let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
-  " <Plug>(clever-f-repeat-forward)
-  " <Plug>(clever-f-repeat-back)
-endif "}}}
-
-if dein#tap('vim-jplus') "{{{
-  nmap J <Plug>(jplus)
-  xmap J <Plug>(jplus)
-
-  " 任意の1文字+両端に空白を挿入して結合を行う
-  nmap gJ <Plug>(jplus-getchar)
-  xmap gJ <Plug>(jplus-getchar)
-
-  " 複数文字を入力したい場合
-  nmap <Space>gJ <Plug>(jplus-input)
-  vmap <Space>gJ <Plug>(jplus-input)
-
-  " ,での結合にスペースを挿入
-  let g:jplus#input_config = {
-    \ ',' : {'delimiter_format' : '%d '}
-    \}
-
-  " let g:jplus#config = {
-  "  \ 'dockerfile': {
-  "  \   'left_matchstr_pattern': '.*\ze\s\+\\\s*$',
-  "  \ },
-  "  \ }
-  " ^\s*\\\s*\zs.*\|\s*\zs.*
 endif "}}}
 
 if dein#tap('open-browser.vim') "{{{
@@ -359,28 +308,6 @@ if dein#tap('vim-hopping') "{{{
   "   \ "\<C-u>" : "<Over>(scroll-u)",
   "   \ "\<C-d>" : "<Over>(scroll-d)",
   "   \}
-endif "}}}
-
-if dein#tap('CamelCaseMotion') "{{{
-  map <silent> <space>w <plug>CamelCaseMotion_w
-  map <silent> <space>b <plug>CamelCaseMotion_b
-  map <silent> <space>e <plug>CamelCaseMotion_e
-endif "}}}
-
-if dein#tap('vim-smartword') "{{{
-  nmap w  <Plug>(smartword-w)
-  nmap b  <Plug>(smartword-b)
-  nmap e  <Plug>(smartword-e)
-  nmap ge  <Plug>(smartword-ge)
-  vmap w  <Plug>(smartword-w)
-  vmap b  <Plug>(smartword-b)
-  vmap e  <Plug>(smartword-e)
-  vmap ge  <Plug>(smartword-ge)
-
-  " word moveをCamelCase単位にする
-  map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
-  map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
-  map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
 endif "}}}
 
 if dein#tap('vim-fugitive') "{{{
