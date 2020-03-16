@@ -1,14 +1,14 @@
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
+depends = ['context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = ['snippet', 'neosnippet']
 hook_source = '''
   au myac InsertLeave * NeoSnippetClearMarkers
 '''
 
-[[plugins]]
-repo = 'uplus/neosnippet-snippets'
+# [[plugins]]
+# repo = 'uplus/neosnippet-snippets'
 
 
 [[plugins]] # ステータスにドキュメントをecho
