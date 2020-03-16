@@ -24,13 +24,14 @@ if !dein#load_state(s:path)
   finish
 endif
 
-let s:dein_normal = '~/.vim/plugins/normal.toml'
-let s:dein_textop  = '~/.vim/plugins/text-op.toml'
+let s:dein_normal      = '~/.vim/plugins/normal.toml'
+let s:dein_textop      = '~/.vim/plugins/text-op.toml'
 let s:dein_colorscheme = '~/.vim/plugins/colorscheme.toml'
-let s:dein_complete = '~/.vim/plugins/complete.toml'
-let s:dein_lazy = '~/.vim/plugins/lazy.toml'
-let s:dein_filetypes = '~/.vim/plugins/filetypes.toml'
-let s:dein_ftplugin = '~/.vim/ftplugin.toml'
+let s:dein_complete    = '~/.vim/plugins/complete.toml'
+let s:dein_lazy        = '~/.vim/plugins/lazy.toml'
+let s:dein_filetypes   = '~/.vim/plugins/filetypes.toml'
+let s:dein_ftplugin    = '~/.vim/plugins/ftplugin.toml'
+let s:dein_trial       = '~/.vim/plugins/trial.toml'
 
 call dein#begin(s:path, [
   \   expand('<sfile>'), s:dein_normal, s:dein_textop,
@@ -38,16 +39,16 @@ call dein#begin(s:path, [
   \   s:dein_filetypes, s:dein_ftplugin
   \ ])
 
-call dein#load_toml(s:dein_normal,      {'lazy': 0})
-call dein#load_toml(s:dein_textop,      {'lazy': 0})
-call dein#load_toml(s:dein_colorscheme, {'lazy': 0})
-call dein#load_toml(s:dein_complete,    {'lazy': 1})
-call dein#load_toml(s:dein_lazy,        {'lazy': 1})
-call dein#load_toml(s:dein_filetypes,   {'lazy': 0})
-call dein#load_toml(s:dein_ftplugin,    {'lazy': 0})
+call dein#load_toml(s:dein_normal,      { 'lazy': 0 })
+call dein#load_toml(s:dein_textop,      { 'lazy': 0 })
+call dein#load_toml(s:dein_colorscheme, { 'lazy': 0 })
+call dein#load_toml(s:dein_complete,    { 'lazy': 1 })
+call dein#load_toml(s:dein_lazy,        { 'lazy': 1 })
+call dein#load_toml(s:dein_filetypes,   { 'lazy': 0 })
+call dein#load_toml(s:dein_ftplugin,    { 'lazy': 0 })
 
-if filereadable(expand('~/.vim/plugins/trial.toml'))
-  call dein#load_toml('~/.vim/plugins/trial.toml', {'lazy': 0, 'merged': 0})
+if filereadable(expand(s:dein_trial))
+  call dein#load_toml(s:dein_trial, { 'lazy': 0, 'merged': 0 })
 endif
 
 " disable plugins for debug
