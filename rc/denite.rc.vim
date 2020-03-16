@@ -13,6 +13,7 @@ call denite#custom#option('default', {
   \ 'source_names': 'short',
   \ 'highlight_filter_background': 'CursorLine',
   \ 'split': 'floating',
+  \ 'unique': v:true,
   \ 'winwidth': float2nr(s:denite_win_width),
   \ 'wincol': float2nr(s:denite_win_col_pos),
   \ 'winheight': float2nr(s:denite_win_height),

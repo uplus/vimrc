@@ -19,31 +19,35 @@ hook_add = '''
   nnoremap <space>d :Denite<space>
   nnoremap [d :Denite -resume -cursor-pos=-1 -immediately<cr>
   nnoremap ]d :Denite -resume -cursor-pos=+1 -immediately<cr>
-
-  nnoremap <silent>\b :<c-u>Denite buffer<cr>
-  nnoremap <silent>\f :<c-u>Denite file/rec<cr>
-  nnoremap <silent>\F :<c-u>DeniteBufferDir file/rec<cr>
-  nnoremap <silent>\\f :<c-u>Denite file_mru<cr>
   nnoremap <silent><space>r :<c-u>Denite -resume -refresh<cr>
 
-  nnoremap <silent>s/ :<c-u>Denite line:all<cr>
-  " nnoremap <silent>s? :<c-u>Denite -auto-resize -no-quit vg<cr>
-  nnoremap <silent>s* :<c-u>DeniteCursorWord line:forward:wrap<cr>
-  nnoremap <silent>s# :<c-u>DeniteCursorWord line:backward:wrap<cr>
-  nnoremap <silent>g* :<c-u>DeniteCursorWord grep<cr>
-  nnoremap <silent>sg :<c-u>Denite grep<cr>
-  nnoremap <silent>st :<c-u>Denite tag<cr>
-  nnoremap <silent>so :<c-u>Denite -auto-resize outline<cr>
-  nnoremap <silent>sm :<c-u>Denite -no-empty mark<cr>
-  nnoremap <silent>;r :<c-u>Denite register neoyank<cr>
+  " file
+  nnoremap <silent>\b  :<c-u>Denite buffer<cr>
+  nnoremap <silent>\f  :<c-u>Denite file/rec<cr>
+  nnoremap <silent>\F  :<c-u>DeniteBufferDir file/rec<cr>
+  nnoremap <silent>\\f :<c-u>Denite file_mru<cr>
+
+  " grep
+  nnoremap <silent>s/  :<c-u>Denite line:all<cr>
+  nnoremap <silent>s*  :<c-u>DeniteCursorWord line:forward:wrap<cr>
+  nnoremap <silent>s#  :<c-u>DeniteCursorWord line:backward:wrap<cr>
+  nnoremap <silent>g*  :<c-u>DeniteCursorWord grep<cr>
+  nnoremap <silent>sg  :<c-u>Denite grep<cr>
+
+  " misc
+  nnoremap <silent>st  :<c-u>Denite tag<cr>
+  nnoremap <silent>so  :<c-u>Denite -auto-resize outline<cr>
+  nnoremap <silent>sm  :<c-u>Denite -no-empty mark<cr>
+  nnoremap <silent>;r  :<c-u>Denite register neoyank<cr>
   nnoremap <silent>;uj :<c-u>Denite jump -auto-resize<cr>
-  nnoremap <silent>;: :<c-u>Denite command_history<cr>
+  nnoremap <silent>;:  :<c-u>Denite command_history<cr>
   nnoremap <silent>;uc :<c-u>Denite command<cr>
   nnoremap <silent>;ut :<c-u>Denite tag<cr>
+  nnoremap <silent>;uh :<c-u>Denite help<cr>
   nnoremap <silent>;un :<c-u>Denite file/rec -path=`system('note --dir')`<cr>
   nnoremap <silent>;u <Nop>
 
-  command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args> 
+  command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args>
   command! -nargs=+ Out execute 'Denite output:' . escape(<q-args>, ' ')
 
   " command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
@@ -132,6 +136,7 @@ repo = 'Shougo/defx.nvim'
 hook_source = 'source ~/.vim/rc/defx.rc.vim'
 hook_add = '''
   nnoremap <silent><c-w>e :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+  nnoremap <silent><c-w>E :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>
   nmap <c-w><c-e> <c-w>e
 '''
 
