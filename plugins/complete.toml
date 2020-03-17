@@ -192,8 +192,8 @@ hook_add = '''
   let g:LanguageClient_trace = 'verbose' " off messages verbose
 
   let g:LanguageClient_rootMarkers = {
-    \ 'rust': [],
     \ }
+    "\ 'rust': [],
   "    \ 'javascript': ['project.json'],
   "    \ 'rust': ['Cargo.toml'],
 '''
