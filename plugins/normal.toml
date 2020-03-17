@@ -369,7 +369,7 @@ hook_add = '''
   map ;b <Plug>(easymotion-b)
 
   " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
-  au myac ColorScheme,VimEnter * call s:easymotion_highlight()
+  au myac VimEnter,ColorScheme * call s:easymotion_highlight()
   function! s:easymotion_highlight() "{{{
     hi EasyMotionTarget        ctermfg=220 guifg=#ffd700
     hi EasyMotionTarget2First  ctermfg=220 guifg=#ffd700
@@ -403,6 +403,8 @@ hook_add = '''
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
   let g:loaded_matchparen = 1
+  " VimEnterで効果がない
+  hi ParenMatch guibg=#5353e0
   au myac ColorScheme * hi ParenMatch guibg=#5353e0
 '''
 

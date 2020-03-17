@@ -314,14 +314,14 @@ hook_add = '''
 repo = 'tpope/vim-rails'
 on_ft = 'ruby'
 
-[[plugins]]
-repo = 'todesking/ruby_hl_lvar.vim'
-if = "!has('nvim')"
-on_ft = 'ruby'
-hook_add = '''
-  let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-  au myac ColorScheme * hi rubyLocalVariable ctermfg=38 guifg=#00afd7
-'''
+# [[plugins]]
+# repo = 'todesking/ruby_hl_lvar.vim'
+# if = "!has('nvim')"
+# on_ft = 'ruby'
+# hook_add = '''
+#   let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
+#   au myac VimEnter,ColorScheme * hi rubyLocalVariable ctermfg=38 guifg=#00afd7
+# '''
 
 [[plugins]]
 # plugin/に関数定義が沢山ある
@@ -769,7 +769,7 @@ on_cmd = ['DyslexicTracking', 'DyslexicOff']
 on_map = ['<Plug>(Dyslexic)']
 hook_add = '''
   let g:dyslexic_map = ''
-  au myac ColorScheme hi Dyslexic ctermfg=0 ctermbg=6 guifg=#000000 guibg=#008f8f
+  au myac VimEnter,ColorScheme hi Dyslexic ctermfg=0 ctermbg=6 guifg=#000000 guibg=#008f8f
 '''
 
 [[plugins]]
