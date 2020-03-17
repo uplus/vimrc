@@ -57,7 +57,7 @@ augroup myac
   " trailがあるとハイライトできない あたりまえか
   " filetypeコマンドの後じゃないと反映されない
   let g:badspace_enable = 1
-  au VimEnter * au myac Syntax * call s:badspace()
+  au VimEnter * au Syntax * call s:badspace()
   au InsertEnter * hi clear BadSpace
   au BufEnter defx:* hi clear BadSpace
   au InsertLeave,VimEnter,ColorScheme * call s:badspace_set_highlight()
