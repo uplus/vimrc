@@ -402,8 +402,6 @@ hook_add = '''
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
   let g:loaded_matchparen = 1
-  " VimEnterで効果がない
-  hi ParenMatch guibg=#5353e0
   au myac ColorScheme * hi ParenMatch guibg=#5353e0
 '''
 
