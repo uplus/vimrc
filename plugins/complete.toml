@@ -14,6 +14,9 @@ hook_add = '''
   let g:neosnippet#scope_aliases['arduino'] = 'c'
   " let g:neosnippet#enable_auto_clear_markers = 1 " Don't work on multi lines
 
+  " let g:neosnippet#enable_completed_snippet = 1
+  " let g:neosnippet#enable_complete_done = 1
+
   " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
   imap <c-l> <Plug>(neosnippet_expand_or_jump)
   smap <c-l> <Plug>(neosnippet_expand_or_jump)
