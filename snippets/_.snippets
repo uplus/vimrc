@@ -1,48 +1,110 @@
+# Global snippets
 
-#symbols
+## symbols
 
-snippet     arrowu
-abbr        ↑
-  ↑
-snippet     arrowd
+snippet arrowu
+abbr ↑
+	↑
+snippet arrowd
 abbr        ↓
-  ↓
-snippet     arrowl
-alias       <-
-abbr        ←
-  ←
-snippet     arrowr
-alias       ->
-abbr        →
-  →
+	↓
+snippet arrowl
+alias   <-
+abbr    ←
+	←
+snippet arrowr
+alias   ->
+abbr    →
+	→
+
+## roman numerals
 
 snippet n1
 abbr Ⅰ
-  Ⅰ
+	Ⅰ
 snippet n2
 abbr Ⅱ
-  Ⅱ
+	Ⅱ
 snippet n3
 abbr Ⅲ
-  Ⅲ
+	Ⅲ
 snippet n4
 abbr Ⅳ
-  Ⅳ
+	Ⅳ
 snippet n5
 abbr Ⅴ
-  Ⅴ
+	Ⅴ
 snippet n6
 abbr Ⅵ
-  Ⅵ
+	Ⅵ
 snippet n7
 abbr Ⅶ
-  Ⅶ
+	Ⅶ
 snippet n8
 abbr Ⅷ
-  Ⅷ
+	Ⅷ
 snippet n9
 abbr Ⅸ
-  Ⅸ
+	Ⅸ
 snippet n10
 abbr Ⅹ
-  Ⅹ
+	Ⅹ
+
+
+## date and time
+
+snippet     date_english
+options     word
+	`strftime("%d %b %Y")`${0}
+
+snippet     datetime_iso8601
+alias       df
+options     word
+	`strftime("%Y-%m-%dT%H:%M:%S")`${0}
+
+snippet     date_iso8601
+alias       dd
+options     word
+	`strftime("%Y-%m-%d")`${0}
+
+snippet     time_colon
+alias       dt
+options     word
+	`strftime("%H:%M:%S")`${0}
+
+snippet     lastmod
+abbr        Last modified time
+alias       lmod
+	Last Modified: `strftime("%Y-%m-%dT%H:%M:%S")`${0}
+
+
+## filename
+
+snippet     filename
+alias       fname
+options     word
+	`bufname('%') ==#'[Command Line]' ? expand('#') : expand('%')`${0}
+
+snippet     path
+alias       pwd
+options     word
+	`substitute(bufname('%') ==#'[Command Line]' ? expand('#:p') : expand('%:p'), '//\+', '/', 'g')`${0}
+
+snippet     rpath
+options     word
+	`substitute(bufname('%') ==#'[Command Line]' ? expand('#:h') : expand('%:h'), '\(//*\|/*$\)', '/', 'g')`${0}
+
+snippet     basename
+alias       bname
+options     word
+	`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`${0}
+
+snippet     filename_upper_camel
+alias       fnameuc
+options     word
+	`substitute(bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r'), '\%(^\(.\)\|_\(.\)\)', '\u\1\u\2', 'g')`${0}
+
+snippet     filename_lower_camel
+alias       fnamelc
+options     word
+	`substitute(bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r'), '\%(_\(.\)\)', '\u\1', 'g')`${0}

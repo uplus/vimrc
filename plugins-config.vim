@@ -161,26 +161,6 @@ if dein#tap('caw.vim') " {{{
 endif
 "}}}
 
-if dein#tap('neosnippet.vim') "{{{
-  let g:neosnippet#enable_snipmate_compatibility = 0
-  let g:neosnippet#snippets_directory = '~/.vim/snippets'
-  let g:neosnippet#enable_complete_done = 1
-  let g:neosnippet#expand_word_boundary = 1
-  let g:neosnippet#scope_aliases = {}
-  let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
-  let g:neosnippet#scope_aliases['arduino'] = 'c'
-  " let g:neosnippet#enable_auto_clear_markers = 1 " Don't work for multi lines
-
-  " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
-  imap <c-l> <Plug>(neosnippet_expand_or_jump)
-  smap <c-l> <Plug>(neosnippet_expand_or_jump)
-  xmap <c-l> <Plug>(neosnippet_jump)
-
-  if has('conceal')
-    " set conceallevel=2 concealcursor=niv
-  endif
-endif "}}}
-
 if dein#tap('vim-easymotion') "{{{
   let g:EasyMotion_do_mapping       = 0
   let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'
