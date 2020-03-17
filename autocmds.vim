@@ -53,6 +53,18 @@ augroup myac
     endif
   endif "}}}
 
+  " Todo highlight
+  au myac Syntax * call s:hightlight_todo()
+
+  function! s:hightlight_todo() abort
+    if 0 != get(s:, 'match')
+      silent! call matchdelete(s:match)
+    end
+
+  " matchaddを複数回呼び出すと激重になるので注意
+    let s:match = matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:?')
+  endfunction
+
   " #badspace {{{
   " TODO: replace with wstrip.vim
   " trailがあるとハイライトできない あたりまえか
