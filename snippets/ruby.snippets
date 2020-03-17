@@ -70,11 +70,11 @@ options head
 snippet lambda
 alias lam
 options word
-  ->(${1:#:args}){ ${2} }
+	->(${1}){ ${2} }
 
 snippet lambda-keyword
 options word
-  lambda{|${1:#:args}| ${2} }
+	lambda{|${1}| ${2} }
 
 
 ## class
@@ -242,6 +242,9 @@ snippet each_with_object
 alias ewo
 	each_with_object(${1}) {|${2:value}, ${3:memo}| ${0} }
 
+snippet gen-array-nest
+	Array.new(${1:size}) { Array.new(${2:size}) }
+
 
 ## debug helper
 
@@ -325,7 +328,7 @@ snippet tas
 	end
 
 
-## assert 
+## assert
 
 snippet as
 	assert(${1:test}, "${2:Failure message.}")${3}
@@ -366,8 +369,7 @@ snippet asnt
 ## utils
 
 snippet getints
-	gets.split.map(&:to_i)
-	${0}
+	gets.split.map(&:to_i)${0}
 
 # unix filter{}
 snippet argf
@@ -392,8 +394,8 @@ snippet     urlencode
 #	require 'erb'
 	ERB::Util.url_encode(${1})
 
-snippet     main
-options     head
+snippet main
+options head
 	if __FILE__ == \$0
 		${0}
 	end
@@ -405,6 +407,7 @@ options head
 	end
 
 snippet optp
+options head
 	require "optparse"
 
 	options = {${1:default => "args"}}
@@ -419,34 +422,7 @@ snippet opt
 	end
 
 
-## pwn 
-
-snippet pwn
-	#!/usr/bin/env ruby
-	# coding: ascii-8bit
-	require 'upwn'
-	include Shellcode
-
-	class Solver
-	end
-
-	host = true ? 'localhost' : ''
-	port = ${1:8888}
-
-	sl = Solver.open(host, port)
-	${0}
-
-	require 'irb'; binding.irb
-	puts '[*] end binding'
-
-	=begin
-	=end
-
-# ------------------------------
-
-snippet arraytwo
-	Array.new(${1:size}){|e| Array.new(${2:size}) }
-
+## define helper methods
 
 snippet def-deep_copy
 	def deep_copy(obj)
@@ -485,31 +461,30 @@ snippet def-pager
 		IO.popen(['less', opt], 'w'){|f| f.puts out.string }
 	end
 
-snippet sorb
-	classify{|${1:e}| ${2} }
-snippet det
-	detect{|${1:e}| ${2} }
 
-snippet tc
-	require "test/unit"
-	require "${1:library_file_name}"
+## pwn
 
-	class Test${2:$1} < Test::Unit::TestCase
-		def test_${3:case_name}
-			${4}
-		end
+snippet pwn
+options head
+	#!/usr/bin/env ruby
+	# coding: ascii-8bit
+	require 'upwn'
+	include Shellcode
+
+	class Solver
 	end
 
-# Benchmark.bmbm do .. end
-snippet bm-
-	TESTS = ${1:10_000}
-	Benchmark.bmbm do |results|
-		${2}
-	end
+	host = true ? 'localhost' : ''
+	port = ${1:8888}
 
-snippet rep
-	results.report("${1:name}:"){ TESTS.times{ ${2} }}
+	sl = Solver.open(host, port)
+	${0}
 
+	require 'irb'; binding.irb
+	puts '[*] end binding'
+
+	=begin
+	=end
 
 
 ## 未振り分け
