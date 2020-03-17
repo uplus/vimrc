@@ -112,6 +112,18 @@ repo = 'carlitux/deoplete-ternjs'
 build = 'npm install -g tern'
 on_ft = 'javascript'
 
+
+[[plugins]]
+repo = 'ternjs/tern_for_vim'
+on_ft = ['javascript', 'vue', 'html']
+hook_add = '''
+  let tern#command = ['tern']
+  let tern#arguments = ['--no-port-file']
+  let g:tern_show_loc_after_rename = 0
+  let g:tern_set_omni_function = 0
+'''
+
+
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'

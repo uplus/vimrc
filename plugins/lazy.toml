@@ -1,4 +1,4 @@
-#view
+# view
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
@@ -93,7 +93,7 @@ hook_add = '''
 '''
 
 
-#action
+# action
 
 [[plugins]]
 repo = 'chrisbra/unicode.vim'
@@ -108,6 +108,10 @@ hook_add = '''
 repo = 'AndrewRadev/sideways.vim'
 on_map = ['<Plug>Sideways']
 on_cmd = ['SidewaysLeft', 'SidewaysRight', 'SidewaysJumpLeft', 'SidewaysJumpRight']
+hook_add = '''
+  nmap <space>l <Plug>SidewaysRight
+  nmap <space>h <Plug>SidewaysLeft
+'''
 
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
@@ -145,6 +149,14 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'kana/vim-niceblock'
+on_map = ['<Plug>(niceblock-I)', '<Plug>(niceblock-gI)', '<Plug>(niceblock-A)']
+hook_add = '''
+  xmap I  <Plug>(niceblock-I)
+  xmap A  <Plug>(niceblock-A)
+'''
+
+[[plugins]]
 repo = 'osyo-manga/vim-jplus'
 on_map = '<Plug>(jplus'
 hook_add = '''
@@ -175,6 +187,10 @@ hook_add = '''
 [[plugins]]
 repo = 'terryma/vim-expand-region'
 on_map = ['<Plug>(expand_region_expand)', '<Plug>(expand_region_shrink)']
+hook_add = '''
+  xmap v <Plug>(expand_region_expand)
+  xmap gm <Plug>(expand_region_shrink)
+'''
 
 [[plugins]]
 repo     = 'dhruvasagar/vim-table-mode'
@@ -241,10 +257,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'haya14busa/vim-asterisk'
-on_map = '<Plug>(asterisk-'
-
-[[plugins]]
 repo = 'tpope/vim-abolish'
 on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
 hook_add = '''
@@ -255,6 +267,16 @@ hook_add = '''
 [[plugins]]
 repo = 'osyo-manga/vim-hopping'
 on_map = '<Plug>(hopping'
+hook_add = '''
+  let g:hopping#prompt     = 'Input:> '
+  nmap \H <Plug>(hopping-start)
+  " let g:hopping#keymapping = {
+  "   \ "\<C-n>" : "<Over>(hopping-next)",
+  "   \ "\<C-p>" : "<Over>(hopping-prev)",
+  "   \ "\<C-u>" : "<Over>(scroll-u)",
+  "   \ "\<C-d>" : "<Over>(scroll-d)",
+  "   \}
+'''
 
 [[plugins]] # quickfixの各行を編集、反映できる
 repo = 'thinca/vim-qfreplace'
@@ -271,6 +293,10 @@ hook_add = '''
   let g:partedit#opener = 'botright new'
   let g:partedit#filetype = 'narrow'
 '''
+
+[[plugins]]
+repo = 'tyru/visualctrlg.vim'
+on_map = ['<Plug>(visualctrlg-briefly)', '<Plug>(visualctrlg-verbosely)']
 
 
 #c cpp
@@ -402,18 +428,6 @@ hook_source = '''
   let g:gist_clip_command = 'xclip -selection clipboard'
 '''
 
-# [[plugins]]
-# # TODO
-# repo = 'junegunn/vim-github-dashboard'
-# repo = 'uplus/vim-github-dashboard'
-# on_cmd = ['GHDashboard', 'GHActivity']
-# hook_add = '''
-#   let g:github_dashboard = {
-#     \ 'username': 'uplus',
-#     \ 'position': 'tab',
-#     \ }
-# '''
-
 
 #web
 
@@ -422,6 +436,40 @@ repo = 'tyru/open-browser.vim'
 on_cmd = [ 'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch' ]
 on_map = [ '<Plug>(openbrowser-open)', '<Plug>(openbrowser-search)', '<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-wwwsearch)' ]
 on_func = ['openbrowser#open', 'openbrowser#search', 'openbrowser#smart_search']
+hook_add = '''
+  nnoremap <expr><Plug>(openbrowser-wwwsearch) <SID>www_search('')
+  nnoremap <expr><Plug>(openbrowser-smart-open) <SID>smart_open()
+
+  nmap gss <Plug>(openbrowser-wwwsearch)
+  xmap gsc <Plug>(openbrowser-smart-search)
+  nmap gsc <Plug>(openbrowser-smart-open)
+
+  function! s:smart_open() abort
+    let l:iskeyword_save = &iskeyword
+    setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57
+
+    try
+      let l:str = expand('<cword>')
+      let l:str = substitute(l:str, '[,.]$', '', '')
+      call openbrowser#smart_search(l:str)
+    finally
+      let &l:iskeyword = l:iskeyword_save
+    endtry
+  endfunction
+
+  function! s:www_search(query) abort
+    if a:query !=# ''
+      let l:search_word = a:query
+    else
+      let l:search_word = input('Please input search word: ')
+    endif
+
+    if l:search_word !=# ''
+      let l:search_word = substitute(l:search_word, "'", "''", 'g')
+      call openbrowser#search(l:search_word)
+    endif
+  endfunction
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser-github.vim'
@@ -722,4 +770,15 @@ on_map = ['<Plug>(Dyslexic)']
 hook_add = '''
   let g:dyslexic_map = ''
   au myac ColorScheme hi Dyslexic ctermfg=0 ctermbg=6 guifg=#000000 guibg=#008f8f
+'''
+
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+on_cmd = 'Calendar'
+hook_add = '''
+  let g:calendar_google_calendar = 1
+  let g:calendar_google_task = 1
+
+  let g:calendar_frame = 'default'
+  let g:calendar_first_day = 'sunday'
 '''

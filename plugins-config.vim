@@ -89,11 +89,6 @@ if dein#tap('vim-textobj-function') "{{{
   " vmap AF <Plug>(textobj-function-A)
 endif "}}}
 
-if dein#tap('sideways.vim') "{{{
-  nmap <space>l <Plug>SidewaysRight
-  nmap <space>h <Plug>SidewaysLeft
-endif "}}}
-
 if dein#tap('vim-textobj-ruby') "{{{
   let g:textobj_ruby_no_default_key_mappings = 1
   " do-endとかのブロックもある
@@ -161,49 +156,6 @@ if dein#tap('caw.vim') " {{{
 endif
 "}}}
 
-if dein#tap('vim-easymotion') "{{{
-  let g:EasyMotion_do_mapping       = 0
-  let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'
-  let g:EasyMotion_use_upper        = 0
-  let g:EasyMotion_smartcase        = 1
-  let g:EasyMotion_leader_key       = ';'
-  let g:EasyMotion_landing_highlight = 0
-  let g:EasyMotion_do_shade         = 1
-  let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
-  let g:EasyMotion_space_jump_first = 1 " Space jump to first match
-  let g:EasyMotion_add_search_history = 0
-  let g:EasyMotion_prompt           = '{n}> '
-  let g:EasyMotion_cursor_highlight = 0
-
-  au myac ColorScheme,VimEnter * call s:easymotion_highlight()
-  function! s:easymotion_highlight() "{{{
-    hi EasyMotionTarget        ctermfg=220 guifg=#ffd700
-    hi EasyMotionTarget2First  ctermfg=220 guifg=#ffd700
-    hi EasyMotionTarget2Second ctermfg=46  guifg=#00ff00
-  endfunction "}}}
-
-  " <Plug>(easymotion-lineanywhere) current line上のwordの初めと終わりを選択して飛ぶ
-  " <Plug>(easymotion-jumptoanywhere) スクリーン上のwordの初めと終わりを選択して飛ぶ
-
-  map ;h <Plug>(easymotion-linebackward)
-  map ;l <Plug>(easymotion-lineforward)
-  map ;j <Plug>(easymotion-j)
-  map ;k <Plug>(easymotion-k)
-  nmap ;L <Plug>(easymotion-overwin-line)
-
-  map ;; <Plug>(easymotion-s2)
-  " map ;f <Plug>(easymotion-sl2)
-  map ;f <Plug>(easymotion-fln)
-  map ;t <Plug>(easymotion-tln)
-
-  map ;w <Plug>(easymotion-w)
-  nmap ;w <Plug>(easymotion-w)
-  nmap ;W <Plug>(easymotion-overwin-w)
-  map ;b <Plug>(easymotion-b)
-
-  " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
-endif "}}}
-
 if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu') " {{{
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
@@ -242,117 +194,4 @@ if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu')
   map  N <Plug>(incsearch-nohl-N)
   nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n)zzzv
   nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N)zzzv
-endif "}}}
-
-if dein#tap('open-browser.vim') "{{{
-  nmap gss :<c-u>Wsearch<CR>
-  " nmap gsc <Plug>(openbrowser-open)
-  xmap gsc <Plug>(openbrowser-smart-search)
-  nmap gsc :call <sid>smart_open()<cr>
-
-  function! s:smart_open() abort
-    let l:iskeyword_save = &iskeyword
-    setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57
-
-    try
-      let l:str = expand('<cword>')
-      let l:str = substitute(l:str, '[,.]$', '', '')
-      call openbrowser#smart_search(l:str)
-    finally
-      let &l:iskeyword = l:iskeyword_save
-    endtry
-  endfunction
-
-  command! -nargs=* Wsearch :call <SID>www_search(<q-args>)
-  nnoremap <Plug>(openbrowser-wwwsearch) :<c-u>call <SID>www_search()<CR>
-  function! s:www_search(query)
-    if a:query !=# ''
-      let l:search_word = a:query
-    else
-      let l:search_word = input('Please input search word: ')
-    endif
-
-    if l:search_word !=# ''
-      let l:search_word = substitute(l:search_word, "'", "''", 'g')
-      call openbrowser#search(l:search_word)
-    endif
-  endfunction
-endif "}}}
-
-if dein#tap('vim-hopping') "{{{
-  let g:hopping#prompt     = 'Input:> '
-  nmap \H <Plug>(hopping-start)
-  " let g:hopping#keymapping = {
-  "   \ "\<C-n>" : "<Over>(hopping-next)",
-  "   \ "\<C-p>" : "<Over>(hopping-prev)",
-  "   \ "\<C-u>" : "<Over>(scroll-u)",
-  "   \ "\<C-d>" : "<Over>(scroll-d)",
-  "   \}
-endif "}}}
-
-if dein#tap('vim-fugitive') "{{{
-  command! Commit Gcommit -v
-  command! Fix Gcommit --amend -v
-endif "}}}
-
-if dein#tap('vim-expand-region') "{{{
-  xmap v <Plug>(expand_region_expand)
-  xmap gm <Plug>(expand_region_shrink)
-endif "}}}
-
-if dein#tap('webapi-vim') "{{{
-  command! -nargs=* URIencode :call URIencode(<q-args>)
-  command! -nargs=* URIdecode :call URIdecode(<q-args>)
-
-  function! URIencode(...) abort
-    if a:0 == 0 || '' ==# a:1
-      let l:list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-      let l:url = webapi#http#encodeURI(l:list[1])
-      call setline('.', l:list[0] . l:url)
-    else
-      echo webapi#http#encodeURI(a:1)
-    endif
-  endfunction
-
-  function! URIdecode(...) abort
-    if a:0 == 0 || '' ==# a:1
-      let l:list = matchlist(getline('.'), '\v^(\s*)(.*)\s*$')[1:2]
-      let l:url = webapi#http#decodeURI(l:list[1])
-      call setline('.', l:list[0] . l:url)
-    else
-      echo webapi#http#decodeURI(a:1)
-    endif
-  endfunction
-endif "}}}
-
-if dein#tap('ref-dicts-en') "{{{
-  let g:ref_source_webdict_sites = {
-        \ 'ej': { 'url': 'http://dictionary.infoseek.ne.jp/ejword/%s' },
-        \ 'je': { 'url': 'http://dictionary.infoseek.ne.jp/jeword/%s' },
-        \ 'wiki': { 'url': 'http://ja.wikipedia.org/wiki/%s' },
-        \ }
-
-  let g:ref_source_webdict_sites.default = 'ej'
-
-  " output filter
-  function! g:ref_source_webdict_sites.ej.filter(output)
-    let l:body = join(split(a:output, "\n")[16:], "\n")
-    let l:body = tr(l:body, '《》〈〉【】［］（）', '<><>[][]()')
-    let l:body = substitute(l:body, '[★▼●]', '', 'g')
-    let l:body = substitute(l:body, '\n出典：\_.*\%$', '', 'g')
-    return l:body
-  endfunction
-
-  function! g:ref_source_webdict_sites.je.filter(output)
-    let l:body = join(split(a:output, "\n")[16:], "\n")
-    let l:body = tr(l:body, '《》〈〉【】［］（）', '<><>[][]()')
-    let l:body = substitute(l:body, '[★▼●]', '', 'g')
-    let l:body = substitute(l:body, '\n出典：\_.*\%$', '', 'g')
-    return l:body
-  endfunction
-
-  au myac FileType ref-webdict nnoremap <silent><buffer>q :quit<CR>
-
-  command! -nargs=1 Wiki Ref webdict wiki <args>
-  command! -nargs=1 Eng Ref webdict <args>
 endif "}}}

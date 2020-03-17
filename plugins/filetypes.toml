@@ -79,3 +79,31 @@ hook_add = '''
   let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_folding_style_pythonic = 0
 '''
+
+[[plugins]]
+# syntax fold
+repo = 'pangloss/vim-javascript'
+
+
+# haskell
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+on_ft = 'haskell'
+
+[[plugins]]
+# こっちのほうが色つく
+repo = 'dag/vim2hs'
+
+[[plugins]]
+repo = 'neovimhaskell/haskell-vim'
+if = 0
+hook_add = '''
+  let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+  let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+  let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+  let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+  let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+  let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+  let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+'''
