@@ -1,8 +1,6 @@
 .*
 !.gitkeep
 bundle/
-colors/
-dict/gene.dict
 tmp/
 before.vim
 after.vim

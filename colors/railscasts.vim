@@ -44,7 +44,6 @@ hi rubyInclude             ctermfg=214 guifg=#ffaf00
 " hi rubyComment             ctermfg=179 guifg=#d7af5f
 hi rubyComment             ctermfg=247 guifg=#afafdf
 hi! link rubyData rubyComment
-hi rubyTodo                ctermfg=16  ctermbg=220 guifg=#000000 guibg=#ffd700
 hi rubyDataDirective       ctermfg=111 guifg=#87afff
 hi rubyError               ctermfg=255 ctermbg=161 guifg=#eeeeee guibg=#e7005f
 hi rubyFunction            ctermfg=226 guifg=#ffff00

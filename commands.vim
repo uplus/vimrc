@@ -25,8 +25,7 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 command! FcitxOff call Job('fcitx-remote', '-c')
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
-command! -nargs=? Ls !ls -F <args>
-command! Pry call vimrc#terminal('pry')
+command! Irb call vimrc#terminal('irb')
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
@@ -74,11 +73,3 @@ endif
 " #note
 command! -nargs=1 -complete=customlist,vimrc#note_file_completion
       \ Note call vimrc#note_open(<q-args>)
-
-" #word translate
-let g:word_translate_local_dict = '~/.vim/tmp/gene.dict'
-command! -nargs=1 Weblio echo vimrc#word_translate_weblio(<f-args>)
-command! -nargs=1 Weblios echo vimrc#word_translate_weblio_smart(<f-args>)
-command! -nargs=? WtransLocal call vimrc#word_translate_local_dict(<f-args>)
-command! -nargs=? WordTranslate call vimrc#word_translate(<f-args>)
-command! -nargs=? GoldenDict call vimrc#goldendict(<f-args>)
