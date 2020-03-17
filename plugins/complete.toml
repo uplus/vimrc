@@ -109,8 +109,8 @@ hook_source = '''
 
 [[plugins]]
 repo = 'carlitux/deoplete-ternjs'
-build = 'npm install -g tern'
 on_ft = 'javascript'
+hook_post_update = 'npm install -g tern'
 
 
 [[plugins]]
@@ -131,7 +131,7 @@ on_ft = 'python'
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-go'
 on_ft = 'go'
-build = 'make'
+hook_post_update = 'make'
 hook_source = '''
   let g:deoplete#sources#go#align_class = 1
   let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
@@ -178,8 +178,8 @@ hook_add = '''
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
-build = 'bash install.sh'
 on_event = 'InsertEnter'
+hook_post_update = 'bash install.sh'
 hook_add = '''
   let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
@@ -202,7 +202,7 @@ hook_add = '''
 [[plugins]]
 repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
-build = './install.sh'
+hook_post_update = './install.sh'
 
 
 [[plugins]]
