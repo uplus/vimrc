@@ -1,7 +1,8 @@
 if !exists('g:noplugin')
   au myac FileType    * nested call s:set_colors()
   au myac ColorScheme * call s:set_highlights()
-  au myac WinEnter,BufRead,BufNew,Syntax * :silent! call matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:?')
+  " matchaddを複数回呼び出すと激重になるので注意
+  au myac Syntax * call matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:?')
 endif
 
 let g:colors_name = ''

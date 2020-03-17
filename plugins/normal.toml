@@ -197,7 +197,6 @@ defx = '''
 # repo = 'kyouryuukunn/vim-changed'
 
 # [[plugins]]
-# 思い原因になりそう
 # repo = 'powerman/vim-plugin-AnsiEsc'
 # hook_add = '''
 #   let g:no_cecutil_maps = 1
