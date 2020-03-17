@@ -10,6 +10,15 @@ let g:ale_virtualenv_dir_names = []
 " let ruby_no_expensive = 1
 " let ruby_minlines = 100
 
+" #vital
+" NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
+
+" #untie
+" NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
+
+" #textobj
+" NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
+
 " vim-operator taps "{{{
 if dein#tap('vim-operator-replace')
   nmap gz <Plug>(operator-replace)
