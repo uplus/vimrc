@@ -67,6 +67,9 @@ xnoremap g8 <Nop>
 
 call s:source('before')
 
+" これだけ先に実行
+call s:source('highlights')
+
 " load dein
 if !exists('g:noplugin')
   call s:source('dein')
@@ -85,7 +88,6 @@ endif
 call s:source('options')
 call s:source('functions')
 call s:source('keymaps')
-call s:source('highlights')
 call s:source('commands')
 call s:source('autocmds')
 
