@@ -3,32 +3,32 @@ options head
 	" vim: et ts=2 sts=2 sw=2 tw=0 ff=unix fdm=marker:
 
 snippet com
-  command! ${0}
+	command! ${0}
 
 snippet     clog
 options     head
-  ConsoleLog ${1}
+	ConsoleLog ${1}
 
 snippet au
-  au myac ${1:FileType} ${0}
+	au myac ${1:FileType} ${0}
 
 snippet     if2
 options     head
-    if ${1}
-      ${2}
-    elseif ${3}
-      ${4}
-    endif
+		if ${1}
+			${2}
+		elseif ${3}
+			${4}
+		endif
 
 snippet     if3
 options     head
-    if ${1}
-      ${2}
-    elseif ${3}
-      ${4}
-    else
-      ${5}
-    endif
+		if ${1}
+			${2}
+		elseif ${3}
+			${4}
+		else
+			${5}
+		endif
 
 # themis
 snippet suite
