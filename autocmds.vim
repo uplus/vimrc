@@ -57,12 +57,13 @@ augroup myac
   au myac Syntax * call s:hightlight_todo()
 
   function! s:hightlight_todo() abort
-    if 0 != get(s:, 'match')
-      silent! call matchdelete(s:match)
+    hi Todo       ctermfg=208  ctermbg=0    guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
+    if 0 != get(g:, 'todo_match_id')
+      silent! call matchdelete(g:todo_match_id)
     end
 
   " matchaddを複数回呼び出すと激重になるので注意
-    let s:match = matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:?')
+    let g:todo_match_id = matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:?')
   endfunction
 
   " #badspace {{{

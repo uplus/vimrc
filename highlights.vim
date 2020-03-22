@@ -58,7 +58,6 @@ function! s:set_highlights() "{{{
   hi Search     ctermfg=75   ctermbg=18   guifg=#efefef guibg=#204060 cterm=italic    gui=italic
   hi IncSearch  ctermfg=56   ctermbg=39   guifg=#200020 guibg=#50a050 cterm=italic    gui=italic
   hi Title      ctermfg=118               guifg=#87ff00
-  hi Todo       ctermfg=208  ctermbg=0    guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
   hi Error      ctermfg=255  ctermbg=161  guifg=#eeeeee guibg=#d7005f
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=undercurl gui=undercurl
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=undercurl gui=undercurl

@@ -15,3 +15,27 @@ options head
 		${0}
 	}
 	</script>
+
+snippet <template-activator
+options head
+alias <temp-act
+	<template v-slot:activator="{ on }">
+		v-on="on"
+	</template>
+
+snippet <tooltip
+options head
+	<v-tooltip ${1:bottom}>
+		<template v-slot:activator="{ on }">
+			v-on="on"
+		</template>
+	</v-tooltip>
+
+snippet watch-immediate
+alias watch-imm
+	${1}: {
+		immediate: true,
+		handler(value) {
+			${0}
+		}
+	}

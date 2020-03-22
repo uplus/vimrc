@@ -13,7 +13,6 @@ call denite#custom#option('default', {
   \ 'source_names': 'short',
   \ 'highlight_filter_background': 'CursorLine',
   \ 'split': 'floating',
-  \ 'unique': v:true,
   \ 'winwidth': float2nr(s:denite_win_width),
   \ 'wincol': float2nr(s:denite_win_col_pos),
   \ 'winheight': float2nr(s:denite_win_height),
@@ -59,11 +58,12 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '.r
 if executable('rg') " ripgrep
   " https://github.com/BurntSushi/ripgrep
   call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command', ['rg', '--threads', '1', '--smart-case'])
+
+  call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading', '--smart-case'])
   call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'final_opts', [])
 elseif executable('ag')
   " https://github.com/ggreer/the_silver_searcher
   call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
