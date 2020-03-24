@@ -672,12 +672,14 @@ repo = 'hujo/gf-user-vimfn'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+hook_add = '''
+  let g:context_filetype#search_offset = 200
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 if = "has('nvim')"
 hook_add = '''
-  let g:context_filetype#search_offset = 200
   let g:precious_enable_switchers = {
     \ '*': { 'setfiletype': 0 },
     \ 'markdown': { 'setfiletype': 1 },
