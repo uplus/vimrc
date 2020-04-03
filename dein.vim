@@ -16,7 +16,7 @@ endif
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
 let g:dein#notification_time = 5
-let g:dein#install_log_filename = '~/vim/tmp/dein.log'
+let g:dein#install_log_filename = '~/.vim/tmp/dein.log'
 
 " load plugins
 let s:path = expand('$CACHE/dein')
