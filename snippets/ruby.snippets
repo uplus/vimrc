@@ -81,14 +81,14 @@ options word
 snippet class
 alias cl
 options head
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	class ${1:`FilenameMixedcase()`}
 		${0}
 	end
 
 snippet class-initialize
 alias cli
 options head
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	class ${1:`FilenameMixedcase()`}
 		def initialize(${2})
 			${3}
 		end${0}
@@ -106,7 +106,7 @@ options head
 snippet class-error
 alias cle
 options head
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < StandardError
+	class ${1:`FilenameMixedcase()`} < StandardError
 		def initialize(${2})
 			super(${3:$2})${0}
 		end
@@ -115,7 +115,7 @@ options head
 snippet class-error-graphql
 alias cleg
 options head
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < GraphQL::ExecutionError
+	class ${1:`FilenameMixedcase()`} < GraphQL::ExecutionError
 		def initialize(${2})
 			super(${3:$2})${0}
 		end
@@ -125,7 +125,7 @@ snippet class-delegate
 options head
 alias cld
 abbr class .. < DelegateClass .. initialize .. end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < DelegateClass(${2:#:ParentClass})
+	class ${1:`FilenameMixedcase()`} < DelegateClass(${2:#:ParentClass})
 		def initialize(${3})
 			super(${4})${0}
 		end
@@ -169,14 +169,14 @@ options head
 snippet module
 alias md
 options head
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	module ${1:`FilenameMixedcase()`}
 		${0}
 	end
 
 snippet module-with-function
 alias mdwf
 options head
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	module ${1:`FilenameMixedcase()`}
 		module_function
 		${0}
 	end

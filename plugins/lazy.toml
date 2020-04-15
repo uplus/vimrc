@@ -257,14 +257,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-abolish'
-on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
-hook_add = '''
-  let g:abolish_no_mappings = 1
-  nmap sc <Plug>(abolish-coerce-word)
-'''
-
-[[plugins]]
 repo = 'osyo-manga/vim-hopping'
 on_map = '<Plug>(hopping'
 hook_add = '''

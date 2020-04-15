@@ -102,6 +102,10 @@ function! Filename() abort
   return expand('%:t:r')
 endfunction
 
+function! FilenameMixedcase() abort
+  return g:Abolish['mixedcase'](Filename())
+endfunction
+
 function! Format() abort
   EraseSpace
 
