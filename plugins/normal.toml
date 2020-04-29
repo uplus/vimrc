@@ -407,6 +407,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
+depends = ['context_filetype.vim']
 
 [[plugins]]
 repo = 'taku-o/vim-vis'
