@@ -309,6 +309,10 @@ snippet log-
 snippet logm
 	Rails.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}".red${0}
 
+snippet create_table
+	create_table ${1}, id: :uuid do |t|
+		${0}
+	end
 
 ## RSpec
 
