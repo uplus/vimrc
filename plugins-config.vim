@@ -132,36 +132,6 @@ endif "}}}
 "}}}
 
 if dein#tap('caw.vim') " {{{
-  let g:caw_no_default_keymappings = 1
-  let g:caw_dollarpos_sp_left = ' '
-  let g:caw_dollarpos_startinsert = 1
-
-  " for context_filetype and precious. これがあるとHTMLで上手くいかなくなる
-  " au myac FileType * let b:caw_oneline_comment = substitute(&commentstring, '\s*%s', '', '')
-
-  " basic mappings, 回数指定は gc2j など
-  nmap gcc <Plug>(caw:hatpos:toggle)
-  nmap gc <Plug>(operator-caw-hatpos-toggle)
-  nmap g<space> gcc
-  xmap g<space> gc
-
-  nmap gcj <Plug>(caw:hatpos:toggle)j<PLug>(caw:hatpos:toggle)k
-  nmap gck <Plug>(caw:hatpos:toggle)k<PLug>(caw:hatpos:toggle)j
-  " append tail comment, Aじゃないとobjectのaと被る
-  nmap gcA <Plug>(caw:dollarpos:toggle)
-
-  " yank and comment out
-  nmap gyy yy<Plug>(caw:hatpos:toggle)
-  xmap <Plug>(comment-toggle-yank) ygv<Plug>(caw:hatpos:toggle)
-  xmap gy <Plug>(comment-toggle-yank)
-  xmap gc <Plug>(caw:hatpos:toggle)
-
-  " paste and comment out
-  nmap gcp p<Plug>(select-pasted)gc
-
-  if dein#tap('vim-operator-exec_command')
-    nmap <silent><expr>gy operator#exec_command#mapexpr_v_keymapping("\<Plug>(comment-toggle-yank)")
-  endif
 endif
 "}}}
 

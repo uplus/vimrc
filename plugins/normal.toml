@@ -406,10 +406,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-depends = ['context_filetype.vim']
-
-[[plugins]]
 repo = 'taku-o/vim-vis'
 
 # [[plugins]] # <c-o> <c-i> 既に別タブ|ウィンドウで開かれていたらそっちに飛ぶ
