@@ -125,9 +125,16 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
-on_event = 'TextYankPost'
+on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
 on_source = ['denite.nvim']
 # on_path = '.*'
+hook_post_source = '''
+  " スクリーンロック復帰後にgetregがハングする
+  " tmuxでもそうでない環境でも再現
+  " clipboardはunnamedでもunnamedplusでも再現
+  " xselで再現, xcilpは未確認
+  au! neoyank FocusGained
+'''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -240,7 +247,8 @@ hook_source = '''
 
 [[plugins]]
 repo = 'bfredl/nvim-miniyank'
-if = 'has("clipboard")'
+if = 0
+# if = 'has("clipboard")'
 hook_add = '''
   let g:miniyank_filename = $HOME . "/.vim/tmp/miniyank.mpack"
 '''

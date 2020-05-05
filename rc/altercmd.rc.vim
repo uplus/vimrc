@@ -21,8 +21,8 @@ CAlterCommand cap[ture] Capture
 CAlterCommand capw[in] CaptureWin
 CAlterCommand undoc[lear] UndoClear
 CAlterCommand uc[lear] UndoClear
-CAlterCommand ec[ho] PP
-CAlterCommand Ec[ho] echo
+" CAlterCommand ec[ho] PP
+CAlterCommand Ec[ho] PP
 CAlterCommand br botright sp
 CAlterCommand calc Calc
 CAlterCommand note Note
