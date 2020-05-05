@@ -267,8 +267,8 @@ ruby = '''
   setl wrap
   setl foldlevelstart=5
 
-  command! YardGen !yard doc %
-  nnoremap <f3> :YardGen<cr>
+  " command! YardGen !yard doc %
+  " nnoremap <f3> :YardGen<cr>
 
   " vim-ruby-refactoring
   nnoremap <buffer>,lap :RAddParameter<cr>
