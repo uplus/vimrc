@@ -309,6 +309,13 @@ snippet log-
 snippet logm
 	Rails.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}".red${0}
 
+### Active Record
+
+snippet class_model
+	class ${1:`FilenameMixedcase()`} < ${2:ApplicationRecord}
+		${0}
+	end
+
 ### Active Record Migrations https://railsguides.jp/active_record_migrations.html
 
 snippet create_table
@@ -333,7 +340,7 @@ snippet remove_index
 
 snippet t.references
 alias t.ref
-	t.references ${1:#:column}, type: :uuid, null: false, foreign_key: { to_table: ${2:#:to_table(plural)} }, index: { unique: true, name: ${3:#:like a :table_column_index} }
+	t.references ${1:#:column}, type: :uuid, null: false, foreign_key: { to_table: ${2:#:to_table(plural)} }, index: { unique: true }
 snippet add_reference
 	add_reference ${1:#:table(plural)}, ${2:#:column}, type: :uuid, null: false, foreign_key: { to_table: ${3:#:to_table(plural)} }, index: { unique: true, name: ${4:#:like a :table_column_index} }
 snippet remove_reference
@@ -346,11 +353,11 @@ snippet remove_foreign_key
 
 snippet t.column
 alias t.col
-	t.column ${1:#:column}, ${2:#:type}, null: false, default: nil
+	t.column ${1:#:column}, ${2:#:type}, null: false${3:, default: nil}
 snippet add_column
-	add_column ${1:#:table(plural)}, ${2:#:column}, ${3:#:type}, null: false, default: nil
+	add_column ${1:#:table(plural)}, ${2:#:column}, ${3:#:type}, null: false${4:, default: nil}
 snippet remove_column
-	remove_column ${1:#:table(plural)}, ${2:#:column}, ${3:#:type}, null: false, default: nil
+	remove_column ${1:#:table(plural)}, ${2:#:column}, ${3:#:type}, null: false${4:, default: nil}
 
 snippet rename_column
 	rename_column ${1:#:table(plural)}, ${2:#:old_name}, ${3:#:new_name}
