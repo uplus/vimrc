@@ -1,4 +1,4 @@
-﻿" g:lightline {{{
+﻿" g:lightline
 let g:lightline = {
       \   'active': {
       \     'left': [['mode', 'paste'], ['filename', 'readonly',],],
@@ -39,7 +39,7 @@ let g:lightline = {
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
-      \     'tabline': 'LLtabs_buffers',
+      \     'tabline': 'LLtabline',
       \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
@@ -73,9 +73,11 @@ let g:lightline = {
       \   'winwidth': winwidth(0),
       \   'colorscheme': 'refreshing',
       \ }
-"}}}
 
       " \   'colorscheme': 'mellow',
+
+let g:lightline#bufferline#shorten_path = 0
+
 
 " default(powerline) molokai darcula solarized PaperColor one
 " material: inactiveなバッファ名が見れなくなる
@@ -230,7 +232,7 @@ endfunction "}}}
 
 " #tabline
 
-function! LLtabs_buffers() abort
+function! LLtabline() abort
   let l:tabs = lightline#tabs()
   if empty(l:tabs[0]) && empty(l:tabs[2])
     return lightline#bufferline#buffers()
