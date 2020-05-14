@@ -1,24 +1,37 @@
-"---------------------------------------------------------------------------
-" deoplete.nvim
+" # keymaps
+" <s-tab>: completion back.
+inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
+inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
+" <bs>: close popup and delete backword char.
+" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-g> deoplete#mappings#undo_completion()
+" inoremap <expr><C-l> deoplete#mappings#refresh()
+" inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
+" inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
+" <cr>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function() abort
 
-let g:neocomplete#enable_smart_case       = 1
-let g:neocomplete#enable_camel_case       = 1
-let g:neocomplete#enable_fuzzy_completion = 0
-let g:deoplete#auto_complete_start_length = 2 " 2
-" let g:deoplete#enable_refresh_always = 1  " 0, Note: screen flick
-let g:deoplete#max_list = 200 " (100)
-" let g:deoplete#delimiters = ['/'] " ['/']
-let g:deoplete#auto_complete_delay = 500 " 50
-let g:deoplete#skip_chars = ['(', ')']
-let g:deoplete#file#enable_buffer_path = 1
+"   return deoplete#mappings#close_popup() . "\<CR>"
+" endfunction
 
+call deoplete#custom#option('enable_smart_case', v:true)
+call deoplete#custom#option('enable_camel_case', v:true)
+
+call deoplete#custom#option('delimiters', ['/'])
+call deoplete#custom#option('skip_chars', ['(', ')'])
+call deoplete#custom#option('max_list', 200)
 call deoplete#custom#option('refresh_always', v:true)
-" call deoplete#custom#option('auto_complete_delay', 0)
-" call deoplete#custom#option('async_timeout', 100)
+call deoplete#custom#option('auto_complete_delay', 300)
+call deoplete#custom#option('auto_complete_start_length', 2)
 call deoplete#custom#option('async_timeout', 5000)
-" call deoplete#custom#option('num_processes', 0)
+call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 
-let g:deoplete#ignore_sources = {'_': ['tag']}
+" call deoplete#custom#var()
+call deoplete#custom#var('omni', 'input_patterns', {})
+
+
 " スニペット候補が出なくなる
 " let g:deoplete#sources = {
       " \ '_': ['omni', 'buffer', 'file', 'member', 'dictionary'],
@@ -41,23 +54,16 @@ let g:deoplete#ignore_sources = {'_': ['tag']}
 "      \ 'converter_auto_delimiter',
 "      \ ])
 
+" call deoplete#custom#source('tabnine', 'rank', 200)
 call deoplete#custom#source('neosnippet', 'rank', 9000)
-
 call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#source('clang', 'max_pattern_length', -1)
-
-" call deoplete#custom#source('tabnine', 'rank', 200)
-
 call deoplete#custom#source('look', 'min_pattern_length', 4)
 call deoplete#custom#source('look', 'rank', 100)
-
 call deoplete#custom#source('emoji', 'filetypes', ['markdown', 'text'])
 call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
-inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
-
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 " call deoplete#custom#source('ruby', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-
 call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 
 " " For buffer completion
@@ -82,40 +88,13 @@ let g:LanguageClient_serverCommands = {
   " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
   " \ 'javascript': ['javascript-typescript-stdio'],
 
-" cannot call some omni functions
-let g:deoplete#omni#input_patterns = {
-      \ 'python': '',
-      \ }
-      " \ 'ruby': ['[^. \t].\w', '[a-zA-Z_]\w*::'],
+call deoplete#custom#source('omni', 'functions', {
+  \ 'lua': 'xolox#lua#omnifunc',
+  \})
 
-let g:deoplete#sources#omni#input_patterns = {
-      \ }
-
-let g:deoplete#omni#functions = {
-      \ 'lua': 'xolox#lua#omnifunc',
-      \ }
-
-let g:deoplete#omni_patterns = {
+call deoplete#custom#option('omni_patterns', {
   \ 'terraform':  '[^ *\t"{=$]\w*',
-  \ }
-
-" # keymaps
-" <s-tab>: completion back.
-inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
-" <bs>: close popup and delete backword char.
-" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-g> deoplete#mappings#undo_completion()
-" inoremap <expr><C-l> deoplete#mappings#refresh()
-" inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
-" inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
-" <cr>: close popup and save indent.
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function() abort
-"   return deoplete#mappings#close_popup() . "\<CR>"
-" endfunction
-
-
+  \ })
 
 " # config of sources
 
