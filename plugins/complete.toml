@@ -199,6 +199,7 @@ hook_add = '''
 '''
 
 [[plugins]]
+if = 0
 repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
 hook_post_update = './install.sh'

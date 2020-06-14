@@ -40,21 +40,7 @@ hook_add = '''
 repo = 'glabra/casl2.vim'
 
 [[plugins]]
-repo = 'posva/vim-vue'
-hook_add = '''
-  " let g:vue_pre_processors = ['sass']
-  let g:vue_pre_processors = 'detect_on_enter'
-  au myac FileType vue syntax sync fromstart
-'''
-
-[[plugins]]
 repo = 'nono/vim-handlebars'
-
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
@@ -83,6 +69,30 @@ hook_add = '''
 [[plugins]]
 # syntax fold
 repo = 'pangloss/vim-javascript'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+hook_add = '''
+  " let g:vue_pre_processors = ['sass']
+  let g:vue_pre_processors = 'detect_on_enter'
+  au myac FileType vue syntax sync fromstart
+'''
+
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+# repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+
+# [[plugins]]
+# repo = 'othree/yajs.vim'
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
 
 
 # haskell
