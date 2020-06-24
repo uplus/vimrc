@@ -203,6 +203,10 @@ javascript = '''
   " let b:tags_cmd = ''
 '''
 
+typescriptreact = '''
+  setl commentstring=//\ %s
+'''
+
 json = '''
   command! AlignJSON %!jq '.'
   let b:format_cmd = 'AlignJSON'
