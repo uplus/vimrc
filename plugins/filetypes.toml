@@ -15,6 +15,9 @@ hook_add = '''
 repo = 'gutenye/json5.vim'
 
 [[plugins]]
+repo = 'slim-template/vim-slim'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
