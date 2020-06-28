@@ -31,9 +31,6 @@ hook_source = '''
   au myac InsertLeave * NeoSnippetClearMarkers
 '''
 
-# [[plugins]]
-# repo = 'uplus/neosnippet-snippets'
-
 
 [[plugins]] # ステータスにドキュメントをecho
 repo = 'Shougo/echodoc.vim'
@@ -54,23 +51,6 @@ hook_source = '''
   source ~/.vim/rc/deoplete.rc.vim
   call deoplete#enable()
 '''
-
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-depends = 'context_filetype.vim'
-if = "!has('nvim') && has('lua')"
-hook_add = '''
-  let g:loaded_deoplete = 1
-  let g:neocomplete#enable_at_startup = 1
-  let g:neopairs#enable = 1
-
-  inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
-  " inoremap <expr><space> pumvisible()? "\<c-y>" : "\<space>"
-  " inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
-  " inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
-'''
-hook_source = 'source ~/.vim/rc/complete.rc.vim'
-
 
 
 ## sources
@@ -109,26 +89,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-on_ft = ['javascript', 'vue', 'html']
-hook_post_update = 'npm install -g tern'
-
-# [[plugins]]
-# repo = 'ternjs/tern_for_vim'
-# on_ft = ['javascript', 'vue', 'html']
-# hook_add = '''
-#   let tern#command = ['tern']
-#   let tern#arguments = ['--no-port-file']
-#   let g:tern_show_loc_after_rename = 0
-#   let g:tern_set_omni_function = 0
-# '''
-
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
-
-[[plugins]]
 repo = 'deoplete-plugins/deoplete-go'
 on_ft = 'go'
 hook_post_update = 'make'
@@ -137,15 +97,6 @@ hook_source = '''
   let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
   let g:deoplete#sources#go#package_dot = 1
 '''
-
-# [[plugins]]
-# # repo = 'fishbullet/deoplete-ruby'
-# repo = 'Shougo/deoplete-rct'
-# on_ft = 'ruby'
-
-# [[plugins]]
-# repo = 'uplus/deoplete-solargraph'
-# on_ft =  'ruby'
 
 [[plugins]]
 repo = 'racer-rust/vim-racer'
@@ -184,19 +135,29 @@ hook_add = '''
   let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
 
+  let g:LanguageClient_useVirtualText = 'No'
+  let g:LanguageClient_diagnosticsEnable = 0
+  let g:LanguageClient_diagnosticsList = 'Disabled'
+
   let g:LanguageClient_waitOutputTimeout = 200
   let g:LanguageClient_changeThrottle = 0.5
   " let g:LanguageClient_selectionUI = "location-list"
 
-  let g:LanguageClient_loggingLevel = 'DEBUG'
-  let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
-  let g:LanguageClient_trace = 'verbose' " off messages verbose
+  " let g:LanguageClient_loggingLevel = 'DEBUG'
+  " let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
+  " let g:LanguageClient_trace = 'verbose' " off messages verbose
 
   let g:LanguageClient_rootMarkers = {
+    \ 'javascript': ['package.json'],
+    \ 'typescript': ['package.json', 'tsconfig.json'],
+    \ 'typescriptreact': ['package.json', 'tsconfig.json'],
+    \ 'ruby': ['Gemfile'],
+    \ 'rust': ['Cargo.toml'],
     \ }
-    "\ 'rust': [],
-  "    \ 'javascript': ['project.json'],
-  "    \ 'rust': ['Cargo.toml'],
+
+  " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 '''
 
 [[plugins]]

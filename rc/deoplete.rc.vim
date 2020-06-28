@@ -78,6 +78,10 @@ call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 let g:LanguageClient_serverCommands = {
   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
   \ 'ruby': ['solargraph', 'stdio'],
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'typescript': ['typescript-language-server', '--stdio'],
+  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
+  \ 'python': ['pyls']
   \ }
 
   " \ 'ruby': ['tcp://localhost:7658'],

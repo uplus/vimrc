@@ -25,6 +25,8 @@ let g:ale_sign_info = '--'
 " let g:syntastic_warning_symbol = '⚠'
 " let g:syntastic_ruby_mri_args        = '-W1'
 
+let g:ale_disable_lsp = 1
+let g:ale_virtualtext_cursor = 0
 let g:ale_echo_cursor = 0
 let g:ale_set_highlights = 0
 
@@ -35,28 +37,33 @@ let g:ale_keep_list_window_open = 1
 let g:ale_list_window_size = 5
 let g:ale_list_window_open_type= 'botright'
 
-" let b:ale_ruby_rubocop_executable = 'bundle exec rubocop'
-" let b:ale_ruby_rubocop_executable = 'docker-compose run --rm api bundle exec rubocop'
+let b:ale_ruby_rubocop_executable = 'bundle exec rubocop'
+" let b:ale_ruby_rubocop_executable = 'docker-compose exec --rm api bundle exec rubocop'
+" let b:ale_typescriptreact_eslint_executable = 'docker-compose exec ui yarn lint'
 
 let g:ale_linters = {
   \ 'markdown': [],
   \ 'ruby': ['rubocop'],
   \ 'c': ['clang'],
   \ 'rust': ['rustc', 'rustfmt'],
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['eslint'],
   \ }
 
 let g:ale_linter_aliases = {
+  \ 'javascriptreact': ['javascript', 'jsx'],
+  \ 'typescriptreact': ['typescript', 'tsx'],
   \ }
 
 " :ALEFix
 let g:ale_fixers = {
   \ 'vim': ['vint'],
-  \ 'javascript': ['eslint'],
-  \ 'vue': ['prettier'],
   \ 'ruby': ['rubocop'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
   \ 'go': ['gofmt'],
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['eslint'],
   \ }
 
 let g:ale_pattern_options = {
@@ -71,8 +78,8 @@ let g:ale_pattern_options = {
 " filetypes which can cause issues.
 let g:ale_filetype_blacklist = [
   \ 'dirvish',
-  \ 'nerdtree',
   \ 'qf',
   \ 'tags',
-  \ 'unite',
+  \ 'denite',
+  \ 'defx'
   \]
