@@ -143,12 +143,13 @@ hook_add = '''
   nnoremap <silent><c-w>e :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
   nnoremap <silent><c-w>E :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>
   nmap <c-w><c-e> <c-w>e
+  au myac BufWritePost * call defx#redraw()
 '''
 [plugins.ftplugin]
 defx = '''
   " 別タブに移動する前に直前のバッファに移動
   au myac TabLeave <buffer> wincmd p
-  au myac BufWritePost * call defx#redraw()
+  au myac BufEnter,FocusGained <buffer> call defx#redraw()
 
   " 対象ファイル操作系:
   nnoremap <silent><buffer><nowait><expr>c   defx#do_action('copy')
