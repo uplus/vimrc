@@ -136,7 +136,7 @@ augroup myac
     let l:path = fnamemodify(a:path, ':t') ==# '~' ? '~' : a:path
 
     if isdirectory(l:path)
-      call execute('Defx ' . l:path)
+      execute 'Defx' fnameescape(l:path)
     endif
   endfunction
 augroup END
