@@ -9,7 +9,7 @@ inoremap <silent><expr><c-x><c-e> deoplete#manual_complete(['emoji'])
 imap <c-l> <Plug>(neosnippet_jump)
 smap <c-l> <Plug>(neosnippet_jump)
 xmap <c-l> <Plug>(neosnippet_jump)
-imap <expr><cr> <sid>imap_cr()
+imap <expr><silent><cr> <sid>imap_cr()
 " inoremap <expr><bs> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr><c-g> deoplete#mappings#undo_completion()
 " inoremap <expr><c-l> deoplete#mappings#refresh()
@@ -68,14 +68,16 @@ call deoplete#custom#source('_', 'converters', [
       \ ])
 
 " call deoplete#custom#source('_', 'matchers', ['matcher_head'])
-" call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
-" call deoplete#custom#source('buffer', 'mark', '')
 " call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 " call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+" call deoplete#custom#source('buffer', 'mark', '')
 " call deoplete#custom#source('buffer', 'mark', '*')
+" call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
 
 " call deoplete#custom#source('tabnine', 'rank', 200)
 call deoplete#custom#source('neosnippet', 'rank', 9000)
+call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
+
 call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#source('clang', 'max_pattern_length', -1)
 call deoplete#custom#source('look', 'min_pattern_length', 4)
@@ -83,60 +85,11 @@ call deoplete#custom#source('look', 'rank', 100)
 call deoplete#custom#source('emoji', 'filetypes', ['markdown', 'text'])
 call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-" call deoplete#custom#source('ruby', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
-
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
+" call deoplete#custom#source('ruby', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 " call deoplete#custom#source('ruby', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
-
-let g:LanguageClient_serverCommands = {
-  \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-  \ 'ruby': ['solargraph', 'stdio'],
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'typescript': ['typescript-language-server', '--stdio'],
-  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-  \ 'python': ['pyls']
-  \ }
-
-  " \ 'ruby': ['tcp://localhost:7658'],
-  " \ 'ruby': ['language_server-ruby'],
-  " \ 'ruby': ['orbaclerun', 'file-server'],
-  " \ 'rust': ['rls'],
-  " \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-  " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-  " \ 'javascript': ['javascript-typescript-stdio'],
-
-" call deoplete#custom#source('omni', 'functions', {
-"  \ 'lua': 'xolox#lua#omnifunc',
-"  \})
+" call deoplete#custom#source('omni', 'functions', { 'lua': 'xolox#lua#omnifunc' })
 
 call deoplete#custom#option('omni_patterns', {
-  \ 'terraform':  '[^ *\t"{=$]\w*',
+  \ 'terraform':  '[^\s*\t"{=$]\w*',
   \ })
-
-" # config of sources
-
-" deoplete-jedi
-let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
-
-" deoplete-rust
-" let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path = ''
-" let g:deoplete#sources#rust#show_duplicates = 0
-" let g:deoplete#sources#rust#disable_keymap=1
-" let g:deoplete#sources#rust#documentation_max_height=20
-
-" deoplete-racer for rust
-" let g:racer_experimental_completer = 1
-
-" deople-ternjs for javascript
-" https://github.com/carlitux/deoplete-ternjs
-let g:deoplete#sources#ternjs#timeout = 1
-let g:deoplete#sources#ternjs#filetypes = [
-  \ 'jsx',
-  \ 'javascript.jsx',
-  \ 'vue',
-  \ ]
-let g:deoplete#sources#ternjs#docs = 1
-let g:deoplete#sources#ternjs#depths = 1
-let g:deoplete#sources#ternjs#types = 1

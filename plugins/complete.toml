@@ -1,3 +1,5 @@
+## base
+
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['context_filetype.vim']
@@ -24,9 +26,17 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = ['InsertEnter']
+hook_add = '''
+  " 補完メニューが開いていてもエンターで改行する
+  let g:lexima_nvim_accept_pum_with_enter = 0
+'''
+hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
+
+[[plugins]]
 repo = 'Shougo/echodoc.vim'
 on_event = 'CompleteDone'
-# hook_add = '''
 hook_source = '''
   " let g:echodoc_enable_at_startup = 1
   let g:echodoc#type = 'virtual'
@@ -42,15 +52,6 @@ hook_source = '''
   source ~/.vim/rc/deoplete.rc.vim
   call deoplete#enable()
 '''
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = ['InsertEnter']
-hook_add = '''
-  " 補完メニューが開いていてもエンターで改行する
-  let g:lexima_nvim_accept_pum_with_enter = 0
-'''
-hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 
 
 ## sources
@@ -69,19 +70,9 @@ repo = 'ujihisa/neco-look'
 on_event = 'InsertEnter'
 
 
-[[plugins]]
+[[plugins]] # vim
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
-
-[[plugins]] # It has "file/include" source
-if = 0
-repo = 'Shougo/neoinclude.vim'
-
-# [[plugins]]
-# repo = 'Shougo/neopairs.vim'
-# hook_add = '''
-#   let g:neopairs#enable = 1
-# '''
 
 [[plugins]]
 repo = 'zchee/deoplete-clang'
@@ -106,10 +97,6 @@ hook_source = '''
   let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
   let g:deoplete#sources#go#package_dot = 1
 '''
-
-[[plugins]]
-repo = 'racer-rust/vim-racer'
-on_ft = 'rust'
 
 [[plugins]] # haskell
 repo = 'eagletmt/neco-ghc'
@@ -177,9 +164,28 @@ hook_add = '''
     \ 'rust': ['Cargo.toml'],
     \ }
 
-  " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'ruby': ['solargraph', 'stdio'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'typescriptreact': ['javascript-typescript-stdio'],
+    \ 'python': ['pyls'],
+    \ }
+    "\ 'typescript': ['typescript-language-server', '--stdio'],
+    "\ 'typescriptreact': ['typescript-language-server', '--stdio'],
+    " \ 'ruby': ['orbaclerun', 'file-server'],
+    " \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+
+    function LC_maps()
+      if has_key(g:LanguageClient_serverCommands, &filetype)
+        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+        nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<cr>
+        " nnoremap <buffer> <silent> <f2> :call LanguageClient#textDocument_rename()<cr>
+      endif
+    endfunction
+
+    au myac FileType * call LC_maps()
 '''
 
 [[plugins]]
