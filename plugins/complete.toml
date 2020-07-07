@@ -150,27 +150,28 @@ hook_add = '''
 
   " let g:LanguageClient_waitOutputTimeout = 20
   " let g:LanguageClient_changeThrottle = 0.5
-  " let g:LanguageClient_selectionUI = "location-list"
+  " let g:LanguageClient_selectionUI = 'location-list'
 
   " let g:LanguageClient_loggingLevel = 'DEBUG'
   " let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
   " let g:LanguageClient_trace = 'verbose' " off messages verbose
 
   let g:LanguageClient_rootMarkers = {
+    \ 'rust': ['Cargo.toml'],
+    \ 'ruby': ['Gemfile'],
+    \ 'python': ['Pipfile'],
     \ 'javascript': ['package.json'],
     \ 'typescript': ['package.json', 'tsconfig.json'],
     \ 'typescriptreact': ['package.json', 'tsconfig.json'],
-    \ 'ruby': ['Gemfile'],
-    \ 'rust': ['Cargo.toml'],
     \ }
 
   let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'ruby': ['solargraph', 'stdio'],
+    \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'typescriptreact': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
     \ }
     "\ 'typescript': ['typescript-language-server', '--stdio'],
     "\ 'typescriptreact': ['typescript-language-server', '--stdio'],
