@@ -16,7 +16,6 @@ call deoplete#custom#option({
       \ 'skip_multibyte': v:true,
       \ 'auto_preview': v:true,
       \ })
-      "\ 'skip_chars': ['(': ')']
       "\ 'max_list': 200
       "\ 'refresh_always': v:true
       "\ 'auto_complete_delay': 300
@@ -30,10 +29,11 @@ call deoplete#custom#option('ignore_sources', {
       \ })
 
 call deoplete#custom#option('keyword_patterns', {
-      \ '_': '[a-zA-Z_]\k*\(?',
+      \ '_': '[a-zA-Z_-]\k*\(?',
       \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
       \ })
 
+call deoplete#custom#source('_', 'max_abbr_width', 0)
 call deoplete#custom#source('_', 'converters', [
       \ 'converter_remove_overlap',
       \ 'converter_case',

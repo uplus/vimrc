@@ -384,12 +384,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_i = 1
+on_event = ['InsertEnter']
 hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 
 [[plugins]]
 repo = 'mattn/googlesuggest-complete-vim'
-on_i = 1
+on_event = ['InsertEnter']
 hook_add = '''
   command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
   EnableGoogleSuggest

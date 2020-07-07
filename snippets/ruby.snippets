@@ -300,18 +300,19 @@ alias rcd
 
 ## Rails
 
-snippet log
+snippet rails-logger-debug
+abbr rld
 	Rails.logger.debug ${0}
 
-snippet log-
+snippet rld-
 	Rails.logger.debug "---------- ${0}".red
 
-snippet logm
+snippet rldm
 	Rails.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}".red${0}
 
 ### Active Record
 
-snippet class_model
+snippet class-ar-model
 	class ${1:`FilenameMixedcase()`} < ${2:ApplicationRecord}
 		${0}
 	end
@@ -510,7 +511,7 @@ snippet opt
 snippet def-deep_copy
 	def deep_copy(obj)
 		Marshal.load(Marshal.dump(obj))
-	end
+	end${0}
 
 snippet def-int?
 	class String

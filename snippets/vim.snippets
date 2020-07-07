@@ -30,6 +30,13 @@ options     head
 			${5}
 		endif
 
+snippet function
+alias fun
+options head
+	function! ${1}(${2}) abort
+		return ${0}
+	endfunction
+
 # themis
 snippet suite
 options head

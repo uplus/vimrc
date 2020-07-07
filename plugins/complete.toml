@@ -4,19 +4,16 @@ depends = ['context_filetype.vim']
 on_event = ['InsertEnter']
 on_ft = ['snippet', 'neosnippet']
 hook_add = '''
-  let g:neosnippet#enable_snipmate_compatibility = 0
-  let g:neosnippet#disable_runtime_snippets = { '_': 1 }
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
-  let g:neosnippet#enable_complete_done = 1
+  let g:neosnippet#disable_runtime_snippets = { '_': 1 }
+  let g:neosnippet#enable_complete_done = 0
   let g:neosnippet#expand_word_boundary = 1
-  let g:neosnippet#scope_aliases = {}
-  let g:neosnippet#scope_aliases['ruby'] = 'ruby,ruby-rails'
-  let g:neosnippet#scope_aliases['arduino'] = 'c'
-  let g:neosnippet#scope_aliases['typescriptreact'] = 'react'
-  " let g:neosnippet#enable_auto_clear_markers = 1 " Don't work on multi lines
 
-  " let g:neosnippet#enable_completed_snippet = 1
-  " let g:neosnippet#enable_complete_done = 1
+  let g:neosnippet#scope_aliases = {
+    \ 'ruby': 'ruby,ruby-rails',
+    \ 'arduino': 'c',
+    \ 'typescriptreact': 'react',
+    \ }
 
   " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
   imap <c-l> <Plug>(neosnippet_expand_or_jump)
@@ -44,9 +41,9 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
+depends = ['context_filetype.vim']
 if = "has('nvim')"
-on_event = 'InsertEnter'
+on_event = ['InsertEnter']
 hook_source = '''
   source ~/.vim/rc/deoplete.rc.vim
   call deoplete#enable()
@@ -135,7 +132,9 @@ hook_add = '''
   let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
 
-  let g:LanguageClient_useVirtualText = 'No'
+  let g:LanguageClient_useVirtualText = 'All'
+  " let g:LanguageClient_virtualTextPrefix = ''
+
   let g:LanguageClient_diagnosticsEnable = 0
   let g:LanguageClient_diagnosticsList = 'Disabled'
 
