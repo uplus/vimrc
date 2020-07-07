@@ -65,7 +65,8 @@ nnoremap <silent>gst :WordTranslate<cr>
 nnoremap <silent>gsg :<c-u>call vimrc#goldendict()<cr>
 nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
 
-inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
+" inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
+imap <c-j> <cr>
 " inoremap jj <esc>
 xnoremap <space>n :normal<space>
 

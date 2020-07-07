@@ -15,19 +15,12 @@ hook_add = '''
     \ 'typescriptreact': 'react',
     \ }
 
-  " imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
-  imap <c-l> <Plug>(neosnippet_expand_or_jump)
-  smap <c-l> <Plug>(neosnippet_expand_or_jump)
-  xmap <c-l> <Plug>(neosnippet_jump)
-
   if has('conceal')
     " set conceallevel=2 concealcursor=niv
   endif
-'''
-hook_source = '''
+
   au myac InsertLeave * NeoSnippetClearMarkers
 '''
-
 
 [[plugins]] # ステータスにドキュメントをecho
 repo = 'Shougo/echodoc.vim'

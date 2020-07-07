@@ -191,23 +191,14 @@ call lexima#add_rule({
 " cgn ドットリピートに必要らしい <c-l>はneosnippet
 " inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
 
-" TODO 補完候補選択した場合のみ展開したい
-" 順序?
-" imap <expr><silent><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : lexima#expand('<LT>CR>', 'i')
-" TODO  わざわざ<cr>で補完確定する必要ない
+" TODO: 補完候補選択した場合のみ展開したい
 "       選択時   : 決定+snippet
 "       非選択時 : 改行+lexima
-" call lexima#insmode#map_hook('before', '<cr>', "\<C-r>=neocomplete#close_popup()\<cr>")
-" imap <silent><expr><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : pumvisible()? "\<c-y>" : lexima#expand('<cr>', 'i')
-" \<Plug>(lexima#expand('<cr>', 'i'))<c-g>u"
-" imap <silent><expr><cr> neosnippet#expandable()? "\<Plug>(neosnippet_expand)" : lexima#expand('<cr>', 'i')
 
-" function! Return() abort
-"   return lexima#insmode#_expand(a:char)
-" endfunction
-
-" <c-y>させない
-inoremap <c-y> <Nop>
-" デフォルトのフックで<c-y>される
-imap <silent><expr><cr> lexima#expand('<lt>cr>', 'i')
+" NOTE: 諸々の残骸
 " call lexima#insmode#map_hook('before', '<lt>cr>', "\<c-r>=deoplete#close_popup()\<cr>")
+" imap <silent><expr><cr> lexima#expand('<lt>cr>', 'i')
+" pumvisible() ? "\<C-Y>" : lexima#expand('<CR>', 'i')
+" https://github.com/cohama/lexima.vim/issues/65
+" call lexima#insmode#map_hook('before', '<lt>cr>', '')
+" inoremap <expr><cr> deoplete#close_popup() . lexima#expand('<CR>', 'i')

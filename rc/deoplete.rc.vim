@@ -2,6 +2,18 @@
 inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
+" <c-r>はleximaで定義
+
+" inoremap <expr><c-y> <sid>imap_c_y()
+function! s:imap_c_y() abort
+  return pumvisible() ? deoplete#complete() : "\<c-y>"
+" neosnippet#expandable()
+endfunction
+
+" imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
+imap <c-l> <Plug>(neosnippet_expand_or_jump)
+smap <c-l> <Plug>(neosnippet_expand_or_jump)
+xmap <c-l> <Plug>(neosnippet_jump)
 
 " <bs>: close popup and delete backword char.
 " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
