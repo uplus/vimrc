@@ -1,6 +1,7 @@
 command! -nargs=1 SetTab call vimrc#set_tab(<args>)
 command! Q qall!
 command! W w!
+command! Naw noautocmd write
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 command! -nargs=+ Cal echo eval(<q-args>)
 command! -nargs=1 Char echo printf("%c", 0x<args>)

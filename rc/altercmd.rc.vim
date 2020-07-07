@@ -7,6 +7,7 @@ CAlterCommand ins[tall] Install
 CAlterCommand rec[ache] Recache
 
 CAlterCommand ww w!
+CAlterCommand naw Naw
 CAlterCommand qq q!
 CAlterCommand me[s] mes
 
