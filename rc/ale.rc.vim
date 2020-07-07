@@ -46,13 +46,14 @@ let g:ale_linters = {
   \ 'ruby': ['rubocop'],
   \ 'c': ['clang'],
   \ 'rust': ['rustc', 'rustfmt'],
+  \ 'jsx': ['eslint'],
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint'],
   \ }
 
 let g:ale_linter_aliases = {
   \ 'javascriptreact': ['javascript', 'jsx'],
-  \ 'typescriptreact': ['typescript', 'tsx'],
   \ }
 
 " :ALEFix
@@ -62,6 +63,7 @@ let g:ale_fixers = {
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
   \ 'go': ['gofmt'],
+  \ 'jsx': ['eslint'],
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
   \ 'typescriptreact': ['eslint'],

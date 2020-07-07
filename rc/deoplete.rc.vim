@@ -1,26 +1,38 @@
 " # keymaps
+
+" leximaでcrが上書きされるため先に呼び出して全て実行する
+call lexima#set_default_rules()
+
 inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
-inoremap <silent><expr><c-x><c-e> deoplete#manual_complete('emoji')
-" <c-r>はleximaで定義
-
-" inoremap <expr><c-y> <sid>imap_c_y()
-function! s:imap_c_y() abort
-  return pumvisible() ? deoplete#complete() : "\<c-y>"
-" neosnippet#expandable()
-endfunction
-
-" imap <expr><tab> pumvisible()? "\<c-n>" : neosnippet#jumpable()? "\<Plug>(neosnippet_jump)" : "\<tab>"
-imap <c-l> <Plug>(neosnippet_expand_or_jump)
-smap <c-l> <Plug>(neosnippet_expand_or_jump)
+inoremap <silent><expr><c-x><c-e> deoplete#manual_complete(['emoji'])
+imap <c-l> <Plug>(neosnippet_jump)
+smap <c-l> <Plug>(neosnippet_jump)
 xmap <c-l> <Plug>(neosnippet_jump)
-
-" <bs>: close popup and delete backword char.
-" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-g> deoplete#mappings#undo_completion()
-" inoremap <expr><C-l> deoplete#mappings#refresh()
+imap <expr><cr> <sid>imap_cr()
+" inoremap <expr><bs> deoplete#mappings#smart_close_popup()."\<C-h>"
+" inoremap <expr><c-g> deoplete#mappings#undo_completion()
+" inoremap <expr><c-l> deoplete#mappings#refresh()
 " inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
+
+function! s:imap_cr() abort
+  " neosnippet#expandable_or_jumpable()
+  " neosnippet#expandable()
+  " deoplete#complete()
+
+  if pumvisible()
+    " call deoplete#close_popup()
+
+    if neosnippet#expandable()
+      return "\<Plug>(neosnippet_expand)"
+    else
+      return lexima#expand('<CR>', 'i')
+    endif
+  else
+    return lexima#expand('<CR>', 'i')
+  endif
+endfunction
 
 call deoplete#custom#option({
       \ 'auto_refresh_delay': 10,

@@ -380,33 +380,6 @@ hook_add = '''
 '''
 
 
-#input
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = ['InsertEnter']
-hook_add = '''
-  " 補完メニューが開いていてもエンターで改行する
-  let g:lexima_nvim_accept_pum_with_enter = 0
-'''
-hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
-
-[[plugins]]
-repo = 'mattn/googlesuggest-complete-vim'
-on_event = ['InsertEnter']
-hook_add = '''
-  command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
-  EnableGoogleSuggest
-'''
-
-[[plugins]]
-repo = 'junegunn/vim-emoji'
-on_func = 'emoji#'
-hook_add = '''
-  command! EnableEmoji set completefunc=emoji#complete
-'''
-
-
 #git
 
 [[plugins]]

@@ -6,6 +6,7 @@ on_ft = ['snippet', 'neosnippet']
 hook_add = '''
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#disable_runtime_snippets = { '_': 1 }
+  let g:neosnippet#enable_completed_snippet = 0
   let g:neosnippet#enable_complete_done = 0
   let g:neosnippet#expand_word_boundary = 1
 
@@ -22,7 +23,7 @@ hook_add = '''
   au myac InsertLeave * NeoSnippetClearMarkers
 '''
 
-[[plugins]] # ステータスにドキュメントをecho
+[[plugins]]
 repo = 'Shougo/echodoc.vim'
 on_event = 'CompleteDone'
 # hook_add = '''
@@ -42,8 +43,25 @@ hook_source = '''
   call deoplete#enable()
 '''
 
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = ['InsertEnter']
+hook_add = '''
+  " 補完メニューが開いていてもエンターで改行する
+  let g:lexima_nvim_accept_pum_with_enter = 0
+'''
+hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
+
 
 ## sources
+
+[[plugins]]
+repo = 'mattn/googlesuggest-complete-vim'
+on_event = ['InsertEnter']
+hook_add = '''
+  command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
+  EnableGoogleSuggest
+'''
 
 [[plugins]]
 if = 0
@@ -56,6 +74,7 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]] # It has "file/include" source
+if = 0
 repo = 'Shougo/neoinclude.vim'
 
 # [[plugins]]
@@ -102,6 +121,13 @@ repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh', 'sh']
 
 [[plugins]]
+repo = 'junegunn/vim-emoji'
+on_func = 'emoji#'
+hook_add = '''
+  command! EnableEmoji set completefunc=emoji#complete
+'''
+
+[[plugins]]
 repo = 'fszymanski/deoplete-emoji'
 on_ft = ['gitcommit', 'markdown', 'text']
 
@@ -116,6 +142,9 @@ hook_add = '''
   let g:terraform_registry_module_completion = 1
 '''
 
+
+## Language Clients
+
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
@@ -124,6 +153,7 @@ hook_post_update = './install.sh'
 hook_add = '''
   let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
+  let g:LanguageClient_hasSnippetSupport = 0
 
   let g:LanguageClient_useVirtualText = 'All'
   " let g:LanguageClient_virtualTextPrefix = ''
@@ -131,8 +161,8 @@ hook_add = '''
   let g:LanguageClient_diagnosticsEnable = 0
   let g:LanguageClient_diagnosticsList = 'Disabled'
 
-  let g:LanguageClient_waitOutputTimeout = 200
-  let g:LanguageClient_changeThrottle = 0.5
+  " let g:LanguageClient_waitOutputTimeout = 20
+  " let g:LanguageClient_changeThrottle = 0.5
   " let g:LanguageClient_selectionUI = "location-list"
 
   " let g:LanguageClient_loggingLevel = 'DEBUG'
