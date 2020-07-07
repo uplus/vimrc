@@ -88,16 +88,6 @@ hook_source = '''
   " let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
 '''
 
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-go'
-on_ft = 'go'
-hook_post_update = 'make'
-hook_source = '''
-  let g:deoplete#sources#go#align_class = 1
-  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-  let g:deoplete#sources#go#package_dot = 1
-'''
-
 [[plugins]] # haskell
 repo = 'eagletmt/neco-ghc'
 on_ft = 'haskell'
@@ -156,7 +146,12 @@ hook_add = '''
   " let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
   " let g:LanguageClient_trace = 'verbose' " off messages verbose
 
+  " 設定参考
+  " https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp/solargraph.lua
+
   let g:LanguageClient_rootMarkers = {
+    \ 'go': ['go.mod'],
+    \ 'gomod': ['go.mod'],
     \ 'rust': ['Cargo.toml'],
     \ 'ruby': ['Gemfile'],
     \ 'python': ['Pipfile'],
@@ -166,6 +161,8 @@ hook_add = '''
     \ }
 
   let g:LanguageClient_serverCommands = {
+    \ 'go': ['gopls'],
+    \ 'gomod': ['gopls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'ruby': ['solargraph', 'stdio'],
     \ 'python': ['pyls'],
@@ -178,6 +175,7 @@ hook_add = '''
     " \ 'ruby': ['orbaclerun', 'file-server'],
     " \ 'rust': ['rustup', 'run', 'stable', 'rls'],
 
+    au myac FileType * call LC_maps()
     function LC_maps()
       if has_key(g:LanguageClient_serverCommands, &filetype)
         nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
@@ -185,8 +183,6 @@ hook_add = '''
         " nnoremap <buffer> <silent> <f2> :call LanguageClient#textDocument_rename()<cr>
       endif
     endfunction
-
-    au myac FileType * call LC_maps()
 '''
 
 [[plugins]]
