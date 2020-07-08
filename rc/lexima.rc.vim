@@ -1,4 +1,3 @@
-
 " call lexima#init() " Need first
 " call lexima#set_default_rules()
 
@@ -24,14 +23,14 @@ call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<bs><cr>'})
 
 function! s:make_rule(at, end, filetype, syntax)
   return {
-  \ 'char': '<CR>',
-  \ 'input':  '<CR>',
-  \ 'input_after': '<CR>' . a:end,
-  \ 'at': a:at,
-  \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,
-  \ 'filetype': a:filetype,
-  \ 'syntax': a:syntax,
-  \ }
+    \ 'char': '<CR>',
+    \ 'input':  '<CR>',
+    \ 'input_after': '<CR>' . a:end,
+    \ 'at': a:at,
+    \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,
+    \ 'filetype': a:filetype,
+    \ 'syntax': a:syntax,
+    \ }
 endfunction
 " call add(rules, s:make_rule('^\s*\%(module\|def\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#', 'end', 'ruby', []))
 " call add(rules, s:make_rule('^\s*\%(begin\)\s*\%#', 'end', 'ruby', []))
@@ -40,117 +39,124 @@ endfunction
 
 
 " vim {{{
-call lexima#add_rule(
-      \ {'at': '\v(\{%#\}|\[%#\])',
-      \ 'char': '<CR>',
-      \ 'input': '<CR><Bslash> ',
-      \ 'input_after': '<CR><Bslash> ',
-      \ 'filetype': 'vim'})
+call lexima#add_rule({
+  \ 'at': '\v(\{%#\}|\[%#\])',
+  \ 'char': '<CR>',
+  \ 'input': '<CR><Bslash> ',
+  \ 'input_after': '<CR><Bslash> ',
+  \ 'filetype': 'vim',
+  \ })
 
 " 既に括弧がある時
-call lexima#add_rule(
-      \ {'at': '[{\[]\s*\%#',
-      \ 'char': '<CR>',
-      \ 'input': '<CR><Bslash> ',
-      \ 'filetype': 'vim'})
-
-call lexima#add_rule(
-      \ {'at': '[}\]]\s*\%#',
-      \ 'char': '<CR>',
-      \ 'input': '<CR><Bslash> ',
-      \ 'filetype': 'vim'})
-
-call lexima#add_rule(
-      \ {'at': '\\.*\%#',
-      \ 'char': '<CR>',
-      \ 'input': '<CR><Bslash> ',
-      \ 'filetype': 'vim'})
+call lexima#add_rule({
+  \ 'at': '[{\[]\s*\%#',
+  \ 'char': '<CR>',
+  \ 'input': '<CR><Bslash> ',
+  \ 'filetype': 'vim',
+  \ })
 
 call lexima#add_rule({
-      \ 'at': '\\\s.*\%#$',
-      \ 'char': '<CR>',
-      \ 'input': '<CR><Bslash> ',
-      \ 'filetype': 'vim'})
+  \ 'at': '[}\]]\s*\%#',
+  \ 'char': '<CR>',
+  \ 'input': '<CR><Bslash> ',
+  \ 'filetype': 'vim'
+  \ })
 
 call lexima#add_rule({
-      \ 'at': '^\%#',
-      \ 'char': '<Bslash>',
-      \ 'input': '<Bslash><space>',
-      \ 'filetype': 'vim'})
+  \ 'at': '\\.*\%#',
+  \ 'char': '<CR>',
+  \ 'input': '<CR><Bslash> ',
+  \ 'filetype': 'vim',
+  \ })
+
+call lexima#add_rule({
+  \ 'at': '\\\s.*\%#$',
+  \ 'char': '<CR>',
+  \ 'input': '<CR><Bslash> ',
+  \ 'filetype': 'vim',
+  \ })
+
+call lexima#add_rule({
+  \ 'at': '^\%#',
+  \ 'char': '<Bslash>',
+  \ 'input': '<Bslash><space>',
+  \ 'filetype': 'vim'
+  \ })
 
 call lexima#add_rule(
-      \ {'at': "'''\\%#'''",
-      \ 'char': '<CR>',
-      \ 'input': '<CR><CR><Up><tab>',
-      \ 'filetype': ['vim', 'toml']})
+  \ {'at': "'''\\%#'''",
+  \ 'char': '<CR>',
+  \ 'input': '<CR><CR><Up><tab>',
+  \ 'filetype': ['vim', 'toml']
+  \ })
 "}}}
 
 " c cpp {{{
 " struct {  };
 call lexima#add_rule({
-      \   'at'       : '\%(\<struct\>\|\<class\>\|\<enum\>\)\s*\w\+.*\%#',
-      \   'char'     : '{',
-      \   'input'    : '{};<Left><Left>',
-      \   'filetype' : ['c','cpp'],
-      \   })
+  \ 'at'       : '\%(\<struct\>\|\<class\>\|\<enum\>\)\s*\w\+.*\%#',
+  \ 'char'     : '{',
+  \ 'input'    : '{};<Left><Left>',
+  \ 'filetype' : ['c','cpp'],
+  \ })
 
 " #include <>
 call lexima#add_rule({
-      \   'at'       : '^#i\%#',
-      \   'char'     : 'n',
-      \   'input'    : 'nclude <><Left>',
-      \   'filetype' : ['c','cpp'],
-      \   })
+  \ 'at'       : '^#i\%#',
+  \ 'char'     : 'n',
+  \ 'input'    : 'nclude <><Left>',
+  \ 'filetype' : ['c','cpp'],
+  \ })
 
 " /* */
 call lexima#add_rule({
-      \   'at'       : '/\*\%#',
-      \   'char'     : '<cr>',
-      \   'input'    : '*/<left><left><cr><up><end><cr>',
-      \   'filetype' : ['c','cpp'],
-      \   })
+  \ 'at'       : '/\*\%#',
+  \ 'char'     : '<cr>',
+  \ 'input'    : '*/<left><left><cr><up><end><cr>',
+  \ 'filetype' : ['c','cpp'],
+  \ })
 "}}}
 
 " ruby "{{{
 call lexima#add_rule({
-  \   'at': '\v(\{|<do>)\s*%#',
-  \   'char': '<Bar>',
-  \   'input': '<Bar><Bar><Left>',
-  \   'filetype': ['ruby'],
+  \ 'at': '\v(\{|<do>)\s*%#',
+  \ 'char': '<Bar>',
+  \ 'input': '<Bar><Bar><Left>',
+  \ 'filetype': ['ruby'],
   \ })
 
 call lexima#add_rule({
-  \   'at': '\({\|\<do\>\)\s*|.*\%#|',
-  \   'char': '<Bar>',
-  \   'input': '<Right>',
-  \   'filetype': ['ruby'],
+  \ 'at': '\({\|\<do\>\)\s*|.*\%#|',
+  \ 'char': '<Bar>',
+  \ 'input': '<Right>',
+  \ 'filetype': ['ruby'],
   \ })
 
 call lexima#add_rule({
-  \   'at': '\({\|\<do\>\)\s*|\%#|',
-  \   'char': '<BS>',
-  \   'input': '<Del><BS>',
-  \   'filetype': ['ruby'],
+  \ 'at': '\({\|\<do\>\)\s*|\%#|',
+  \ 'char': '<BS>',
+  \ 'input': '<Del><BS>',
+  \ 'filetype': ['ruby'],
   \ })
 
 " input_afterでEndが使えない
 call lexima#add_rule({
- \ 'char': '<CR>',
- \ 'input':  '<CR><End><CR>' . 'end' . '<Up><Left>',
- \ 'at': '\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#.\+',
- \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . 'end',
- \ 'filetype': ['ruby'],
- \ })
+  \ 'char': '<CR>',
+  \ 'input':  '<CR><End><CR>' . 'end' . '<Up><Left>',
+  \ 'at': '\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#.\+',
+  \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . 'end',
+  \ 'filetype': ['ruby'],
+  \ })
 
 "}}}
 
 " eruby {{{
 call lexima#add_rule({
-      \   'at': '\v\<%#',
-      \   'char': '%',
-      \   'input': '%%><LEFT><LEFT>',
-      \   'filetype': ['eruby'],
-      \ })
+  \ 'at': '\v\<%#',
+  \ 'char': '%',
+  \ 'input': '%%><LEFT><LEFT>',
+  \ 'filetype': ['eruby'],
+  \ })
 
 "}}}
 
