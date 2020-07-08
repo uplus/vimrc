@@ -1,11 +1,11 @@
 ﻿" g:lightline
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['filename', 'readonly',],],
-      \     'right': [['cursor'], ['filetype', 'fileencoding']]
+      \     'left': [['mode', 'paste'], ['filename', 'readonly',], ['current_function']],
+      \     'right': [['cursor'], ['filetype', 'fileencoding'],]
       \   },
       \   'inactive': {
-      \     'left': [['mode', 'paste'], ['filename', 'readonly',],],
+      \     'left': [['mode', 'paste'], ['filename', 'readonly',], ['current_function']],
       \     'right': [['cursor'], ['filetype', 'fileencoding']]
       \   },
       \   'tabline': {
@@ -27,15 +27,18 @@ let g:lightline = {
       \     'close_button': printf('%%999X %s ', has('multi_byte') ? '✗' : 'x'),
       \   },
       \   'component_visible_condition': {
-      \     'paste': '&paste', 'spell': '&spell',
+      \     'paste': '&paste',
+      \     'spell': '&spell',
       \   },
       \   'component_function': {
-      \     'mode': 'LLmode', 'fileencoding': 'LLfileencoding', 'readonly': 'LLreadonly',
-      \     'cursor': 'LLcursor',
-      \     'filetype': 'LLfiletype',
-      \     'filename': 'LLfilename',
-      \     'git': 'LLgit',
       \     'current_function': 'LLcurrent_function',
+      \     'cursor': 'LLcursor',
+      \     'fileencoding': 'LLfileencoding',
+      \     'filename': 'LLfilename',
+      \     'filetype': 'LLfiletype',
+      \     'git': 'LLgit',
+      \     'mode': 'LLmode',
+      \     'readonly': 'LLreadonly',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
@@ -43,9 +46,10 @@ let g:lightline = {
       \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
-      \     'tabs': 'tabsel', 'close_button': 'raw',
+      \     'close_button': 'raw',
       \     'syntax_check': 'error',
       \     'tabline': 'tabsel',
+      \     'tabs': 'tabsel',
       \   },
       \   'tab_component': {},
       \   'tab_component_function': {
@@ -74,20 +78,13 @@ let g:lightline = {
       \   'colorscheme': 'refreshing',
       \ }
 
-      " \   'colorscheme': 'mellow',
-
 let g:lightline#bufferline#shorten_path = 0
-
-
-" default(powerline) molokai darcula solarized PaperColor one
-" material: inactiveなバッファ名が見れなくなる
 
 " カラースキームで定義されてる数だけ色が使える?
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来る
 " tab
 "   タブがあるならデフォルトのonetab()?返してないならbuflist返す
 " buftype preview quickfix diff
-" gundo
 " 'w:N b:N' from vim-ezbar
 " コンポーネントから他のコンポーネントをいじる
 "   *_visual_condition使えば隠せるかも だめだった セパレータは消えた 事前に定義が必要?
@@ -99,34 +96,33 @@ let g:lightline#bufferline#shorten_path = 0
 " TODO qfstatusline(現状の常時1つめ表示じゃ不便)
 " TODO modifiedが見づらい 色的にも
 
-let s:m = { '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview',
-          \ '[Command Line]': 'Command Line',
-          \ }
+let s:m = {
+  \ '[Command Line]': 'Command Line',
+  \ }
 
-let s:p = { 'unite': 'Unite', 'denite': 'Denite', 'Defx': 'defx',
-          \ 'quickrun': 'Quickrun',
-          \ 'dictionary': 'Dictionary',
-          \ 'calendar': 'Calendar',
-          \ 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit',
-          \ 'qf': 'QuickFix',
-          \ 'github-dashboard': 'GitHub Dashboard',
-          \ 'tagbar': 'Tagbar',
-          \ }
+let s:p = {
+  \ 'denite': 'Denite',
+  \ 'Defx': 'defx',
+  \ 'quickrun': 'Quickrun',
+  \ 'dictionary': 'Dictionary',
+  \ 'calendar': 'Calendar',
+  \ 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit',
+  \ 'qf': 'QuickFix',
+  \ 'github-dashboard': 'GitHub Dashboard',
+  \ 'tagbar': 'Tagbar',
+  \ }
 
-let s:e = { 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
-          \ 'vimfiler':   'vimfiler#get_status_string()',
-          \ 'unite':      'unite#get_status_string()',
-          \ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
-          \ 'calendar':   "strftime('%Y/%m/%d')",
-          \ 'quickrun':   "''",
-          \ 'agit': "''", 'agit_diff': "''", 'agit_stat': "''",
-          \ '__Gundo__': "''",
-          \ '__Gundo_Preview__': "''",
-          \ '[Command Line]': "''",
-          \ }
+let s:e = {
+  \ 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
+  \ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
+  \ 'calendar':   "strftime('%Y/%m/%d')",
+  \ 'quickrun':   "''",
+  \ 'agit': "''", 'agit_diff': "''", 'agit_stat': "''",
+  \ '[Command Line]': "''",
+  \ }
 
-let s:ignore_ft = ['tagbar', 'defx', 'vimfiler', 'unite', 'denite', 'denite-filter', 'dictionary', 'gundo', 'undotree']
-let s:ignore_fn = ['__Gundo_Preview__']
+let s:ignore_ft = ['tagbar', 'defx', 'denite', 'denite-filter', 'dictionary', 'undotree']
+let s:ignore_fn = []
 
 function! s:is_ignore() abort
   return index(s:ignore_ft, &l:ft) != -1 || index(s:ignore_fn, expand('%:t')) != -1
@@ -229,8 +225,6 @@ function! LLsyntax_check() abort "{{{
   let l:err = l:errs[0]
   return printf("⚠%d %d:%d '%s'", l:num, l:err.lnum, l:err.vcol, substitute(l:err.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
 endfunction "}}}
-
-" #tabline
 
 function! LLtabline() abort
   let l:tabs = lightline#tabs()

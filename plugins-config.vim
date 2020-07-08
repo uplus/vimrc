@@ -13,9 +13,6 @@ let g:ale_virtualenv_dir_names = []
 " #vital
 " NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
 
-" #untie
-" NeoBundleLazy 'mattn/unite-remotefile',           { 'depends' : [ 'Shougo/unite.vim' ] }
-
 " #textobj
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 
