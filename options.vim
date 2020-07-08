@@ -204,6 +204,10 @@ if exists('+lazyredraw')
   set lazyredraw
 endif
 
+if has('conceal')
+  " set conceallevel=2 concealcursor=niv
+endif
+
 if !has('gui_running')
   set t_Co=256
 endif

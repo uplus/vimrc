@@ -9,7 +9,13 @@ hook_add = '''
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#disable_runtime_snippets = { '_': 1 }
   let g:neosnippet#enable_completed_snippet = 0
-  let g:neosnippet#enable_complete_done = 0
+
+  " let g:neosnippet#enable_conceal_markers = 1
+  " let g:neosnippet#conceal_char = '|'
+
+  " CompleteDoneで展開する
+  let g:neosnippet#enable_complete_done = 1
+  " 単語境界でも展開する
   let g:neosnippet#expand_word_boundary = 1
 
   let g:neosnippet#scope_aliases = {
@@ -18,11 +24,8 @@ hook_add = '''
     \ 'typescriptreact': 'react',
     \ }
 
-  if has('conceal')
-    " set conceallevel=2 concealcursor=niv
-  endif
-
-  au myac InsertLeave * NeoSnippetClearMarkers
+  " どのみち保存前に消される
+  " au myac InsertLeave * NeoSnippetClearMarkers
 '''
 
 [[plugins]]
@@ -38,7 +41,6 @@ hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 repo = 'Shougo/echodoc.vim'
 on_event = 'CompleteDone'
 hook_source = '''
-  " let g:echodoc_enable_at_startup = 1
   let g:echodoc#type = 'virtual'
   call echodoc#enable()
 '''
@@ -132,9 +134,6 @@ hook_add = '''
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
   let g:LanguageClient_hasSnippetSupport = 0
 
-  let g:LanguageClient_useVirtualText = 'All'
-  " let g:LanguageClient_virtualTextPrefix = ''
-
   let g:LanguageClient_diagnosticsEnable = 0
   let g:LanguageClient_diagnosticsList = 'Disabled'
 
@@ -147,7 +146,7 @@ hook_add = '''
   " let g:LanguageClient_trace = 'verbose' " off messages verbose
 
   " 設定参考
-  " https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp/solargraph.lua
+  " https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp
 
   let g:LanguageClient_rootMarkers = {
     \ 'go': ['go.mod'],

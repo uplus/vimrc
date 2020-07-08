@@ -6,7 +6,7 @@ call lexima#set_default_rules()
 inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete(['emoji'])
-imap <c-l> <Plug>(neosnippet_jump)
+imap <c-l> <Plug>(neosnippet_expand_or_jump)
 smap <c-l> <Plug>(neosnippet_jump)
 xmap <c-l> <Plug>(neosnippet_jump)
 imap <expr><silent><cr> <sid>imap_cr()
@@ -17,13 +17,7 @@ imap <expr><silent><cr> <sid>imap_cr()
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
 
 function! s:imap_cr() abort
-  " neosnippet#expandable_or_jumpable()
-  " neosnippet#expandable()
-  " deoplete#complete()
-
   if pumvisible()
-    " call deoplete#close_popup()
-
     if neosnippet#expandable()
       return "\<Plug>(neosnippet_expand)"
     else
@@ -57,15 +51,16 @@ call deoplete#custom#option('keyword_patterns', {
       \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
       \ })
 
-call deoplete#custom#source('_', 'max_abbr_width', 0)
-call deoplete#custom#source('_', 'converters', [
-      \ 'converter_remove_overlap',
-      \ 'converter_case',
-      \ 'matcher_length',
-      \ 'converter_truncate_abbr',
-      \ 'converter_truncate_info',
-      \ 'converter_truncate_menu',
-      \ ])
+call deoplete#custom#source('_', 'max_abbr_width', 120)
+
+" call deoplete#custom#source('_', 'converters', [
+"      \ 'converter_remove_overlap',
+"      \ 'converter_case',
+"      \ 'matcher_length',
+"      \ 'converter_truncate_abbr',
+"      \ 'converter_truncate_info',
+"      \ 'converter_truncate_menu',
+"      \ ])
 
 " call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
