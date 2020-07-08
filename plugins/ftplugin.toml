@@ -220,12 +220,12 @@ markdown = '''
   setl conceallevel=0
 
   " 要らないインデントが発生する
-  set indentkeys=
+  setl indentkeys=
 '''
 
 neosnippet = '''
-  set noexpandtab
-  set fdm=marker
+  setl noexpandtab
+  setl fdm=marker
 '''
 
 python = '''
@@ -392,7 +392,7 @@ dockerfile = '''
 
 make = '''
   SetTab 4
-  set noexpandtab
+  setl noexpandtab
 '''
 
 yaml = '''

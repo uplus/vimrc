@@ -2,6 +2,26 @@
 " call lexima#init() " Need first
 " call lexima#set_default_rules()
 
+" 別行で閉じる
+call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
+call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
+call lexima#add_rule({'at': '\%#\_s*]', 'char': ']', 'leave': ']'})
+
+" 文字の途中では無効
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '(', 'input': '('})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '{', 'input': '{'})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '[', 'input': '['})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': "'", 'input': "'"})
+call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '"', 'input': '"'})
+
+" jj <esc>
+call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
+
+
+" remove tail space when enter
+call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<cr>', 'filetype': ['markdown', 'gitcommit', 'help']})
+call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<bs><cr>'})
+
 function! s:make_rule(at, end, filetype, syntax)
   return {
   \ 'char': '<CR>',
@@ -18,19 +38,6 @@ endfunction
 " call add(rules, s:make_rule('\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#', 'end', 'ruby', []))
 " call add(rules, s:make_rule('\<\%(if\|unless\)\>.*\%#', 'end', 'ruby', 'rubyConditionalExpression'))
 
-
-" 別行で閉じる
-call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
-call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
-call lexima#add_rule({'at': '\%#\_s*]', 'char': ']', 'leave': ']'})
-
-" 文字の途中では無効
-call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '(', 'input': '('})
-call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '{', 'input': '{'})
-call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '[', 'input': '['})
-
-" jj <esc>
-call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
 
 " vim {{{
 call lexima#add_rule(
@@ -137,30 +144,7 @@ call lexima#add_rule({
 
 "}}}
 
-" html
-
-" 開始タグの閉じカッコを入力したら終了タグを挿入する
-" /> <! </ は無視する
-call lexima#add_rule({
-      \   'at': '\v\<[^/!].*[^/]%#',
-      \   'char': '>',
-      \   'input': '><c-r>=Lexima_HtmlCloseTag()<cr>',
-      \   'filetype': ['html', 'eruby', 'vue', 'handlebars.html'],
-      \ })
-
-call lexima#add_rule({
-      \   'at': '\v\<%#',
-      \   'char': '!',
-      \   'input': '!--  --><left><left><left><left>',
-      \   'filetype': ['html', 'eruby', 'vue', 'handlebars.html'],
-      \ })
-
-function! Lexima_HtmlCloseTag() abort
-  let str = printf('</%s>', matchstr(getline('.'), '\v^\s*\<\zs([^ >]+)\ze[ >]'))
-  return str . repeat("\<left>", len(str))
-endfunction
-
-" eruby
+" eruby {{{
 call lexima#add_rule({
       \   'at': '\v\<%#',
       \   'char': '%',
@@ -168,23 +152,37 @@ call lexima#add_rule({
       \   'filetype': ['eruby'],
       \ })
 
-" " casl2
-" RET NOP START END POP DS DC LD ST ADDA SUBA ADDL SUBL AND OR XOR CPA CPL JUMP JPL JMI JNZ JZE JOV CALL SVC LAD SLA SRA SLL SRL PUSH
-" let s:casl_pattern = '\v(ret|nop|start|end|pop|ds|dc|ld|st|adda|suba|addl|subl|and|or|xor|cpa|cpl|jump|jpl|jmi|jnz|jze|jov|call|svc|lad|sla|sra|sll|srl|push)'
-" " echo substitute('ret', l:casl_pattern, '\U\1', '')
-" call lexima#add_rule({
-"       \   'at': '\%#',
-"       \   'char': 'ret|nop',
-"       \   'input': 'RET',
-"       \   'filetype': ['casl2'],
-"       \ })
-" call lexima#add_rule({
-"       \   'at': '\%#',
-"       \   'char': s:casl_pattern,
-"       \   'input': '\U\1',
-"       \   'filetype': ['casl2'],
-"       \ })
-" unlet s:casl_pattern
+"}}}
+
+" html {{{
+
+function! Lexima_HtmlCloseTag() abort
+  let str = printf('</%s>', matchstr(getline('.'), '\v^\s*\<\zs([^ >]+)\ze[ >]'))
+  return str . repeat("\<left>", len(str))
+endfunction
+
+let s:html_filetypes = ['html', 'eruby', 'vue', 'handlebars.html', 'jsx', 'typescriptreact']
+let s:html_syntaxes = ['jsxTagName', 'jsxComponentName', 'htmlTagName', 'htmlSpecialTagName']
+
+" 開始タグの閉じカッコを入力したら終了タグを挿入する
+" /> <! </ は無視する
+call lexima#add_rule({
+  \ 'at': '\v\<[^/!].*[^/]%#',
+  \ 'char': '>',
+  \ 'input': '><c-r>=Lexima_HtmlCloseTag()<cr>',
+  \ 'syntax': s:html_syntaxes,
+  \ 'filetype': s:html_filetypes,
+  \ })
+
+call lexima#add_rule({
+  \ 'at': '\v\<%#',
+  \ 'char': '!',
+  \ 'input': '!--  --><left><left><left><left>',
+  \ 'syntax': s:html_syntaxes,
+  \ 'filetype': s:html_filetypes,
+  \ })
+
+"}}}
 
 " ------------------------------------------------------------------------------------------
 

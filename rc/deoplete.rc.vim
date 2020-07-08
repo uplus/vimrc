@@ -3,23 +3,30 @@
 " leximaでcrが上書きされるため先に呼び出して全て実行する
 call lexima#set_default_rules()
 
-inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible()? "\<c-p>" : "\<s-tab>"
+inoremap <expr><tab>   pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 inoremap <silent><expr><c-x><c-e> deoplete#manual_complete(['emoji'])
-imap <c-l> <Plug>(neosnippet_expand_or_jump)
-smap <c-l> <Plug>(neosnippet_jump)
-xmap <c-l> <Plug>(neosnippet_jump)
-imap <expr><silent><cr> <sid>imap_cr()
+
+imap <c-l> <plug>(neosnippet_expand_or_jump)
+smap <c-l> <plug>(neosnippet_jump)
+xmap <c-l> <plug>(neosnippet_jump)
+imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
+imap <expr><cr> <sid>imap_cr()
+" <silent>
 " inoremap <expr><bs> deoplete#mappings#smart_close_popup()."\<C-h>"
-" inoremap <expr><c-g> deoplete#mappings#undo_completion()
-" inoremap <expr><c-l> deoplete#mappings#refresh()
 " inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
-" inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
+" inoremap <expr><silent> <c-t> deoplete#mappings#manual_complete('file')
+
+function! SnippetExpandable() abort
+  return neosnippet#helpers#get_cursor_snippet(neosnippet#helpers#get_snippets('i'), neosnippet#util#get_cur_text()) !=# ''
+endfunction
 
 function! s:imap_cr() abort
+  " いろいろ試したが、<cr>でスニペット展開が発動するのは微妙に使いづらい
+
   if pumvisible()
-    if neosnippet#expandable()
-      return "\<Plug>(neosnippet_expand)"
+    if SnippetExpandable()
+      return lexima#expand('<CR>', 'i')
     else
       return lexima#expand('<CR>', 'i')
     endif

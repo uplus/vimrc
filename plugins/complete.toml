@@ -14,7 +14,7 @@ hook_add = '''
   " let g:neosnippet#conceal_char = '|'
 
   " CompleteDoneで展開する
-  let g:neosnippet#enable_complete_done = 1
+  let g:neosnippet#enable_complete_done = 0
   " 単語境界でも展開する
   let g:neosnippet#expand_word_boundary = 1
 
