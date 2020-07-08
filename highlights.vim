@@ -3,23 +3,30 @@ if !exists('g:noplugin')
   au myac ColorScheme * call s:set_highlights()
 endif
 
+function! s:set_common_highlights() abort
+  hi Pmenu        ctermfg=255  ctermbg=240 guifg=#eeeeee guibg=#3a3a3a cterm=NONE gui=NONE
+  hi PmenuSel     ctermfg=255  ctermbg=250 guifg=#eaeaea guibg=#5a5a5a cterm=NONE gui=NONE
+  hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#eeeeee guibg=#131313 cterm=NONE gui=NONE
+  hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#204080 cterm=NONE gui=NONE
+  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#331313 guibg=#40e0e0 cterm=NONE gui=NONE
+  hi! link WildMenu Pmenu
+endfunction
+
 let g:colors_name = ''
 let g:colors_seted = 0
 hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
-hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
 hi Visual       cterm=reverse gui=reverse
-hi Pmenu        ctermfg=240  ctermbg=251 guifg=#585858 guibg=#c6c6c6
-hi PmenuSel     ctermfg=0    ctermbg=255 guifg=#000000 guibg=#eeeeee
+hi CursorLine                ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
 hi BadSpace     cterm=NONE
+call s:set_common_highlights()
 
 hi! link Statement Visual
-hi! link NormalFloat Normal
 hi! link LineNr      Normal
 hi! link FoldColumn  LineNr
 hi! link SignColumn  LineNr
 hi clear TabLineFill
 
-function! s:colorscheme(name) abort
+function! s:colorscheme(name) abort "{{{
   if g:colors_name !=# a:name
     try
       execute 'colorscheme' a:name
@@ -27,7 +34,7 @@ function! s:colorscheme(name) abort
       echomsg printf("catch: Cannot find color scheme '%s'", a:name)
     endtry
   endif
-endfunction
+endfunction "}}}
 
 function! s:set_colors() "{{{
   if 0 != g:colors_seted
@@ -55,12 +62,12 @@ function! s:set_colors() "{{{
 endfunction "}}}
 
 function! s:set_highlights() "{{{
-  hi Search     ctermfg=75   ctermbg=18   guifg=#efefef guibg=#204060 cterm=italic    gui=italic
-  hi IncSearch  ctermfg=56   ctermbg=39   guifg=#200020 guibg=#50a050 cterm=italic    gui=italic
+  call s:set_common_highlights()
+
   hi Title      ctermfg=118               guifg=#87ff00
   hi Error      ctermfg=255  ctermbg=161  guifg=#eeeeee guibg=#d7005f
-  hi QFError    ctermfg=198               guifg=#ff0087               cterm=undercurl gui=undercurl
-  hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=undercurl gui=undercurl
+  hi QFError    ctermfg=198               guifg=#ff0087               cterm=NONE gui=NONE
+  hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=NONE gui=NONE
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 
   hi DiffAdd    ctermfg=255  ctermbg=163  guifg=#eeeeee guibg=#d700af
@@ -70,8 +77,6 @@ function! s:set_highlights() "{{{
 
   hi htmlBold   ctermfg=255               guifg=#ffffff               cterm=bold      gui=bold
   hi! link reviewImage PreProc
-
-  colorscheme vimfiler_color
 
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
   hi SignifySignChange ctermfg=226 guifg=#fbff00
@@ -98,23 +103,14 @@ function! s:set_highlights() "{{{
 
     hi mkdLineBreak      ctermbg=240 guibg=#585858
 
-    " hi vimString         ctermfg=155 guifg=#afff5f
-    " hi vimVar            ctermfg=226 guifg=#ffff00
-    " hi vimFuncName       ctermfg=135 guifg=#af5fff
-    " hi vimLet            ctermfg=77  guifg=#50df3f
-    " hi vimCommand        ctermfg=37  guifg=#00b0a0
-    " hi clear vimFunction
-    " hi! link vimNotFunc vimCommand
-    " hi! link vimOperParen vimFuncVar
-
-    hi goDirective       ctermfg=35 guifg=#20af40
-    hi goFormatSpecifier ctermfg=207 guifg=#ff50ff
-    hi goSpecialString   ctermfg=226 guifg=#ffff00
+    hi goDirective       ctermfg=35   guifg=#20af40
+    hi goFormatSpecifier ctermfg=207  guifg=#ff50ff
+    hi goSpecialString   ctermfg=226  guifg=#ffff00
     hi! link goConditional goDeclaration
   elseif g:colors_name ==? 'molokai'
-    hi LineNr   ctermfg=250  ctermbg=236 guifg=#869497 guibg=#232526
-    hi Folded   ctermfg=63   guifg=#5f5fff
-    hi Comment  ctermfg=245  guifg=#aaaaaa
+    hi LineNr   ctermfg=250  ctermbg=236  guifg=#869497 guibg=#232526
+    hi Folded   ctermfg=63                guifg=#6e9efe
+    hi Comment  ctermfg=245               guifg=#aaaaaa
     hi NonText  ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE
   endif
 endfunction "}}}

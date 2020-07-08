@@ -169,7 +169,8 @@ set iskeyword+=$,@-@
 " #wild menu
 set wildignorecase
 if exists('+pumblend')
-  set pumblend=10
+  set winblend=0
+  set pumblend=0
   set wildoptions=pum,tagfile
   set wildmode=full:longest,full
 else

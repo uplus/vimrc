@@ -148,9 +148,6 @@ go = '''
   let b:format_cmd = 'Fmt'
   let b:tags_cmd = 'gotags -sort -silent -f .tags *.go'
 
-  if getline(1) =~ 'main'
-    let b:watchdogs_checker_type = 'watchdogs_checker/go_vet'
-  endif
 '''
 
 rust = '''
@@ -312,8 +309,7 @@ sh = '''
 '''
 
 toml = '''
-  syntax sync minlines=300
-  let b:watchdogs_checker_type = 'watchdogs_checker/null'
+  " syntax sync minlines=300
 
   if expand('%:p') =~# expand('~/.vim')
     let b:context_filetype_filetypes = {

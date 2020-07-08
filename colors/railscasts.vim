@@ -20,24 +20,20 @@ let g:colors_name = expand('<sfile>:t:r')
 " hi SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline guifg=#d7d7ff guibg=NONE gui=underline
 
 
-hi NonText            ctermfg=248 guifg=Gray
-hi MatchParen         ctermfg=15  ctermbg=23 guifg=#ffffff guibg=#005f5f
-hi Pmenu              ctermfg=214 ctermbg=236 guifg=#ffaf00 guibg=#303030
-hi PmenuSel           ctermfg=235 ctermbg=214 guifg=#262626 guibg=#ffaf00
-hi StatusLine         ctermfg=255 ctermbg=NONE cterm=NONE guifg=#eeeeee guibg=NONE gui=NONE
-hi WildMenu           ctermfg=0   ctermbg=214 guifg=#000000 guibg=#ffaf00
-hi Normal             ctermbg=NONE guibg=#202020
+hi NonText      ctermfg=248 guifg=Gray
+hi Normal       ctermfg=252 ctermbg=0    guifg=#F8F8F2 guibg=#202020
+
+hi MatchParen         ctermfg=15  ctermbg=23   guifg=#ffffff guibg=#005f5f
+hi StatusLine         ctermfg=255 ctermbg=NONE guifg=#eeeeee guibg=NONE     cterm=NONE gui=NONE
+
 " hi Folded             ctermfg=198 ctermbg=NONE cterm=reverse   guifg=#ff0087 guibg=NONE gui=reverse
 " hi Folded             ctermfg=250 ctermbg=NONE cterm=NONE guifg=#bcbcbc guibg=NONE gui=NONE
 hi Folded             ctermfg=139 ctermbg=NONE cterm=NONE guifg=#aaccff guibg=NONE gui=NONE
 hi FoldColumn         ctermfg=99  ctermbg=232 guifg=#875fff guibg=#080808
 hi LineNr             ctermfg=252 ctermbg=237 guifg=#d0d0d0 guibg=#3a3a3a
 hi SignColumn         ctermfg=244 guifg=#808080 guibg=#1c1c1c
-hi CursorLine         ctermbg=238 cterm=NONE guibg=#343434 gui=NONE
+hi CursorLine         ctermbg=238 guibg=#343434 cterm=NONE gui=NONE
 hi CursorLineNr       ctermfg=196 guifg=#ff0000
-hi Visual             ctermfg=219 ctermbg=196 cterm=NONE guifg=#ffafff guibg=#343434 gui=NONE
-hi NormalFloat        ctermfg=214 ctermbg=236 cterm=NONE guifg=#ffaf00 guibg=#001010 gui=NONE
-
 
 hi rubySharpBang           ctermfg=103 guifg=#8787af
 hi rubyInclude             ctermfg=214 guifg=#ffaf00

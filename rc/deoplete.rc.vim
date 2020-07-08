@@ -5,13 +5,13 @@ call lexima#set_default_rules()
 
 inoremap <expr><tab>   pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-inoremap <silent><expr><c-x><c-e> deoplete#manual_complete(['emoji'])
+inoremap <expr><silent><c-x><c-e> deoplete#manual_complete(['emoji'])
 
 imap <c-l> <plug>(neosnippet_expand_or_jump)
 smap <c-l> <plug>(neosnippet_jump)
 xmap <c-l> <plug>(neosnippet_jump)
 imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
-imap <expr><cr> <sid>imap_cr()
+imap <expr><silent><cr> <sid>imap_cr()
 " <silent>
 " inoremap <expr><bs> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
