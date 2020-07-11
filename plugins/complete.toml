@@ -21,7 +21,6 @@ hook_add = '''
   let g:neosnippet#scope_aliases = {
     \ 'ruby': 'ruby,ruby-rails',
     \ 'arduino': 'c',
-    \ 'typescriptreact': 'react',
     \ }
 
   " どのみち保存前に消される
@@ -174,12 +173,12 @@ hook_add = '''
     " \ 'ruby': ['orbaclerun', 'file-server'],
     " \ 'rust': ['rustup', 'run', 'stable', 'rls'],
 
-    au myac FileType * call LC_maps()
-    function LC_maps()
+    au myac FileType * call s:lc_maps()
+    function s:lc_maps()
       if has_key(g:LanguageClient_serverCommands, &filetype)
-        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
-        nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<cr>
-        " nnoremap <buffer> <silent> <f2> :call LanguageClient#textDocument_rename()<cr>
+        nnoremap <buffer> K :call LanguageClient#textDocument_hover()<cr>
+        nnoremap <buffer> gd :split +call\ LanguageClient#textDocument_definition()<cr>zo
+        " nnoremap <buffer> <f2> :call LanguageClient#textDocument_rename()<cr>
       endif
     endfunction
 '''
