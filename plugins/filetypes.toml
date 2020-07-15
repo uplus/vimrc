@@ -40,6 +40,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'mustache/vim-mustache-handlebars'
+hook_add = '''
+  let g:mustache_operators = 0
+'''
+
+[[plugins]]
 repo = 'glabra/casl2.vim'
 
 [[plugins]]
