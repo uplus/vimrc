@@ -228,14 +228,16 @@ imap <c-x>z <c-x><c-z>
 "}}}
 
 " #move "{{{
-nmap <UP> k
-nmap <DOWN> j
-nmap <LEFT> h
-nmap <RIGHT> l
-vmap <UP> k
-vmap <DOWN> j
-vmap <LEFT> h
-vmap <RIGHT> l
+" imap <up> <c-o>gk
+" imap <down> <c-o>gj
+nmap <up> k
+nmap <down> j
+nmap <left> h
+nmap <right> l
+vmap <up> k
+vmap <down> j
+vmap <left> h
+vmap <right> l
 
 nnoremap k gk
 nnoremap j gj
@@ -249,23 +251,21 @@ vnoremap gj j
 nnoremap <silent><expr>h foldclosed('.') != -1? "zo" : "h"
 nnoremap <silent><expr>l foldclosed('.') != -1? "zO" : "l"
 
-inoremap <UP> <C-O>gk
-inoremap <DOWN> <C-O>gj
 "}}}
 
 " #emacs bind "{{{
-inoremap <C-A> <C-o>^
-inoremap <C-E> <C-o>$
-imap <C-D> <Del>
+inoremap <c-a> <c-o>^
+inoremap <c-e> <c-o>$
+imap <c-d> <del>
 imap <c-h> <bs>
 
-inoremap <C-W> <C-g>u<C-W>
-inoremap <C-U> <C-g>u<C-U>
-inoremap <C-K> <C-o>"_D
+inoremap <c-w> <c-g>u<c-w>
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-k> <c-o>"_D
 
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-D> <Del>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+cnoremap <c-d> <del>
 
 " swap: upは現在の入力を元に履歴を辿る
 cnoremap <c-p> <up>
@@ -274,15 +274,15 @@ cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
 " noremap! is insert+command
-noremap! <C-B> <Left>
-noremap! <C-F> <Right>
+noremap! <c-b> <left>
+noremap! <c-f> <right>
 "}}}
 
 " #alt keybind "{{{
 inoremap <m-w> <c-o>dw
 inoremap <m-f> <c-o>w
 inoremap <m-b> <c-o>b
-inoremap <nowait><esc> <esc>
+" inoremap <nowait><esc> <esc>
 "}}}
 
 " #non register delete "{{{
@@ -301,25 +301,20 @@ vnoremap _X "_X
 "}}}
 
 " #paired map "{{{
+nnoremap <silent>[c :cp<cr>
+nnoremap <silent>]c :cc<cr>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
 nmap [e <Plug>(MoveUp)
 nmap ]e <Plug>(MoveDown)
 xmap [e <Plug>(MoveUp)
 xmap ]e <Plug>(MoveDown)
 
-nnoremap <silent>[c :cp<cr>
-nnoremap <silent>]c :cc<cr>
-
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-" Todo: search other mappings. [p is adjust the indent paste
-" nnoremap <silent> [p :cprevious<CR>
-" nnoremap <silent> ]p :cprevious<CR>
-
 nmap [<Space> <Plug>(BlankUp)
 nmap ]<Space> <Plug>(BlankDown)
-" visual-modeで[<Space>]が使えるようにする
 xmap [<Space> <ESC>[<Space>gv
 xmap ]<Space> <ESC>]<Space>gv
 nmap <Space>p <Plug>(BlankDown)jp
@@ -327,10 +322,8 @@ nmap <Space>P <Plug>(BlankUp)kP
 "}}}
 
 " # ga Info keymap and release " {{{
-if maparg('gaa') ==# ''
-  nnoremap gaa ga
-  xnoremap gaa ga
-endif
+nnoremap gaa ga
+xnoremap gaa ga
 nnoremap ga8 g8
 xnoremap ga8 g8
 nnoremap gah :SyntaxInfo<CR>
