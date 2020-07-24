@@ -696,6 +696,7 @@ hook_add = '''
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 if = "has('nvim')"
+depends = ['context_filetype.vim']
 hook_add = '''
   let g:precious_enable_switchers = {
     \ '*': { 'setfiletype': 0 },
