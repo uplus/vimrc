@@ -21,6 +21,7 @@ hook_add = '''
   let g:neosnippet#scope_aliases = {
     \ 'ruby': 'ruby,ruby-rails',
     \ 'arduino': 'c',
+    \ 'typescript': 'typescriptreact',
     \ }
 
   " どのみち保存前に消される
