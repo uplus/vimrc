@@ -45,3 +45,9 @@ call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
 " clurin undojoin
 call submode#enter_with('clurin', 'n', 'r', '!', '<Plug>(clurin-next)')
 call submode#map('clurin', 'n', 'r', '!', '<Plug>(clurin-undojoin)')
+
+" emove
+call submode#enter_with('emove', 'nx', 'r', '[e', '<Plug>(MoveUp)')
+call submode#enter_with('emove', 'nx', 'r', ']e', '<Plug>(MoveDown)')
+call submode#map('emove', 'nx', 'r', '<up>', '<Plug>(MoveUp)')
+call submode#map('emove', 'nx', 'r', '<down>', '<Plug>(MoveDown)')
