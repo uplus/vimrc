@@ -418,7 +418,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'lambdalisue/vim-gita'
+repo = 'lambdalisue/gina.vim'
 on_cmd = ['Gita']
 
 [[plugins]]
