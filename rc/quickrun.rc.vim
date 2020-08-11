@@ -205,7 +205,7 @@ let s:config = {
       \   'cmdopt': s:c_opt_watchdogs . ' -std=c89',
       \ },
       \ 'watchdogs_checker/flake8': {
-      \   'cmdopt': '--ignore=' . g:autopep8_ignore  . ' --max-line-length=' . g:autopep8_max_line_length
+      \   'cmdopt': '--ignore=E221,E226,E261,E302,E303,E305,F401,W292,W391 --max-line-length=200',
       \ },
       \ 'watchdogs_checker/gobuild': {
       \   'command': 'go',
