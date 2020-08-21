@@ -23,6 +23,8 @@ augroup filetypedetect
 
   au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
 
+  au BufRead,BufNewFile .envrc set ft=sh
+
   au VimEnter * if &l:ft ==# '' | filetype detect | endif
 augroup END
 
