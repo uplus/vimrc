@@ -25,6 +25,8 @@ augroup filetypedetect
 
   au BufRead,BufNewFile .envrc set ft=sh
 
+  au BufRead,BufNewFile Vagrantfile set ft=ruby
+
   au VimEnter * if &l:ft ==# '' | filetype detect | endif
 augroup END
 
