@@ -64,6 +64,8 @@ if executable('rg') " ripgrep
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#var('grep', 'max_path_length', 999)
+
 elseif executable('ag')
   " https://github.com/ggreer/the_silver_searcher
   call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
