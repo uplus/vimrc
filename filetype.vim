@@ -62,15 +62,15 @@ augroup myac
   endif
   "}}}
 
-  function! s:stdin_config() "{{{
+  function! s:stdin_config()
     call SetAsScratch()
     setl nofoldenable
     setl foldcolumn=0
     goto
     silent! %foldopen!
-  endfunction "}}}
+  endfunction
 
-  function! s:vimenter() "{{{
+  function! s:vimenter()
     if argc() == 0
       setl buftype=nowrite
     elseif argc() == 1 && !exists('g:swapname')
@@ -79,5 +79,5 @@ augroup myac
       " e.g swap, grep
       " lcd %:p:h
     endif
-  endfunction "}}}
+  endfunction
 augroup END
