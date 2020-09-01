@@ -102,6 +102,7 @@ denite-filter = '''
 
   imap <silent><buffer><cr> <Plug>(denite_filter_quit)<cr>
   imap <silent><buffer><c-j> <cr>
+  imap <silent><buffer><c-u> <c-a><c-k>
   imap <silent><buffer><c-t> <Plug>(denite_filter_quit)t
   imap <silent><buffer><c-s> <Plug>(denite_filter_quit)s
   imap <silent><buffer><c-v> <Plug>(denite_filter_quit)v
@@ -110,14 +111,8 @@ denite-filter = '''
 '''
 
 [[plugins]]
-repo = 'raghur/fruzzy'
-on_source = ['denite.nvim']
-hook_post_update = 'call fruzzy#install()'
-hook_source = '''
-  " let g:fruzzy#usenative=1
-  let g:fruzzy#sortonempty = 0
-'''
-
+repo = 'liuchengxu/vim-clap'
+hook_post_update = 'Clap install-binary!'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'

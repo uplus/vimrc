@@ -128,7 +128,7 @@ hook_add = '''
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 on_event = 'InsertEnter'
-hook_post_update = './install.sh'
+build = './install.sh'
 hook_add = '''
   let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
@@ -188,7 +188,7 @@ hook_add = '''
 if = 0
 repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
-hook_post_update = './install.sh'
+build = './install.sh'
 
 
 [[plugins]]
