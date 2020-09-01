@@ -1,10 +1,4 @@
 " Config:
-let s:denite_win_width_percent = 0.8
-let s:denite_win_width = &columns * s:denite_win_width_percent
-let s:denite_win_col_pos = (&columns - s:denite_win_width) / 2
-let s:denite_win_height_percent = 0.6
-let s:denite_win_height = &lines * s:denite_win_height_percent
-let s:denite_win_row_pos = (&lines - s:denite_win_height) / 2
 
 call denite#custom#option('default', {
   \ 'start_filter': v:true,
@@ -13,15 +7,24 @@ call denite#custom#option('default', {
   \ 'source_names': 'short',
   \ 'highlight_filter_background': 'CursorLine',
   \ 'split': 'floating',
-  \ 'winwidth': float2nr(s:denite_win_width),
-  \ 'wincol': float2nr(s:denite_win_col_pos),
-  \ 'winheight': float2nr(s:denite_win_height),
-  \ 'winrow': float2nr(s:denite_win_row_pos),
   \ })
-
   "\ 'direction': 'aboveleft',
   "\ 'highlight_window_background'
 
+function! s:set_denite_win(height_percent, width_percent) abort
+  let denite_win_width = &columns * a:width_percent
+  let denite_win_col_pos = (&columns - denite_win_width) / 2
+  let denite_win_height = &lines * a:height_percent
+  let denite_win_row_pos = (&lines - denite_win_height) / 2
+
+  call denite#custom#option('default', 'winwidth',  float2nr(denite_win_width))
+  call denite#custom#option('default', 'wincol',    float2nr(denite_win_col_pos))
+  call denite#custom#option('default', 'winheight', float2nr(denite_win_height))
+  call denite#custom#option('default', 'winrow',    float2nr(denite_win_row_pos))
+endfunction
+
+call s:set_denite_win(0.7, 0.8)
+au myac VimEnter,VimResized * call s:set_denite_win(0.7, 0.8)
 
 " CustomActions:
 call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })
@@ -57,7 +60,7 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '.r
 
 if executable('rg') " ripgrep
   " https://github.com/BurntSushi/ripgrep
-  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
+  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git', '--color', 'never'])
 
   call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
   call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading', '--smart-case'])
