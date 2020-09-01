@@ -15,6 +15,17 @@ augroup myac
     au FocusLost * call DoAutoSave()
   endif
 
+  " auto close floating windows on leave
+  au BufEnter * call s:auto_close_floating_windows()
+  function! s:auto_close_floating_windows() abort
+    " floating windowなら何もしない
+    if nvim_win_get_config(0)['relative'] !=# ''
+      return
+    endif
+
+    call CloseFloatingWindowsByFileTypePattern('denite')
+  endfunction
+
   " #terminal {{{
   if has('nvim')
     au TermOpen * call s:term_open()
@@ -34,7 +45,7 @@ augroup myac
     endfunction
   endif "}}}
 
-  " Sync clipboard
+  " sync clipboard
   if '' !=# $DISPLAY
     " 今は無くても大丈夫そう
     " let @" = @*

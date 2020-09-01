@@ -163,3 +163,9 @@ function Debug(data)
   let g:debug_data = a:data
   PP! a:data
 endfunction
+
+function! CloseFloatingWindowsByFileTypePattern(filetype_pattern) abort
+  let floating_windows = filter(nvim_list_wins(), "nvim_win_get_config(v:val)['relative'] !=# ''")
+  let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")
+  call map(close_windows, 'nvim_win_close(v:val, v:false)')
+endfunction
