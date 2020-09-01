@@ -15,11 +15,6 @@ let g:colors_name = expand('<sfile>:t:r')
 " hi mailHeaderKey             guifg=#FFC66D ctermfg=221 guifg=#ffd75f
 " hi mailEmail                 guifg=#A5C261 ctermfg=107 gui=italic cterm=underline guifg=#87af5f gui=underline
 
-" hi SpellBad                  guifg=#D70000 ctermfg=160 ctermbg=NONE cterm=underline guifg=#d70000 guibg=NONE gui=underline
-" hi SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg=NONE gui=underline cterm=underline guifg=#d75f87 guibg=NONE gui=underline
-" hi SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline guifg=#d7d7ff guibg=NONE gui=underline
-
-
 hi NonText      ctermfg=248 guifg=Gray
 hi Normal       ctermfg=252 ctermbg=0    guifg=#F8F8F2 guibg=#202020
 
@@ -38,43 +33,44 @@ hi CursorLineNr       ctermfg=196 guifg=#ff0000
 hi rubySharpBang           ctermfg=103 guifg=#8787af
 hi rubyInclude             ctermfg=214 guifg=#ffaf00
 " hi rubyComment             ctermfg=179 guifg=#d7af5f
-hi rubyComment             ctermfg=247 guifg=#afafdf
-hi! link rubyData rubyComment
+hi rubyComment             ctermfg=247 guifg=#b8bfef
 hi rubyDataDirective       ctermfg=111 guifg=#87afff
 hi rubyError               ctermfg=255 ctermbg=161 guifg=#eeeeee guibg=#e7005f
-hi rubyFunction            ctermfg=226 guifg=#ffff00
-hi rubyDefine              ctermfg=208 guifg=#ff8700
+hi rubyFunction            ctermfg=226 guifg=#f8ff03
+hi rubyDefine              ctermfg=208 guifg=#ffa020
 hi rubyClass               ctermfg=198 guifg=#ff0087
-hi rubyConstant            ctermfg=161 guifg=#e7005f
-hi link rubyPreDefinedConstant rubyConstant
-hi rubyInstanceVariable    ctermfg=75 guifg=#5fafff
-hi rubyClassVariable       ctermfg=141 guifg=#af87ff
-hi rubyAttribute           ctermfg=172 guifg=#d78700
+hi rubyConstant            ctermfg=161 guifg=#fb2767
+hi rubyInstanceVariable    ctermfg=75 guifg=#4fbffe
+hi! link rubyClassVariable rubySymbol
+hi rubyAccess ctermfg=81 guifg=#fe70ff
 
+hi! link rubyData rubyComment
+hi! link rubyPreDefinedConstant rubyConstant
+hi! link rubyAttribute rubyDefine
+hi! link rubyException rubyFunction
+
+" if else do end ...
+hi! link rubyConditional rubyDefine
+hi! link rubyControl rubyDefine
+
+hi rubyBoolean             ctermfg=39 guifg=#00afff
 hi rubyInteger             ctermfg=38 guifg=#00afd7
-hi rubySymbol              ctermfg=141 guifg=#af87ff
+hi rubySymbol              ctermfg=141 guifg=#bf97ff
 hi rubyString              ctermfg=111 guifg=#87afff
 hi rubyStringDelimiter     ctermfg=74 guifg=#5fafd7
 " \n in string.
 hi rubyStringEscape        ctermfg=171 guifg=#d75fff
-
 " $0 $! ...
 hi rubyIdentifier          ctermfg=73 cterm=NONE guifg=#5fafaf gui=NONE
-
-" if else do end ...
-hi rubyConditional         ctermfg=214 guifg=#ffaf00
-hi rubyControl             ctermfg=214 guifg=#ffaf00
-
 " 埋め込み文字の中身
 hi rubyInterpolation           ctermfg=250 guifg=#bcbcbc
 " 埋め込み文字#{}
-hi rubyInterpolationDelimiter ctermfg=66 guifg=#317fff
+hi rubyInterpolationDelimiter ctermfg=66 guifg=#21afff
 
 " self, super
 " hi rubyPseudoVariable        ctermfg=220 guifg=#ffd700
 " hi Keyword                   ctermfg=220 guifg=#ffd700
-hi link rubyPseudoVariable  rubyInstanceVariable
-hi rubyBoolean             ctermfg=39 guifg=#00afff
+hi! link rubyPseudoVariable  rubyInstanceVariable
 hi rubyKeyword             ctermfg=190 guifg=#d7ff00
 
 " ブロック変数の宣言だけを色つけしてくれる
