@@ -36,6 +36,7 @@ CAlterCommand tmp[buffer] TmpBuffer
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive
 CAlterCommand den[ite] Denite
+CAlterCommand gina Gina
 CAlterCommand qr QuickRun
 CAlterCommand log Log
 CAlterCommand colortoggle ColorToggle
