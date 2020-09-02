@@ -46,15 +46,17 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '.r
 call denite#custom#filter('matcher/clap', 'clap_path', expand('$CACHE/dein') . '/repos/github.com/liuchengxu/vim-clap')
 
 " Matchers:
-let s:default_matcher = 'matcher/clap'
+let s:default_matcher = 'matcher/regexp'
 call denite#custom#source('_', 'matchers', [s:default_matcher])
 call denite#custom#source('buffer', 'matchers', [s:default_matcher, 'matcher/ignore_current_buffer'])
 call denite#custom#source('file/rec', 'matchers', [s:default_matcher, 'matcher/hide_hidden_files'])
 
 " Sorters:
-" 空にすればファイル順(lineと同じ)
+" 空にすればファイル順(lineと同じ) じゃないこともある
 call denite#custom#source('grep', 'sorters', [])
-call denite#custom#source('file/rec', 'sorters', [])
+" sortされてないこともある
+" NOTE: https://github.com/Shougo/denite.nvim/pull/799
+call denite#custom#source('file/rec', 'sorters', ['sorter/path'])
 
 " Converters:
 call denite#custom#source('file/old', 'converters', ['converter/relative_word'])
