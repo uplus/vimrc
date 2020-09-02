@@ -527,6 +527,7 @@ hook_add =  '''
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = ['Gina']
+hook_source = 'source ~/.vim/rc/gina.rc.vim'
 
 
 # web
