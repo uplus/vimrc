@@ -52,10 +52,8 @@ call denite#custom#source('buffer', 'matchers', [s:default_matcher, 'matcher/ign
 call denite#custom#source('file/rec', 'matchers', [s:default_matcher, 'matcher/hide_hidden_files'])
 
 " Sorters:
-" 空にすればファイル順(lineと同じ) じゃないこともある
+" 空にすればファイル順になるソースもある(lineと同じ)
 call denite#custom#source('grep', 'sorters', [])
-" sortされてないこともある
-" NOTE: https://github.com/Shougo/denite.nvim/pull/799
 call denite#custom#source('file/rec', 'sorters', ['sorter/path'])
 
 " Converters:
