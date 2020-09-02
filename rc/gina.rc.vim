@@ -48,6 +48,20 @@ call gina#custom#action#alias(
   \)
 
 " Mappings:
+call gina#custom#mapping#nmap(
+ \ '/\%(.*\)',
+ \ '<tab>',
+ \ ':<c-u>call gina#action#call(''builtin:choice'')<cr>',
+ \ {'noremap': 1, 'silent': 1}
+ \)
+
+call gina#custom#mapping#nmap(
+ \ '/\%(blame\|log\|reflog\)',
+ \ 'p',
+ \ ':<C-u>call gina#action#call(''preview'')<CR>',
+ \ {'noremap': 1, 'silent': 1}
+ \)
+
 " call gina#custom#mapping#nmap(
 "  \ 'branch', 'g<CR>',
 "  \ '<Plug>(gina-commit-checkout-track)'
@@ -72,13 +86,6 @@ call gina#custom#action#alias(
 "  \ ':<C-u>Gina status<CR>',
 "  \ {'noremap': 1, 'silent': 1}
 "  \)
-" call gina#custom#mapping#nmap(
-"  \ '/\%(blame\|log\|reflog\)',
-"  \ 'p',
-"  \ ':<C-u>call gina#action#call(''preview'')<CR>',
-"  \ {'noremap': 1, 'silent': 1}
-"  \)
-"
 " call gina#custom#mapping#nmap(
 "  \ '/\%(blame\|log\|reflog\)',
 "  \ 'c',
