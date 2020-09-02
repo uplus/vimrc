@@ -406,10 +406,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'lambdalisue/gina.vim'
-on_cmd = ['Gita']
-
-[[plugins]]
 repo = 'mattn/gist-vim'
 depends = 'webapi-vim'
 on_cmd = 'Gist'

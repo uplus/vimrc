@@ -525,14 +525,8 @@ hook_add =  '''
 '''
 
 [[plugins]]
-# git branch
-repo = 'idanarye/vim-merginal'
-
-[[plugins]]
-repo = 'rhysd/conflict-marker.vim'
-
-[[plugins]]
 repo = 'lambdalisue/gina.vim'
+on_cmd = ['Gina']
 
 
 # web
