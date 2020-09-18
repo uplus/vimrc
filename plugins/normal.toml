@@ -19,7 +19,7 @@ hook_add = '''
   nnoremap <space>d :Denite<space>
   nnoremap [d :Denite -resume -cursor-pos=-1 -immediately<cr>
   nnoremap ]d :Denite -resume -cursor-pos=+1 -immediately<cr>
-  nnoremap <silent><space>r :<c-u>Denite -resume -refresh -no-start-filter<cr>
+  nnoremap <silent><space>r :<c-u>Denite -resume -refresh<cr>
 
   " file
   nnoremap <silent>\b  :<c-u>Denite buffer<cr>
