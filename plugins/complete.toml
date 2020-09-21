@@ -111,6 +111,7 @@ repo = 'fszymanski/deoplete-emoji'
 on_ft = ['gitcommit', 'markdown', 'text']
 
 [[plugins]]
+if = 0
 repo = 'juliosueiras/vim-terraform-completion'
 on_ft = 'terraform'
 hook_add = '''

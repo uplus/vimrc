@@ -93,6 +93,6 @@ call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 " call deoplete#custom#source('ruby', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
 " call deoplete#custom#source('omni', 'functions', { 'lua': 'xolox#lua#omnifunc' })
 
-call deoplete#custom#option('omni_patterns', {
-  \ 'terraform':  '[^\s*\t"{=$]\w*',
-  \ })
+" call deoplete#custom#option('omni_patterns', {
+"  \ 'terraform':  '[^\s*\t"{=$]\w*',
+"  \ })
