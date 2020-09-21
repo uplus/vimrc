@@ -135,7 +135,7 @@ endif
 if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu') " {{{
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
-  let g:incsearch#consistent_n_direction = 0    " 1:nで常にforwardに移動
+  let g:incsearch#consistent_n_direction = 1    " 1:nで常にforwardに移動
   let g:incsearch#magic                  = '\v' " very magic
 
   " let g:asterisk#keeppos = 1
