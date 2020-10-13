@@ -316,6 +316,7 @@ hook_add = '''
   vmap <silent>,, :Partedit<cr>
   let g:partedit#opener = 'botright new'
   let g:partedit#filetype = 'narrow'
+  let g:partedit#auto_prefix = 0
 '''
 
 [[plugins]]
