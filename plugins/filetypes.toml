@@ -92,6 +92,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'StanAngeloff/php.vim'
+
+[[plugins]]
 repo = 'HerringtonDarkholme/yats.vim'
 # repo = 'leafgarland/typescript-vim'
 

@@ -634,10 +634,6 @@ hook_add = '''
   " endfunction
 '''
 
-[[plugins]] # Beautiful indent of php and html.
-repo = 'comeonly/php.vim-html-enhanced'
-on_ft = ['php', 'html', 'xhtml']
-
 [[plugins]] # To convert {range} mutually HTML and Entity.
 repo = 'inotom/str2htmlentity'
 on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
