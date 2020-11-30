@@ -30,3 +30,6 @@ repo = 'joshdick/onedark.vim'
 
 [[plugins]]
 repo = 'srcery-colors/srcery-vim'
+hook_add = '''
+  let g:srcery_italic = 1
+'''

@@ -26,6 +26,7 @@ hi! link FoldColumn  LineNr
 hi! link SignColumn  LineNr
 hi clear TabLineFill
 
+" colorschemaの重複読み込みを避ける
 function! s:colorscheme(name) abort "{{{
   if g:colors_name !=# a:name
     try
@@ -45,17 +46,14 @@ function! s:set_colors() "{{{
     return
   endif
 
-  " Bug when using PaperColor(only when the zsh.snippets)
-  set background=dark
-
   if &filetype ==# 'ruby'
     call s:colorscheme('railscasts')
   elseif &filetype ==# 'gitcommit'
     call s:colorscheme('gitcommit')
-  elseif &filetype =~# '\v(markdown|python|go)'
+  elseif &filetype =~# '\v(markdown)'
     call s:colorscheme('PaperColor')
   else
-    call s:colorscheme('molokai')
+    call s:colorscheme('srcery')
   endif
 
   let g:colors_seted = 1
@@ -107,6 +105,8 @@ function! s:set_highlights() "{{{
     hi goFormatSpecifier ctermfg=207  guifg=#ff50ff
     hi goSpecialString   ctermfg=226  guifg=#ffff00
     hi! link goConditional goDeclaration
+  elseif g:colors_name ==? 'srcery'
+    hi Comment guifg=#a19185
   elseif g:colors_name ==? 'molokai'
     hi LineNr   ctermfg=250  ctermbg=236  guifg=#b6c4c7 guibg=#232526
     hi Folded   ctermfg=63                guifg=#6e9efe
