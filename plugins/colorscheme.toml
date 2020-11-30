@@ -27,3 +27,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'srcery-colors/srcery-vim'

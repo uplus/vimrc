@@ -29,10 +29,6 @@ hook_post_source = '''
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
 
-[[plugins]] # yank delete changeなどのblockwise版
-repo = 'osyo-manga/vim-textobj-blockwise'
-depends = 'vim-operator-block'
-
 [[plugins]]
 repo = 'osyo-manga/vim-operator-block'
 depends = 'vim-operator-user'
