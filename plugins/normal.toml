@@ -110,9 +110,10 @@ denite-filter = '''
   imap <silent><buffer><c-n> <Plug>(denite_filter_quit)ji
 '''
 
-[[plugins]]
-repo = 'liuchengxu/vim-clap'
-hook_post_update = 'Clap install-binary!'
+# 容量が1GBぐらいある
+# [[plugins]]
+# repo = 'liuchengxu/vim-clap'
+# hook_post_update = 'Clap install-binary!'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
