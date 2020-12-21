@@ -169,3 +169,7 @@ function! CloseFloatingWindowsByFileTypePattern(filetype_pattern) abort
   let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")
   call map(close_windows, 'nvim_win_close(v:val, v:false)')
 endfunction
+
+function! Pwgen()
+  return system('pwgen -1 -B -s 20')
+endfunction
