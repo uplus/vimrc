@@ -171,5 +171,5 @@ function! CloseFloatingWindowsByFileTypePattern(filetype_pattern) abort
 endfunction
 
 function! Pwgen()
-  return system('pwgen -1 -B -s 20')
+  return system('pwgen -1 -B -s -n 20')
 endfunction
