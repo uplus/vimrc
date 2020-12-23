@@ -153,7 +153,7 @@ defx = '''
   nnoremap <silent><buffer><nowait><expr>p   defx#do_action('paste')
   nnoremap <silent><buffer><nowait><expr>r   defx#do_action('rename')
   nnoremap <silent><buffer><nowait><expr>yy  defx#do_action('yank_path')
-  nnoremap <silent><buffer><nowait><expr>d   defx#do_action('remove_trash')
+  nnoremap <silent><buffer><nowait><expr>d   defx#do_action(executable('Send2Trash') ? 'remove_trash' : 'remove')
 
   " 対象開く系:
   nnoremap <silent><buffer><nowait><expr>x   defx#do_action('execute_system')
