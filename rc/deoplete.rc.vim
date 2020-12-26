@@ -4,7 +4,7 @@
 call lexima#set_default_rules()
 
 inoremap <expr><tab>   pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 " inoremap <expr><silent><c-x><c-e> deoplete#manual_complete(['emoji'])
 inoremap <expr><silent><c-x><c-l> deoplete#manual_complete()
 
@@ -76,9 +76,10 @@ call deoplete#custom#source('_', 'converters', [
 " call deoplete#custom#source('buffer', 'mark', '*')
 " call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
 
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 0)
+" call deoplete#custom#source('LanguageClient', 'min_pattern_length', 0)
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
+        " self.input_pattern = r'(\.|::|->)\w*$'
 
 " call deoplete#custom#source('tabnine', 'rank', 200)
 " call deoplete#custom#source('neosnippet', 'rank', 9000)
