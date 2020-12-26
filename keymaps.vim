@@ -76,6 +76,10 @@ nnoremap ,,,,,,,,,,,,, :<c-u>set titlestring=Hello<cr>
 " Use <c-r>.
 " imap  <plug>(vim-original-insert-lasttext)
 
+" ファイル再読込
+nnoremap <silent>,ee :e!<cr>
+nnoremap <silent>,ea :bufdo e!<cr>
+
 if &clipboard ==# 'unnamedplus'
   noremap! <c-r><c-r> <c-r>+
 else
