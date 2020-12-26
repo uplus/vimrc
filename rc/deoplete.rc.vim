@@ -8,11 +8,13 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 " inoremap <expr><silent><c-x><c-e> deoplete#manual_complete(['emoji'])
 inoremap <expr><silent><c-x><c-l> deoplete#manual_complete()
 
+" TODO: backspace時の補完の挙動が微妙
 
 imap <c-l> <plug>(neosnippet_expand_or_jump)
 smap <c-l> <plug>(neosnippet_jump)
 xmap <c-l> <plug>(neosnippet_jump)
-imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
+" 補完後に開業ができなくなる
+" imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
 imap <expr><silent><cr> <sid>imap_cr()
 " inoremap <expr><bs> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
@@ -27,8 +29,10 @@ function! s:imap_cr() abort
 
   if pumvisible()
     if SnippetExpandable()
+      call deoplete#close_popup()
       return lexima#expand('<CR>', 'i')
     else
+      call deoplete#close_popup()
       return lexima#expand('<CR>', 'i')
     endif
   else
@@ -77,9 +81,7 @@ call deoplete#custom#source('_', 'converters', [
 " call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
 
 " call deoplete#custom#source('LanguageClient', 'min_pattern_length', 0)
-" call deoplete#custom#source('LanguageClient', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-" call deoplete#custom#source('LanguageClient', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
-        " self.input_pattern = r'(\.|::|->)\w*$'
+" call deoplete#custom#source('LanguageClient', 'input_pattern', '\w*(\.|::|->)\w*$')
 
 " call deoplete#custom#source('tabnine', 'rank', 200)
 " call deoplete#custom#source('neosnippet', 'rank', 9000)

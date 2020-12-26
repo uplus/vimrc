@@ -19,6 +19,10 @@ function! DoAutoSave() abort
     return
   endif
 
+  if pumvisible()
+    return
+  endif
+
   if g:my_autosave != 0
     " for debug
     " echo 'auto save at' strftime('%T') bufname() &filetype

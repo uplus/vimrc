@@ -47,7 +47,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['context_filetype.vim']
+depends = ['context_filetype.vim', 'LanguageClient-neovim']
 if = "has('nvim')"
 on_event = ['InsertEnter']
 hook_source = '''
@@ -128,7 +128,7 @@ hook_add = '''
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
-on_event = 'InsertEnter'
+on_event = ['InsertEnter']
 build = 'bash ./install.sh'
 hook_add = '''
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')

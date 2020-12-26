@@ -63,7 +63,7 @@ function! s:set_highlights() "{{{
   call s:set_common_highlights()
 
   hi Title      ctermfg=118               guifg=#87ff00
-  hi Error      ctermfg=161               guifg=#d7005f
+  hi Error      ctermfg=161  ctermbg=NONE guifg=#d7005f guibg=NONE
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=NONE gui=NONE
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=NONE gui=NONE
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
