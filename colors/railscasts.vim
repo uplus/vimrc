@@ -1,5 +1,5 @@
-hi clear
-set t_Co=256
+" ちらつくことがあるので無効
+" hi clear
 let g:colors_name = expand('<sfile>:t:r')
 
 " hi Normal                    guifg=#E6E1DC guibg=#111111
