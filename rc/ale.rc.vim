@@ -42,9 +42,10 @@ let g:ale_list_window_open_type= 'botright'
 " let b:ale_typescriptreact_eslint_executable = 'docker-compose exec ui yarn lint'
 
 let g:ale_linter_aliases = {
-  \ 'jsx': ['javascriptreact'],
   \ 'javascriptreact': ['javascript'],
+  \ 'jsx': ['javascriptreact'],
   \ 'typescriptreact': ['typescript'],
+  \ 'vue': ['javascript'],
   \ }
 
 let g:ale_linters = {
@@ -55,6 +56,7 @@ let g:ale_linters = {
   \ 'python': ['flake8'],
   \ 'ruby': ['rubocop'],
   \ 'rust': ['rustc', 'rustfmt'],
+  \ 'terraform': ['terraform'],
   \ 'typescript': ['eslint'],
   \ }
 
@@ -65,6 +67,7 @@ let g:ale_fixers = {
   \ 'javascript': ['eslint'],
   \ 'python': ['autopep8'],
   \ 'ruby': ['rubocop'],
+  \ 'terraform': ['terraform'],
   \ 'typescript': ['eslint'],
   \ 'vim': ['vint'],
   \ }
