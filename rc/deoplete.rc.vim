@@ -64,13 +64,8 @@ call deoplete#custom#option('keyword_patterns', {
 call deoplete#custom#source('_', 'max_abbr_width', 120)
 
 call deoplete#custom#source('_', 'converters', [
-     \ 'converter_remove_overlap',
-     \ ])
-"      \ 'converter_case',
-"      \ 'converter_truncate_abbr',
-"      \ 'converter_truncate_info',
-"      \ 'converter_truncate_menu',
-"      \ 'matcher_length',
+  \ 'converter_remove_overlap',
+  \ ])
 
 " call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
