@@ -36,16 +36,18 @@ function! s:imap_cr() abort
 endfunction
 
 call deoplete#custom#option({
-      \ 'auto_refresh_delay': 10,
       \ 'smart_case': v:true,
-      \ 'skip_multibyte': v:true,
       \ 'auto_preview': v:true,
+      \ 'nofile_complete_filetypes': ['denite-filter', 'zsh'],
+      \ 'num_processes': 4,
+      \ 'refresh_always': v:false,
+      \ 'refresh_backspace': v:false,
+      \ 'skip_multibyte': v:true,
       \ })
+      "\ 'auto_refresh_delay': 10,
       "\ 'max_list': 200
-      "\ 'refresh_always': v:true
       "\ 'auto_complete_delay': 300
       "\ 'min_pattern_length': 2
-      "\ 'camel_case': v:true,
 
 call deoplete#custom#option('ignore_sources', {
       \ '_': ['buffer', 'tag'],
