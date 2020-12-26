@@ -16,6 +16,7 @@ options head
 ## statements
 
 snippet ife
+options head
 	if ${1:#:condition}
 		${2}
 	else
@@ -23,6 +24,7 @@ snippet ife
 	end
 
 snippet if2
+options head
 	if ${1:#:condition}
 		${2}
 	elsif ${3:#:condition}
@@ -30,6 +32,7 @@ snippet if2
 	end
 
 snippet if3
+options head
 	if ${1:#:condition}
 		${2}
 	elsif ${3:#:condition}
@@ -39,22 +42,18 @@ snippet if3
 	end
 
 snippet elsif
+options head
 	elsif ${1:#:condition}
 		${0}
 
 snippet case
-options word
+options head
 	case ${1}
 	when ${2}
 		${3}
 	else
 		${4:raise}
 	end
-
-snippet when
-options word
-	when ${1}
-		${0}
 
 snippet defs
 options head
@@ -106,11 +105,7 @@ options head
 snippet class-error
 alias cle
 options head
-	class ${1:`FilenameMixedcase()`} < StandardError
-		def initialize(${2})
-			super(${3:$2})${0}
-		end
-	end
+	class ${1:`FilenameMixedcase()`} < StandardError; end
 
 snippet class-error-graphql
 alias cleg
@@ -132,26 +127,27 @@ abbr class .. < DelegateClass .. initialize .. end
 	end
 
 snippet def-initialize
-alias init
+alias def-init
 options head
 	def initialize(${1})
 		${0}
 	end
 
-snippet attr_reader
-alias attrr
-options head
-	attr_reader :${1:attr_names}
-
-snippet attr_writer
-alias attrw
-options head
-	attr_writer :${1:attr_names}
-
-snippet attr_accessor
-alias attra
-options head
-	attr_accessor :${1:attr_names}
+# LCでいいのでは
+# snippet attr_reader
+# alias attrr
+# options head
+# 	attr_reader :${1:attr_names}
+#
+# snippet attr_writer
+# alias attrw
+# options head
+# 	attr_writer :${1:attr_names}
+#
+# snippet attr_accessor
+# alias attra
+# options head
+# 	attr_accessor :${1:attr_names}
 
 snippet def_delegator
 alias defd
@@ -204,20 +200,19 @@ options head
 
 ## shorthands
 
-snippet =begin
+snippet struct
 options word
+	Struct.new(${0}, keyword_init: true)
+
+snippet =begin
+options head
 	=begin
 		${0}
 	=end
 
-snippet END
-options word
-	__END__
-
 snippet verbose
-options word
-	$VERBOSE = (ENV['DEBUG'].to_i == 0)? nil : true
-	${0}
+options head
+	$VERBOSE = (ENV['DEBUG'].to_i == 0)? nil : true${0}
 
 snippet deep_copy
 options word
@@ -228,59 +223,70 @@ options word
 alias jsps
 	JSON.parse(${1}, { symbolize_names: true })${0}
 
-snippet inject
+snippet .inject
 options word
-	inject(${1:init}){|${2:memo}, ${3:obj}| ${4} }
+	.inject(${1:init}){|${2:memo}, ${3:obj}| ${4} }
 
-snippet each_with_index
-alias ewi
+snippet .each_with_index
+alias .ewi
 options word
-	each_with_index {|${1}| ${0} }
+	.each_with_index {|${1}| ${0} }
 
-snippet each_with_object
-alias ewo
-	each_with_object(${1}) {|${2:value}, ${3:memo}| ${0} }
+snippet .each_with_object
+alias .ewo
+options word
+	.each_with_object(${1}) {|${2:value}, ${3:memo}| ${0} }
 
-snippet gen-array-nest
+snippet array-nest
+options word
 	Array.new(${1:size}) { Array.new(${2:size}) }
 
 
 ## debug helper
 
-snippet pretty_inspect
-alias pi
-	pretty_inspect
+snippet .pretty_inspect
+options word
+alias .pi
+	.pretty_inspect
 
-snippet taputs
+snippet .taputs
+options word
 	.tap(&method(:puts))${0}
 
-snippet tapp
+snippet .tapp
 	.tap(&method(:pp))${0}
 
 snippet mylog
+options head
 	File.open('mylog', 'w') {|f| f.puts ${0} }
 
 snippet marshal-dump-file
+options head
 	File.open(${1:"path/to/file.dump"}, "wb"){|${2:file}| Marshal.dump(${3:obj}, $2) }${4}
 
 snippet marshal-load-file
+options head
 	File.open(${1:"path/to/file.dump"}, "rb"){|${2:file}| Marshal.load($2) }${3}
 
 snippet irb
+options head
 	require 'irb'; binding.irb
 	puts '[*] end binding'
 
 snippet pry
+options head
 	require 'pry'; binding.pry
 	puts '[*] end binding'
 
 snippet debug
+options head
 	rescue => e # TODO debug
 		puts e.message, e.backtrace
 	ensure
 		binding.irb
 
 snippet debug-file
+options head
 	rescue => e
 		File.open('tmp/error', 'a'){|file| file.write(e)}
 
@@ -288,6 +294,7 @@ snippet debug-file
 ## Rubocop
 
 snippet rubocop-disable-range
+options head
 	# rubocop:disable ${1}
 	${0}
 	# rubocop:enable $1
@@ -295,6 +302,7 @@ snippet rubocop-disable-range
 snippet rubocop-disable-line
 abbr rubocop-disable-line(rcd)
 alias rcd
+options word
 	# rubocop:disable ${0}
 
 
@@ -302,90 +310,118 @@ alias rcd
 
 snippet rails-logger-debug
 alias rld
+options word
 	Rails.logger.debug ${0}
 
 snippet rld-
+options word
 	Rails.logger.debug "---------- ${0}".red
 
 snippet rldm
+options word
 	Rails.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}".red${0}
 
 ### Active Record
 
 snippet class-ar-model
+options head
 	class ${1:`FilenameMixedcase()`} < ${2:ApplicationRecord}
 		${0}
 	end
 
 snippet enum
+options head
 	enum ${1}: { ${0} }, _prefix: true
 
 snippet belongs_to
+options head
 	belongs_to :${1}, optional: false
 snippet has_one
+options head
 	has_one :${1}, dependent: :destroy, class_name: "",
 snippet has_many
+options head
 	has_many :${1}, dependent: :destroy, class_name: "",
 
 snippet has_one_through
+options head
 	has_one :${1} through: :${2}
 snippet has_many_through
+options head
 	has_many :${1} through: :${2}
 
 ### Active Record Migrations https://railsguides.jp/active_record_migrations.html
 
 snippet create_table
+options head
 	create_table ${1}, id: :uuid do |t|
 		${0}
 		t.timestamps null: false
 	end
 
 snippet change_table
+options head
 	change_table ${1:#:table(plural)} do |t|
 		${0}
 	end
 
 snippet t.index
+options head
 	t.index %i[${1:#:columns}], unique: true
 snippet t.remove_index
+options head
 	t.remove_index :${1:#:name}
 snippet add_index
+options head
 	add_index :${1:#:table(plural)}, %i[${2:#:columns}]${3:, unique: true}
 snippet remove_index
+options head
 	remove_index :${1:#:table(plural)}, column: %i[${2:#:columns}]
 
 snippet t.references
+options head
 alias t.ref
 	t.references :${1:#:column}, type: :uuid, null: false, foreign_key: { to_table: :${2:#:to_table(plural)} }, index: { unique: true }
 snippet add_reference
+options head
 	add_reference :${1:#:table(plural)}, :${2:#:column}, type: :uuid, null: false, foreign_key: { to_table: :${3:#:to_table(plural)} }, index: { unique: true, name: :${4:#:like a :table_column_index} }
 snippet remove_reference
+options head
 	remove_reference :${1:#:table(plural)}, :${2:#:column}, type: :uuid, null: false, foreign_key: { to_table: :${3:#:to_table(plural)} }, index: { unique: true, name: :${4:#:like a :table_column_index} }
 
 snippet add_foreign_key
+options head
 	add_foreign_key :${1:#:table(plural)}, :${2:#:column}, ${3:#:name: name}
 snippet remove_foreign_key
+options head
 	remove_foreign_key :${1:#:table(plural)}, :${2:#:column}, ${3:#:name: name}
 
 snippet t.column
+options head
 alias t.col
 	t.column :${1:#:column}, :${2:#:type}, null: false${3:, default: nil}
 snippet add_column
+options head
 	add_column :${1:#:table(plural)}, :${2:#:column}, :${3:#:type}, null: false${4:, default: nil}
 snippet remove_column
+options head
 	remove_column :${1:#:table(plural)}, :${2:#:column}, :${3:#:type}, null: false${4:, default: nil}
 
 snippet rename_column
+options head
 	rename_column :${1:#:table(plural)}, :${2:#:old_name}, :${3:#:new_name}
 snippet change_column_null
+options head
 	change_column_null :${1:#:table(plural)}, :${2:#:column}, ${3:#:nullify}, ${4:#:default}
 snippet change_column_default
+options head
 	change_column_default :${1:#:table(plural)}, :${2:#:column}, from: ${3} to: ${4}
 
 
 ## RSpec
 
 snippet irb-rspec
+options head
 	after(:each) do |example|
 		require 'irb'; binding.irb
 		puts '[*] end binding'
@@ -393,7 +429,8 @@ snippet irb-rspec
 
 ## Rake
 
-snippet tas
+snippet task
+options head
 	desc "${1:Task description\}"
 	task :${2:task_name => [:dependent, :tasks]} do
 		${0}
@@ -403,71 +440,40 @@ snippet tas
 ## Hanami
 
 snippet hld
+snippet word
 	Hanami.logger.debug ${0}
 
 snippet hldm
+snippet word
 	Hanami.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}"${0}
-
-
-## assert
-
-snippet as
-	assert(${1:test}, "${2:Failure message.}")${3}
-snippet ase
-	assert_equal(${1:expected}, ${2:actual})${3}
-snippet asne
-	assert_not_equal(${1:unexpected}, ${2:actual})${3}
-snippet asid
-	assert_in_delta(${1:expected_float}, ${2:actual_float}, ${3:2 ** -20})${4}
-snippet asio
-	assert_instance_of(${1:ExpectedClass}, ${2:actual_instance})${3}
-snippet asko
-	assert_kind_of(${1:ExpectedKind}, ${2:actual_instance})${3}
-snippet asn
-	assert_nil(${1:instance})${2}
-snippet asnn
-	assert_not_nil(${1:instance})${2}
-snippet asm
-	assert_match(/${1:expected_pattern}/, ${2:actual_string})${3}
-snippet asnm
-	assert_no_match(/${1:unexpected_pattern}/, ${2:actual_string})${3}
-snippet aso
-	assert_operator(${1:left}, :${2:operator}, ${3:right})${4}
-snippet asr
-	assert_raise(${1:Exception}){ ${2} }
-snippet asnr
-	assert_nothing_raised(${1:Exception}){ ${2} }
-snippet asrt
-	assert_respond_to(${1:object}, :${2:method})${3}
-snippet asns
-	assert_not_same(${1:unexpected}, ${2:actual})${3}
-snippet ast
-	assert_throws(:${1:expected}){ ${2} }
-snippet asnt
-	assert_nothing_thrown{ ${1} }
 
 
 ## utils
 
 snippet script_dir
+snippet word
 	__dir__
 
 snippet getints
+options head
 	gets.split.map(&:to_i)${0}
 
 # unix filter{}
 snippet argf
+options head
 alias unif
 	ARGF.each_line${1} do |${2:line}|
 		${0}
 	end
 
-snippet usage
+snippet cli-usage
+options head
 	if ARGV.${1}
 		abort "Usage: #{$PROGRAM_NAME} ${2:ARGS_GO_HERE}"${3}
 	end
 
 snippet fileopen
+options head
 alias open
 abbr File.open(filename) do ... end
 	File.open(${1:#:filename}, '${2:#:mode}') do |${3:file}|
@@ -475,7 +481,7 @@ abbr File.open(filename) do ... end
 	end
 
 snippet urlencode
-#	require 'erb'
+options word
 	ERB::Util.url_encode(${1})
 
 snippet main
@@ -484,13 +490,13 @@ options head
 		${0}
 	end
 
-snippet glob
+snippet dir-glob
 options head
 	Dir.glob(${1:'**/*'}) do |name|
 		${0}
 	end
 
-snippet optp
+snippet options-parse
 options head
 	require "optparse"
 
@@ -500,7 +506,7 @@ options head
 		opts.banner = "Usage: #{File.basename($PROGRAM_NAME)}
 	end
 
-snippet opt
+snippet options-on
 	opts.on( "-${1}", "--${2:long-option-name}", ${3:String}, "${4:Option description.}") do |${5:opt}|
 		${6}
 	end
@@ -546,31 +552,5 @@ snippet def-pager
 	end
 
 
-## pwn
-
-snippet pwn
-options head
-	#!/usr/bin/env ruby
-	# coding: ascii-8bit
-	require 'upwn'
-	include Shellcode
-
-	class Solver
-	end
-
-	host = true ? 'localhost' : ''
-	port = ${1:8888}
-
-	sl = Solver.open(host, port)
-	${0}
-
-	require 'irb'; binding.irb
-	puts '[*] end binding'
-
-	=begin
-	=end
-
 ## 未振り分け
 
-snippet struct_new
-	Struct.new(${0}, keyword_init: true)

@@ -1,4 +1,4 @@
-" # keymaps
+" ### Keymaps ###
 
 " leximaでcrが上書きされるため先に呼び出して全て実行する
 call lexima#set_default_rules()
@@ -12,7 +12,6 @@ smap <c-l> <plug>(neosnippet_jump)
 xmap <c-l> <plug>(neosnippet_jump)
 imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
 imap <expr><silent><cr> <sid>imap_cr()
-" <silent>
 " inoremap <expr><bs> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
 " inoremap <expr><silent> <c-t> deoplete#mappings#manual_complete('file')
@@ -35,6 +34,8 @@ function! s:imap_cr() abort
   endif
 endfunction
 
+" ### Configs ###
+
 call deoplete#custom#option({
       \ 'smart_case': v:true,
       \ 'auto_preview': v:true,
@@ -45,9 +46,9 @@ call deoplete#custom#option({
       \ 'skip_multibyte': v:true,
       \ })
       "\ 'auto_refresh_delay': 10,
-      "\ 'max_list': 200
       "\ 'auto_complete_delay': 300
-      "\ 'min_pattern_length': 2
+      "\ 'max_list': 200
+      "\ 'min_pattern_length': 0
 
 call deoplete#custom#option('ignore_sources', {
       \ '_': ['buffer', 'tag'],
@@ -98,3 +99,13 @@ call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 " call deoplete#custom#option('omni_patterns', {
 "  \ 'terraform':  '[^\s*\t"{=$]\w*',
 "  \ })
+
+
+" ### 考察 ###
+
+" min_pattern_length
+" LSPは0で良いかもしれない
+" neosnippetは最低でも1にすべき
+" 0だと重いかもしれない
+" よくあるコードの使い回し系snippetは Denite neosnippetで挿入したほうが良い
+" manual completionのショートカットがほしいのかもしれない
