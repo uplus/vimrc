@@ -1,8 +1,8 @@
 ## headers
 
 snippet #!
-abbr    #!/usr/bin/env ruby
 options head
+abbr    #!/usr/bin/env ruby
 	#!/usr/bin/env ruby
 	# frozen_string_literal: true
 	${0}
@@ -66,8 +66,8 @@ options head
 	rescue StandardError => e
 
 snippet lambda
-alias lam
 options word
+alias lam
 	->(${1}){ ${2} }
 
 snippet lambda-keyword
@@ -78,15 +78,15 @@ options word
 ## class
 
 snippet class
-alias cl
 options head
+alias cl
 	class ${1:`FilenameMixedcase()`}
 		${0}
 	end
 
 snippet class-initialize
-alias cli
 options head
+alias cli
 	class ${1:`FilenameMixedcase()`}
 		def initialize(${2})
 			${3}
@@ -94,8 +94,8 @@ options head
 	end
 
 snippet class-methods
-alias clm
 options head
+alias clm
 	class << self
 		def ${1}
 			${0}
@@ -103,13 +103,13 @@ options head
 	end
 
 snippet class-error
-alias cle
 options head
+alias cle
 	class ${1:`FilenameMixedcase()`} < StandardError; end
 
 snippet class-error-graphql
-alias cleg
 options head
+alias cleg
 	class ${1:`FilenameMixedcase()`} < GraphQL::ExecutionError
 		def initialize(${2})
 			super(${3:$2})${0}
@@ -127,59 +127,59 @@ abbr class .. < DelegateClass .. initialize .. end
 	end
 
 snippet def-initialize
-alias def-init
 options head
+alias def-init
 	def initialize(${1})
 		${0}
 	end
 
 # LCでいいのでは
 # snippet attr_reader
-# alias attrr
 # options head
+# alias attrr
 # 	attr_reader :${1:attr_names}
 #
 # snippet attr_writer
-# alias attrw
 # options head
+# alias attrw
 # 	attr_writer :${1:attr_names}
 #
 # snippet attr_accessor
-# alias attra
 # options head
+# alias attra
 # 	attr_accessor :${1:attr_names}
 
 snippet def_delegator
-alias defd
 options head
+alias defd
 	def_delegator :${1:@del_obj}, :${2:del_meth}, :${3:new_name}
 
 snippet def_delegators
-alias defds
 options head
+alias defds
 	def_delegators :${1:@del_obj}, :${2:del_methods}
 
 
 ## module
 
 snippet module
-alias md
 options head
+alias md
 	module ${1:`FilenameMixedcase()`}
 		${0}
 	end
 
 snippet module-with-function
-alias mdwf
 options head
+alias mdwf
 	module ${1:`FilenameMixedcase()`}
 		module_function
 		${0}
 	end
 
 snippet module_function
-alias mdf
 options head
+alias mdf
 	module_function
 
 
@@ -190,8 +190,8 @@ options head
 	alias_method :${1:new_name}, :${2:old_name}
 
 snippet def-method_missing
-alias defmm
 options head
+alias defmm
 	def method_missing(meth, *args, &blk)
 		${0}
 	end
@@ -228,13 +228,13 @@ options word
 	.inject(${1:init}){|${2:memo}, ${3:obj}| ${4} }
 
 snippet .each_with_index
-alias .ewi
 options word
+alias .ewi
 	.each_with_index {|${1}| ${0} }
 
 snippet .each_with_object
-alias .ewo
 options word
+alias .ewo
 	.each_with_object(${1}) {|${2:value}, ${3:memo}| ${0} }
 
 snippet array-nest
@@ -300,17 +300,17 @@ options head
 	# rubocop:enable $1
 
 snippet rubocop-disable-line
+options word
 abbr rubocop-disable-line(rcd)
 alias rcd
-options word
 	# rubocop:disable ${0}
 
 
 ## Rails
 
 snippet rails-logger-debug
-alias rld
 options word
+alias rld
 	Rails.logger.debug ${0}
 
 snippet rld-
