@@ -8,7 +8,6 @@ endfunction
 let g:my_autosave = get(g:, 'my_autosave', 0)
 command! EnableAutoSave let g:my_autosave = 1
 command! DisableAutoSave let g:my_autosave = 0
-nnoremap <silent><F2> :call ToggleAutoSave()<CR>
 function! ToggleAutoSave() abort
   silent update
   let g:my_autosave = !g:my_autosave

@@ -129,16 +129,15 @@ hook_add = '''
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 on_event = 'InsertEnter'
-build = './install.sh'
+build = 'bash ./install.sh'
 hook_add = '''
-  let g:LanguageClient_loadSettings = 1
   let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
   let g:LanguageClient_hasSnippetSupport = 0
 
   let g:LanguageClient_diagnosticsEnable = 0
-  let g:LanguageClient_diagnosticsList = 'Disabled'
+  " let g:LanguageClient_diagnosticsList = 'Disabled'
 
-  " let g:LanguageClient_waitOutputTimeout = 20
+  " let g:LanguageClient_waitOutputTimeout = 20 " seconds
   " let g:LanguageClient_changeThrottle = 0.5
   " let g:LanguageClient_selectionUI = 'location-list'
 
@@ -180,6 +179,7 @@ hook_add = '''
     if has_key(g:LanguageClient_serverCommands, &filetype)
       noremap <buffer> K <plug>(lcn-hover)
       noremap <buffer> gd <plug>(lcn-definition)
+      noremap <buffer> <f2> <plug>(lcn-rename)
       " nnoremap <buffer> K :call LanguageClient#textDocument_hover()<cr>
       " nnoremap <buffer> gd :split +call\ LanguageClient#textDocument_definition()<cr>zo
       " nnoremap <buffer> <f2> :call LanguageClient#textDocument_rename()<cr>
