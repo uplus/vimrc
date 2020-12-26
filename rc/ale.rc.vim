@@ -44,6 +44,12 @@ let g:ale_warn_about_trailing_blank_lines = 1
 " let b:ale_ruby_rubocop_executable = 'docker-compose exec api bundle exec rubocop'
 " let b:ale_typescriptreact_eslint_executable = 'docker-compose exec ui yarn lint'
 
+let g:ale_linter_aliases = {
+  \ 'jsx': ['javascriptreact'],
+  \ 'javascriptreact': ['javascript'],
+  \ 'typescriptreact': ['typescript'],
+  \ }
+
 let g:ale_linters = {
   \ 'markdown': [],
   \ 'ruby': ['rubocop'],
@@ -54,22 +60,14 @@ let g:ale_linters = {
   \ 'typescript': ['eslint'],
   \ }
 
-let g:ale_linter_aliases = {
-  \ 'javascriptreact': ['javascript', 'jsx'],
-  \ 'typescriptreact': ['typescript'],
-  \ }
-
-" :ALEFix
 let g:ale_fixers = {
   \ 'vim': ['vint'],
   \ 'ruby': ['rubocop'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
   \ 'go': ['gofmt'],
-  \ 'jsx': ['eslint'],
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
-  \ 'typescriptreact': ['eslint'],
   \ }
 
 let g:ale_pattern_options = {
