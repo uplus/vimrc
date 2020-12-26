@@ -70,7 +70,6 @@ call deoplete#custom#source('_', 'converters', [
 "      \ 'converter_truncate_abbr',
 "      \ 'converter_truncate_info',
 "      \ 'converter_truncate_menu',
-
 "      \ 'matcher_length',
 
 " call deoplete#custom#source('_', 'matchers', ['matcher_head'])
@@ -88,8 +87,8 @@ call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#source('clang', 'max_pattern_length', -1)
 call deoplete#custom#source('look', 'min_pattern_length', 4)
 call deoplete#custom#source('look', 'rank', 100)
-call deoplete#custom#source('emoji', 'filetypes', ['markdown', 'text'])
-call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
+" call deoplete#custom#source('emoji', 'filetypes', ['markdown', 'text'])
+" call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\.[a-zA-Z0-9_?!]+|[a-zA-Z]\w*::\w*')
 " call deoplete#custom#source('ruby', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
