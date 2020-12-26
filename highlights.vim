@@ -106,8 +106,8 @@ function! s:set_highlights() "{{{
     hi goSpecialString   ctermfg=226  guifg=#ffff00
     hi! link goConditional goDeclaration
   elseif g:colors_name ==? 'srcery'
-    hi SrceryCyan guifg=#0cced3
-    hi Comment guifg=#a19185
+    hi SrceryCyan guifg=#0cc8c3
+    hi Comment guifg=#b1a195
   elseif g:colors_name ==? 'molokai'
     hi LineNr   ctermfg=250  ctermbg=236  guifg=#b6c4c7 guibg=#232526
     hi Folded   ctermfg=63                guifg=#6e9efe

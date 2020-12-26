@@ -80,7 +80,7 @@ call deoplete#custom#source('_', 'converters', [
 " call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
 
 " call deoplete#custom#source('tabnine', 'rank', 200)
-call deoplete#custom#source('neosnippet', 'rank', 9000)
+" call deoplete#custom#source('neosnippet', 'rank', 9000)
 call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 
 call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
