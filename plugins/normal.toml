@@ -36,6 +36,7 @@ hook_add = '''
 
   " misc
   nnoremap <silent>st  :<c-u>Denite tag<cr>
+  nnoremap <silent>;s  :<c-u>Denite neosnippet<cr>
   nnoremap <silent>so  :<c-u>Denite -auto-resize outline<cr>
   nnoremap <silent>sm  :<c-u>Denite -no-empty mark<cr>
   nnoremap <silent>;r  :<c-u>Denite register neoyank<cr>

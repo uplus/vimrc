@@ -41,6 +41,9 @@ function! s:action_qfreplace(context)
   cclose
 endfunction
 
+" TODO: neosnippet展開用のcustom action作る
+
+
 " Filters:
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
 call denite#custom#filter('matcher/clap', 'clap_path', expand('$CACHE/dein') . '/repos/github.com/liuchengxu/vim-clap')
