@@ -35,9 +35,6 @@ let g:ale_keep_list_window_open = 1
 let g:ale_list_window_size = 5
 let g:ale_list_window_open_type= 'botright'
 
-" General text lint
-let g:ale_warn_about_trailing_whitespace = 1
-let g:ale_warn_about_trailing_blank_lines = 1
 
 " Buffer only samples
 " let b:ale_ruby_rubocop_executable = 'bundle exec rubocop'
@@ -51,23 +48,25 @@ let g:ale_linter_aliases = {
   \ }
 
 let g:ale_linters = {
-  \ 'markdown': [],
-  \ 'ruby': ['rubocop'],
   \ 'c': ['clang'],
-  \ 'rust': ['rustc', 'rustfmt'],
-  \ 'jsx': ['eslint'],
   \ 'javascript': ['eslint'],
+  \ 'jsx': ['eslint'],
+  \ 'markdown': [],
+  \ 'python': ['flake8'],
+  \ 'ruby': ['rubocop'],
+  \ 'rust': ['rustc', 'rustfmt'],
   \ 'typescript': ['eslint'],
   \ }
 
 let g:ale_fixers = {
-  \ 'vim': ['vint'],
-  \ 'ruby': ['rubocop'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
   \ 'go': ['gofmt'],
   \ 'javascript': ['eslint'],
+  \ 'python': ['autopep8'],
+  \ 'ruby': ['rubocop'],
   \ 'typescript': ['eslint'],
+  \ 'vim': ['vint'],
   \ }
 
 let g:ale_pattern_options = {
@@ -76,4 +75,13 @@ let g:ale_pattern_options = {
   \ '\.gql$': { 'ale_enabled': 0 },
   \ '\.gem/ruby/': { 'ale_enabled': 0 },
   \ 'src/gems/': { 'ale_enabled': 0 },
+  \ 'src/npm/': { 'ale_enabled': 0 },
   \ }
+
+
+" General text lint
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_warn_about_trailing_blank_lines = 1
+
+" Ruby
+" let g:ale_ruby_rubocop_auto_correct_all = 1
