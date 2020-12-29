@@ -225,9 +225,9 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo     = 'dhruvasagar/vim-table-mode'
-on_map   = ['<Plug>(table-mode', '\tm', '\tt']
-on_cmd   = ['TableModeToggle', 'Tableize']
+repo = 'dhruvasagar/vim-table-mode'
+on_map = ['<Plug>(table-mode', '\tm', '\tt']
+on_cmd = ['TableModeToggle', 'Tableize']
 hook_add = '''
   let g:table_mode_map_prefix = '\t'
   let g:table_mode_corner = '|'
