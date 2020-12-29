@@ -449,8 +449,7 @@ on_map = '<Plug>(asterisk-'
 # syntaxchecker
 
 [[plugins]]
-# repo = 'w0rp/ale'
-repo = 'uplus/ale'
+repo = 'dense-analysis/ale'
 hook_add = 'source ~/.vim/rc/ale.rc.vim'
 
 [[plugins]]
