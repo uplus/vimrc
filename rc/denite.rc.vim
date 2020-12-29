@@ -32,6 +32,7 @@ au myac VimEnter,VimResized * call s:set_denite_win(0.7, 0.8)
 " Custom Actions:
 call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })
 call denite#custom#action('file', 'qfreplace', { context -> s:action_qfreplace(context)})
+call denite#custom#action('source/neosnippet', 'expand', { context -> s:action_neosnippet_expand(context)})
 " call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
 " call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
 
@@ -41,8 +42,13 @@ function! s:action_qfreplace(context)
   cclose
 endfunction
 
-" TODO: neosnippet展開用のcustom action作る
+function! s:action_neosnippet_expand(context)
+  call denite#do_action(a:context, 'append', a:context['targets'])
+  call feedkeys("a\<plug>(neosnippet_expand)\<esc>", 'm')
+endfunction
 
+" Default Actions:
+call denite#custom#source('neosnippet', 'default_action', 'expand')
 
 " Filters:
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
