@@ -35,12 +35,7 @@ let g:ale_keep_list_window_open = 1
 let g:ale_list_window_size = 5
 let g:ale_list_window_open_type= 'botright'
 
-
-" Buffer only samples
-" let b:ale_ruby_rubocop_executable = 'bundle exec rubocop'
-" let b:ale_ruby_rubocop_executable = 'docker-compose exec api bundle exec rubocop'
-" let b:ale_typescriptreact_eslint_executable = 'docker-compose exec ui yarn lint'
-
+" Lint
 let g:ale_linter_aliases = {
   \ 'javascriptreact': ['javascript'],
   \ 'jsx': ['javascriptreact'],
@@ -81,10 +76,19 @@ let g:ale_pattern_options = {
   \ 'src/npm/': { 'ale_enabled': 0 },
   \ }
 
-
 " General text lint
 let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_warn_about_trailing_blank_lines = 1
 
 " Ruby
 " let g:ale_ruby_rubocop_auto_correct_all = 1
+
+" Buffer only samples
+" 1. 実行可能スクリプトを作成しPATHに配置する
+" 2. スクリプトにこのようなコマンドを記載
+"    docker-compose exec -T api bundle exec rubocop ${@}
+" 3. let b:ale_LANG_LINTER_executable = 'スクリプト名'
+" 4. let b:ale_filename_mappings を適切に設定する
+"
+" もしくは
+" let b:ale_command_wrapper = 'docker-compose exec -T api bundle exec'
