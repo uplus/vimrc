@@ -41,13 +41,14 @@ hi rubyDefine              ctermfg=208 guifg=#ffa020
 hi rubyClass               ctermfg=198 guifg=#ff0087
 hi rubyConstant            ctermfg=161 guifg=#fb2767
 hi rubyInstanceVariable    ctermfg=75 guifg=#4fbffe
-hi! link rubyClassVariable rubySymbol
 hi rubyAccess ctermfg=81 guifg=#fe70ff
 
+hi! link rubyClassVariable rubySymbol
 hi! link rubyData rubyComment
 hi! link rubyPreDefinedConstant rubyConstant
 hi! link rubyAttribute rubyDefine
 hi! link rubyException rubyFunction
+hi! link rubyOperator rubyFunction
 
 " if else do end ...
 hi! link rubyConditional rubyDefine
