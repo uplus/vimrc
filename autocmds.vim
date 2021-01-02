@@ -56,7 +56,7 @@ augroup myac
   endif
 
   " #fcitx {{{
-  if executable('fcitx-remote')
+  if executable('fcitx5-remote')
     " 最初の一度のみ先頭入れ替えバグは無関係だった
     au InsertLeave * FcitxOff
 

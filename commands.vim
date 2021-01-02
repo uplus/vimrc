@@ -23,7 +23,7 @@ command! ReplacePunctuation %s/\v(、|。)/\=tr(submatch(1), '、。', '，．')
 command! -range=% CountChar <line1>,<line2>s/.//ggn
 
 " external command
-command! FcitxOff call Job('fcitx-remote', '-c')
+command! FcitxOff call Job('fcitx5-remote', '-o')
 command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
 command! Irb call vimrc#terminal('irb')

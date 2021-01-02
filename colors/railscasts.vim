@@ -18,6 +18,8 @@ let g:colors_name = expand('<sfile>:t:r')
 hi NonText      ctermfg=248 guifg=Gray
 hi Normal       ctermfg=252 ctermbg=0    guifg=#F8F8F2 guibg=#202020
 
+" hi! link Visual NonText
+
 hi MatchParen         ctermfg=15  ctermbg=23   guifg=#ffffff guibg=#005f5f
 hi StatusLine         ctermfg=255 ctermbg=NONE guifg=#eeeeee guibg=NONE     cterm=NONE gui=NONE
 
@@ -32,8 +34,7 @@ hi CursorLineNr       ctermfg=196 guifg=#ff0000
 
 hi rubySharpBang           ctermfg=103 guifg=#8787af
 hi rubyInclude             ctermfg=214 guifg=#ffaf00
-" hi rubyComment             ctermfg=179 guifg=#d7af5f
-hi rubyComment             ctermfg=247 guifg=#b8bfef
+hi rubyComment             ctermfg=247 guifg=#d8d4ee
 hi rubyDataDirective       ctermfg=111 guifg=#87afff
 hi rubyError               ctermfg=255 ctermbg=161 guifg=#eeeeee guibg=#e7005f
 hi rubyFunction            ctermfg=226 guifg=#f8ff03
@@ -49,6 +50,7 @@ hi! link rubyPreDefinedConstant rubyConstant
 hi! link rubyAttribute rubyDefine
 hi! link rubyException rubyFunction
 hi! link rubyOperator rubyFunction
+hi! link rubyEval rubyFunction
 
 " if else do end ...
 hi! link rubyConditional rubyDefine
