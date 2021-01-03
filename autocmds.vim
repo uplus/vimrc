@@ -34,14 +34,15 @@ augroup myac
       setl signcolumn=no
       setl foldcolumn=0
       au BufEnter <buffer> call feedkeys('a') " or startinsert!
-      " call feedkeys("exec zsh\<cr>\<c-l>") " Rug
+      " call feedkeys("exec zsh\<cr>\<c-l>") " Bug
     endfunction
 
-    " Skip return code when quit terminal.
     au TermClose * call s:term_close()
     function! s:term_close() abort
+      " Skip return code when quit terminal.
       if bufname('%') =~ printf('\v(%s|%s|pry)$', $SHELL, &shell)
-        call feedkeys('\<cr>')
+        " defxを開いているとバグる
+        " call feedkeys('\<cr>')
       endif
     endfunction
   endif "}}}
