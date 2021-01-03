@@ -45,8 +45,6 @@ CAlterCommand colortoggle ColorToggle
 
 if has('nvim')
   CAlterCommand www w suda://%
-  command! WWW w suda://%
 else
   CAlterCommand www w !sudo tee > /dev/null %
-  command! WWW w !sudo tee > /dev/null %
 endif

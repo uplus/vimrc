@@ -563,8 +563,9 @@ on_map  = '<Plug>(operator-jump'
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_event = 'BufRead'
+on_cmd = ['SudaWrite', 'SudaRead']
 hook_add = '''
-  " ]fなどが使えない
+  " 仮想ファイルを開くようになるので ]f でnextfileが使えなくなる
   " let g:suda_smart_edit = 1
 '''
 
@@ -573,13 +574,6 @@ repo = 'tpope/vim-characterize'
 on_map = '<Plug>(characterize)'
 hook_add = '''
   nmap gaa <Plug>(characterize)
-'''
-
-[[plugins]]
-repo = 'vim-scripts/sudo.vim'
-on_cmd = ['SudoWrite', 'SudoRead']
-hook_add = '''
-  command! Sw silent SudoWrite %
 '''
 
 [[plugins]]
