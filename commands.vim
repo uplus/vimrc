@@ -3,7 +3,6 @@ command! Q qall!
 command! W w!
 command! Naw noautocmd write
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
-command! -nargs=+ Cal echo eval(<q-args>)
 command! -nargs=1 Char echo printf("%c", 0x<args>)
 command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
@@ -24,9 +23,7 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 
 " external command
 command! FcitxOff call Job('fcitx5-remote', '-c')
-command! Tig execute "silent! !tig status" | redraw!
 command! TmpCommit !git tmpc
-command! Irb call vimrc#terminal('irb')
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
