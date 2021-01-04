@@ -99,11 +99,11 @@ let s:config = {
       \   'command': 'bundle',
       \   'exec': '%c exec rspec -f d %s',
       \ },
-      \ 'markdown':{'type': 'markdown/previm'},
-      \ 'markdown/previm': {
+      \ 'markdown':{'type': 'markdown/mkdp'},
+      \ 'markdown/mkdp': {
       \   'runner': 'shell',
       \   'outputter': 'null',
-      \   'command': ':PrevimOpen',
+      \   'command': ':MarkdownPreview',
       \   'exec': '%c',
       \ },
       \ 'go': {'type': 'go/run'},

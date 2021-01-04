@@ -7,15 +7,26 @@ hook_add = '''
   let g:vinarise_enable_auto_detect = 1
 '''
 
+# [[plugins]]
+# repo = 'kannokanno/previm'
+# depends = ['open-browser.vim']
+# on_ft = 'markdown'
+# hook_add = '''
+#   " " 設定されてると非同期にならない
+#   " if executable('firefox')
+#   "   let g:previm_open_cmd='firefox'
+#   " endif
+# '''
+
 [[plugins]]
-repo = 'kannokanno/previm'
-depends = ['open-browser.vim']
-on_ft = 'markdown'
+repo = 'iamcco/markdown-preview.nvim'
+hook_post_update = 'call mkdp#util#install()'
+on_map = ['MarkdownPreview', 'MarkdownPreviewStop']
 hook_add = '''
-  " " 設定されてると非同期にならない
-  " if executable('firefox')
-  "   let g:previm_open_cmd='firefox'
-  " endif
+  let g:mkdp_browser = 'xdg-open'
+  let g:mkdp_auto_start = 0
+  let g:mkdp_command_for_global = 0
+  let g:mkdp_open_to_the_world = 0
 '''
 
 [[plugins]]
