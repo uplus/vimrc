@@ -7,8 +7,10 @@ xmap \r <Plug>(quickrun)
 nmap <space>\r :update \| QuickRun -mode n -runner terminal<cr>
 xmap <space>\r :update \| *QuickRun -mode v -runner terminal<cr>
 
-nnoremap <expr><c-c> SmartQuickRunStop()
-function! g:SmartQuickRunStop() abort "{{{
+" nnoremap <expr><c-c> QuickRunStop()
+command! QuickRunStop call QuickRunStop()
+
+function! g:QuickRunStop() abort "{{{
   if exists('*quickrun#is_running') && quickrun#is_running()
     call quickrun#sweep_sessions()
     echo 'QuickRun sweeped'
@@ -31,8 +33,6 @@ function! g:SmartQuickRun() "{{{
   endif
 endfunction "}}}
 
-command! QuickRunStop call SmartQuickRunStop()
-command! Stop QuickRunStop
 
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
@@ -157,108 +157,6 @@ let s:config = {
       \ },
       \ }
 call extend(g:quickrun_config, s:config)
-unlet s:config
-"}}}
-
-" #watchdogs {{{
-let s:c_opt_watchdogs = substitute($C_COMP_OPT, '-lm ', '','')
-let s:config = {
-      \ 'watchdogs_checker/_': {
-      \   'runner':                          'vimproc',
-      \   'outputter':                       'quickfix',
-      \   'hook/echo/output_success': 'watchdogs success',
-      \   'hook/echo/output_failure': 'watchdogs failure',
-      \ },
-      \
-      \ 'c/watchdogs_checker' : {
-      \   'type'
-      \     : executable('clang') ? 'watchdogs_checker/clang'
-      \     : executable('gcc')   ? 'watchdogs_checker/gcc'
-      \     :''
-      \ },
-      \ 'cpp/watchdogs_checker' : {
-      \   'type'
-      \     : executable('clang-check') ? 'watchdogs_checker/clang_check'
-      \     : executable('clang++')     ? 'watchdogs_checker/clang++'
-      \     : executable('g++')         ? 'watchdogs_checker/g++'
-      \     : executable('cl')          ? 'watchdogs_checker/cl'
-      \     :'',
-      \ },
-      \ 'go/watchdogs_checker': {'type': 'watchdogs_checker/gobuild'},
-      \ 'help/watchdogs_checker': {'type': 'watchdogs_checker/null'},
-      \ 'java/watchdogs_checker': {'type': 'watchdogs_checker/null'},
-      \ 'markdown/watchdogs_checker': {'type': 'watchdogs_checker/null'},
-      \ 'rust/watchdogs_checker': {
-      \   'type':
-      \     filereadable('Cargo.toml') ? 'watchdogs_checker/cargo' :
-      \     'watchdogs_checker/rustc',
-      \ },
-      \ 'toml/watchdogs_checker': {'type': 'watchdogs_checker/null'},
-      \
-      \ 'watchdogs_checker/gcc'     : { 'cmdopt': s:c_opt_watchdogs },
-      \ 'watchdogs_checker/clang'   : { 'cmdopt': s:c_opt_watchdogs },
-      \ 'watchdogs_checker/g++'     : { 'cmdopt': $CPP_COMP_OPT },
-      \ 'watchdogs_checker/clang++' : { 'cmdopt': $CPP_COMP_OPT },
-      \ 'watchdogs_checker/c89' : {
-      \   'command': 'gcc',
-      \   'exec': '%c %o -fsyntax-only %s:p',
-      \   'cmdopt': s:c_opt_watchdogs . ' -std=c89',
-      \ },
-      \ 'watchdogs_checker/flake8': {
-      \   'cmdopt': '--ignore=E221,E226,E261,E302,E303,E305,F401,W292,W391 --max-line-length=200',
-      \ },
-      \ 'watchdogs_checker/gobuild': {
-      \   'command': 'go',
-      \   'cmdopt' : './...',
-      \   'exec': '%c build %o',
-      \   'errorformat': '%f:%l: %m,%-G%.%#',
-      \   'hook/sweep/files': '%S:p:h/%S:p:h:t',
-      \ },
-      \ 'watchdogs_checker/null': {
-      \   'command': 'echo',
-      \   'exec': '%c %o',
-      \   'cmdopt': '',
-      \ },
-      \ 'watchdogs_checker/rustc' : {
-      \   'command' : 'rustc',
-      \   'exec'    : '%c %o %s:p',
-      \   'cmdopt' : '',
-      \   'errorformat'
-      \     : '%-Gerror: aborting %.%#,'
-      \     . '%-Gerror: Could not compile %.%#,'
-      \     . '%Eerror: %m,'
-      \     . '%Eerror[E%n]: %m,'
-      \     . '%Wwarning: ,'
-      \     . '%C %#--> %f:%l:%c'
-      \ },
-      \ 'watchdogs_checker/cargo' : {
-      \   'command' : 'cargo',
-      \   'exec'    : '%c %o',
-      \   'cmdopt' : 'check',
-      \   'errorformat'
-      \     : '%-Gerror: aborting %.%#,'
-      \     . '%-Gerror: Could not compile %.%#,'
-      \     . '%Eerror: %m,'
-      \     . '%Eerror[E%n]: %m,'
-      \     . '%Wwarning: ,'
-      \     . '%C %#--> %f:%l:%c'
-      \ },
-      \ 'watchdogs_checker/rustc_parse-only' : {
-      \   'command' : 'rustc',
-      \   'exec'    : '%c %o %s:p',
-      \   'cmdopt' : '',
-      \   'errorformat'
-      \     : '%E%f:%l:%c: %\d%#:%\d%# %.%\{-}error:%.%\{-} %m'
-      \     . ',%W%f:%l:%c: %\d%#:%\d%# %.%\{-}warning:%.%\{-} %m'
-      \     . ',%C%f:%l %m'
-      \     . ',%-Z%.%#',
-      \ },
-      \}
-
-call extend(g:quickrun_config, s:config) " これだけだと上手く行かない
-if exists('*watchdogs#setup')
-  call watchdogs#setup(g:quickrun_config)
-endif
 unlet s:config
 "}}}
 

@@ -453,25 +453,6 @@ on_map = '<Plug>(asterisk-'
 repo = 'dense-analysis/ale'
 hook_add = 'source ~/.vim/rc/ale.rc.vim'
 
-[[plugins]]
-if = 0
-repo = 'osyo-manga/vim-watchdogs'
-depends = ['vim-quickrun', 'shabadou.vim', 'vim-hier', 'quickfixstatus', ]
-hook_add = '''
-  let g:watchdogs_check_BufWritePost_enable = 1
-  " let g:watchdogs_check_BufWritePost_enables = { 'vim' : 0, }
-  let g:watchdogs_check_CursorHold_enable = 0
-  let g:watchdogs_check_BufWritePost_enable_on_wq = 0
-
-  " 連続して保存した場合、前のシンタックスチェックを停止する
-  au myac BufWritePre * WatchdogsRunSweep
-
-  command! ShowWatchDogsDefault CaptureWin PP g:watchdogs#default_config
-  command! WatchdogsC89 let b:watchdogs_checker_type = 'watchdogs_checker/c89'
-  command! DisableWatchdogs let b:watchdogs_checker_type = 'watchdogs_checker/null'
-
-  au myac BufRead,BufNewFile ~/codes/jprog/* WatchdogsC89
-'''
 
 # quickrun
 
@@ -482,9 +463,6 @@ hook_source = 'source ~/.vim/rc/quickrun.rc.vim'
 [[plugins]]
 repo = 'osyo-manga/shabadou.vim'
 depends = 'vim-quickrun'
-
-# [[plugins]]
-# repo = 'KazuakiM/vim-qfstatusline'
 
 [[plugins]]
 repo = 'osyo-manga/quickrun-outputter-replace_region'
@@ -679,10 +657,6 @@ repo = 'sgur/vim-gf-autoload'
 [[plugins]] # jump to vim function
 repo = 'hujo/gf-user-vimfn'
 
-# little slow
-# [[plugins]]
-# repo = 'pekepeke/vim-gf-ruby-require'
-
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
@@ -723,12 +697,6 @@ hook_add = '''
     \ 'cpp': 'clang-head',
     \ }
 '''
-
-# [[plugins]]
-# repo = 'thinca/vim-template'
-# hook_add = '''
-#   let g:template_basedir = '~/.vim/templates'
-# '''
 
 # [[plugins]] # Need reloadble vimrc
 # repo = "mattn/benchvimrc-vim"
