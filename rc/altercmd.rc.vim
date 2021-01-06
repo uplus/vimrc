@@ -18,6 +18,7 @@ CAlterCommand fix ALEFix
 CAlterCommand movetotab MoveToTab
 CAlterCommand maps Maps
 " CAlterCommand t T
+CAlterCommand t tabedit
 CAlterCommand br botright sp
 CAlterCommand tmpb[uffer] TmpBuffer
 CAlterCommand tmpc[ommit] TmpCommit
