@@ -338,10 +338,10 @@ options head
 	belongs_to :${1}, optional: false
 snippet has_one
 options head
-	has_one :${1}, dependent: :destroy, class_name: "",
+	has_one :${1}, dependent: :destroy, class_name: ${2}
 snippet has_many
 options head
-	has_many :${1}, dependent: :destroy, class_name: "",
+	has_many :${1}, dependent: :destroy, class_name: ${2}
 
 snippet has_one_through
 options head
