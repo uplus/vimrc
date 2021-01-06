@@ -17,6 +17,7 @@ function! s:set_denite_win(height_percent, width_percent) abort
   let denite_win_width = &columns * a:width_percent
   let denite_win_col_pos = (&columns - denite_win_width) / 2
   let denite_win_height = &lines * a:height_percent
+  let denite_win_height = 60 < denite_win_height ? 60 : denite_win_height
   let denite_win_row_pos = (&lines - denite_win_height) / 2
 
   call denite#custom#option('default', 'winwidth',  float2nr(denite_win_width))
