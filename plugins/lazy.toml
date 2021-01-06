@@ -387,6 +387,15 @@ hook_source = '''
   let g:gist_clip_command = 'xclip -selection clipboard'
 '''
 
+[[plugins]]
+repo = 'f-person/git-blame.nvim'
+on_map = ['GitBlameToggle']
+hook_add = '''
+  let g:gitblame_enabled  = 0
+  " let g:gitblame_message_template = '<summary> • <date> • <author>'
+
+  nnoremap ,gb <cmd>GitBlameToggle<cr>
+'''
 
 #web
 
