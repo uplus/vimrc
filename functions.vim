@@ -27,9 +27,10 @@ function! DoAutoSave() abort
     " for debug
     " echo 'auto save at' strftime('%T') bufname() &filetype
 
-    silent! update
+    " silent! update
+    silent! wall
     silent! SignifyRefresh
-    silent! ALELint
+    " silent! ALELint
   endif
 endfunction
 "}}}
