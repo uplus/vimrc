@@ -1,5 +1,5 @@
 
-" #vim original keymaps "{{{
+" Vim Original Keymaps: "{{{
 noremap <Plug>(vim-original-visual) v
 noremap <Plug>(vim-original-visualline) V
 noremap <Plug>(vim-original-visualblock) <c-v>
@@ -11,13 +11,13 @@ noremap <Plug>(vim-original-tail) g_
 inoremap <Plug>(vim-original-insert-lasttext) <c-a>
 "}}}
 
-" #vim basic command keymaps "{{{
+" Vim Basic Command Keymaps: "{{{
 nnoremap <silent><Plug>(u10-botright) :<c-u>botright split<cr>
 nnoremap <silent><Plug>(u10-vertical) :<c-u>vertical split<cr>
 nnoremap <silent><Plug>(u10-undojoin) :<c-u>undojoin<cr>
 "}}}
 
-" #neovim terminal "{{{
+" NeoVim Terminal: "{{{
 if has('nvim')
   tnoremap <esc> <c-\><c-n>
   " tmap jj <esc>
@@ -41,7 +41,7 @@ if has('nvim')
   nnoremap <c-t>l <c-w>lI
 endif "}}}
 
-" #toggle options "{{{
+" Toggle Options: "{{{
 nnoremap \toc :set cursorcolumn!<CR>
 nnoremap \ton :set number!<CR>
 nnoremap \tor :set relativenumber!<CR>
@@ -49,11 +49,21 @@ nnoremap \tow :set wrap!<CR>
 nnoremap \tol :set list!<CR>
 "}}}
 
-" #text_move "{{{
+" Text Move: "{{{
 nnoremap <silent><Plug>(MoveUp)   :<C-u>call vimrc#text_move(v:count1, 1, 0)<CR>
 nnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 0)<CR>
 xnoremap <silent><Plug>(MoveUp)   :<C-u>call vimrc#text_move(v:count1, 1, 1)<CR>
 xnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 1)<CR>
+"}}}
+
+" Substitute: {{{
+nnoremap ss :%s/\v
+nnoremap sw :%s/\v<c-r><c-w>
+nnoremap sW :%s/\v<c-r><c-a>
+
+xnoremap ss :s/\v
+xnoremap sw :s/\v<c-r><c-w>
+xnoremap sW :s/\v<c-r><c-a>
 "}}}
 
 nnoremap <silent><Plug>(delete_for_match) :<c-u>call vimrc#delete_for_match()<cr>

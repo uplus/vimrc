@@ -272,8 +272,9 @@ hook_post_source = '''
 
 # search and replace
 
-[[plugins]]
+[[plugins]] # inccommandに乗り換え中
 repo = 'osyo-manga/vim-over'
+if = '0'
 on_cmd = ['OverCommandLine', 'OverCommandLineNoremap']
 hook_add = '''
     " let g:over_enable_auto_nohlsearch = 1
@@ -297,20 +298,6 @@ hook_add = '''
     xnoremap ss :OverCommandLine s/\v<CR>
     xnoremap sw :OverCommandLine s/\v<<C-r><C-w>>/<CR>
     xnoremap sW :OverCommandLine s/\v<<C-r><C-a>>/<CR>
-'''
-
-[[plugins]]
-repo = 'osyo-manga/vim-hopping'
-on_map = '<Plug>(hopping'
-hook_add = '''
-  let g:hopping#prompt     = 'Input:> '
-  nmap \H <Plug>(hopping-start)
-  " let g:hopping#keymapping = {
-  "   \ "\<C-n>" : "<Over>(hopping-next)",
-  "   \ "\<C-p>" : "<Over>(hopping-prev)",
-  "   \ "\<C-u>" : "<Over>(scroll-u)",
-  "   \ "\<C-d>" : "<Over>(scroll-d)",
-  "   \}
 '''
 
 [[plugins]] # quickfixの各行を編集、反映できる

@@ -23,6 +23,7 @@ set gdefault
 set ignorecase smartcase
 set incsearch
 set nohlsearch | nohlsearch "Highlight search patterns, support reloading
+set inccommand=nosplit
 "}}}
 
 " #tab {{{
