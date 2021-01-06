@@ -60,6 +60,7 @@ call deoplete#custom#option('ignore_sources', {
   \ '_': ['buffer', 'tag'],
   \ 'c': ['tabnine'],
   \ 'help': ['tabnine'],
+  \ 'denite': ['neosnippet']
   \ })
 
 call deoplete#custom#option('keyword_patterns', {

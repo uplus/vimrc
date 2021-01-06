@@ -9,6 +9,7 @@ call denite#custom#option('default', {
   \ 'highlight_filter_background': 'CursorLine',
   \ 'split': 'floating',
   \ 'filter_split_direction': 'floating',
+  \ 'filter_updatetime': 150,
   \ })
   "\ 'direction': 'aboveleft',
   "\ 'highlight_window_background'
@@ -56,7 +57,8 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '.r
 call denite#custom#filter('matcher/clap', 'clap_path', expand('$CACHE/dein') . '/repos/github.com/liuchengxu/vim-clap')
 
 " Matchers:
-let s:default_matcher = 'matcher/regexp'
+" let s:default_matcher = 'matcher/regexp'
+let s:default_matcher = 'matcher/substring'
 call denite#custom#source('_', 'matchers', [s:default_matcher])
 call denite#custom#source('buffer', 'matchers', [s:default_matcher, 'matcher/ignore_current_buffer'])
 call denite#custom#source('file/rec', 'matchers', [s:default_matcher, 'matcher/hide_hidden_files'])
