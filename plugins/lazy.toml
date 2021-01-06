@@ -330,31 +330,6 @@ hook_add = '''
   au myac FileType c,cpp nmap <buffer><silent>,lr <Plug>(clang_rename-current)
 '''
 
-
-#ruby
-
-[[plugins]]
-repo = 'tpope/vim-rails'
-on_ft = 'ruby'
-
-# [[plugins]]
-# repo = 'todesking/ruby_hl_lvar.vim'
-# if = "!has('nvim')"
-# on_ft = 'ruby'
-# hook_add = '''
-#   let g:ruby_hl_lvar_hl_group = 'rubyLocalVariable'
-#   au myac VimEnter,ColorScheme * hi rubyLocalVariable ctermfg=38 guifg=#00afd7
-# '''
-
-[[plugins]]
-# plugin/に関数定義が沢山ある
-repo = 'killphi/vim-ruby-refactoring'
-on_ft = 'ruby'
-hook_add = '''
-  let g:ruby_refactoring_map_keys = 0
-'''
-
-
 #python
 
 [[plugins]]
@@ -478,25 +453,6 @@ hook_source = '''
 
 
 #tags and ref
-
-# [[plugins]] # Ruby/Bundlerに対応して、必要最低限のtagsのみを非同期生成
-# # 非同期生成とRuby/Bundler対応は直行してる
-# repo = 'alpaca-tc/alpaca_tags'
-# depends = 'vimproc.vim'
-# on_cmd = ['AlpacaTagsBundle', 'AlpacaTagsUpdate', 'AlpacaTagsEnable', 'AlpacaTagsSet', 'AlpacaTagsCleanCache', 'AlpacaTagsDisable', 'AlpacaTagsKillProcess', 'AlpacaTagsProcessStatus']
-# hook_add = '''
-#   let g:alpaca_tags#config = {
-#         \    '_' : '-R --sort=yes',
-#         \    'ruby': '--languages=+Ruby',
-#         \ }
-#
-#   augroup AlpacaTags
-#     autocmd!
-#     " au myac FileWritePost,BufWritePost *       AlpacaTagsUpdate -style
-#     " au myac FileWritePost,BufWritePost Gemfile AlpacaTagsUpdateBundle
-#     " au myac FileReadPost,BufEnter      *       AlpacaTagsSet
-#   augroup END
-# '''
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
