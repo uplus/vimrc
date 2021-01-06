@@ -48,7 +48,6 @@ command! SyntaxInfo call vimrc#get_syn_info()
 command! -complete=highlight -nargs=* Hi call vimrc#highlight(<f-args>)
 command! OpenGitDiffWin call vimrc#open_git_diff('w')
 command! OpenGitDiffTab call vimrc#open_git_diff('t')
-command! Uclear vimrc#undo_clear
 command! UndoClear call vimrc#undo_clear()
 command! CurrentOnly call vimrc#current_only()
 command! ActiveOnly call vimrc#active_only()
