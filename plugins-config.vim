@@ -128,10 +128,6 @@ if dein#tap('vim-textobj-multiblock') "{{{
 endif "}}}
 "}}}
 
-if dein#tap('caw.vim') " {{{
-endif
-"}}}
-
 if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu') " {{{
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す
