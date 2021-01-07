@@ -148,8 +148,7 @@ let g:clurin = {
       \   ['create', 'build', 'build_stubbed'],
       \   ['it_behaves_like', 'include_examples'],
       \   ['describe', 'context'],
-      \   ['.to ', '.not_to '],
-      \   [{'pattern': '\.to_not ', 'replace': '.to '}]
+      \   ['.to ', '.to_not '],
       \ ]},
       \
       \ 'zsh': {'def': [
