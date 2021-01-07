@@ -444,7 +444,6 @@ repo = 'haya14busa/incsearch-index.vim'
 
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
-on_map = '<Plug>(asterisk-'
 
 
 # syntaxchecker
