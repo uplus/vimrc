@@ -27,7 +27,7 @@ CAlterCommand log Log
 CAlterCommand vsh[ell] VimShell
 CAlterCommand vsi VimShellInteractive
 CAlterCommand den[ite] Denite
-CAlterCommand g[ina] Gina
+CAlterCommand gi[na] Gina
 CAlterCommand qr QuickRun
 CAlterCommand note Note
 
