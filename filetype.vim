@@ -6,26 +6,20 @@ if exists('did_load_filetypes')
 endif
 
 augroup filetypedetect
-  " 使い回し
-  " au!
-
-  au BufRead,BufNewFile *.cas setf casl2
-  au BufRead,BufNewFile Guardfile setf ruby
-  au BufRead,BufNewFile gitconfig setf gitconfig
+  " filetypedetectは本体の使い回しなためリセットしてはいけない
 
   " Filetype detect for Assembly Language.
-  au BufRead,BufNewFile *.asm set ft=masm syntax=masm
-  au BufRead,BufNewFile *.inc set ft=masm syntax=masm
-  au BufRead,BufNewFile *.[sS] set ft=gas syntax=gas
-  au BufRead,BufNewFile *.hla set ft=hla syntax=hla
-  au BufRead,BufNewFile .yamllint,.gemrc set ft=yaml syntax=yaml
-  au BufRead,BufNewFile .env.* set ft=sh syntax=sh
+  au BufRead,BufNewFile *.cas setf casl2
+  au BufRead,BufNewFile *.asm,*.inc setf masm
+  au BufRead,BufNewFile *.[sS] setf gas
+  au BufRead,BufNewFile *.hla setf hla
+
+  au BufRead,BufNewFile gitconfig setf gitconfig
+  au BufRead,BufNewFile .yamllint,.gemrc setf yaml
+  au BufRead,BufNewFile .env.*,.envrc setf sh
+  au BufRead,BufNewFile Guardfile,Vagrantfile setf ruby
 
   au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
-
-  au BufRead,BufNewFile .envrc set ft=sh
-
-  au BufRead,BufNewFile Vagrantfile set ft=ruby
 
   au VimEnter * if &l:ft ==# '' | filetype detect | endif
 augroup END
