@@ -389,7 +389,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'f-person/git-blame.nvim'
-on_map = ['GitBlameToggle']
+on_cmd = ['GitBlameToggle']
 hook_add = '''
   let g:gitblame_enabled  = 0
   " let g:gitblame_message_template = '<summary> • <date> • <author>'
