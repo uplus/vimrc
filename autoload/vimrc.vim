@@ -260,7 +260,7 @@ function! vimrc#active_only() abort "{{{
   let l:count=0
 
   for l:buf in vimrc#buffers_info()
-    if -1 == stridx(l:buf[1], 'a')
+    if -1 == stridx(l:buf[1], 'a') && l:buf[2] !~# '^term'
       execute 'bwipeout' l:buf[0]
       let l:count+=1
     endif
