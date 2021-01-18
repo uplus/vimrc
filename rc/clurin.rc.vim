@@ -132,7 +132,7 @@ let g:clurin = {
       \   ['if', 'unless' ],
       \   ['while', 'until' ],
       \   ['.blank?', '.present?' ],
-      \   ['include', 'extend' ],
+      \   ['include', 'prepend', 'extend'],
       \   ['class', 'module' ],
       \   ['.inject', '.reject' ],
       \   ['.map', '.map!' ],
