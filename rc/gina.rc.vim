@@ -62,6 +62,18 @@ call gina#custom#mapping#nmap(
  \ {'noremap': 1, 'silent': 1}
  \)
 
+call gina#custom#mapping#nmap(
+  \ 'blame',
+  \ 'j',
+  \ 'j<Plug>(gina-blame-echo)'
+  \)
+
+call gina#custom#mapping#nmap(
+  \ 'blame',
+  \ 'k',
+  \ 'k<Plug>(gina-blame-echo)'
+  \)
+
 " call gina#custom#mapping#nmap(
 "  \ 'branch', 'g<CR>',
 "  \ '<Plug>(gina-commit-checkout-track)'
