@@ -91,7 +91,7 @@ function! s:set_highlights() "{{{
 
   if g:colors_name ==? 'papercolor'
     hi Normal                         ctermbg=234                guibg=#1c1c1c
-    hi LineNr            ctermfg=244               guifg=#808080
+    hi LineNr            ctermfg=244               guifg=#9494c0
     hi CursorLine        ctermfg=NONE ctermbg=238  guifg=NONE    guibg=#454545
     hi CursorColumn                   ctermbg=235                guibg=#363626
     hi SpecialKey        ctermfg=46                guifg=#00ff00

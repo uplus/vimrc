@@ -12,6 +12,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
 on_cmd = 'Denite'
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 hook_add = '''
@@ -139,6 +140,7 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+if = "has('nvim')"
 hook_source = 'source ~/.vim/rc/defx.rc.vim'
 hook_add = '''
   nnoremap <silent><c-w>e :<c-u>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
