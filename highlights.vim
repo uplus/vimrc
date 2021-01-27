@@ -46,6 +46,7 @@ function! s:set_colors() "{{{
   endif
 
   if &filetype ==# 'ruby'
+    call s:colorscheme('srcery')
     call s:colorscheme('railscasts')
   elseif &filetype ==# 'gitcommit'
     call s:colorscheme('gitcommit')
