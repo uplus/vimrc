@@ -124,3 +124,11 @@ on_ft = 'haskell'
 # git
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
+
+# ruby
+
+# [[plugins]]
+# repo = 'tpope/vim-rails'
+# hook_add = '''
+#   g:loaded_rails
+# '''
