@@ -67,6 +67,7 @@ hi rubyStringEscape        ctermfg=171 guifg=#d75fff
 hi rubyIdentifier          ctermfg=73 cterm=NONE guifg=#5fafaf gui=NONE
 " 埋め込み文字の中身
 hi rubyInterpolation           ctermfg=250 guifg=#bcbcbc
+hi clear rubyInterpolation
 " 埋め込み文字#{}
 hi rubyInterpolationDelimiter ctermfg=66 guifg=#21afff
 
