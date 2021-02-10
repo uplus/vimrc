@@ -113,6 +113,7 @@ function! s:set_highlights() "{{{
     hi SrceryCyan guifg=#0cc8c3
     hi SrceryBlue guifg=#5ab6ef
     hi SrceryBrightBlack guifg=#b1a195
+    hi SrceryGreenBold guifg=#61ce68
     hi! link Comment SrceryBrightBlack
   elseif g:colors_name ==? 'molokai'
     hi LineNr   ctermfg=250  ctermbg=236  guifg=#b6c4c7 guibg=#232526
