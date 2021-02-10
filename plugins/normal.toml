@@ -97,19 +97,25 @@ denite-filter = '''
   " <esc>が上書きされる
   let b:lexima_disabled = 1
 
-  nmap <silent><buffer><nowait><esc> <Plug>(denite_filter_quit)
-  imap <silent><buffer><c-o> <Plug>(denite_filter_quit)
-  imap <silent><buffer><nowait><esc> <Plug>(denite_filter_quit)
-  " inoremap <silent><buffer><nowait><expr><esc> denite#do_map('quit')
+  " action
+  inoremap <silent><buffer><expr><cr> denite#do_map('do_action')
+  inoremap <silent><buffer><nowait><expr><c-t> denite#do_map('do_action', 'tabswitch')
+  inoremap <silent><buffer><nowait><expr><c-s> denite#do_map('do_action', 'split')
+  inoremap <silent><buffer><nowait><expr><c-v> denite#do_map('do_action', 'vsplit')
 
-  imap <silent><buffer><cr> <Plug>(denite_filter_quit)<cr>
-  imap <silent><buffer><c-j> <cr>
-  imap <silent><buffer><c-u> <c-a><c-k>
-  imap <silent><buffer><c-t> <Plug>(denite_filter_quit)t
-  imap <silent><buffer><c-s> <Plug>(denite_filter_quit)s
-  imap <silent><buffer><c-v> <Plug>(denite_filter_quit)v
-  imap <silent><buffer><c-p> <Plug>(denite_filter_quit)ki
-  imap <silent><buffer><c-n> <Plug>(denite_filter_quit)ji
+  " close filter
+  imap <buffer><nowait><esc> <Plug>(denite_filter_update)
+  nmap <buffer><nowait><esc> <Plug>(denite_filter_update)
+
+  " move
+  imap <buffer><c-p> <esc>ki
+  imap <buffer><c-n> <esc>ji
+
+  " aliaseds
+  imap <buffer><c-j> <cr>
+
+  " disable deoplete
+  call deoplete#custom#buffer_option('auto_complete', v:false)
 '''
 
 # 容量が1GBぐらいある
