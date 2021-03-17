@@ -635,42 +635,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'rbtnn/game_engine.vim'
-on_cmd = 'GameEngineStartGame'
-
-[[plugins]]
-repo = 'rbtnn/mario.vim'
-depends = 'game_engine.vim'
-on_cmd = 'Mario'
-
-[[plugins]]
-repo = 'rbtnn/puyo.vim'
-depends = 'game_engine.vim'
-on_cmd = 'Puyo'
-
-[[plugins]]
-repo = 'johngrib/vim-game-code-break'
-on_cmd = ['VimGameCodeBreak', 'CodeBreak']
-hook_add = '''
-  command! CodeBreak VimGameCodeBreak
-'''
-
-# [[plugins]]
-# # コマのサイズはハードコーディング
-# repo = 'rbtnn/reversi.vim'
-# depends = 'game_engine.vim'
-# on_cmd = 'Reversi'
-
-[[plugins]]
-repo = 'thinca/vim-threes'
-on_cmd = ['ThreesStart', 'ThreesShowRecord']
-hook_add = '''
-  let g:threes#data_directory = expand('~/.vim/tmp')
-  let g:threes#start_with_higher_tile = 1
-  command! Threes ThreesStart
-'''
-
-[[plugins]]
 repo = 'cocopon/colorswatch.vim'
 on_cmd = 'ColorSwatchGenerate'
 
