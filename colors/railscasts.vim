@@ -46,6 +46,7 @@ hi rubyAccess ctermfg=81 guifg=#fe70ff
 
 hi! link rubyClassVariable rubySymbol
 hi! link rubyData rubyComment
+hi! link rubyDocumentation rubyComment
 hi! link rubyPreDefinedConstant rubyConstant
 hi! link rubyAttribute rubyDefine
 hi! link rubyException rubyFunction
