@@ -34,6 +34,7 @@ on_event = ['InsertEnter']
 hook_add = '''
   " 補完メニューが開いていてもエンターで改行する
   let g:lexima_accept_pum_with_enter = 0
+  let g:lexima_enable_endwise_rules = 0
 '''
 hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 

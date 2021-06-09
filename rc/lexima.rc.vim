@@ -1,6 +1,23 @@
 " call lexima#init() " Need first
 " call lexima#set_default_rules()
 
+function! s:make_rule(at, end, filetype, syntax)
+  return {
+  \ 'char': '<CR>',
+  \ 'input':  '<CR>',
+  \ 'input_after': '<CR>' . a:end,
+  \ 'at': a:at,
+  \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,
+  \ 'filetype': a:filetype,
+  \ 'syntax': a:syntax,
+  \ }
+endfunction
+
+" ruby以外のendwiseを追加する
+for rule in filter(lexima#endwise_rule#make(), { idx, rule -> !(type(rule.filetype) == v:t_string && rule.filetype == 'ruby') })
+  call lexima#add_rule(rule)
+endfor
+
 " 別行で閉じる
 call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
 call lexima#add_rule({'at': '\%#\_s*}', 'char': '}', 'leave': '}'})
@@ -16,26 +33,9 @@ call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '"', 'input': '"'})
 " jj <esc>
 call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
 
-
 " remove tail space when enter
 call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<cr>', 'filetype': ['markdown', 'gitcommit', 'help']})
 call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<bs><cr>'})
-
-function! s:make_rule(at, end, filetype, syntax)
-  return {
-    \ 'char': '<CR>',
-    \ 'input':  '<CR>',
-    \ 'input_after': '<CR>' . a:end,
-    \ 'at': a:at,
-    \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,
-    \ 'filetype': a:filetype,
-    \ 'syntax': a:syntax,
-    \ }
-endfunction
-" call add(rules, s:make_rule('^\s*\%(module\|def\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#', 'end', 'ruby', []))
-" call add(rules, s:make_rule('^\s*\%(begin\)\s*\%#', 'end', 'ruby', []))
-" call add(rules, s:make_rule('\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#', 'end', 'ruby', []))
-" call add(rules, s:make_rule('\<\%(if\|unless\)\>.*\%#', 'end', 'ruby', 'rubyConditionalExpression'))
 
 
 " vim {{{
@@ -139,14 +139,25 @@ call lexima#add_rule({
   \ 'filetype': ['ruby'],
   \ })
 
-" input_afterでEndが使えない
-call lexima#add_rule({
-  \ 'char': '<CR>',
-  \ 'input':  '<CR><End><CR>' . 'end' . '<Up><Left>',
-  \ 'at': '\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#.\+',
-  \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . 'end',
-  \ 'filetype': ['ruby'],
-  \ })
+" 標準と同じ
+call lexima#add_rule(s:make_rule('^\s*\%(begin\)\s*\%#', 'end', 'ruby', []))
+call lexima#add_rule(s:make_rule('\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#', 'end', 'ruby', []))
+call lexima#add_rule(s:make_rule('\<\%(if\|unless\)\>.*\%#', 'end', 'ruby', 'rubyConditionalExpression'))
+
+" def以外を登録
+call lexima#add_rule(s:make_rule('^\s*\%(module\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#', 'end', 'ruby', []))
+
+" defだけ括弧対応
+call lexima#add_rule(s:make_rule('^\s*\%(def\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#\s*$', 'end', 'ruby', []))
+
+" " input_afterでEndが使えない
+" call lexima#add_rule({
+"  \ 'char': '<CR>',
+"  \ 'input':  '<CR><End><CR>' . 'end' . '<Up><Left>',
+"  \ 'at': '\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#.\+',
+"  \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . 'end',
+"  \ 'filetype': ['ruby'],
+"  \ })
 
 "}}}
 
