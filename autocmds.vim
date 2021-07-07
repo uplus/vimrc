@@ -76,7 +76,7 @@ augroup myac
     end
 
   " matchaddを複数回呼び出すと激重になるので注意
-    let g:todo_match_id = matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze:?')
+    let g:todo_match_id = matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze(:|\s)')
   endfunction
 
   " #badspace {{{
