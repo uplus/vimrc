@@ -657,3 +657,7 @@ hook_add = '''
   let g:calendar_frame = 'default'
   let g:calendar_first_day = 'sunday'
 '''
+
+# [[plugins]]
+# repo = 'typewriter/zenrei.vim'
+# on_cmd = ['Zenrei', 'ZenreiSynonym']
