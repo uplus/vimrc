@@ -16,7 +16,7 @@ let g:colors_name = expand('<sfile>:t:r')
 " hi mailEmail                 guifg=#A5C261 ctermfg=107 gui=italic cterm=underline guifg=#87af5f gui=underline
 
 hi NonText      ctermfg=248 guifg=Gray
-hi Normal       ctermfg=252 ctermbg=0    guifg=#F8F8F2 guibg=#202020
+hi Normal       ctermfg=252 ctermbg=0    guifg=#F8F8F2 guibg=#101818
 
 " hi! link Visual NonText
 
