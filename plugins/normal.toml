@@ -691,8 +691,7 @@ hook_add = '''
 
 [[plugins]]
 repo =  'nvim-treesitter/nvim-treesitter'
-if = 0
-# if = "has('nvim')"
+if = "has('nvim')"
 hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
 
 [[plugins]]
