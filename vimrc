@@ -79,9 +79,14 @@ if !exists('g:noplugin')
 
   call s:source('plugins-config')
 
-  " autoloadにするとワンテンポ遅くなる
-  au myac VimEnter * call dein#call_hook('source')
-  au myac VimEnter * call dein#call_hook('post_source')
+  augroup myac
+    " autoloadにするとワンテンポ遅くなる
+    au VimEnter * call dein#call_hook('source')
+    au VimEnter * call dein#call_hook('post_source')
+
+    " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
+    au VimEnter * syntax enable
+  augroup END
 endif
 
 call s:source('options')

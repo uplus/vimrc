@@ -676,6 +676,19 @@ hook_add = '''
   let g:context_filetype#search_offset = 200
 '''
 
+
+[[plugins]]
+repo = 'romgrk/nvim-treesitter-context'
+if = 0
+hook_post_source = '''
+lua <<EOF
+  require'treesitter-context.config'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  }
+EOF
+'''
+
+
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 if = 0
