@@ -1,6 +1,6 @@
 if !exists('g:noplugin')
-  au myac FileType    * nested call s:set_colors()
-  au myac ColorScheme * call s:set_highlights()
+  au myac FileType    * ++nested call s:set_colors()
+  au myac ColorScheme * ++once call s:set_highlights()
 endif
 
 function! s:set_common_highlights() abort
