@@ -312,13 +312,15 @@ nnoremap _X "_X
 vnoremap _X "_X
 "}}}
 
-" #paired map "{{{
+" Pair Map: "{{{
 nnoremap <silent>[c :cp<cr>
 nnoremap <silent>]c :cc<cr>
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+nnoremap <silent><expr><Plug>(smart_gt) tabpagenr('$') == 1 ? ':bnext<cr>' : ':wincmd gt<cr>'
+nnoremap <silent><expr><Plug>(smart_gT) tabpagenr('$') == 1 ? ':bprevious<cr>' : ':wincmd gT<cr>'
 
 nmap [e <Plug>(MoveUp)
 nmap ]e <Plug>(MoveDown)

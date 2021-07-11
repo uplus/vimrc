@@ -2,10 +2,10 @@ let g:submode_keep_leaving_key = 1
 let g:submode_timeout          = 0
 
 " tab moving
-call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
-call submode#enter_with('changetab', 'n', '', 'gr', 'gT')
-call submode#map('changetab', 'n', '', 't', 'gt')
-call submode#map('changetab', 'n', '', 'r', 'gT')
+call submode#enter_with('changetab', 'n', 'r', 'gt', '<Plug>(smart_gt)')
+call submode#enter_with('changetab', 'n', 'r', 'gr', '<Plug>(smart_gT)')
+call submode#map('changetab', 'n', 'r', 't', '<Plug>(smart_gt)')
+call submode#map('changetab', 'n', 'r', 'r', '<Plug>(smart_gT)')
 
 " move between fold
 call submode#enter_with('movefold', 'n', '', 'zk', 'zkzMzv[zzz')
