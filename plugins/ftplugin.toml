@@ -69,8 +69,10 @@ _ = '''
     au myac FileType * let &l:breakindentopt = 'shift:' . &l:tabstop
   endif
 
-  setl foldmethod=expr
-  setl foldexpr=nvim_treesitter#foldexpr()
+  if dein#is_sourced('nvim-treesitter')
+    setl foldmethod=expr
+    setl foldexpr=nvim_treesitter#foldexpr()
+  end
 '''
 
 arduino = '''

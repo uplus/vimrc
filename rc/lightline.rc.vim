@@ -208,6 +208,14 @@ function! LLfileencoding() abort "{{{
 endfunction "}}}
 
 function! LLcurrent_function() abort "{{{
+  if dein#is_sourced('nvim-treesitter')
+    let l:ts_func_name = nvim_treesitter#statusline()
+
+    if l:ts_func_name != v:null
+      return l:ts_func_name
+    endif
+  end
+
   " TODO runtime! ftplugin/zsh/cfi.vim
   if !exists('g:loaded_cfi')
     return

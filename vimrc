@@ -1,6 +1,6 @@
 if 0 | endif
 
-set debug=throw
+" set debug=throw
 
 language message C
 scriptencoding=utf-8
