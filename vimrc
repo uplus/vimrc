@@ -73,9 +73,9 @@ call s:source('before')
 if !exists('g:noplugin')
   call s:source('dein')
 
-  if has('vim_starting') && !empty(argv())
-    call s:on_filetype()
-  endif
+  " if has('vim_starting') && !empty(argv())
+  "   call s:on_filetype()
+  " endif
 
   call s:source('plugins-config')
 
@@ -86,6 +86,7 @@ if !exists('g:noplugin')
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
     au VimEnter * syntax enable
+    " au VimEnter * call lightline#highlight()
   augroup END
 endif
 
