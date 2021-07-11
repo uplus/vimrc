@@ -1,5 +1,7 @@
 if 0 | endif
 
+set debug=throw
+
 language message C
 scriptencoding=utf-8
 " Very very high speed! ~300ms
