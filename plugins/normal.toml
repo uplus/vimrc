@@ -676,7 +676,6 @@ hook_add = '''
   let g:context_filetype#search_offset = 200
 '''
 
-
 [[plugins]]
 repo = 'romgrk/nvim-treesitter-context'
 if = 0
@@ -687,7 +686,6 @@ lua <<EOF
   }
 EOF
 '''
-
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
