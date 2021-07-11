@@ -677,7 +677,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
-if = "has('nvim')"
+if = 0
+# if = "has('nvim')"
 depends = ['context_filetype.vim']
 hook_add = '''
   let g:precious_enable_switchers = {
@@ -687,6 +688,12 @@ hook_add = '''
     \ 'html': { 'setfiletype': 1 },
     \}
 '''
+
+[[plugins]]
+repo =  'nvim-treesitter/nvim-treesitter'
+if = 0
+# if = "has('nvim')"
+hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
