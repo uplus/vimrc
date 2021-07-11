@@ -671,6 +671,7 @@ repo = 'hujo/gf-user-vimfn'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+if = 0
 hook_add = '''
   let g:context_filetype#search_offset = 200
 '''

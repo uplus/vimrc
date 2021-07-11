@@ -2,7 +2,7 @@
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-depends = ['context_filetype.vim']
+# depends = ['context_filetype.vim']
 on_event = ['InsertEnter']
 on_ft = ['snippet', 'neosnippet']
 hook_add = '''
@@ -49,7 +49,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['context_filetype.vim', 'LanguageClient-neovim']
+depends = ['LanguageClient-neovim'] # 'context_filetype.vim'
 if = "has('nvim')"
 on_event = ['InsertEnter']
 hook_source = '''
