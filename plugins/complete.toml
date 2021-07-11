@@ -151,11 +151,12 @@ hook_add = '''
   " let g:LanguageClient_selectionUI = 'location-list'
 
   " let g:LanguageClient_loggingLevel = 'DEBUG'
-  " let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
+  let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
   " let g:LanguageClient_trace = 'verbose' " off messages verbose
 
   " 設定参考
   " https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp
+  let g:LanguageClient_waitOutputTimeout = 100
 
   let g:LanguageClient_rootMarkers = {
     \ 'go': ['go.mod'],
