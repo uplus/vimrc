@@ -108,7 +108,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
-depends = ['context_filetype.vim', 'vim-operator-user']
+depends = ['vim-operator-user'] # 'context_filetype.vim'
 on_map = '<Plug>(caw'
 hook_add = '''
   let g:caw_no_default_keymappings = 1
