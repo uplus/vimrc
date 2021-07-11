@@ -36,8 +36,8 @@ endfunction "}}}
 function! s:on_filetype() abort "{{{
   if execute('filetype') =~# 'OFF'
     " Lazy loading
-    silent! filetype plugin indent on
-    syntax enable
+    " silent! filetype plugin indent on
+    " syntax enable
     filetype detect
   endif
 endfunction "}}}

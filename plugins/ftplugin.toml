@@ -68,6 +68,9 @@ _ = '''
     " optsetでやればよさそう
     au myac FileType * let &l:breakindentopt = 'shift:' . &l:tabstop
   endif
+
+  setl foldmethod=expr
+  setl foldexpr=nvim_treesitter#foldexpr()
 '''
 
 arduino = '''
@@ -151,7 +154,7 @@ go = '''
 '''
 
 rust = '''
-  setl foldmethod=syntax
+  " setl foldmethod=syntax
   let b:format_cmd = 'RustFmt'
 
   nmap <buffer>gd <Plug>(rust-def)
@@ -190,7 +193,7 @@ java = '''
 '''
 
 javascript = '''
-  setl foldmethod=syntax
+  " setl foldmethod=syntax
   setl commentstring=//\ %s
   setl wrap
   nnoremap <buffer><silent>,lr :<c-u>TernRename<cr>
@@ -222,7 +225,7 @@ markdown = '''
 
 neosnippet = '''
   setl noexpandtab
-  setl fdm=marker
+  setl foldmethod=marker
 '''
 
 python = '''
@@ -262,7 +265,7 @@ review = '''
 '''
 
 ruby = '''
-  setl fdm=syntax
+  " setl foldmethod=syntax
   setl omnifunc=
   setl iskeyword+=?
   setl wrap
@@ -334,7 +337,7 @@ vim = '''
     syntax sync minlines=300
   endif
 
-  setl fdm=marker
+  " setl foldmethod=marker
   setl keywordprg=:help
   setl iskeyword-=:
   setl iskeyword-=#

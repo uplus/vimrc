@@ -693,7 +693,27 @@ hook_add = '''
 [[plugins]]
 repo =  'nvim-treesitter/nvim-treesitter'
 if = "has('nvim')"
+# on_event = 'BufRead'
 hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
+hook_post_source = '''
+  " set syntax=hoge が自動で実行されるのを防ぐ
+  au! syntaxset
+
+" ヒアドキュメントはマーカーを先頭に置く必要がある
+lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = 'all',
+    highlight = {
+        enable = true,
+        disable = {},
+    },
+    indent = {
+        enable = true,
+        disable = {'python'},
+    },
+  }
+EOF
+'''
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'

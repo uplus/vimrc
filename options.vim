@@ -39,7 +39,7 @@ set nopreserveindent " ==などでインデントを変更してもタブ文字�
 "}}}
 
 " #fold {{{
-set foldmethod=syntax
+" set foldmethod=syntax
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=99     " どのレベルから折りたたむか
