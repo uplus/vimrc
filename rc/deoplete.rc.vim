@@ -43,12 +43,10 @@ endfunction
 " ### Configs ###
 
 call deoplete#custom#option({
-  \ 'auto_preview': v:true,
-  \ 'auto_refresh_delay': 50,
   \ 'max_list': 50,
   \ 'nofile_complete_filetypes': ['denite-filter', 'zsh'],
   \ 'num_processes': 4,
-  \ 'refresh_always': v:true,
+  \ 'refresh_always': v:false,
   \ 'refresh_backspace': v:false,
   \ 'skip_multibyte': v:true,
   \ 'smart_case': v:true,
