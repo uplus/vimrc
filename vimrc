@@ -38,8 +38,8 @@ endfunction "}}}
 function! s:on_filetype() abort "{{{
   if execute('filetype') =~# 'OFF'
     " Lazy loading
-    " silent! filetype plugin indent on
-    " syntax enable
+    silent! filetype plugin indent on
+    syntax enable
     filetype detect
   endif
 endfunction "}}}
@@ -73,9 +73,12 @@ call s:source('before')
 if !exists('g:noplugin')
   call s:source('dein')
 
-  " if has('vim_starting') && !empty(argv())
+  if has('vim_starting') && !empty(argv())
+    " 先の実行しないとInsertEnterあたりでいろいろ発生してしまう
+    syntax enable
+    filetype detect
   "   call s:on_filetype()
-  " endif
+  endif
 
   call s:source('plugins-config')
 
@@ -85,7 +88,7 @@ if !exists('g:noplugin')
     au VimEnter * call dein#call_hook('post_source')
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
-    au VimEnter * syntax enable
+    au FileType vim,markdown let &syntax=&filetype
     " au VimEnter * call lightline#highlight()
   augroup END
 endif
