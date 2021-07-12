@@ -679,6 +679,7 @@ hook_add = '''
 [[plugins]]
 repo = 'romgrk/nvim-treesitter-context'
 if = 0
+depends = ['nvim-treesitter']
 hook_post_source = '''
 lua <<EOF
   require'treesitter-context.config'.setup{
@@ -712,8 +713,8 @@ hook_post_source = '''
 
 " ヒアドキュメントはマーカーを先頭に置く必要がある
 lua <<EOF
+  --  ensure_installed = 'all',
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = 'all',
     highlight = {
         enable = true,
         disable = {},
