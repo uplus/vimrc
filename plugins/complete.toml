@@ -204,7 +204,7 @@ build = './install.sh'
 
 [[plugins]]
 if = 0
-repo = 'Shougo/deoplete-lsp'
+repo = 'deoplete-plugins/deoplete-lsp'
 hook_source = '''
   " https://github.com/neovim/neovim/pull/6856
   call lsp#server#add('python', 'pyls')
@@ -216,3 +216,8 @@ hook_source = '''
   " https://github.com/saibing/bingo
   call lsp#server#add('go', ['bingo', '--mode', 'stdio', '--logfile', '/tmp/lspserver.log', '--trace', '--pprof', ':6060'])
 '''
+
+[[plugins]]
+if = 0
+repo = 'neovim/nvim-lspconfig'
+hook_post_source = 'luafile ~/.vim/rc/lspconfig.rc.lua'
