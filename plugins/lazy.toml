@@ -88,13 +88,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'oblitum/rainbow'
-on_cmd = ['RainbowToggle', 'RainbowLoad']
-hook_add = '''
-  let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'magenta', 'red', 'darkmagenta', 'darkblue', 'darkgreen', 'darkcyan']
-'''
-
-[[plugins]]
 repo = 'lilydjwg/colorizer'
 on_cmd = ['ColorClear', 'ColorToggle', 'ColorHighlight']
 hook_add = '''
