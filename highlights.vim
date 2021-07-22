@@ -82,9 +82,9 @@ function! s:set_highlights() "{{{
   hi! link SignifySignChangeDelete    SignifySignDelete
   hi! link SignifySignDeleteFirstLine SignifySignDelete
 
-  hi ALEVirtualTextError guifg=#f0fff0 guibg=#000000
-  hi ALEVirtualTextWarning guifg=#f0fff0 guibg=#000000
-  hi ALEVirtualTextInfo guifg=#f0fff0 guibg=#000000
+  hi ALEVirtualTextError guifg=#ff5e80 guibg=NONE
+  hi ALEVirtualTextWarning guifg=#f0ff80 guibg=NONE
+  hi ALEVirtualTextInfo guifg=#80cff0 guibg=NONE
 
   if &diff
     hi clear CursorLine
