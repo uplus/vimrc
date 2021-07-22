@@ -1,13 +1,8 @@
-let s:blue    = ['#6EA4FF', 141]
-let s:green   = ['#26EBAF', 156]
+let s:blue    = ['#61AEEE', 141]
+let s:green   = ['#28DA9E', 156]
 let s:magenta = ['#D285FF', 214]
 let s:yellow  = ['#FFEF4A', 136]
 let s:red     = ['#FF375F', 124]
-
-let s:tab_active   = ['#6EA4FF', 141]
-let s:tab_inactive = ['#9aa09a', 244]
-let s:nocontent    = ['#1e1e1e', 235]
-let s:text_bg      = ['#1e1e00', 0]
 
 let s:black  = ['#202000', 0]
 let s:gray   = ['#20202f', 234]
@@ -20,6 +15,10 @@ let s:base1  = ['#93a1a1', 245]
 let s:base2  = ['#eee8d5', 187]
 let s:base3  = ['#fdf6e3', 230]
 
+let s:tab_active   = s:blue
+let s:tab_inactive = ['#b8b8e8', 244]
+let s:nocontent    = ['#0e0e0e', 0]
+let s:text_bg      = ['#0e0e00', 0]
 
 " base
 let s:p = {
