@@ -599,10 +599,6 @@ repo = 'osyo-manga/vim-hideout'
 on_cmd = ['HideoutOn']
 
 [[plugins]]
-repo = 'lervag/vim-latex'
-on_ft = ['tex', 'plaintex']
-
-[[plugins]]
 repo = 'xuhdev/vim-latex-live-preview'
 on_ft = ['tex', 'plaintex']
 
