@@ -186,7 +186,7 @@ function! Lexima_HtmlCloseTag() abort
   return str . repeat("\<left>", len(str))
 endfunction
 
-let s:html_filetypes = ['html', 'eruby', 'vue', 'handlebars.html', 'jsx', 'typescriptreact', 'php']
+let s:html_filetypes = ['html', 'eruby', 'vue', 'handlebars.html', 'jsx', 'typescriptreact', 'php', 'tsx']
 let s:html_syntaxes = ['jsxTagName', 'jsxComponentName', 'jsxOpenPunct', 'htmlTagName', 'htmlSpecialTagName']
 
 " 開始タグの閉じカッコを入力したら終了タグを挿入する

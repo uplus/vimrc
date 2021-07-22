@@ -90,11 +90,13 @@ function! vimrc#operator_blank2void(motion_wise) abort "{{{
 endfunction "}}}
 
 function! vimrc#operator_space_fold(motion_wise) abort "{{{
+  " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
   '<s/\v%(^)@<!\s*$/ /e
   undojoin
   '>s/\v%(^)@<!\s*$/ /e
   undojoin
   '<,'>fold
+  " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
 endfunction "}}}
 
 " arg1: command string
