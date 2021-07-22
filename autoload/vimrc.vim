@@ -3,10 +3,18 @@ silent! let s:V = vital#of('vital')
 silent! let s:Vuri = s:V.import('Web.URI')
 
 function! vimrc#set_tab(num) abort
-  let &l:tabstop=a:num
-  let &l:softtabstop = &l:tabstop
-  let &l:shiftwidth = &l:tabstop
+  let &l:tabstop=a:num " Tab表示幅
+  let &l:softtabstop = &l:tabstop " Tab押下時のカーソル移動量
+  let &l:shiftwidth = &l:tabstop " インデント幅
+  call vimrc#set_breakindentopt()
+endfunction
 
+function! vimrc#set_breakindentopt() abort
+  let l:shift = 0 == &l:tabstop ? 0 : &l:tabstop - 2
+
+  " shift:{n} shift num
+  " sbr       ^の位置ではなく0の位置に入れる
+  let &l:breakindentopt = printf('shift:%d', l:shift)
 endfunction
 
 

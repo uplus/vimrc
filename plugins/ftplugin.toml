@@ -44,7 +44,6 @@ _ = '''
 
   au myac FileType * if exists('b:undo_ftplugin') | let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g') | endif
 
-
   if dein#is_sourced('nvim-treesitter')
     setl foldmethod=expr
     setl foldexpr=nvim_treesitter#foldexpr()
@@ -386,4 +385,8 @@ vue = '''
   setl cursorcolumn
   setl wrap
   SetTab 2
+'''
+
+nginx = '''
+  SetTab 4
 '''

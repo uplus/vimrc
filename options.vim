@@ -36,23 +36,18 @@ if has('linebreak')
 
   " breakした行の先頭にうっすら挿入
   set showbreak=>>
-
-  " shift:{n} shift num
-  " sbr       ^の位置ではなく0の位置に入れる
-  au myac OptionSet tabstop let &l:breakindentopt = printf('shift:%d', (2 <= &l:tabstop ? &l:tabstop - 2 : 0))
+  au myac OptionSet tabstop call vimrc#set_breakindentopt()
 endif
 " }}}
 
-" #tab {{{
+" Tab: {{{
 set shiftround    " >>とかのインデントがshiftwidthの倍数に丸められる
 set expandtab     " Tabキーでスペース挿入
-set tabstop=2     " Tab表示幅
-set softtabstop=2 " Tab押下時のカーソル移動量
-set shiftwidth=2  " インデント幅
 set smarttab      " 削除とかいい感じに
 set nocopyindent  " expandtabを無視して既存行のタブで判定する
 set nopreserveindent " ==などでインデントを変更してもタブ文字を保持
 " set vartabstop varsofttabstop
+call vimrc#set_tab(2)
 "}}}
 
 " #fold {{{

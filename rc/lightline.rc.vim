@@ -63,6 +63,10 @@ let g:lightline = {
       \     'v': 'V', 'V': 'V', "\<C-v>": 'V',
       \     's': 'S', 'S': 'S', "\<C-s>": 'S',
       \   },
+      \   'separator': {'left': ' ', 'right': ' '},
+      \   'subseparator': {'left': ' ', 'right': ' '},
+      \   'tabline_separator': {'left': ' ', 'right': ' '},
+      \   'tabline_subseparator': {'left': ' ', 'right': ' '},
       \   'enable': {'statusline': 1, 'tabline': 1},
       \   '_mode_': {
       \     'n': 'normal', 'i': 'insert', 'R': 'replace', 'v': 'visual', 'V': 'visual', "\<C-v>": 'visual',

@@ -26,8 +26,6 @@ if exists('v:null')
   let g:type_null = type(v:null)
 endif
 
-command! -nargs=1 SetTab call vimrc#set_tab(<args>)
-
 function! s:source(path) abort "{{{
   let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
   if filereadable(fpath)
