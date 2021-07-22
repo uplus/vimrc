@@ -201,7 +201,6 @@ repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
 build = './install.sh'
 
-
 [[plugins]]
 if = 0
 repo = 'deoplete-plugins/deoplete-lsp'
@@ -209,17 +208,6 @@ depends = ['nvim-lspconfig']
 on_event = 'InsertEnter'
 hook_add = '''
   " let g:deoplete#lsp#handler_enabled = v:false
-'''
-hook_source = '''
-  " https://github.com/neovim/neovim/pull/6856
-  call lsp#server#add('python', 'pyls')
-  call lsp#server#add('rust', ['rustup', 'run', 'stable', 'rls'])
-  " For go-langserver
-  call lsp#server#add('go', [expand('$GOPATH/bin/go-langserver'), '-format-tool', 'gofmt', '-lint-tool', 'golint', '-gocodecompletion'])
-
-  " For bingo
-  " https://github.com/saibing/bingo
-  call lsp#server#add('go', ['bingo', '--mode', 'stdio', '--logfile', '/tmp/lspserver.log', '--trace', '--pprof', ':6060'])
 '''
 
 [[plugins]]

@@ -429,6 +429,11 @@ hook_source = '''
 #tags and ref
 
 [[plugins]]
+if = 0
+repo = 'liuchengxu/vista.vim'
+on_cmd = ['Vista']
+
+[[plugins]]
 repo = 'majutsushi/tagbar'
 on_cmd = ['Tagbar', 'TagbarToggle', 'TagbarOpen', 'TagbarOpenAutoClose', 'TagbarShowTag', 'TagbarCurrentTag', 'TagbarGetTypeConfig', 'TagbarDebug', 'TagbarTogglePause']
 on_func = 'tagbar#'
