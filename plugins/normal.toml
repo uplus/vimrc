@@ -728,6 +728,10 @@ EOF
 '''
 
 [[plugins]]
+repo = 'neovim/nvim-lspconfig'
+hook_post_source = 'luafile ~/.vim/rc/lspconfig.rc.lua'
+
+[[plugins]]
 repo = 'vim-jp/vital.vim'
 
 [[plugins]] # :PP! is same as :echomes
@@ -739,16 +743,6 @@ hook_add = '''
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
-[[plugins]]
-repo = 'rhysd/wandbox-vim'
-hook_add = '''
-  nnoremap ,wb :<c-u>Wandbox<cr>
-  let g:wandbox#default_compiler = get(g:, 'wandbox#default_compiler', {})
-  let g:wandbox#default_compiler = {
-    \ 'cpp': 'clang-head',
-    \ }
-'''
-
 # [[plugins]] # Need reloadble vimrc
 # repo = "mattn/benchvimrc-vim"
 
@@ -757,13 +751,6 @@ hook_add = '''
 
 # [[plugins]]
 # repo = 'fweep/vim-zsh-path-completion'
-
-[[plugins]]
-repo = 'ynkdir/vim-vimlparser'
-
-[[plugins]]
-repo = 'syngan/vim-vimlint'
-depends = 'ynkdir/vim-vimlparser'
 
 [[plugins]]
 repo = 'thinca/vim-themis'

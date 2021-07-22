@@ -2,7 +2,6 @@
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-# depends = ['context_filetype.vim']
 on_event = ['InsertEnter']
 on_ft = ['snippet', 'neosnippet']
 hook_add = '''
@@ -48,16 +47,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = ['LanguageClient-neovim'] # 'context_filetype.vim'
-if = "has('nvim')"
-on_event = ['InsertEnter']
-hook_source = '''
-  source ~/.vim/rc/deoplete.rc.vim
-  call deoplete#enable()
-'''
-
-[[plugins]]
 repo = 'ncm2/float-preview.nvim'
 on_source = 'deoplete.nvim'
 if = 'has("nvim")'
@@ -66,6 +55,34 @@ hook_source = '''
   let g:float_preview#max_width = 60
   let g:float_preview#max_height = 20
 '''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = ['deoplete-lsp']
+if = "has('nvim')"
+on_event = ['InsertEnter']
+hook_source = '''
+  source ~/.vim/rc/deoplete.rc.vim
+  call deoplete#enable()
+'''
+
+
+## Language Clients
+
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-lsp'
+depends = ['nvim-lspconfig']
+on_event = 'InsertEnter'
+hook_add = '''
+  " let g:deoplete#lsp#handler_enabled = v:false
+'''
+
+[[plugins]]
+if = 0
+repo = 'tbodt/deoplete-tabnine'
+on_event = 'InsertEnter'
+build = './install.sh'
+
 
 ## sources
 
@@ -77,11 +94,13 @@ hook_add = '''
   EnableGoogleSuggest
 '''
 
-[[plugins]]
-if = 0
+[[plugins]] # text
 repo = 'ujihisa/neco-look'
 on_event = 'InsertEnter'
 
+[[plugins]] # text
+repo = 'Shougo/deoplete-nextword'
+on_event = 'InsertEnter'
 
 [[plugins]] # vim
 repo = 'Shougo/neco-vim'
@@ -101,117 +120,6 @@ hook_source = '''
   " let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
 '''
 
-[[plugins]] # haskell
-repo = 'eagletmt/neco-ghc'
-on_ft = 'haskell'
-# external_commands = 'ghc-mod'
-
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh', 'sh']
-
-[[plugins]]
-repo = 'junegunn/vim-emoji'
-on_func = 'emoji#'
-hook_add = '''
-  command! EnableEmoji set completefunc=emoji#complete
-'''
-
-[[plugins]]
-repo = 'fszymanski/deoplete-emoji'
-on_ft = ['gitcommit', 'markdown', 'text']
-
-[[plugins]]
-if = 0
-repo = 'juliosueiras/vim-terraform-completion'
-on_ft = 'terraform'
-hook_add = '''
-  " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
-  let g:terraform_completion_keys = 0
-
-  " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-  let g:terraform_registry_module_completion = 1
-'''
-
-
-## Language Clients
-
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-on_event = ['InsertEnter']
-build = 'bash ./install.sh'
-hook_add = '''
-  let g:LanguageClient_settingsPath = expand('~/.vim/rc/lsp-settings.json')
-  let g:LanguageClient_hasSnippetSupport = 0
-  let g:LanguageClient_diagnosticsEnable = 0
-  let g:LanguageClient_echoProjectRoot = 0
-
-  " let g:LanguageClient_waitOutputTimeout = 10 " seconds
-  " let g:LanguageClient_changeThrottle = 0.5
-  " let g:LanguageClient_selectionUI = 'location-list'
-
-  " let g:LanguageClient_loggingLevel = 'DEBUG'
-  let g:LanguageClient_loggingFile = expand("~/.vim/tmp/LC.log")
-  " let g:LanguageClient_trace = 'verbose' " off messages verbose
-
-  " 設定参考
-  " https://github.com/neovim/nvim-lsp/blob/master/lua/nvim_lsp
-  let g:LanguageClient_waitOutputTimeout = 100
-
-  let g:LanguageClient_rootMarkers = {
-    \ 'go': ['go.mod'],
-    \ 'gomod': ['go.mod'],
-    \ 'rust': ['Cargo.toml'],
-    \ 'ruby': ['Gemfile'],
-    \ 'python': ['Pipfile'],
-    \ 'javascript': ['package.json'],
-    \ 'typescript': ['package.json', 'tsconfig.json'],
-    \ 'typescriptreact': ['package.json', 'tsconfig.json'],
-    \ }
-
-  let g:LanguageClient_serverCommands = {
-    \ 'go': ['gopls'],
-    \ 'gomod': ['gopls'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ 'python': ['pyls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'typescriptreact': ['javascript-typescript-stdio'],
-    \ }
-    "\ 'typescript': ['typescript-language-server', '--stdio'],
-    "\ 'typescriptreact': ['typescript-language-server', '--stdio'],
-    " \ 'ruby': ['orbaclerun', 'file-server'],
-    " \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-
-  au myac FileType * call s:lc_maps()
-  function s:lc_maps()
-    if has_key(g:LanguageClient_serverCommands, &filetype)
-      nmap <buffer>K <plug>(lcn-hover)
-      nmap <buffer>gd <plug>(lcn-definition)
-      nmap <buffer><f2> <plug>(lcn-rename)
-    endif
-  endfunction
-'''
-
-[[plugins]]
-if = 0
-repo = 'tbodt/deoplete-tabnine'
-on_event = 'InsertEnter'
-build = './install.sh'
-
-[[plugins]]
-if = 0
-repo = 'deoplete-plugins/deoplete-lsp'
-depends = ['nvim-lspconfig']
-on_event = 'InsertEnter'
-hook_add = '''
-  " let g:deoplete#lsp#handler_enabled = v:false
-'''
-
-[[plugins]]
-if = 0
-repo = 'neovim/nvim-lspconfig'
-on_event = 'VimEnter'
-hook_post_source = 'luafile ~/.vim/rc/lspconfig.rc.lua'

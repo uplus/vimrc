@@ -78,7 +78,6 @@ call deoplete#custom#source('_', 'converters', [
 " call deoplete#custom#source('buffer', 'mark', '')
 " call deoplete#custom#source('buffer', 'mark', '*')
 " call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
-
 " call deoplete#custom#source('LanguageClient', 'min_pattern_length', 0)
 " call deoplete#custom#source('LanguageClient', 'input_pattern', '\w*(\.|::|->)\w*$')
 
@@ -91,10 +90,6 @@ call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 
 call deoplete#custom#source('look', 'min_pattern_length', 1)
 call deoplete#custom#source('look', 'rank', 100)
-
-" call deoplete#custom#source('emoji', 'filetypes', ['markdown', 'text'])
-" call deoplete#custom#source('emoji', 'min_pattern_length', 9999)
-" call deoplete#custom#source('omni', 'functions', { 'lua': 'xolox#lua#omnifunc' })
 
 " call deoplete#custom#option('omni_patterns', {
 "  \ 'terraform':  '[^\s*\t"{=$]\w*',
