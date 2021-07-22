@@ -16,7 +16,7 @@ let s:base2  = ['#eee8d5', 187]
 let s:base3  = ['#fdf6e3', 230]
 
 let s:tab_active   = s:blue
-let s:tab_inactive = ['#b8b8e8', 244]
+let s:tab_inactive = ['#b8b8b8', 244]
 let s:nocontent    = ['#0e0e0e', 0]
 let s:text_bg      = ['#0e0e00', 0]
 

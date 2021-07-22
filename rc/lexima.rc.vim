@@ -83,11 +83,19 @@ call lexima#add_rule({
   \ 'filetype': 'vim'
   \ })
 
-call lexima#add_rule(
-  \ {'at': "'''\\%#'''",
-  \ 'char': '<CR>',
-  \ 'input': '<CR><CR><Up><tab>',
-  \ 'filetype': ['vim', 'toml']
+call lexima#add_rule({
+  \ 'at': "'''\\%#'''",
+  \ 'char': '<cr>',
+  \ 'input_after': '<cr>',
+  \ 'filetype': ['vim', 'toml', 'python']
+  \ })
+"}}}
+
+call lexima#add_rule({
+  \ 'at': '```.*\%#```',
+  \ 'char': '<cr>',
+  \ 'input_after': '<cr>',
+  \ 'filetype': ['markdown']
   \ })
 "}}}
 
