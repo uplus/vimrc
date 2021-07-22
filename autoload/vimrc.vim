@@ -347,13 +347,6 @@ function! vimrc#capture_win(cmd) abort "{{{
   1,2delete _
 endfunction "}}}
 
-function! vimrc#delete_for_match() abort "{{{
-  normal! V^
-  normal %
-  normal! d
-  call repeat#set("\<Plug>(delete_for_match)")
-endfunction "}}}
-
 function! vimrc#text_move(count, is_up, is_visual) abort "{{{
   let save_lazyredraw = &l:lazyredraw
   setl lazyredraw

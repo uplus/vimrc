@@ -205,6 +205,11 @@ build = './install.sh'
 [[plugins]]
 if = 0
 repo = 'deoplete-plugins/deoplete-lsp'
+depends = ['nvim-lspconfig']
+on_event = 'InsertEnter'
+hook_add = '''
+  " let g:deoplete#lsp#handler_enabled = v:false
+'''
 hook_source = '''
   " https://github.com/neovim/neovim/pull/6856
   call lsp#server#add('python', 'pyls')
@@ -220,4 +225,5 @@ hook_source = '''
 [[plugins]]
 if = 0
 repo = 'neovim/nvim-lspconfig'
+on_event = 'VimEnter'
 hook_post_source = 'luafile ~/.vim/rc/lspconfig.rc.lua'

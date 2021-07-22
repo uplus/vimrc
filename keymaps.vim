@@ -66,7 +66,7 @@ xnoremap sw :s/\v<c-r><c-w>
 xnoremap sW :s/\v<c-r><c-a>
 "}}}
 
-nnoremap <silent><cmd><plug>(delete_for_match) call vimrc#delete_for_match()<cr>
+nmap <plug>(delete_for_match) <Plug>(vim-original-visualline)^%d
 nnoremap <silent>=<cr> :<c-u>call Format()<cr>
 
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
