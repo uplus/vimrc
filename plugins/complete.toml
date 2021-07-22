@@ -1,7 +1,55 @@
+## sources
+
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-lsp'
+hook_add = '''
+  " let g:deoplete#lsp#handler_enabled = v:false
+'''
+
+[[plugins]]
+if = 0
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
+
+
+[[plugins]]
+repo = 'mattn/googlesuggest-complete-vim'
+hook_add = '''
+  command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
+  EnableGoogleSuggest
+'''
+
+[[plugins]] # text
+repo = 'ujihisa/neco-look'
+
+[[plugins]] # text
+repo = 'Shougo/deoplete-nextword'
+
+[[plugins]] # vim
+repo = 'Shougo/neco-vim'
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+# repo = 'tweekmonster/deoplete-clang2'
+if = 'executable("clang")'
+hook_add = '''
+  let b:clang2_orig_maps = {}
+
+  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+  let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+  let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
+  " let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+
+
 ## base
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
+lazy = 1
 on_event = ['InsertEnter']
 on_ft = ['snippet', 'neosnippet']
 hook_add = '''
@@ -30,6 +78,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+lazy = 1
 on_event = ['InsertEnter']
 hook_add = '''
   " 補完メニューが開いていてもエンターで改行する
@@ -40,17 +89,19 @@ hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/echodoc.vim'
-on_event = 'CompleteDone'
-hook_source = '''
+# on_event = 'CompleteDone'
+hook_add = '''
   let g:echodoc#type = 'virtual'
+'''
+hook_source = '''
   call echodoc#enable()
 '''
 
 [[plugins]]
 repo = 'ncm2/float-preview.nvim'
-on_source = 'deoplete.nvim'
+# on_source = 'deoplete.nvim'
 if = 'has("nvim")'
-hook_source = '''
+hook_add = '''
   let g:float_preview#docked = 1
   let g:float_preview#max_width = 60
   let g:float_preview#max_height = 20
@@ -59,67 +110,10 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = ['deoplete-lsp']
+lazy = 1
 if = "has('nvim')"
 on_event = ['InsertEnter']
 hook_source = '''
   source ~/.vim/rc/deoplete.rc.vim
   call deoplete#enable()
 '''
-
-
-## Language Clients
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-lsp'
-depends = ['nvim-lspconfig']
-on_event = 'InsertEnter'
-hook_add = '''
-  " let g:deoplete#lsp#handler_enabled = v:false
-'''
-
-[[plugins]]
-if = 0
-repo = 'tbodt/deoplete-tabnine'
-on_event = 'InsertEnter'
-build = './install.sh'
-
-
-## sources
-
-[[plugins]]
-repo = 'mattn/googlesuggest-complete-vim'
-on_event = ['InsertEnter']
-hook_add = '''
-  command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
-  EnableGoogleSuggest
-'''
-
-[[plugins]] # text
-repo = 'ujihisa/neco-look'
-on_event = 'InsertEnter'
-
-[[plugins]] # text
-repo = 'Shougo/deoplete-nextword'
-on_event = 'InsertEnter'
-
-[[plugins]] # vim
-repo = 'Shougo/neco-vim'
-on_ft = 'vim'
-
-[[plugins]]
-repo = 'zchee/deoplete-clang'
-# repo = 'tweekmonster/deoplete-clang2'
-if = 'executable("clang")'
-on_ft = ['c', 'cpp']
-hook_source = '''
-  let b:clang2_orig_maps = {}
-
-  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-  let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-  let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
-  " let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
-'''
-
-[[plugins]]
-repo = 'zchee/deoplete-zsh'
-on_ft = ['zsh', 'sh']

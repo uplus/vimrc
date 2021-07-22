@@ -39,12 +39,12 @@ call dein#begin(s:path, [
   \   s:dein_filetypes, s:dein_ftplugin
   \ ])
 
+call dein#load_toml(s:dein_lazy,        { 'lazy': 1 })
+call dein#load_toml(s:dein_filetypes,   { 'lazy': 0 })
 call dein#load_toml(s:dein_normal,      { 'lazy': 0 })
 call dein#load_toml(s:dein_textop,      { 'lazy': 0 })
 call dein#load_toml(s:dein_colorscheme, { 'lazy': 0 })
-call dein#load_toml(s:dein_complete,    { 'lazy': 1 })
-call dein#load_toml(s:dein_lazy,        { 'lazy': 1 })
-call dein#load_toml(s:dein_filetypes,   { 'lazy': 0 })
+call dein#load_toml(s:dein_complete,    { 'lazy': 0 })
 call dein#load_toml(s:dein_ftplugin,    { 'lazy': 0 })
 
 if filereadable(expand(s:dein_trial))
