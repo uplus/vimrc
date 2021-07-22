@@ -667,10 +667,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'junegunn/vim-emoji'
-on_func = 'emoji#'
-
-[[plugins]]
 repo = 'rhysd/wandbox-vim'
 on_cmd = ['Wandbox']
 hook_add = '''

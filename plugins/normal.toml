@@ -754,3 +754,6 @@ repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
 repo = 'thinca/vim-themis'
+
+[[plugins]]
+repo = 'junegunn/vim-emoji'
