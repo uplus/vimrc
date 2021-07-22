@@ -91,6 +91,9 @@ call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
 call deoplete#custom#source('look', 'min_pattern_length', 1)
 call deoplete#custom#source('look', 'rank', 100)
 
+call deoplete#custom#source('look', 'filetypes', ['markdown', 'text', 'gitcommit'])
+call deoplete#custom#source('nextword', 'filetypes', ['markdown', 'text', 'gitcommit'])
+
 " call deoplete#custom#option('omni_patterns', {
 "  \ 'terraform':  '[^\s*\t"{=$]\w*',
 "  \ })
