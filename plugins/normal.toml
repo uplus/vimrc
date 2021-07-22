@@ -752,7 +752,7 @@ repo = 'editorconfig/editorconfig-vim'
 # [[plugins]]
 # repo = 'fweep/vim-zsh-path-completion'
 
-[[plugins]]
+[[plugins]] # test
 repo = 'thinca/vim-themis'
 
 [[plugins]]
