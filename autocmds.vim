@@ -70,7 +70,7 @@ augroup myac
   au myac Syntax * call s:hightlight_todo()
 
   function! s:hightlight_todo() abort
-    hi Todo       ctermfg=208  ctermbg=0    guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
+    hi Todo ctermfg=208 ctermbg=0 guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
     if 0 != get(g:, 'todo_match_id')
       silent! call matchdelete(g:todo_match_id)
     end
@@ -94,7 +94,7 @@ augroup myac
   endfunction
 
   function! s:badspace() abort
-    if &buflisted && &buftype ==# '' && &modifiable && &filetype !=# '' && !&diff && &filetype !~# '\v(markdown|github-dashboard|calendar|gitcommit|diff|defx:.*)'
+    if &buflisted && &buftype ==# '' && &modifiable && &filetype !=# '' && !&diff && &filetype !~# '\v(markdown|calendar|gitcommit|diff|defx:.*)'
       syn match BadSpace display excludenl '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
     endif
   endfunction

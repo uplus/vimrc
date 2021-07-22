@@ -16,12 +16,10 @@ augroup filetypedetect
 
   au BufRead,BufNewFile gitconfig setf gitconfig
   au BufRead,BufNewFile .yamllint,.gemrc setf yaml
-  au BufRead,BufNewFile .env.*,.envrc setf sh
+  au BufRead,BufNewFile .env,.env.*,.envrc,.envrc.* setf sh
   au BufRead,BufNewFile Guardfile,Vagrantfile setf ruby
 
   au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
-
-  au VimEnter * if &l:ft ==# '' | filetype detect | endif
 augroup END
 
 function! s:note_config() abort
@@ -36,8 +34,8 @@ endfunction
 " #filetype config
 augroup myac
   au FileType html,css setl foldmethod=indent | setl foldlevel=20
-  au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType conf,gitcommit,html,css set nocindent
+  au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType quickrun,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
   au BufReadPost COMMIT_EDITMSG goto
 

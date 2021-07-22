@@ -88,8 +88,9 @@ if !exists('g:noplugin')
     au VimEnter * call dein#call_hook('post_source')
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
-    au FileType vim,markdown let &syntax=&filetype
+    au FileType vim,markdown,make,dockerfile let &syntax=&filetype
     " au VimEnter * call lightline#highlight()
+    " au VimEnter * if &l:ft ==# '' | filetype detect | endif
   augroup END
 endif
 

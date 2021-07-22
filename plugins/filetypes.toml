@@ -22,7 +22,6 @@ repo = 'slim-template/vim-slim'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = 'toml'
 
 [[plugins]]
 repo = 'chrisbra/csv.vim'
@@ -68,15 +67,33 @@ repo = 'jparise/vim-graphql'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
 hook_add = '''
   let g:vim_markdown_no_default_key_mappings = 1
   let g:vim_markdown_math = 1
   let g:vim_markdown_auto_insert_bullets = 0
   let g:vim_markdown_autowrite = 0
   let g:vim_markdown_folding_level= 0
-  let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_folding_disabled = 0
   let g:vim_markdown_folding_style_pythonic = 0
+
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_toml_frontmatter = 1
+  let g:vim_markdown_json_frontmatter = 1
+
+  " Markdown
+  " http://mattn.kaoriya.net/software/vim/20140523124903.htm
+  " syn includeで対応する言語
+  let g:vim_markdown_fenced_languages = [
+    \  'coffee',
+    \  'css',
+    \  'sass',
+    \  'xml',
+    \  'erb=eruby',
+    \  'javascript',
+    \  'js=javascript',
+    \  'json=javascript',
+    \]
+
 '''
 
 [[plugins]]
@@ -119,16 +136,7 @@ repo = 'dag/vim2hs'
 
 [[plugins]]
 repo = 'itchyny/vim-haskell-indent'
-on_ft = 'haskell'
 
 # git
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
-
-# ruby
-
-# [[plugins]]
-# repo = 'tpope/vim-rails'
-# hook_add = '''
-#   g:loaded_rails
-# '''
