@@ -16,7 +16,7 @@ let g:colors_name = ''
 let g:colors_seted = 0
 hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
 hi Visual       cterm=reverse gui=reverse
-hi CursorLine                ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
+hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
 call s:set_common_highlights()
 
 hi! link Statement Visual

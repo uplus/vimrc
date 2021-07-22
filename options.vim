@@ -26,6 +26,23 @@ set nohlsearch | nohlsearch "Highlight search patterns, support reloading
 set inccommand=nosplit
 "}}}
 
+" Wrap: {{{
+set nowrap
+if has('linebreak')
+  set linebreak
+  set breakindent
+  " breakする場所 その文字の直後でブレークする
+  set breakat=<09>;,/?)
+
+  " breakした行の先頭にうっすら挿入
+  set showbreak=>>
+
+  " shift:{n} shift num
+  " sbr       ^の位置ではなく0の位置に入れる
+  au myac OptionSet tabstop let &l:breakindentopt = printf('shift:%d', (2 <= &l:tabstop ? &l:tabstop - 2 : 0))
+endif
+" }}}
+
 " #tab {{{
 set shiftround    " >>とかのインデントがshiftwidthの倍数に丸められる
 set expandtab     " Tabキーでスペース挿入
@@ -119,19 +136,6 @@ if has('patch-7.4.775')
   " set completeopt+=noselect
 endif
 
-set nowrap
-if has('linebreak')
-  set linebreak
-  set breakindent
-  " breakする場所 その文字の直後でブレークする
-  set breakat=<09>;,/?)
-
-  " breakした行の先頭にうっすら挿入
-  " shift:{n} shift num
-  " sbr       ^の位置ではなく0の位置に入れる
-  set breakindentopt=shift:0
-  set showbreak=>>
-endif
 set sidescroll=0
 set sidescrolloff=12
 set virtualedit=block

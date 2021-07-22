@@ -7,9 +7,6 @@ function! vimrc#set_tab(num) abort
   let &l:softtabstop = &l:tabstop
   let &l:shiftwidth = &l:tabstop
 
-  if exists('+breakindentopt')
-    let &l:breakindentopt = printf('shift:%d', (2 <= &l:tabstop ? &l:tabstop - 2 : 0))
-  endif
 endfunction
 
 

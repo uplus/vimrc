@@ -44,10 +44,6 @@ _ = '''
 
   au myac FileType * if exists('b:undo_ftplugin') | let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g') | endif
 
-  if has('linebreak')
-    " optsetでやればよさそう
-    au myac FileType * let &l:breakindentopt = 'shift:' . &l:tabstop
-  endif
 
   if dein#is_sourced('nvim-treesitter')
     setl foldmethod=expr
