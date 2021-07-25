@@ -313,8 +313,8 @@ vnoremap _X "_X
 "}}}
 
 " Pair Map: "{{{
-nnoremap <silent>[c :cp<cr>
-nnoremap <silent>]c :cc<cr>
+nnoremap <silent>[c :cbefore<cr>
+nnoremap <silent>]c :cafter<cr>
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
