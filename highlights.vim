@@ -8,7 +8,7 @@ function! s:set_common_highlights() abort
   hi PmenuSel     ctermfg=255  ctermbg=250 guifg=#eaeaea guibg=#5a5a5a cterm=NONE gui=NONE
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#eeeeee guibg=#131313 cterm=NONE gui=NONE
   hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#204080 cterm=NONE gui=NONE
-  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#331313 guibg=#40e0e0 cterm=NONE gui=NONE
+  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#20a0f0 cterm=NONE gui=bold
   hi! link WildMenu Pmenu
 endfunction
 
