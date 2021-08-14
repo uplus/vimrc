@@ -672,7 +672,7 @@ lua <<EOF
     },
     indent = {
         enable = true,
-        disable = {'python'},
+        disable = {'python', 'ruby'},
     },
   }
 EOF
