@@ -33,7 +33,6 @@ endfunction
 
 " #filetype config
 augroup myac
-  au FileType html,css setl foldmethod=indent | setl foldlevel=20
   au FileType conf,gitcommit,html,css set nocindent
   au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType quickrun,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif

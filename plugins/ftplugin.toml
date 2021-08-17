@@ -28,6 +28,9 @@ hook_add = '''
 [ftplugin]
 
 _ = '''
+  setl foldlevelstart=99
+  setl foldlevel=99
+
   setl formatoptions=lqMB
     " http://vim-jp.org/vimdoc-ja/change.html#fo-table
     " + lqMB
@@ -192,8 +195,6 @@ json = '''
 markdown = '''
   SetTab 2
   setl wrap
-  setl foldlevel=0
-  setl foldlevelstart=0
   setl conceallevel=0
 
   " 要らないインデントが発生する
@@ -246,7 +247,6 @@ ruby = '''
   setl omnifunc=
   setl iskeyword+=?
   setl wrap
-  " setl foldlevelstart=5
 
   " command! YardGen !yard doc %
   " nnoremap <f3> :YardGen<cr>
@@ -377,8 +377,6 @@ yaml = '''
 
 sshconfig = '''
   setl foldmethod=marker
-  setl foldlevelstart=0
-  setl foldlevel=0
 '''
 
 vue = '''
