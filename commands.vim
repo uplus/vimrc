@@ -23,7 +23,7 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 
 " external command
 command! FcitxOff call Job('fcitx5-remote', '-c')
-command! TmpCommit !git tmpc
+command! TmpCommit Gina tmpc
 
 " #encoding Reopening with a specific character."{{{
 " In particular effective when I am garbled in a terminal.
