@@ -361,7 +361,7 @@ hook_add = '''
 
   " TODO: cursorがある場所を飛ばす (HintDirection BEFORE_CURSOR?)
   " TODO: d;j したとき最後の行が消せない. d;kしたとき現在の行が消せない
-  " TODO: ときたま現在の行のaとsが逆になる
+  " TODO: ときたま現在の行のaとsが逆になる. ;wも1行目がおかしくなる
 '''
 hook_source = '''
 lua <<EOF
