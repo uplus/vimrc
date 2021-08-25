@@ -347,48 +347,60 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'phaazon/hop.nvim'
+hook_add = '''
+  map ;w <cmd>HopWordAC<cr>
+  map ;b <cmd>HopWordBC<cr>
+
+  map ;j <cmd>HopLineStartAC<cr>
+  map ;k <cmd>HopLineStartBC<cr>
+
+  map ;; <cmd>HopChar2<cr>
+  map ;f <cmd>HopChar1AC<cr>
+  map ;t <cmd>HopChar1BC<cr>
+
+  " TODO: cursorがある場所を飛ばす (HintDirection BEFORE_CURSOR?)
+  " TODO: d;j したとき最後の行が消せない. d;kしたとき現在の行が消せない
+  " TODO: ときたま現在の行のaとsが逆になる
+'''
+hook_source = '''
+lua <<EOF
+  require'hop'.setup {
+    keys = 'asdghklqwertyuiopzxcvbnmfj',
+  }
+
+  -- ハイライト設定
+  hh = require'hop.highlight'
+  function hh.insert_highlights()
+    -- Highlight used for the mono-sequence keys (i.e. sequence of 1).
+    -- vim.api.nvim_command('highlight default HopNextKey  guifg=#ff007c gui=bold ctermfg=198 cterm=bold')
+    vim.api.nvim_command('highlight default HopNextKey guifg=#00dfff gui=bold ctermfg=45 cterm=bold')
+
+    -- Highlight used for the first key in a sequence.
+    vim.api.nvim_command('highlight default HopNextKey1 guifg=#00dfff gui=bold ctermfg=45 cterm=bold')
+
+    -- Highlight used for the second and remaining keys in a sequence.
+    -- vim.api.nvim_command('highlight default HopNextKey2 guifg=#2b8db3 ctermfg=33')
+    vim.api.nvim_command('highlight default HopNextKey2 guifg=#00dfff gui=bold ctermfg=45 cterm=bold')
+
+    -- Highlight used for the unmatched part of the buffer.
+    vim.api.nvim_command('highlight default HopUnmatched guifg=#666666 ctermfg=242')
+  end
+EOF
+'''
+
+[[plugins]]
 repo = 'easymotion/vim-easymotion'
+if = 0
 on_map = ['<Plug>(easymotion-']
 hook_add = '''
-  let g:EasyMotion_do_mapping       = 0
-  let g:EasyMotion_keys             = 'asdghklqwertuiopzxcvbnmfj'
-  let g:EasyMotion_use_upper        = 0
-  let g:EasyMotion_smartcase        = 1
-  let g:EasyMotion_leader_key       = ';'
-  let g:EasyMotion_landing_highlight = 0
-  let g:EasyMotion_do_shade         = 1
   let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
   let g:EasyMotion_space_jump_first = 1 " Space jump to first match
-  let g:EasyMotion_add_search_history = 0
-  let g:EasyMotion_prompt           = '{n}> '
-  let g:EasyMotion_cursor_highlight = 0
-
-  " <Plug>(easymotion-lineanywhere) current line上のwordの初めと終わりを選択して飛ぶ
-  " <Plug>(easymotion-jumptoanywhere) スクリーン上のwordの初めと終わりを選択して飛ぶ
 
   map ;h <Plug>(easymotion-linebackward)
   map ;l <Plug>(easymotion-lineforward)
-  map ;j <Plug>(easymotion-j)
-  map ;k <Plug>(easymotion-k)
-  nmap ;L <Plug>(easymotion-overwin-line)
-
-  map ;; <Plug>(easymotion-s2)
-  " map ;f <Plug>(easymotion-sl2)
-  map ;f <Plug>(easymotion-fln)
-  map ;t <Plug>(easymotion-tln)
-
-  map ;w <Plug>(easymotion-w)
-  nmap ;w <Plug>(easymotion-w)
-  nmap ;W <Plug>(easymotion-overwin-w)
-  map ;b <Plug>(easymotion-b)
 
   " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
-  au myac VimEnter,ColorScheme * call s:easymotion_highlight()
-  function! s:easymotion_highlight() "{{{
-    hi EasyMotionTarget        ctermfg=220 guifg=#ffd700
-    hi EasyMotionTarget2First  ctermfg=220 guifg=#ffd700
-    hi EasyMotionTarget2Second ctermfg=46  guifg=#00ff00
-  endfunction "}}}
 '''
 
 [[plugins]]
@@ -404,8 +416,6 @@ hook_add = '''
   let g:clever_f_timeout_ms        = 0
 
   let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
-  " <Plug>(clever-f-repeat-forward)
-  " <Plug>(clever-f-repeat-back)
 '''
 # repo = 'chrisbra/improvedft'      # can input many charactores
 # repo = 'deris/vim-shot-f'      # show oneshot jump points
