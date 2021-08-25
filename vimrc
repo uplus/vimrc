@@ -14,18 +14,6 @@ augroup END
 
 let g:working_register = 'p'
 
-" After 7.4.2071, can use v:t_*
-let g:type_func = type(function('getline'))
-let g:type_int = type(0)
-let g:type_float = type(0.0)
-let g:type_str = type('')
-let g:type_list = type([])
-let g:type_dic = type({})
-if exists('v:null')
-  let g:type_bool = type(v:true)
-  let g:type_null = type(v:null)
-endif
-
 function! s:source(path) abort "{{{
   let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
   if filereadable(fpath)
@@ -75,7 +63,7 @@ if !exists('g:noplugin')
     " 先の実行しないとInsertEnterあたりでいろいろ発生してしまう
     syntax enable
     filetype detect
-  "   call s:on_filetype()
+    "   call s:on_filetype()
   endif
 
   call s:source('plugins-config')
