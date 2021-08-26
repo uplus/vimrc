@@ -31,11 +31,9 @@ command! -bang -bar -complete=file -nargs=? EncodeCp932     edit<bang> ++enc=cp9
 command! -bang -bar -complete=file -nargs=? EncodeEuc       edit<bang> ++enc=euc-jp <args>
 command! -bang -bar -complete=file -nargs=? EncodeUtf16     edit<bang> ++enc=ucs-2le <args>
 command! -bang -bar -complete=file -nargs=? EncodeUtf16be   edit<bang> ++enc=ucs-2 <args>
-
-" Aliases.
-command! -bang -bar -complete=file -nargs=? EncodeJis     EncodeIso2022jp<bang> <args>
-command! -bang -bar -complete=file -nargs=? EncodeSjis    EncodeCp932<bang> <args>
-command! -bang -bar -complete=file -nargs=? EncodeUnicode EncodeUtf8<bang> <args>
+command! -bang -bar -complete=file -nargs=? EncodeJis       EncodeIso2022jp<bang> <args>
+command! -bang -bar -complete=file -nargs=? EncodeSjis      EncodeCp932<bang> <args>
+command! -bang -bar -complete=file -nargs=? EncodeUnicode   EncodeUtf8<bang> <args>
 
 
 " Autoload:
@@ -50,16 +48,15 @@ command! ActiveOnly call vimrc#active_only()
 command! DeleteTrashBuffers call vimrc#delete_trash_buffers()
 command! GitTop execute 'cd' vimrc#git_top()
 command! TermRun noautocmd w | call vimrc#terminal_run()
-command! BuffersInfo PP vimrc#buffers_info()
 
 command! -nargs=+ -complete=command Capture call vimrc#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)
 
-" zsh like tabedit.
-if executable('zsh')
-  command! -nargs=1 -complete=customlist,vimrc#zsh_file_completion T tabedit <args>
-endif
+" " zsh like tabedit.
+" if executable('zsh')
+"   command! -nargs=1 -complete=customlist,vimrc#zsh_file_completion T tabedit <args>
+" endif
 
-" #note
+" Note:
 command! -nargs=1 -complete=customlist,vimrc#note_file_completion
       \ Note call vimrc#note_open(<q-args>)
