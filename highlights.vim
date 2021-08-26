@@ -58,17 +58,20 @@ endfunction "}}}
 function! s:set_highlights() "{{{
   call s:set_common_highlights()
 
-  hi Title      ctermfg=118               guifg=#87ff00
+  " hi Title      ctermfg=118               guifg=#87ff00
   hi Error      ctermfg=161  ctermbg=NONE guifg=#d7005f guibg=NONE
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=NONE gui=NONE
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=NONE gui=NONE
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 
   " Diff:
-  hi DiffAdd    ctermfg=255  ctermbg=163  guifg=#eeeeee guibg=#d700af
-  hi DiffDelete ctermfg=200  ctermbg=56   guifg=#ff00d7 guibg=#5f00d7
-  hi DiffChange ctermfg=252  ctermbg=22   guifg=#d0d0d0 guibg=#005f00
-  hi DiffText   ctermfg=226  ctermbg=29   guifg=#ffff00 guibg=#00875f
+  hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#d700af
+  hi DiffDelete  ctermfg=200 ctermbg=56  guifg=#ff00d7 guibg=#5f00d7
+  hi DiffChange  ctermfg=252 ctermbg=22  guifg=#d0d0d0 guibg=#005f00
+  hi DiffText    ctermfg=226 ctermbg=29  guifg=#ffff00 guibg=#00875f
+  hi diffFile    ctermfg=227             guifg=#fed06e
+  hi diffAdded   ctermfg=1               guifg=#c9ea5a
+  hi diffRemoved ctermfg=2               guifg=#ff6666
 
   " Signify:
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
@@ -82,36 +85,20 @@ function! s:set_highlights() "{{{
   hi ALEVirtualTextWarning guifg=#f0ff80 guibg=NONE
   hi ALEVirtualTextInfo    guifg=#80cff0 guibg=NONE
 
-  hi htmlBold   ctermfg=255               guifg=#ffffff               cterm=bold      gui=bold
-  hi! link reviewImage PreProc
-
-  if g:colors_name ==? 'papercolor'
-    hi Normal                         ctermbg=234                guibg=#1c1c1c
-    hi LineNr            ctermfg=244               guifg=#9494c0
-    hi CursorLine        ctermfg=NONE ctermbg=238  guifg=NONE    guibg=#454545
-    hi CursorColumn                   ctermbg=235                guibg=#363626
-    hi SpecialKey        ctermfg=46                guifg=#00ff00
-    hi Comment           ctermfg=111               guifg=#87afff
-    hi Number            ctermfg=75                guifg=#5fafff
-    hi Folded            ctermfg=84   ctermbg=0    guifg=#8fe801 guibg=#000000
-    hi FoldColumn        ctermfg=190               guifg=#e6ff01
-    hi StatusLine        ctermfg=118  ctermbg=234  guifg=#87ff00 guibg=#1c1c1c cterm=NONE gui=NONE
-    hi WildMenu          ctermfg=16   ctermbg=118  guifg=#000000 guibg=#87ff00
-
-    hi mkdLineBreak      ctermbg=240 guibg=#585858
-
-    hi goDirective       ctermfg=35   guifg=#20af40
-    hi goFormatSpecifier ctermfg=207  guifg=#ff50ff
-    hi goSpecialString   ctermfg=226  guifg=#ffff00
-    hi! link goConditional goDeclaration
-  elseif g:colors_name ==? 'srcery'
+  if g:colors_name ==? 'srcery'
     " base color config
-    hi SrceryCyan guifg=#0cc8c3
-    hi SrceryBlue guifg=#5ab6ef
+    hi SrceryCyan        guifg=#0cc8c3
+    hi SrceryBlue        guifg=#5ab6ef
     hi SrceryBrightBlack guifg=#b1a195
-    hi SrceryGreenBold guifg=#61ce68
+    hi SrceryGreenBold   guifg=#61ce68
 
     hi! link Comment SrceryBrightBlack
+
+    " gitcommit
+    hi! link gitcommitSelectedFile SrceryBrightWhite
+    hi! link gitcommitBranch SrceryMagenta
+    hi! link gitcommitSummary SrceryBrightYellow
+    hi! link gitcommitSummary SrceryBrightWhite
 
     " vim-markdown
     hi! mkdLineBreak      ctermbg=240 guibg=#585858 " bgはsrceryで設定できないので直書き
@@ -120,7 +107,7 @@ function! s:set_highlights() "{{{
     hi! link mkdInlineURL mkdLink
     hi! link mkdURL SrceryBrightWhite
 
-    " vim-markdown: code block
+    " vim-markdown: codes
     hi! link mkdCode          SrceryBrightYellow " `hoge`
     hi! link mkdCodeDelimiter SrceryBrightYellow " `hoge`
     hi! link mkdCodeStart     SrceryBrightMagenta " ```hoge
