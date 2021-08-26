@@ -67,6 +67,7 @@ call denite#custom#source('file/rec', 'matchers', [s:default_matcher, 'matcher/h
 " 空にすればファイル順になるソースもある(lineと同じ)
 call denite#custom#source('grep', 'sorters', [])
 call denite#custom#source('file/rec', 'sorters', ['sorter/path'])
+call denite#custom#source('file_mru', 'sorters', ['sorter/oldfiles'])
 
 " Converters:
 call denite#custom#source('file/old', 'converters', ['converter/relative_word'])

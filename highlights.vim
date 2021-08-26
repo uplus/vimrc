@@ -1,6 +1,7 @@
 if !exists('g:noplugin')
   au myac FileType    * ++nested call s:set_colors()
-  au myac ColorScheme * ++once call s:set_highlights()
+  " au myac ColorScheme * ++once call s:set_highlights()
+  au myac ColorScheme * call s:set_highlights()
 endif
 
 function! s:set_common_highlights() abort
@@ -47,8 +48,8 @@ function! s:set_colors() "{{{
 
   if &filetype ==# 'gitcommit'
     call s:colorscheme('gitcommit')
-  elseif &filetype =~# '\v(markdown)'
-    call s:colorscheme('PaperColor')
+  " elseif &filetype =~# '\v(markdown)'
+    " call s:colorscheme('PaperColor')
   else
     call s:colorscheme('srcery')
   endif
@@ -106,15 +107,33 @@ function! s:set_highlights() "{{{
     hi goSpecialString   ctermfg=226  guifg=#ffff00
     hi! link goConditional goDeclaration
   elseif g:colors_name ==? 'srcery'
+    " base color config
     hi SrceryCyan guifg=#0cc8c3
     hi SrceryBlue guifg=#5ab6ef
     hi SrceryBrightBlack guifg=#b1a195
     hi SrceryGreenBold guifg=#61ce68
+
     hi! link Comment SrceryBrightBlack
-  elseif g:colors_name ==? 'molokai'
-    hi LineNr   ctermfg=250  ctermbg=236  guifg=#b6c4c7 guibg=#232526
-    hi Folded   ctermfg=63                guifg=#6e9efe
-    hi Comment  ctermfg=245               guifg=#aaaaaa
-    hi NonText  ctermfg=NONE ctermbg=NONE guifg=NONE    guibg=NONE
+
+    " vim-markdown
+    hi! mkdLineBreak      ctermbg=240 guibg=#585858 " bgはsrceryで設定できないので直書き
+    hi! link mkdBlockquote SrceryBrightGreen
+    hi! link mkdLink SrceryBlue
+    hi! link mkdInlineURL mkdLink
+    hi! link mkdURL SrceryBrightWhite
+
+    " vim-markdown: code block
+    hi! link mkdCode          SrceryBrightYellow " `hoge`
+    hi! link mkdCodeDelimiter SrceryBrightYellow " `hoge`
+    hi! link mkdCodeStart     SrceryBrightMagenta " ```hoge
+    hi! link mkdCodeEnd       SrceryBrightCyan    " ```
+
+    " vim-markdown: headers
+    hi! link htmlH1 SrceryBrightMagenta
+    hi! link htmlH2 SrceryBrightCyan
+    hi! link htmlH3 SrceryBrightGreen
+    hi! link htmlH4 SrceryBrightYellow
+    hi! link htmlH5 SrceryBrightRed
+    hi! link htmlH6 SrceryBrightBlue
   endif
 endfunction "}}}

@@ -72,6 +72,7 @@ repo = 'jparise/vim-graphql'
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 hook_add = '''
+  " behavior
   let g:vim_markdown_no_default_key_mappings = 1
   let g:vim_markdown_autowrite = 0 " 自動writeを無効
   let g:vim_markdown_auto_insert_bullets = 1
@@ -97,16 +98,10 @@ hook_add = '''
   " http://mattn.kaoriya.net/software/vim/20140523124903.htm
   " syn includeで対応する言語
   let g:vim_markdown_fenced_languages = [
-    \  'coffee',
-    \  'css',
-    \  'sass',
-    \  'xml',
     \  'erb=eruby',
-    \  'javascript',
     \  'js=javascript',
     \  'json=javascript',
     \]
-
 '''
 
 [[plugins]]
