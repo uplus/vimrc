@@ -73,7 +73,7 @@ nnoremap <silent>,gd :OpenGitDiffWin<cr>
 nnoremap <silent>,gt :Tig<cr>
 nnoremap <silent>gst :WordTranslate<cr>
 nnoremap <silent>gsg :<c-u>call vimrc#goldendict()<cr>
-nnoremap <silent><space>n :call ResetHightlights()<cr>:nohlsearch<cr>
+nnoremap <silent><space>n :call ResetHighlights()<cr>:nohlsearch<cr>
 
 " inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
 imap <c-j> <cr>

@@ -82,7 +82,7 @@ endfunction
 "}}}
 
 " #Misc
-function! ResetHightlights() abort
+function! ResetHighlights() abort
   " nohlsearch " 関数内では動作しない
   silent! call clever_f#reset()
   silent! LinediffReset
@@ -138,6 +138,9 @@ function! Inject(expr) abort
   endtry
 endfunction
 
+nnoremap <Plug>(OpenPluginGithub) <cmd>call OpenPluginGithub(expand('<cWORD>'))<cr>
+nmap gsp <Plug>(OpenPluginGithub)
+
 function! OpenPluginGithub(name) abort
   call openbrowser#open('https://github.com/' . a:name)
 endfunction
@@ -159,9 +162,6 @@ function! SetAsScratch() abort
   setl noswapfile
   setl nobuflisted
 endfunction
-
-nnoremap <Plug>(OpenPluginGithub) :call OpenPluginGithub(expand('<cWORD>'))<cr>
-nmap gsp <Plug>(OpenPluginGithub)
 
 function Debug(data)
   let g:debug_data = a:data

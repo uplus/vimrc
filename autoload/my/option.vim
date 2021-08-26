@@ -1,3 +1,4 @@
+" オプション設定系
 
 function! my#option#set_tab(num) abort
   let &l:tabstop=a:num " Tab表示幅
@@ -23,4 +24,3 @@ function! my#option#set_syntax() abort
   " (treesitterでサポートされてない or 明示した) filetypeならsyntaxを設定する
   let &l:syntax=&l:filetype
 endfunction
-

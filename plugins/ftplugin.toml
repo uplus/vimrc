@@ -325,7 +325,6 @@ vim = '''
     \ '\<aug\%[roup]\s\+\%(END\>\)\@!\S:\<aug\%[roup]\s\+END\>,' .
     \ '(:)'
 
-  nnoremap <silent><buffer>gd :call vimrc#goto_vim_func_def()<cr>
   nmap <buffer>[m [[
   nmap <buffer>]m ][
   nmap <buffer>[M []

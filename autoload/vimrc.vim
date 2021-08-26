@@ -204,18 +204,6 @@ function! vimrc#open_git_diff(type) abort "{{{
   endfunction
 endfunction "}}}
 
-function! vimrc#goto_vim_func_def() abort "{{{
-  let func_name = matchstr(getline('.'),  '\v%(.\:)?\zs(%(\w|_|#|\.)*)\ze\(.*\)')
-  if empty(func_name)
-    return 1
-  endif
-
-  exec 'lvimgrep /\vfu%[nction]\!?\s+(.\:)?' . func_name . '/' . '`git ls-files`'
-  call setloclist(0, [])
-  silent! HierUpdate
-  normal! zv
-endfunction "}}}
-
 function! vimrc#undo_clear() abort "{{{
   let l:old = &undolevels
   set undolevels=-1
