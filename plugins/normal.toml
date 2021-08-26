@@ -359,7 +359,7 @@ hook_add = '''
   map ;f <cmd>HopChar1AC<cr>
   map ;t <cmd>HopChar1BC<cr>
 
-  " TODO: cursorがある場所を飛ばす (HintDirection BEFORE_CURSOR?)
+  " TODO: cursorがある場所を飛ばす
   " TODO: d;j したとき最後の行が消せない. d;kしたとき現在の行が消せない. 次の行が空行じゃないと再現
   " TODO: ときたま現在の行のaとsが逆になる. ;wも1行目がおかしくなる
 '''
