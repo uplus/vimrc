@@ -71,10 +71,6 @@ function! s:set_highlights() "{{{
   hi DiffChange ctermfg=252  ctermbg=22   guifg=#d0d0d0 guibg=#005f00
   hi DiffText   ctermfg=226  ctermbg=29   guifg=#ffff00 guibg=#00875f
 
-  if &diff
-    hi clear CursorLine
-  endif
-
   " Signify:
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
   hi SignifySignChange ctermfg=226 guifg=#fbff00

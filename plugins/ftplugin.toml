@@ -30,6 +30,7 @@ hook_add = '''
 _ = '''
   setl foldlevelstart=99
   setl foldlevel=99
+  SetTab 2
 
   setl formatoptions=lqMB
     " http://vim-jp.org/vimdoc-ja/change.html#fo-table
@@ -42,10 +43,6 @@ _ = '''
     " q gqでコメントを結合
     " B マルチバイト文字同士の結合で間に空白を挿入しない
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
-
-    " b:undo_ftpluginに '| |'があると起動時に:printされる
-
-  au myac FileType * if exists('b:undo_ftplugin') | let b:undo_ftplugin = substitute(b:undo_ftplugin, '|\s*|', '|', 'g') | endif
 
   if dein#is_sourced('nvim-treesitter')
     setl foldmethod=expr
@@ -193,12 +190,10 @@ json = '''
 '''
 
 markdown = '''
-  SetTab 2
   setl wrap
-  setl conceallevel=0
 
   " 要らないインデントが発生する
-  setl indentkeys=
+  " setl indentkeys=
 '''
 
 neosnippet = '''

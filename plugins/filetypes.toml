@@ -73,13 +73,22 @@ repo = 'jparise/vim-graphql'
 repo = 'plasticboy/vim-markdown'
 hook_add = '''
   let g:vim_markdown_no_default_key_mappings = 1
-  let g:vim_markdown_math = 1
-  let g:vim_markdown_auto_insert_bullets = 0
-  let g:vim_markdown_autowrite = 0
-  let g:vim_markdown_folding_level= 0
-  let g:vim_markdown_folding_disabled = 0
-  let g:vim_markdown_folding_style_pythonic = 0
+  let g:vim_markdown_autowrite = 0 " 自動writeを無効
+  let g:vim_markdown_auto_insert_bullets = 1
+  let g:vim_markdown_new_list_item_indent = 2
 
+  " behavior: folding
+  let g:vim_markdown_folding_disabled = 0 " fdmやfoldtextを設定しない
+  let g:vim_markdown_folding_style_pythonic = 0 " foldlevelを設定しない
+
+  " syntax
+  let g:vim_markdown_conceal = 1
+  let g:vim_markdown_conceal_code_blocks = 0
+  let g:vim_markdown_emphasis_multiline = 0
+  let g:vim_markdown_math = 1
+  let g:vim_markdown_strikethrough = 1
+
+  " syntax: front matter
   let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_toml_frontmatter = 1
   let g:vim_markdown_json_frontmatter = 1
