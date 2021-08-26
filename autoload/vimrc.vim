@@ -7,6 +7,17 @@ function! vimrc#removechars(str, pattern) abort "{{{
   return substitute(a:str, '[' . a:pattern . ']', '', 'g')
 endfunction "}}}
 
+" filetypeに依存せずiskeyword固定でcwordを取得する
+function vimrc#get_cword() abort "{{{
+  let save_iskeyword = &l:iskeyword
+  setl iskeyword=@
+  try
+    return expand('<cword>')
+  finally
+    let &l:iskeyword = save_iskeyword
+  endtry
+endfunction "}}}
+
 " cursolがlastlineにあるかどうか
 function! vimrc#is_lastline(is_visual) abort "{{{
   let last = line('$')
@@ -52,6 +63,30 @@ function! vimrc#inject(list, expr) abort "{{{
   return result
 endfunction "}}}
 
+function! vimrc#capture(cmd_str) abort "{{{
+  redir => g:capture
+  silent execute a:cmd_str
+  redir END
+  return substitute(g:capture, '\%^\n', '', '')
+endfunction "}}}
+
+function! vimrc#capture_win(cmd) abort "{{{
+  redir => result
+  silent execute a:cmd
+  redir END
+
+  let bufname = 'Capture: ' . a:cmd
+  new
+  setlocal bufhidden=unload
+  setlocal nobuflisted
+  setlocal buftype=nofile
+  setlocal noswapfile
+  silent file `=bufname`
+  silent put =result
+  1,2delete _
+endfunction "}}}
+
+
 " textobj
 " blankline "{{{
 function! vimrc#textobj_blankline(flags) abort
@@ -88,6 +123,42 @@ function! vimrc#operator_space_fold(motion_wise) abort "{{{
   " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
 endfunction "}}}
 
+function! vimrc#text_move(count, is_up, is_visual) abort "{{{
+  let save_lazyredraw = &l:lazyredraw
+  setl lazyredraw
+  try
+    let pos  = getcurpos()
+    let delete = (a:is_visual? '*' : '') . 'delete ' . g:working_register
+
+    if a:is_up
+      let line = a:count
+      if vimrc#is_lastline(a:is_visual)
+        let line -= 1
+      endif
+
+      noautocmd exec delete
+      silent! exec 'normal!' repeat('k', line)
+      execute 'put!' g:working_register
+    else
+      noautocmd exec delete
+      silent! exec 'normal!' repeat('j', a:count-1)
+      execute 'put' g:working_register
+    endif
+
+    let pos[1] = line('.')
+    call setpos('.', pos)
+
+    if a:is_visual
+      normal! '[V']
+    else
+      silent! call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
+    endif
+  finally
+    let &l:lazyredraw = save_lazyredraw
+  endtry
+endfunction "}}}
+
+
 " arg1: command string
 " arg2: open command
 function! vimrc#terminal(...) abort
@@ -106,7 +177,7 @@ function! vimrc#terminal(...) abort
   startinsert
 endfunction
 
-" cmd毎にbufferを分けたい
+" TODO: cmd毎にbufferを分けたい
 function! vimrc#working_terminal(...) abort "{{{
   let l:cmd = get(a:, 1, '')
   let l:open_cmd = get(a:, 2, 'botright split')
@@ -120,7 +191,6 @@ function! vimrc#working_terminal(...) abort "{{{
     au myac TermClose <buffer> unlet g:vimrc#working_terminal_nr
   endif
 endfunction "}}}
-
 
 function! vimrc#add_repo() abort "{{{
   let str = @+
@@ -218,6 +288,28 @@ function! vimrc#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
 endfunction "}}}
 
+" ---- buffer
+
+function! vimrc#buffer_count(...) abort "{{{
+  if a:0 == 0
+    let cmd = 'ls!'
+  elseif a:1 ==# 'a'   " active
+    let cmd = 'ls! a'
+  elseif a:1 ==# 'l'   " listed
+    let cmd = 'ls'
+  else
+    let cmd = 'ls!'
+  endif
+
+  return len(split(vimrc#capture(cmd), "\n"))
+endfunction "}}}
+
+" return list [bufnr, status, name]
+function! vimrc#buffers_info(...) abort "{{{
+  return map(split(vimrc#capture('ls' . (a:0? a:1 : '!')), '\n'),
+        \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]')
+endfunction "}}}
+
 function! vimrc#current_only() abort "{{{
   let l:old = &report
   set report=1000
@@ -265,6 +357,8 @@ function! vimrc#delete_trash_buffers() abort "{{{
   endif
 endfunction "}}}
 
+" ---- note
+
 function! vimrc#note_open(name) abort "{{{
   let l:name = system(['note', '-S', a:name])[0:-2]
   if name ==# ''
@@ -302,123 +396,8 @@ function! vimrc#note_file_completion(lead, line, pos) abort "{{{
   return l:files
 endfunction "}}}
 
-function! vimrc#capture(cmd_str) abort "{{{
-  redir => g:capture
-  silent execute a:cmd_str
-  redir END
-  return substitute(g:capture, '\%^\n', '', '')
-endfunction "}}}
 
-function! vimrc#capture_win(cmd) abort "{{{
-  redir => result
-  silent execute a:cmd
-  redir END
-
-  let bufname = 'Capture: ' . a:cmd
-  new
-  setlocal bufhidden=unload
-  setlocal nobuflisted
-  setlocal buftype=nofile
-  setlocal noswapfile
-  silent file `=bufname`
-  silent put =result
-  1,2delete _
-endfunction "}}}
-
-function! vimrc#text_move(count, is_up, is_visual) abort "{{{
-  let save_lazyredraw = &l:lazyredraw
-  setl lazyredraw
-  try
-    let pos  = getcurpos()
-    let delete = (a:is_visual? '*' : '') . 'delete ' . g:working_register
-
-    if a:is_up
-      let line = a:count
-      if vimrc#is_lastline(a:is_visual)
-        let line -= 1
-      endif
-
-      noautocmd exec delete
-      silent! exec 'normal!' repeat('k', line)
-      execute 'put!' g:working_register
-    else
-      noautocmd exec delete
-      silent! exec 'normal!' repeat('j', a:count-1)
-      execute 'put' g:working_register
-    endif
-
-    let pos[1] = line('.')
-    call setpos('.', pos)
-
-    if a:is_visual
-      normal! '[V']
-    else
-      silent! call repeat#set("\<Plug>(Move" . (a:is_up? 'Up)': 'Down)'), a:count)
-    endif
-  finally
-    let &l:lazyredraw = save_lazyredraw
-  endtry
-endfunction "}}}
-
-function! vimrc#zsh_file_completion(lead, line, pos) abort "{{{
-  if a:lead ==# '#'
-    return map(vimrc#buffers_info(''), 'v:val[2]')
-  elseif a:lead ==# ''
-    let query = ''
-  elseif a:lead =~# '\v^\~[^/]+'
-    echo 'zsh file completion'
-    " Slow
-    let parts = split(a:lead, '/')
-    let parts[0] = vimrc#expand_dir_alias(parts[0])
-    if v:shell_error
-      return []
-    endif
-    let query = join(parts, '/')
-  elseif stridx(a:lead, '/') != -1
-    let query = a:lead
-  else
-    let pre_glob = glob('*' . a:lead . '*', 1, 1)
-    if len(pre_glob) == 1 && isdirectory(pre_glob[0])
-      let query = vimrc#add_slash_tail(pre_glob[0])
-    else
-      let query = '*' . a:lead
-    endif
-  endif
-
-  let cands = []
-  for path in glob(query . '*', 1, 1)
-    if isdirectory(path)
-      let path  .= '/'
-    endif
-    let path = vimrc#home2tilde(path)
-    let cands += [path]
-  endfor
-
-  return cands
-endfunction "}}}
-
-function! vimrc#buffer_count(...) abort "{{{
-  if a:0 == 0
-    let cmd = 'ls!'
-  elseif a:1 ==# 'a'   " active
-    let cmd = 'ls! a'
-  elseif a:1 ==# 'l'   " listed
-    let cmd = 'ls'
-  else
-    let cmd = 'ls!'
-  endif
-  echo cmd
-  return len(split(vimrc#capture(cmd), "\n"))
-endfunction "}}}
-
-" return list [bufnr, status, name]
-function! vimrc#buffers_info(...) abort "{{{
-  return map(split(vimrc#capture('ls' . (a:0? a:1 : '!')), '\n'),
-        \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
-endfunction "}}}
-
-
-" ---- function groups ----
+" ---- syntax
 " #syntax info
 function! vimrc#get_syn_id(transparent) abort "{{{
   let synid = synID(line('.'), col('.'), 1)
@@ -465,7 +444,45 @@ function! vimrc#get_syn_info() abort "{{{
   endif
 endfunction "}}}
 
-" #terminal run
+" ----
+
+function! vimrc#zsh_file_completion(lead, line, pos) abort "{{{
+  if a:lead ==# '#'
+    return map(vimrc#buffers_info(''), 'v:val[2]')
+  elseif a:lead ==# ''
+    let query = ''
+  elseif a:lead =~# '\v^\~[^/]+'
+    echo 'zsh file completion'
+    " Slow
+    let parts = split(a:lead, '/')
+    let parts[0] = vimrc#expand_dir_alias(parts[0])
+    if v:shell_error
+      return []
+    endif
+    let query = join(parts, '/')
+  elseif stridx(a:lead, '/') != -1
+    let query = a:lead
+  else
+    let pre_glob = glob('*' . a:lead . '*', 1, 1)
+    if len(pre_glob) == 1 && isdirectory(pre_glob[0])
+      let query = vimrc#add_slash_tail(pre_glob[0])
+    else
+      let query = '*' . a:lead
+    endif
+  endif
+
+  let cands = []
+  for path in glob(query . '*', 1, 1)
+    if isdirectory(path)
+      let path  .= '/'
+    endif
+    let path = vimrc#home2tilde(path)
+    let cands += [path]
+  endfor
+
+  return cands
+endfunction "}}}
+
 " quickrunの設定をパースしてbuiltin-termで実行する
 " TODO deprecated
 function! vimrc#terminal_run() abort "{{{
@@ -500,16 +517,6 @@ function! vimrc#parse_quickrun_config() abort "{{{
         \ 'args':     get(config, 'args', ''),
         \ 'exec':     get(config, 'exec',  '%c %o %s %a'),
         \ }
-endfunction "}}}
-
-function vimrc#get_cword() abort "{{{
-  let save_iskeyword = &l:iskeyword
-  setl iskeyword=@
-  try
-    return expand('<cword>')
-  finally
-    let &l:iskeyword = save_iskeyword
-  endtry
 endfunction "}}}
 
 function! vimrc#goldendict(...) abort "{{{
