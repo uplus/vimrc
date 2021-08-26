@@ -70,7 +70,7 @@ if &g:loadplugins
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
 
     " echo luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil")
-    au FileType * call SetSyntax()
+    au FileType * call my#option#set_syntax()
     " au VimEnter * call lightline#highlight()
     " au VimEnter * if &l:ft ==# '' | filetype detect | endif
   augroup END

@@ -27,10 +27,10 @@ hook_add = '''
 
 [ftplugin]
 
+# 各filetypeののftpluginの後に実行される
 _ = '''
   setl foldlevelstart=99
   setl foldlevel=99
-  SetTab 2
 
   setl formatoptions=lqMB
     " http://vim-jp.org/vimdoc-ja/change.html#fo-table
@@ -44,8 +44,8 @@ _ = '''
     " B マルチバイト文字同士の結合で間に空白を挿入しない
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
 
-  " TODO: treesitterが有効なbufのみにする
   if dein#is_sourced('nvim-treesitter')
+    " window単位なのでbuf毎の設定などはできない
     setl foldmethod=expr
     setl foldexpr=nvim_treesitter#foldexpr()
   end

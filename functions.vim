@@ -4,30 +4,6 @@ function! IsFile(path) abort
   return !isdirectory(a:path) && glob(a:path) !=# ''
 endfunction
 
-function! SetTab(num) abort
-  let &l:tabstop=a:num " Tab表示幅
-  let &l:softtabstop = &l:tabstop " Tab押下時のカーソル移動量
-  let &l:shiftwidth = &l:tabstop " インデント幅
-  call SetBreakindentopt()
-endfunction
-
-function! SetBreakindentopt() abort
-  let l:shift = 0 == &l:tabstop ? 0 : &l:tabstop - 2
-
-  " shift:{n} shift num
-  " sbr       ^の位置ではなく0の位置に入れる
-  let &l:breakindentopt = printf('shift:%d', l:shift)
-endfunction
-
-function! SetSyntax() abort
-  if luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil") && -1 == index(['vim', 'dockerfile'], &filetype)
-    return
-  endif
-
-  " (treesitterでサポートされてない or 明示した) filetypeならsyntaxを設定する
-  let &l:syntax=&l:filetype
-endfunction
-
 " #AutoSave "{{{
 let g:my_autosave = get(g:, 'my_autosave', 0)
 command! EnableAutoSave let g:my_autosave = 1

@@ -36,7 +36,7 @@ if has('linebreak')
 
   " breakした行の先頭にうっすら挿入
   set showbreak=>>
-  au myac OptionSet tabstop call SetBreakindentopt()
+  au myac OptionSet tabstop call my#option#set_breakindentopt()
 endif
 " }}}
 
@@ -47,6 +47,7 @@ set smarttab      " 削除とかいい感じに
 set nocopyindent  " expandtabを無視して既存行のタブで判定する
 set nopreserveindent " ==などでインデントを変更してもタブ文字を保持
 " set vartabstop varsofttabstop
+call my#option#set_tab(2)
 "}}}
 
 " #fold {{{

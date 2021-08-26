@@ -1,4 +1,4 @@
-command! -nargs=1 SetTab call SetTab(<args>)
+command! -nargs=1 SetTab call my#option#set_tab(<args>)
 command! Q qall!
 command! W w!
 command! Naw noautocmd write
