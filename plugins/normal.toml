@@ -395,20 +395,6 @@ EOF
 '''
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
-if = 0
-on_map = ['<Plug>(easymotion-']
-hook_add = '''
-  let g:EasyMotion_enter_jump_first = 1 " Enter jump to first match
-  let g:EasyMotion_space_jump_first = 1 " Space jump to first match
-
-  map ;h <Plug>(easymotion-linebackward)
-  map ;l <Plug>(easymotion-lineforward)
-
-  " nmap <expr><tab> EasyMotion#is_active()? '<Plug>(easymotion-next)' : '<tab>'
-'''
-
-[[plugins]]
 repo = 'rhysd/clever-f.vim'
 hook_add = '''
   let g:clever_f_ignore_case       = 0
@@ -422,9 +408,6 @@ hook_add = '''
 
   let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
 '''
-# repo = 'chrisbra/improvedft'      # can input many charactores
-# repo = 'deris/vim-shot-f'      # show oneshot jump points
-
 # [[plugins]]
 # repo = 'matchit.zip'
 
@@ -527,7 +510,6 @@ hook_add =  '''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
-on_cmd = ['Gina']
 hook_add = '''
   let g:gina#command#blame#formatter#timestamp_months = 0
   let g:gina#command#blame#formatter#timestamp_format1 = '%Y/%m/%d'
@@ -593,10 +575,6 @@ hook_add = '''
   let g:go_template_autocreate = 0
 '''
 
-# [[plugins]]
-# repo = 'dgryski/vim-godef'
-
-
 # misc
 
 [[plugins]]
@@ -636,13 +614,6 @@ repo = 'sgur/vim-gf-autoload'
 repo = 'hujo/gf-user-vimfn'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-if = 0
-hook_add = '''
-  let g:context_filetype#search_offset = 200
-'''
-
-[[plugins]]
 repo = 'romgrk/nvim-treesitter-context'
 if = 0
 depends = ['nvim-treesitter']
@@ -652,20 +623,6 @@ lua <<EOF
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
   }
 EOF
-'''
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-if = 0
-# if = "has('nvim')"
-depends = ['context_filetype.vim']
-hook_add = '''
-  let g:precious_enable_switchers = {
-    \ '*': { 'setfiletype': 0 },
-    \ 'markdown': { 'setfiletype': 1 },
-    \ 'toml': { 'setfiletype': 1 },
-    \ 'html': { 'setfiletype': 1 },
-    \}
 '''
 
 [[plugins]]
