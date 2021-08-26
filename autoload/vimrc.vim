@@ -53,7 +53,7 @@ function vimrc#remove_opt_val(optname, chars) abort
 endfunction
 
 function! vimrc#inject(list, expr) abort
-  if type(a:expr) ==# g:type_str
+  if type(a:expr) ==# v:t_string
     let Func = {memo, v -> eval(printf("%s %s %s", memo, a:expr, v))}
   else
     let Func = a:expr
