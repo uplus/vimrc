@@ -1,29 +1,8 @@
 [[plugins]]
-repo = 'tomasr/molokai'
-
-[[plugins]]
 repo = 'djjcast/mirodark'
 
 [[plugins]] # 暗めの白
 repo = 'vim-scripts/newspaper.vim'
-
-[[plugins]]
-repo = 'NLKNguyen/papercolor-theme'
-hook_add = '''
-  let g:PaperColor_Theme_Options = {
-        \   'language': {
-        \     'python': {
-        \       'highlight_builtins' : 1
-        \     },
-        \     'c': {
-        \       'highlight_builtins' : 1
-        \     },
-        \     'cpp': {
-        \       'highlight_standard_library': 1
-        \     }
-        \   }
-        \ }
-'''
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'

@@ -46,12 +46,10 @@ function! s:set_colors() "{{{
     return
   endif
 
+  call s:colorscheme('srcery')
+
   if &filetype ==# 'gitcommit'
-    call s:colorscheme('gitcommit')
-  " elseif &filetype =~# '\v(markdown)'
-    " call s:colorscheme('PaperColor')
   else
-    call s:colorscheme('srcery')
   endif
 
   let g:colors_seted = 1

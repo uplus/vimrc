@@ -96,16 +96,6 @@ repo = 'RRethy/vim-hexokinase'
 on_cmd = ['HexokinaseToggle', 'HexokinaseRefresh']
 build = 'make hexokinase'
 
-[[plugins]]
-if = 0
-repo = 'lilydjwg/colorizer'
-on_cmd = ['ColorClear', 'ColorToggle', 'ColorHighlight']
-hook_add = '''
-  let g:colorizer_nomap   = 1
-  let g:colorizer_startup = 0
-  nmap \hz <Plug>Colorizer
-'''
-
 
 # action
 
