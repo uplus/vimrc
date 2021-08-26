@@ -118,6 +118,12 @@ denite-filter = '''
   call deoplete#custom#buffer_option('auto_complete', v:false)
 '''
 
+[[plugins]] # quickfixの各行を編集、反映できる
+repo = 'thinca/vim-qfreplace'
+hook_add = '''
+  au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+'''
+
 # 容量が1GBぐらいある
 # [[plugins]]
 # repo = 'liuchengxu/vim-clap'

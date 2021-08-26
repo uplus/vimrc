@@ -45,10 +45,7 @@ function! s:set_colors() "{{{
     return
   endif
 
-  if &filetype ==# 'ruby'
-    call s:colorscheme('srcery')
-    call s:colorscheme('railscasts')
-  elseif &filetype ==# 'gitcommit'
+  if &filetype ==# 'gitcommit'
     call s:colorscheme('gitcommit')
   elseif &filetype =~# '\v(markdown)'
     call s:colorscheme('PaperColor')
