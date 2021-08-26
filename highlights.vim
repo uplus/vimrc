@@ -26,6 +26,7 @@ hi! link FoldColumn  LineNr
 hi! link SignColumn  LineNr
 hi clear TabLineFill
 
+" ファイルタイプでスキーマを変える実装を消す
 " colorschemaの重複読み込みを避ける
 function! s:colorscheme(name) abort "{{{
   if g:colors_name !=# a:name
@@ -85,27 +86,28 @@ function! s:set_highlights() "{{{
   hi ALEVirtualTextWarning guifg=#f0ff80 guibg=NONE
   hi ALEVirtualTextInfo    guifg=#80cff0 guibg=NONE
 
-  if g:colors_name ==? 'srcery'
-    " base color config
-    hi SrceryCyan        guifg=#0cc8c3
-    hi SrceryBlue        guifg=#5ab6ef
-    hi SrceryBrightBlack guifg=#b1a195
-    hi SrceryGreenBold   guifg=#61ce68
+  " Hop:
+  hi HopNextKey   guifg=#00dfff gui=bold ctermfg=45 cterm=bold
+  hi! link HopNextKey1 HopNextKey
+  hi! link HopNextKey2 HopNextKey
+  hi HopUnmatched guifg=#666666 ctermfg=242
 
+  if g:colors_name ==? 'srcery'
     hi! link Comment SrceryBrightBlack
 
     " gitcommit
     hi! link gitcommitSelectedFile SrceryBrightWhite
     hi! link gitcommitBranch SrceryMagenta
-    hi! link gitcommitSummary SrceryBrightYellow
     hi! link gitcommitSummary SrceryBrightWhite
+    hi! link gitcommitDiscardedFile gitcommitSelectedFile
 
     " vim-markdown
-    hi! mkdLineBreak      ctermbg=240 guibg=#585858 " bgはsrceryで設定できないので直書き
+    " bgはsrceryで設定できないので直書き
+    hi! mkdLineBreak       ctermbg=240 guibg=#585858
     hi! link mkdBlockquote SrceryBrightGreen
-    hi! link mkdLink SrceryBlue
-    hi! link mkdInlineURL mkdLink
-    hi! link mkdURL SrceryBrightWhite
+    hi! link mkdLink       SrceryBrightBlue
+    hi! link mkdInlineURL  mkdLink
+    hi! link mkdURL        SrceryBrightWhite
 
     " vim-markdown: codes
     hi! link mkdCode          SrceryBrightYellow " `hoge`
@@ -117,7 +119,7 @@ function! s:set_highlights() "{{{
     hi! link htmlH1 SrceryBrightMagenta
     hi! link htmlH2 SrceryBrightCyan
     hi! link htmlH3 SrceryBrightGreen
-    hi! link htmlH4 SrceryBrightYellow
+    hi! link htmlH4 SrceryYellow
     hi! link htmlH5 SrceryBrightRed
     hi! link htmlH6 SrceryBrightBlue
   endif
