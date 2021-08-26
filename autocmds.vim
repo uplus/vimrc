@@ -1,6 +1,6 @@
 " #autocmds
 augroup myac
-  " au CursorMoved * call vimrc#auto_cursorcolumn()
+  " au CursorMoved * call my#option#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au SwapExists * let g:swapname = v:swapname
   au CursorHold *.toml syntax sync minlines=300

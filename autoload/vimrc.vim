@@ -3,40 +3,40 @@ silent! let s:V = vital#of('vital')
 silent! let s:Vuri = s:V.import('Web.URI')
 
 " #helpers
-function! vimrc#removechars(str, pattern) abort
+function! vimrc#removechars(str, pattern) abort "{{{
   return substitute(a:str, '[' . a:pattern . ']', '', 'g')
-endfunction
+endfunction "}}}
 
 " cursolがlastlineにあるかどうか
-function! vimrc#is_lastline(is_visual) abort
+function! vimrc#is_lastline(is_visual) abort "{{{
   let last = line('$')
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
-endfunction
+endfunction "}}}
 
-function vimrc#home2tilde(str) abort
+function vimrc#home2tilde(str) abort "{{{
   return substitute(a:str, '^' . expand('~'), '~', '')
-endfunction
+endfunction "}}}
 
-function! vimrc#add_slash_tail(str) abort
+function! vimrc#add_slash_tail(str) abort "{{{
   return substitute(a:str, '/*$', '/', '')
-endfunction
+endfunction "}}}
 
-function! vimrc#delete_str(str, pattern, ...) abort
+function! vimrc#delete_str(str, pattern, ...) abort "{{{
   return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
-endfunction
+endfunction "}}}
 
-function vimrc#expand_dir_alias(str) abort
+function vimrc#expand_dir_alias(str) abort "{{{
     let path = system(printf("zsh -ic 'echo -n %s'", a:str))
     return vimrc#home2tilde(path)
-endfunction
+endfunction "}}}
 
-function vimrc#remove_opt_val(optname, chars) abort
+function vimrc#remove_opt_val(optname, chars) abort "{{{
   for c in  split(a:chars, '.\zs')
     execute printf('setl %s-=%s', a:optname, c)
   endfor
-endfunction
+endfunction "}}}
 
-function! vimrc#inject(list, expr) abort
+function! vimrc#inject(list, expr) abort "{{{
   if type(a:expr) ==# v:t_string
     let Func = {memo, v -> eval(printf("%s %s %s", memo, a:expr, v))}
   else
@@ -50,7 +50,7 @@ function! vimrc#inject(list, expr) abort
     let result = Func(result, v)
   endfor
   return result
-endfunction
+endfunction "}}}
 
 " textobj
 " blankline "{{{
@@ -120,6 +120,7 @@ function! vimrc#working_terminal(...) abort "{{{
     au myac TermClose <buffer> unlet g:vimrc#working_terminal_nr
   endif
 endfunction "}}}
+
 
 function! vimrc#add_repo() abort "{{{
   let str = @+
@@ -414,19 +415,6 @@ endfunction "}}}
 function! vimrc#buffers_info(...) abort "{{{
   return map(split(vimrc#capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]' )
-endfunction "}}}
-
-function! vimrc#auto_cursorcolumn() abort "{{{
-  if &buftype !=# '' || &filetype ==# 'markdown'
-    setlocal nocursorcolumn
-    return
-  endif
-
-  if virtcol('.')-1 <= indent('.') && 1 < virtcol('.')
-    setlocal cursorcolumn
-  else
-    setlocal nocursorcolumn
-  endif
 endfunction "}}}
 
 
