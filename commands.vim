@@ -14,9 +14,12 @@ command! Tags call Tags()
 command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! ReloadKeymap source ~/.vim/keymaps.vim
+" 一時的なバッファーを作る
 command! TmpBuffer exec winheight(0)/5 . 'new +call\ SetAsScratch()'
+" 句読点を論文用に置換する
 command! ReplacePunctuation %s/\v(、|。)/\=tr(submatch(1), '、。', '，．')
-
+" 編集したら随時diffを表示するバッファーを作る
+command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 " g<c-g>は改行を含めてしまう
 command! -range=% CountChar <line1>,<line2>s/.//ggn
 
@@ -34,7 +37,6 @@ command! -bang -bar -complete=file -nargs=? EncodeUtf16be   edit<bang> ++enc=ucs
 command! -bang -bar -complete=file -nargs=? EncodeJis       EncodeIso2022jp<bang> <args>
 command! -bang -bar -complete=file -nargs=? EncodeSjis      EncodeCp932<bang> <args>
 command! -bang -bar -complete=file -nargs=? EncodeUnicode   EncodeUtf8<bang> <args>
-
 
 " Autoload:
 command! AddRepo call vimrc#add_repo()
