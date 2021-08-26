@@ -310,7 +310,7 @@ vim = '''
     syntax sync minlines=300
   endif
 
-  " setl foldmethod=marker
+  setl foldmethod=marker
   setl keywordprg=:help
   setl iskeyword-=:
   setl iskeyword-=#

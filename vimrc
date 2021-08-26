@@ -68,7 +68,9 @@ if &g:loadplugins
     au VimEnter * call dein#call_hook('post_source')
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
-    au FileType vim,markdown,make,dockerfile,neosnippet,help,defx let &l:syntax=&l:filetype
+
+    " echo luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil")
+    au FileType * call SetSyntax()
     " au VimEnter * call lightline#highlight()
     " au VimEnter * if &l:ft ==# '' | filetype detect | endif
   augroup END
