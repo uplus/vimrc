@@ -526,7 +526,7 @@ function! vimrc#parse_quickrun_config() abort "{{{
         \ }
 endfunction "}}}
 
-function vimrc#get_cword() abort
+function vimrc#get_cword() abort "{{{
   let save_iskeyword = &l:iskeyword
   setl iskeyword=@
   try
@@ -534,9 +534,9 @@ function vimrc#get_cword() abort
   finally
     let &l:iskeyword = save_iskeyword
   endtry
-endfunction
+endfunction "}}}
 
-function! vimrc#goldendict(...) abort
+function! vimrc#goldendict(...) abort "{{{
   let word = a:0? a:1 : vimrc#get_cword()
   call jobstart(['goldendict', word], {'detach': 1})
-endfunction
+endfunction "}}}

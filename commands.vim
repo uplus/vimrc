@@ -24,8 +24,7 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 command! FcitxOff call Job('fcitx5-remote', '-c')
 command! TmpCommit Gina tmpc
 
-" #encoding Reopening with a specific character."{{{
-" In particular effective when I am garbled in a terminal.
+" Encoding:
 command! -bang -bar -complete=file -nargs=? EncodeUtf8      edit<bang> ++enc=utf-8 <args>
 command! -bang -bar -complete=file -nargs=? EncodeIso2022jp edit<bang> ++enc=iso-2022-jp <args>
 command! -bang -bar -complete=file -nargs=? EncodeCp932     edit<bang> ++enc=cp932 <args>
@@ -37,11 +36,9 @@ command! -bang -bar -complete=file -nargs=? EncodeUtf16be   edit<bang> ++enc=ucs
 command! -bang -bar -complete=file -nargs=? EncodeJis     EncodeIso2022jp<bang> <args>
 command! -bang -bar -complete=file -nargs=? EncodeSjis    EncodeCp932<bang> <args>
 command! -bang -bar -complete=file -nargs=? EncodeUnicode EncodeUtf8<bang> <args>
-"}}}
 
 
-" ---- autoload ----
-command! -range AddGuiColor <line1>,<line2>call vimrc#add_gui_color()
+" Autoload:
 command! AddRepo call vimrc#add_repo()
 command! SyntaxInfo call vimrc#get_syn_info()
 command! -complete=highlight -nargs=* Hi call vimrc#highlight(<f-args>)

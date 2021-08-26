@@ -340,8 +340,7 @@ nnoremap gaa ga
 xnoremap gaa ga
 nnoremap ga8 g8
 xnoremap ga8 g8
-nnoremap gah :SyntaxInfo<CR>
-xnoremap gah :SyntaxInfo<CR>
+nnoremap gah <cmd>call vimrc#get_syn_info()<cr>
 nnoremap ga<C-G> g<C-G>
 xnoremap ga<C-G> g<C-G>
 nnoremap ga <nop>
