@@ -4,60 +4,50 @@ if 0 | endif
 
 language message C
 scriptencoding=utf-8
+
 " Very very high speed! ~300ms
 set shell=/bin/sh
 
-augroup myac
-  autocmd!
-  " autocmd FileType,Syntax,BufNewFile,BufNew,BufRead * call s:on_filetype()
-augroup END
-
 let g:working_register = 'p'
-
-function! s:source(path) abort "{{{
-  let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
-  if filereadable(fpath)
-    execute 'source' fnameescape(fpath)
-  endif
-endfunction "}}}
-
-function! s:on_filetype() abort "{{{
-  if execute('filetype') =~# 'OFF'
-    " Lazy loading
-    silent! filetype plugin indent on
-    syntax enable
-    filetype detect
-  endif
-endfunction "}}}
-
 let $CACHE = $HOME . '/.cache'
 
 if !isdirectory($CACHE)
   call mkdir($CACHE, 'p')
 endif
 
-" #release keymaps"{{{
+" release keymaps
 let mapleader = ';'
-nnoremap Q <Nop>
-nnoremap ; <Nop>
-xnoremap ; <Nop>
-nnoremap , <Nop>
-xnoremap , <Nop>
-nnoremap s <Nop>
-xnoremap s <Nop>
-nnoremap gs <Nop>
-xnoremap gs <Nop>
-nnoremap gR <Nop>
-xnoremap gR <Nop>
-nnoremap g8 <Nop>
-xnoremap g8 <Nop>
-"}}}
+for key in ['Q', ';', ',', 's', 'gs', 'gR', 'g8']
+  execute 'noremap' key '<Nop>'
+endfor
 
+" provider config
 let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:python3_host_prog = '/usr/bin/python3'
+
+augroup myac
+  autocmd!
+  " autocmd FileType,Syntax,BufNewFile,BufNew,BufRead * call s:on_filetype()
+augroup END
+
+function! s:source(path) abort
+  let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
+  if filereadable(fpath)
+    execute 'source' fnameescape(fpath)
+  endif
+endfunction
+
+function! s:on_filetype() abort
+  if execute('filetype') =~# 'OFF'
+    " Lazy loading
+    silent! filetype plugin indent on
+    syntax enable
+    filetype detect
+  endif
+endfunction
 
 " load dein
 if !exists('g:noplugin')
