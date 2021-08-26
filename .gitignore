@@ -1,8 +1,4 @@
 .*
 !.gitkeep
-bundle/
 tmp/
-before.vim
 after.vim
-plugins/trial.toml
-disable-plugin-list
