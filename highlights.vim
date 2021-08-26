@@ -1,70 +1,35 @@
-if !exists('g:noplugin')
-  au myac FileType    * ++nested call s:set_colors()
-  " au myac ColorScheme * ++once call s:set_highlights()
-  au myac ColorScheme * call s:set_highlights()
-endif
+" filetypeでスキーマを切り替えていたときの名残
+function! s:set_default_highlights() abort
+  hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
+  hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
+  hi Visual       cterm=reverse gui=reverse
 
+  hi! link Statement   Visual
+  hi! link LineNr      Normal
+  hi! link FoldColumn  LineNr
+  hi! link SignColumn  LineNr
+  hi clear TabLineFill
+endfunction
+
+" filetypeでスキーマを切り替えていたときの名残
 function! s:set_common_highlights() abort
   hi Pmenu        ctermfg=255  ctermbg=240 guifg=#eeeeee guibg=#3a3a3a cterm=NONE gui=NONE
   hi PmenuSel     ctermfg=255  ctermbg=250 guifg=#eaeaea guibg=#5a5a5a cterm=NONE gui=NONE
+  hi! link WildMenu Pmenu
+
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#eeeeee guibg=#131313 cterm=NONE gui=NONE
   hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#204080 cterm=NONE gui=NONE
   hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#20a0f0 cterm=NONE gui=bold
-  hi! link WildMenu Pmenu
-endfunction
-
-let g:colors_name = ''
-let g:colors_seted = 0
-hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
-hi Visual       cterm=reverse gui=reverse
-hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
-call s:set_common_highlights()
-
-hi! link Statement Visual
-hi! link LineNr      Normal
-hi! link FoldColumn  LineNr
-hi! link SignColumn  LineNr
-hi clear TabLineFill
-
-" ファイルタイプでスキーマを変える実装を消す
-" colorschemaの重複読み込みを避ける
-function! s:colorscheme(name) abort "{{{
-  if g:colors_name !=# a:name
-    try
-      execute 'colorscheme' a:name
-    catch /Cannot find color scheme/
-      echomsg printf("catch: Cannot find color scheme '%s'", a:name)
-    endtry
-  endif
-endfunction "}}}
-
-function! s:set_colors() "{{{
-  if 0 != g:colors_seted
-    return
-  endif
-
-  if -1 != index(['', 'denite', 'denite-filter', 'quickrun', 'qf'], &filetype)
-    return
-  endif
-
-  call s:colorscheme('srcery')
-
-  if &filetype ==# 'gitcommit'
-  else
-  endif
-
-  let g:colors_seted = 1
-endfunction "}}}
-
-function! s:set_highlights() "{{{
-  call s:set_common_highlights()
 
   " hi Title      ctermfg=118               guifg=#87ff00
   hi Error      ctermfg=161  ctermbg=NONE guifg=#d7005f guibg=NONE
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=NONE gui=NONE
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=NONE gui=NONE
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
+endfunction
 
+" filetypeでスキーマを切り替えていたときの名残
+function! s:set_overwrite_highlights()
   " Diff:
   hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#d700af
   hi DiffDelete  ctermfg=200 ctermbg=56  guifg=#ff00d7 guibg=#5f00d7
@@ -123,4 +88,11 @@ function! s:set_highlights() "{{{
     hi! link htmlH5 SrceryBrightRed
     hi! link htmlH6 SrceryBrightBlue
   endif
-endfunction "}}}
+endfunction
+
+if &g:loadplugins
+  call s:set_default_highlights()
+  colorscheme srcery
+  call s:set_common_highlights()
+  call s:set_overwrite_highlights()
+endif

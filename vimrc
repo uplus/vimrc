@@ -50,7 +50,7 @@ function! s:on_filetype() abort
 endfunction
 
 " load dein
-if !exists('g:noplugin')
+if &g:loadplugins
   call s:source('dein')
 
   if has('vim_starting') && !empty(argv())
