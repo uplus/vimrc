@@ -526,50 +526,7 @@ function! vimrc#parse_quickrun_config() abort "{{{
         \ }
 endfunction "}}}
 
-" #word translate
-function! vimrc#word_translate_weblio(word) abort "{{{
-  let l:html    = webapi#http#get('ejje.weblio.jp/content/' . tolower(a:word)).content
-  let l:content = matchstr(l:html, '\Vname="description"\v.{-}content\=\"\zs.{-}\ze\"\>')
-  let l:body    = matchstr(l:content, '\v.{-1,}\ze\s{-}\-\s', 0, 1)
-  let l:body = tr(l:body, '《》【】', '<>[]')
-  let l:body = vimrc#removechars(l:body, '★→１２')
-  let l:body = substitute(l:body, '\v(\d+)\s*', '\1', 'g')
-  let l:body = substitute(l:body, '\V&#034;', '"', 'g')
-  let l:body = substitute(l:body, '\V&#038;', '&', 'g')
-  let l:body = substitute(l:body, '\V&#039;', "'", 'g')
-  let l:body = substitute(l:body, '\V&#060;', '<', 'g')
-  let l:body = substitute(l:body, '\V&#039;', '>', 'g')
-
-  if l:body =~# '\.\.\.\s*$'
-    let l:idx = strridx(l:body, ';')
-    if 0 < l:idx
-      let l:body = l:body[0:l:idx-1]
-    endif
-  endif
-  return l:body
-endfunction "}}}
-
-function! vimrc#word_translate_weblio_smart(word) abort "{{{
-  let l:reason = vimrc#word_translate_weblio(a:word)
-  let l:prototype = matchstr(l:reason, '\v(\w+)\ze\s*の%(現在|過去|複数|三人称|直接法|間接法)')
-
-  if '' !=# l:prototype
-    let l:reason .= "\n" . vimrc#word_translate_weblio(l:prototype)
-  endif
-
-  return l:reason
-endfunction "}}}
-
-function! vimrc#word_translate_local_dict(word) abort "{{{
-  if filereadable(expand(g:word_translate_local_dict))
-    let l:str = system('grep -ihwA 1 ^' . a:word . '$ ' . g:word_translate_local_dict)
-    return substitute(l:str, '\v(^|\n)(--|' . a:word . ')?(\_s|$)', '', 'gi')
-  else
-    return ''
-  endif
-endfunction "}}}
-
-function vimrc#get_cword() abort "{{{
+function vimrc#get_cword() abort
   let save_iskeyword = &l:iskeyword
   setl iskeyword=@
   try
@@ -577,52 +534,9 @@ function vimrc#get_cword() abort "{{{
   finally
     let &l:iskeyword = save_iskeyword
   endtry
-endfunction "}}}
+endfunction
 
-function! vimrc#word_translate(...) abort "{{{
-  let word = a:0? a:1 : vimrc#get_cword()
-
-  let found = vimrc#word_translate_local_dict(word)
-  if found !=# ''
-    echo found
-  else
-    echo vimrc#word_translate_weblio_smart(word)
-  endif
-endfunction "}}}
-
-function! vimrc#goldendict(...) abort "{{{
+function! vimrc#goldendict(...) abort
   let word = a:0? a:1 : vimrc#get_cword()
   call jobstart(['goldendict', word], {'detach': 1})
-endfunction "}}}
-
-" #color converter
-function! vimrc#add_gui_color() range abort "{{{
-  for linenum in range(a:firstline, a:lastline)
-    let line = getline(linenum)
-    if line !~# '\v^(\"\s*)?\s*hi'
-      continue
-    end
-    call setline(linenum, line . ' ' . vimrc#get_add_gui_color(line))
-  endfor
-  silent! call repeat#set(":call vimrc#add_gui_color()\<cr>", a:lastline - a:firstline)
-endfunction "}}}
-
-function! vimrc#get_add_gui_color(line) abort "{{{
-  let append = ''
-  for key  in ['fg', 'bg', '']
-    let val = matchstr(a:line, 'cterm' . key . '=\zs\v(\S+)')
-    if val !=# ''
-      let append .= printf('gui%s=%s ', key, vimrc#trans_color(val))
-    endif
-  endfor
-  return substitute(append, '\s*$', '', '')
-endfunction "}}}
-
-" TODO standalone
-function! vimrc#trans_color(color) abort "{{{
-  if a:color !~# '^\x\+$'
-    return a:color
-  else
-    return substitute(system(['colortrans', a:color]), '\n$', '', '')
-  end
-endfunction "}}}
+endfunction

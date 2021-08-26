@@ -54,7 +54,6 @@ command! DeleteTrashBuffers call vimrc#delete_trash_buffers()
 command! GitTop execute 'cd' vimrc#git_top()
 command! TermRun noautocmd w | call vimrc#terminal_run()
 command! BuffersInfo PP vimrc#buffers_info()
-command! -nargs=1 ColorTrans echo vimrc#trans_color(<f-args>)
 
 command! -nargs=+ -complete=command Capture call vimrc#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)
