@@ -368,30 +368,15 @@ hook_add = '''
   " TODO: cursorがある場所を飛ばす
   " TODO: d;j したとき最後の行が消せない. d;kしたとき現在の行が消せない. 次の行が空行じゃないと再現
   " TODO: ときたま現在の行のaとsが逆になる. ;wも1行目がおかしくなる
-'''
-hook_source = '''
-lua <<EOF
-  require'hop'.setup {
-  }
 
-  -- ハイライト設定
-  hh = require'hop.highlight'
-  function hh.insert_highlights()
-    -- Highlight used for the mono-sequence keys (i.e. sequence of 1).
-    -- vim.api.nvim_command('highlight default HopNextKey  guifg=#ff007c gui=bold ctermfg=198 cterm=bold')
-    vim.api.nvim_command('highlight default HopNextKey guifg=#00dfff gui=bold ctermfg=45 cterm=bold')
+  au myac ColorScheme * call s:set_highlight()
 
-    -- Highlight used for the first key in a sequence.
-    vim.api.nvim_command('highlight default HopNextKey1 guifg=#00dfff gui=bold ctermfg=45 cterm=bold')
-
-    -- Highlight used for the second and remaining keys in a sequence.
-    -- vim.api.nvim_command('highlight default HopNextKey2 guifg=#2b8db3 ctermfg=33')
-    vim.api.nvim_command('highlight default HopNextKey2 guifg=#00dfff gui=bold ctermfg=45 cterm=bold')
-
-    -- Highlight used for the unmatched part of the buffer.
-    vim.api.nvim_command('highlight default HopUnmatched guifg=#666666 ctermfg=242')
-  end
-EOF
+  function s:set_highlight()
+    hi HopNextKey   guifg=#00dfff gui=bold ctermfg=45 cterm=bold
+    hi HopNextKey1  guifg=#00dfff gui=bold ctermfg=45 cterm=bold
+    hi HopNextKey2  guifg=#00dfff gui=bold ctermfg=45 cterm=bold
+    hi HopUnmatched guifg=#666666 ctermfg=242
+  endfunction
 '''
 
 [[plugins]]

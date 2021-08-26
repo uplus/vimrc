@@ -65,27 +65,30 @@ function! s:set_highlights() "{{{
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=NONE gui=NONE
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 
+  " Diff:
   hi DiffAdd    ctermfg=255  ctermbg=163  guifg=#eeeeee guibg=#d700af
   hi DiffDelete ctermfg=200  ctermbg=56   guifg=#ff00d7 guibg=#5f00d7
   hi DiffChange ctermfg=252  ctermbg=22   guifg=#d0d0d0 guibg=#005f00
   hi DiffText   ctermfg=226  ctermbg=29   guifg=#ffff00 guibg=#00875f
 
-  hi htmlBold   ctermfg=255               guifg=#ffffff               cterm=bold      gui=bold
-  hi! link reviewImage PreProc
+  if &diff
+    hi clear CursorLine
+  endif
 
+  " Signify:
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
   hi SignifySignChange ctermfg=226 guifg=#fbff00
   hi SignifySignDelete ctermfg=1   guifg=#ff2222
   hi! link SignifySignChangeDelete    SignifySignDelete
   hi! link SignifySignDeleteFirstLine SignifySignDelete
 
-  hi ALEVirtualTextError guifg=#ff5e80 guibg=NONE
+  " ALE:
+  hi ALEVirtualTextError   guifg=#ff5e80 guibg=NONE
   hi ALEVirtualTextWarning guifg=#f0ff80 guibg=NONE
-  hi ALEVirtualTextInfo guifg=#80cff0 guibg=NONE
+  hi ALEVirtualTextInfo    guifg=#80cff0 guibg=NONE
 
-  if &diff
-    hi clear CursorLine
-  endif
+  hi htmlBold   ctermfg=255               guifg=#ffffff               cterm=bold      gui=bold
+  hi! link reviewImage PreProc
 
   if g:colors_name ==? 'papercolor'
     hi Normal                         ctermbg=234                guibg=#1c1c1c
