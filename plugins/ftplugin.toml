@@ -44,6 +44,7 @@ _ = '''
     " B マルチバイト文字同士の結合で間に空白を挿入しない
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
 
+  " TODO: treesitterが有効なbufのみにする
   if dein#is_sourced('nvim-treesitter')
     setl foldmethod=expr
     setl foldexpr=nvim_treesitter#foldexpr()

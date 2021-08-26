@@ -1,4 +1,4 @@
-command! -nargs=1 SetTab call vimrc#set_tab(<args>)
+command! -nargs=1 SetTab call SetTab(<args>)
 command! Q qall!
 command! W w!
 command! Naw noautocmd write
@@ -11,7 +11,6 @@ command! RunInTerm let g:quickrun_config._.runner = 'terminal'
 
 command! ClearLocList call setloclist(winnr(), [])
 command! Tags call Tags()
-command! MoveToTab exec "normal! \<c-w>T"
 command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! ReloadKeymap source ~/.vim/keymaps.vim
@@ -57,10 +56,8 @@ command! TermRun noautocmd w | call vimrc#terminal_run()
 command! BuffersInfo PP vimrc#buffers_info()
 command! -nargs=1 ColorTrans echo vimrc#trans_color(<f-args>)
 
-command! -nargs=+ -complete=command
-      \ Capture call vimrc#capture(<q-args>)
-command! -nargs=+ -complete=command
-      \ CaptureWin call vimrc#capture_win(<q-args>)
+command! -nargs=+ -complete=command Capture call vimrc#capture(<q-args>)
+command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)
 
 " zsh like tabedit.
 if executable('zsh')
