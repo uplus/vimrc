@@ -54,7 +54,7 @@ augroup myac
   "}}}
 
   function! s:stdin_config()
-    call SetAsScratch()
+    call my#option#set_as_scratch()
     setl nofoldenable
     setl foldcolumn=0
     goto

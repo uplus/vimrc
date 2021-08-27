@@ -132,14 +132,6 @@ function! Job(...) abort
   endif
 endfunction
 
-function! SetAsScratch() abort
-  nnoremap <silent><buffer>q :quit<CR>
-  setl buftype=nofile
-  setl bufhidden=hide
-  setl noswapfile
-  setl nobuflisted
-endfunction
-
 function Debug(data)
   let g:debug_data = a:data
   PP! a:data

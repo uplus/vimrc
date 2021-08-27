@@ -37,3 +37,11 @@ function! my#option#auto_cursorcolumn() abort "{{{
     setlocal nocursorcolumn
   endif
 endfunction "}}}
+
+function! my#option#set_as_scratch() abort "{{{
+  nnoremap <silent><buffer>q :quit<CR>
+  setl buftype=nofile
+  setl bufhidden=hide
+  setl noswapfile
+  setl nobuflisted
+endfunction "}}}
