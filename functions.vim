@@ -31,17 +31,16 @@ function! DoAutoSave() abort
 endfunction
 "}}}
 
-let g:erase_space_on = 1
 command! EraseSpace        call EraseSpace()
 command! EraseSpaceEnable  let g:erase_space_on=1
 command! EraseSpaceDisable let g:erase_space_on=0
 function! EraseSpace() abort "{{{
-  if g:erase_space_on != 1
+  if 1 != get(g:, 'erase_space_on', 1)
     return
   endif
 
   " filetypeが一致したらreturn
-  if &filetype =~# 'markdown\|gitcommit\|help'
+  if -1 != index(['markdown', 'gitcommit', 'help'], &filetype)
     return
   endif
 
