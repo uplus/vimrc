@@ -284,9 +284,9 @@ cnoremap <c-e> <end>
 cnoremap <c-d> <del>
 
 cnoremap <expr><c-k> my#cmdline#delete_to_end()
-cnoremap <expr><m-w> my#cmdline#rubout_word()
-cnoremap <expr><m-b> my#cmdline#back_word()
-cnoremap <expr><m-f> my#cmdline#forward_word()
+cnoremap <expr><m-w> my#cmdline#delete_to_next_word()
+cnoremap <expr><m-f> my#cmdline#move_to_next_word()
+cnoremap <expr><m-b> my#cmdline#move_to_prev_word()
 
 
 " swap: upは現在の入力を元に履歴を辿る
