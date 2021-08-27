@@ -13,11 +13,11 @@ function! vimrc#filename_mixedcase() abort "{{{
 endfunction "}}}
 
 " 文字列から特定の文字を削除する
-function! vimrc#removechars(str, chars) abort "{{{
+function! vimrc#delete_chars(str, chars) abort "{{{
   return substitute(a:str, '[' . a:chars . ']', '', 'g')
 endfunction "}}}
 
-function! vimrc#delete_str(str, pattern, ...) abort "{{{
+function! vimrc#delete_pat(str, pattern, ...) abort "{{{
   return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction "}}}
 
@@ -191,8 +191,7 @@ function! vimrc#goldendict(...) abort "{{{
 endfunction "}}}
 
 function! vimrc#pwgen() "{{{
-  let str = system('pwgen -1 -B -s -n 20')
-  return substitute(str, "\n$", '', '')
+  return vimrc#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")
 endfunction "}}}
 
 function! vimrc#open_git_diff(type) abort "{{{
