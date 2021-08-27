@@ -6,6 +6,8 @@ augroup myac
   au CursorHold *.toml syntax sync minlines=300
   au VimResized * if &ft !=# 'help' | wincmd = | redraw! | endif
   au VimEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.07)
+  " .tagsがある場合のみ更新する
+  au BufWritePost * if filewritable('.tags') | call Tags() | endif
   " 最後のバッファがquickfixなら自動で閉じる
   au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:p:h
@@ -107,12 +109,10 @@ augroup myac
   endfunction
   "}}}
 
-  " Tag: {{{
-  " .tagsがある場合のみ更新する
-  au BufWritePost * if filewritable('.tags') | call Tags() | endif
-
-  " Load settings for each location.
+  " Local Config: {{{
+  " Load each location config.
   au BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+
   function! s:vimrc_local(loc)
     let l:files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
     for l:i in reverse(filter(l:files, 'filereadable(v:val)'))
