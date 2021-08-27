@@ -111,7 +111,6 @@ let s:p = {
   \ 'quickrun': 'Quickrun',
   \ 'dictionary': 'Dictionary',
   \ 'calendar': 'Calendar',
-  \ 'agit' : 'Agit', 'agit_diff' : 'Agit', 'agit_stat' : 'Agit',
   \ 'qf': 'QuickFix',
   \ 'tagbar': 'Tagbar',
   \ }
@@ -121,7 +120,6 @@ let s:e = {
   \ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
   \ 'calendar':   "strftime('%Y/%m/%d')",
   \ 'quickrun':   "''",
-  \ 'agit': "''", 'agit_diff': "''", 'agit_stat': "''",
   \ '[Command Line]': "''",
   \ }
 

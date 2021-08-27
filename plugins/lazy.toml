@@ -303,10 +303,16 @@ hook_add = '''
 #git
 
 [[plugins]]
-# git log
-repo = 'cohama/agit.vim'
-on_cmd = ['Agit', 'AgitFile']
-on_map = '<Plug>(agit-'
+repo = 'lambdalisue/gina.vim'
+on_cmd = ['Gina']
+on_func = ['gina#']
+hook_add = '''
+  let g:gina#command#blame#formatter#timestamp_months = 0
+  let g:gina#command#blame#formatter#timestamp_format1 = '%Y/%m/%d'
+  let g:gina#command#blame#formatter#timestamp_format2 = '%Y/%m/%d'
+'''
+# autoload関数で設定するので遅延読み込みさせる(20ms)
+hook_source = 'source ~/.vim/rc/gina.rc.vim'
 
 [[plugins]]
 # git add -p
