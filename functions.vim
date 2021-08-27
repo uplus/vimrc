@@ -92,14 +92,14 @@ function! Tags() abort
   let g:tags_jobs[l:dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
 endfunction
 
-" If use selected text in function, need range
-command! -nargs=1 -range Inject echomsg Inject(<args>)
+" 現在行か選択範囲に引数の演算を適用する
+command! -nargs=1 -range Inject echomsg Inject(<f-args>)
 function! Inject(expr) abort
   let pos_save = getpos('.')
   try
     execute printf('silent normal! gv"%sy', g:working_register)
     let values = split(getreg(g:working_register))
-    return vimrc#inject(values, a:expr)
+    return vimrc#fold(values, a:expr)
   finally
     call setpos('.', pos_save)
   endtry
@@ -118,10 +118,4 @@ endfunction
 function Debug(data)
   let g:debug_data = a:data
   PP! a:data
-endfunction
-
-function! CloseFloatingWindowsByFileTypePattern(filetype_pattern) abort
-  let floating_windows = filter(nvim_list_wins(), "nvim_win_get_config(v:val)['relative'] !=# ''")
-  let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")
-  call map(close_windows, 'nvim_win_close(v:val, v:false)')
 endfunction

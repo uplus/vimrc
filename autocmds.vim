@@ -24,7 +24,7 @@ augroup myac
       return
     endif
 
-    call CloseFloatingWindowsByFileTypePattern('denite')
+    call vimrc#close_floating_win('denite')
   endfunction
 
   " #terminal {{{

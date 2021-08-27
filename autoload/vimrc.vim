@@ -59,7 +59,8 @@ function vimrc#remove_opt_val(optname, chars) abort "{{{
   endfor
 endfunction "}}}
 
-function! vimrc#inject(list, expr) abort "{{{
+" fold関数
+function! vimrc#fold(list, expr) abort "{{{
   if type(a:expr) ==# v:t_string
     let Func = {memo, v -> eval(printf("%s %s %s", memo, a:expr, v))}
   else
@@ -97,6 +98,13 @@ function! vimrc#capture_win(cmd) abort "{{{
   silent put =result
   1,2delete _
 endfunction "}}}
+
+" フローティングウィンドウを閉じる
+function! vimrc#close_floating_win(filetype_pattern) abort
+  let floating_windows = filter(nvim_list_wins(), "nvim_win_get_config(v:val)['relative'] !=# ''")
+  let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")
+  call map(close_windows, 'nvim_win_close(v:val, v:false)')
+endfunction
 
 " ---- terminal helper
 
