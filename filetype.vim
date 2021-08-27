@@ -18,7 +18,6 @@ augroup filetypedetect
   au BufRead,BufNewFile .yamllint,.gemrc setf yaml
   au BufRead,BufNewFile .env,.env.*,.envrc,.envrc.* setf sh
   au BufRead,BufNewFile Guardfile,Vagrantfile setf ruby
-
   au BufRead,BufNewFile $HOME/Documents/notes/* call my#note#config()
 augroup END
 
@@ -26,40 +25,7 @@ augroup END
 augroup myac
   au FileType conf,gitcommit,html,css set nocindent
   au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
-  au FileType quickrun,help,diff if has('patch-7.4.2201') | setl signcolumn=no | endif
+  au FileType quickrun,help,diff setl signcolumn=no
   au BufReadPost COMMIT_EDITMSG goto
-
-  au StdinReadPost * call s:stdin_config()
-  au VimEnter * call s:vimenter()
-
-  " preview window {{{
-  if exists('##OptionSet')
-    au OptionSet previewwindow,diff call s:quit_map()
-
-    function! s:quit_map() abort
-      if &previewwindow || &diff
-        nnoremap <silent><buffer>q :quit<cr>
-      endif
-    endfunction
-  endif
-  "}}}
-
-  function! s:stdin_config()
-    call my#option#set_as_scratch()
-    setl nofoldenable
-    setl foldcolumn=0
-    goto
-    silent! %foldopen!
-  endfunction
-
-  function! s:vimenter()
-    if argc() == 0
-      setl buftype=nowrite
-    elseif argc() == 1 && !exists('g:swapname')
-      " many side effect.
-      " e.g invalid behavior smart_quit() of vimfiler.
-      " e.g swap, grep
-      " lcd %:p:h
-    endif
-  endfunction
+  au OptionSet previewwindow,diff if v:option_new | nnoremap <silent><buffer>q :quit<cr> | endif
 augroup END

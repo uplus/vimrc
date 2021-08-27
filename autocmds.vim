@@ -124,6 +124,30 @@ augroup myac
   endfunction
   "}}}
 
+  " Startup: {{{
+  au VimEnter * call s:vimenter()
+  au StdinReadPost * call s:stdin_config()
+
+  function! s:vimenter()
+    if argc() == 0
+      setl buftype=nowrite
+    elseif argc() == 1 && !exists('g:swapname')
+      " many side effect.
+      " e.g invalid behavior smart_quit() of vimfiler.
+      " e.g swap, grep
+      " lcd %:p:h
+    endif
+  endfunction
+
+  function! s:stdin_config()
+    call my#option#set_as_scratch()
+    setl nofoldenable
+    setl foldcolumn=0
+    goto
+    silent! %foldopen!
+  endfunction
+  "}}}
+
   " Auto Defx: {{{
   autocmd BufEnter,BufRead,BufNew,BufCreate * call s:browse_check(expand('<amatch>'))
 
