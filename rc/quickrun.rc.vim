@@ -2,6 +2,8 @@
 " #quickrun
 let g:quickrun_no_default_key_mappings = 1
 
+command! QuickRunInTerm let g:quickrun_config._.runner = 'terminal'
+
 nmap \R <Plug>(quickrun-op)
 xmap \r <Plug>(quickrun)
 nmap <space>\r :update \| QuickRun -mode n -runner terminal<cr>

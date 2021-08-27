@@ -97,7 +97,7 @@ command! -nargs=1 -range Inject echomsg Inject(<args>)
 function! Inject(expr) abort
   let pos_save = getpos('.')
   try
-    exec printf('silent normal! gv"%sy', g:working_register)
+    execute printf('silent normal! gv"%sy', g:working_register)
     let values = split(getreg(g:working_register))
     return vimrc#inject(values, a:expr)
   finally

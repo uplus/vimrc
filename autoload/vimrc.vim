@@ -135,38 +135,6 @@ endfunction "}}}
 
 " ----
 
-function! vimrc#highlight(...) abort "{{{
-  if 0 == a:0
-    return
-  endif
-
-  let cmd = 'highlight ' . a:1
-
-  if 2 <= a:0
-    let args = copy(a:000[1:])
-
-    if args[0] =~# 'term'
-      execute cmd args[0]
-
-      if len(args) <= 1
-        return
-      endif
-      call remove(args, 0)
-    endif
-
-    if args[0] !=# '_'
-      execute cmd 'ctermfg=' . args[0]
-    endif
-
-    if 2 <= len(args)
-      execute  cmd 'ctermbg=' . args[1]
-    endif
-  endif
-
-  " output a current highlight
-  execute cmd
-endfunction "}}}
-
 function! vimrc#goldendict(...) abort "{{{
   let word = a:0? a:1 : vimrc#get_cword()
   call jobstart(['goldendict', word], {'detach': 1})
