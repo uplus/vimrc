@@ -47,3 +47,7 @@ for _, server in ipairs(servers) do
     }
   }
 end
+
+-- npm install -g typescript
+-- npm install -g pyright
+-- gem install solargraph
