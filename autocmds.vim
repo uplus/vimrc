@@ -19,7 +19,7 @@ augroup myac
   " フローティングウィンドウから離れたら自動で閉じる
   au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
 
-  " #terminal {{{
+  " Terminal: {{{
   if has('nvim')
     au TermOpen * call s:term_open()
     function s:term_open()
@@ -39,16 +39,16 @@ augroup myac
     endfunction
   endif "}}}
 
-  " sync clipboard
+  " Sync Clipboard: {{{
   if '' !=# $DISPLAY
     " 今は無くても大丈夫そう
     " let @" = @*
     if exists('##TextYankPost')
       " au TextYankPost * let @* = @" | let @+ = @"
     endif
-  endif
+  endif "}}}
 
-  " #fcitx {{{
+  " Fcitx: {{{
   if executable('fcitx5-remote')
     " 最初の一度のみ先頭入れ替えバグは無関係だった
     au InsertLeave * FcitxOff
