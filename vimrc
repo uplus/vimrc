@@ -54,7 +54,7 @@ if &g:loadplugins
   call s:source('dein')
 
   if has('vim_starting') && !empty(argv())
-    " 先の実行しないとInsertEnterあたりでいろいろ発生してしまう
+    " 先に実行しないとInsertEnterあたりでいろいろ発生してしまう
     syntax enable
     filetype detect
     "   call s:on_filetype()
@@ -68,8 +68,6 @@ if &g:loadplugins
     au VimEnter * call dein#call_hook('post_source')
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
-
-    " echo luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil")
     au FileType * call my#option#set_syntax()
     " au VimEnter * call lightline#highlight()
     " au VimEnter * if &l:ft ==# '' | filetype detect | endif
