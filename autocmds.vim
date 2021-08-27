@@ -19,8 +19,8 @@ augroup myac
   " auto close floating windows on leave
   au BufEnter * call s:auto_close_floating_windows()
   function! s:auto_close_floating_windows() abort
-    " floating windowなら何もしない
-    if nvim_win_get_config(0)['relative'] !=# ''
+    " floating windowにいるなら何もしない
+    if vimrc#is_floating_win(0)
       return
     endif
 

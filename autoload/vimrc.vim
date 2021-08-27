@@ -99,12 +99,16 @@ function! vimrc#capture_win(cmd) abort "{{{
   1,2delete _
 endfunction "}}}
 
-" フローティングウィンドウを閉じる
-function! vimrc#close_floating_win(filetype_pattern) abort
-  let floating_windows = filter(nvim_list_wins(), "nvim_win_get_config(v:val)['relative'] !=# ''")
+function! vimrc#is_floating_win(bufnr) abort "{{{
+  return nvim_win_get_config(a:bufnr)['relative'] !=# ''
+endfunction "}}}
+
+" 指定したファイルタイプのフローティングウィンドウを閉じる
+function! vimrc#close_floating_win(filetype_pattern) abort "{{{
+  let floating_windows = filter(nvim_list_wins(), 'vimrc#is_floating_win(v:val)')
   let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")
   call map(close_windows, 'nvim_win_close(v:val, v:false)')
-endfunction
+endfunction "}}}
 
 " ---- terminal helper
 
