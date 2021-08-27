@@ -152,7 +152,7 @@ function! vimrc#goldendict(...) abort "{{{
   call jobstart(['goldendict', word], {'detach': 1})
 endfunction "}}}
 
-function! vimrc#pwgen() "{{{
+function! vimrc#pwgen() abort "{{{
   return vimrc#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")
 endfunction "}}}
 

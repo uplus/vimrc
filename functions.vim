@@ -57,8 +57,7 @@ function! EraseSpace() abort "{{{
   call setpos('.', l:pos)
 endfunction "}}}
 
-" #Misc
-function! ResetHighlights() abort
+function! ResetHighlights() abort "{{{
   " nohlsearch " 関数内では動作しない
   silent! call clever_f#reset()
   silent! LinediffReset
@@ -68,33 +67,33 @@ function! ResetHighlights() abort
   silent! call lightline#update()
   ClearLocList
   " call clearmatches()
-endfunction
+endfunction "}}}
 
 command! HTMLalign call HTMLalign()
-function! HTMLalign() abort
+function! HTMLalign() abort "{{{
   %s/\v\>\</>\r</eI
   setfiletype html
   normal! gg=G
-endfunction
+endfunction "}}}
 
-function! Format() abort
+function! Format() abort "{{{
   EraseSpace
 
   if exists('b:format_cmd')
     execute b:format_cmd
   endif
-endfunction
+endfunction "}}}
 
 let g:tags_jobs = {}
-function! Tags() abort
+function! Tags() abort "{{{
   let l:dir = expand('%:p:h')
   silent! call jobstop(get(g:tags_jobs, l:dir, -1))
   let g:tags_jobs[l:dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
-endfunction
+endfunction "}}}
 
 " 現在行か選択範囲に引数の演算を適用する
 command! -nargs=1 -range Inject echomsg Inject(<f-args>)
-function! Inject(expr) abort
+function! Inject(expr) abort "{{{
   let pos_save = getpos('.')
   try
     execute printf('silent normal! gv"%sy', g:working_register)
@@ -103,9 +102,9 @@ function! Inject(expr) abort
   finally
     call setpos('.', pos_save)
   endtry
-endfunction
+endfunction "}}}
 
-function! Job(...) abort
+function! Job(...) abort "{{{
   if exists('*jobstart')
     call jobstart(a:000)
   elseif exists('*job_start')
@@ -113,9 +112,9 @@ function! Job(...) abort
   else
     " echo "job not found"
   endif
-endfunction
+endfunction "}}}
 
-function Debug(data)
+function Debug(data) "{{{
   let g:debug_data = a:data
   PP! a:data
-endfunction
+endfunction "}}}
