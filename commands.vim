@@ -51,6 +51,7 @@ command! DeleteTrashBuffers call vimrc#delete_trash_buffers()
 command! GitTop execute 'cd' vimrc#git_top()
 command! TermRun noautocmd w | call vimrc#terminal_run()
 
+command! -nargs=1 -complete=customlist,my#note#file_completion Note call my#note#open(<q-args>)
 command! -nargs=+ -complete=command Capture call vimrc#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)
 
@@ -58,7 +59,3 @@ command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)
 " if executable('zsh')
 "   command! -nargs=1 -complete=customlist,vimrc#zsh_file_completion T tabedit <args>
 " endif
-
-" Note:
-command! -nargs=1 -complete=customlist,vimrc#note_file_completion
-      \ Note call vimrc#note_open(<q-args>)
