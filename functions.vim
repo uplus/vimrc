@@ -107,3 +107,17 @@ function Debug(data) "{{{
   let g:debug_data = a:data
   PP! a:data
 endfunction "}}}
+
+" unix sortに似た使い勝手
+command! -nargs=+ -range=% Sort call Sort(<f-args>)
+function! Sort(k, ...) abort "{{{
+  let pos = getpos('.')
+
+  " 1列目でソートしたいなら0
+  let k = a:k - 1
+  " セパレータをデフォルト引数で取る
+  let sep = get(a:000, 0, ', ')
+  execute printf('*sort /\v([^%s]+[%s]+){%d}\zs/', sep, sep, k)
+
+  call setpos('.', pos)
+endfunction "}}}
