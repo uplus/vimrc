@@ -61,14 +61,14 @@ snippet forel
 	for(${1} : ${2}) ${3}
 
 snippet tc
-	public class ${1:`Filename()`} extends ${2:TestCase} {
+	public class ${1:`vimrc#filename()`} extends ${2:TestCase} {
 		${0}
 	}
 
 snippet cl
-	class ${1:`Filename("", "untitled")`} ${2}
+	class ${1:`vimrc#filename("", "untitled")`} ${2}
 snippet in
-	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
+	interface ${1:`vimrc#filename("", "untitled")`} ${2:extends Parent}${3}
 
 snippet as
 	assert ${1:test} : "${2:Failure message}";${3}

@@ -2,9 +2,19 @@
 silent! let s:V = vital#of('vital')
 silent! let s:Vuri = s:V.import('Web.URI')
 
-" #helpers
-function! vimrc#removechars(str, pattern) abort "{{{
-  return substitute(a:str, '[' . a:pattern . ']', '', 'g')
+" -- helpers
+
+function! vimrc#filename() abort "{{{
+  return expand('%:t:r')
+endfunction "}}}
+
+function! vimrc#filename_mixedcase() abort "{{{
+  return g:Abolish['mixedcase'](vimrc#filename())
+endfunction "}}}
+
+" 文字列から特定の文字を削除する
+function! vimrc#removechars(str, chars) abort "{{{
+  return substitute(a:str, '[' . a:chars . ']', '', 'g')
 endfunction "}}}
 
 " filetypeに依存せずiskeyword固定でcwordを取得する
@@ -24,9 +34,9 @@ function! vimrc#is_lastline(is_visual) abort "{{{
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction "}}}
 
-function! vimrc#is_file(path) abort
+function! vimrc#is_file(path) abort "{{{
   return !isdirectory(a:path) && glob(a:path) !=# ''
-endfunction
+endfunction "}}}
 
 function vimrc#home2tilde(str) abort "{{{
   return substitute(a:str, '^' . expand('~'), '~', '')

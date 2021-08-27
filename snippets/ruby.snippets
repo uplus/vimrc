@@ -80,14 +80,14 @@ options word
 snippet class
 options head
 alias cl
-	class ${1:`FilenameMixedcase()`}
+	class ${1:`vimrc#filename_mixedcase()`}
 		${0}
 	end
 
 snippet class-initialize
 options head
 alias cli
-	class ${1:`FilenameMixedcase()`}
+	class ${1:`vimrc#filename_mixedcase()`}
 		def initialize(${2})
 			${3}
 		end${0}
@@ -105,12 +105,12 @@ alias clm
 snippet class-error
 options head
 alias cle
-	class ${1:`FilenameMixedcase()`} < StandardError; end
+	class ${1:`vimrc#filename_mixedcase()`} < StandardError; end
 
 snippet class-error-graphql
 options head
 alias cleg
-	class ${1:`FilenameMixedcase()`} < GraphQL::ExecutionError
+	class ${1:`vimrc#filename_mixedcase()`} < GraphQL::ExecutionError
 		def initialize(${2})
 			super(${3:$2})${0}
 		end
@@ -120,7 +120,7 @@ snippet class-delegate
 options head
 alias cld
 abbr class .. < DelegateClass .. initialize .. end
-	class ${1:`FilenameMixedcase()`} < DelegateClass(${2:#:ParentClass})
+	class ${1:`vimrc#filename_mixedcase()`} < DelegateClass(${2:#:ParentClass})
 		def initialize(${3})
 			super(${4})${0}
 		end
@@ -165,14 +165,14 @@ alias defds
 snippet module
 options head
 alias md
-	module ${1:`FilenameMixedcase()`}
+	module ${1:`vimrc#filename_mixedcase()`}
 		${0}
 	end
 
 snippet module-with-function
 options head
 alias mdwf
-	module ${1:`FilenameMixedcase()`}
+	module ${1:`vimrc#filename_mixedcase()`}
 		module_function
 		${0}
 	end
@@ -334,7 +334,7 @@ options word
 
 snippet class-ar-model
 options head
-	class ${1:`FilenameMixedcase()`} < ${2:ApplicationRecord}
+	class ${1:`vimrc#filename_mixedcase()`} < ${2:ApplicationRecord}
 		${0}
 	end
 

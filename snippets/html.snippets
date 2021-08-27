@@ -111,11 +111,11 @@ snippet head
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
 
-		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
+		<title>${1:`substitute(vimrc#filename('', 'Page Title'), '^.', '\u&', '')`}</title>
 		${2}
 	</head>
 snippet title
-	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
+	<title>${1:`substitute(vimrc#filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
 snippet script
 	<script type="text/javascript" charset="utf-8">
 		${1}
@@ -155,7 +155,7 @@ snippet fieldset
 		${3}
 	</fieldset>
 snippet form
-	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
+	<form action="${1:`vimrc#filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
 		${3}
 
 

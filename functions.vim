@@ -78,15 +78,6 @@ function! HTMLalign() abort
   normal! gg=G
 endfunction
 
-" call from snippets
-function! Filename() abort
-  return expand('%:t:r')
-endfunction
-
-function! FilenameMixedcase() abort
-  return g:Abolish['mixedcase'](Filename())
-endfunction
-
 function! Format() abort
   EraseSpace
 
