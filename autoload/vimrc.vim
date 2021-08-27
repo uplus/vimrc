@@ -300,5 +300,6 @@ function! vimrc#goldendict(...) abort "{{{
 endfunction "}}}
 
 function! vimrc#pwgen() "{{{
-  return system('pwgen -1 -B -s -n 20')
+  let str = system('pwgen -1 -B -s -n 20')
+  return substitute(str, "\n$", '', '')
 endfunction "}}}
