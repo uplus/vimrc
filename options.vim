@@ -1,5 +1,4 @@
 set encoding=utf-8 " Removed in Neovim
-scriptencoding utf-8
 
 " set undodir=~/.vim/tmp/undo.txt
 set viewdir=~/.vim/tmp/view
@@ -261,5 +260,3 @@ endif
 "  eventignore=all " 全てのイベントを無視
 " writeany " いかなるファイルも!無しで書き込み
 " confirm
-
-let g:my_autosave = 1

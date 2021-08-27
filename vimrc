@@ -3,7 +3,7 @@ if 0 | endif
 " set debug=throw
 
 language message C
-scriptencoding=utf-8
+scriptencoding utf-8
 
 " Very very high speed! ~300ms
 set shell=/bin/sh
@@ -49,9 +49,12 @@ function! s:on_filetype() abort
   endif
 endfunction
 
+call s:source('options')
+
 " load dein
 if &g:loadplugins
   call s:source('dein')
+  call s:source('highlights')
 
   if has('vim_starting') && !empty(argv())
     " 先に実行しないとInsertEnterあたりでいろいろ発生してしまう
@@ -74,8 +77,6 @@ if &g:loadplugins
   augroup END
 endif
 
-call s:source('options')
-call s:source('highlights')
 call s:source('functions')
 call s:source('keymaps')
 call s:source('commands')

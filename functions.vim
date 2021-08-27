@@ -1,6 +1,7 @@
 " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
 
 " #AutoSave "{{{
+let g:my_autosave = 1
 let g:my_autosave = get(g:, 'my_autosave', 0)
 command! EnableAutoSave let g:my_autosave = 1
 command! DisableAutoSave let g:my_autosave = 0
