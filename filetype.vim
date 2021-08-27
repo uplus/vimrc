@@ -19,17 +19,8 @@ augroup filetypedetect
   au BufRead,BufNewFile .env,.env.*,.envrc,.envrc.* setf sh
   au BufRead,BufNewFile Guardfile,Vagrantfile setf ruby
 
-  au BufRead,BufNewFile $HOME/Documents/notes/* call s:note_config()
+  au BufRead,BufNewFile $HOME/Documents/notes/* call my#note#config()
 augroup END
-
-function! s:note_config() abort
-  silent! lcd %:h
-
-  if vimrc#capture('verbose setl ft?') !~# 'modeline'
-    setf markdown
-    setl foldmethod=marker
-  endif
-endfunction
 
 " #filetype config
 augroup myac

@@ -7,6 +7,14 @@ function! my#note#open(name) abort "{{{
   exec 'tabedit' l:name
 endfunction "}}}
 
+function! my#note#config() abort "{{{
+  silent! lcd %:h
+
+  if vimrc#capture('verbose setl ft?') !~# 'modeline'
+    setf markdown
+  endif
+endfunction "}}}
+
 function! my#note#file_completion(lead, line, pos) abort "{{{
   let l:name = a:lead
   let l:files = split(system(['note', '--list']))
