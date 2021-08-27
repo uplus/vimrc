@@ -46,6 +46,10 @@ function! vimrc#is_file(path) abort "{{{
   return !isdirectory(a:path) && glob(a:path) !=# ''
 endfunction "}}}
 
+function! vimrc#is_include(list, value) abort "{{{
+  return index(a:list, a:value) != -1
+endfunction "}}}
+
 function vimrc#home2tilde(str) abort "{{{
   return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction "}}}
