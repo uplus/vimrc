@@ -16,16 +16,8 @@ augroup myac
     au FocusLost * call DoAutoSave()
   endif
 
-  " auto close floating windows on leave
-  au BufEnter * call s:auto_close_floating_windows()
-  function! s:auto_close_floating_windows() abort
-    " floating windowにいるなら何もしない
-    if vimrc#is_floating_win(0)
-      return
-    endif
-
-    call vimrc#close_floating_win('denite')
-  endfunction
+  " フローティングウィンドウから離れたら自動で閉じる
+  au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
 
   " #terminal {{{
   if has('nvim')
