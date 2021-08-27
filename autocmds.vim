@@ -67,10 +67,10 @@ augroup myac
   endif "}}}
 
   " Todo highlight
-  au myac Syntax * call s:hightlight_todo()
+  au myac Syntax * call s:highlight_todo()
 
-  function! s:hightlight_todo() abort
-    hi Todo ctermfg=208 ctermbg=0 guifg=#ffb000 guibg=#000000 cterm=italic    gui=italic
+  function! s:highlight_todo() abort
+    hi! Todo ctermfg=208 ctermbg=0 guifg=#ffb000 guibg=#000000 cterm=italic gui=italic
     if 0 != get(g:, 'todo_match_id')
       silent! call matchdelete(g:todo_match_id)
     end

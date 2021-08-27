@@ -28,7 +28,6 @@ function! vimrc#is_file(path) abort
   return !isdirectory(a:path) && glob(a:path) !=# ''
 endfunction
 
-
 function vimrc#home2tilde(str) abort "{{{
   return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction "}}}
@@ -209,11 +208,10 @@ function! vimrc#open_git_diff(type) abort "{{{
 endfunction "}}}
 
 function! vimrc#undo_clear() abort "{{{
-  let l:old = &undolevels
+  let old = &undolevels
   set undolevels=-1
   exe "normal a \<BS>\<Esc>"
-  let &undolevels = l:old
-  unlet l:old
+  let &undolevels = old
   write
 endfunction "}}}
 
