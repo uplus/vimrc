@@ -37,7 +37,8 @@ augroup myac
         " call feedkeys('\<cr>')
       endif
     endfunction
-  endif "}}}
+  endif
+  "}}}
 
   " Sync Clipboard: {{{
   if '' !=# $DISPLAY
@@ -46,7 +47,8 @@ augroup myac
     if exists('##TextYankPost')
       " au TextYankPost * let @* = @" | let @+ = @"
     endif
-  endif "}}}
+  endif
+  "}}}
 
   " Fcitx: {{{
   if executable('fcitx5-remote')
@@ -56,9 +58,10 @@ augroup myac
     if exists('##FocusGained')
       au FocusGained * FcitxOff
     endif
-  endif "}}}
+  endif
+  "}}}
 
-  " Todo highlight
+  " Todo Highlight: {{{
   au myac Syntax * call s:highlight_todo()
 
   function! s:highlight_todo() abort
@@ -70,6 +73,7 @@ augroup myac
   " matchaddを複数回呼び出すと激重になるので注意
     let g:todo_match_id = matchadd('Todo', '\v(TODO|NOTE|INFO|XXX|TEMP)\ze(:|\s)')
   endfunction
+  "}}}
 
   " #badspace {{{
   " trailがあるとハイライトできない あたりまえか
@@ -90,7 +94,7 @@ augroup myac
       syn match BadSpace display excludenl '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
     endif
   endfunction
-"}}}
+  "}}}
 
   " nohlsearchする代わりに出力が常に消える
   " visual modeがバグる
