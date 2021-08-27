@@ -43,12 +43,6 @@ _ = '''
     " q gqでコメントを結合
     " B マルチバイト文字同士の結合で間に空白を挿入しない
     " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
-
-  if dein#is_sourced('nvim-treesitter')
-    " window単位なのでbuf毎の設定などはできない
-    setl foldmethod=expr
-    setl foldexpr=nvim_treesitter#foldexpr()
-  end
 '''
 
 arduino = '''
@@ -79,7 +73,6 @@ css = '''
 '''
 
 diff = '''
-  setl foldmethod=diff
   setl foldcolumn=0
 '''
 
@@ -118,7 +111,6 @@ gitcommit = '''
 go = '''
   SetTab 4
   setl noexpandtab
-  " setl foldmethod=syntax
   highlight default link goErr WarningMsg
   au myac Syntax <buffer> syn keyword goErr err
 
@@ -132,7 +124,6 @@ go = '''
 '''
 
 rust = '''
-  " setl foldmethod=syntax
   let b:format_cmd = 'RustFmt'
 
   nmap <buffer>gd <Plug>(rust-def)
@@ -171,7 +162,6 @@ java = '''
 '''
 
 javascript = '''
-  " setl foldmethod=syntax
   setl commentstring=//\ %s
   setl wrap
   nnoremap <buffer><silent>,lr :<c-u>TernRename<cr>
@@ -199,12 +189,10 @@ markdown = '''
 
 neosnippet = '''
   setl noexpandtab
-  setl foldmethod=marker
 '''
 
 python = '''
   SetTab 4
-  " setl foldmethod=indent
   setl nosmartindent
 
   if has('*textobj#user#map')
@@ -239,7 +227,6 @@ review = '''
 '''
 
 ruby = '''
-  " setl foldmethod=syntax
   setl omnifunc=
   setl iskeyword+=?
   setl wrap
@@ -310,7 +297,6 @@ vim = '''
     syntax sync minlines=300
   endif
 
-  setl foldmethod=marker
   setl keywordprg=:help
   setl iskeyword-=:
   setl iskeyword-=#
@@ -368,10 +354,6 @@ make = '''
 
 yaml = '''
   setl cursorcolumn
-'''
-
-sshconfig = '''
-  setl foldmethod=marker
 '''
 
 vue = '''

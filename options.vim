@@ -51,7 +51,6 @@ call my#option#set_tab(2)
 "}}}
 
 " #fold {{{
-" set foldmethod=syntax
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=99     " どのレベルから折りたたむか

@@ -27,6 +27,22 @@ augroup myac
   " visual modeがバグる
   " au CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")
 
+  " Foldmethod: {{{
+  au BufEnter * call s:set_foldmethod()
+
+  function! s:set_foldmethod() abort
+    " window単位なのでbuf毎の設定などはできない
+    if vimrc#is_include(['vim', 'markdown', 'sshconfig', 'neosnippet'], &filetype)
+      set foldmethod=marker
+    elseif vimrc#is_include(['diff'], &filetype)
+      set foldmethod=diff
+    elseif dein#is_sourced('nvim-treesitter')
+      setl foldmethod=expr
+      setl foldexpr=nvim_treesitter#foldexpr()
+    endif
+  endfunction
+  "}}}
+
   " Terminal: {{{
   if has('nvim')
     au TermOpen * call s:term_open()
