@@ -1,6 +1,4 @@
 " TODO Vitalizeする?
-silent! let s:V = vital#of('vital')
-silent! let s:Vuri = s:V.import('Web.URI')
 
 " -- helpers
 
@@ -136,22 +134,6 @@ function! vimrc#working_terminal(...) abort "{{{
 endfunction "}}}
 
 " ----
-
-function! vimrc#add_repo() abort "{{{
-  let str = @+
-  try
-    let uri = s:Vuri.new(str)
-    call append(line('.'), [
-          \ '',
-          \ '[[plugins]]',
-          \ printf("repo = '%s'", join(split(uri.path(), '/')[:1], '/')),
-          \ ])
-    normal! jjj
-  catch 'vital'
-    echo str
-    echo 'This string is not uri'
-  endtry
-endfunction "}}}
 
 function! vimrc#highlight(...) abort "{{{
   if 0 == a:0

@@ -35,8 +35,10 @@ command! -bang -bar -complete=file -nargs=? EncodeSjis      EncodeCp932<bang> <a
 command! -bang -bar -complete=file -nargs=? EncodeUnicode   EncodeUtf8<bang> <args>
 
 " Autoload:
+command! AddRepo call my#dein#add_repo()
+command! OpenRepo call my#dein#open_repo()
+
 command! -nargs=1 SetTab call my#option#set_tab(<args>)
-command! AddRepo call vimrc#add_repo()
 command! -complete=highlight -nargs=* Hi call vimrc#highlight(<f-args>)
 command! OpenGitDiffWin call vimrc#open_git_diff('w')
 command! OpenGitDiffTab call vimrc#open_git_diff('t')

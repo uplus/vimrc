@@ -105,13 +105,6 @@ function! Inject(expr) abort
   endtry
 endfunction
 
-nnoremap <Plug>(OpenPluginGithub) <cmd>call OpenPluginGithub(expand('<cWORD>'))<cr>
-nmap gsp <Plug>(OpenPluginGithub)
-
-function! OpenPluginGithub(name) abort
-  call openbrowser#open('https://github.com/' . a:name)
-endfunction
-
 function! Job(...) abort
   if exists('*jobstart')
     call jobstart(a:000)
