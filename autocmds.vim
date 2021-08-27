@@ -11,10 +11,7 @@ augroup myac
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:p:h
 
   " BufLeaveだとfloatingでも反応してしまうので外した
-  au CursorHold * call DoAutoSave()
-  if exists('##FocusLost')
-    au FocusLost * call DoAutoSave()
-  endif
+  au CursorHold,FocusLost  * call DoAutoSave()
 
   " フローティングウィンドウから離れたら自動で閉じる
   au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
@@ -64,20 +61,14 @@ augroup myac
   if '' !=# $DISPLAY
     " 今は無くても大丈夫そう
     " let @" = @*
-    if exists('##TextYankPost')
-      " au TextYankPost * let @* = @" | let @+ = @"
-    endif
+    " au TextYankPost * let @* = @" | let @+ = @"
   endif
   "}}}
 
   " Fcitx: {{{
   if executable('fcitx5-remote')
     " 最初の一度のみ先頭入れ替えバグは無関係だった
-    au InsertLeave * FcitxOff
-
-    if exists('##FocusGained')
-      au FocusGained * FcitxOff
-    endif
+    au InsertLeave,FocusGained  * FcitxOff
   endif
   "}}}
 

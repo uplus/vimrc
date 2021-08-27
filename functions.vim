@@ -4,11 +4,6 @@
 let g:my_autosave = get(g:, 'my_autosave', 0)
 command! EnableAutoSave let g:my_autosave = 1
 command! DisableAutoSave let g:my_autosave = 0
-function! ToggleAutoSave() abort
-  silent update
-  let g:my_autosave = !g:my_autosave
-  echo 'autosave' g:my_autosave? 'enabled' : 'disabled'
-endfunction
 
 function! DoAutoSave() abort
   if -1 != index(['denite', 'denite-filter', 'defx', 'narrow'], &filetype)
@@ -31,14 +26,7 @@ function! DoAutoSave() abort
 endfunction
 "}}}
 
-command! EraseSpace        call EraseSpace()
-command! EraseSpaceEnable  let g:erase_space_on=1
-command! EraseSpaceDisable let g:erase_space_on=0
 function! EraseSpace() abort "{{{
-  if 1 != get(g:, 'erase_space_on', 1)
-    return
-  endif
-
   " filetypeが一致したらreturn
   if -1 != index(['markdown', 'gitcommit', 'help'], &filetype)
     return
@@ -57,6 +45,21 @@ function! EraseSpace() abort "{{{
   call setpos('.', l:pos)
 endfunction "}}}
 
+command! HTMLalign call HTMLalign()
+function! HTMLalign() abort "{{{
+  %s/\v\>\</>\r</eI
+  setfiletype html
+  normal! gg=G
+endfunction "}}}
+
+function! Format() abort "{{{
+  call EraseSpace()
+
+  if exists('b:format_cmd')
+    execute b:format_cmd
+  endif
+endfunction "}}}
+
 function! ResetHighlights() abort "{{{
   " nohlsearch " 関数内では動作しない
   silent! call clever_f#reset()
@@ -67,21 +70,6 @@ function! ResetHighlights() abort "{{{
   silent! call lightline#update()
   ClearLocList
   " call clearmatches()
-endfunction "}}}
-
-command! HTMLalign call HTMLalign()
-function! HTMLalign() abort "{{{
-  %s/\v\>\</>\r</eI
-  setfiletype html
-  normal! gg=G
-endfunction "}}}
-
-function! Format() abort "{{{
-  EraseSpace
-
-  if exists('b:format_cmd')
-    execute b:format_cmd
-  endif
 endfunction "}}}
 
 let g:tags_jobs = {}
