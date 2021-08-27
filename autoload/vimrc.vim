@@ -24,6 +24,11 @@ function! vimrc#is_lastline(is_visual) abort "{{{
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction "}}}
 
+function! vimrc#is_file(path) abort
+  return !isdirectory(a:path) && glob(a:path) !=# ''
+endfunction
+
+
 function vimrc#home2tilde(str) abort "{{{
   return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction "}}}
@@ -86,9 +91,10 @@ function! vimrc#capture_win(cmd) abort "{{{
   1,2delete _
 endfunction "}}}
 
-" arg1: command string
-" arg2: open command
-function! vimrc#terminal(...) abort
+function! vimrc#terminal(...) abort "{{{
+  " arg1: command string
+  " arg2: open command
+
   " arg1
   let l:cmd = empty(a:1) ? $SHELL : $SHELL . ' -ic ' . a:1
   let l:cmd = substitute(l:cmd, ' ', '\\ ', 'g')
@@ -102,7 +108,7 @@ function! vimrc#terminal(...) abort
   silent tnoremap <esc> <c-\><c-n><c-w>c
   silent nnoremap <buffer>q <c-w>c
   startinsert
-endfunction
+endfunction "}}}
 
 " TODO: cmd毎にbufferを分けたい
 function! vimrc#working_terminal(...) abort "{{{
@@ -293,4 +299,8 @@ endfunction "}}}
 function! vimrc#goldendict(...) abort "{{{
   let word = a:0? a:1 : vimrc#get_cword()
   call jobstart(['goldendict', word], {'detach': 1})
+endfunction "}}}
+
+function! vimrc#pwgen() "{{{
+  return system('pwgen -1 -B -s -n 20')
 endfunction "}}}

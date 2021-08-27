@@ -1,9 +1,5 @@
 " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
 
-function! IsFile(path) abort
-  return !isdirectory(a:path) && glob(a:path) !=# ''
-endfunction
-
 " #AutoSave "{{{
 let g:my_autosave = get(g:, 'my_autosave', 0)
 command! EnableAutoSave let g:my_autosave = 1
@@ -153,8 +149,4 @@ function! CloseFloatingWindowsByFileTypePattern(filetype_pattern) abort
   let floating_windows = filter(nvim_list_wins(), "nvim_win_get_config(v:val)['relative'] !=# ''")
   let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")
   call map(close_windows, 'nvim_win_close(v:val, v:false)')
-endfunction
-
-function! Pwgen()
-  return system('pwgen -1 -B -s -n 20')
 endfunction

@@ -64,5 +64,3 @@ function! my#buffer#delete_trash_buffers() abort "{{{
     echo l:count 'buffer deleted'
   endif
 endfunction "}}}
-
-
