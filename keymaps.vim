@@ -50,10 +50,15 @@ nnoremap \tol :set list!<CR>
 "}}}
 
 " Text Move: "{{{
-nnoremap <silent><Plug>(MoveUp)   :<C-u>call vimrc#text_move(v:count1, 1, 0)<CR>
-nnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 0)<CR>
-xnoremap <silent><Plug>(MoveUp)   :<C-u>call vimrc#text_move(v:count1, 1, 1)<CR>
-xnoremap <silent><Plug>(MoveDown) :<C-u>call vimrc#text_move(v:count1, 0, 1)<CR>
+nnoremap <silent><Plug>(MoveUp)   <cmd>call my#ot#text_move(v:count1, 1, 0)<cr>
+nnoremap <silent><Plug>(MoveDown) <cmd>call my#ot#text_move(v:count1, 0, 0)<cr>
+xnoremap <silent><Plug>(MoveUp)   <cmd>call my#ot#text_move(v:count1, 1, 1)<cr>
+xnoremap <silent><Plug>(MoveDown) <cmd>call my#ot#text_move(v:count1, 0, 1)<cr>
+"}}}
+
+" BlankUp: "{{{
+nnoremap <silent><Plug>(BlankUp)   <cmd>call my#ot#blank_up(v:count1)<cr>
+nnoremap <silent><Plug>(BlankDown) <cmd>call my#ot#blank_down(v:count1)<cr>
 "}}}
 
 " Substitute: {{{

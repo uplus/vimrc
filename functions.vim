@@ -62,25 +62,6 @@ function! EraseSpace() abort "{{{
   call setpos('.', l:pos)
 endfunction "}}}
 
-" #Blank "{{{
-nnoremap <silent><Plug>(BlankUp)   :<c-u>call <SID>BlankUp(v:count1)<cr>
-nnoremap <silent><Plug>(BlankDown) :<c-u>call <SID>BlankDown(v:count1)<cr>
-
-function! s:BlankUp(count) abort
-  normal! $
-  put! =repeat(nr2char(10), a:count)
-  ']+1
-  silent! call repeat#set("\<Plug>(BlankUp)", a:count)
-endfunction
-
-function! s:BlankDown(count) abort
-  normal! $
-  put =repeat(nr2char(10), a:count)
-  '[-1
-  silent! call repeat#set("\<Plug>(BlankDown)", a:count)
-endfunction
-"}}}
-
 " #Misc
 function! ResetHighlights() abort
   " nohlsearch " 関数内では動作しない

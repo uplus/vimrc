@@ -12,8 +12,8 @@ hook_source = '''
 '''
 
 hook_post_source = '''
-  call operator#user#define('space-fold', 'vimrc#operator_space_fold')
-  call operator#user#define('blank2void', 'vimrc#operator_blank2void')
+  call operator#user#define('space-fold', 'my#ot#operator_space_fold')
+  call operator#user#define('blank2void', 'my#ot#operator_blank2void')
 
   " Add fold marker and space to end of line
   nmap zf <Plug>(operator-space-fold)

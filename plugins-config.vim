@@ -47,8 +47,8 @@ endif "}}}
 if dein#tap('vim-textobj-user')
   call textobj#user#plugin(
         \ 'blankline', {
-        \   'prev': {'select': '', 'select-function': 'vimrc#textobj_blankline_prev'},
-        \   'next': {'select': '', 'select-function': 'vimrc#textobj_blankline_next'},
+        \   'prev': {'select': '', 'select-function': 'my#ot#textobj_blankline_prev'},
+        \   'next': {'select': '', 'select-function': 'my#ot#textobj_blankline_next'},
         \ },
         \ )
 
