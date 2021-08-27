@@ -54,15 +54,17 @@ call s:source('options')
 " load dein
 if &g:loadplugins
   call s:source('dein')
-  call s:source('highlights')
 
   if has('vim_starting') && !empty(argv())
     " 先に実行しないとInsertEnterあたりでいろいろ発生してしまう
-    syntax enable
-    filetype detect
-    "   call s:on_filetype()
+    filetype plugin indent on
+    " syntax enable " 既存のハイライトを維持する
+    " syntax on     " 既存のハイライトを削除する
+    " filetype detect
+    " call s:on_filetype()
   endif
 
+  call s:source('highlights')
   call s:source('plugins-config')
 
   augroup myac
