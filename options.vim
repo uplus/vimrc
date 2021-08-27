@@ -41,13 +41,19 @@ endif
 " }}}
 
 " Tab: {{{
+" global
 set shiftround    " >>とかのインデントがshiftwidthの倍数に丸められる
-set expandtab     " Tabキーでスペース挿入
 set smarttab      " 削除とかいい感じに
+
+" buffer-local(引数なしで起動した場合の設定)
+set expandtab     " Tabキーでスペース挿入
 set nocopyindent  " expandtabを無視して既存行のタブで判定する
 set nopreserveindent " ==などでインデントを変更してもタブ文字を保持
-" set vartabstop varsofttabstop
 call my#option#set_tab(2)
+" set vartabstop varsofttabstop
+
+" buffer-localだから各バッファで設定する必要がある
+au myac BufNew * call my#option#set_tab(2)
 "}}}
 
 " #fold {{{
@@ -95,7 +101,6 @@ if has('patch-7.4.2201')
   set signcolumn=yes
 endif
 set showtabline=2
-set modelines=1
 set report=0  " コマンドでN行変更されたら出力
 set number
 set hidden

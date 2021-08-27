@@ -102,6 +102,7 @@ denite-filter = '''
   inoremap <silent><buffer><nowait><expr><c-t> denite#do_map('do_action', 'tabswitch')
   inoremap <silent><buffer><nowait><expr><c-s> denite#do_map('do_action', 'split')
   inoremap <silent><buffer><nowait><expr><c-v> denite#do_map('do_action', 'vsplit')
+  imap <silent><buffer><tab> <esc><tab>
 
   " close filter
   imap <buffer><nowait><esc> <Plug>(denite_filter_update)
@@ -183,8 +184,6 @@ defx = '''
   nnoremap <silent><buffer><nowait><expr>t  defx#do_action('drop', 'tabedit')
   nnoremap <silent><buffer><expr>e          defx#do_action('drop')
   nmap <silent><buffer><cr> e
-
-  " PP choosewin#start(range(1, winnr('$')))
 
   " 作成系:
   nnoremap <silent><buffer><expr>K   defx#do_action('new_directory')
