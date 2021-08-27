@@ -192,7 +192,6 @@ nnoremap <silent>,dw :wqall<CR>
 
 " #buffer "{{{
 nnoremap <silent>,ba :ActiveOnly<CR>
-nnoremap <silent>,bc :CurrentOnly<CR>
 nnoremap <silent>,bo :only<CR>
 nnoremap <silent>,bt :tabonly<CR>
 nnoremap <silent>,bl :ls<CR>
