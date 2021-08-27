@@ -19,6 +19,14 @@ augroup myac
   " フローティングウィンドウから離れたら自動で閉じる
   au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
 
+  " has('patch-8.0.1238')
+  " au CmdLineEnter /,\? :set hlsearch
+  " au CmdLineLeave /,\? :set nohlsearch
+
+  " nohlsearchする代わりに出力が常に消える
+  " visual modeがバグる
+  " au CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")
+
   " Terminal: {{{
   if has('nvim')
     au TermOpen * call s:term_open()
@@ -75,7 +83,7 @@ augroup myac
   endfunction
   "}}}
 
-  " #badspace {{{
+  " Badspace: {{{
   " trailがあるとハイライトできない あたりまえか
   " filetypeコマンドの後じゃないと反映されない
   let g:badspace_enable = 1
@@ -96,11 +104,7 @@ augroup myac
   endfunction
   "}}}
 
-  " nohlsearchする代わりに出力が常に消える
-  " visual modeがバグる
-  " au CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")
-
-  " #tag
+  " Tag: {{{
   " .tagsがある場合のみ更新する
   au BufWritePost * if filewritable('.tags') | call Tags() | endif
 
@@ -112,19 +116,21 @@ augroup myac
       source `=i`
     endfor
   endfunction
+  "}}}
 
-  " has('patch-8.0.1238')
-  " au CmdLineEnter /,\? :set hlsearch
-  " au CmdLineLeave /,\? :set nohlsearch
-
+  " Auto Mkdir: {{{
   au BufWritePre * call s:auto_mkdir(expand('%:p:h'))
+
   function! s:auto_mkdir(dir)
     if bufname('%') !~# '\v^.*://' && !isdirectory(a:dir) && !vimrc#is_file(a:dir)
       call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
     endif
   endfunction
+  "}}}
 
+  " Auto Defx: {{{
   autocmd BufEnter,BufRead,BufNew,BufCreate * call s:browse_check(expand('<amatch>'))
+
   function! s:browse_check(path) abort
     if a:path ==# '' || bufnr('%') != expand('<abuf>')
       return
@@ -146,4 +152,5 @@ augroup myac
       execute 'Defx' fnameescape(l:path)
     endif
   endfunction
+  "}}}
 augroup END
