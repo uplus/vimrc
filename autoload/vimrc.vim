@@ -2,6 +2,12 @@
 
 " -- helpers
 
+" マルチバイト対応の getcmdpos
+function! vimrc#getcmdpos() "{{{
+  let str = (getcmdline() . ' ')[:getcmdpos() - 1]
+  return strchars(str, 1) - 1
+endfunction "}}}
+
 function! vimrc#filename() abort "{{{
   return expand('%:t:r')
 endfunction "}}}

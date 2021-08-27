@@ -283,6 +283,12 @@ cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 cnoremap <c-d> <del>
 
+cnoremap <expr><c-k> my#cmdline#delete_to_end()
+cnoremap <expr><m-w> my#cmdline#rubout_word()
+cnoremap <expr><m-b> my#cmdline#back_word()
+cnoremap <expr><m-f> my#cmdline#forward_word()
+
+
 " swap: upは現在の入力を元に履歴を辿る
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
