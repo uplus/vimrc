@@ -30,22 +30,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 augroup myac
   autocmd!
-  " autocmd FileType,Syntax,BufNewFile,BufNew,BufRead * call s:on_filetype()
 augroup END
 
 function! s:source(path) abort
   let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
   if filereadable(fpath)
     execute 'source' fnameescape(fpath)
-  endif
-endfunction
-
-function! s:on_filetype() abort
-  if execute('filetype') =~# 'OFF'
-    " Lazy loading
-    silent! filetype plugin indent on
-    syntax enable
-    filetype detect
   endif
 endfunction
 
@@ -56,12 +46,7 @@ if &g:loadplugins
   call s:source('dein')
 
   if has('vim_starting') && !empty(argv())
-    " 先に実行しないとInsertEnterあたりでいろいろ発生してしまう
-    filetype plugin indent on
-    " syntax enable " 既存のハイライトを維持する
-    " syntax on     " 既存のハイライトを削除する
-    " filetype detect
-    " call s:on_filetype()
+    " nvimではsyntax enableなどが必要ない
   endif
 
   call s:source('highlights')
