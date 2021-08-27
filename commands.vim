@@ -8,7 +8,6 @@ command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! -nargs=* Job call jobstart(<q-args>)
 command! RunInTerm let g:quickrun_config._.runner = 'terminal'
-
 command! Tags call Tags()
 command! Hitest noautocmd runtime syntax/hitest.vim
 command! Narrow set laststatus=0 cmdheight=1 showtabline=0
@@ -45,7 +44,6 @@ command! UndoClear call vimrc#undo_clear()
 command! ActiveOnly call my#buffer#active_only()
 command! DeleteTrashBuffers call my#buffer#delete_trash_buffers()
 command! Cdgittop execute 'cd' vimrc#git_top()
-command! TermRun noautocmd w | call vimrc#terminal_run()
 command! -nargs=1 -complete=customlist,my#note#file_completion Note call my#note#open(<q-args>)
 command! -nargs=+ -complete=command Capture call vimrc#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)

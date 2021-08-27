@@ -17,6 +17,10 @@ function! vimrc#removechars(str, chars) abort "{{{
   return substitute(a:str, '[' . a:chars . ']', '', 'g')
 endfunction "}}}
 
+function! vimrc#delete_str(str, pattern, ...) abort "{{{
+  return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
+endfunction "}}}
+
 " filetypeに依存せずiskeyword固定でcwordを取得する
 function vimrc#get_cword() abort "{{{
   let save_iskeyword = &l:iskeyword
@@ -44,10 +48,6 @@ endfunction "}}}
 
 function! vimrc#add_slash_tail(str) abort "{{{
   return substitute(a:str, '/*$', '/', '')
-endfunction "}}}
-
-function! vimrc#delete_str(str, pattern, ...) abort "{{{
-  return substitute(a:str, a:pattern, '', get(a:000, 0, ''))
 endfunction "}}}
 
 function vimrc#expand_dir_alias(str) abort "{{{
@@ -100,6 +100,8 @@ function! vimrc#capture_win(cmd) abort "{{{
   1,2delete _
 endfunction "}}}
 
+" ---- terminal helper
+
 function! vimrc#terminal(...) abort "{{{
   " arg1: command string
   " arg2: open command
@@ -119,7 +121,6 @@ function! vimrc#terminal(...) abort "{{{
   startinsert
 endfunction "}}}
 
-" TODO: cmd毎にbufferを分けたい
 function! vimrc#working_terminal(...) abort "{{{
   let l:cmd = get(a:, 1, '')
   let l:open_cmd = get(a:, 2, 'botright split')
@@ -133,6 +134,8 @@ function! vimrc#working_terminal(...) abort "{{{
     au myac TermClose <buffer> unlet g:vimrc#working_terminal_nr
   endif
 endfunction "}}}
+
+" ----
 
 function! vimrc#add_repo() abort "{{{
   let str = @+
@@ -182,6 +185,16 @@ function! vimrc#highlight(...) abort "{{{
   execute cmd
 endfunction "}}}
 
+function! vimrc#goldendict(...) abort "{{{
+  let word = a:0? a:1 : vimrc#get_cword()
+  call jobstart(['goldendict', word], {'detach': 1})
+endfunction "}}}
+
+function! vimrc#pwgen() "{{{
+  let str = system('pwgen -1 -B -s -n 20')
+  return substitute(str, "\n$", '', '')
+endfunction "}}}
+
 function! vimrc#open_git_diff(type) abort "{{{
   silent! update
   let s:prev_winnr = winnr()
@@ -229,8 +242,6 @@ function! vimrc#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
 endfunction "}}}
 
-" ----
-
 function! vimrc#zsh_file_completion(lead, line, pos) abort "{{{
   if a:lead ==# '#'
     return map(my#buffer#info(''), 'v:val[2]')
@@ -266,50 +277,4 @@ function! vimrc#zsh_file_completion(lead, line, pos) abort "{{{
   endfor
 
   return cands
-endfunction "}}}
-
-" quickrunの設定をパースしてbuiltin-termで実行する
-" TODO deprecated
-function! vimrc#terminal_run() abort "{{{
-  let config = vimrc#parse_quickrun_config()
-  let cmd = vimrc#build_run_command(config)
-
-  botright enew
-  call termopen(cmd)
-  startinsert
-endfunction "}}}
-
-function! vimrc#build_run_command(config) abort "{{{
-  let cmd = a:config.exec
-  if type(cmd) == type([])
-    let cmd = join(cmd, ' && ')
-  endif
-  PP! a:config
-  let cmd = substitute(cmd, '%c', a:config.command, 'g')
-  let cmd = substitute(cmd, '%o', a:config.cmdopt, 'g')
-  let cmd = substitute(cmd, '%a', a:config.args, 'g')
-  let cmd = substitute(cmd, '%s', expand('%'), 'g')
-  let cmd = expand(cmd) " TODO だめ
-  return cmd
-endfunction "}}}
-
-function! vimrc#parse_quickrun_config() abort "{{{
-  let config = quickrun#new().base_config
-
-  return { 'type': config.type,
-        \ 'command':  get(config, 'command', config.type),
-        \ 'cmdopt':   get(config, 'cmdopt', ''),
-        \ 'args':     get(config, 'args', ''),
-        \ 'exec':     get(config, 'exec',  '%c %o %s %a'),
-        \ }
-endfunction "}}}
-
-function! vimrc#goldendict(...) abort "{{{
-  let word = a:0? a:1 : vimrc#get_cword()
-  call jobstart(['goldendict', word], {'detach': 1})
-endfunction "}}}
-
-function! vimrc#pwgen() "{{{
-  let str = system('pwgen -1 -B -s -n 20')
-  return substitute(str, "\n$", '', '')
 endfunction "}}}
