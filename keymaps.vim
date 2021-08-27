@@ -27,8 +27,8 @@ if has('nvim')
   " tnoremap <c-l> <c-\><c-n><c-w>l
   " <c-w>tはマップが存在する
 
-  nnoremap <silent>,s :<c-u>call vimrc#working_terminal()<cr>
-  nnoremap <silent>,S :<c-u>call vimrc#working_terminal('', 'tabnew')<cr>
+  nnoremap <silent>,s <cmd>call my#terminal#working_terminal()<cr>
+  nnoremap <silent>,S <cmd>call my#terminal#working_terminal('', 'tabnew')<cr>
 
   tnoremap <c-t>h <c-\><c-n><c-w>h
   tnoremap <c-t>j <c-\><c-n><c-w>j

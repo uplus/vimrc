@@ -31,18 +31,14 @@ augroup myac
   if has('nvim')
     au TermOpen * call s:term_open()
     function s:term_open()
-      setl signcolumn=no
-      setl foldcolumn=0
       au BufEnter <buffer> call feedkeys('a') " or startinsert!
       " call feedkeys("exec zsh\<cr>\<c-l>") " Bug
     endfunction
 
     au TermClose * call s:term_close()
     function! s:term_close() abort
-      " Skip return code when quit terminal.
-      if bufname('%') =~ printf('\v(%s|%s|pry)$', $SHELL, &shell)
-        " defxを開いているとバグる
-        " call feedkeys('\<cr>')
+      if v:event.status == 0
+        execute 'silent bdelete! ' . expand('<abuf>')
       endif
     endfunction
   endif
