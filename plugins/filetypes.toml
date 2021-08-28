@@ -146,5 +146,6 @@ repo = 'dag/vim2hs'
 repo = 'itchyny/vim-haskell-indent'
 
 # git
+
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'

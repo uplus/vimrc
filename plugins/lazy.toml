@@ -427,7 +427,7 @@ hook_source = '''
 
 #tags and ref
 
-[[plugins]]
+[[plugins]] # View and search LSP symbols, tags in Vim/NeoVim.
 if = 0
 repo = 'liuchengxu/vista.vim'
 on_cmd = ['Vista']
