@@ -1,11 +1,3 @@
-let g:netrw_nogx = 1 " Disable unnecessary keymaps
-
-" #vital
-" NeoBundle 'osyo-manga/vital-unlocker' " オプションの値保存
-
-" #textobj
-" NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
-
 if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu') " {{{
   let g:incsearch#no_inc_hlsearch        = 0    " 他のwindowではハイライトしない
   let g:incsearch#auto_nohlsearch        = 1    " 自動でハイライトを消す

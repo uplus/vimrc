@@ -206,3 +206,7 @@ depends = 'vim-textobj-user'
 #   vmap amt <Plug>(textobj-multitextobj-a)
 #   vmap imt <Plug>(textobj-multitextobj-i)
 # '''
+
+# [[plugins]] " am im 任意の2つのmotionの間
+# reop = 'hchbaw/textobj-motionmotion.vim'
+# depends = 'vim-textobj-user'

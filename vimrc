@@ -21,6 +21,9 @@ for key in ['Q', ';', ',', 's', 'gs', 'gR', 'g8']
   execute 'noremap' key '<Nop>'
 endfor
 
+" Disable unnecessary keymaps
+let g:netrw_nogx = 1
+
 " provider config
 let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0

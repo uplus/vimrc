@@ -440,6 +440,7 @@ repo = 'haya14busa/incsearch-index.vim'
 repo = 'haya14busa/vim-asterisk'
 
 
+
 # syntaxchecker
 
 [[plugins]]
