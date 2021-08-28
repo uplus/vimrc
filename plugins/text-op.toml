@@ -68,13 +68,20 @@ depends = 'vim-operator-user'
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
+hook_add = '''
+  call textobj#user#plugin(
+        \ 'blankline', {
+        \   'prev': {'select': '', 'select-function': 'my#ot#textobj_blankline_prev'},
+        \   'next': {'select': '', 'select-function': 'my#ot#textobj_blankline_next'},
+        \ },
+        \ )
+
+  omap } <Plug>(textobj-blankline-next)
+  omap { <Plug>(textobj-blankline-prev)
+'''
 
 [[plugins]] # Can make textobj by regex
 repo = 'osyo-manga/vim-textobj-from_regexp'
-depends = 'vim-textobj-user'
-
-[[plugins]] # 複数のtextobjを一つにまとめる
-repo = 'osyo-manga/vim-textobj-multitextobj'
 depends = 'vim-textobj-user'
 
 [[plugins]] # e buffer
@@ -193,3 +200,21 @@ hook_add = 'let g:textobj_latex_no_default_key_mappings = 1'
 # [[plugins]] # c
 # repo = 'thinca/vim-textobj-comment'
 # depends = 'vim-textobj-user'
+
+# ちょい重い5ms
+# [[plugins]] # 複数のtextobjを一つにまとめる
+# repo = 'osyo-manga/vim-textobj-multitextobj'
+# depends = 'vim-textobj-user'
+# hook_add = '''
+#   " 上から順に textobj を適用していき、該当するものが使用される
+#   let g:textobj_multitextobj_textobjects_i = [
+#     \ "\<Plug>(textobj-url-i)",
+#     \ "\<Plug>(textobj-multiblock-i)",
+#     \ "\<Plug>(textobj-function-i)",
+#     \ "\<Plug>(textobj-entire-i)",
+#     \]
+#   omap amt <Plug>(textobj-multitextobj-a)
+#   omap imt <Plug>(textobj-multitextobj-i)
+#   vmap amt <Plug>(textobj-multitextobj-a)
+#   vmap imt <Plug>(textobj-multitextobj-i)
+# '''

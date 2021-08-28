@@ -7,18 +7,6 @@ let g:netrw_nogx = 1 " Disable unnecessary keymaps
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 
 " vim-textobj taps "{{{
-if dein#tap('vim-textobj-user')
-  call textobj#user#plugin(
-        \ 'blankline', {
-        \   'prev': {'select': '', 'select-function': 'my#ot#textobj_blankline_prev'},
-        \   'next': {'select': '', 'select-function': 'my#ot#textobj_blankline_next'},
-        \ },
-        \ )
-
-  omap } <Plug>(textobj-blankline-next)
-  omap { <Plug>(textobj-blankline-prev)
-endif
-
 if dein#tap('vim-textobj-function') "{{{
   let g:textobj_function_no_default_key_mappings = 1
   omap im <Plug>(textobj-function-i)
