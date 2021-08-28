@@ -23,13 +23,16 @@ function! g:QuickRunStop() abort "{{{
 endfunction "}}}
 
 nnoremap <silent>\r :call SmartQuickRun()<CR>
-function! g:SmartQuickRun() "{{{
+function! g:SmartQuickRun() abort "{{{
   update
 
   " if empty(getloclist('.')) " If error exists, don't run
   echo 'start quickrun'
   if expand('%') =~# '_spec.rb$'
     !rspec %
+  " elseif &filetype ==# 'vim'
+    " 現在の行か選択範囲を実行する
+    " rangeで引数とれる(デフォルトを現在の行にすれば上手く行きそう)
   else
     QuickRun -mode n
   endif

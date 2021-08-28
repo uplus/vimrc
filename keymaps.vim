@@ -222,9 +222,6 @@ endif
 "}}}
 
 " #complete "{{{
-cnoremap <c-y> <c-y><BS>
-cnoremap <c-g> <c-c>:<c-p>
-
 imap <c-x>n <c-x><c-n>
 imap <c-x>i <c-x><c-i>
 imap <c-x>] <c-x><c-]>
@@ -270,7 +267,7 @@ nnoremap <silent><expr>l foldclosed('.') != -1? "zO" : "l"
 
 "}}}
 
-" #emacs bind "{{{
+" Readline Bind: "{{{
 inoremap <c-a> <c-o>^
 inoremap <c-e> <c-o>$
 imap <c-d> <del>
@@ -285,10 +282,10 @@ cnoremap <c-e> <end>
 cnoremap <c-d> <del>
 
 cnoremap <expr><c-k> my#cmdline#delete_to_end()
+cnoremap <expr><m-d> my#cmdline#delete_to_next_word()
 cnoremap <expr><m-w> my#cmdline#delete_to_next_word()
 cnoremap <expr><m-f> my#cmdline#move_to_next_word()
 cnoremap <expr><m-b> my#cmdline#move_to_prev_word()
-
 
 " swap: upは現在の入力を元に履歴を辿る
 cnoremap <c-p> <up>
