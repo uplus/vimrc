@@ -10,7 +10,6 @@ hook_source = '''
   nmap seL <Plug>(operator-evalruby)<Plug>(textobj-line-a)
   xmap se <Plug>(operator-evalruby)
 '''
-
 hook_post_source = '''
   call operator#user#define('space-fold', 'my#ot#operator_space_fold')
   call operator#user#define('blank2void', 'my#ot#operator_blank2void')
@@ -28,6 +27,14 @@ hook_post_source = '''
 [[plugins]] # gr
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
+hook_add = '''
+  nmap gz <Plug>(operator-replace)
+  xmap gz <Plug>(operator-replace)
+  for s:c in split("\" ' ` ( { [ <")
+    exe 'nmap gz' . s:c '<Plug>(operator-replace)i' . s:c
+  endfor
+  unlet s:c
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-operator-block'
@@ -36,6 +43,21 @@ depends = 'vim-operator-user'
 [[plugins]] # sa sd sr
 repo = 'rhysd/vim-operator-surround'
 depends = 'vim-operator-user'
+hook_add = '''
+  " () {} はab aB で表す 他は記号 でもb Bは使わないかな
+  map <silent>sa <Plug>(operator-surround-append)
+  map <silent>sd <Plug>(operator-surround-delete)a
+  map <silent>sr <Plug>(operator-surround-replace)a
+
+  " if you use vim-textobj-multiblock
+  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+
+  nmap S <Plug>(vim-original-visual)<Plug>(vim-original-tail)<Plug>(operator-surround-append)
+  " nmap saw saaw
+  " nmap saW saaW
+  nmap saL saiL
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-operator-exec_command'
@@ -47,16 +69,20 @@ depends = 'vim-operator-user'
 [[plugins]]
 repo = 'kana/vim-textobj-user'
 
+[[plugins]] # Can make textobj by regex
+repo = 'osyo-manga/vim-textobj-from_regexp'
+depends = 'vim-textobj-user'
+
+[[plugins]] # 複数のtextobjを一つにまとめる
+repo = 'osyo-manga/vim-textobj-multitextobj'
+depends = 'vim-textobj-user'
+
 [[plugins]] # e buffer
 repo = 'kana/vim-textobj-entire'
 depends = 'vim-textobj-user'
 
 [[plugins]] # i
 repo = 'kana/vim-textobj-indent'
-depends = 'vim-textobj-user'
-
-[[plugins]] # y syntax-highlight
-repo = 'kana/vim-textobj-syntax'
 depends = 'vim-textobj-user'
 
 [[plugins]] # z
@@ -66,18 +92,28 @@ depends = 'vim-textobj-user'
 [[plugins]] # L ignore last-char of current-line
 repo = 'kana/vim-textobj-line'
 depends = 'vim-textobj-user'
+hook_add = '''
+  let g:textobj_line_no_default_key_mappings = 1
+  omap aL <Plug>(textobj-line-a)
+  omap iL <Plug>(textobj-line-i)
 
-[[plugins]] # u
-repo = 'mattn/vim-textobj-url'
-depends = 'vim-textobj-user'
+  " whitout last <Space> <CR>...
+  nmap yY y<Plug>(textobj-line-i)
+  nmap dD d<Plug>(textobj-line-i)
+  nmap cC c<Plug>(textobj-line-i)
+'''
 
 [[plugins]] # w use it with CamelCaseMotion
 repo = 'h1mesuke/textobj-wiw'
 depends = 'vim-textobj-user'
-
-[[plugins]] # c
-repo = 'thinca/vim-textobj-comment'
-depends = 'vim-textobj-user'
+hook_add = '''
+  " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
+  let g:textobj_wiw_no_default_key_mappings = 1
+  omap a<space>w <Plug>(textobj-wiw-a)
+  omap i<space>w <Plug>(textobj-wiw-i)
+  xmap a<space>w <Plug>(textobj-wiw-a)
+  xmap i<space>w <Plug>(textobj-wiw-i)
+'''
 
 [[plugins]] # f{char} select a range between character
 repo = 'thinca/vim-textobj-between'
@@ -86,23 +122,40 @@ depends = 'vim-textobj-user'
 [[plugins]] # v last pasted textobj
 repo = 'gilligan/textobj-lastpaste'
 depends = 'vim-textobj-user'
+hook_add = '''
+  let g:textobj_lastpaste_no_default_key_mappings = 1
+  omap v <Plug>(textobj-lastpaste-i)
+'''
 
 [[plugins]] # b some block
 repo = 'osyo-manga/vim-textobj-multiblock'
 depends = 'vim-textobj-user'
+hook_add = '''
+  let g:textobj_multiblock_no_default_key_mappings = 1
+  let g:textobj#multiblock#enable_block_in_cursor = 1
+  let g:textobj_multiblock_search_limit = 40
+  let g:textobj_multiblock_blocks = [
+        \   ['"', '"', 1],
+        \   ["'", "'", 1],
+        \   ['`', '`', 1],
+        \   ['(', ')', 1],
+        \   ['[', ']', 1],
+        \   ['{', '}', 1],
+        \   ['<', '>', 1],
+        \   ['|', '|', 1],
+        \ ]
+
+  omap ib <Plug>(textobj-multiblock-i)
+  xmap ib <Plug>(textobj-multiblock-i)
+  omap ab <Plug>(textobj-multiblock-a)
+  xmap ab <Plug>(textobj-multiblock-a)
+'''
 
 [[plugins]] # I A 連続したtextobjを矩形選択 ciw -> cIw
 repo = 'osyo-manga/vim-textobj-blockwise'
 depends = 'vim-textobj-user'
 
-[[plugins]] # Can make textobj by regex
-repo = 'osyo-manga/vim-textobj-from_regexp'
-depends = 'vim-textobj-user'
-
-[[plugins]] # 複数のtextobjを一つにまとめる
-repo = 'osyo-manga/vim-textobj-multitextobj'
-depends = 'vim-textobj-user'
-
+# treesitterでいいかも
 [[plugins]] # m
 repo = 'kana/vim-textobj-function'
 depends = 'vim-textobj-user'
@@ -129,4 +182,14 @@ repo = 'rbonvall/vim-textobj-latex'
 depends = 'vim-textobj-user'
 hook_add = 'let g:textobj_latex_no_default_key_mappings = 1'
 
+# [[plugins]] # y syntax-highlight
+# repo = 'kana/vim-textobj-syntax'
+# depends = 'vim-textobj-user'
 
+# [[plugins]] # u
+# repo = 'mattn/vim-textobj-url'
+# depends = 'vim-textobj-user'
+
+# [[plugins]] # c
+# repo = 'thinca/vim-textobj-comment'
+# depends = 'vim-textobj-user'

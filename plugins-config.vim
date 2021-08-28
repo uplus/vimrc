@@ -6,33 +6,6 @@ let g:netrw_nogx = 1 " Disable unnecessary keymaps
 " #textobj
 " NeoBundle 'hchbaw/textobj-motionmotion.vim'   " am im 任意の2つの motion の間
 
-" vim-operator taps "{{{
-if dein#tap('vim-operator-replace')
-  nmap gz <Plug>(operator-replace)
-  xmap gz <Plug>(operator-replace)
-  for s:c in split("\" ' ` ( { [ <")
-    exe 'nmap gz' . s:c '<Plug>(operator-replace)i' . s:c
-  endfor
-  unlet s:c
-endif
-
-if dein#tap('vim-operator-surround') "{{{
-  " () {} はab aB で表す 他は記号 でもb Bは使わないかな
-  map <silent>sa <Plug>(operator-surround-append)
-  map <silent>sd <Plug>(operator-surround-delete)a
-  map <silent>sr <Plug>(operator-surround-replace)a
-
-  " if you use vim-textobj-multiblock
-  nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
-  nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
-
-  nmap S <Plug>(vim-original-visual)<Plug>(vim-original-tail)<Plug>(operator-surround-append)
-  " nmap saw saaw
-  " nmap saW saaW
-  nmap saL saiL
-endif "}}}
-"}}}
-
 " vim-textobj taps "{{{
 if dein#tap('vim-textobj-user')
   call textobj#user#plugin(
@@ -45,31 +18,6 @@ if dein#tap('vim-textobj-user')
   omap } <Plug>(textobj-blankline-next)
   omap { <Plug>(textobj-blankline-prev)
 endif
-
-if dein#tap('textobj-lastpaste') "{{{
-  let g:textobj_lastpaste_no_default_key_mappings = 1
-  omap v <Plug>(textobj-lastpaste-i)
-endif "}}}
-
-if dein#tap('textobj-wiw') "{{{
-  " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
-  let g:textobj_wiw_no_default_key_mappings = 1
-  omap a<space>w <Plug>(textobj-wiw-a)
-  omap i<space>w <Plug>(textobj-wiw-i)
-  xmap a<space>w <Plug>(textobj-wiw-a)
-  xmap i<space>w <Plug>(textobj-wiw-i)
-endif "}}}
-
-if dein#tap('vim-textobj-line') "{{{
-  let g:textobj_line_no_default_key_mappings = 1
-  omap aL <Plug>(textobj-line-a)
-  omap iL <Plug>(textobj-line-i)
-
-  " whitout last <Space> <CR>...
-  nmap yY y<Plug>(textobj-line-i)
-  nmap dD d<Plug>(textobj-line-i)
-  nmap cC c<Plug>(textobj-line-i)
-endif "}}}
 
 if dein#tap('vim-textobj-function') "{{{
   let g:textobj_function_no_default_key_mappings = 1
@@ -94,27 +42,6 @@ if dein#tap('vim-textobj-ruby') "{{{
     return textobj#ruby#object_definition_select_{a:object_type}()
   endfunction
   au myac FileType ruby let b:textobj_function_select = function('s:textobj_function_ruby_select')
-endif "}}}
-
-if dein#tap('vim-textobj-multiblock') "{{{
-  let g:textobj_multiblock_no_default_key_mappings = 1
-  omap ib <Plug>(textobj-multiblock-i)
-  xmap ib <Plug>(textobj-multiblock-i)
-  omap ab <Plug>(textobj-multiblock-a)
-  xmap ab <Plug>(textobj-multiblock-a)
-
-  let g:textobj#multiblock#enable_block_in_cursor = 1
-  let g:textobj_multiblock_search_limit = 40
-  let g:textobj_multiblock_blocks = [
-        \   ['"', '"', 1],
-        \   ["'", "'", 1],
-        \   ['`', '`', 1],
-        \   ['(', ')', 1],
-        \   ['[', ']', 1],
-        \   ['{', '}', 1],
-        \   ['<', '>', 1],
-        \   ['|', '|', 1],
-        \ ]
 endif "}}}
 "}}}
 
