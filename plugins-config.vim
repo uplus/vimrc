@@ -17,8 +17,6 @@ if dein#tap('incsearch.vim') && dein#tap('vim-asterisk') && dein#tap('vim-anzu')
   " Treat folding well
   " nnoremap <expr> n anzu#mode#mapexpr('n', '', 'zzzv')
   " nnoremap <expr> N anzu#mode#mapexpr('N', '', 'zzzv')
-  " clear status
-  " nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 
   if dein#is_sourced('incsearch-index.vim')
     map / <Plug>(incsearch-index-/)
