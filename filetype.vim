@@ -20,12 +20,3 @@ augroup filetypedetect
   au BufRead,BufNewFile Guardfile,Vagrantfile setf ruby
   au BufRead,BufNewFile $HOME/Documents/notes/* call my#note#config()
 augroup END
-
-" #filetype config
-augroup myac
-  au FileType conf,gitcommit,html,css set nocindent
-  au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
-  au FileType quickrun,help,diff setl signcolumn=no
-  au BufReadPost COMMIT_EDITMSG goto
-  au OptionSet previewwindow,diff if v:option_new | nnoremap <silent><buffer>q :quit<cr> | endif
-augroup END

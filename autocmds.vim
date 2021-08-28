@@ -11,6 +11,13 @@ augroup myac
   " 最後のバッファがquickfixなら自動で閉じる
   au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:p:h
+  " git commit -vのファイルを開いたとき先頭に移動する
+  au BufReadPost COMMIT_EDITMSG goto
+
+  au FileType conf,gitcommit,html,css set nocindent
+  au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
+  au FileType quickrun,help,diff setl signcolumn=no
+  au OptionSet previewwindow,diff if v:option_new | nnoremap <silent><buffer>q :quit<cr> | endif
 
   " BufLeaveだとfloatingでも反応してしまうので外した
   au CursorHold,FocusLost  * call DoAutoSave()
