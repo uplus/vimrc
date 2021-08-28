@@ -427,18 +427,22 @@ hook_add = '''
 
 #search and replace
 
-[[plugins]] # show search point on the command-line
-repo = 'osyo-manga/vim-anzu'
-
 [[plugins]]
-repo = 'haya14busa/vim-asterisk'
+repo = 'haya14busa/is.vim'
+hook_add = 'source ~/.vim/rc/is.rc.vim'
 
-[[plugins]]
-repo = 'haya14busa/incsearch-index.vim'
-
-[[plugins]]
-repo = 'haya14busa/incsearch.vim'
-hook_add = 'source ~/.vim/rc/incsearch.rc.vim'
+# [[plugins]]
+# repo = 'haya14busa/vim-asterisk'
+#
+# [[plugins]] # show search point on the command-line
+# repo = 'osyo-manga/vim-anzu'
+#
+# [[plugins]]
+# repo = 'haya14busa/incsearch-index.vim'
+#
+# [[plugins]]
+# repo = 'haya14busa/incsearch.vim'
+# hook_add = 'source ~/.vim/rc/incsearch.rc.vim'
 
 
 # syntaxchecker
