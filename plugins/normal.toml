@@ -609,6 +609,9 @@ EOF
 '''
 
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+
+[[plugins]]
 repo =  'nvim-treesitter/nvim-treesitter'
 if = "has('nvim')"
 hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
