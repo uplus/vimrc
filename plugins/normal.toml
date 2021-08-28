@@ -431,14 +431,14 @@ hook_add = '''
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
-repo = 'haya14busa/incsearch.vim'
+repo = 'haya14busa/vim-asterisk'
 
 [[plugins]]
 repo = 'haya14busa/incsearch-index.vim'
 
 [[plugins]]
-repo = 'haya14busa/vim-asterisk'
-
+repo = 'haya14busa/incsearch.vim'
+hook_add = 'source ~/.vim/rc/incsearch.rc.vim'
 
 
 # syntaxchecker
