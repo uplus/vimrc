@@ -58,6 +58,7 @@ function! s:set_overwrite_highlights()
   hi HopUnmatched guifg=#666666 ctermfg=242
 
   if g:colors_name ==? 'srcery'
+    hi Normal guibg=#080704
     hi! link Comment SrceryBrightBlack
 
     " gitcommit
