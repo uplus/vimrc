@@ -1,31 +1,31 @@
 " Altercmd:
 
-if exists(':CAlterCommand') != 2
+if exists(':AlterCommand') != 2
   finish
 endif
 
-CAlterCommand rec[ache] Recache
-CAlterCommand den[ite] Denite
-CAlterCommand gi[na] Gina
-CAlterCommand maps Maps
+AlterCommand rec[ache] Recache
+AlterCommand den[ite] Denite
+AlterCommand gi[na] Gina
+AlterCommand maps Maps
 
-CAlterCommand lint ALELint
-CAlterCommand fix ALEFix
+AlterCommand lint ALELint
+AlterCommand fix ALEFix
 
-CAlterCommand ww w!
-CAlterCommand naw Naw
-CAlterCommand t tabedit
-" CAlterCommand ftd[etect] filetype detect
-" CAlterCommand br botright sp
-" CAlterCommand qq q!
-" CAlterCommand me[s] mes
+AlterCommand ww w!
+AlterCommand naw Naw
+AlterCommand t tabedit
+" AlterCommand ftd[etect] filetype detect
+" AlterCommand br botright sp
+" AlterCommand qq q!
+" AlterCommand me[s] mes
 
-CAlterCommand tmpb[uffer] TmpBuffer
-CAlterCommand tmpc[ommit] TmpCommit
-CAlterCommand note Note
+AlterCommand tmpb[uffer] TmpBuffer
+AlterCommand tmpc[ommit] TmpCommit
+AlterCommand note Note
 
 if has('nvim')
-  CAlterCommand www w suda://%
+  AlterCommand www w\ suda://%
 else
-  CAlterCommand www w !sudo tee > /dev/null %
+  AlterCommand www w\ !sudo\ tee\ >\ /dev/null\ %
 endif

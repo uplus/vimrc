@@ -294,7 +294,8 @@ on_map = '<Plug>'
 
 [[plugins]]
 # vim-ambicmd
-repo = 'tyru/vim-altercmd'
+repo = 'kana/vim-altercmd'
+# repo = 'tyru/vim-altercmd' # 高機能だが読み込みが2ms遅い
 hook_post_source = 'source ~/.vim/rc/altercmd.rc.vim'
 
 [[plugins]]
