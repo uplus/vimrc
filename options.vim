@@ -52,7 +52,7 @@ call my#option#set_tab(2)
 " set vartabstop varsofttabstop
 
 " buffer-localだから各バッファで設定する必要がある
-au myac BufNew * call my#option#set_tab(2)
+au myac FileType * call my#option#set_tab(2)
 "}}}
 
 " #fold {{{
