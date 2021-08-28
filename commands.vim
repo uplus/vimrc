@@ -1,3 +1,6 @@
+" Command:
+
+" Misc:
 command! Q qall!
 command! W w!
 command! Naw noautocmd write
@@ -48,8 +51,3 @@ command! Cdgittop execute 'cd' vimrc#git_top()
 command! -nargs=1 -complete=customlist,my#note#file_completion Note call my#note#open(<q-args>)
 command! -nargs=+ -complete=command Capture call vimrc#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call vimrc#capture_win(<q-args>)
-
-" " zsh like tabedit.
-" if executable('zsh')
-"   command! -nargs=1 -complete=customlist,vimrc#zsh_file_completion T tabedit <args>
-" endif

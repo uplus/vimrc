@@ -1,34 +1,27 @@
 " Altercmd:
+
 if exists(':CAlterCommand') != 2
   finish
 endif
 
-CAlterCommand ins[tall] Install
 CAlterCommand rec[ache] Recache
-
-CAlterCommand ww w!
-CAlterCommand naw Naw
-CAlterCommand qq q!
-CAlterCommand me[s] mes
-CAlterCommand ftd[etect] filetype detect
+CAlterCommand den[ite] Denite
+CAlterCommand gi[na] Gina
+CAlterCommand maps Maps
 
 CAlterCommand lint ALELint
 CAlterCommand fix ALEFix
 
-CAlterCommand movetotab MoveToTab
-CAlterCommand maps Maps
-" CAlterCommand t T
+CAlterCommand ww w!
+CAlterCommand naw Naw
 CAlterCommand t tabedit
-CAlterCommand br botright sp
+" CAlterCommand ftd[etect] filetype detect
+" CAlterCommand br botright sp
+" CAlterCommand qq q!
+" CAlterCommand me[s] mes
+
 CAlterCommand tmpb[uffer] TmpBuffer
 CAlterCommand tmpc[ommit] TmpCommit
-
-CAlterCommand log Log
-CAlterCommand vsh[ell] VimShell
-CAlterCommand vsi VimShellInteractive
-CAlterCommand den[ite] Denite
-CAlterCommand gi[na] Gina
-CAlterCommand qr QuickRun
 CAlterCommand note Note
 
 if has('nvim')
