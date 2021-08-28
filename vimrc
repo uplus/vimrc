@@ -71,7 +71,6 @@ call s:source('functions')
 call s:source('keymaps')
 call s:source('commands')
 call s:source('autocmds')
-
-call s:source('after')
+call s:source('local')
 
 set secure

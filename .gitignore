@@ -1,4 +1,4 @@
 .*
 !.gitkeep
 tmp/
-after.vim
+local.vim
