@@ -13,9 +13,9 @@ inoremap <Plug>(vim-original-insert-lasttext) <c-a>
 "}}}
 
 " Vim Basic Command Keymaps: "{{{
-nnoremap <silent><Plug>(u10-botright) :<c-u>botright split<cr>
-nnoremap <silent><Plug>(u10-vertical) :<c-u>vertical split<cr>
-nnoremap <silent><Plug>(u10-undojoin) :<c-u>undojoin<cr>
+nnoremap <silent><Plug>(u10-botright) <cmd>botright split<cr>
+nnoremap <silent><Plug>(u10-vertical) <cmd>vertical split<cr>
+nnoremap <silent><Plug>(u10-undojoin) <cmd>undojoin<cr>
 "}}}
 
 " NeoVim Terminal: "{{{
@@ -73,12 +73,12 @@ xnoremap sW :s/\v<c-r><c-a>
 "}}}
 
 nmap <plug>(delete_for_match) <Plug>(vim-original-visualline)^%d
-nnoremap <silent>=<cr> :<c-u>call Format()<cr>
+nnoremap <silent>=<cr> <cmd>call Format()<cr>
 
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
 nnoremap <silent>,gt :Tig<cr>
 nnoremap <silent>gst :WordTranslate<cr>
-nnoremap <silent>gsg :<c-u>call vimrc#goldendict()<cr>
+nnoremap <silent>gsg <cmd>call vimrc#goldendict()<cr>
 nnoremap <silent><space>n :call ResetHighlights()<cr>:nohlsearch<cr>
 
 " inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
@@ -86,7 +86,7 @@ imap <c-j> <cr>
 " inoremap jj <esc>
 xnoremap <space>n :normal<space>
 
-nnoremap ,,,,,,,,,,,,, :<c-u>set titlestring=Hello<cr>
+nnoremap ,,,,,,,,,,,,, <cmd>set titlestring=Hello<cr>
 
 " Ctrl /
 " Use <c-r>.
@@ -110,10 +110,10 @@ nnoremap <Plug>(select-pasted) '[<S-v>']
 nmap ,v <Plug>(select-pasted)
 nmap dmp <Plug>(delete_for_match)
 nmap <Space>J <Plug>(MoveDown)kJ
-nnoremap <silent>( {:<c-u>exec ('' ==# getline('.')? 'normal! j' : '')<CR>
-nnoremap <silent>) }:<c-u>exec ('' ==# getline('.')? 'normal! k' : '')<CR>
-xnoremap <silent>( {:<c-u>exec 'normal! gv' . ('' ==# getline("'<")? 'j' : '')<CR>
-xnoremap <silent>) }:<c-u>exec 'normal! gv' . ('' ==# getline("'>")? 'k' : '')<CR>
+nnoremap <silent>( {<cmd>exec ('' ==# getline('.')? 'normal! j' : '')<cr>
+nnoremap <silent>) }<cmd>exec ('' ==# getline('.')? 'normal! k' : '')<cr>
+xnoremap <silent>( {<cmd>exec 'normal! gv' . ('' ==# getline("'<")? 'j' : '')<cr>
+xnoremap <silent>) }<cmd>exec 'normal! gv' . ('' ==# getline("'>")? 'k' : '')<cr>
 nmap >p p:'[,']><CR>
 nmap <p p:'[,']<<CR>
 nmap =p p=']
