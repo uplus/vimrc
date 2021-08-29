@@ -17,7 +17,8 @@ augroup myac
   au FileType conf,gitcommit,html,css set nocindent
   au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
   au FileType quickrun,help,diff setl signcolumn=no
-  au OptionSet previewwindow,diff if v:option_new | nnoremap <silent><buffer>q :quit<cr> | endif
+  au OptionSet previewwindow if v:option_new | nnoremap <silent><buffer>q :quit<cr> | endif
+
 
   " BufLeaveだとfloatingでも反応してしまうので外した
   au CursorHold,FocusLost  * call DoAutoSave()
@@ -33,10 +34,25 @@ augroup myac
   " visual modeがバグる
   " au CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")
 
+  " Diff Mode: {{{
+  " diffモード用の設定を適用する
+
+  " diffモードで起動したバッファーに適用
+  au VimEnter * call my#option#set_diff_mode_on_vimenter()
+
+  " optionがセットされたときに適用
+  au OptionSet diff if v:option_new | call my#option#set_diff_mode(0, 0) |  endif
+  "}}}
+
   " Foldmethod: {{{
   au BufEnter * call s:set_foldmethod()
 
   function! s:set_foldmethod() abort
+    " diffモードなら何もしない
+    if &diff
+      return
+    endif
+
     " window単位なのでbuf毎の設定などはできない
     if vimrc#is_include(['vim', 'markdown', 'sshconfig', 'neosnippet'], &filetype)
       set foldmethod=marker

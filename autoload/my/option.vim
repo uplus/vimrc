@@ -45,3 +45,21 @@ function! my#option#set_as_scratch() abort "{{{
   setl noswapfile
   setl nobuflisted
 endfunction "}}}
+
+function! my#option#set_diff_mode_on_vimenter() abort "{{{
+  let diff_win_nrs = filter(nvim_list_wins(), { idx,win_nr -> nvim_win_get_option(win_nr, 'diff') })
+
+  for win_nr in diff_win_nrs
+    call my#option#set_diff_mode(win_nr, nvim_win_get_buf(win_nr))
+  endfor
+endfunction "}}}
+
+" diffモード用の設定
+function! my#option#set_diff_mode(win_nr, bufnr) abort "{{{
+  call nvim_win_set_option(a:win_nr, 'signcolumn', 'no')
+
+  let opts = { 'silent': v:true, 'noremap': v:true }
+  call nvim_buf_set_keymap(a:bufnr, 'n', 'q', '<cmd>quit<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, 'n', 'gp', '<cmd>diffput<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, 'n', 'gg', '<cmd>diffget<cr>', opts)
+endfunction "}}}
