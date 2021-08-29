@@ -23,6 +23,8 @@ map N <cmd>set hlsearch<cr><Plug>(is-N)
 " NOTE: hlsearchが有効かどうかで分岐できそう
 cmap <m-j> <Plug>(is-scroll-f)
 cmap <m-k> <Plug>(is-scroll-b)
+map <m-j> <cmd>set hlsearch<cr><Plug>(is-scroll-f)<Plug>(is-nohl)
+map <m-k> <cmd>set hlsearch<cr><Plug>(is-scroll-b)<Plug>(is-nohl)
 
 " TODO: asteriskだとハイライトが自動で消えなくなる
 " NOTE: 検索時のみタブの挙動を変えるのはだいぶ面倒
