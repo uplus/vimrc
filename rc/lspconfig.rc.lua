@@ -2,6 +2,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 
 local nvim_lsp = require('lspconfig')
+-- local util = require('lspconfig/util')
 
 -- Debug
 -- vim.lsp.set_log_level("debug")
@@ -50,6 +51,12 @@ for _, server in ipairs(servers) do
     }
   }
 end
+
+-- lua print(vim.inspect( require('lspconfig')['sorbet']['document_config']['default_config']['root_dir'] ))
+-- root_dir = function(fname)
+--   default_func = nvim_lsp[server]['document_config']['default_config']['root_dir']
+--   return default_func(fname) or util.path.dirname(fname)
+-- end
 
 -- npm install -g typescript
 -- npm install -g pyright
