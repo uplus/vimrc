@@ -270,6 +270,8 @@ repo = 'thinca/vim-partedit'
 on_cmd = 'Partedit'
 hook_add = '''
   vmap <silent>,, :Partedit<cr>
+  " 上手く動かない
+  " smap <silent>,s :Partedit<cr>:call feedkeys('ss')<cr>
   let g:partedit#opener = 'botright new'
   let g:partedit#filetype = 'narrow'
   let g:partedit#auto_prefix = 0
