@@ -63,13 +63,13 @@ nnoremap <silent><Plug>(BlankDown) <cmd>call my#ot#blank_down(v:count1)<cr>
 "}}}
 
 " Substitute: {{{
-nnoremap ss :%s/\v
-nnoremap sw :%s/\v<c-r><c-w>
-nnoremap sW :%s/\v<c-r><c-a>
+nnoremap ss :%s/
+nnoremap sw :%s/<c-r><c-w>
+nnoremap sW :%s/<c-r><c-a>
 
-xnoremap ss :s/\v
-xnoremap sw :s/\v<c-r><c-w>
-xnoremap sW :s/\v<c-r><c-a>
+xnoremap ss :s/
+xnoremap sw :s/<c-r><c-w>
+xnoremap sW :s/<c-r><c-a>
 "}}}
 
 nmap <plug>(delete_for_match) <Plug>(vim-original-visualline)^%d
