@@ -59,7 +59,8 @@ function! my#option#set_diff_mode(win_nr, bufnr) abort "{{{
   call nvim_win_set_option(a:win_nr, 'signcolumn', 'no')
 
   let opts = { 'silent': v:true, 'noremap': v:true }
-  call nvim_buf_set_keymap(a:bufnr, 'n', 'q', '<cmd>quit<cr>', opts)
-  call nvim_buf_set_keymap(a:bufnr, 'n', 'gp', '<cmd>diffput<cr>', opts)
-  call nvim_buf_set_keymap(a:bufnr, 'n', 'gg', '<cmd>diffget<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, '', 'q', '<cmd>quit<cr>', opts)
+  " 範囲選択対応のため <cmd>は使わない
+  call nvim_buf_set_keymap(a:bufnr, '', 'gdp', ':diffput | diffupdate<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, '', 'gdg', ':diffget | diffupdate<cr>', opts)
 endfunction "}}}
