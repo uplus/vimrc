@@ -2,7 +2,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 
 local nvim_lsp = require('lspconfig')
--- local util = require('lspconfig/util')
+local util = require('lspconfig/util')
 
 -- Debug
 -- vim.lsp.set_log_level("debug")
@@ -42,21 +42,29 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "solargraph" }
-for _, server in ipairs(servers) do
+
+local flags = {
+  debounce_text_changes = 150,
+}
+
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
+    flags = flags,
   }
 end
 
--- lua print(vim.inspect( require('lspconfig')['sorbet']['document_config']['default_config']['root_dir'] ))
--- root_dir = function(fname)
---   default_func = nvim_lsp[server]['document_config']['default_config']['root_dir']
---   return default_func(fname) or util.path.dirname(fname)
--- end
+-- root_dir dirname fallback
+for _, server in ipairs({ "solargraph" }) do
+  nvim_lsp[server].setup {
+    on_attach = on_attach,
+    flags = flags,
+    root_dir = function(fname)
+      default_func = nvim_lsp[server]['document_config']['default_config']['root_dir']
+      return default_func(fname) or util.path.dirname(fname)
+    end
+  }
+end
 
 -- npm install -g typescript
 -- npm install -g pyright
