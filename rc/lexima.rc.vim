@@ -14,7 +14,9 @@ function! s:make_rule(at, end, filetype, syntax)
 endfunction
 
 " ruby以外のendwiseを追加する
-for rule in filter(lexima#endwise_rule#make(), { idx, rule -> !(type(rule.filetype) == v:t_string && rule.filetype == 'ruby') })
+" for rule in filter(lexima#endwise_rule#make(), { idx, rule -> !(type(rule.filetype) == v:t_string && rule.filetype == 'ruby') })
+" endwise系に変更あったっぽいので一旦カスタマイズ無効
+for rule in lexima#endwise_rule#make()
   call lexima#add_rule(rule)
 endfor
 
@@ -148,15 +150,15 @@ call lexima#add_rule({
   \ })
 
 " 標準と同じ
-call lexima#add_rule(s:make_rule('^\s*\%(begin\)\s*\%#', 'end', 'ruby', []))
-call lexima#add_rule(s:make_rule('\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#', 'end', 'ruby', []))
-call lexima#add_rule(s:make_rule('\<\%(if\|unless\)\>.*\%#', 'end', 'ruby', 'rubyConditionalExpression'))
+" call lexima#add_rule(s:make_rule('^\s*\%(begin\)\s*\%#', 'end', 'ruby', []))
+" call lexima#add_rule(s:make_rule('\%(^\s*#.*\)\@<!do\%(\s*|.*|\)\?\s*\%#', 'end', 'ruby', []))
+" call lexima#add_rule(s:make_rule('\<\%(if\|unless\)\>.*\%#', 'end', 'ruby', 'rubyConditionalExpression'))
 
 " def以外を登録
-call lexima#add_rule(s:make_rule('^\s*\%(module\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#', 'end', 'ruby', []))
+" call lexima#add_rule(s:make_rule('^\s*\%(module\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#', 'end', 'ruby', []))
 
 " defだけ括弧対応
-call lexima#add_rule(s:make_rule('^\s*\%(def\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#\s*$', 'end', 'ruby', []))
+" call lexima#add_rule(s:make_rule('^\s*\%(def\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#\s*$', 'end', 'ruby', []))
 
 " " input_afterでEndが使えない
 " call lexima#add_rule({
