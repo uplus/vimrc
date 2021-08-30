@@ -126,13 +126,14 @@ set nostartofline " Maintain a current line at the time of movement as much as p
 " 特定の方法でバッファを開いたときの動作
 set switchbuf=usetab
 
-set completeopt=menuone
+" Complate: {{{
 set complete+=d,t
-if has('patch-7.4.775')
-  " 遅延があると操作ミスになる
-  " set completeopt+=noinsert  " 第1候補を選択 非挿入
-  " set completeopt+=noselect
-endif
+set completeopt=menuone
+
+" 遅延があると操作ミスになる
+" set completeopt+=noinsert  " 第1候補を選択 非挿入
+" set completeopt+=noselect
+"}}}
 
 set sidescroll=0
 set sidescrolloff=12
