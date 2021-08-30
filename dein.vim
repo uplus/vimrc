@@ -25,26 +25,26 @@ if !dein#load_state(s:path)
 endif
 
 let s:dein_normal      = '~/.vim/plugins/normal.toml'
-let s:dein_textop      = '~/.vim/plugins/text-op.toml'
+let s:dein_to_op       = '~/.vim/plugins/to-op.toml'
 let s:dein_colorscheme = '~/.vim/plugins/colorscheme.toml'
-let s:dein_complete    = '~/.vim/plugins/complete.toml'
+let s:dein_input       = '~/.vim/plugins/input.toml'
 let s:dein_lazy        = '~/.vim/plugins/lazy.toml'
 let s:dein_filetypes   = '~/.vim/plugins/filetypes.toml'
 let s:dein_ftplugin    = '~/.vim/plugins/ftplugin.toml'
 let s:dein_trial       = '~/.vim/plugins/trial.toml'
 
 call dein#begin(s:path, [
-  \   expand('<sfile>'), s:dein_normal, s:dein_textop,
-  \   s:dein_colorscheme, s:dein_complete, s:dein_lazy,
+  \   expand('<sfile>'), s:dein_normal, s:dein_to_op,
+  \   s:dein_colorscheme, s:dein_input, s:dein_lazy,
   \   s:dein_filetypes, s:dein_ftplugin
   \ ])
 
 call dein#load_toml(s:dein_lazy,        { 'lazy': 1 })
 call dein#load_toml(s:dein_filetypes,   { 'lazy': 0 })
 call dein#load_toml(s:dein_normal,      { 'lazy': 0 })
-call dein#load_toml(s:dein_textop,      { 'lazy': 0 })
+call dein#load_toml(s:dein_to_op,       { 'lazy': 0 })
 call dein#load_toml(s:dein_colorscheme, { 'lazy': 0 })
-call dein#load_toml(s:dein_complete,    { 'lazy': 0 })
+call dein#load_toml(s:dein_input,       { 'lazy': 0 })
 call dein#load_toml(s:dein_ftplugin,    { 'lazy': 0 })
 
 if filereadable(expand(s:dein_trial))
