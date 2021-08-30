@@ -110,8 +110,9 @@ hook_add = '''
   nmap cC c<Plug>(textobj-line-i)
 '''
 
-[[plugins]] # w use it with CamelCaseMotion
-repo = 'h1mesuke/textobj-wiw'
+[[plugins]] # camelcase supported word textobj
+# repo = 'h1mesuke/textobj-wiw'
+repo = 'rhysd/vim-textobj-wiw' # 本家のautoload版
 depends = 'vim-textobj-user'
 hook_add = '''
   " bkad/CamelCaseMotionと組み合わせれば意図した通りに動く
