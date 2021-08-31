@@ -1,24 +1,22 @@
-" call lexima#init() " Need first
-" call lexima#set_default_rules()
 
-function! s:make_rule(at, end, filetype, syntax)
-  return {
-  \ 'char': '<CR>',
-  \ 'input':  '<CR>',
-  \ 'input_after': '<CR>' . a:end,
-  \ 'at': a:at,
-  \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,
-  \ 'filetype': a:filetype,
-  \ 'syntax': a:syntax,
-  \ }
-endfunction
+" function! s:make_rule(at, end, filetype, syntax)
+"   return {
+"   \ 'char': '<CR>',
+"   \ 'input':  '<CR>',
+"   \ 'input_after': '<CR>' . a:end,
+"   \ 'at': a:at,
+"   \ 'except': '\C\v^(\s*)\S.*%#\n%(%(\s*|\1\s.+)\n)*\1' . a:end,
+"   \ 'filetype': a:filetype,
+"   \ 'syntax': a:syntax,
+"   \ }
+" endfunction
 
 " ruby以外のendwiseを追加する
 " for rule in filter(lexima#endwise_rule#make(), { idx, rule -> !(type(rule.filetype) == v:t_string && rule.filetype == 'ruby') })
 " endwise系に変更あったっぽいので一旦カスタマイズ無効
-for rule in lexima#endwise_rule#make()
-  call lexima#add_rule(rule)
-endfor
+" for rule in lexima#endwise_rule#make()
+"   call lexima#add_rule(rule)
+" endfor
 
 " 別行で閉じる
 call lexima#add_rule({'at': '\%#\_s*)', 'char': ')', 'leave': ')'})
@@ -36,9 +34,8 @@ call lexima#add_rule({'at': '\%#[0-9a-zA-Z-_,:]', 'char': '"', 'input': '"'})
 call lexima#add_rule({'at': 'j\%#', 'char': 'j', 'input': '<bs><esc>'})
 
 " remove tail space when enter
-call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<cr>', 'filetype': ['markdown', 'gitcommit', 'help']})
-call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<bs><cr>'})
-
+" call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<cr>', 'filetype': ['markdown', 'gitcommit', 'help']})
+" call lexima#add_rule({'at': '\s\+\%#', 'char': '<cr>', 'input': '<bs><cr>'})
 
 " vim {{{
 call lexima#add_rule({
@@ -93,6 +90,7 @@ call lexima#add_rule({
   \ })
 "}}}
 
+" markdown: {{{
 call lexima#add_rule({
   \ 'at': '```.*\%#```',
   \ 'char': '<cr>',
@@ -210,20 +208,3 @@ call lexima#add_rule({
   \ })
 
 "}}}
-
-" ------------------------------------------------------------------------------------------
-
-" cgn ドットリピートに必要らしい <c-l>はneosnippet
-" inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
-
-" TODO: 補完候補選択した場合のみ展開したい
-"       選択時   : 決定+snippet
-"       非選択時 : 改行+lexima
-
-" NOTE: 諸々の残骸
-" call lexima#insmode#map_hook('before', '<lt>cr>', "\<c-r>=deoplete#close_popup()\<cr>")
-" imap <silent><expr><cr> lexima#expand('<lt>cr>', 'i')
-" pumvisible() ? "\<C-Y>" : lexima#expand('<CR>', 'i')
-" https://github.com/cohama/lexima.vim/issues/65
-" call lexima#insmode#map_hook('before', '<lt>cr>', '')
-" inoremap <expr><cr> deoplete#close_popup() . lexima#expand('<CR>', 'i')
