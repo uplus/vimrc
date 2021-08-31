@@ -238,7 +238,7 @@ imap <c-x>e <c-x><c-e>
 imap <c-x>y <c-x><c-y>
 imap <c-x>g <c-x><c-g>
 imap <c-x>z <c-x><c-z>
-" inoremap <c-x> <nop> " cannot do <c-x><c-u>
+" inoremap <c-x> <nop> " cannot execute <c-x><c-u>
 "}}}
 
 " #move "{{{

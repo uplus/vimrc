@@ -36,24 +36,23 @@ augroup myac
 augroup END
 
 function! s:source(path) abort
-  let fpath = expand($HOME . '/.vim/' . a:path . '.vim')
+  let fpath = expand($HOME . '/.vim/' . a:path)
   if filereadable(fpath)
     execute 'source' fnameescape(fpath)
   endif
 endfunction
 
-call s:source('options')
+call s:source('options.vim')
 
 " load dein
 if &g:loadplugins
-  call s:source('dein')
+  call s:source('dein.vim')
 
   if has('vim_starting') && !empty(argv())
     " nvimではsyntax enableなどが必要ない
   endif
 
-  call s:source('highlights')
-  call s:source('plugins-config')
+  call s:source('highlights.vim')
 
   augroup myac
     " autoloadにするとワンテンポ遅くなる
@@ -67,10 +66,10 @@ if &g:loadplugins
   augroup END
 endif
 
-call s:source('functions')
-call s:source('keymaps')
-call s:source('commands')
-call s:source('autocmds')
-call s:source('local')
+call s:source('functions.vim')
+call s:source('keymaps.vim')
+call s:source('commands.vim')
+call s:source('autocmds.vim')
+call s:source('local.vim')
 
 set secure

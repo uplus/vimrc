@@ -21,7 +21,7 @@ set fileformats=unix,dos,mac
 set gdefault
 set ignorecase smartcase
 set incsearch
-set hlsearch | nohlsearch "Highlight search patterns, support reloading
+set hlsearch | nohlsearch " support reloading
 set inccommand=nosplit
 "}}}
 
