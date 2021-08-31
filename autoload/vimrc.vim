@@ -1,8 +1,6 @@
-" TODO Vitalizeする?
+" Helpers:
 
-" -- helpers
-
-" マルチバイト対応の getcmdpos
+" マルチバイト対応のgetcmdpos
 function! vimrc#getcmdpos() "{{{
   let str = (getcmdline() . ' ')[:getcmdpos() - 1]
   return strchars(str, 1) - 1
@@ -42,9 +40,9 @@ function! vimrc#is_lastline(is_visual) abort "{{{
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction "}}}
 
-function! vimrc#is_writable_buf() abort
+function! vimrc#is_writable_buf() abort "{{{
   return &modifiable && (&buftype ==# '' || &buftype ==# 'acwrite')
-endfunction
+endfunction "}}}
 
 function! vimrc#is_file(path) abort "{{{
   return !isdirectory(a:path) && glob(a:path) !=# ''
