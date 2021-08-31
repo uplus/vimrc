@@ -2,9 +2,6 @@
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-lsp'
-hook_add = '''
-  " let g:deoplete#lsp#handler_enabled = v:false
-'''
 
 [[plugins]]
 if = 0

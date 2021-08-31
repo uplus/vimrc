@@ -3,7 +3,7 @@ augroup myac
   " au CursorMoved * call my#option#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au SwapExists * let g:swapname = v:swapname
-  au CursorHold *.toml syntax sync minlines=300
+  " au CursorHold *.toml syntax sync minlines=300
   au VimResized * if &ft !=# 'help' | wincmd = | redraw! | endif
   au VimEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.07)
   " .tagsがある場合のみ更新する
@@ -15,13 +15,12 @@ augroup myac
   au BufReadPost COMMIT_EDITMSG goto
 
   au FileType conf,gitcommit,html,css set nocindent
-  au FileType qf,help,vimconsole,narrow,diff,ref-* nnoremap <silent><buffer>q :quit<cr>
+  au FileType qf,help,vimconsole,narrow,diff,lspinfo,ref-* nnoremap <silent><buffer>q <cmd>quit<cr>
   au FileType quickrun,help,diff setl signcolumn=no
-  au OptionSet previewwindow if v:option_new | nnoremap <silent><buffer>q :quit<cr> | endif
-
+  au OptionSet previewwindow if v:option_new | nnoremap <silent><buffer>q <cmd>quit<cr> | endif
 
   " BufLeaveだとfloatingでも反応してしまうので外した
-  au CursorHold,FocusLost  * call DoAutoSave()
+  au CursorHold,FocusLost * call DoAutoSave()
 
   " フローティングウィンドウから離れたら自動で閉じる
   au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
