@@ -119,5 +119,6 @@ if = "has('nvim')"
 on_event = ['InsertEnter']
 hook_source = '''
   source ~/.vim/rc/deoplete.rc.vim
+  source ~/.vim/rc/input.rc.vim
   call deoplete#enable()
 '''
