@@ -628,7 +628,7 @@ repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 repo =  'nvim-treesitter/nvim-treesitter'
 if = "has('nvim')"
 hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
-# これVimEnterじゃなくてhook_addで必要では
+# これVimEnterじゃなくてhook_addでは
 hook_post_source = '''
   " set syntax=hoge が自動で実行されるのを防ぐ
   au! syntaxset
@@ -638,7 +638,13 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-hook_post_source = 'luafile ~/.vim/rc/lspconfig.rc.lua'
+# これVimEnterじゃなくてhook_addでは
+hook_post_source = '''
+  luafile ~/.vim/rc/lspconfig.rc.lua
+  " hook_post_sourceはVimEnterで呼び出される(つまりFileTypeより後)
+  " 最初に開いたファイルは手動で起動する必要がある
+  LspStart
+'''
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'

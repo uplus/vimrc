@@ -1,6 +1,3 @@
-" leximaでcrが上書きされるため先に呼び出して全て実行する
-call lexima#set_default_rules()
-
 inoremap <expr><tab>   pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 " inoremap <expr><silent><c-x><c-e> deoplete#manual_complete(['emoji'])

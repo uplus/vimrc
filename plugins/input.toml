@@ -46,9 +46,9 @@ repo = 'zchee/deoplete-zsh'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-lazy = 1
-on_event = ['InsertEnter']
-on_ft = ['snippet', 'neosnippet']
+# lazy = 1
+# on_event = ['InsertEnter']
+# on_ft = ['snippet', 'neosnippet']
 hook_add = '''
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#disable_runtime_snippets = { '_': 1 }
@@ -78,15 +78,14 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-lazy = 1
-on_event = ['InsertEnter']
+# lazy = 1
+# on_event = ['InsertEnter']
 hook_add = '''
   " 補完メニューが開いていてもエンターで改行する
   let g:lexima_accept_pum_with_enter = 0
   " let g:lexima_enable_endwise_rules = 0
   let g:lexima_ctrlh_as_backspace = 0
 '''
-hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 
 # [[plugins]]
 # repo = 'Shougo/echodoc.vim'
@@ -101,6 +100,7 @@ hook_post_source = 'source ~/.vim/rc/lexima.rc.vim'
 
 [[plugins]] # completeopt+=previewの変わりにフローティングウィンドウを表示させる
 repo = 'ncm2/float-preview.nvim'
+# lazy = 1
 # on_source = 'deoplete.nvim'
 if = 'has("nvim")'
 hook_add = '''
@@ -114,11 +114,21 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = ['deoplete-lsp']
-lazy = 1
 if = "has('nvim')"
-on_event = ['InsertEnter']
-hook_source = '''
-  source ~/.vim/rc/deoplete.rc.vim
-  source ~/.vim/rc/input.rc.vim
-  call deoplete#enable()
+# deinは遅延読み込み前後でau FileTypeの差分があると &ft=&ft する
+# いろいろ再実されてインサートモードに入るのが重くなるので起動のみ遅延させる
+# lazy = 1
+# on_event = ['InsertEnter']
+hook_post_source = '''
+  au myac InsertEnter * ++once ++nested call s:insert_enter()
+
+  function! s:insert_enter() abort
+    " VimEnterではなくInsertEnterで読み込む(deoplete#enable_at_startupを使わない)
+    call deoplete#lsp#enable()
+    call deoplete#enable()
+
+    source ~/.vim/rc/lexima.rc.vim
+    source ~/.vim/rc/deoplete.rc.vim
+    source ~/.vim/rc/input.rc.vim
+  endfunction
 '''
