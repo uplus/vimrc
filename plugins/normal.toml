@@ -13,7 +13,7 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
-on_cmd = 'Denite'
+# on_cmd = 'Denite'
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 hook_add = '''
   " Mappings:
@@ -145,12 +145,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_path = '.*'
+# on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
-on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
-on_source = ['denite.nvim']
+# on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
+# on_source = ['denite.nvim']
 # on_path = '.*'
 hook_add = '''
   let g:neoyank#limit = 20
@@ -290,7 +290,7 @@ hook_source = '''
 [[plugins]]
 repo = 'kana/vim-submode'
 hook_post_source = 'source ~/.vim/rc/submode.rc.vim'
-on_map = '<Plug>'
+# on_map = '<Plug>'
 
 [[plugins]]
 # vim-ambicmd
@@ -568,7 +568,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
-on_cmd = ['SudaWrite', 'SudaRead']
+# on_cmd = ['SudaWrite', 'SudaRead']
 hook_add = '''
   " 仮想ファイルを開くようになるので ]f でnextfileが使えなくなる
   " let g:suda_smart_edit = 1
@@ -576,7 +576,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tpope/vim-abolish'
-on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
+# on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
 # g:Abolishを他で使うため、遅延できない
 hook_add = '''
   let g:abolish_no_mappings = 1
