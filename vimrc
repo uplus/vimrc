@@ -55,11 +55,10 @@ if &g:loadplugins
   call s:source('highlights.vim')
 
   augroup myac
-    " autoloadにするとワンテンポ遅くなる
-    au VimEnter * call dein#call_hook('source')
-    au VimEnter * call dein#call_hook('post_source')
+    " lazy plugin以外のsourceとpost_sourceを実行する
+    au VimEnter * call dein#call_hook('source') | call dein#call_hook('post_source')
 
-    " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要
+    " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要(はずせる気がする)
     au FileType * call my#option#set_syntax()
     " au VimEnter * call lightline#highlight()
     " au VimEnter * if &l:ft ==# '' | filetype detect | endif
