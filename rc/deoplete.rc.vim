@@ -1,5 +1,6 @@
 call deoplete#custom#option({
   \ 'max_list': 50,
+  \ 'min_pattern_length': 1,
   \ 'nofile_complete_filetypes': ['denite-filter', 'zsh'],
   \ 'num_processes': 4,
   \ 'refresh_always': v:false,
@@ -49,13 +50,3 @@ call deoplete#custom#source('look', 'rank', 100)
 
 call deoplete#custom#source('look', 'filetypes', ['markdown', 'text', 'gitcommit'])
 call deoplete#custom#source('nextword', 'filetypes', ['markdown', 'text', 'gitcommit'])
-
-" call deoplete#custom#option('omni_patterns', {
-"  \ 'terraform':  '[^\s*\t"{=$]\w*',
-"  \ })
-
-
-" ### 考察 ###
-
-" min_pattern_length
-" neosnippetは最低でも1にすべき
