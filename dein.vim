@@ -34,9 +34,9 @@ let s:dein_ftplugin    = '~/.vim/plugins/ftplugin.toml'
 let s:dein_trial       = '~/.vim/plugins/trial.toml'
 
 call dein#begin(s:path, [
-  \   expand('<sfile>'), s:dein_normal, s:dein_to_op,
-  \   s:dein_colorscheme, s:dein_input, s:dein_lazy,
-  \   s:dein_filetypes, s:dein_ftplugin
+  \   expand('<sfile>'), s:dein_lazy,
+  \   s:dein_filetypes, s:dein_normal, s:dein_to_op,
+  \   s:dein_colorscheme, s:dein_input, s:dein_ftplugin
   \ ])
 
 call dein#load_toml(s:dein_lazy,        { 'lazy': 1 })
