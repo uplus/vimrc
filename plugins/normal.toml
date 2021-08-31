@@ -597,7 +597,7 @@ hook_add = '''
   nmap gf <Plug>(gf-user-gF)
   nmap gf<esc> <nop>
 
-  au myac FileType ruby call gf#user#extend('gf#ext#ruby', 1000)
+  " au myac FileType ruby call gf#user#extend('gf#ext#ruby', 1000)
 '''
 hook_post_source = '''
   " call when built-in functions failed

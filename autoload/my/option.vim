@@ -21,6 +21,10 @@ function! my#option#set_syntax() abort "{{{
     return
   endif
 
+  if &l:syntax ==# 'OFF'
+    return
+  endif
+
   " (treesitterでサポートされてない or 明示した) filetypeならsyntaxを設定する
   let &l:syntax=&l:filetype
 endfunction "}}}
