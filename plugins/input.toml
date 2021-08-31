@@ -73,6 +73,9 @@ hook_add = '''
   " au myac InsertLeave * NeoSnippetClearMarkers
 '''
 
+# [[plugins]]
+# repo = 'windwp/nvim-autopairs'
+
 [[plugins]]
 repo = 'cohama/lexima.vim'
 lazy = 1
