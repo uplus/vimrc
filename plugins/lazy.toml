@@ -495,15 +495,6 @@ on_map  = '<Plug>(operator-jump'
 #misc
 
 [[plugins]]
-repo = 'lambdalisue/suda.vim'
-on_event = 'BufRead'
-on_cmd = ['SudaWrite', 'SudaRead']
-hook_add = '''
-  " 仮想ファイルを開くようになるので ]f でnextfileが使えなくなる
-  " let g:suda_smart_edit = 1
-'''
-
-[[plugins]]
 repo = 'tpope/vim-characterize'
 on_map = '<Plug>(characterize)'
 hook_add = '''

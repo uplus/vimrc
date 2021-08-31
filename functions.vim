@@ -1,29 +1,23 @@
 " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
 
 " #AutoSave "{{{
-let g:my_autosave = 1
-let g:my_autosave = get(g:, 'my_autosave', 0)
-command! EnableAutoSave let g:my_autosave = 1
-command! DisableAutoSave let g:my_autosave = 0
+let g:my_autosave = v:true
+command! EnableAutoSave let g:my_autosave = v:true
+command! DisableAutoSave let g:my_autosave = v:false
 
 function! DoAutoSave() abort
-  if -1 != index(['denite', 'denite-filter', 'defx', 'narrow'], &filetype)
+  " 無効 | 補完中 | 書き込み負荷 | 特定ファイルタイプ
+  if !g:my_autosave || pumvisible() || !vimrc#is_writable_buf() || vimrc#is_include(['narrow'], &filetype)
     return
-  endif
+  end
 
-  if pumvisible()
-    return
-  endif
+  " for debug
+  " echo 'auto save at' strftime('%T') bufname() &filetype
 
-  if g:my_autosave != 0
-    " for debug
-    " echo 'auto save at' strftime('%T') bufname() &filetype
-
-    " silent! update
-    silent! wall
-    silent! SignifyRefresh
-    " silent! ALELint
-  endif
+  " silent! update
+  silent! wall
+  silent! SignifyRefresh
+  " silent! ALELint
 endfunction
 "}}}
 

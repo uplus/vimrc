@@ -46,10 +46,7 @@ call dein#load_toml(s:dein_to_op,       { 'lazy': 0 })
 call dein#load_toml(s:dein_colorscheme, { 'lazy': 0 })
 call dein#load_toml(s:dein_input,       { 'lazy': 0 })
 call dein#load_toml(s:dein_ftplugin,    { 'lazy': 0 })
-
-if filereadable(expand(s:dein_trial))
-  call dein#load_toml(s:dein_trial, { 'lazy': 0, 'merged': 0 })
-endif
+call dein#load_toml(s:dein_trial, { 'lazy': 0, 'merged': 0 })
 
 " disable plugins for debug
 if filereadable(expand('~/.vim/disable-plugin-list'))

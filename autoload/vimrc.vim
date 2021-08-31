@@ -42,6 +42,10 @@ function! vimrc#is_lastline(is_visual) abort "{{{
   return line('.') == last || foldclosedend(line('.')) == last || (a:is_visual && line("'>") == last)
 endfunction "}}}
 
+function! vimrc#is_writable_buf() abort
+  return &modifiable && (&buftype ==# '' || &buftype ==# 'acwrite')
+endfunction
+
 function! vimrc#is_file(path) abort "{{{
   return !isdirectory(a:path) && glob(a:path) !=# ''
 endfunction "}}}

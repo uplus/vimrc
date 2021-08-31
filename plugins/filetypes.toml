@@ -1,21 +1,24 @@
 # ファイルタイプを追加する類のプラグイン
 
-[[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-hook_add = '''
-  let g:cpp_class_scope_highlight = 1
-  let g:cpp_member_variable_highlight = 1
-  let g:cpp_experimental_simple_template_highlight = 1
-  let g:cpp_experimental_template_highlight = 1
-  let g:cpp_concepts_highlight = 1
-  " let c_no_curly_error=1
-'''
+# [[plugins]]
+# repo = 'octol/vim-cpp-enhanced-highlight'
+# hook_add = '''
+#   let g:cpp_class_scope_highlight = 1
+#   let g:cpp_member_variable_highlight = 1
+#   let g:cpp_experimental_simple_template_highlight = 1
+#   let g:cpp_experimental_template_highlight = 1
+#   let g:cpp_concepts_highlight = 1
+#   " let c_no_curly_error=1
+# '''
 
-[[plugins]]
-repo = 'gutenye/json5.vim'
+# [[plugins]]
+# repo = 'gutenye/json5.vim'
 
 [[plugins]]
 repo = 'chr4/nginx.vim'
+
+[[plugins]]
+repo = 'chrisbra/vim-zsh'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'

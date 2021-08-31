@@ -122,12 +122,12 @@ augroup myac
 
   function! s:badspace_set_highlight() abort
     if g:badspace_enable
-      hi! BadSpace cterm=NONE ctermfg=197 ctermbg=197 gui=NONE  guifg=#e00050 guibg=#e00050
+      hi! BadSpace cterm=NONE ctermfg=197 ctermbg=197 gui=NONE  guifg=#c02070 guibg=#c02070
     endif
   endfunction
 
   function! s:badspace() abort
-    if &buflisted && &buftype ==# '' && &modifiable && &filetype !=# '' && !&diff && &filetype !~# '\v(markdown|calendar|gitcommit|diff|defx:.*)'
+    if &buflisted && vimrc#is_writable_buf() && !vimrc#is_include(['', 'markdown', 'calendar', 'gitcommit', 'diff', 'defx'], &filetype)
       syn match BadSpace display excludenl '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
     endif
   endfunction
