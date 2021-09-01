@@ -7,7 +7,7 @@ augroup myac
   au VimResized * if &ft !=# 'help' | wincmd = | redraw! | endif
   au VimEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.07)
   " .tagsがある場合のみ更新する
-  au BufWritePost * if filewritable('.tags') | call Tags() | endif
+  " au BufWritePost * if filewritable('.tags') | call Tags() | endif
   " 最後のバッファがquickfixなら自動で閉じる
   au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
   au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:p:h

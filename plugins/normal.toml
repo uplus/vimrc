@@ -17,45 +17,45 @@ if = "has('nvim')"
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 hook_add = '''
   " Mappings:
-  nnoremap <space>d :Denite<space>
-  nnoremap [d :Denite -resume -cursor-pos=-1 -immediately<cr>
-  nnoremap ]d :Denite -resume -cursor-pos=+1 -immediately<cr>
-  nnoremap <silent><space>r :<c-u>Denite -resume -refresh<cr>
+  nnoremap <space>d <cmd>Denite<space>
+  nnoremap [d <cmd>Denite -resume -cursor-pos=-1 -immediately<cr>
+  nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
+  nnoremap <silent><space>r <cmd>Denite -resume -refresh<cr>
 
   " file
-  nnoremap <silent>\b  :<c-u>Denite buffer<cr>
-  nnoremap <silent>\f  :<c-u>Denite file/rec<cr>
-  nnoremap <silent>\F  :<c-u>DeniteBufferDir file/rec<cr>
-  nnoremap <silent>\\f :<c-u>Denite file_mru<cr>
+  nnoremap <silent>\b  <cmd>Denite buffer<cr>
+  nnoremap <silent>\f  <cmd>Denite file/rec<cr>
+  nnoremap <silent>\F  <cmd>DeniteBufferDir file/rec<cr>
+  nnoremap <silent>\\f <cmd>Denite file_mru<cr>
 
   " grep
-  nnoremap <silent>s/  :<c-u>Denite line:all<cr>
-  nnoremap <silent>s*  :<c-u>DeniteCursorWord line:forward:wrap<cr>
-  nnoremap <silent>s#  :<c-u>DeniteCursorWord line:backward:wrap<cr>
-  nnoremap <silent>g*  :<c-u>DeniteCursorWord grep<cr>
-  nnoremap <silent>sg  :<c-u>Denite grep<cr>
+  nnoremap <silent>s/  <cmd>Denite line:all<cr>
+  nnoremap <silent>s*  <cmd>DeniteCursorWord line:forward:wrap<cr>
+  nnoremap <silent>s#  <cmd>DeniteCursorWord line:backward:wrap<cr>
+  nnoremap <silent>g*  <cmd>DeniteCursorWord grep<cr>
+  nnoremap <silent>sg  <cmd>Denite grep<cr>
 
   " misc
-  nnoremap <silent>st  :<c-u>Denite tag<cr>
-  nnoremap <silent>;s  :<c-u>Denite neosnippet<cr>
-  nnoremap <silent>so  :<c-u>Denite -auto-resize outline<cr>
-  nnoremap <silent>sm  :<c-u>Denite -no-empty mark<cr>
-  nnoremap <silent>;r  :<c-u>Denite register neoyank<cr>
-  nnoremap <silent>;uj :<c-u>Denite jump -auto-resize<cr>
-  nnoremap <silent>;:  :<c-u>Denite command_history<cr>
-  nnoremap <silent>;uc :<c-u>Denite command<cr>
-  nnoremap <silent>;ut :<c-u>Denite tag<cr>
-  nnoremap <silent>;uh :<c-u>Denite help<cr>
-  nnoremap <silent>;un :<c-u>Denite file/rec -path=`system('note --dir')`<cr>
+  nnoremap <silent>st  <cmd>Denite tag<cr>
+  nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
+  nnoremap <silent>so  <cmd>Denite -auto-resize outline<cr>
+  nnoremap <silent>sm  <cmd>Denite -no-empty mark<cr>
+  nnoremap <silent>;r  <cmd>Denite register neoyank<cr>
+  nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
+  nnoremap <silent>;:  <cmd>Denite command_history<cr>
+  nnoremap <silent>;uc <cmd>Denite command<cr>
+  nnoremap <silent>;ut <cmd>Denite tag<cr>
+  nnoremap <silent>;uh <cmd>Denite help<cr>
+  nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
   nnoremap <silent>;u <nop>
 
   command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args>
   command! -nargs=+ Out execute 'Denite output:' . escape(<q-args>, ' ')
 
   " command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-  " nnoremap <silent> [Window]<Space> :<C-u>Denite file/rec:~/.vim/rc<cr>
-  " nnoremap <silent> [Window]s :<C-u>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
-  " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
+  " nnoremap <silent> [Window]<Space> <cmd>Denite file/rec:~/.vim/rc<cr>
+  " nnoremap <silent> [Window]s <cmd>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
+  " nnoremap <silent> <C-t> <cmd>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
 '''
 [plugins.ftplugin]
 denite = '''
@@ -135,7 +135,7 @@ denite-filter = '''
 [[plugins]] # quickfixの各行を編集、反映できる
 repo = 'thinca/vim-qfreplace'
 hook_add = '''
-  au myac FileType qf nnoremap <buffer>r :<C-u>Qfreplace<CR>
+  au myac FileType qf nnoremap <buffer>r <cmd>Qfreplace<CR>
 '''
 
 # 容量が1GBぐらいある
@@ -227,7 +227,7 @@ defx = '''
   nnoremap <silent><buffer><expr><nowait><space> defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr>*      defx#do_action('toggle_select_all')
   nnoremap <silent><buffer><expr>q      (winnr() + winnr('$') == 2) ? ':quit<cr>' : defx#do_action('quit')
-  nnoremap <silent><buffer><expr><tab>  winnr('$') != 1 ? ':<c-u>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
+  nnoremap <silent><buffer><expr><tab>  winnr('$') != 1 ? '<cmd>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
 '''
 
 
@@ -557,7 +557,7 @@ hook_add = '''
 repo = 'fatih/vim-go'
 hook_add = '''
   function! s:go_config() abort
-    nnoremap <buffer><silent>gd :<c-u>call go#def#Jump('split')<cr>
+    nnoremap <buffer><silent>gd <cmd>call go#def#Jump('split')<cr>
   endfunction
   au myac FileType go call s:go_config()
   let g:go_def_mapping_enabled = 0

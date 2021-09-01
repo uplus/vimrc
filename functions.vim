@@ -67,12 +67,12 @@ function! ResetHighlights() abort "{{{
   " call clearmatches()
 endfunction "}}}
 
-let g:tags_jobs = {}
-function! Tags() abort "{{{
-  let l:dir = expand('%:p:h')
-  silent! call jobstop(get(g:tags_jobs, l:dir, -1))
-  let g:tags_jobs[l:dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
-endfunction "}}}
+" let g:tags_jobs = {}
+" function! Tags() abort "{{{
+"   let l:dir = expand('%:p:h')
+"   silent! call jobstop(get(g:tags_jobs, l:dir, -1))
+"   let g:tags_jobs[l:dir] = jobstart(get(b:, 'tags_cmd', 'ctags'))
+" endfunction "}}}
 
 " 現在行か選択範囲に引数の演算を適用する
 command! -nargs=1 -range Inject echomsg Inject(<f-args>)
