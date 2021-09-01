@@ -127,7 +127,8 @@ set nostartofline " Maintain a current line at the time of movement as much as p
 set switchbuf=usetab
 
 " Complate: {{{
-set complete+=d,t
+" set complete+=d,t
+set complete-=t
 set completeopt=menuone
 
 " 遅延があると操作ミスになる

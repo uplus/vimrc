@@ -427,6 +427,9 @@ hook_add = '''
 
 #search and replace
 
+# [[plugins]]
+# repo = 'kevinhwang91/nvim-hlslens'
+
 [[plugins]]
 repo = 'haya14busa/is.vim'
 hook_add = 'source ~/.vim/rc/is.rc.vim'

@@ -1,7 +1,7 @@
 inoremap <expr><tab>   pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 " inoremap <expr><silent><c-x><c-e> deoplete#manual_complete(['emoji'])
-inoremap <expr><silent><c-x><c-l> deoplete#manual_complete()
+inoremap <expr><c-n> pumvisible() ? "\<c-n>" : deoplete#manual_complete()
 
 " TODO: backspace時の補完の挙動が微妙
 
