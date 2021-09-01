@@ -195,11 +195,10 @@ if has('diff')
   set diffopt=filler,context:2,vertical,foldcolumn:0
 endif
 
-" set clipboard=unnamed,unnamedplus
 if has('unnamedplus')
-  set clipboard& clipboard+=unnamedplus
+  set clipboard& clipboard^=unnamedplus
 else
-  set clipboard& clipboard+=unnamed
+  set clipboard& clipboard^=unnamed
 endif
 set cpoptions-=m
 set cpoptions+=Z
