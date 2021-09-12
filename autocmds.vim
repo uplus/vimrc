@@ -1,4 +1,5 @@
-" #autocmds
+" vim: foldlevel=0
+
 augroup myac
   " au CursorMoved * call my#option#auto_cursorcolumn()
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -75,6 +76,10 @@ augroup myac
 
     au TermClose * call s:term_close()
     function! s:term_close() abort
+      if vimrc#is_include(['quickrun-output'], &filetype)
+        return
+      endif
+
       if v:event.status == 0
         execute 'silent bdelete! ' . expand('<abuf>')
       endif

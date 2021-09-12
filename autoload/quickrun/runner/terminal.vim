@@ -34,6 +34,7 @@ function! s:runner.run(commands, input, session) abort
 
   exec self.config.split 'new'
   call termopen(cmd, opts)
+  setf quickrun-output
   startinsert
 endfunction
 
