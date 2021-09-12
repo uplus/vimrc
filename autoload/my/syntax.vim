@@ -1,3 +1,5 @@
+" vim: foldlevel=0
+
 function! my#syntax#get_syn_id(transparent) abort "{{{
   let synid = synID(line('.'), col('.'), 1)
   if a:transparent

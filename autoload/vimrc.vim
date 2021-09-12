@@ -1,4 +1,5 @@
 " Helpers:
+" vim: foldlevel=0
 
 " マルチバイト対応のgetcmdpos
 function! vimrc#getcmdpos() "{{{

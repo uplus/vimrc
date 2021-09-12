@@ -1,3 +1,5 @@
+" vim: foldlevel=0
+
 function! my#note#open(name) abort "{{{
   let l:name = system(['note', '-S', a:name])[0:-2]
   if name ==# ''

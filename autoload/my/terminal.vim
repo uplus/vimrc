@@ -1,4 +1,5 @@
 " Terminal Helper:
+" vim: foldlevel=0
 
 function! my#terminal#new(...) abort "{{{
   " arg1: command string

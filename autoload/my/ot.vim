@@ -1,4 +1,5 @@
 " operator and textobject
+" vim: foldlevel=0
 
 " operator
 function! my#ot#operator_blank2void(motion_wise) abort "{{{

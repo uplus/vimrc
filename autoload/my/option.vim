@@ -1,4 +1,5 @@
 " オプション設定系
+" vim: foldlevel=0
 
 function! my#option#set_tab(num) abort "{{{
   let &l:tabstop=a:num " Tab表示幅

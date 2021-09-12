@@ -1,4 +1,5 @@
 " Dein Helpers:
+" vim: foldlevel=0
 
 silent! let s:V = vital#of('vital')
 silent! let s:Vuri = s:V.import('Web.URI')

@@ -1,4 +1,5 @@
 " Command Line Mode Helper:
+" vim: foldlevel=0
 
 let s:wordchars = '[[:upper:][:lower:][:digit:]]'
 

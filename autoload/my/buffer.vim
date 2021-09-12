@@ -1,3 +1,5 @@
+" vim: foldlevel=0
+
 function! my#buffer#count(...) abort "{{{
   if a:0 == 0
     let cmd = 'ls!'
