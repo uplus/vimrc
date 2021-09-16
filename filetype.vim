@@ -18,5 +18,5 @@ augroup filetypedetect
   au BufRead,BufNewFile .yamllint,.gemrc setf yaml
   au BufRead,BufNewFile .env,.env.*,.envrc,.envrc.* setf sh
   au BufRead,BufNewFile Guardfile,Vagrantfile setf ruby
-  au BufRead,BufNewFile $HOME/Documents/notes/* call my#note#config()
+  au BufRead,BufNewFile $HOME/Documents/notes/* ++nested call my#note#config()
 augroup END

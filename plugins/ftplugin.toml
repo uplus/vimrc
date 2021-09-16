@@ -182,6 +182,7 @@ json = '''
 
 markdown = '''
   setl wrap
+  SetTab 2
 
   " 要らないインデントが発生する
   " setl indentkeys=
