@@ -2,9 +2,9 @@
 " vim: foldlevel=0
 
 function! my#option#set_tab(num) abort "{{{
-  let &l:tabstop=a:num " Tab表示幅
-  let &l:softtabstop = &l:tabstop " Tab押下時のカーソル移動量
-  let &l:shiftwidth = &l:tabstop " インデント幅
+  let &l:tabstop     = a:num " Tab表示幅
+  let &l:softtabstop = a:num " Tab押下時のカーソル移動量
+  let &l:shiftwidth  = a:num " インデント幅
 
   call my#option#set_breakindentopt()
 endfunction "}}}

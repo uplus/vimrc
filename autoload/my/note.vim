@@ -12,7 +12,7 @@ endfunction "}}}
 function! my#note#config() abort "{{{
   silent! lcd %:h
 
-  if vimrc#capture('verbose setl ft?') !~# 'modeline'
+  if vimrc#capture('verbose setl ft?') !~# 'modeline' && &filetype !=# 'markdown'
     setf markdown
   endif
 endfunction "}}}
