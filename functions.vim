@@ -115,3 +115,13 @@ function! Sort(k, ...) abort range "{{{
 
   call setpos('.', pos)
 endfunction "}}}
+
+function! OpenCop() abort
+  let rule = vimrc#delete_chars(expand('<cWORD>'), ':')
+  let rule_downcase =  substitute(rule, '.', '\L\0', 'g')
+  let group = matchstr(rule_downcase, '^.*\ze/')
+  let tag = vimrc#delete_chars(rule_downcase, '/')
+
+  " https://docs.rubocop.org/rubocop/cops_layout.html#layoutemptylinebetweendefs
+  call openbrowser#open('https://docs.rubocop.org/rubocop/cops_' . group . '.html#' . tag)
+endfunction

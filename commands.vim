@@ -42,6 +42,7 @@ command! AddRepo call my#dein#add_repo()
 command! OpenRepo call my#dein#open_repo()
 
 command! -nargs=1 SetTab call my#option#set_tab(<args>)
+command! OpenCop call OpenCop()
 command! OpenGitDiffWin call vimrc#open_git_diff('w')
 command! OpenGitDiffTab call vimrc#open_git_diff('t')
 command! UndoClear call vimrc#undo_clear()
