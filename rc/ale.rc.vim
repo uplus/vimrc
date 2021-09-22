@@ -101,6 +101,7 @@ let g:ale_warn_about_trailing_blank_lines = 1
 "    docker-compose exec -T api bundle exec rubocop ${@}
 " 3. let b:ale_LANG_LINTER_executable = 'スクリプト名'
 " 4. let b:ale_filename_mappings を適切に設定する
-"
+
 " もしくは
-" let b:ale_command_wrapper = 'docker-compose exec -T api bundle exec'
+" let b:ale_command_wrapper = 'docker-compose exec -T -- api bundle exec'
+" let b:ale_filename_mappings = { '*': [[expand('<sfile>:p:h'), '/usr/src/app']] }
