@@ -4,6 +4,9 @@
 local nvim_lsp = require('lspconfig')
 local util = require('lspconfig/util')
 
+-- Disable diagnostic callback
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+
 -- Debug
 -- vim.lsp.set_log_level("debug")
 -- lua vim.cmd('tabnew'..vim.lsp.get_log_path())
@@ -13,12 +16,6 @@ local util = require('lspconfig/util')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- Enable completion triggered by <c-x><c-o>
-  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Disable diagnostic(deprecated)
-  vim.lsp.diagnostic.disable(bufnr)
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
