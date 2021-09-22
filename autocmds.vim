@@ -184,7 +184,7 @@ augroup myac
   "}}}
 
   " Auto Defx: {{{
-  autocmd BufEnter,BufRead,BufNew,BufCreate * call s:browse_check(expand('<amatch>'))
+  autocmd BufEnter,BufRead,BufNew,BufAdd * call s:browse_check(expand('<amatch>'))
 
   function! s:browse_check(path) abort
     if a:path ==# '' || bufnr('%') != expand('<abuf>')

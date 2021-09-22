@@ -17,7 +17,7 @@ if = "has('nvim')"
 hook_source = 'source ~/.vim/rc/denite.rc.vim'
 hook_add = '''
   " Mappings:
-  nnoremap <space>d <cmd>Denite<space>
+  nnoremap <space>d :Denite<space>
   nnoremap [d <cmd>Denite -resume -cursor-pos=-1 -immediately<cr>
   nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
   nnoremap <silent><space>r <cmd>Denite -resume -refresh<cr>
