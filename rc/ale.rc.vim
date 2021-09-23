@@ -1,20 +1,23 @@
 " Disable features
 let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0
-let g:ale_fix_on_save = 0
 
+let g:ale_echo_cursor = 0
+let g:ale_set_highlights = 0
 let g:ale_set_signs = 1
 let g:ale_virtualtext_cursor = 1
-let g:ale_set_highlights = 0
-let g:ale_echo_cursor = 0
 
 " Lint config
-let g:ale_lint_on_text_changed = 'always'
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_delay = 10
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_text_changed = 'always'
+
+" Fixer
+let g:ale_fix_on_save = 0
+" let g:ale_fix_on_save_ignore = {}
 
 " Sign
 let g:ale_sign_column_always = 1
