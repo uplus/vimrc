@@ -79,7 +79,7 @@ function! s:set_overwrite_highlights()
     hi! link mkdCode          SrceryBrightYellow " `hoge`
     hi! link mkdCodeDelimiter SrceryBrightYellow " `hoge`
     hi! link mkdCodeStart     SrceryBrightMagenta " ```hoge
-    hi! link mkdCodeEnd       SrceryBrightCyan    " ```
+    hi! link mkdCodeEnd       SrceryBrightMagenta " ```
 
     " vim-markdown: headers
     hi! link htmlH1 SrceryBrightMagenta

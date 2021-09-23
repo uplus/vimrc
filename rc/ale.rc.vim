@@ -92,16 +92,10 @@ let g:ale_pattern_options = {
 let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_warn_about_trailing_blank_lines = 1
 
-" Ruby
+" Languages Config:
 " let g:ale_ruby_rubocop_auto_correct_all = 1
 
-" Buffer only samples
-" 1. 実行可能スクリプトを作成しPATHに配置する
-" 2. スクリプトにこのようなコマンドを記載
-"    docker-compose exec -T api bundle exec rubocop ${@}
-" 3. let b:ale_LANG_LINTER_executable = 'スクリプト名'
-" 4. let b:ale_filename_mappings を適切に設定する
-
-" もしくは
+" Docker:
+" .vimrc.localに以下のようなものを記載
 " let b:ale_command_wrapper = 'docker-compose exec -T -- api bundle exec'
 " let b:ale_filename_mappings = { '*': [[expand('<sfile>:p:h'), '/usr/src/app']] }
