@@ -661,6 +661,19 @@ hook_add = '''
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
+[[plugins]]
+repo = 'skanehira/translate.vim'
+hook_add = '''
+  let g:translate_source = "en"
+  let g:translate_target = "ja"
+
+  function! TranslateJoin(text) abort
+    call translate#translate('', 0, 0, JoinText(a:text))
+  endfunction
+
+  vnoremap <expr>gst printf('"%sy', g:working_register) . "<cmd>call TranslateJoin(getreg(g:working_register))<cr>"
+'''
+
 # [[plugins]] # Need reloadble vimrc
 # repo = "mattn/benchvimrc-vim"
 

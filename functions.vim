@@ -126,15 +126,15 @@ function! OpenCop() abort
   call openbrowser#open('https://docs.rubocop.org/rubocop/cops_' . group . '.html#' . tag)
 endfunction
 
-function! AlignText(text) abort
+function! JoinText(text) abort
   let str = a:text
   " remove head comment marker
   let comment_marker = substitute(&commentstring, '%s\|\s', '', 'g')
   let str = substitute(str, '^\s*' . comment_marker . '\s*', '', 'g')
   let str = substitute(str, '\n\zs\s*' . comment_marker . '\s*', '', 'g')
 
-  " replace ` to "
-  let str = substitute(str, '`', '"', 'g')
+  " replace symbols to "
+  let str = substitute(str, '\v[`|]', '"', 'g')
 
   " remove tail space
   let str = substitute(str, '\s\+\ze\n', '', 'g')
@@ -142,7 +142,8 @@ function! AlignText(text) abort
   " join dash separated word
   let str = substitute(str, '-\r\n', '', 'g')
 
-  " join \r\n separeted paragraph(keep \n\n)
+  " join \r\n separeted paragraph.
+  " keep empty line(\n\n)
   let str = substitute(str, '\v[^.\n]\zs\n', '', 'g')
 
   return str

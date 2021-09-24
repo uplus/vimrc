@@ -410,22 +410,6 @@ repo = 'tyru/open-browser-github.vim'
 depends = 'open-browser.vim'
 on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
 
-[[plugins]]
-repo = 'mattn/excitetranslate-vim'
-on_cmd = ['ExciteTranslate', 'Trans']
-hook_add = '''
-  xnoremap gst :ExciteTranslate<CR>
-'''
-hook_source = '''
-  command! -range Trans :<line1>,<line2>:ExciteTranslate
-
-  autocmd BufNewFile ==Translate==* call s:trans_config()
-  function! s:trans_config() abort
-    setl nobuflisted
-    nnoremap q :bd<CR>
-  endfunction
-'''
-
 
 #tags and ref
 
