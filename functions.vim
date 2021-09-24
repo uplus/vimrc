@@ -125,3 +125,25 @@ function! OpenCop() abort
   " https://docs.rubocop.org/rubocop/cops_layout.html#layoutemptylinebetweendefs
   call openbrowser#open('https://docs.rubocop.org/rubocop/cops_' . group . '.html#' . tag)
 endfunction
+
+function! AlignText(text) abort
+  let str = a:text
+  " remove head comment marker
+  let comment_marker = substitute(&commentstring, '%s\|\s', '', 'g')
+  let str = substitute(str, '^\s*' . comment_marker . '\s*', '', 'g')
+  let str = substitute(str, '\n\zs\s*' . comment_marker . '\s*', '', 'g')
+
+  " replace ` to "
+  let str = substitute(str, '`', '"', 'g')
+
+  " remove tail space
+  let str = substitute(str, '\s\+\ze\n', '', 'g')
+
+  " join dash separated word
+  let str = substitute(str, '-\r\n', '', 'g')
+
+  " join \r\n separeted paragraph(keep \n\n)
+  let str = substitute(str, '\v[^.\n]\zs\n', '', 'g')
+
+  return str
+endfunction
