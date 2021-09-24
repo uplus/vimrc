@@ -101,4 +101,4 @@ let g:ale_warn_about_trailing_blank_lines = 1
 " Docker:
 " .vimrc.localに以下のようなものを記載
 " let b:ale_command_wrapper = 'docker-compose exec -T -- api bundle exec'
-" let b:ale_filename_mappings = { '*': [[expand('<sfile>:p:h'), '/usr/src/app']] }
+" let b:ale_filename_mappings = { '*': [[expand('<sfile>:p:h'), './']] }
