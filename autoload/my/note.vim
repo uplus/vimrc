@@ -14,6 +14,7 @@ function! my#note#config() abort "{{{
 
   if vimrc#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
+    setl foldlevel=0
   endif
 endfunction "}}}
 
