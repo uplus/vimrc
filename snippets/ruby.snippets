@@ -456,6 +456,9 @@ snippet hldm
 options word
 	Hanami.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}"${0}
 
+snippet hldp
+options word
+	warn "---------- #{Process.pid} | #{Time.now.strftime('%T.%L')} | #{__FILE__}:#{__LINE__} | #{self}.#{__method__}"
 
 ## utils
 
