@@ -386,6 +386,11 @@ hook_add = '''
   " TODO: d;j したとき最後の行が消せない. d;kしたとき現在の行が消せない. 次の行が空行じゃないと再現
   " TODO: ときたま現在の行のaとsが逆になる. ;wも1行目がおかしくなる
 '''
+hook_post_source = '''
+lua << EOF
+  require'hop'.setup()
+EOF
+'''
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
