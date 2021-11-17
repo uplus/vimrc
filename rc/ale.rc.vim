@@ -61,6 +61,7 @@ let g:ale_linter_aliases = {
 let g:ale_linters = {
   \ 'c': ['clang'],
   \ 'javascript': ['eslint'],
+  \ 'json': ['jq'],
   \ 'jsx': ['eslint'],
   \ 'markdown': [],
   \ 'python': ['flake8'],
@@ -75,6 +76,7 @@ let g:ale_fixers = {
   \ 'cpp': ['clang-format'],
   \ 'go': ['gofmt'],
   \ 'javascript': ['eslint'],
+  \ 'json': ['jq'],
   \ 'python': ['autopep8'],
   \ 'ruby': ['rubocop'],
   \ 'terraform': ['terraform'],
