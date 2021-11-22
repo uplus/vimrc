@@ -143,8 +143,11 @@ function! JoinText(text) abort
   let str = substitute(str, '-\r\n', '', 'g')
 
   " join \r\n separeted paragraph.
-  " keep empty line(\n\n)
-  let str = substitute(str, '\v[^.\n]\zs\n', '', 'g')
+  " keep
+  "   empty line(\n\n)
+  "   paragraph end (.\n)
+  "   list (\n-)
+  let str = substitute(str, '\v%(\n|\.)@<!\n%(-|\d+\.)@!', '', 'g')
 
   return str
 endfunction
