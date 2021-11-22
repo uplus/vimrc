@@ -140,7 +140,7 @@ function! JoinText(text) abort
   let str = substitute(str, '\s\+\ze\n', '', 'g')
 
   " join dash separated word
-  let str = substitute(str, '-\r\n', '', 'g')
+  let str = substitute(str, '-\n', '', 'g')
 
   " join \r\n separeted paragraph.
   " keep
@@ -151,3 +151,14 @@ function! JoinText(text) abort
 
   return str
 endfunction
+
+" 動作確認用
+" hoge-
+" fuga
+" - hey
+" - you
+" 1. hey
+" 99. my
+"
+" I
+" am
