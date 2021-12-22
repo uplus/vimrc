@@ -2,12 +2,12 @@
 " #quickrun
 let g:quickrun_no_default_key_mappings = 1
 
-command! QuickRunInTerm let g:quickrun_config._.runner = 'terminal'
+command! QuickRunInTerm let g:quickrun_config._.runner = 'my_terminal'
 
 nmap \R <Plug>(quickrun-op)
 xmap \r <Plug>(quickrun)
-nmap <space>\r :update \| QuickRun -mode n -runner terminal<cr>
-xmap <space>\r :update \| *QuickRun -mode v -runner terminal<cr>
+nmap <space>\r :update \| QuickRun -mode n -runner my_terminal<cr>
+xmap <space>\r :update \| *QuickRun -mode v -runner my_terminal<cr>
 
 " nnoremap <expr><c-c> QuickRunStop()
 command! QuickRunStop call QuickRunStop()
@@ -42,9 +42,9 @@ endfunction "}}}
 " Config
 let g:quickrun_config   = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
-      \ 'runner':                       'terminal',
-      \ 'runner/terminal/opener':       'new',
-      \ 'runner/terminal/into':         0,
+      \ 'runner':                       'my_terminal',
+      \ 'runner/my_terminal/opener':    'new',
+      \ 'runner/my_terminal/into':      0,
       \ 'runner/vimproc/sleep':         10,
       \ 'runner/vimproc/updatetime':    100,
       \ 'runner/vimproc/read_timeout':  20,

@@ -38,7 +38,7 @@ function! s:runner.run(commands, input, session) abort
   startinsert
 endfunction
 
-function! quickrun#runner#terminal#new() abort
+function! quickrun#runner#my_terminal#new() abort
   return deepcopy(s:runner)
 endfunction
 
