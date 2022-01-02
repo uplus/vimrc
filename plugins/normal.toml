@@ -169,7 +169,7 @@ repo = 'Shougo/defx.nvim'
 if = "has('nvim')"
 hook_source = 'source ~/.vim/rc/defx.rc.vim'
 hook_add = '''
-  nnoremap <silent><c-w>e <cmd>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+  nnoremap <silent><c-w>e <cmd>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search-recursive=`expand('%:p')`<CR>
   nnoremap <silent><c-w>E <cmd>Defx -split=vertical -direction=topleft -winwidth=40 -no-listed -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>
   nmap <c-w><c-e> <c-w>e
   au myac BufWritePost * call defx#redraw()
@@ -227,6 +227,7 @@ defx = '''
   nnoremap <silent><buffer><expr><nowait><space> defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr>*      defx#do_action('toggle_select_all')
   nnoremap <silent><buffer><expr>q      (winnr() + winnr('$') == 2) ? ':quit<cr>' : defx#do_action('quit')
+  nnoremap <silent><buffer>Q            <cmd>bdelete<cr>
   nnoremap <silent><buffer><expr><tab>  winnr('$') != 1 ? '<cmd>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
 '''
 
