@@ -32,7 +32,7 @@ call s:set_denite_win(0.7, 0.8)
 au myac VimEnter,VimResized * call s:set_denite_win(0.7, 0.8)
 
 " Custom Actions:
-call denite#custom#action('buffer,command,directory,file,openable,source,word', 'show_context', { context -> Debug(context) })
+call denite#custom#action('_', 'show_context', { context -> Debug(context) })
 call denite#custom#action('file', 'qfreplace', { context -> s:action_qfreplace(context)})
 call denite#custom#action('source/neosnippet', 'expand', { context -> s:action_neosnippet_expand(context)})
 " call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
