@@ -54,7 +54,7 @@ augroup myac
     endif
 
     " window単位なのでbuf毎の設定などはできない
-    if vimrc#is_include(['vim', 'markdown', 'sshconfig', 'neosnippet'], &filetype)
+    if vimrc#is_include(['vim', 'markdown', 'sshconfig', 'neosnippet', 'zsh'], &filetype)
       set foldmethod=marker
     elseif vimrc#is_include(['diff'], &filetype)
       set foldmethod=diff
