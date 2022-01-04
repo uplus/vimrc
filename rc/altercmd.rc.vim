@@ -7,6 +7,8 @@ endif
 AlterCommand rec[ache] Recache
 AlterCommand den[ite] Denite
 AlterCommand gi[na] Gina
+AlterCommand ti[g] Tig
+AlterCommand tigb[lame] TigBlame
 AlterCommand maps Maps
 
 AlterCommand lint ALELint
