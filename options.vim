@@ -176,6 +176,7 @@ set wildignorecase
 if exists('+pumblend')
   set winblend=0
   set pumblend=0
+  set pumheight=30
   set wildoptions=pum,tagfile
   set wildmode=full:longest,full
 else
