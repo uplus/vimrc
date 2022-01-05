@@ -11,7 +11,7 @@ augroup myac
   " au BufWritePost * if filewritable('.tags') | call Tags() | endif
   " 最後のバッファがquickfixなら自動で閉じる
   au WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
-  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd %:p:h
+  au BufRead,BufNewFile $ZSH_DOT_DIR/* lcd $ZSH_DOT_DIR/
   " git commit -vのファイルを開いたとき先頭に移動する
   au BufReadPost COMMIT_EDITMSG goto
 
