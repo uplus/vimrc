@@ -18,7 +18,7 @@ function! my#option#set_breakindentopt() abort "{{{
 endfunction "}}}
 
 function! my#option#set_syntax() abort "{{{
-  if luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil") && -1 == index(['vim', 'dockerfile'], &filetype)
+  if luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil") && !vimrc#is_include(['vim', 'dockerfile', 'markdown'], &filetype)
     return
   endif
 
