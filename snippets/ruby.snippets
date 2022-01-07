@@ -279,10 +279,7 @@ options head
 
 snippet debug
 options head
-	rescue => e # TODO debug
-		puts e.message, e.backtrace
-	ensure
-		binding.irb
+	binding.b
 
 snippet debug-file
 options head
