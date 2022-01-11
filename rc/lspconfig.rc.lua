@@ -63,6 +63,6 @@ for _, server in ipairs({ "solargraph" }) do
   }
 end
 
--- npm install -g typescript
+-- npm install -g typescript typescript-language-server
 -- npm install -g pyright
 -- gem install solargraph
