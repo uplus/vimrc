@@ -100,7 +100,10 @@ build = 'make hexokinase'
 # action
 
 [[plugins]]
-repo = 'tyru/caw.vim'
+# repo = 'tyru/caw.vim'
+# TODO: 様子見
+repo = 'uplus/caw.vim'
+rev = 'fix-has_syntax-for-highlight-link'
 depends = ['vim-operator-user'] # 'context_filetype.vim'
 on_map = '<Plug>(caw'
 hook_add = '''
