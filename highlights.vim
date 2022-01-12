@@ -74,20 +74,21 @@ function! s:set_overwrite_highlights()
     hi! link mkdLink       SrceryBrightBlue
     hi! link mkdInlineURL  mkdLink
     hi! link mkdURL        SrceryBrightWhite
+    hi! link mkdListItem   markdownListMarker
 
     " vim-markdown: codes
     hi! link mkdCode          SrceryBrightYellow " `hoge`
-    hi! link mkdCodeDelimiter SrceryBrightYellow " `hoge`
-    hi! link mkdCodeStart     SrceryBrightMagenta " ```hoge
-    hi! link mkdCodeEnd       SrceryBrightMagenta " ```
+    hi! link mkdCodeDelimiter mkdCodeDelimiter   " `hoge`
+    hi! link mkdCodeStart     SrceryBrightBlack  " ```hoge
+    hi! link mkdCodeEnd       mkdCodeStart       " ```
 
     " vim-markdown: headers
     hi! link htmlH1 SrceryBrightMagenta
-    hi! link htmlH2 SrceryBrightCyan
+    hi! link htmlH2 SrceryBrightBlue
     hi! link htmlH3 SrceryBrightGreen
     hi! link htmlH4 SrceryYellow
     hi! link htmlH5 SrceryBrightRed
-    hi! link htmlH6 SrceryBrightBlue
+    hi! link htmlH6 SrceryBrightCyan
   endif
 endfunction
 
