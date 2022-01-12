@@ -18,7 +18,8 @@ function! my#option#set_breakindentopt() abort "{{{
 endfunction "}}}
 
 function! my#option#set_syntax() abort "{{{
-  if luaeval("require'nvim-treesitter.parsers'.list[vim.bo.filetype] ~= nil") && !vimrc#is_include(['vim', 'dockerfile', 'markdown'], &filetype)
+  " treesitterでハイライトがサポートされているならsyntaxを設定せずに終了
+  if luaeval("require'nvim-treesitter.configs'.is_enabled('highlight', vim.bo.filetype)") " && !vimrc#is_include([], &filetype)
     return
   endif
 

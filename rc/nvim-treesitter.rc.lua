@@ -8,9 +8,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {'python', 'ruby'},
   },
   textobjects = {
-    enable = true
-  },
-  textobjects = {
+    enable = true,
     select = {
       enable = true,
 
