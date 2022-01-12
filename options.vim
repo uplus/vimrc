@@ -22,7 +22,9 @@ set gdefault
 set ignorecase smartcase
 set incsearch
 set hlsearch | nohlsearch " support reloading
-set inccommand=nosplit
+if exists('+inccommand')
+  set inccommand=nosplit
+endif
 "}}}
 
 " Wrap: {{{
