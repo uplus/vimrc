@@ -78,7 +78,7 @@ function! s:set_overwrite_highlights()
 
     " vim-markdown: codes
     hi! link mkdCode          SrceryBrightYellow " `hoge`
-    hi! link mkdCodeDelimiter mkdCodeDelimiter   " `hoge`
+    hi! link mkdCodeDelimiter mkdCode            " `hoge`
     hi! link mkdCodeStart     SrceryBrightBlack  " ```hoge
     hi! link mkdCodeEnd       mkdCodeStart       " ```
 

@@ -171,7 +171,7 @@ hook_add = '''
   nmap sl <Plug>(EasyAlign)
   vmap sl <Plug>(EasyAlign)
   nmap sL <Plug>(LiveEasyAlign)
-  vmap sl <Plug>(LiveEasyAlign)
+  vmap sL <Plug>(LiveEasyAlign)
 '''
 hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 
