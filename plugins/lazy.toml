@@ -170,8 +170,8 @@ on_cmd = ['EasyAlign', 'LiveEasyAlign']
 hook_add = '''
   nmap sl <Plug>(EasyAlign)
   vmap sl <Plug>(EasyAlign)
-  nmap <Space>sl <Plug>(LiveEasyAlign)
-  vmap <Space>sl <Plug>(LiveEasyAlign)
+  nmap sL <Plug>(LiveEasyAlign)
+  vmap sl <Plug>(LiveEasyAlign)
 '''
 hook_source = 'source ~/.vim/rc/easyalign.rc.vim'
 
