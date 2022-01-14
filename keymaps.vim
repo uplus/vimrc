@@ -127,7 +127,7 @@ vnoremap <c-n> :<c-n>
 " #overwrite
 inoremap <c-c> <esc>
 xmap u <esc>u
-nnoremap Y yg_
+nmap Y yg_
 nnoremap <c-]> g<c-]>
 nnoremap g<c-]> <c-]>
 nnoremap <c-w><c-]> <c-w>g<c-]>
