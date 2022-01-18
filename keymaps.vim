@@ -253,14 +253,14 @@ vmap <down> j
 vmap <left> h
 vmap <right> l
 
-nnoremap k gk
-nnoremap j gj
-nnoremap gk k
-nnoremap gj j
-vnoremap k gk
-vnoremap j gj
-vnoremap gk k
-vnoremap gj j
+" nnoremap k gk
+" nnoremap j gj
+" nnoremap gk k
+" nnoremap gj j
+" vnoremap k gk
+" vnoremap j gj
+" vnoremap gk k
+" vnoremap gj j
 
 nnoremap <silent><expr>h foldclosed('.') != -1? "zo" : "h"
 nnoremap <silent><expr>l foldclosed('.') != -1? "zO" : "l"

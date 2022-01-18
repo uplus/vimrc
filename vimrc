@@ -17,7 +17,7 @@ endif
 
 " release keymaps
 let mapleader = ';'
-for key in ['Q', ';', ',', 's', 'gs', 'gR', 'g8']
+for key in ['Q', ';', ',', 's', 'gs']
   execute 'noremap' key '<Nop>'
 endfor
 
