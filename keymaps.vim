@@ -51,10 +51,11 @@ nnoremap \tol :set list!<CR>
 "}}}
 
 " Text Move: "{{{
-nnoremap <silent><Plug>(MoveUp)   <cmd>call my#ot#text_move(v:count1, 1, 0)<cr>
-nnoremap <silent><Plug>(MoveDown) <cmd>call my#ot#text_move(v:count1, 0, 0)<cr>
-xnoremap <silent><Plug>(MoveUp)   <cmd>call my#ot#text_move(v:count1, 1, 1)<cr>
-xnoremap <silent><Plug>(MoveDown) <cmd>call my#ot#text_move(v:count1, 0, 1)<cr>
+" <cmd> だと複数行選択時の挙動が変わる
+nnoremap <silent><Plug>(MoveUp)   :<c-u>call my#ot#text_move(v:count1, 1, 0)<cr>
+nnoremap <silent><Plug>(MoveDown) :<c-u>call my#ot#text_move(v:count1, 0, 0)<cr>
+xnoremap <silent><Plug>(MoveUp)   :<c-u>call my#ot#text_move(v:count1, 1, 1)<cr>
+xnoremap <silent><Plug>(MoveDown) :<c-u>call my#ot#text_move(v:count1, 0, 1)<cr>
 "}}}
 
 " BlankUp: "{{{
