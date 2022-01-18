@@ -153,6 +153,12 @@ function! JoinText(text) abort
   " listの直後の行を結合しない版
   " let str = substitute(str, '\v%(\n|\.|%(%(-|\d+\.)\s+[^\n]+))@<!\n%(%(-|\d+\.)\s+[^\n]+)@!', '', 'g')
 
+  " insert \n after \.
+  " keep
+  "   paragraph end (.\n)
+  "   num list (\d+\.\s)
+  let str = substitute(str, '\v%(\n\d+)@<!\.\s+%(\n)@!', '.\n', 'g')
+
   return str
 endfunction
 
@@ -167,6 +173,10 @@ endfunction
 " 1. hey
 " 99. you
 " hoge(非対応)
+"
+" end. fuga
+" fuga
+" end.
 "
 " I
 " am
