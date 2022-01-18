@@ -70,7 +70,9 @@ augroup myac
   if has('nvim')
     au TermOpen * call s:term_open()
     function s:term_open()
-      au BufEnter <buffer> call feedkeys('a') " or startinsert!
+      au BufEnter <buffer> startinsert
+      " au BufEnter <buffer> normal! a
+      " au BufEnter <buffer> call feedkeys('a')
       " call feedkeys("exec zsh\<cr>\<c-l>") " Bug
     endfunction
 

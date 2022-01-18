@@ -46,7 +46,7 @@ endfunction
 
 function! s:action_neosnippet_expand(context)
   call denite#do_action(a:context, 'append', a:context['targets'])
-  call feedkeys("a\<plug>(neosnippet_expand)\<esc>", 'm')
+  exec "normal \<Plug>(neosnippet_expand)"
 endfunction
 
 " Default Actions:
