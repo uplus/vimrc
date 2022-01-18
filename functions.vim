@@ -136,7 +136,8 @@ function! JoinText(text) abort
   " replace symbols to "
   let str = substitute(str, '\v[`|]', '"', 'g')
 
-  " remove tail space
+  " remove head & tail space
+  let str = substitute(str, '\n\zs\s\+', '', 'g')
   let str = substitute(str, '\s\+\ze\n', '', 'g')
 
   " join dash separated word
@@ -146,8 +147,9 @@ function! JoinText(text) abort
   " keep
   "   empty line(\n\n)
   "   paragraph end (.\n)
-  "   list (\n-)
-  let str = substitute(str, '\v%(\n|\.)@<!\n%(-|\d+\.)@!', '', 'g')
+  "   list (\n-\s)
+  "   num list (\d+\.\s)
+  let str = substitute(str, '\v%(\n|\.)@<!\n%(-\s|\d+\.\s)@!', '', 'g')
 
   return str
 endfunction
