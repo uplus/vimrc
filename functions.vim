@@ -149,18 +149,24 @@ function! JoinText(text) abort
   "   paragraph end (.\n)
   "   list (\n-\s)
   "   num list (\d+\.\s)
-  let str = substitute(str, '\v%(\n|\.)@<!\n%(-\s|\d+\.\s)@!', '', 'g')
+  let str = substitute(str, '\v%(\n|\.)@<!\n%(%(-|\d+\.)\s+)@!', '', 'g')
+  " listの直後の行を結合しない版
+  " let str = substitute(str, '\v%(\n|\.|%(%(-|\d+\.)\s+[^\n]+))@<!\n%(%(-|\d+\.)\s+[^\n]+)@!', '', 'g')
 
   return str
 endfunction
 
 " 動作確認用
-" hoge-
-" fuga
+" vnoremap <expr>gs_ printf('"%sy', g:working_register) . "<cmd>echo JoinText(getreg(g:working_register))<cr>"
+
+" 動作確認用
+" trans-
+" late
 " - hey
 " - you
 " 1. hey
-" 99. my
+" 99. you
+" hoge(非対応)
 "
 " I
 " am
