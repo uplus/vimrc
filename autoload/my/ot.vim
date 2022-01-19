@@ -60,14 +60,16 @@ function! my#ot#blank_up(count) abort
   normal! $
   put! =repeat(nr2char(10), a:count)
   ']+1
-  silent! call repeat#set("\<Plug>(BlankUp)", a:count)
+  " repeatできないほうが使い勝手が良い
+  " silent! call repeat#set("\<Plug>(BlankUp)", a:count)
 endfunction
 
 function! my#ot#blank_down(count) abort
   normal! $
   put =repeat(nr2char(10), a:count)
   '[-1
-  silent! call repeat#set("\<Plug>(BlankDown)", a:count)
+  " repeatできないほうが使い勝手が良い
+  " silent! call repeat#set("\<Plug>(BlankDown)", a:count)
 endfunction
 
 
