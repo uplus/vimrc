@@ -107,12 +107,10 @@ hook_add = '''
     \  'json=javascript',
     \]
 '''
-post_hook_source = '''
+hook_post_source = '''
   " deinは条件次第でfiletypeをセットし直す
   " vim-markdownはfiletypeがセットされ直したときにシンタックスが更新されないため対処
-  if exists('#Mkd')
-    au myac Filetype markdown ++nested doautocmd Mkd BufUnload | doautocmd Mkd BufWinEnter
-  endif
+  au myac Filetype markdown ++nested doautocmd Mkd BufUnload | doautocmd Mkd BufWinEnter
 '''
 
 [[plugins]]
