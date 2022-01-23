@@ -30,10 +30,6 @@ depends = 'vim-operator-user'
 hook_add = '''
   nmap gz <Plug>(operator-replace)
   xmap gz <Plug>(operator-replace)
-  " for s:c in split("\" ' ` ( { [ <")
-  "   exe 'nmap gz' . s:c '<Plug>(operator-replace)i' . s:c
-  " endfor
-  " unlet s:c
 '''
 
 [[plugins]]
