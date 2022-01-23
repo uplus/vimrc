@@ -30,10 +30,10 @@ depends = 'vim-operator-user'
 hook_add = '''
   nmap gz <Plug>(operator-replace)
   xmap gz <Plug>(operator-replace)
-  for s:c in split("\" ' ` ( { [ <")
-    exe 'nmap gz' . s:c '<Plug>(operator-replace)i' . s:c
-  endfor
-  unlet s:c
+  " for s:c in split("\" ' ` ( { [ <")
+  "   exe 'nmap gz' . s:c '<Plug>(operator-replace)i' . s:c
+  " endfor
+  " unlet s:c
 '''
 
 [[plugins]]
@@ -177,18 +177,6 @@ hook_add = '''
 [[plugins]] # I A 連続したtextobjを矩形選択 ciw -> cIw
 repo = 'osyo-manga/vim-textobj-blockwise'
 depends = 'vim-textobj-user'
-
-# [[plugins]] # y syntax-highlight
-# repo = 'kana/vim-textobj-syntax'
-# depends = 'vim-textobj-user'
-
-# [[plugins]] # u
-# repo = 'mattn/vim-textobj-url'
-# depends = 'vim-textobj-user'
-
-# [[plugins]] # c
-# repo = 'thinca/vim-textobj-comment'
-# depends = 'vim-textobj-user'
 
 # ちょい重い5ms
 # [[plugins]] # 複数のtextobjを一つにまとめる
