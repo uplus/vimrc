@@ -38,10 +38,6 @@ repo = 'kchmck/vim-coffee-script'
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 
-# [[plugins]]
-# repo = 'lervag/vim-latex'
-# merged = 0 # mergeするとおかしくなる
-
 [[plugins]]
 repo = 'uplus/vim-review'
 hook_add = '''
