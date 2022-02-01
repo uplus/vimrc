@@ -26,3 +26,4 @@ repo = 'iberianpig/tig-explorer.vim'
 # https://github.com/hrsh7th/vim-searchx
 # https://github.com/nvim-treesitter/nvim-treesitter-refactor
 # https://github.com/mfussenegger/nvim-lint
+# https://github.com/matsui54/denops-signature_help

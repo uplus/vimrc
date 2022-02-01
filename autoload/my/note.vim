@@ -10,9 +10,10 @@ function! my#note#open(name) abort "{{{
 endfunction "}}}
 
 function! my#note#config() abort "{{{
-  " defxがバグる
-  " silent! lcd %:h
-  " au myac BufReadPost * ++once silent! lcd %:h
+  " defxなどのバッファは除外する
+  if buflisted(bufname()) != v:true
+    return
+  endif
 
   if vimrc#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
