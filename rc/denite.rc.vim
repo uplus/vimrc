@@ -66,6 +66,7 @@ call denite#custom#source('file/rec', 'matchers', [s:default_matcher, 'matcher/h
 " Sorters:
 " 空にすればファイル順になるソースもある(lineと同じ)
 call denite#custom#source('grep', 'sorters', [])
+call denite#custom#source('command_history', 'sorters', [])
 call denite#custom#source('file/rec', 'sorters', ['sorter/path'])
 call denite#custom#source('file_mru', 'sorters', ['sorter/oldfiles'])
 
