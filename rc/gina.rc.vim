@@ -23,6 +23,28 @@ call gina#custom#command#option(
   \ '--show-signature'
   \)
 
+" Opener:
+call gina#custom#command#option(
+  \ '/\%(commit\|branch\)',
+  \ '--opener', 'split'
+  \)
+
+call gina#custom#command#option(
+  \ '/\%(diff\|log\|l\|grep\)',
+  \ '--opener', 'vsplit'
+  \)
+
+call gina#custom#command#option(
+  \ '/\%(status\|s\|blame\|b\|reflog\|changes\|compare\|d\|patch\)',
+  \ '--opener', 'tabedit'
+  \)
+
+" Command Alias:
+call gina#custom#command#alias('status', 's')
+call gina#custom#command#alias('compare', 'd')
+call gina#custom#command#alias('blame', 'b')
+call gina#custom#command#alias('log', 'l')
+
 " Aliases:
 call gina#custom#action#alias(
   \ 'branch', 'track',
