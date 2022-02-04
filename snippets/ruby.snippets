@@ -461,6 +461,10 @@ snippet hld
 options word
 	Hanami.logger.debug ${0}
 
+snippet hldc
+options word
+	Hanami.logger.debug(Hanami::Utils::ShellColor.call('-------------- ${0} -------------------', color: :yellow))
+
 snippet hldm
 options word
 	Hanami.logger.debug "---------- called: #{self}.#{__method__} L#{__LINE__}"${0}
