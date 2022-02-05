@@ -30,18 +30,19 @@ call gina#custom#command#option(
   \)
 
 call gina#custom#command#option(
-  \ '/\%(diff\|log\|l\|grep\)',
+  \ '/\%(diff\|d\|log\|l\|grep\)',
   \ '--opener', 'vsplit'
   \)
 
 call gina#custom#command#option(
-  \ '/\%(status\|s\|blame\|b\|reflog\|changes\|compare\|d\|patch\)',
+  \ '/\%(status\|s\|blame\|b\|reflog\|changes\|compare\|c\|patch\)',
   \ '--opener', 'tabedit'
   \)
 
 " Command Alias:
 call gina#custom#command#alias('status', 's')
-call gina#custom#command#alias('compare', 'd')
+call gina#custom#command#alias('compare', 'c')
+call gina#custom#command#alias('diff', 'd')
 call gina#custom#command#alias('blame', 'b')
 call gina#custom#command#alias('log', 'l')
 

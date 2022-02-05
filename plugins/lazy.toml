@@ -312,6 +312,8 @@ repo = 'lambdalisue/gina.vim'
 on_cmd = ['Gina']
 on_func = ['gina#']
 hook_add = '''
+  nnoremap <space>gi :Gina<space>
+
   let g:gina#command#blame#formatter#timestamp_months = 0
   let g:gina#command#blame#formatter#timestamp_format1 = '%Y/%m/%d'
   let g:gina#command#blame#formatter#timestamp_format2 = '%Y/%m/%d'
