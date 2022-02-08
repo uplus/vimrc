@@ -16,8 +16,8 @@ augroup myac
   au BufReadPost COMMIT_EDITMSG goto
 
   au FileType conf,gitcommit,html,css set nocindent
-  au FileType qf,help,vimconsole,narrow,diff,lspinfo,ref-* nnoremap <silent><buffer>q <cmd>quit<cr>
   au FileType quickrun,help,diff setl signcolumn=no
+  au FileType qf,help,vimconsole,narrow,diff,lspinfo,ref-* nnoremap <silent><buffer>q <cmd>quit<cr>
   au OptionSet previewwindow if v:option_new | nnoremap <silent><buffer>q <cmd>quit<cr> | endif
 
   " BufLeaveだとfloatingでも反応してしまうので外した
@@ -210,4 +210,12 @@ augroup myac
     endif
   endfunction
   "}}}
+
+  " CmdWin: {{{
+  au myac CmdwinEnter * call s:cmdwin_config()
+  function! s:cmdwin_config()
+    nnoremap <silent><buffer>q <cmd>quit<cr>
+    set foldcolumn=0 signcolumn=no nonumber
+  endfunction
+  " }}}
 augroup END

@@ -203,14 +203,6 @@ nnoremap <silent>,bd :bd<CR>
 nnoremap <silent>,bq :q<CR>
 "}}}
 
-" #window"{{{
-au myac CmdwinEnter  * call s:cmdwin_config()
-function! s:cmdwin_config()
-  nnoremap <silent><buffer>q :q<CR>
-  nnoremap <silent><buffer><C-W> :q<CR><C-W>
-endfunction
-"}}}
-
 " #gf open file "{{{
 " auto remap to <Plug> is difficult
 if !hasmapto('gf')
