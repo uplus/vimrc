@@ -58,6 +58,9 @@ if &g:loadplugins
     " lazy plugin以外のsourceとpost_sourceを実行する
     au VimEnter * call dein#call_hook('source') | call dein#call_hook('post_source')
 
+    " TODO: neovimのデグレ?で呼ばれないっぽいのでワークアラウンド
+    source ~/.cache/dein/.cache/init.vim/.dein/after/ftplugin.vim
+
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要(はずせる気がする)
     au FileType * call my#option#set_syntax()
     " au VimEnter * call lightline#highlight()
