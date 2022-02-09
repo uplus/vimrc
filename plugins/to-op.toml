@@ -50,8 +50,6 @@ hook_add = '''
   nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
   nmap S <Plug>(vim-original-visual)<Plug>(vim-original-tail)<Plug>(operator-surround-append)
-  " nmap saw saaw
-  " nmap saW saaW
   nmap saL saiL
 '''
 
@@ -119,6 +117,14 @@ hook_add = '''
   xmap i<space>w <Plug>(textobj-wiw-i)
 '''
 
+[[plugins]] # v last pasted textobj
+repo = 'gilligan/textobj-lastpaste'
+depends = 'vim-textobj-user'
+hook_add = '''
+  let g:textobj_lastpaste_no_default_key_mappings = 1
+  omap v <Plug>(textobj-lastpaste-i)
+'''
+
 [[plugins]] # select a range between character
 repo = 'thinca/vim-textobj-between'
 depends = 'vim-textobj-user'
@@ -131,14 +137,6 @@ hook_add = '''
 
   omap a\| <Plug>(textobj-between-a)\|
   omap i\| <Plug>(textobj-between-i)\|
-'''
-
-[[plugins]] # v last pasted textobj
-repo = 'gilligan/textobj-lastpaste'
-depends = 'vim-textobj-user'
-hook_add = '''
-  let g:textobj_lastpaste_no_default_key_mappings = 1
-  omap v <Plug>(textobj-lastpaste-i)
 '''
 
 [[plugins]] # b some block
