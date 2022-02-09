@@ -32,17 +32,17 @@ _ = '''
   setl foldlevelstart=99
   setl foldlevel=99
 
-  setl formatoptions=lqMB
-    " http://vim-jp.org/vimdoc-ja/change.html#fo-table
-    " + lqMB
-    " - jtcrovbmw
-    "   an12
-    " setl formatoptions+=Bnqlj
-    " j コメントを結合する時に可能であればコメントリーダーを削除する
-    " l 挿入モードでは長い行は折り返されない。
-    " q gqでコメントを結合
-    " B マルチバイト文字同士の結合で間に空白を挿入しない
-    " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
+  setl formatoptions=qjlMB
+  " q gqでコメントを結合する
+  " j コメントを結合する時に可能であればコメントリーダーを削除する
+  " l 挿入モードで長い行を自動で折り返さない
+  " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
+  " B マルチバイト文字同士の結合で間に空白を挿入しない
+
+  " Disable auto wrap.
+  if &l:textwidth != 70 && &filetype !=# 'help'
+    setl textwidth=0
+  endif
 '''
 
 arduino = '''

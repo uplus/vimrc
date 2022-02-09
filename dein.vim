@@ -34,18 +34,18 @@ let s:dein_ftplugin    = '~/.vim/plugins/ftplugin.toml'
 let s:dein_trial       = '~/.vim/plugins/trial.toml'
 
 call dein#begin(s:path, [
-  \   expand('<sfile>'), s:dein_lazy,
+  \   expand('<sfile>'), s:dein_ftplugin, s:dein_lazy,
   \   s:dein_filetypes, s:dein_normal, s:dein_to_op,
-  \   s:dein_colorscheme, s:dein_input, s:dein_ftplugin
+  \   s:dein_colorscheme, s:dein_input
   \ ])
 
+call dein#load_toml(s:dein_ftplugin,    { 'lazy': 0 })
 call dein#load_toml(s:dein_lazy,        { 'lazy': 1 })
 call dein#load_toml(s:dein_filetypes,   { 'lazy': 0 })
 call dein#load_toml(s:dein_normal,      { 'lazy': 0 })
 call dein#load_toml(s:dein_to_op,       { 'lazy': 0 })
 call dein#load_toml(s:dein_colorscheme, { 'lazy': 0 })
 call dein#load_toml(s:dein_input,       { 'lazy': 0 })
-call dein#load_toml(s:dein_ftplugin,    { 'lazy': 0 })
 call dein#load_toml(s:dein_trial, { 'lazy': 0, 'merged': 0 })
 
 " disable plugins for debug
