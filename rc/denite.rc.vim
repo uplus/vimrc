@@ -8,6 +8,7 @@ call denite#custom#option('default', {
   \ 'source_names': 'short',
   \ 'highlight_filter_background': 'CursorLine',
   \ 'split': 'floating',
+  \ 'floating_border': 'single',
   \ 'filter_split_direction': 'floating',
   \ 'filter_updatetime': 150,
   \ })
