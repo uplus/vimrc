@@ -30,7 +30,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-if = 0
+if = "v:false"
 repo = 'Yggdroot/indentLine'
 on_cmd = ['IndentLinesToggle', 'LeadingSpaceToggle']
 hook_add = '''
@@ -419,7 +419,7 @@ on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
 #tags and ref
 
 [[plugins]] # View and search LSP symbols, tags in Vim/NeoVim.
-if = 0
+if = "v:false"
 repo = 'liuchengxu/vista.vim'
 on_cmd = ['Vista']
 

@@ -277,7 +277,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'bfredl/nvim-miniyank'
-if = 0
+if = "v:false"
 # if = 'has("clipboard")'
 hook_add = '''
   let g:miniyank_filename = $HOME . "/.vim/tmp/miniyank.mpack"
@@ -608,7 +608,7 @@ repo = 'hujo/gf-user-vimfn'
 
 [[plugins]]
 repo = 'romgrk/nvim-treesitter-context'
-if = 0
+if = "v:false"
 hook_post_source = '''
 lua <<EOF
   require'treesitter-context.config'.setup{

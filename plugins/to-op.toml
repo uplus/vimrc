@@ -37,7 +37,7 @@ repo = 'osyo-manga/vim-operator-block'
 depends = 'vim-operator-user'
 
 [[plugins]]
-if = 0
+if = "v:false"
 repo = 'machakann/vim-sandwich'
 depends = 'vim-operator-user'
 hook_add = '''
@@ -76,7 +76,7 @@ hook_add = '''
 '''
 
 [[plugins]] # sa sd sr
-if = 1
+if = "v:true"
 repo = 'rhysd/vim-operator-surround'
 depends = 'vim-operator-user'
 hook_add = '''
