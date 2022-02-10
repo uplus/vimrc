@@ -40,7 +40,7 @@ depends = 'vim-operator-user'
 repo = 'machakann/vim-sandwich'
 if = "v:false"
 depends = 'vim-operator-user'
-hook_add = '''
+__hook_add = '''
   " let g:operator_sandwich_no_default_key_mappings = 1
   let g:operator_sandwich_no_default_key_mappings = 1
 
