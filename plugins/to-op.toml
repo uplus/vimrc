@@ -37,8 +37,8 @@ repo = 'osyo-manga/vim-operator-block'
 depends = 'vim-operator-user'
 
 [[plugins]]
-if = "v:false"
 repo = 'machakann/vim-sandwich'
+if = "v:false"
 depends = 'vim-operator-user'
 hook_add = '''
   " let g:operator_sandwich_no_default_key_mappings = 1
@@ -76,8 +76,8 @@ hook_add = '''
 '''
 
 [[plugins]] # sa sd sr
-if = "v:true"
 repo = 'rhysd/vim-operator-surround'
+if = "v:true"
 depends = 'vim-operator-user'
 hook_add = '''
   " () {} はab aB で表す 他は記号 でもb Bは使わないかな

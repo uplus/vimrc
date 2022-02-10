@@ -4,8 +4,8 @@
 repo = 'deoplete-plugins/deoplete-lsp'
 
 [[plugins]]
-if = "v:false"
 repo = 'tbodt/deoplete-tabnine'
+if = "v:false"
 build = './install.sh'
 
 
