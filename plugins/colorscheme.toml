@@ -1,6 +1,3 @@
-[[plugins]]
-repo = 'djjcast/mirodark'
-
 [[plugins]] # 暗めの白
 repo = 'vim-scripts/newspaper.vim'
 
@@ -14,9 +11,7 @@ repo = 'joshdick/onedark.vim'
 repo = 'srcery-colors/srcery-vim'
 hook_add = '''
   let g:srcery_italic = 1
-
   let g:srcery_bright_black = '#c1b1a5'
-
   let g:srcery_magenta = '#f02c7d'
   let g:srcery_bright_magenta = '#ff5c9f'
   let g:srcery_green = '#61af60'
