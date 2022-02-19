@@ -655,7 +655,8 @@ hook_add = '''
 repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
-repo = 'skanehira/translate.vim'
+repo = 'uplus/translate.vim'
+rev = 'custom'
 hook_add = '''
   let g:translate_source = "en"
   let g:translate_target = "ja"
