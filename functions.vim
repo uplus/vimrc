@@ -128,6 +128,7 @@ endfunction
 
 function! JoinText(text) abort
   let str = a:text
+
   " remove head comment marker
   let comment_marker = substitute(&commentstring, '%s\|\s', '', 'g')
   let str = substitute(str, '^\s*' . comment_marker . '\s*', '', 'g')
@@ -137,6 +138,7 @@ function! JoinText(text) abort
   let str = substitute(str, '\v[`|]', '"', 'g')
 
   " remove head & tail space
+  let str = substitute(str, '^\s\+', '', 'g')
   let str = substitute(str, '\n\zs\s\+', '', 'g')
   let str = substitute(str, '\s\+\ze\n', '', 'g')
 
@@ -149,7 +151,7 @@ function! JoinText(text) abort
   "   paragraph end (.\n)
   "   list (\n-\s)
   "   num list (\d+\.\s)
-  let str = substitute(str, '\v%(\n|\.)@<!\n%(%(-|\d+\.)\s+)@!', '', 'g')
+  let str = substitute(str, '\v%(\n|\.)@<!\n%(%(•|-|\d+\.)\s+)@!', ' ', 'g')
   " listの直後の行を結合しない版
   " let str = substitute(str, '\v%(\n|\.|%(%(-|\d+\.)\s+[^\n]+))@<!\n%(%(-|\d+\.)\s+[^\n]+)@!', '', 'g')
 
@@ -170,6 +172,8 @@ endfunction
 " late
 " - hey
 " - you
+" • hoge
+" • fuga
 " 1. hey
 " 99. you
 " hoge(非対応)
