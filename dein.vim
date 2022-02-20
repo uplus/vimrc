@@ -13,7 +13,7 @@ endif
 
 " config
 let g:dein#auto_recache = v:false
-let g:dein#install_progress_type = 'title'
+let g:dein#install_progress_type = 'floating'
 let g:dein#enable_notification = v:true
 let g:dein#notification_time = 5
 let g:dein#install_log_filename = '~/.vim/tmp/dein.log'
@@ -46,7 +46,7 @@ call dein#load_toml(s:dein_normal,      { 'lazy': 0 })
 call dein#load_toml(s:dein_to_op,       { 'lazy': 0 })
 call dein#load_toml(s:dein_colorscheme, { 'lazy': 0 })
 call dein#load_toml(s:dein_input,       { 'lazy': 0 })
-call dein#load_toml(s:dein_trial, { 'lazy': 0, 'merged': 0 })
+call dein#load_toml(s:dein_trial,       { 'lazy': 0, 'merged': 0 })
 
 " disable plugins for debug
 if filereadable(expand('~/.vim/disable-plugin-list'))
