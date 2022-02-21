@@ -25,6 +25,7 @@ AlterCommand t tabedit
 AlterCommand tmpb[uffer] TmpBuffer
 AlterCommand tmpc[ommit] TmpCommit
 AlterCommand note Note
+AlterCommand ogf OpenGithubFile
 
 if has('nvim')
   AlterCommand www w\ suda://%
