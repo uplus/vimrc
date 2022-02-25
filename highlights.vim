@@ -6,8 +6,6 @@ function! s:set_default_highlights() abort
 
   hi! link Statement   Visual
   hi! link LineNr      Normal
-  hi! link FoldColumn  LineNr
-  hi! link SignColumn  LineNr
   hi clear TabLineFill
 endfunction
 
@@ -15,7 +13,9 @@ endfunction
 function! s:set_common_highlights() abort
   hi Pmenu        ctermfg=255  ctermbg=240 guifg=#eeeeee guibg=#3a3a3a cterm=NONE gui=NONE
   hi PmenuSel     ctermfg=255  ctermbg=250 guifg=#eaeaea guibg=#5a5a5a cterm=NONE gui=NONE
-  hi! link WildMenu Pmenu
+  hi! link WildMenu    Pmenu
+  hi! link SignColumn  LineNr
+  hi! link FoldColumn  LineNr
 
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#eeeeee guibg=#1c1b19 cterm=NONE gui=NONE
   hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#204080 cterm=NONE gui=NONE
