@@ -99,7 +99,7 @@ endif
 
 " set undofile
 if has('patch-7.4.2201')
-  set signcolumn=auto:1-3
+  set signcolumn=yes:2
 endif
 set showtabline=2
 set report=0  " コマンドでN行変更されたら出力
