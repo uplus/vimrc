@@ -81,7 +81,7 @@ hook_add = '''
   let g:vim_markdown_new_list_item_indent = 2
 
   " behavior: folding
-  let g:vim_markdown_folding_disabled = 0 " fdmやfoldtextを設定しない
+  let g:vim_markdown_folding_disabled = 1 " fdmやfoldtextを設定しない
   let g:vim_markdown_folding_style_pythonic = 0 " foldlevelを設定しない
 
   " syntax
