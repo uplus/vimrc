@@ -71,6 +71,8 @@ repo = 'jparise/vim-graphql'
 # TODO: treesitterにmarkdownがあるので移行検討
 [[plugins]]
 repo = 'preservim/vim-markdown'
+# after/ftplugin/ があるとdeinのftpluginとコンフリクトするためマージしな
+merged = 'v:false'
 hook_add = '''
   " behavior
   let g:vim_markdown_no_default_key_mappings = 1
@@ -112,6 +114,8 @@ hook_post_source = '''
 [[plugins]]
 # syntax fold
 repo = 'pangloss/vim-javascript'
+# after/ftplugin/ があるとdeinのftpluginとコンフリクトするためマージしな
+merged = 'v:false'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
@@ -139,6 +143,8 @@ repo = 'othree/es.next.syntax.vim'
 
 [[plugins]]
 repo = 'MaxMEllon/vim-jsx-pretty'
+# after/ftplugin/ があるとdeinのftpluginとコンフリクトするためマージしな
+merged = 'v:false'
 
 
 # haskell
