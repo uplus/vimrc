@@ -17,6 +17,9 @@ let g:dein#install_progress_type = 'floating'
 let g:dein#enable_notification = v:true
 let g:dein#notification_time = 5
 let g:dein#install_log_filename = '~/.vim/tmp/dein.log'
+" trueだとrecacheでシンボリックリンクが貼られる
+" after/ftplugin/があるプラグインとdeinのftpluginがコンフリクトする
+" let g:dein#install_copy_vim = v:false
 
 " load plugins
 let s:path = expand('$CACHE/dein')
