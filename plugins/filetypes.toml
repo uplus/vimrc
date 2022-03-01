@@ -70,7 +70,7 @@ repo = 'jparise/vim-graphql'
 
 # TODO: treesitterにmarkdownがあるので移行検討
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
+repo = 'preservim/vim-markdown'
 hook_add = '''
   " behavior
   let g:vim_markdown_no_default_key_mappings = 1
