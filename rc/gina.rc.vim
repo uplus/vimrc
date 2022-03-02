@@ -167,7 +167,7 @@ call gina#custom#execute(
   \)
 
 function! GinaSmartQuit() abort
-  let tab_win_count = len(nvim_tabpage_list_wins(tabpagenr()))
+  let tab_win_count = len(nvim_tabpage_list_wins(0))
 
   " 自身は無条件でquitする
   wincmd q
