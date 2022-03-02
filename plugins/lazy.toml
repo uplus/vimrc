@@ -365,12 +365,16 @@ hook_source = '''
 
 [[plugins]]
 repo = 'f-person/git-blame.nvim'
-on_cmd = ['GitBlameToggle']
+on_cmd = ['GitBlameToggle', 'GitBlameCopySHA']
 hook_add = '''
   let g:gitblame_enabled  = 0
-  " let g:gitblame_message_template = '<summary> • <date> • <author>'
+  let g:gitblame_date_format = '%Y/%m/%d'
+  " <author> <committer> <date> <committer-date> <summary> <sha>
+  let g:gitblame_message_template = "\t<date> • <author> • <summary>"
+  " let g:gitblame_highlight_group = "Comment"
 
   nnoremap ,gb <cmd>GitBlameToggle<cr>
+  nnoremap ,gy <cmd>GitBlameCopySHA<cr>
 '''
 
 #web
