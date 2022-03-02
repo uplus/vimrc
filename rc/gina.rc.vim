@@ -22,6 +22,10 @@ call gina#custom#command#option(
   \ 'show',
   \ '--show-signature'
   \)
+call gina#custom#command#option(
+  \ '/\%(patch\)',
+  \ '--oneside'
+  \)
 
 " Opener:
 call gina#custom#command#option(
@@ -80,25 +84,46 @@ call gina#custom#mapping#nmap(
 
 call gina#custom#mapping#nmap(
  \ '/\%(blame\|log\|reflog\)',
+ \ '<cr>',
+ \ ':<C-u>call gina#action#call(''preview'')<CR>',
+ \ {'noremap': 1, 'silent': 1}
+ \)
+
+call gina#custom#mapping#nmap(
+ \ '/\%(blame\|log\|reflog\)',
  \ 'p',
  \ ':<C-u>call gina#action#call(''preview'')<CR>',
  \ {'noremap': 1, 'silent': 1}
  \)
 
 call gina#custom#mapping#nmap(
-  \ 'blame',
-  \ 'j',
-  \ 'j<Plug>(gina-blame-echo)'
-  \)
+ \ '/\%(blame\|log\|reflog\)',
+ \ 'j',
+ \ 'j:<c-u>call gina#action#call(''preview'')<cr>',
+ \ {'noremap': 1, 'silent': 1}
+ \)
 
 call gina#custom#mapping#nmap(
-  \ 'blame',
-  \ 'k',
-  \ 'k<Plug>(gina-blame-echo)'
-  \)
+ \ '/\%(blame\|log\|reflog\)',
+ \ 'k',
+ \ 'k:<c-u>call gina#action#call(''preview'')<cr>',
+ \ {'noremap': 1, 'silent': 1}
+ \)
+
+" call gina#custom#mapping#nmap(
+"  \ 'blame',
+"  \ 'j',
+"  \ 'j<Plug>(gina-blame-echo)'
+"  \)
+"
+" call gina#custom#mapping#nmap(
+"  \ 'blame',
+"  \ 'k',
+"  \ 'k<Plug>(gina-blame-echo)'
+"  \)
 
 call gina#custom#mapping#nmap(
-  \ 'blame',
+  \ '/\%(blame\|log\|reflog\)',
   \ 'yy',
   \ '<Plug>(gina-yank-rev)'
   \)
@@ -106,7 +131,8 @@ call gina#custom#mapping#nmap(
 call gina#custom#mapping#nmap(
  \ 'status',
  \ '<cr>',
- \ '<plug>(gina-diff)'
+ \ '<cmd>call gina#action#call(''diff:preview'')<cr>',
+ \ {'noremap': 1, 'silent': 1}
  \)
 
 " pp と被る
