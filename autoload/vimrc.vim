@@ -170,6 +170,8 @@ function! vimrc#open_git_diff(type) abort "{{{
     bwipeout!
     execute 'normal!' s:prev_winnr ."\<C-w>w"
   endfunction
+
+  wincmd w
 endfunction "}}}
 
 function! vimrc#undo_clear() abort "{{{

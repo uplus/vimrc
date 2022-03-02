@@ -72,8 +72,11 @@ function! my#option#set_diff_mode(win_nr, bufnr) abort "{{{
   let opts = { 'silent': v:true, 'noremap': v:true }
   call nvim_buf_set_keymap(a:bufnr, '', 'q', '<cmd>call my#option#close_current_tab_diff_wins()<cr>', opts)
   " 範囲選択対応のため <cmd>は使わない
-  call nvim_buf_set_keymap(a:bufnr, '', 'gdp', ':diffput | diffupdate<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, '', 'do', ':diffget | diffupdate<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, '', 'dp', ':diffput | diffupdate<cr>', opts)
+  " do dpで良さそう? なので廃止予定
   call nvim_buf_set_keymap(a:bufnr, '', 'gdg', ':diffget | diffupdate<cr>', opts)
+  call nvim_buf_set_keymap(a:bufnr, '', 'gdp', ':diffput | diffupdate<cr>', opts)
 endfunction "}}}
 
 function! my#option#close_current_tab_diff_wins() abort " {{{
