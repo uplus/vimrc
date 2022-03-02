@@ -6,7 +6,8 @@ augroup myac
   au SwapExists * let g:swapname = v:swapname
   " au CursorHold *.toml syntax sync minlines=300
   au VimResized * if &ft !=# 'help' | wincmd = | redraw! | endif
-  au VimEnter,VimResized * let &scrolloff=float2nr(winheight('') * 0.07)
+  au VimEnter,VimResized * let &scrolloff = float2nr(&lines * 0.07)
+  au VimEnter,VimResized * let &previewheight = float2nr(&lines * 0.40)
   " .tagsがある場合のみ更新する
   " au BufWritePost * if filewritable('.tags') | call Tags() | endif
   " 最後のバッファがquickfixなら自動で閉じる

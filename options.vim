@@ -8,7 +8,7 @@ set noswapfile
 set nobackup
 set nowritebackup
 
-" #encoding {{{
+" Encoding: {{{
 " set termencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,ucs-bom,euc-jp,eucjp-ms,cp932
 " Default fileformat.
@@ -17,7 +17,7 @@ set fileformat=unix
 set fileformats=unix,dos,mac
 "}}}
 
-" #search {{{
+" Search: {{{
 set gdefault
 set ignorecase smartcase
 set incsearch
@@ -57,7 +57,7 @@ call my#option#set_tab(2)
 au myac FileType * call my#option#set_tab(2)
 "}}}
 
-" #fold {{{
+" Fold: {{{
 set foldtext=FoldCCtext()
 set foldcolumn=1
 set foldlevelstart=99     " どのレベルから折りたたむか
@@ -66,7 +66,7 @@ set foldnestmax=10   " indent,syntaxでどの深さまで折りたたむか
 set foldopen=block,hor,mark,percent,quickfix,search,tag,undo
 "}}}
 
-" #indent {{{
+" Indent: {{{
 set autoindent smartindent
 " set cindent
 set cinkeys-=0#
