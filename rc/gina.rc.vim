@@ -62,12 +62,12 @@ call gina#custom#action#alias(
 call gina#custom#action#alias(
   \ '/\%(blame\|log\|reflog\)',
   \ 'preview',
-  \ 'topleft show:commit:preview',
+  \ 'show:commit:preview',
   \)
 call gina#custom#action#alias(
   \ '/\%(blame\|log\|reflog\)',
   \ 'changes',
-  \ 'topleft changes:of:preview',
+  \ 'changes:of:preview',
   \)
 
 " Mappings:
@@ -109,6 +109,14 @@ call gina#custom#mapping#nmap(
  \ '<plug>(gina-diff)'
  \)
 
+" pp と被る
+" call gina#custom#mapping#nmap(
+" \ 'status',
+" \ 'p',
+" \ '<cmd>call gina#action#call(''diff:preview'')<cr>',
+" \ {'noremap': 1, 'silent': 1}
+" \)
+
 call gina#custom#mapping#nmap(
  \ 'status',
  \ 'u',
@@ -118,6 +126,12 @@ call gina#custom#mapping#nmap(
 call gina#custom#mapping#nmap(
   \ 'status', 'C',
   \ '<cmd>Gina commit<cr>',
+  \ {'noremap': 1, 'silent': 1, 'nowait': 1},
+  \)
+
+call gina#custom#mapping#nmap(
+  \ 'status', 'F',
+  \ '<cmd>Gina commit --amend<cr>',
   \ {'noremap': 1, 'silent': 1, 'nowait': 1},
   \)
 
@@ -158,6 +172,10 @@ call gina#custom#execute(
   \ 'nnoremap <silent><buffer>q <cmd>call GinaSmartQuit()<cr>',
   \)
 call gina#custom#execute(
+  \ '/\%(.*\)',
+  \ 'setlocal cursorline signcolumn=no',
+  \)
+call gina#custom#execute(
   \ '/\%(ls\|log\|reflog\|grep\)',
   \ 'setlocal noautoread',
   \)
@@ -178,3 +196,6 @@ function! GinaSmartQuit() abort
     call my#option#close_current_tab_diff_wins()
   endif
 endfunction
+
+" Gina diff --group=abc{bufnr('%')}
+" vertical topleft split tags
