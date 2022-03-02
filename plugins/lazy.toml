@@ -314,6 +314,9 @@ on_func = ['gina#']
 hook_add = '''
   nnoremap <space>gi :Gina<space>
 
+  " diffモードでdorやdolのマッピングが生まれるので無効化
+  let g:gina#command#patch#use_default_mappings = v:false
+
   " ハッシュを表示するオプションは無い
   " let g:gina#command#blame#formatter#format = '%su%=on %ti %ma%in'
   let g:gina#command#blame#formatter#timestamp_months = 0
