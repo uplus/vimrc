@@ -155,7 +155,7 @@ call gina#custom#mapping#nmap(
 " Executes:
 call gina#custom#execute(
   \ '/\%(.*\)',
-  \ 'nnoremap <silent><buffer>q :quit<cr>',
+  \ 'nnoremap <silent><buffer>q <cmd>call GinaSmartQuit()<cr>',
   \)
 call gina#custom#execute(
   \ '/\%(ls\|log\|reflog\|grep\)',
@@ -165,3 +165,16 @@ call gina#custom#execute(
   \ '/\%(status\|branch\|ls\|log\|reflog\|grep\)',
   \ 'setlocal cursorline',
   \)
+
+function! GinaSmartQuit() abort
+  let tab_win_count = len(nvim_tabpage_list_wins(tabpagenr()))
+
+  " 自身は無条件でquitする
+  wincmd q
+
+  " 自分以外にもウインドがあるなら、タブ内にあるdiffウィンドウを全てquitする
+  " patch向け(patchのバッファはpatchやshowなどが使われる)
+  if 2 <= tab_win_count
+    call my#option#close_current_tab_diff_wins()
+  endif
+endfunction
