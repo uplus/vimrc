@@ -19,9 +19,6 @@
 # [[plugins]]
 # repo = 'vim/killersheep'
 
-[[plugins]]
-repo = 'iberianpig/tig-explorer.vim'
-
 # https://github.com/machakann/vim-sandwich
 # https://github.com/hrsh7th/vim-searchx
 # https://github.com/nvim-treesitter/nvim-treesitter-refactor

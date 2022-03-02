@@ -465,6 +465,9 @@ depends = 'vim-quickrun'
 
 # git
 
+[[plugins]]
+repo = 'iberianpig/tig-explorer.vim'
+
 # VCSのdiffをsigncolumnに表示
 [[plugins]]
 repo = 'mhinz/vim-signify'
