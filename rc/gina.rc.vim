@@ -103,6 +103,18 @@ call gina#custom#mapping#nmap(
  \ '<plug>(gina-diff)'
  \)
 
+call gina#custom#mapping#nmap(
+ \ 'status',
+ \ 'u',
+ \ '<plug>(gina-index-toggle)'
+ \)
+
+call gina#custom#mapping#nmap(
+  \ 'status', 'C',
+  \ '<cmd>Gina commit<cr>',
+  \ {'noremap': 1, 'silent': 1, 'nowait': 1},
+  \)
+
 " call gina#custom#mapping#nmap(
 "  \ 'branch', 'g<CR>',
 "  \ '<Plug>(gina-commit-checkout-track)'
