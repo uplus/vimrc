@@ -10,10 +10,10 @@ call gina#custom#command#option(
   \ 'status',
   \ '-b|--branch'
   \)
-call gina#custom#command#option(
-  \ 'status',
-  \ '-s|--short'
-  \)
+" call gina#custom#command#option(
+"  \ 'status',
+"  \ '-s|--short'
+"  \)
 call gina#custom#command#option(
   \ '/\%(commit\|tag\)',
   \ '--restore'
@@ -25,17 +25,17 @@ call gina#custom#command#option(
 
 " Opener:
 call gina#custom#command#option(
-  \ '/\%(commit\|branch\)',
+  \ '/\%(branch\)',
   \ '--opener', 'split'
   \)
 
 call gina#custom#command#option(
-  \ '/\%(diff\|d\|log\|l\|grep\)',
+  \ '/\%(diff\|d\|grep\)',
   \ '--opener', 'vsplit'
   \)
 
 call gina#custom#command#option(
-  \ '/\%(status\|s\|blame\|b\|reflog\|changes\|compare\|c\|patch\)',
+  \ '/\%(log\|l\|reflog\|status\|s\|blame\|b\|compare\|c\|patch\)',
   \ '--opener', 'tabedit'
   \)
 
