@@ -23,7 +23,7 @@ call gina#custom#command#option(
   \ '--show-signature'
   \)
 call gina#custom#command#option(
-  \ '/\%(patch\)',
+  \ '/\%(patch\|p\)',
   \ '--oneside'
   \)
 
@@ -49,6 +49,7 @@ call gina#custom#command#alias('compare', 'c')
 call gina#custom#command#alias('diff', 'd')
 call gina#custom#command#alias('blame', 'b')
 call gina#custom#command#alias('log', 'l')
+call gina#custom#command#alias('patch', 'p')
 
 " Aliases:
 call gina#custom#action#alias(
