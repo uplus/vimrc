@@ -98,6 +98,12 @@ call gina#custom#mapping#nmap(
   \)
 
 call gina#custom#mapping#nmap(
+  \ 'blame',
+  \ 'yy',
+  \ '<Plug>(gina-yank-rev)'
+  \)
+
+call gina#custom#mapping#nmap(
  \ 'status',
  \ '<cr>',
  \ '<plug>(gina-diff)'
