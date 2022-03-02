@@ -200,15 +200,19 @@ call gina#custom#execute(
   \)
 call gina#custom#execute(
   \ '/\%(.*\)',
-  \ 'setlocal cursorline signcolumn=no',
+  \ 'setl signcolumn=no',
   \)
 call gina#custom#execute(
   \ '/\%(ls\|log\|reflog\|grep\)',
-  \ 'setlocal noautoread',
+  \ 'setl noautoread',
   \)
 call gina#custom#execute(
   \ '/\%(status\|branch\|ls\|log\|reflog\|grep\)',
-  \ 'setlocal cursorline',
+  \ 'setl cursorline',
+  \)
+call gina#custom#execute(
+  \ '/\%(show\)',
+  \ 'setl buftype=nofile bufhidden=wipe nobuflisted noswapfile',
   \)
 
 function! GinaSmartQuit() abort
@@ -222,6 +226,10 @@ function! GinaSmartQuit() abort
   if 2 <= tab_win_count
     call my#option#close_current_tab_diff_wins()
   endif
+
+  if &previewwindow
+    wincmd q
+  end
 endfunction
 
 " Gina diff --group=abc{bufnr('%')}
