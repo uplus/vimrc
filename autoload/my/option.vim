@@ -45,11 +45,16 @@ function! my#option#auto_cursorcolumn() abort "{{{
 endfunction "}}}
 
 function! my#option#set_as_scratch() abort "{{{
-  nnoremap <silent><buffer>q :quit<CR>
+  nnoremap <silent><buffer>q <cmd>quit<cr>
   setl buftype=nofile
   setl bufhidden=hide
   setl noswapfile
   setl nobuflisted
+
+  let alt_buf = bufnr('#')
+  if alt_buf
+    let &l:filetype = nvim_buf_get_option(alt_buf, 'filetype')
+  endif
 endfunction "}}}
 
 function! my#option#set_diff_mode_on_vimenter() abort "{{{
