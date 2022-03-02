@@ -97,6 +97,12 @@ call gina#custom#mapping#nmap(
   \ 'k<Plug>(gina-blame-echo)'
   \)
 
+call gina#custom#mapping#nmap(
+ \ 'status',
+ \ '<cr>',
+ \ '<plug>(gina-diff)'
+ \)
+
 " call gina#custom#mapping#nmap(
 "  \ 'branch', 'g<CR>',
 "  \ '<Plug>(gina-commit-checkout-track)'

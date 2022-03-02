@@ -5,11 +5,10 @@ if exists(':AlterCommand') != 2
 endif
 
 AlterCommand rec[ache] Recache
-AlterCommand den[ite] Denite
 AlterCommand gi[na] Gina
 AlterCommand ti[g] Tig
 AlterCommand tigb[lame] TigBlame
-AlterCommand maps Maps
+AlterCommand tb TigBlame
 
 AlterCommand lint ALELint
 AlterCommand fix ALEFix
