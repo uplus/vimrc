@@ -47,9 +47,9 @@ endfunction "}}}
 function! my#option#set_as_scratch() abort "{{{
   nnoremap <silent><buffer>q <cmd>quit<cr>
   setl buftype=nofile
-  setl bufhidden=hide
-  setl noswapfile
+  setl bufhidden=wipe
   setl nobuflisted
+  setl noswapfile
 
   let alt_buf = bufnr('#')
   if alt_buf

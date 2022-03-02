@@ -149,11 +149,14 @@ function! vimrc#open_git_diff(type) abort "{{{
 
   " diff_config()で設定しようとするとnofileのタイミングが遅い
   setl buftype=nofile
-  setl modifiable
+  setl bufhidden=wipe
+  setl nobuflisted
+  setl noswapfile
   setl undolevels=-1
-  setl nofoldenable
   setl nonumber
+  setl nofoldenable
   setl foldcolumn=0
+  setl modifiable
 
   " ファイルタイプをセットするとのが早いとバグる
   setfiletype diff
@@ -179,41 +182,4 @@ endfunction "}}}
 
 function! vimrc#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
-endfunction "}}}
-
-function! vimrc#zsh_file_completion(lead, line, pos) abort "{{{
-  if a:lead ==# '#'
-    return map(my#buffer#info(''), 'v:val[2]')
-  elseif a:lead ==# ''
-    let query = ''
-  elseif a:lead =~# '\v^\~[^/]+'
-    echo 'zsh file completion'
-    " Slow
-    let parts = split(a:lead, '/')
-    let parts[0] = vimrc#expand_dir_alias(parts[0])
-    if v:shell_error
-      return []
-    endif
-    let query = join(parts, '/')
-  elseif stridx(a:lead, '/') != -1
-    let query = a:lead
-  else
-    let pre_glob = glob('*' . a:lead . '*', 1, 1)
-    if len(pre_glob) == 1 && isdirectory(pre_glob[0])
-      let query = vimrc#add_slash_tail(pre_glob[0])
-    else
-      let query = '*' . a:lead
-    endif
-  endif
-
-  let cands = []
-  for path in glob(query . '*', 1, 1)
-    if isdirectory(path)
-      let path  .= '/'
-    endif
-    let path = vimrc#home2tilde(path)
-    let cands += [path]
-  endfor
-
-  return cands
 endfunction "}}}
