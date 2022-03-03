@@ -178,9 +178,10 @@ augroup myac
   endfunction
 
   function! s:stdin_config()
+    call my#option#set_minimal_window()
     call my#option#set_as_scratch()
-    setl nofoldenable
-    setl foldcolumn=0
+    setl number
+
     goto
     silent! %foldopen!
   endfunction

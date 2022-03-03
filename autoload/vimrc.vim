@@ -148,9 +148,9 @@ function! vimrc#open_git_diff(type) abort "{{{
   let s:git_diff_bufnr = bufnr('%')
 
   " diff_config()で設定しようとするとnofileのタイミングが遅い
-  setl buftype=nofile bufhidden=wipe nobuflisted noswapfile
-  setl undolevels=-1
-  setl nonumber nofoldenable foldcolumn=0 modifiable
+  call my#option#set_minimal_window()
+  call my#option#set_scrach_buffer()
+  setl undolevels=-1 modifiable
 
   " ファイルタイプをセットするとのが早いとバグる
   setfiletype diff

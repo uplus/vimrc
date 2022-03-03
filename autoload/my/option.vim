@@ -44,12 +44,17 @@ function! my#option#auto_cursorcolumn() abort "{{{
   endif
 endfunction "}}}
 
+function! my#option#set_minimal_window() abort " {{{
+  setl nonumber nofoldenable foldcolumn=0 signcolumn=no
+endfunction " }}}
+
+function! my#option#set_scrach_buffer() abort " {{{
+  setl buftype=nofile bufhidden=wipe nobuflisted noswapfile
+endfunction " }}}
+
 function! my#option#set_as_scratch() abort "{{{
   nnoremap <silent><buffer>q <cmd>quit<cr>
-  setl buftype=nofile
-  setl bufhidden=wipe
-  setl nobuflisted
-  setl noswapfile
+  call my#option#set_scrach_buffer()
 
   let alt_buf = bufnr('#')
   if -1 != alt_buf
