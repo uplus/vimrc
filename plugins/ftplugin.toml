@@ -190,6 +190,7 @@ markdown = '''
 
 neosnippet = '''
   setl noexpandtab
+  SetTab 4
 '''
 
 python = '''

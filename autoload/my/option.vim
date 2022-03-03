@@ -52,7 +52,7 @@ function! my#option#set_as_scratch() abort "{{{
   setl noswapfile
 
   let alt_buf = bufnr('#')
-  if alt_buf
+  if -1 != alt_buf
     let &l:filetype = nvim_buf_get_option(alt_buf, 'filetype')
   endif
 endfunction "}}}
