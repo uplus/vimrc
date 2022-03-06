@@ -7,6 +7,9 @@ hook_add = '''
   command! Update  call dein#update()
 '''
 
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
 # [[plugins]]
 # repo = 'Shougo/deol.nvim'
 
@@ -129,7 +132,7 @@ denite-filter = '''
   imap <silent><buffer><m-a> <esc><m-a>
 
   " disable deoplete
-  call deoplete#custom#buffer_option('auto_complete', v:false)
+  " call deoplete#custom#buffer_option('auto_complete', v:false)
 '''
 
 [[plugins]] # quickfixの各行を編集、反映できる

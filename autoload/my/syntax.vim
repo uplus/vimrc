@@ -24,6 +24,11 @@ function! my#syntax#get_syn_attr_pretty(syn_attr) abort "{{{
   return str
 endfunction "}}}
 
+function! my#syntax#get_syn_name() abort
+  " TODO: ハイライト情報を出力する
+  echo ddc#syntax#get()
+endfunction
+
 function! my#syntax#get_syn_info() abort "{{{
   for id in synstack(line('.'), col('.'))
     while 1

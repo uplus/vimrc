@@ -1,48 +1,9 @@
-## sources
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-lsp'
-
-[[plugins]]
-repo = 'tbodt/deoplete-tabnine'
-if = "v:false"
-build = './install.sh'
-
-
 [[plugins]]
 repo = 'mattn/googlesuggest-complete-vim'
 hook_add = '''
   command! EnableGoogleSuggest set completefunc=googlesuggest#Complete
   EnableGoogleSuggest
 '''
-
-[[plugins]] # text
-repo = 'ujihisa/neco-look'
-
-[[plugins]] # text
-repo = 'Shougo/deoplete-nextword'
-
-[[plugins]] # vim
-repo = 'Shougo/neco-vim'
-
-[[plugins]]
-repo = 'zchee/deoplete-clang'
-# repo = 'tweekmonster/deoplete-clang2'
-if = 'executable("clang")'
-hook_add = '''
-  let b:clang2_orig_maps = {}
-
-  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-  let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-  let g:deoplete#sources#clang#std = { 'c': 'gnu11', 'cpp': 'c++1z' }
-  " let g:deoplete#sources#clang#flags = ['-x', 'c++'] " libclang default compile flags
-'''
-
-[[plugins]]
-repo = 'zchee/deoplete-zsh'
-
-
-## base
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -73,9 +34,6 @@ hook_add = '''
   " au myac InsertLeave * NeoSnippetClearMarkers
 '''
 
-# [[plugins]]
-# repo = 'windwp/nvim-autopairs'
-
 [[plugins]]
 repo = 'cohama/lexima.vim'
 # lazy = 1
@@ -87,46 +45,97 @@ hook_add = '''
   let g:lexima_ctrlh_as_backspace = 0
 '''
 
-# [[plugins]] # CompleteDoneした関数のシグネチャを表示する
-# repo = 'Shougo/echodoc.vim'
-# # lazy = 1
-# # on_event = 'CompleteDone'
-# hook_add = '''
-#   let g:echodoc_enable_at_startup = 1
-#   let g:echodoc#type = 'echo'
-# '''
-
-[[plugins]] # completeopt+=previewの変わりにフローティングウィンドウを表示させる
-repo = 'ncm2/float-preview.nvim'
-# lazy = 1
-# on_source = 'deoplete.nvim'
-if = 'has("nvim")'
-hook_add = '''
-  " 0: 補完候補の隣に表示
-  " 1: ウィンド下部に表示
-  let g:float_preview#docked = 0
-  let g:float_preview#max_width = 80
-  let g:float_preview#max_height = 20
-'''
-
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = ['deoplete-lsp']
-if = "has('nvim')"
+repo = 'Shougo/pum.vim'
+
+# https://github.com/topics/ddc-vim
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim', 'pum.vim']
+on_event = ['InsertEnter', 'CursorHold']
 # deinは遅延読み込み前後でau FileTypeの差分があると &ft=&ft する
 # いろいろ再実されてインサートモードに入るのが重くなるので起動のみ遅延させる
 # lazy = 1
 # on_event = ['InsertEnter']
-hook_post_source = '''
+hook_source = '''
+  source ~/.vim/rc/ddc.rc.vim
+
   au myac InsertEnter * ++once ++nested call s:insert_enter()
 
   function! s:insert_enter() abort
-    " VimEnterではなくInsertEnterで読み込む(deoplete#enable_at_startupを使わない)
-    call deoplete#lsp#enable()
-    call deoplete#enable()
-
+    " VimEnterではなくInsertEnterで読み込む
     source ~/.vim/rc/lexima.rc.vim
-    source ~/.vim/rc/deoplete.rc.vim
     source ~/.vim/rc/input.rc.vim
   endfunction
 '''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-nextword'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-zsh'
+on_source = 'ddc.vim'
+depends = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim', 'toml', 'markdown']
+depends = 'ddc.vim'
+
+# [[plugins]]
+# repo = 'tani/ddc-path'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline-history'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-rg'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-line'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-rtags'
+on_ft = ['c', 'cpp']
+
+# matcher, sorter, convert
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
