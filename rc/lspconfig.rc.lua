@@ -44,25 +44,41 @@ local flags = {
   debounce_text_changes = 150,
 }
 
-for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver" }) do
+-- :help lspconfig-server-configurations
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
     flags = flags,
   }
 end
 
--- root_dir dirname fallback
-for _, server in ipairs({ "solargraph" }) do
-  nvim_lsp[server].setup {
-    on_attach = on_attach,
-    flags = flags,
-    root_dir = function(fname)
-      default_func = nvim_lsp[server]['document_config']['default_config']['root_dir']
-      return default_func(fname) or util.path.dirname(fname)
-    end
+nvim_lsp["solargraph"].setup {
+  on_attach = on_attach,
+  flags = flags,
+  single_file_support = true,
+  init_options = { formatting = true },
+  settings = {
+    solargraph = {
+      diagnostics = false
+    }
   }
-end
+}
+
+nvim_lsp["yamlls"].setup {
+  cmd = { "docker", "run", "-it", "quay.io/redhat-developer/yaml-language-server:latest" },
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        -- ["../path/relative/to/file.yml"] = "/.github/workflows/*",
+        -- ["/path/from/root/of/project"] = "/.github/workflows/*"
+      },
+    },
+  }
+}
 
 -- npm install -g typescript typescript-language-server
 -- npm install -g pyright
 -- gem install solargraph
+-- go install golang.org/x/tools/gopls@latest
+-- docker pull quay.io/redhat-developer/yaml-language-server:latest
