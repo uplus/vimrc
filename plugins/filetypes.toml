@@ -65,6 +65,12 @@ hook_add = '''
   let g:terraform_remap_spacebar=0
 '''
 
+[[plugins]] # Fmtしてもホールド維持
+repo = 'vim-jp/vim-go-extra'
+hook_add = '''
+  let g:gofmt_command = 'goimports'
+'''
+
 [[plugins]]
 repo = 'jparise/vim-graphql'
 

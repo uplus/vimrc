@@ -40,7 +40,6 @@ command! -bang -bar -complete=file -nargs=? EncodeUnicode   EncodeUtf8<bang> <ar
 
 " Autoload:
 command! AddRepo call my#dein#add_repo()
-command! OpenRepo call my#dein#open_repo()
 
 command! -nargs=1 SetTab call my#option#set_tab(<args>)
 command! OpenCop call OpenCop()

@@ -541,28 +541,6 @@ hook_add = '''
 [[plugins]]
 repo = 'thinca/vim-ref'
 
-# go
-
-[[plugins]] # Fmtしてもホールド維持
-repo = 'vim-jp/vim-go-extra'
-hook_add = '''
-  let g:gofmt_command = 'goimports'
-'''
-
-[[plugins]]
-repo = 'fatih/vim-go'
-hook_add = '''
-  function! s:go_config() abort
-    nnoremap <buffer><silent>gd <cmd>call go#def#Jump('split')<cr>
-  endfunction
-  au myac FileType go call s:go_config()
-  let g:go_def_mapping_enabled = 0
-  let g:go_textobj_enabled = 0
-  let g:go_doc_keywordprg_enabled = 1
-  let g:go_fmt_autosave = 0
-  let g:go_template_autocreate = 0
-'''
-
 # misc
 
 [[plugins]]

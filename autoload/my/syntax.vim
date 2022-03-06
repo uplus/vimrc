@@ -34,7 +34,7 @@ function! my#syntax#get_syn_info() abort "{{{
         break
       else
         let id = new_id
-    echo 'link to'
+        echo 'link to'
       endif
     endwhile
   endfor

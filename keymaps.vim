@@ -214,24 +214,29 @@ if !hasmapto('gf')
 endif
 "}}}
 
-" #complete "{{{
-imap <c-x>n <c-x><c-n>
-imap <c-x>i <c-x><c-i>
+" #input "{{{
 imap <c-x>] <c-x><c-]>
-imap <c-x>k <c-x><c-k>
-imap <c-x>s <c-x><c-s>
-imap <c-x>l <c-x><c-l>
-imap <c-x>f <c-x><c-f>
-imap <c-x>o <c-x><c-o>
-imap <c-x>u <c-x><c-u>
+imap <c-x>a <c-x><c-a>
+imap <c-x>b <c-x><c-b>
 imap <c-x>d <c-x><c-d>
-imap <c-x>p <c-x><c-p>
-imap <c-x>v <c-x><c-v>
-imap <c-x>e <c-x><c-e>
-imap <c-x>y <c-x><c-y>
+imap <c-x>f <c-x><c-f>
 imap <c-x>g <c-x><c-g>
+imap <c-x>i <c-x><c-i>
+imap <c-x>k <c-x><c-k>
+imap <c-x>l <c-x><c-l>
+imap <c-x>n <c-x><c-n>
+imap <c-x>o <c-x><c-o>
+imap <c-x>p <c-x><c-p>
+imap <c-x>r <c-x><c-r>
+imap <c-x>s <c-x><c-s>
+imap <c-x>u <c-x><c-u>
+imap <c-x>v <c-x><c-v>
 imap <c-x>z <c-x><c-z>
 " inoremap <c-x> <nop> " cannot execute <c-x><c-u>
+
+" cursor move
+imap <c-x>e <c-x><c-e>
+imap <c-x>y <c-x><c-y>
 "}}}
 
 " #move "{{{
@@ -341,7 +346,8 @@ nnoremap gaa ga
 xnoremap gaa ga
 nnoremap ga8 g8
 xnoremap ga8 g8
-nnoremap gah <cmd>call my#syntax#get_syn_info()<cr>
+nnoremap gah <cmd>call my#syntax#get_syn_name()<cr>
+nnoremap gaH <cmd>call my#syntax#get_syn_info()<cr>
 nnoremap ga<C-G> g<C-G>
 xnoremap ga<C-G> g<C-G>
 nnoremap ga <nop>

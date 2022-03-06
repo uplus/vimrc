@@ -9,9 +9,9 @@ function! my#dein#add_repo() abort "{{{
   try
     let uri = s:Vuri.new(str)
     call append(line('.'), [
-          \ '',
           \ '[[plugins]]',
           \ printf("repo = '%s'", join(split(uri.path(), '/')[:1], '/')),
+          \ '',
           \ ])
     normal! jjj
   catch 'vital'

@@ -393,6 +393,11 @@ hook_add = '''
   nmap gsc <Plug>(openbrowser-smart-open)
 
   function! s:smart_open() abort
+    if &filetype ==# 'toml' && getline('.') =~# '^\s*#\?\s*repo' " && expand('%:p') =~# '/plugins/.*\.toml$'
+      call my#dein#open_repo()
+      return
+    endif
+
     let l:iskeyword_save = &iskeyword
     setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57
 
@@ -535,6 +540,51 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'rcarriga/nvim-notify'
+on_lua = 'notify'
+hook_source = '''
+lua <<EOF
+  require("notify").setup({
+    -- Animation style (see below for details)
+    stages = "fade_in_slide_out",
+
+    -- Function called when a new window is opened, use for changing win settings/config
+    on_open = nil,
+
+    -- Function called when a window is closed
+    on_close = nil,
+
+    -- Render function for notifications. See notify-render()
+    render = "default",
+
+    -- Default timeout for notifications
+    timeout = 3000,
+
+    -- Max number of columns for messages
+    max_width = nil,
+    -- Max number of lines for a message
+    max_height = nil,
+
+    -- For stages that change opacity this is treated as the highlight behind the window
+    -- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
+    background_colour = "Normal",
+
+    -- Minimum width for notification windows
+    minimum_width = 50,
+
+    -- Icons for the different levels
+    icons = {
+      ERROR = "",
+      WARN = "",
+      INFO = "",
+      DEBUG = "",
+      TRACE = "✎",
+    },
+  })
+EOF
+'''
+
+[[plugins]]
 repo = 'rbtnn/vimconsole.vim'
 on_cmd = ['VimConsoleOpen', 'VimConsoleToggle', 'VimConsoleLog']
 on_map = '<Plug>(vimconsole_'
@@ -621,37 +671,6 @@ on_cmd = ['HttpStatus', 'CtrlPHttpStatus']
 repo = 'tweekmonster/helpful.vim'
 on_cmd = ['HelpfulVersion']
 on_ft = ['vim', 'help']
-
-[[plugins]]
-repo = 'tweekmonster/dyslexic.vim'
-on_cmd = ['DyslexicTracking', 'DyslexicOff']
-on_map = ['<Plug>(Dyslexic)']
-hook_add = '''
-  let g:dyslexic_map = ''
-  au myac VimEnter,ColorScheme hi Dyslexic ctermfg=0 ctermbg=6 guifg=#000000 guibg=#008f8f
-'''
-
-[[plugins]]
-repo = 'itchyny/calendar.vim'
-on_cmd = 'Calendar'
-hook_add = '''
-  let g:calendar_google_calendar = 1
-  let g:calendar_google_task = 1
-
-  let g:calendar_frame = 'default'
-  let g:calendar_first_day = 'sunday'
-'''
-
-[[plugins]]
-repo = 'rhysd/wandbox-vim'
-on_cmd = ['Wandbox']
-hook_add = '''
-  nnoremap ,wb :<c-u>Wandbox<cr>
-  let g:wandbox#default_compiler = get(g:, 'wandbox#default_compiler', {})
-  let g:wandbox#default_compiler = {
-    \ 'cpp': 'clang-head',
-    \ }
-'''
 
 # [[plugins]]
 # repo = 'typewriter/zenrei.vim'
