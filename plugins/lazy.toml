@@ -398,6 +398,11 @@ hook_add = '''
       return
     endif
 
+    if &filetype ==# 'yaml' && getline('.') =~# '^\s*#\?\s*.*/.*:' && expand('%:p') =~# '.rubocop.*\.yml$'
+      OpenCop
+      return
+    endif
+
     let l:iskeyword_save = &iskeyword
     setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57
 
