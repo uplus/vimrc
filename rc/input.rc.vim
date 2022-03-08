@@ -9,7 +9,7 @@ xmap <c-l> <plug>(neosnippet_jump)
 inoremap <silent><expr><tab> <sid>imap_tab()
 inoremap <silent><expr><s-tab> pum#visible() ? "\<cmd>call pum#map#insert_relative(-1)\<cr>" : "\<c-h>"
 inoremap <silent><expr><c-n>   pum#visible() ? "\<cmd>call pum#map#insert_relative(+1)\<cr>" : ddc#manual_complete()
-inoremap <c-p>                 <cmd>call pum#map#select_relative(-1)<cr>
+inoremap <c-p>                 <cmd>call pum#map#insert_relative(-1)<cr>
 
 " 確定系
 imap <expr><silent><cr> <sid>imap_cr()

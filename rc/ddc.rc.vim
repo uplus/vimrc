@@ -93,7 +93,7 @@ call ddc#custom#patch_global('completionMenu', 'pum.vim')
 " Filetype:
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'],
   \ 'sources',
-  \ ['neosnippet', 'around', 'buffer', 'nextword']
+  \ ['neosnippet', 'around', 'buffer', 'rg', 'nextword']
   \ )
 
 if has('nvim')
