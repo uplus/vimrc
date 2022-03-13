@@ -477,6 +477,8 @@ repo = 'mhinz/vim-signify'
 hook_add =  '''
   nmap [h <plug>(signify-prev-hunk)zMzvzz
   nmap ]h <plug>(signify-next-hunk)zMzvzz
+  nmap ,gu :SignifyHunkUndo<cr>
+  nmap ,gD :SignifyHunkDiff<cr>
 
   let g:signify_disable_by_default = 0
   let g:signify_vcs_list = ['git']
