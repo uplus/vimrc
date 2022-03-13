@@ -46,7 +46,7 @@ local flags = {
 }
 
 -- :help lspconfig-server-configurations
-for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls" }) do
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "yamlls" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
     flags = flags,
