@@ -65,13 +65,15 @@ nvim_lsp["solargraph"].setup {
 }
 
 nvim_lsp["yamlls"].setup {
-  cmd = { "docker", "run", "-it", "quay.io/redhat-developer/yaml-language-server:latest" },
+  cmd = { "docker", "run", "--rm", "-i", "quay.io/redhat-developer/yaml-language-server:latest" },
+  on_attach = on_attach,
+  flags = flags,
   settings = {
     yaml = {
       schemas = {
         ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        -- ["../path/relative/to/file.yml"] = "/.github/workflows/*",
-        -- ["/path/from/root/of/project"] = "/.github/workflows/*"
+        ["https://json.schemastore.org/circleciconfig.json"] = ".circleci/*.yml",
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.*",
       },
     },
   }
