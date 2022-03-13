@@ -65,26 +65,8 @@ nvim_lsp["solargraph"].setup {
   }
 }
 
-nvim_lsp["yamlls"].setup {
-  cmd = { "docker", "run", "--rm", "-i", "quay.io/redhat-developer/yaml-language-server:latest" },
-  on_attach = on_attach,
-  flags = flags,
-  settings = {
-    -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
-    redhat = { telemetry = { enabled = false } },
-    yaml = {
-      yamlVersion = '1.2',
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["https://json.schemastore.org/circleciconfig.json"] = ".circleci/*.yml",
-        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.*",
-      }
-    }
-  }
-}
-
 -- npm install -g typescript typescript-language-server
 -- npm install -g pyright
 -- gem install solargraph
 -- go install golang.org/x/tools/gopls@latest
--- docker pull quay.io/redhat-developer/yaml-language-server:latest
+-- npm install -g yaml-language-server
