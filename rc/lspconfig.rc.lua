@@ -8,6 +8,7 @@ local util = require('lspconfig/util')
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 -- Debug
+-- vim.lsp.set_log_level("trace")
 -- vim.lsp.set_log_level("debug")
 -- lua vim.cmd('tabnew'..vim.lsp.get_log_path())
 
@@ -69,13 +70,16 @@ nvim_lsp["yamlls"].setup {
   on_attach = on_attach,
   flags = flags,
   settings = {
+    -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
+    redhat = { telemetry = { enabled = false } },
     yaml = {
+      yamlVersion = '1.2',
       schemas = {
         ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
         ["https://json.schemastore.org/circleciconfig.json"] = ".circleci/*.yml",
         ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.*",
-      },
-    },
+      }
+    }
   }
 }
 
