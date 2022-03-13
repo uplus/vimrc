@@ -97,7 +97,7 @@ call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'],
   \ )
 
 if has('nvim')
-  call ddc#custom#patch_filetype(['ruby', 'rust', 'typescript', 'go', 'python'],
+  call ddc#custom#patch_filetype(['ruby', 'rust', 'typescript', 'go', 'python', 'yaml'],
     \ 'sources',
     \ ['neosnippet', 'nvim-lsp', 'around']
     \ )
