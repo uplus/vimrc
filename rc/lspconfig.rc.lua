@@ -1,5 +1,6 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+-- https://qiita.com/kitagry/items/216c2cf0066ff046d200#lspdocumentdiagnostics
 
 local nvim_lsp = require('lspconfig')
 local util = require('lspconfig/util')
