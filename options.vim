@@ -190,7 +190,7 @@ else
   " set wildmode=longest:full,full
 endif
 
-set fillchars=diff:-,vert:│
+" set fillchars=diff:-,vert:│
 set list
 set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%, " trail:␣
 " http://unicode-table.com/en/2A20/
