@@ -91,16 +91,15 @@ call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 
 " Filetype:
-call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'],
-  \ 'sources',
-  \ ['neosnippet', 'around', 'buffer', 'rg', 'nextword']
-  \ )
+
+let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'nextword']
+let s:sources_pg = ['neosnippet', 'nvim-lsp', 'around']
+let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'yaml']
+
+call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)
 
 if has('nvim')
-  call ddc#custom#patch_filetype(['ruby', 'rust', 'typescript', 'go', 'python', 'yaml'],
-    \ 'sources',
-    \ ['neosnippet', 'nvim-lsp', 'around']
-    \ )
+  call ddc#custom#patch_filetype(s:lsp_filetypes, 'sources', s:sources_pg)
 endif
 
 call ddc#custom#patch_filetype(['deol'], {
@@ -110,25 +109,24 @@ call ddc#custom#patch_filetype(['deol'], {
 
 call ddc#custom#patch_filetype(['vim'],
   \ 'sources',
-  \ ['necovim', 'neosnippet', 'around', 'file']
+  \ ['neosnippet', 'necovim', 'around', 'file']
   \ )
 
 call ddc#custom#patch_filetype(['zsh', 'bash'],
   \ 'sources',
-  \ ['zsh', 'neosnippet', 'around', 'file']
+  \ ['neosnippet', 'zsh', 'around', 'file']
   \ )
 
 " Context:
 " TODO: '_'  で指定したい. 正規表現が使いたい
 
-call ddc#custom#set_context(['ruby', 'c', 'go', 'rust', 'python', 'zsh', 'vim'],
-  \ { -> s:context_syntax() }
-  \ )
+call ddc#custom#set_context(extend(s:lsp_filetypes, ['yaml', 'vim']), { -> s:context_syntax() })
 
 function! s:context_syntax() abort
-  if ddc#syntax#in(['Comment', 'TSComment'])
-    return { 'sources': ['around', 'nextword', 'neosnippet'] }
-  elseif ddc#syntax#in(['String', 'TSString', 'zshComment', 'vimComment', 'vimLineComment'])
+  if ddc#syntax#in(['TSNone'])
+    " Rubyの "#{}" など
+    return {}
+  elseif ddc#syntax#in(['String', 'TSString', 'Comment', 'TSComment', 'zshComment', 'vimComment', 'vimLineComment'])
     return  { 'sources': ['file', 'around', 'nextword', 'neosnippet'] }
   else
     return {}
