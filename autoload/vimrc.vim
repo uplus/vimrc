@@ -125,10 +125,10 @@ endfunction "}}}
 
 " ----
 
-function! vimrc#goldendict(...) abort "{{{
-  let word = a:0? a:1 : vimrc#get_cword()
-  call jobstart(['goldendict', word], {'detach': 1})
-endfunction "}}}
+" function! vimrc#goldendict(...) abort "{{{
+"   let word = a:0? a:1 : vimrc#get_cword()
+"   call jobstart(['goldendict', word], {'detach': 1})
+" endfunction "}}}
 
 function! vimrc#pwgen() abort "{{{
   return vimrc#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")

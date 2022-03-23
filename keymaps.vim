@@ -79,7 +79,7 @@ nnoremap <silent>=<cr> <cmd>call Format()<cr>
 nnoremap <silent>,gd :OpenGitDiffWin<cr>
 nnoremap <silent>,gt :Tig<cr>
 nnoremap <silent>gst :WordTranslate<cr>
-nnoremap <silent>gsg <cmd>call vimrc#goldendict()<cr>
+" nnoremap <silent>gsg <cmd>call vimrc#goldendict()<cr>
 nnoremap <silent><space>n :call ResetHighlights()<cr>:nohlsearch<cr>
 
 " inoremap <silent><expr><c-j> pumvisible()? "\<c-y>" : "\<cr>"
