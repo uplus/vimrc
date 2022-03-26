@@ -13,16 +13,11 @@ function! my#terminal#new(...) abort "{{{
   let l:open_cmd = get(a:, 2, 'botright split')
 
   execute l:open_cmd '+terminal\' l:cmd
-  silent setl ft= nobuflisted bufhidden undolevels=-1 nofoldenable nonumber foldcolumn=0 signcolumn=no
+  setl ft= nobuflisted bufhidden=hide undolevels=-1
+  call my#option#set_minimal_window()
 
-  silent tnoremap <esc> <c-\><c-n><c-w>c
-  silent nnoremap <buffer>q <c-w>c
-
-  " 挿入モードになる前にfeedkeysのキューを空にする
-  " 一部のプラグインが実行するfeedkeysがターミナルに入力されるのを防ぐ
-  call feedkeys('', 'x')
-
-  startinsert
+  tnoremap <esc> <c-\><c-n><c-w>c
+  nnoremap <buffer>q <c-w>c
 endfunction "}}}
 
 function! my#terminal#working_terminal(...) abort "{{{

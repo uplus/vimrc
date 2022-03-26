@@ -69,15 +69,31 @@ augroup myac
 
   " Terminal: {{{
   if has('nvim')
-    au TermOpen * call s:term_open()
-    function s:term_open()
-      au BufEnter <buffer> startinsert
+    au TermOpen * ++nested call s:term_open()
+    au TermClose * call s:term_close()
+
+    function! s:term_buf_enter() abort
+      " 一度閉じた後に再度開くとなぜかbuflistedになるので対処
+      setl nobuflisted
+
+      " 挿入モードになる前にfeedkeysのキューを空にする
+      " 一部のプラグインが実行するfeedkeysがターミナルに入力されるのを防ぐ
+      call feedkeys('', 'x')
+
+      startinsert
       " au BufEnter <buffer> normal! a
       " au BufEnter <buffer> call feedkeys('a')
       " call feedkeys("exec zsh\<cr>\<c-l>") " Bug
     endfunction
 
-    au TermClose * call s:term_close()
+    function s:term_open()
+      " 初回
+      call s:term_buf_enter()
+
+      " 2回目以降
+      au BufEnter <buffer> call s:term_buf_enter()
+    endfunction
+
     function! s:term_close() abort
       if vimrc#is_include(['quickrun-output'], &filetype)
         return
