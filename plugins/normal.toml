@@ -10,8 +10,24 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
-# [[plugins]]
-# repo = 'Shougo/deol.nvim'
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+hook_add = '''
+  let g:deol#floating_border = 'single'
+  let g:deol#enable_dir_changed = v:false
+
+  command! MyDeol Deol -start-insert -split=floating -command=zsh -toggle
+'''
+[plugins.ftplugin]
+deol = '''
+  nmap <buffer>e <Plug>(deol_edit)
+  tmap <buffer><CR> <Plug>(deol_execute_line)
+
+  tnoremap <esc> <c-\><c-n><c-w>c
+  nnoremap <buffer>q <c-w>c
+
+  call my#option#set_minimal_window()
+'''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
