@@ -26,8 +26,8 @@ let s:base1   = ['#93a1a1', 245]
 let s:base2   = ['#cec8e5', 187]
 let s:base3   = ['#fdf6e3', 230]
 
-let s:tab_active = ['#40405e', 240]
-let s:tab_inactive = ['#20202f', 234]
+let s:tab_active = ['#20202f', 234]
+let s:tab_inactive = ['#40404e', 240]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
@@ -58,6 +58,7 @@ let s:p.tabline.left    = [[s:base3, s:tab_inactive]]
 let s:p.tabline.middle  = [[s:base3, s:nocontent]]
 let s:p.tabline.right   = [[s:base3, s:nocontent]]
 
+" expand
 let s:p.normal.error    = [[s:black, s:red]]
 let s:p.normal.warning  = [[s:base03, s:yellow]]
 let s:p.normal.git      = [[s:red, s:gray]]
