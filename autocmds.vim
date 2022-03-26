@@ -73,8 +73,6 @@ augroup myac
     au TermClose * call s:term_close()
 
     function! s:term_buf_enter() abort
-      " 一度閉じた後に再度開くとなぜかbuflistedになるので対処
-      setl nobuflisted
 
       " 挿入モードになる前にfeedkeysのキューを空にする
       " 一部のプラグインが実行するfeedkeysがターミナルに入力されるのを防ぐ
