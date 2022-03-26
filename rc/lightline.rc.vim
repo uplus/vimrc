@@ -1,11 +1,11 @@
 ﻿" g:lightline
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['filename', 'readonly', 'cursor'], ['current_function']],
+      \     'left': [['mode', 'paste'], ['filename', 'cursor', 'filestate'], ['current_function']],
       \     'right': [[], ['filetype', 'fileencoding'],]
       \   },
       \   'inactive': {
-      \     'left': [['mode', 'paste'], ['filename', 'readonly', 'cursor'], ['current_function']],
+      \     'left': [['mode', 'paste'], ['filename', 'cursor', 'filestate'], ['current_function']],
       \     'right': [[], ['filetype', 'fileencoding']]
       \   },
       \   'tabline': {
@@ -37,7 +37,7 @@ let g:lightline = {
       \     'filetype': 'LLfiletype',
       \     'git': 'LLgit',
       \     'mode': 'LLmode',
-      \     'readonly': 'LLreadonly',
+      \     'filestate': 'LLfilestate',
       \   },
       \   'component_function_visible_condition': {},
       \   'component_expand': {
@@ -140,22 +140,35 @@ function! LLfilename() abort "{{{
     let l:filename = pathshorten(l:filename)
   endif
 
-  return l:filename . (&modified? ' +': '')
+  return l:filename
 endfunction "}}}
 
-function! LLreadonly() abort "{{{
+function! LLfilestate() abort
   if s:is_ignore()
     return ''
   endif
 
-  return &buftype !=# '' ?
-        \ '' : expand('%') ==# '' ?
-        \   '':
-        \   !&modifiable ?
-        \     '🔐':
-        \     !filewritable(expand('%')) ?
-        \       '☢':
-        \       &readonly ? '': ''
+  return LLreadonly() . (&modified ? '+': ' ')
+endfunction
+
+function! LLreadonly() abort "{{{
+  if &buftype !=# '' || expand('%') ==# ''
+    return ''
+  endif
+
+  if !&modifiable
+    return '🔒'
+  endif
+
+  if !filewritable(expand('%'))
+    return '🔑'
+  endif
+
+  if &readonly
+    return '🔒'
+  endif
+
+  return ''
 endfunction "}}}
 
 function! LLgit() abort "{{{
