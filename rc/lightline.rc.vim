@@ -47,6 +47,7 @@ let g:lightline = {
       \     'tabline': 'tabsel',
       \     'tabs': 'tabsel',
       \   },
+      \
       \   'tab_component': {},
       \   'tab_component_function': {
       \     'filename': 'lightline#tab#filename',
