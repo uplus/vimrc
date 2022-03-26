@@ -17,6 +17,11 @@ function! my#terminal#new(...) abort "{{{
 
   silent tnoremap <esc> <c-\><c-n><c-w>c
   silent nnoremap <buffer>q <c-w>c
+
+  " 挿入モードになる前にfeedkeysのキューを空にする
+  " 一部のプラグインが実行するfeedkeysがターミナルに入力されるのを防ぐ
+  call feedkeys('', 'x')
+
   startinsert
 endfunction "}}}
 
