@@ -1,16 +1,16 @@
 ﻿" g:lightline
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['filename', 'readonly',], ['current_function']],
-      \     'right': [['cursor'], ['filetype', 'fileencoding'],]
+      \     'left': [['mode', 'paste'], ['filename', 'readonly', 'cursor'], ['current_function']],
+      \     'right': [[], ['filetype', 'fileencoding'],]
       \   },
       \   'inactive': {
-      \     'left': [['mode', 'paste'], ['filename', 'readonly',], ['current_function']],
-      \     'right': [['cursor'], ['filetype', 'fileencoding']]
+      \     'left': [['mode', 'paste'], ['filename', 'readonly', 'cursor'], ['current_function']],
+      \     'right': [[], ['filetype', 'fileencoding']]
       \   },
       \   'tabline': {
       \     'left': [['tabline']],
-      \     'right': [['close_button']]
+      \     'right': [[]]
       \   },
       \   'tab': {
       \     'active': ['tabnum', 'filename', 'modified'],
@@ -24,13 +24,13 @@ let g:lightline = {
       \     'charvaluehex': '%B',
       \     'spell': '%{&spell? &spelllang:""}',
       \     'percent': '%3p%%', 'percentwin': '%P',
-      \     'close_button': printf('%%999X %s ', has('multi_byte') ? '✗' : 'x'),
       \   },
       \   'component_visible_condition': {
       \     'paste': '&paste',
       \     'spell': '&spell',
       \   },
       \   'component_function': {
+      \     'fileinfo': 'LLfileinfo',
       \     'current_function': 'LLcurrent_function',
       \     'cursor': 'LLcursor',
       \     'fileencoding': 'LLfileencoding',
@@ -43,11 +43,8 @@ let g:lightline = {
       \   'component_function_visible_condition': {},
       \   'component_expand': {
       \     'tabline': 'LLtabline',
-      \     'syntax_check': 'LLsyntax_check',
       \   },
       \   'component_type': {
-      \     'close_button': 'raw',
-      \     'syntax_check': 'error',
       \     'tabline': 'tabsel',
       \     'tabs': 'tabsel',
       \   },
@@ -58,26 +55,29 @@ let g:lightline = {
       \     'readonly': 'lightline#tab#readonly',
       \     'tabnum': 'lightline#tab#tabnum',
       \   },
+      \
       \   'mode_map': {
       \     'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 't': 'T',
       \     'v': 'V', 'V': 'V', "\<C-v>": 'V',
       \     's': 'S', 'S': 'S', "\<C-s>": 'S',
       \   },
-      \   'separator': {'left': ' ', 'right': ' '},
-      \   'subseparator': {'left': ' ', 'right': ' '},
-      \   'tabline_separator': {'left': ' ', 'right': ' '},
-      \   'tabline_subseparator': {'left': ' ', 'right': ' '},
-      \   'enable': {'statusline': 1, 'tabline': 1},
       \   '_mode_': {
       \     'n': 'normal', 'i': 'insert', 'R': 'replace', 'v': 'visual', 'V': 'visual', "\<C-v>": 'visual',
       \     'c': 'command', 's': 'select', 'S': 'select', "\<C-s>": 'select', 't': 'terminal',
       \   },
       \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
+      \   'separator': {'left': '', 'right': ''},
+      \   'subseparator': {'left': '', 'right': ''},
+      \   'tabline_separator': {'left': '', 'right': ''},
+      \   'tabline_subseparator': {'left': '', 'right': ''},
+      \
+      \   'enable': {'statusline': 1, 'tabline': 1},
       \   'winwidth': winwidth(0),
-      \   'colorscheme': 'refreshing',
+      \   'colorscheme': 'mellow',
       \ }
 
+      "\   'colorscheme': 'rosepine',
       "\   'separator': {'left': '', 'right': ''},
       "\   'subseparator': {'left': '', 'right': ''},
       "\   'tabline_separator': {'left': '', 'right': ''},
@@ -126,13 +126,23 @@ let s:e = {
 let s:ignore_ft = ['tagbar', 'defx', 'denite', 'denite-filter', 'dictionary', 'undotree']
 let s:ignore_fn = []
 
-function! s:is_ignore() abort
+function! s:is_ignore() abort "{{{
   return index(s:ignore_ft, &l:ft) != -1 || index(s:ignore_fn, expand('%:t')) != -1
-endfunction
+endfunction "}}}
 
-" #left
+function! LLfileinfo() abort "{{{
+  let f = LLfilename()
+  let r = LLreadonly()
+  let c = LLcursor()
+
+  return substitute(f . r . c, '\s\+', ' ', 'g')
+endfunction "}}}
 
 function! LLmode() abort "{{{
+  if s:is_ignore()
+    return ''
+  endif
+
   if &filetype ==# 'calendar'
     call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
   endif
@@ -140,7 +150,10 @@ function! LLmode() abort "{{{
 endfunction "}}}
 
 function! LLfilename() abort "{{{
-  " TODO
+  if s:is_ignore()
+    return ''
+  endif
+
   let l:f = expand('%:t')
   let l:tmp = get(s:e, &filetype, get(s:e, l:f, ''))
   if l:tmp !=# ''
@@ -160,12 +173,14 @@ function! LLreadonly() abort "{{{
     return ''
   endif
 
-  return &buftype !=# '' ? '':
-        \ expand('%') ==# '' ? '':
-        \ !&modifiable ? '🔐':
-        \ !filewritable(expand('%')) ? '☢':
-        \ &readonly? '':
-        \ ''
+  return &buftype !=# '' ?
+        \ '' : expand('%') ==# '' ?
+        \   '':
+        \   !&modifiable ?
+        \     '🔐':
+        \     !filewritable(expand('%')) ?
+        \       '☢':
+        \       &readonly ? '': ''
 endfunction "}}}
 
 function! LLgit() abort "{{{
@@ -186,11 +201,11 @@ function! LLgit() abort "{{{
   return ' ' . l:status
 endfunction "}}}
 
-" #right
 function! LLcursor() abort "{{{
   if s:is_ignore()
     return ''
   endif
+
   return printf('%3d/%d:%-2d', line('.'), line('$'), virtcol('.'))
 endfunction "}}}
 
@@ -219,71 +234,22 @@ function! LLcurrent_function() abort "{{{
   end
 
   " TODO runtime! ftplugin/zsh/cfi.vim
-  if !exists('g:loaded_cfi')
-    return
+  if exists('g:loaded_cfi')
+    " TODO neosnippet中でエラーがでる E523 winsaveしてるのが問題?
+    return cfi#format('%s', '')
   endif
-  " TODO neosnippet中でエラーがでる E523 winsaveしてるのが問題?
-  return cfi#format('%s', '')
+
+  return ''
 endfunction "}}}
 
-function! LLsyntax_check() abort "{{{
-  let l:errs = filter(getqflist(), 'v:val.bufnr == ' . bufnr('%'))
-  let l:num = len(l:errs)
-  if l:num == 0
-    return ''
-  endif
-  let l:err = l:errs[0]
-  return printf("⚠%d %d:%d '%s'", l:num, l:err.lnum, l:err.vcol, substitute(l:err.text, '^\s*\|\s*$', '', '')[:winwidth('')/5])
-endfunction "}}}
-
-function! LLtabline() abort
+function! LLtabline() abort "{{{
   let l:tabs = lightline#tabs()
   if empty(l:tabs[0]) && empty(l:tabs[2])
     return lightline#bufferline#buffers()
   else
     return l:tabs
   endif
-endfunction
-
-
-" ここで終了
-finish
-
-
-function! lightline_powerful#tabreadonly(n) abort "{{{
-  let winnr = tabpagewinnr(a:n)
-  return gettabwinvar(a:n, winnr, '&readonly') ? s:ro : ''
 endfunction "}}}
-
-function! lightline_powerful#tabfilename(n) abort "{{{
-  let bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-  let bufname = expand('#' . bufnr . ':t')
-  let buffullname = expand('#' . bufnr . ':p')
-  let bufnrs = filter(range(1, bufnr('$')), 'v:val != bufnr && len(bufname(v:val)) && bufexists(v:val) && buflisted(v:val)')
-  let i = index(map(copy(bufnrs), 'expand("#" . v:val . ":t")'), bufname)
-  let ft = gettabwinvar(a:n, tabpagewinnr(a:n), '&ft')
-  if strlen(bufname) && i >= 0 && map(bufnrs, 'expand("#" . v:val . ":p")')[i] != buffullname
-    let fname = substitute(buffullname, '.*/\([^/]\+/\)', '\1', '')
-  else
-    let fname = bufname
-  endif
-  return fname =~# '^\[preview' ? 'Preview' : get(s:m, fname, get(s:p, ft, fname))
-endfunction "}}}
-
-let g:lightline = {
-      \ 'tab': {
-      \   'active': ['tabnum', 'readonly', 'filename', 'modified'],
-      \   'inactive': ['tabnum', 'readonly', 'filename', 'modified']
-      \ },
-      \ 'component_function_visible_condition': {
-      \   'filename': 'get(b:,"lightline_filename","") !=# ""',
-      \   'mode': '1',
-      \ },
-      \ 'tab_component_function': {
-      \   'filename': 'lightline_powerful#tabfilename',
-      \   'readonly': 'lightline_powerful#tabreadonly',
-      \ },
-      \ }
 
 " 🕱  "U+1F系は表示がずれる
 " ☠ ☢ ☺
