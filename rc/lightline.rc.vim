@@ -226,10 +226,19 @@ endfunction "}}}
 
 function! LLcurrent_function() abort "{{{
   if dein#is_sourced('nvim-treesitter')
-    let l:ts_func_name = nvim_treesitter#statusline()
+    if vimrc#is_include(['yaml', 'json'], &filetype)
+      let l:opts = {
+        \ 'type_patterns': ['pair$'],
+        \ 'transform_fn': luaeval('function(line) return line:gsub(":.*$", "") end')
+        \ }
+    else
+      let l:opts = {}
+    endif
 
-    if l:ts_func_name != v:null
-      return l:ts_func_name
+    let l:current_context = nvim_treesitter#statusline(l:opts)
+
+    if l:current_context != v:null
+      return l:current_context
     endif
   end
 
