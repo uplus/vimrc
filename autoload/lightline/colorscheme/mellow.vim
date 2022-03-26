@@ -23,7 +23,7 @@ let s:base01  = ['#586e75', 239]
 let s:base00  = ['#657b83', 240]
 let s:base0   = ['#839496', 244]
 let s:base1   = ['#93a1a1', 245]
-let s:base2   = ['#cec8e5', 187]
+let s:base2   = ['#cec8a5', 187]
 let s:base3   = ['#fdf6e3', 230]
 
 let s:tab_active = ['#20202f', 234]
@@ -54,7 +54,7 @@ let s:p.inactive.right  = [[s:base2, s:gray], [s:base2,  s:gray]]
 
 " tab
 let s:p.tabline.tabsel  = [[s:base3, s:tab_active]]
-let s:p.tabline.left    = [[s:base3, s:tab_inactive]]
+let s:p.tabline.left    = [[s:base2, s:tab_inactive]]
 let s:p.tabline.middle  = [[s:base3, s:nocontent]]
 let s:p.tabline.right   = [[s:base3, s:nocontent]]
 
