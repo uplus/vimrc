@@ -30,7 +30,6 @@ let g:lightline = {
       \     'spell': '&spell',
       \   },
       \   'component_function': {
-      \     'fileinfo': 'LLfileinfo',
       \     'current_function': 'LLcurrent_function',
       \     'cursor': 'LLcursor',
       \     'fileencoding': 'LLfileencoding',
@@ -61,11 +60,6 @@ let g:lightline = {
       \     'v': 'V', 'V': 'V', "\<C-v>": 'V',
       \     's': 'S', 'S': 'S', "\<C-s>": 'S',
       \   },
-      \   '_mode_': {
-      \     'n': 'normal', 'i': 'insert', 'R': 'replace', 'v': 'visual', 'V': 'visual', "\<C-v>": 'visual',
-      \     'c': 'command', 's': 'select', 'S': 'select', "\<C-s>": 'select', 't': 'terminal',
-      \   },
-      \   'mode_fallback': {'replace': 'insert', 'terminal': 'insert', 'select': 'visual'},
       \
       \   'separator': {'left': '', 'right': ''},
       \   'subseparator': {'left': '', 'right': ''},
@@ -85,32 +79,25 @@ let g:lightline = {
 
 let g:lightline#bufferline#shorten_path = 0
 
-" カラースキームで定義されてる数だけ色が使える?
 " expandがリストを複数戻していいからtabは'tabs'だけで色変え出来る
-" tab
-"   タブがあるならデフォルトのonetab()?返してないならbuflist返す
 " buftype preview quickfix diff
 " 'w:N b:N' from vim-ezbar
 " コンポーネントから他のコンポーネントをいじる
-"   *_visual_condition使えば隠せるかも だめだった セパレータは消えた 事前に定義が必要?
-"   無効
-"   色
 
 " TODO &modified || !&modifiable, airlineみたいに色を変えたい
 " TODO &buflisted == 1 && &buftype ==# '' && &modifiable
 " TODO qfstatusline(現状の常時1つめ表示じゃ不便)
 " TODO modifiedが見づらい 色的にも
 
-let s:m = {
+let s:mode_map_filename = {
   \ '[Command Line]': 'Command Line',
   \ }
 
-let s:p = {
+let s:mode_map_filetype = {
   \ 'denite': 'Denite',
   \ 'Defx': 'defx',
   \ 'quickrun': 'Quickrun',
   \ 'dictionary': 'Dictionary',
-  \ 'calendar': 'Calendar',
   \ 'qf': 'QuickFix',
   \ 'tagbar': 'Tagbar',
   \ }
@@ -118,7 +105,6 @@ let s:p = {
 let s:e = {
   \ 'tagbar':     "get(g:lightline, 'fname', expand('%:t'))",
   \ 'dictionary': "exists('b:dictionary.input') ? b:dictionary.input : default",
-  \ 'calendar':   "strftime('%Y/%m/%d')",
   \ 'quickrun':   "''",
   \ '[Command Line]': "''",
   \ }
@@ -130,23 +116,12 @@ function! s:is_ignore() abort "{{{
   return index(s:ignore_ft, &l:ft) != -1 || index(s:ignore_fn, expand('%:t')) != -1
 endfunction "}}}
 
-function! LLfileinfo() abort "{{{
-  let f = LLfilename()
-  let r = LLreadonly()
-  let c = LLcursor()
-
-  return substitute(f . r . c, '\s\+', ' ', 'g')
-endfunction "}}}
-
 function! LLmode() abort "{{{
   if s:is_ignore()
     return ''
   endif
 
-  if &filetype ==# 'calendar'
-    call lightline#link("nvV\<C-v>"[b:calendar.visual_mode()])
-  endif
-  return get(s:m, expand('%:t'), get(s:p, &filetype, lightline#mode()))
+  return get(s:mode_map_filename, expand('%:t'), get(s:mode_map_filetype, &filetype, lightline#mode()))
 endfunction "}}}
 
 function! LLfilename() abort "{{{
@@ -242,7 +217,6 @@ function! LLcurrent_function() abort "{{{
     endif
   end
 
-  " TODO runtime! ftplugin/zsh/cfi.vim
   if exists('g:loaded_cfi')
     " TODO neosnippet中でエラーがでる E523 winsaveしてるのが問題?
     return cfi#format('%s', '')
@@ -252,11 +226,10 @@ function! LLcurrent_function() abort "{{{
 endfunction "}}}
 
 function! LLtabline() abort "{{{
-  let l:tabs = lightline#tabs()
-  if empty(l:tabs[0]) && empty(l:tabs[2])
+  if tabpagenr('$') == 1
     return lightline#bufferline#buffers()
   else
-    return l:tabs
+    return lightline#tabs()
   endif
 endfunction "}}}
 
