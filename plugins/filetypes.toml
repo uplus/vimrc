@@ -24,9 +24,6 @@ repo = 'chrisbra/vim-zsh'
 repo = 'slim-template/vim-slim'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
 repo = 'chrisbra/csv.vim'
 
 [[plugins]]
@@ -49,9 +46,6 @@ repo = 'mustache/vim-mustache-handlebars'
 hook_add = '''
   let g:mustache_operators = 0
 '''
-
-[[plugins]]
-repo = 'glabra/casl2.vim'
 
 [[plugins]]
 repo = 'nono/vim-handlebars'
@@ -133,9 +127,6 @@ hook_add = '''
   let g:vue_pre_processors = 'detect_on_enter'
   au myac FileType vue syntax sync fromstart
 '''
-
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
 
 [[plugins]]
 repo = 'HerringtonDarkholme/yats.vim'
