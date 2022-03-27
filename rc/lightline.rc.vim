@@ -144,13 +144,13 @@ function! LLfilename() abort "{{{
   return l:filename
 endfunction "}}}
 
-function! LLfilestate() abort
+function! LLfilestate() abort "{{{
   if s:is_ignore()
     return ''
   endif
 
   return LLreadonly() . (&modified ? '+': ' ')
-endfunction
+endfunction "}}}
 
 function! LLreadonly() abort "{{{
   if &buftype !=# '' || expand('%') ==# ''
