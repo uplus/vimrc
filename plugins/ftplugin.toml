@@ -356,6 +356,8 @@ make = '''
 
 yaml = '''
   setl cursorcolumn
+  " :と-を入力したときの強制再インデントを抑制する
+  setl indentkeys-=<:>,0-
 '''
 
 vue = '''
