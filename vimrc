@@ -59,8 +59,7 @@ if &g:loadplugins
     au VimEnter * call dein#call_hook('source') | call dein#call_hook('post_source')
 
     " TODO: neovimのデグレ?で呼ばれないっぽいのでワークアラウンド
-    " source ~/.cache/dein/.cache/init.vim/.dein/after/ftplugin.vim
-    runtime! after/ftplugin.vim
+    source ~/.cache/dein/.cache/init.vim/.dein/after/ftplugin.vim
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要(はずせる気がする)
     au FileType * call my#option#set_syntax()
