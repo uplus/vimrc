@@ -19,7 +19,7 @@ endfunction "}}}
 
 function! my#option#set_syntax() abort "{{{
   " treesitterでハイライトがサポートされているならsyntaxを設定せずに終了
-  if luaeval("require'nvim-treesitter.configs'.is_enabled('highlight', vim.bo.filetype)") " && !vimrc#is_include([], &filetype)
+  if luaeval("require'nvim-treesitter.configs'.is_enabled('highlight', vim.bo.filetype)") " && !u#is_include([], &filetype)
     return
   endif
 

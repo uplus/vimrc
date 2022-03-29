@@ -7,7 +7,7 @@ command! DisableAutoSave let g:my_autosave = v:false
 
 function! DoAutoSave() abort
   " 無効 | 補完中 | 書き込み負荷 | 特定ファイルタイプ
-  if !g:my_autosave || pumvisible() || !vimrc#is_writable_buf() || vimrc#is_include(['narrow'], &filetype)
+  if !g:my_autosave || pumvisible() || !u#is_writable_buf() || u#is_include(['narrow'], &filetype)
     return
   end
 
@@ -81,7 +81,7 @@ function! Inject(expr) abort "{{{
   try
     execute printf('silent normal! gv"%sy', g:working_register)
     let values = split(getreg(g:working_register))
-    return vimrc#fold(values, a:expr)
+    return u#fold(values, a:expr)
   finally
     call setpos('.', pos_save)
   endtry
@@ -117,10 +117,10 @@ function! Sort(k, ...) abort range "{{{
 endfunction "}}}
 
 function! OpenCop() abort
-  let rule = vimrc#delete_chars(expand('<cWORD>'), ':')
+  let rule = u#delete_chars(expand('<cWORD>'), ':')
   let rule_downcase =  substitute(rule, '.', '\L\0', 'g')
   let group = matchstr(rule_downcase, '^.*\ze/')
-  let tag = vimrc#delete_chars(rule_downcase, '/')
+  let tag = u#delete_chars(rule_downcase, '/')
 
   " https://docs.rubocop.org/rubocop/cops_layout.html#layoutemptylinebetweendefs
   call openbrowser#open('https://docs.rubocop.org/rubocop/cops_' . group . '.html#' . tag)

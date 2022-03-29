@@ -30,7 +30,7 @@ function! my#ot#text_move(count, is_up, is_visual) abort "{{{
 
     if a:is_up
       let line = a:count
-      if vimrc#is_lastline(a:is_visual)
+      if u#is_lastline(a:is_visual)
         let line -= 1
       endif
 

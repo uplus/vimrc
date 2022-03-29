@@ -21,6 +21,6 @@ function! my#dein#add_repo() abort "{{{
 endfunction "}}}
 
 function! my#dein#open_repo() abort "{{{
-  let repo_name = vimrc#delete_chars(expand('<cWORD>'), "'")
+  let repo_name = u#delete_chars(expand('<cWORD>'), "'")
   call openbrowser#open('https://github.com/' . repo_name)
 endfunction "}}}

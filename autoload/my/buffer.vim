@@ -11,12 +11,12 @@ function! my#buffer#count(...) abort "{{{
     let cmd = 'ls!'
   endif
 
-  return len(split(vimrc#capture(cmd), "\n"))
+  return len(split(u#capture(cmd), "\n"))
 endfunction "}}}
 
 " return list [bufnr, status, name]
 function! my#buffer#info(...) abort "{{{
-  return map(split(vimrc#capture('ls' . (a:0? a:1 : '!')), '\n'),
+  return map(split(u#capture('ls' . (a:0? a:1 : '!')), '\n'),
         \ 'matchlist(v:val, ''\v^\s*(\d*)\s*(.....)\s*"(.*)"\s*.*\s(\d*)$'')[1:4]')
 endfunction "}}}
 

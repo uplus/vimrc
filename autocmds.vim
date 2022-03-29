@@ -49,14 +49,14 @@ augroup myac
 
   function! s:set_foldmethod() abort
     " diffモードなら何もしない || modelineで設定されたならなにもしない
-    if &diff || vimrc#capture('verbose setl foldmethod?') =~# 'modeline'
+    if &diff || u#capture('verbose setl foldmethod?') =~# 'modeline'
       return
     endif
 
     " window単位なのでbuf毎の設定などはできない
-    if vimrc#is_include(['vim', 'markdown', 'sshconfig', 'neosnippet', 'zsh'], &filetype)
+    if u#is_include(['vim', 'markdown', 'sshconfig', 'neosnippet', 'zsh'], &filetype)
       set foldmethod=marker
-    elseif vimrc#is_include(['diff'], &filetype)
+    elseif u#is_include(['diff'], &filetype)
       set foldmethod=diff
     elseif exists('*nvim_treesitter#foldexpr')
       " dein#is_sourced('nvim-treesitter') だと noplugin で落ちる
@@ -92,7 +92,7 @@ augroup myac
     endfunction
 
     function! s:term_close() abort
-      if vimrc#is_include(['quickrun-output'], &filetype)
+      if u#is_include(['quickrun-output'], &filetype)
         return
       endif
 
@@ -147,7 +147,7 @@ augroup myac
   endfunction
 
   function! s:badspace() abort
-    if &buflisted && vimrc#is_writable_buf() && !vimrc#is_include(['', 'markdown', 'calendar', 'gitcommit', 'diff', 'defx'], &filetype)
+    if &buflisted && u#is_writable_buf() && !u#is_include(['', 'markdown', 'calendar', 'gitcommit', 'diff', 'defx'], &filetype)
       syn match BadSpace display excludenl '\s\+$\|\%u180E\|\%u2000\|\%u2001\|\%u2002\|\%u2003\|\%u2004\|\%u2005\|\%u2006\|\%u2007\|\%u2008\|\%u2009\|\%u200A\|\%u2028\|\%u2029\|\%u202F\|\%u205F\|\%u3000' containedin=ALL
     endif
   endfunction
@@ -169,7 +169,7 @@ augroup myac
   au BufWritePre * call s:auto_mkdir(expand('%:p:h'))
 
   function! s:auto_mkdir(dir)
-    if bufname('%') !~# '\v^.*://' && !isdirectory(a:dir) && !vimrc#is_file(a:dir)
+    if bufname('%') !~# '\v^.*://' && !isdirectory(a:dir) && !u#is_file(a:dir)
       call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
     endif
   endfunction

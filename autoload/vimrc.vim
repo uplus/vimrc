@@ -32,7 +32,7 @@ function! vimrc#close_floating_win(filetype_pattern) abort "{{{
 endfunction "}}}
 
 function! vimrc#pwgen() abort "{{{
-  return vimrc#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")
+  return u#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")
 endfunction "}}}
 
 function! vimrc#open_git_diff(type) abort "{{{

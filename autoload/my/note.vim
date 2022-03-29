@@ -15,7 +15,7 @@ function! my#note#config() abort "{{{
     return
   endif
 
-  if vimrc#capture('verbose setl ft?') !~# 'modeline'
+  if u#capture('verbose setl ft?') !~# 'modeline'
     setf markdown
     setl foldlevel=0
   endif

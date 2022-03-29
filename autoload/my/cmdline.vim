@@ -5,24 +5,24 @@ let s:wordchars = '[[:upper:][:lower:][:digit:]]'
 
 " <c-k> 末尾まで削除
 function! my#cmdline#delete_to_end()
-  return s:delete_to(strchars(getcmdline(), 1), vimrc#getcmdpos())
+  return s:delete_to(strchars(getcmdline(), 1), u#getcmdpos())
 endfunction
 
 " <m-w> 次の単語の直前まで削除
 function! my#cmdline#delete_to_next_word()
-  let col = vimrc#getcmdpos()
+  let col = u#getcmdpos()
   return s:delete_to(s:next_word(col) - 1, col)
 endfunction
 
 " <m-f>
 function! my#cmdline#move_to_next_word()
-  let col = vimrc#getcmdpos()
+  let col = u#getcmdpos()
   return " \b" . s:move_to(s:next_word(col), col)
 endfunction
 
 " <m-b>
 function! my#cmdline#move_to_prev_word()
-  let col = vimrc#getcmdpos()
+  let col = u#getcmdpos()
   return " \b" . s:move_to(s:prev_word(col), col)
 endfunction
 

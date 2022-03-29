@@ -215,7 +215,7 @@ endfunction "}}}
 
 function! LLcurrent_function() abort "{{{
   if dein#is_sourced('nvim-treesitter')
-    if vimrc#is_include(['yaml', 'json'], &filetype)
+    if u#is_include(['yaml', 'json'], &filetype)
       let l:opts = {
         \ 'type_patterns': ['pair$'],
         \ 'transform_fn': luaeval('function(line) return line:gsub(":.*$", "") end')
