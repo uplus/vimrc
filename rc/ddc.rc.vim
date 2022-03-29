@@ -34,8 +34,8 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'dup': v:true,
     \   'minAutoCompleteLength': 1,
     \ },
-    \ 'nextword': {
-    \   'mark': 'nextword',
+    \ 'mocword': {
+    \   'mark': 'mocword',
     \   'minAutoCompleteLength': 1,
     \   'maxItems': 10,
     \   'isVolatile': v:true,
@@ -92,7 +92,7 @@ call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 " Filetype:
 
-let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'nextword']
+let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'mocword']
 let s:sources_pg = ['neosnippet', 'nvim-lsp', 'around']
 let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'yaml']
 
@@ -127,7 +127,7 @@ function! s:context_syntax() abort
     " Rubyの "#{}" など
     return {}
   elseif ddc#syntax#in(['String', 'TSString', 'Comment', 'TSComment', 'zshComment', 'vimComment', 'vimLineComment'])
-    return  { 'sources': ['file', 'around', 'nextword', 'neosnippet'] }
+    return  { 'sources': ['file', 'around', 'mocword', 'neosnippet'] }
   else
     return {}
   endif

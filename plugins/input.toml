@@ -92,8 +92,10 @@ repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-nextword'
+repo = 'Shougo/ddc-mocword'
 on_source = 'ddc.vim'
+# cargo install mocword
+# https://github.com/high-moctane/mocword-data/releases/download/eng20200217/mocword.sqlite.gz
 
 [[plugins]]
 repo = 'Shougo/ddc-zsh'
