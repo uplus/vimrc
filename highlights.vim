@@ -59,6 +59,10 @@ function! s:set_overwrite_highlights()
   hi! link HopNextKey2 HopNextKey
   hi HopUnmatched guifg=#666666 ctermfg=242
 
+  " StatusLine:
+  hi StatusLine gui=NONE guibg=#20202f
+  hi StatusLineNC gui=NONE guibg=#20202f
+
   if g:colors_name ==? 'srcery'
     hi Normal guibg=#0c0b09
     hi! link Comment SrceryBrightBlack

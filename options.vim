@@ -229,7 +229,7 @@ if has('termguicolors') && $COLORTERM ==# 'truecolor'
 endif
 
 if has('gui_running')
-   set guioptions=Mc
+  set guioptions=Mc
 endif
 
 if has('nvim')
@@ -243,7 +243,7 @@ else
   " let &t_te .= "\e[?2004l"
   " let &t_ti .= "\e[?1004h"
   " let &t_te .= "\e[?1004l"
-  let &pastetoggle = "\e[201~"
+  " let &pastetoggle = "\e[201~"
 endif
 
 " Change cursor shape.
