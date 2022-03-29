@@ -30,7 +30,6 @@ augroup myac
   " has('patch-8.0.1238')
   " au CmdLineEnter /,\? :set hlsearch
   " au CmdLineLeave /,\? :set nohlsearch
-
   " nohlsearchする代わりに出力が常に消える
   " visual modeがバグる
   " au CursorMoved * call feedkeys(":silent nohlsearch\<cr>\<c-l>")
@@ -49,8 +48,8 @@ augroup myac
   au BufEnter * call s:set_foldmethod()
 
   function! s:set_foldmethod() abort
-    " diffモードなら何もしない
-    if &diff
+    " diffモードなら何もしない || modelineで設定されたならなにもしない
+    if &diff || vimrc#capture('verbose setl foldmethod?') =~# 'modeline'
       return
     endif
 
