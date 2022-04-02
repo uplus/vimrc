@@ -1,9 +1,6 @@
 " DDC:
 
 " Global:
-call ddc#custom#patch_global(
-    \ 'sources', ['neosnippet', 'around', 'file', 'rg']
-    \ )
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'ignoreCase': v:true,
@@ -73,14 +70,19 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'minAutoCompleteLength': 1,
     \ },
     \ })
+
 call ddc#custom#patch_global('sourceParams', {
-    \ 'buffer': {
-    \   'requireSameFiletype': v:false,
-    \   'limitBytes': 5000000,
-    \   'fromAltBuf': v:false,
-    \   'forceCollect': v:false,
-    \ },
-    \ })
+   \ 'buffer': {
+   \   'requireSameFiletype': v:false,
+   \   'limitBytes': 5000000,
+   \   'fromAltBuf': v:true,
+   \   'forceCollect': v:true,
+   \ },
+   \ })
+
+call ddc#custom#patch_global(
+    \ 'sources', ['neosnippet', 'around', 'buffer', 'file']
+    \ )
 
 " Use pum.vim
 call ddc#custom#patch_global('autoCompleteEvents', [
