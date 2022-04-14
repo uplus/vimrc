@@ -45,7 +45,7 @@ local flags = {
 }
 
 -- :help lspconfig-server-configurations
-for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "yamlls" }) do
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "yamlls", "graphql" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
     flags = flags,
@@ -64,8 +64,6 @@ nvim_lsp["solargraph"].setup {
   }
 }
 
--- npm install -g typescript typescript-language-server
--- npm install -g pyright
+-- npm install -g typescript typescript-language-server pyright yaml-language-server graphql-language-service-cli
 -- gem install solargraph
 -- go install golang.org/x/tools/gopls@latest
--- npm install -g yaml-language-server
