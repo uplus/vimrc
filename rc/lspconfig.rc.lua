@@ -19,6 +19,8 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  require("aerial").on_attach(client, bufnr)
+
   -- Mappings.
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -35,6 +37,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ',ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', ',aa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', ',af', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  buf_set_keymap('n', ',ao', '<cmd>AerialToggle!<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
