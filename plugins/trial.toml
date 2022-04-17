@@ -13,8 +13,8 @@
 [[plugins]]
 repo = 'stevearc/aerial.nvim'
 hook_add = '''
-  nnoremap ,ao <cmd>AerialToggle!<cr>
-  nnoremap ,aO <cmd>AerialOpen<cr>
+  nnoremap <c-w>o <cmd>AerialOpen<cr>
+  nnoremap <c-w>O <cmd>AerialToggle!<cr>
 '''
 hook_post_source = '''
 lua << EOF
