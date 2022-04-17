@@ -12,6 +12,10 @@
 
 [[plugins]]
 repo = 'stevearc/aerial.nvim'
+hook_add = '''
+  nnoremap ,ao <cmd>AerialToggle!<cr>
+  nnoremap ,aO <cmd>AerialOpen<cr>
+'''
 hook_post_source = '''
 lua << EOF
   require('aerial').setup({
