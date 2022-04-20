@@ -64,6 +64,7 @@ let g:ale_linters = {
   \ 'json': ['jq'],
   \ 'jsx': ['eslint'],
   \ 'markdown': [],
+  \ 'go': [],
   \ 'python': ['flake8'],
   \ 'ruby': ['rubocop'],
   \ 'rust': ['rustc', 'rustfmt'],
