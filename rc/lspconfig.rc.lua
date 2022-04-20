@@ -32,9 +32,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ',ai', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', ',as', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', ',at', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', ',aR', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', ',ar', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
-  buf_set_keymap('n', ',ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', ',aR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', ',aa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', ',af', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
