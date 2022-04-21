@@ -20,7 +20,7 @@ hook_post_source = '''
 lua << EOF
   require('aerial').setup({
     close_behavior = "global",
-    open_automatic = true,
+    open_automatic = false,
 
     -- default_direction = "float",
     max_width = { 40, 0.3 },
