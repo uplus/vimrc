@@ -1,15 +1,4 @@
 " filetypeでスキーマを切り替えていたときの名残
-function! s:set_default_highlights() abort
-  hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
-  hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
-  hi Visual       cterm=reverse gui=reverse
-
-  hi! link Statement   Visual
-  hi! link LineNr      Normal
-  hi clear TabLineFill
-endfunction
-
-" filetypeでスキーマを切り替えていたときの名残
 function! s:set_common_highlights() abort
   hi Pmenu        ctermfg=255  ctermbg=240 guifg=#eeeeee guibg=#3a3a3a cterm=NONE gui=NONE
   hi PmenuSel     ctermfg=255  ctermbg=250 guifg=#eaeaea guibg=#5a5a5a cterm=NONE gui=NONE
@@ -19,8 +8,8 @@ function! s:set_common_highlights() abort
   hi FoldColumn   guifg=#616155 guibg=NONE
 
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#eeeeee guibg=#1c1b19 cterm=NONE gui=NONE
-  hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#204080 cterm=NONE gui=NONE
-  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#20a0f0 cterm=NONE gui=bold
+  hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#404050 cterm=NONE gui=NONE
+  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#40a0d0 cterm=NONE gui=bold
   hi VertSplit    guifg=#7C7863 guibg=NONE
 
   " hi Title      ctermfg=118               guifg=#87ff00
@@ -99,7 +88,13 @@ function! s:set_overwrite_highlights()
 endfunction
 
 if &g:loadplugins
-  call s:set_default_highlights()
+  hi Normal       ctermfg=252 ctermbg=233 guifg=#F8F8F2 guibg=#1B1D1E
+  hi CursorLine               ctermbg=234               guibg=#293739 cterm=NONE gui=NONE
+  hi Visual       cterm=reverse gui=reverse
+
+  hi! link Statement   Visual
+  hi! link LineNr      Normal
+
   colorscheme srcery
   call s:set_common_highlights()
   call s:set_overwrite_highlights()
