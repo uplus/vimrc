@@ -17,12 +17,16 @@ endif
 
 " release keymaps
 let mapleader = ';'
-for key in ['Q', ';', ',', 's', 'gs']
+for key in [';', ',', 's', 'gs']
   execute 'noremap' key '<Nop>'
 endfor
 
 " Disable unnecessary keymaps
 let g:netrw_nogx = 1
+
+" Enable filetype lua
+let g:did_load_filetypes = 0
+let g:do_filetype_lua = 1
 
 " provider config
 let g:loaded_node_provider = 0
