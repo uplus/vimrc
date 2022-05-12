@@ -16,6 +16,7 @@ imap <expr><silent><cr> <sid>imap_cr()
 " 補完後に改行ができなくなる
 " imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
 inoremap <c-y>   <cmd>call pum#map#confirm()<cr>
+inoremap <c-g>   <cmd>call pum#map#confirm()<cr>
 " inoremap <c-e>   <cmd>call pum#map#cancel()<cr>
 
 " TODO: 設定してないソースは反応しない?
