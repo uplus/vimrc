@@ -38,6 +38,7 @@ _ = '''
   " l 挿入モードで長い行を自動で折り返さない
   " M マルチバイト文字同士の結合で前後に空白を挿入しない 'B' < 'M'
   " B マルチバイト文字同士の結合で間に空白を挿入しない
+  " / When 'o' is included: do not insert the comment leader for a "/" comment after a statement, only when "/" is at the start of the line.
 
   " Disable auto wrap.
   if &l:textwidth != 70 && &filetype !=# 'help'
