@@ -30,6 +30,9 @@ function! s:set_overwrite_highlights()
   hi diffAdded   ctermfg=1               guifg=#c9ea5a
   hi diffRemoved ctermfg=2               guifg=#ff6666
 
+  " インスタンス変数など
+  hi TSLabel ctermfg=75 guifg=#4fbffe
+
   " Signify:
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
   hi SignifySignChange ctermfg=226 guifg=#fbff00
