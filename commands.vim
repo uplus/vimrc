@@ -18,6 +18,7 @@ command! Hitest noautocmd runtime syntax/hitest.vim
 " 一時的なバッファーを作る
 command! TmpBuffer execute winheight(0)/5 . 'new +call\ my#option#set_as_scratch()'
 command! Mksession mksession! .session.vim
+command! CopyBufname let @+=bufname()
 
 " 句読点を論文用に置換する
 command! ReplacePunctuation %s/\v(、|。)/\=tr(submatch(1), '、。', '，．')
