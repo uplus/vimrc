@@ -10,47 +10,6 @@
 # [[plugins]]
 # repo = 'MunifTanjim/nui.nvim'
 
-[[plugins]]
-repo = 'stevearc/aerial.nvim'
-hook_add = '''
-  nnoremap <c-w>o <cmd>AerialOpen<cr>
-  nmap <c-w><c-o> <c-w>o
-  nnoremap <c-w>O <cmd>AerialToggle!<cr>
-'''
-hook_post_source = '''
-lua << EOF
-  require('aerial').setup({
-    close_behavior = "global",
-    open_automatic = false,
-
-    -- default_direction = "float",
-    max_width = { 40, 0.3 },
-    width = nil,
-    min_width = 40,
-
-    float = {
-      -- Enum: cursor, editor, win
-      --   cursor - Opens float on top of the cursor
-      --   editor - Opens float centered in the editor
-      --   win    - Opens float centered in the window
-      relative = "win",
-
-      -- These control the height of the floating window.
-      -- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-      -- min_height and max_height can be a list of mixed types.
-      -- min_height = {8, 0.1} means "the greater of 8 rows or 10% of total"
-      max_height = 0.9,
-      height = nil,
-      min_height = { 8, 0.1 },
-
-      override = function(conf)
-        return conf
-      end,
-    }
-  })
-EOF
-'''
-
 # [[plugins]]
 # repo = 'MTDL9/vim-log-highlighting'
 

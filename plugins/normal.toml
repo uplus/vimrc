@@ -609,17 +609,6 @@ repo = 'sgur/vim-gf-autoload'
 repo = 'hujo/gf-user-vimfn'
 
 [[plugins]]
-repo = 'romgrk/nvim-treesitter-context'
-if = "v:false"
-hook_post_source = '''
-lua <<EOF
-  require'treesitter-context.config'.setup{
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  }
-EOF
-'''
-
-[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
@@ -635,6 +624,53 @@ hook_post_source = '''
 '''
 
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-context'
+hook_post_source = '''
+lua <<EOF
+  require'treesitter-context'.setup{
+      enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+      patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- For all filetypes
+          -- Note that setting an entry here replaces all other patterns for this entry.
+          -- By setting the 'default' entry below, you can control which nodes you want to
+          -- appear in the context window.
+          default = {
+              'class',
+              'function',
+              'method',
+              -- 'for', -- These won't appear in the context
+              -- 'while',
+              -- 'if',
+              -- 'switch',
+              -- 'case',
+          },
+          -- Example for a specific filetype.
+          -- If a pattern is missing, *open a PR* so everyone can benefit.
+          rust = {
+              'impl_item',
+          },
+          yaml = { 'block_mapping_pair', },
+          json = { 'pair', },
+      },
+      exact_patterns = {
+          -- Example for a specific filetype with Lua patterns
+          -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+          -- exactly match "impl_item" only)
+          -- rust = true,
+      },
+
+      -- [!] The options below are exposed but shouldn't require your attention,
+      --     you can safely ignore them.
+
+      zindex = 20, -- The Z-index of the context window
+      mode = 'topline',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  }
+EOF
+'''
+
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
 # これVimEnterじゃなくてhook_addでは
 hook_post_source = '''
@@ -642,6 +678,47 @@ hook_post_source = '''
   " hook_post_sourceはVimEnterで呼び出される(つまりFileTypeより後)
   " 最初に開いたファイルは手動で起動する必要がある
   LspStart
+'''
+
+[[plugins]]
+repo = 'stevearc/aerial.nvim'
+hook_add = '''
+  nnoremap <c-w>o <cmd>AerialOpen<cr>
+  nmap <c-w><c-o> <c-w>o
+  nnoremap <c-w>O <cmd>AerialToggle!<cr>
+'''
+hook_post_source = '''
+lua << EOF
+  require('aerial').setup({
+    close_behavior = "global",
+    open_automatic = false,
+
+    -- default_direction = "float",
+    max_width = { 40, 0.3 },
+    width = nil,
+    min_width = 40,
+
+    float = {
+      -- Enum: cursor, editor, win
+      --   cursor - Opens float on top of the cursor
+      --   editor - Opens float centered in the editor
+      --   win    - Opens float centered in the window
+      relative = "win",
+
+      -- These control the height of the floating window.
+      -- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+      -- min_height and max_height can be a list of mixed types.
+      -- min_height = {8, 0.1} means "the greater of 8 rows or 10% of total"
+      max_height = 0.9,
+      height = nil,
+      min_height = { 8, 0.1 },
+
+      override = function(conf)
+        return conf
+      end,
+    }
+  })
+EOF
 '''
 
 [[plugins]]
