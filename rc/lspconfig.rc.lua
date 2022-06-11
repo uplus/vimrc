@@ -47,7 +47,7 @@ local flags = {
 }
 
 -- :help lspconfig-server-configurations
-for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "yamlls", "graphql" }) do
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "yamlls", "graphql", "marksman" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
     flags = flags,
@@ -69,3 +69,5 @@ nvim_lsp["solargraph"].setup {
 -- npm install -g typescript typescript-language-server pyright yaml-language-server graphql-language-service-cli
 -- gem install solargraph
 -- go install golang.org/x/tools/gopls@latest
+-- wget https://github.com/artempyanykh/marksman/releases/download/2022-06-02/marksman-linux -O ~bin/marksman && chmod +x ~bin/marksman
+  -- https://github.com/artempyanykh/marksman/releases/latest
