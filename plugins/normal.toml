@@ -690,10 +690,18 @@ hook_add = '''
 hook_post_source = '''
 lua << EOF
   require('aerial').setup({
+    backends = {
+      _ = { "lsp", "treesitter", "markdown" },
+      markdown = { "treesitter", "markdown" },
+    },
+
     close_behavior = "global",
     open_automatic = false,
 
     -- default_direction = "float",
+    default_direction = "right",
+    placement_editor_edge = true,
+
     max_width = { 40, 0.3 },
     width = nil,
     min_width = 40,
