@@ -141,7 +141,7 @@ set completeopt=menuone
 
 set sidescroll=0
 set sidescrolloff=12
-set virtualedit=block
+set virtualedit=block,onemore
 set nrformats=hex,bin
 
 if has('nvim')
