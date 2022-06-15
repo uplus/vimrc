@@ -412,7 +412,7 @@ hook_add = '''
 '''
 hook_post_source = '''
 lua << EOF
-  require'hop'.setup{}
+  require'hop'.setup()
 EOF
 '''
 
