@@ -267,6 +267,10 @@ ruby = '''
         \ "InstanceVariable\\|GlobalVariable\\|Symbol\\)\\>'"
 '''
 
+eruby = '''
+  setl nowrap
+'''
+
 sh = '''
   let b:match_words = '\%(;\s*\|^\s*\)\@<=if\>:\%(;\s*\|^\s*\)\@<=fi\>,' .
     \ '\%(;\s*\|^\s*\)\@<=\%(for\|while\)\>:\%(;\s*\|^\s*\)\@<=done\>' .
