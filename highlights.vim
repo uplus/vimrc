@@ -34,7 +34,7 @@ function! s:set_overwrite_highlights()
   " インスタンス変数など
   hi TSLabel ctermfg=75 guifg=#4fbffe
   " vim-illuminate
-  hi illuminatedWord guibg=#2f3d3f gui=NONE
+  hi illuminatedWord guibg=#2f3b3f
 
   " Signify:
   hi SignifySignAdd    ctermfg=70  guifg=#41be30
