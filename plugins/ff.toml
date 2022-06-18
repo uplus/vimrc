@@ -1,0 +1,122 @@
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
+# on_cmd = 'Denite'
+hook_source = 'source ~/.vim/rc/denite.rc.vim'
+hook_add = '''
+  " Mappings:
+  nnoremap <space>d :Denite<space>
+  nnoremap [d <cmd>Denite -resume -cursor-pos=-1 -immediately<cr>
+  nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
+  nnoremap <silent><space>r <cmd>Denite -resume -refresh<cr>
+
+  " file
+  nnoremap <silent>\b  <cmd>Denite buffer<cr>
+  nnoremap <silent>\f  <cmd>Denite file/rec<cr>
+  nnoremap <silent>\F  <cmd>DeniteBufferDir file/rec<cr>
+  nnoremap <silent>\\f <cmd>Denite file_mru<cr>
+
+  " grep
+  nnoremap <silent>s/  <cmd>Denite line:all<cr>
+  nnoremap <silent>s*  <cmd>DeniteCursorWord line:forward:wrap<cr>
+  nnoremap <silent>s#  <cmd>DeniteCursorWord line:backward:wrap<cr>
+  nnoremap <silent>g*  <cmd>DeniteCursorWord grep<cr>
+  nnoremap <silent>sg  <cmd>Denite grep<cr>
+
+  " misc
+  nnoremap <silent>st  <cmd>Denite tag<cr>
+  nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
+  nnoremap <silent>so  <cmd>Denite -auto-resize outline<cr>
+  nnoremap <silent>sm  <cmd>Denite -no-empty mark<cr>
+  nnoremap <silent>;r  <cmd>Denite register neoyank<cr>
+  " nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
+  nnoremap <silent>;:  <cmd>Denite command_history<cr>
+  nnoremap <silent>;uc <cmd>Denite command<cr>
+  " nnoremap <silent>;ut <cmd>Denite tag<cr>
+  nnoremap <silent>;uh <cmd>Denite help<cr>
+  nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
+  nnoremap <silent>;u <nop>
+
+  command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args>
+  command! -nargs=+ Out execute 'Denite output:' . escape(<q-args>, ' ')
+
+  " command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
+  " nnoremap <silent> [Window]<Space> <cmd>Denite file/rec:~/.vim/rc<cr>
+  " nnoremap <silent> [Window]s <cmd>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
+  " nnoremap <silent> <C-t> <cmd>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
+'''
+[plugins.ftplugin]
+denite = '''
+  " 左端にスペースを作る
+  setl signcolumn=yes
+
+  " Filter Mode:
+  nnoremap <silent><buffer><expr>i denite#do_map('open_filter_buffer')
+  nmap <buffer>I i<c-a>
+
+  " Cursor Move:
+  nnoremap <silent><buffer><expr>j line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr>k line('.') == 1 ? 'G' : 'k'
+  nmap <silent><buffer><c-p> k
+  nmap <silent><buffer><c-n> j
+
+  " Select:
+  nnoremap <silent><buffer><nowait><expr><space> denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr>* denite#do_map('toggle_select_all')
+
+  " Action:
+  nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
+  nnoremap <silent><buffer><expr>a denite#do_map('choose_action')
+
+  nnoremap <silent><buffer><nowait><expr>' denite#do_map('quick_move')
+  nnoremap <silent><buffer><nowait><expr>p denite#do_map('do_action', 'echo')
+  nnoremap <silent><buffer><expr>yy denite#do_map('do_action', 'yank')
+
+  nnoremap <silent><buffer><expr><m-i> denite#do_map('do_action', 'insert')
+  nnoremap <silent><buffer><expr><m-a> denite#do_map('do_action', 'append')
+
+  " Open:
+  nnoremap <silent><buffer><expr><cr> denite#do_map('do_action')
+  nnoremap <silent><buffer><nowait><expr>t denite#do_map('do_action', 'tabswitch')
+  nnoremap <silent><buffer><nowait><expr>s denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><nowait><expr>v denite#do_map('do_action', 'vsplit')
+  " nnoremap <silent><buffer><nowait><expr>s denite#do_map('do_action', 'splitswitch')
+  " nnoremap <silent><buffer><nowait><expr>v denite#do_map('do_action', 'vsplitswitch')
+  nmap <buffer><c-j> <cr>
+
+  " Quit:
+  nnoremap <silent><buffer><nowait><expr>q denite#do_map('quit')
+  nmap <buffer><esc> q
+
+  " Qfrepace:
+  nnoremap <silent><buffer><nowait><expr>r denite#do_map('do_action', 'qfreplace')
+  nmap <buffer>R *r
+'''
+denite-filter = '''
+  " <esc>が上書きされる
+  let b:lexima_disabled = 1
+
+  " Open:
+  inoremap <silent><buffer><expr><cr> denite#do_map('do_action')
+  inoremap <silent><buffer><nowait><expr><c-t> denite#do_map('do_action', 'tabswitch')
+  inoremap <silent><buffer><nowait><expr><c-s> denite#do_map('do_action', 'split')
+  inoremap <silent><buffer><nowait><expr><c-v> denite#do_map('do_action', 'vsplit')
+  imap <buffer><c-j> <cr>
+
+  " Close Filter:
+  imap <buffer><nowait><esc> <Plug>(denite_filter_update)
+  nmap <buffer><nowait><esc> <Plug>(denite_filter_update)
+
+  " Move:
+  imap <buffer><c-p> <esc>ki
+  imap <buffer><c-n> <esc>ji
+
+  " Pass:
+  imap <silent><buffer><tab> <esc><tab>
+  imap <silent><buffer><m-i> <esc><m-i>
+  imap <silent><buffer><m-a> <esc><m-a>
+
+  " disable deoplete
+  " call deoplete#custom#buffer_option('auto_complete', v:false)
+'''
+
