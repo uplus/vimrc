@@ -142,46 +142,6 @@ hook_add = '''
   let g:nf_ignore_ext       = []
 '''
 
-[[plugins]] # highlight yanked text
-repo = 'haya14busa/vim-operator-flashy'
-hook_source = '''
-  map y <Plug>(operator-flashy)
-  nmap Y <Plug>(operator-flashy)$
-  let g:operator#flashy#flash_time = 300
-  " let g:operator#flashy#group =
-  hi Flashy term=bold ctermbg=0 guibg=#13556A
-'''
-
-[[plugins]]
-repo = 'bfredl/nvim-miniyank'
-if = "v:false"
-# if = 'has("clipboard")'
-hook_add = '''
-  let g:miniyank_filename = $HOME . "/.vim/tmp/miniyank.mpack"
-'''
-hook_source = '''
-  map p <Plug>(miniyank-autoput)
-  map P <Plug>(miniyank-autoPut)
-  map <c-n> <Plug>(miniyank-cycle)
-'''
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-# on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
-# on_source = ['denite.nvim']
-# on_path = '.*'
-hook_add = '''
-  let g:neoyank#limit = 20
-  let g:neoyank#disable_write = 1
-'''
-hook_post_source = '''
-  " スクリーンロック復帰後にgetregがハングする
-  " tmuxでもそうでない環境でも再現
-  " clipboardはunnamedでもunnamedplusでも再現
-  " xselで再現, xcilpは未確認
-  au! neoyank FocusGained
-'''
-
 [[plugins]]
 repo = 'kana/vim-submode'
 hook_post_source = 'source ~/.vim/rc/submode.rc.vim'
@@ -667,3 +627,43 @@ repo = 'thinca/vim-ref'
 
 # [[plugins]] # Need reloadble vimrc
 # repo = "mattn/benchvimrc-vim"
+
+# [[plugins]] # highlight yanked text
+# repo = 'haya14busa/vim-operator-flashy'
+# hook_source = '''
+#   map y <Plug>(operator-flashy)
+#   nmap Y <Plug>(operator-flashy)$
+#   let g:operator#flashy#flash_time = 300
+#   " let g:operator#flashy#group =
+#   hi Flashy term=bold ctermbg=0 guibg=#13556A
+# '''
+
+# [[plugins]]
+# repo = 'Shougo/neoyank.vim'
+# # on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
+# # on_source = ['denite.nvim']
+# # on_path = '.*'
+# hook_add = '''
+#   let g:neoyank#limit = 20
+#   let g:neoyank#disable_write = 1
+# '''
+# hook_post_source = '''
+#   " スクリーンロック復帰後にgetregがハングする
+#   " tmuxでもそうでない環境でも再現
+#   " clipboardはunnamedでもunnamedplusでも再現
+#   " xselで再現, xcilpは未確認
+#   au! neoyank FocusGained
+# '''
+
+# [[plugins]]
+# repo = 'bfredl/nvim-miniyank'
+# if = "v:false"
+# # if = 'has("clipboard")'
+# hook_add = '''
+#   let g:miniyank_filename = $HOME . "/.vim/tmp/miniyank.mpack"
+# '''
+# hook_source = '''
+#   map p <Plug>(miniyank-autoput)
+#   map P <Plug>(miniyank-autoPut)
+#   map <c-n> <Plug>(miniyank-cycle)
+# '''

@@ -28,7 +28,7 @@ hook_add = '''
   nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
   nnoremap <silent>so  <cmd>Denite -auto-resize outline<cr>
   nnoremap <silent>sm  <cmd>Denite -no-empty mark<cr>
-  nnoremap <silent>;r  <cmd>Denite register neoyank<cr>
+  nnoremap <silent>;r  <cmd>Denite register<cr>
   " nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
   nnoremap <silent>;:  <cmd>Denite command_history<cr>
   nnoremap <silent>;uc <cmd>Denite command<cr>
