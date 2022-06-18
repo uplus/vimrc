@@ -43,6 +43,25 @@ hook_add = '''
   nmap <silent>\tl :IndentLinesToggle<CR>
 '''
 
+[[plugins]]
+repo = 'kevinhwang91/nvim-bqf'
+on_ft = ['qf']
+hook_post_source = '''
+lua << EOF
+  require('bqf.config').setup {
+    auto_enable = true,
+    magic_window = true,
+    auto_resize_height = false,
+    preview = {
+        auto_preview = true,
+        delay_syntax = 80,
+        win_height = 10,
+        win_vheight = 10,
+        wrap = false,
+    },
+  }
+EOF
+'''
 
 ## -----------------------------
 ## colors

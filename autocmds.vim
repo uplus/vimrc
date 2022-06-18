@@ -28,7 +28,7 @@ augroup myac
   au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
 
   " ヤンクしたテキストをハイライトする
-  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=150, on_visual=false}
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=150, on_visual=true}
 
   " has('patch-8.0.1238')
   " au CmdLineEnter /,\? :set hlsearch
