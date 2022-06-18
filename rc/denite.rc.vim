@@ -91,7 +91,4 @@ if executable('rg') " ripgrep
         \ 'separator': ['--'],
         \ 'max_path_length': 999,
         \ })
-elseif executable('ag')
-  " https://github.com/ggreer/the_silver_searcher
-  call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 endif

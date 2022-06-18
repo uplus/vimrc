@@ -60,10 +60,10 @@ hook_add = '''
   nnoremap <silent>so  <cmd>Denite -auto-resize outline<cr>
   nnoremap <silent>sm  <cmd>Denite -no-empty mark<cr>
   nnoremap <silent>;r  <cmd>Denite register neoyank<cr>
-  nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
+  " nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
   nnoremap <silent>;:  <cmd>Denite command_history<cr>
   nnoremap <silent>;uc <cmd>Denite command<cr>
-  nnoremap <silent>;ut <cmd>Denite tag<cr>
+  " nnoremap <silent>;ut <cmd>Denite tag<cr>
   nnoremap <silent>;uh <cmd>Denite help<cr>
   nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
   nnoremap <silent>;u <nop>

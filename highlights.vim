@@ -9,7 +9,8 @@ function! s:set_common_highlights() abort
 
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#eeeeee guibg=#1c1b19 cterm=NONE gui=NONE
   hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#404050 cterm=NONE gui=NONE
-  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#4080b0 cterm=NONE gui=NONE
+  " hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#4080b0 cterm=NONE gui=NONE
+  hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#447494 cterm=NONE gui=NONE
   hi VertSplit    guifg=#7C7863 guibg=NONE
 
   " hi Title      ctermfg=118               guifg=#87ff00
