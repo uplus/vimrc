@@ -427,6 +427,9 @@ hook_post_source = '''
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
+repo = 'p00f/nvim-ts-rainbow'
+
+[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-context'
 hook_post_source = '''
 lua <<EOF
@@ -485,6 +488,7 @@ hook_add = '''
 '''
 
 [[plugins]]
+# https://github.com/lambdalisue/reword.vim
 repo = 'tpope/vim-abolish'
 # on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
 # g:Abolishを他で使うため、遅延できない
