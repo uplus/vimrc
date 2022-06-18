@@ -135,6 +135,14 @@ hook_add = '''
   " let g:foldCCtext_tail = ''
 '''
 
+[[plugins]]
+repo = 'RRethy/vim-illuminate'
+# on_event = ['BufEnter']
+hook_add = '''
+  let g:Illuminate_ftblacklist = ['defx', 'denite', 'denite-filter']
+  nmap \toh <cmd>IlluminationToggle<cr>
+'''
+
 ## -----------------------------
 ## action
 ## -----------------------------

@@ -67,10 +67,6 @@ EOF
 ## colors
 ## -----------------------------
 
-# [[plugins]] # automatically highlighting other uses of the current word under the cursor
-# repo = 'RRethy/vim-illuminate'
-# on_event = ['BufEnter']
-
 [[plugins]]
 repo = 't9md/vim-quickhl'
 on_map = ['<Plug>(quickhl', '<Plug>(operator-quickhl']
@@ -86,7 +82,7 @@ hook_add = '''
   nmap gl <Plug>(operator-quickhl-manual-this-motion)<Plug>(textobj-line-i)
   nmap gm <Plug>(operator-quickhl-manual-this-motion)
 
-  nmap \toh <Plug>(quickhl-cword-toggle)
+  " nmap \toh <Plug>(quickhl-cword-toggle)
 
   let g:quickhl_manual_hl_priority = 100
 
