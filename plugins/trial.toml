@@ -10,6 +10,11 @@
 # [[plugins]]
 # repo = 'kevinhwang91/nvim-hlslens'
 
+# [[plugins]] # View and search LSP symbols, tags in Vim/NeoVim.
+# repo = 'liuchengxu/vista.vim'
+# on_cmd = ['Vista']
+
+
 # https://github.com/EdenEast/nightfox.nvim
 # https://github.com/SmiteshP/nvim-gps
 # https://github.com/danymat/neogen

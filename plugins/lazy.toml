@@ -97,6 +97,17 @@ repo = 'RRethy/vim-hexokinase'
 on_cmd = ['HexokinaseToggle', 'HexokinaseRefresh']
 build = 'make hexokinase'
 
+[[plugins]]
+repo = 'cocopon/colorswatch.vim'
+on_cmd = 'ColorSwatchGenerate'
+
+[[plugins]]
+repo = 'wadackel/nvim-syntax-info'
+on_cmd = ['SyntaxInfoToggle']
+
+[[plugins]] # color picker
+repo = 'uplus/colorsel.vim'
+on_cmd = 'ColorSel'
 
 ## -----------------------------
 ## action
@@ -445,51 +456,6 @@ depends = 'open-browser.vim'
 on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
 
 ## -----------------------------
-## tags and ref
-## -----------------------------
-
-[[plugins]] # View and search LSP symbols, tags in Vim/NeoVim.
-repo = 'liuchengxu/vista.vim'
-if = "v:false"
-on_cmd = ['Vista']
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-on_cmd = ['Tagbar', 'TagbarToggle', 'TagbarOpen', 'TagbarOpenAutoClose', 'TagbarShowTag', 'TagbarCurrentTag', 'TagbarGetTypeConfig', 'TagbarDebug', 'TagbarTogglePause']
-on_func = 'tagbar#'
-hook_add = '''
-  nnoremap <silent>,t :<c-u>TagbarOpen<cr>
-
-  let g:tagbar_type_go = {
-    \   'ctagstype': 'go',
-    \   'kinds': [
-    \     'p:package',
-    \     'i:imports:1',
-    \     'c:constants',
-    \     'v:variables',
-    \     't:types',
-    \     'n:interfaces',
-    \     'w:fields',
-    \     'e:embedded',
-    \     'm:methods',
-    \     'r:constructor',
-    \     'f:functions'
-    \   ],
-    \   'sro': '.',
-    \   'kind2scope': {
-    \     't' : 'ctype',
-    \     'n' : 'ntype'
-    \   },
-    \   'scope2kind': {
-    \     'ctype' : 't',
-    \     'ntype' : 'n'
-    \   },
-    \   'ctagsbin': 'gotags',
-    \   'ctagsargs': '-sort -silent'
-    \ }
-'''
-
-## -----------------------------
 ## operator
 ## -----------------------------
 
@@ -624,10 +590,6 @@ repo = 'inotom/str2htmlentity'
 on_cmd = ['Str2HtmlEntity', 'Entity2HtmlString']
 
 [[plugins]]
-repo = 'osyo-manga/vim-stargate'
-on_ft = ['c', 'cpp']
-
-[[plugins]]
 repo = 'tkhren/vim-fake'
 on_cmd = ['FakeSubstitute']
 on_func = 'fake#'
@@ -647,29 +609,12 @@ repo = 'osyo-manga/vim-hideout'
 on_cmd = ['HideoutOn']
 
 [[plugins]]
-repo = 'xuhdev/vim-latex-live-preview'
-on_ft = ['tex', 'plaintex']
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'xhtml', 'css']
 hook_add = '''
   let g:user_emmet_mode = 'iv'
   let g:user_emmet_expandabbr_key = '<c-y><c-y>'
 '''
-
-[[plugins]]
-repo = 'cocopon/colorswatch.vim'
-on_cmd = 'ColorSwatchGenerate'
-
-
-[[plugins]]
-repo = 'rhysd/try-colorscheme.vim'
-on_cmd = 'TryColorscheme'
-
-[[plugins]]
-repo = 'uplus/colorsel.vim'
-on_cmd = 'ColorSel'
 
 [[plugins]]
 repo = 'thinca/vim-scall'
@@ -686,10 +631,6 @@ on_cmd = ['HttpStatus', 'CtrlPHttpStatus']
 repo = 'tweekmonster/helpful.vim'
 on_cmd = ['HelpfulVersion']
 on_ft = ['vim', 'help']
-
-# [[plugins]]
-# repo = 'typewriter/zenrei.vim'
-# on_cmd = ['Zenrei', 'ZenreiSynonym']
 
 # [[plugins]]
 # repo = 'gelguy/wilder.nvim'
