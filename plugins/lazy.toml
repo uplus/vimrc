@@ -253,6 +253,18 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'AckslD/nvim-trevJ.lua'
+on_lua = 'trevj'
+hook_add = '''
+  command! Rjoin lua require('trevj').format_at_cursor()
+'''
+hook_post_source = '''
+lua << EOF
+  require('trevj').setup()
+EOF
+'''
+
+[[plugins]]
 repo = 'terryma/vim-expand-region'
 on_map = ['<Plug>(expand_region_expand)', '<Plug>(expand_region_shrink)']
 hook_add = '''
