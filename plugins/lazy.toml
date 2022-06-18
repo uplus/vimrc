@@ -1,4 +1,6 @@
-# view
+## -----------------------------
+## view
+## -----------------------------
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
@@ -42,7 +44,9 @@ hook_add = '''
 '''
 
 
-# colors
+## -----------------------------
+## colors
+## -----------------------------
 
 # [[plugins]] # automatically highlighting other uses of the current word under the cursor
 # repo = 'RRethy/vim-illuminate'
@@ -94,7 +98,9 @@ on_cmd = ['HexokinaseToggle', 'HexokinaseRefresh']
 build = 'make hexokinase'
 
 
-# action
+## -----------------------------
+## action
+## -----------------------------
 
 [[plugins]]
 # repo = 'tyru/caw.vim'
@@ -263,7 +269,9 @@ hook_post_source = '''
 '''
 
 
-# search and replace
+## -----------------------------
+## search and replace
+## -----------------------------
 
 [[plugins]]
 repo = 'thinca/vim-partedit'
@@ -290,7 +298,9 @@ hook_add = '''
   au myac FileType c,cpp nmap <buffer><silent>,lr <Plug>(clang_rename-current)
 '''
 
-#python
+## -----------------------------
+## python
+## -----------------------------
 
 [[plugins]]
 repo = 'tmhedberg/SimpylFold'
@@ -301,8 +311,9 @@ hook_add = '''
   let g:SimpylFold_fold_import = 0
 '''
 
-
-#git
+## -----------------------------
+## git
+## -----------------------------
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
@@ -374,7 +385,9 @@ hook_add = '''
   nnoremap ,gy <cmd>GitBlameCopySHA<cr>
 '''
 
-#web
+## -----------------------------
+## web
+## -----------------------------
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -431,8 +444,9 @@ repo = 'tyru/open-browser-github.vim'
 depends = 'open-browser.vim'
 on_cmd = ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq' ]
 
-
-#tags and ref
+## -----------------------------
+## tags and ref
+## -----------------------------
 
 [[plugins]] # View and search LSP symbols, tags in Vim/NeoVim.
 repo = 'liuchengxu/vista.vim'
@@ -475,8 +489,9 @@ hook_add = '''
     \ }
 '''
 
-
-# operator
+## -----------------------------
+## operator
+## -----------------------------
 
 [[plugins]] # se evaluate textobj as expression of lambda of ruby
 repo = 'rhysd/vim-operator-evalruby'
@@ -496,8 +511,9 @@ repo = 'osyo-manga/vim-operator-jump_side'
 depends = 'vim-operator-user'
 on_map  = '<Plug>(operator-jump'
 
-
-#misc
+## -----------------------------
+## misc
+## -----------------------------
 
 [[plugins]]
 repo = 'tpope/vim-characterize'
@@ -646,9 +662,6 @@ hook_add = '''
 repo = 'cocopon/colorswatch.vim'
 on_cmd = 'ColorSwatchGenerate'
 
-[[plugins]] # Markdownのリストをツリーにする
-repo = 'shinespark/vim-list2tree'
-on_cmd = 'List2Tree'
 
 [[plugins]]
 repo = 'rhysd/try-colorscheme.vim'
