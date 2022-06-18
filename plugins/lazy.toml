@@ -258,23 +258,33 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-speeddating'
-on_map = ['<Plug>SpeedDatingUp', '<Plug>SpeedDatingDown']
+repo = 'monaqa/dial.nvim'
+on_map = ['<Plug>(dial-increment)']
 hook_add = '''
-  let g:speeddating_no_mappings = 1
-  nmap <c-a> <Plug>SpeedDatingUp
-  nmap <c-x> <Plug>SpeedDatingDown
-  xmap <c-a> <Plug>SpeedDatingUp
-  xmap <c-x> <Plug>SpeedDatingDown
+  nmap  <c-a>  <Plug>(dial-increment)
+  nmap  <c-x>  <Plug>(dial-decrement)
+  vmap  <c-a>  <Plug>(dial-increment)
+  vmap  <c-x>  <Plug>(dial-decrement)
+  vmap g<c-a> g<Plug>(dial-increment)
+  vmap g<c-x> g<Plug>(dial-decrement)
 '''
 hook_post_source = '''
-  " SpeedDatingFormat! %v
-  " SpeedDatingFormat! %^v " Roman numerals
-  let g:speeddating_formats = get(g:, 'speeddating_formats', [])
-  let g:speeddating_formats += [['%v', 0, 1]]
-  let g:speeddating_formats += [['%^v', 0, 1]]
+lua << EOF
+local augend = require("dial.augend")
+require("dial.config").augends:register_group{
+  default = {
+    augend.integer.alias.decimal,
+    augend.integer.alias.hex,
+    augend.date.alias["%Y/%m/%d"],
+    augend.date.alias["%Y-%m-%d"],
+    augend.date.alias["%m/%d"],
+    augend.date.alias["%H:%M"],
+    augend.semver.alias.semver,
+    augend.constant.alias.ja_weekday_full,
+  },
+}
+EOF
 '''
-
 
 ## -----------------------------
 ## search and replace
