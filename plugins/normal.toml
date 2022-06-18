@@ -40,23 +40,6 @@ repo = 'Shougo/neomru.vim'
 # on_path = '.*'
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-# on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
-# on_source = ['denite.nvim']
-# on_path = '.*'
-hook_add = '''
-  let g:neoyank#limit = 20
-  let g:neoyank#disable_write = 1
-'''
-hook_post_source = '''
-  " スクリーンロック復帰後にgetregがハングする
-  " tmuxでもそうでない環境でも再現
-  " clipboardはunnamedでもunnamedplusでも再現
-  " xselで再現, xcilpは未確認
-  au! neoyank FocusGained
-'''
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 if = "has('nvim')"
 hook_source = 'source ~/.vim/rc/defx.rc.vim'
@@ -183,6 +166,23 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/neoyank.vim'
+# on_event = ['FocusGained', 'FocusLost', 'TextYankPost']
+# on_source = ['denite.nvim']
+# on_path = '.*'
+hook_add = '''
+  let g:neoyank#limit = 20
+  let g:neoyank#disable_write = 1
+'''
+hook_post_source = '''
+  " スクリーンロック復帰後にgetregがハングする
+  " tmuxでもそうでない環境でも再現
+  " clipboardはunnamedでもunnamedplusでも再現
+  " xselで再現, xcilpは未確認
+  au! neoyank FocusGained
+'''
+
+[[plugins]]
 repo = 'kana/vim-submode'
 hook_post_source = 'source ~/.vim/rc/submode.rc.vim'
 # on_map = '<Plug>'
@@ -209,10 +209,6 @@ hook_add = '''
   let g:foldCCtext_head = ''
   " let g:foldCCtext_tail = ''
 '''
-
-# 謎挙動
-# [[plugins]]
-# repo = 'Konfekt/FastFold'
 
 [[plugins]]
 repo = 't9md/vim-choosewin'
@@ -305,6 +301,7 @@ hook_add = '''
 
   let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
 '''
+
 [[plugins]] # speedy
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
@@ -313,14 +310,18 @@ hook_add = '''
 '''
 
 
-#search and replace
+## -----------------------------
+## search and replace
+## -----------------------------
 
 [[plugins]]
 repo = 'haya14busa/is.vim'
 hook_add = 'source ~/.vim/rc/is.rc.vim'
 
 
-# syntaxchecker
+## -----------------------------
+## syntax checker and formatter
+## -----------------------------
 
 [[plugins]]
 repo = 'dense-analysis/ale'
@@ -330,7 +331,9 @@ hook_add = 'source ~/.vim/rc/ale.rc.vim'
 repo = 'editorconfig/editorconfig-vim'
 
 
-# quickrun
+## -----------------------------
+## code runner
+## -----------------------------
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -345,7 +348,9 @@ repo = 'osyo-manga/quickrun-outputter-replace_region'
 depends = 'vim-quickrun'
 
 
-# git
+## -----------------------------
+## git
+## -----------------------------
 
 [[plugins]]
 repo = 'iberianpig/tig-explorer.vim'
@@ -389,8 +394,9 @@ hook_add =  '''
   " let g:signify_skip_filename_pattern = [ 'foo.*bar', 'tmp' ]
 '''
 
-
-# web
+## -----------------------------
+## web
+## -----------------------------
 
 [[plugins]]
 repo = 'mattn/webapi-vim'
@@ -419,31 +425,9 @@ hook_add = '''
   endfunction
 '''
 
-
-# tag and ref
-
-[[plugins]]
-repo = 'thinca/vim-ref'
-
-# misc
-
-[[plugins]]
-repo = 'lambdalisue/suda.vim'
-# on_cmd = ['SudaWrite', 'SudaRead']
-hook_add = '''
-  " 仮想ファイルを開くようになるので ]f でnextfileが使えなくなる
-  " let g:suda_smart_edit = 1
-'''
-
-[[plugins]]
-repo = 'tpope/vim-abolish'
-# on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
-# g:Abolishを他で使うため、遅延できない
-hook_add = '''
-  let g:abolish_no_mappings = 1
-  nmap sc <Plug>(abolish-coerce-word)
-'''
-
+## -----------------------------
+## gf
+## -----------------------------
 
 [[plugins]]
 repo = 'kana/vim-gf-user'
@@ -470,6 +454,10 @@ repo = 'sgur/vim-gf-autoload'
 
 [[plugins]] # jump to vim function
 repo = 'hujo/gf-user-vimfn'
+
+## -----------------------------
+## treesitter
+## -----------------------------
 
 [[plugins]]
 repo =  'nvim-treesitter/nvim-treesitter'
@@ -532,6 +520,26 @@ lua <<EOF
 EOF
 '''
 
+## -----------------------------
+## misc
+## -----------------------------
+
+[[plugins]]
+repo = 'lambdalisue/suda.vim'
+# on_cmd = ['SudaWrite', 'SudaRead']
+hook_add = '''
+  " 仮想ファイルを開くようになるので ]f でnextfileが使えなくなる
+  " let g:suda_smart_edit = 1
+'''
+
+[[plugins]]
+repo = 'tpope/vim-abolish'
+# on_map = ['<Plug>(abolish-coerce)', '<Plug>(abolish-coerce-word)']
+# g:Abolishを他で使うため、遅延できない
+hook_add = '''
+  let g:abolish_no_mappings = 1
+  nmap sc <Plug>(abolish-coerce-word)
+'''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
@@ -615,14 +623,16 @@ hook_add = '''
   vnoremap <expr>gst printf('"%sy', g:working_register) . "<cmd>call TranslateJoin(getreg(g:working_register))<cr>"
 '''
 
-# [[plugins]] # Need reloadble vimrc
-# repo = "mattn/benchvimrc-vim"
-
 [[plugins]] # test
 repo = 'thinca/vim-themis'
 
+[[plugins]]
+repo = 'thinca/vim-ref'
 
+
+## -----------------------------
 ## archive
+## -----------------------------
 
 # [[plugins]]
 # repo = 'matchit.zip'
@@ -651,3 +661,9 @@ repo = 'thinca/vim-themis'
 # repo = 'liuchengxu/vim-clap'
 # hook_post_update = 'Clap install-binary!'
 
+# 謎挙動
+# [[plugins]]
+# repo = 'Konfekt/FastFold'
+
+# [[plugins]] # Need reloadble vimrc
+# repo = "mattn/benchvimrc-vim"
