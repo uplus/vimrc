@@ -35,11 +35,6 @@ hook_add = '''
   au myac FileType qf nnoremap <buffer>r <cmd>Qfreplace<CR>
 '''
 
-# 容量が1GBぐらいある
-# [[plugins]]
-# repo = 'liuchengxu/vim-clap'
-# hook_post_update = 'Clap install-binary!'
-
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 # on_path = '.*'
@@ -128,8 +123,9 @@ defx = '''
   nnoremap <silent><buffer><expr><tab>  winnr('$') != 1 ? '<cmd>wincmd w<cr>' : ':<c-u>Defx -buffer-name=temp -split=vertical<cr>'
 '''
 
-
-#view
+## -----------------------------
+## view
+## -----------------------------
 
 # [[plugins]]
 # repo = 'powerman/vim-plugin-AnsiEsc'
@@ -138,17 +134,18 @@ defx = '''
 # '''
 
 [[plugins]]
-repo = 'mgee/lightline-bufferline'
-
-[[plugins]]
 repo = 'tyru/current-func-info.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
+[[plugins]]
+repo = 'mgee/lightline-bufferline'
 
-#action
+## -----------------------------
+## action
+## -----------------------------
 
 [[plugins]]
 repo = 'tyru/nextfile.vim'
@@ -308,9 +305,6 @@ hook_add = '''
 
   let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
 '''
-# [[plugins]]
-# repo = 'matchit.zip'
-
 [[plugins]] # speedy
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
@@ -318,24 +312,8 @@ hook_add = '''
   au myac ColorScheme * hi ParenMatch guibg=#5353e0
 '''
 
-# [[plugins]]
-# repo = 'taku-o/vim-vis'
-
-# [[plugins]] # <c-o> <c-i> 既に別タブ|ウィンドウで開かれていたらそっちに飛ぶ
-# # 位置保存のタイミングが微妙
-# repo = 'osyo-manga/vim-milfeulle'
-# hook_add = '''
-#   nmap <c-o> <Plug>(milfeulle-prev)
-#   nmap <c-i> <Plug>(milfeulle-next)
-#   let g:milfeulle_default_kind = "window"
-#   let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
-# '''
-
 
 #search and replace
-
-# [[plugins]]
-# repo = 'kevinhwang91/nvim-hlslens'
 
 [[plugins]]
 repo = 'haya14busa/is.vim'
@@ -347,6 +325,9 @@ hook_add = 'source ~/.vim/rc/is.rc.vim'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = 'source ~/.vim/rc/ale.rc.vim'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
 
 
 # quickrun
@@ -491,9 +472,6 @@ repo = 'sgur/vim-gf-autoload'
 repo = 'hujo/gf-user-vimfn'
 
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter-textobjects'
-
-[[plugins]]
 repo =  'nvim-treesitter/nvim-treesitter'
 if = "has('nvim')"
 hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
@@ -504,6 +482,9 @@ hook_post_source = '''
 
   luafile ~/.vim/rc/nvim-treesitter.rc.lua
 '''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-context'
@@ -621,9 +602,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-
-[[plugins]]
 repo = 'uplus/translate.vim'
 rev = 'custom'
 hook_add = '''
@@ -640,14 +618,36 @@ hook_add = '''
 # [[plugins]] # Need reloadble vimrc
 # repo = "mattn/benchvimrc-vim"
 
-# [[plugins]]
-# repo = 'Valodim/vim-zsh-completion'
-
-# [[plugins]]
-# repo = 'fweep/vim-zsh-path-completion'
-
 [[plugins]] # test
 repo = 'thinca/vim-themis'
 
-[[plugins]]
-repo = 'junegunn/vim-emoji'
+
+## archive
+
+# [[plugins]]
+# repo = 'matchit.zip'
+
+# [[plugins]]
+# repo = 'taku-o/vim-vis'
+
+# [[plugins]] # <c-o> <c-i> 既に別タブ|ウィンドウで開かれていたらそっちに飛ぶ
+# # 位置保存のタイミングが微妙
+# repo = 'osyo-manga/vim-milfeulle'
+# hook_add = '''
+#   nmap <c-o> <Plug>(milfeulle-prev)
+#   nmap <c-i> <Plug>(milfeulle-next)
+#   let g:milfeulle_default_kind = "window"
+#   let g:milfeulle_default_jumper_name = "win_tab_bufnr_pos_line"
+# '''
+
+# [[plugins]]
+# repo = 'johngrib/vim-game-code-break'
+# add_hook  = '''
+#   let g:vim_game_code_break_item_limit = 4
+# '''
+
+# 容量が1GBぐらいある
+# [[plugins]]
+# repo = 'liuchengxu/vim-clap'
+# hook_post_update = 'Clap install-binary!'
+
