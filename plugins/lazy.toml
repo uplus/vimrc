@@ -101,10 +101,6 @@ build = 'make hexokinase'
 repo = 'cocopon/colorswatch.vim'
 on_cmd = 'ColorSwatchGenerate'
 
-[[plugins]]
-repo = 'wadackel/nvim-syntax-info'
-on_cmd = ['SyntaxInfoToggle']
-
 [[plugins]] # color picker
 repo = 'uplus/colorsel.vim'
 on_cmd = 'ColorSel'

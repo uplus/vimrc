@@ -14,6 +14,11 @@
 # repo = 'liuchengxu/vista.vim'
 # on_cmd = ['Vista']
 
+# [[plugins]]
+# repo = 'wadackel/nvim-syntax-info'
+# on_cmd = ['SyntaxInfoToggle']
+# helpのタグが自己重複してエラーが出る
+# Vim(helptags):E154: Duplicate tag "SyntaxInfo" in file ~/.cache/dein/.cache/init.vim/.dein/doc/syntaxinfo.txt
 
 # https://github.com/EdenEast/nightfox.nvim
 # https://github.com/SmiteshP/nvim-gps
