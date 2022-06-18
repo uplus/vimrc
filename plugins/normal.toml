@@ -171,30 +171,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 't9md/vim-choosewin'
-hook_add = '''
-  nmap \w <Plug>(choosewin)
-  let g:choosewin_overlay_enable          = 1
-  let g:choosewin_overlay_clear_multibyte = 1
-  let g:choosewin_overlay_font_size       = 'small'
-  let g:choosewin_blink_on_land           = 0
-  let g:choosewin_statusline_replace      = 0
-  let g:choosewin_tabline_replace         = 0
-
-  " TODO: Don't effect
-  " let g:choosewin_hook_enable = 1
-  "
-  " function! s:choosewin_clear_BadSpace(winnums) abort
-  "   hi clear BadSpace
-  "   return a:winnums;
-  " endfunction
-  "
-  " let g:choosewin_hook = {
-  "   \ 'filter_window': function('s:choosewin_clear_BadSpace'),
-  "   \ }
-'''
-
-[[plugins]]
 repo = 'bkad/CamelCaseMotion'
 hook_add = '''
   map <silent> <space>w <plug>CamelCaseMotion_w
@@ -218,6 +194,23 @@ hook_add = '''
   map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
   map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
   map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
+'''
+
+[[plugins]]
+repo = 'tkmpypy/chowcho.nvim'
+hook_add = '''
+  nmap \w <cmd>Chowcho<cr>
+'''
+hook_post_source = '''
+lua << EOF
+  require('chowcho').setup {
+    icon_enabled = false, -- required 'nvim-web-devicons' (default: false)
+    text_color = '#FAFCFB',
+    bg_color = '#0c0b09',
+    active_border_color = '#55fefb',
+    border_style = 'rounded' -- 'default', 'rounded',
+  }
+EOF
 '''
 
 [[plugins]]
