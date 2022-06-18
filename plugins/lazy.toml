@@ -313,6 +313,34 @@ require("dial.config").augends:register_group{
 EOF
 '''
 
+[[plugins]]
+repo = 'rgroli/other.nvim'
+on_cmd = ['Other']
+hook_post_source = '''
+lua << EOF
+  require("other-nvim").setup({
+      mappings = {
+          -- builtin mappings
+          "livewire",
+          "angular",
+          "laravel",
+          -- custom mapping
+          -- {
+          --     pattern = "/path/to/file/src/app/(.*)/.*.ext$",
+          --     target = "/path/to/file/src/view/%1/",
+          --     transformer = "lowercase"
+          -- }
+      },
+      transformers = {
+          -- defining a custom transformer
+          lowercase = function (inputString)
+              return inputString:lower()
+          end
+      }
+  })
+EOF
+'''
+
 ## -----------------------------
 ## search and replace
 ## -----------------------------
