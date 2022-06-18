@@ -8,11 +8,7 @@ command! Narrow set laststatus=0 cmdheight=1 showtabline=0
 command! RmSwap if exists('g:swapname') | call system('rm ' . g:swapname) | endif
 command! ClearLocList call setloclist(winnr(), [])
 command! -nargs=1 Char echo printf("%c", 0x<args>)
-command! Cdbuffer cd %:h
-command! Lcdbuffer lcd %:h
 command! -nargs=* Job call jobstart(<q-args>)
-command! Tags call Tags()
-command! ReloadKeymap source ~/.vim/keymaps.vim
 " 全ハイライトを確認するバッファーを生成する
 command! Hitest noautocmd runtime syntax/hitest.vim
 " 一時的なバッファーを作る
@@ -29,6 +25,11 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 command! FcitxOff call Job('fcitx5-remote', '-c')
 command! TmpCommit Gina tmpc
 
+" CD:
+command! Cdbuffer cd %:h
+command! Lcdbuffer lcd %:h
+command! Cdgittop execute 'cd' vimrc#git_top()
+
 " Encoding:
 command! -bang -bar -complete=file -nargs=? EncodeUtf8      edit<bang> ++enc=utf-8 <args>
 command! -bang -bar -complete=file -nargs=? EncodeIso2022jp edit<bang> ++enc=iso-2022-jp <args>
@@ -42,15 +43,16 @@ command! -bang -bar -complete=file -nargs=? EncodeUnicode   EncodeUtf8<bang> <ar
 
 " Autoload:
 command! AddRepo call my#dein#add_repo()
-
 command! -nargs=1 SetTab call my#option#set_tab(<args>)
+
 command! OpenCop call OpenCop()
 command! OpenGitDiffWin call vimrc#open_git_diff('w')
 command! OpenGitDiffTab call vimrc#open_git_diff('t')
+
 command! UndoClear call vimrc#undo_clear()
 command! ActiveOnly call my#buffer#active_only()
 command! DeleteTrashBuffers call my#buffer#delete_trash_buffers()
-command! Cdgittop execute 'cd' vimrc#git_top()
 command! -nargs=1 -complete=customlist,my#note#file_completion Note call my#note#open(<q-args>)
+
 command! -nargs=+ -complete=command Capture call u#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call u#capture_win(<q-args>)

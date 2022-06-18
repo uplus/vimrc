@@ -126,6 +126,15 @@ hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 [[plugins]]
 repo = 'mgee/lightline-bufferline'
 
+[[plugins]]
+repo = 'LeafCage/foldCC.vim'
+hook_add = '''
+  let g:foldCCtext_enable_autofdc_adjuster = 0
+  " let g:foldCCtext_head = 'printf("%3d ", v:foldend - v:foldstart+1)'
+  let g:foldCCtext_head = ''
+  " let g:foldCCtext_tail = ''
+'''
+
 ## -----------------------------
 ## action
 ## -----------------------------
@@ -159,15 +168,6 @@ repo = 'kana/vim-repeat'
 hook_add = '''
   let g:repeat_no_default_key_mappings = 1
   nmap . <Plug>(repeat-.)
-'''
-
-[[plugins]]
-repo = 'LeafCage/foldCC.vim'
-hook_add = '''
-  let g:foldCCtext_enable_autofdc_adjuster = 0
-  " let g:foldCCtext_head = 'printf("%3d ", v:foldend - v:foldstart+1)'
-  let g:foldCCtext_head = ''
-  " let g:foldCCtext_tail = ''
 '''
 
 [[plugins]]
@@ -268,7 +268,6 @@ hook_add = '''
   let g:loaded_matchparen = 1
   au myac ColorScheme * hi ParenMatch guibg=#5353e0
 '''
-
 
 ## -----------------------------
 ## search and replace
