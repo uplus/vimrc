@@ -137,10 +137,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'RRethy/vim-illuminate'
+if = "v:false"
 # on_event = ['BufEnter']
 hook_add = '''
   let g:Illuminate_ftblacklist = ['defx', 'denite', 'denite-filter']
   nmap \toh <cmd>IlluminationToggle<cr>
+  " let g:Illuminate_delay = 0
 '''
 
 ## -----------------------------
