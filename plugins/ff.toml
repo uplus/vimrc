@@ -125,34 +125,43 @@ repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_source = 'denops.vim'
 hook_add = '''
-  nnoremap s<Space> <Cmd>Ddu
-  \ -name=files file_rec
+  " file and buffer
+
+  " nnoremap <silent>\b  <cmd>Denite buffer<cr>
+  " nnoremap <silent>\f  <cmd>Denite file/rec<cr>
+  " nnoremap <silent>\F  <cmd>DeniteBufferDir file/rec<cr>
+  " nnoremap <silent>\\f <cmd>Denite file_mru<cr>
+
+
+  nnoremap s<Space> <Cmd>Ddu -name=files file_rec
   \ -source-option-path='`fnamemodify($MYVIMRC, ':h').'/rc'`'<CR>
-  nnoremap ss
-  \ <Cmd>Ddu -name=files file_point file_old
+  nnoremap ss <Cmd>Ddu -name=files file_point file_old
   \ `finddir('.git', ';') != '' ? 'file_external' : 'file_rec'`
   \ -sync -ui-param-displaySourceName=short<CR>
-  nnoremap / <Cmd>Ddu
-  \ -name=search line
-  \ -ui-param-startFilter<CR>
-  nnoremap * <Cmd>Ddu
-  \ -name=search line -input=`expand('<cword>')`
-  \ -ui-param-startFilter=v:false<CR>
-  nnoremap ;g <Cmd>Ddu
-  \ -name=search rg
-  \ -ui-param-ignoreEmpty
-  \ -source-param-input=`input('Pattern: ')`<CR>
-  nnoremap n <Cmd>Ddu
-  \ -name=search -resume
-  \ -ui-param-startFilter=v:false<CR>
+
+  " nnoremap / <Cmd>Ddu
+  "\ -name=search line
+  "\ -ui-param-startFilter<CR>
+  " nnoremap * <Cmd>Ddu
+  "\ -name=search line -input=`expand('<cword>')`
+  "\ -ui-param-startFilter=v:false<CR>
+  " nnoremap ;g <Cmd>Ddu
+  "\ -name=search rg
+  "\ -ui-param-ignoreEmpty
+  "\ -source-param-input=`input('Pattern: ')`<CR>
+  " nnoremap n <Cmd>Ddu
+  "\ -name=search -resume
+  "\ -ui-param-startFilter=v:false<CR>
+
   nnoremap ;r <Cmd>Ddu
   \ -buffer-name=register register
   \ -ui-param-autoResize<CR>
   xnoremap <expr> ;r (mode() ==# 'V' ? '"_R<Esc>' : '"_d') .
   \ '<Cmd>Ddu -buffer-name=register register
   \  -source-option-defaultAction=insert -ui-param-autoResize<CR>'
-  nnoremap sg <Cmd>Ddu
-  \ dein<CR>
+
+  " nnoremap sg <Cmd>Ddu
+  "\ dein<CR>
 '''
 hook_source = '''
 call ddu#custom#alias('source', 'file_rg', 'file_external')
