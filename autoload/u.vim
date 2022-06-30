@@ -40,6 +40,16 @@ endfunction "}}}
 
 " Function:
 
+function! u#clamp(value, min, max) abort "{{{
+  if a:value < a:min
+    return a:min
+  elseif a:max < a:value
+    return a:max
+  else
+    return a:value
+  endif
+endfunction " }}}
+
 " fold関数
 function! u#fold(list, expr) abort "{{{
   if type(a:expr) ==# v:t_string
