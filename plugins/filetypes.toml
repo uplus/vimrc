@@ -71,7 +71,7 @@ hook_add = '''
 [[plugins]]
 repo = 'jparise/vim-graphql'
 
-# TODO: treesitterにmarkdownがあるので移行検討
+# TODO: treesitterにmarkdownとmarkdown-inlineがあるので移行検討
 [[plugins]]
 repo = 'preservim/vim-markdown'
 # after/ftplugin/ があるとdeinのftpluginとコンフリクトするためマージしな
