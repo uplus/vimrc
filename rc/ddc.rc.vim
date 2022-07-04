@@ -9,63 +9,63 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'converters': ['converter_remove_overlap'],
     \ },
     \ 'around': {
-    \   'mark': 'A',
+    \   'mark': '[A]',
     \   'matchers': ['matcher_head', 'matcher_length'],
     \ },
     \ 'buffer': {
-    \   'mark': 'B',
+    \   'mark': '[B]',
     \   'matchers': ['matcher_head', 'matcher_length'],
     \   'minAutoCompleteLength': 1,
     \ },
     \ 'cmdline': {
-    \   'mark': 'cmdline',
+    \   'mark': '[cmdline]',
     \   'forceCompletionPattern': '\S/\S*',
     \ },
     \ 'cmdline-history': {
-    \   'mark': 'history',
+    \   'mark': '[history]',
     \   'sorters': [],
     \ },
-    \ 'necovim': {'mark': 'vim'},
+    \ 'necovim': {'mark': '[vim]'},
     \ 'neosnippet': {
-    \   'mark': 'ns',
+    \   'mark': '[ns]',
     \   'dup': v:true,
     \   'minAutoCompleteLength': 1,
     \ },
     \ 'mocword': {
-    \   'mark': 'mocword',
+    \   'mark': '[mocword]',
     \   'minAutoCompleteLength': 1,
     \   'maxItems': 10,
     \   'isVolatile': v:true,
     \ },
     \ 'nvim-lsp': {
-    \   'mark': 'lsp',
+    \   'mark': '[lsp]',
     \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
     \ },
     \ 'rtags': {
-    \   'mark': 'R',
+    \   'mark': '[R]',
     \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
     \ },
     \ 'file': {
-    \   'mark': 'F',
+    \   'mark': '[F]',
     \   'isVolatile': v:true,
     \   'minAutoCompleteLength': 1,
     \   'forceCompletionPattern': '\S/\S*',
     \   'sorters': [],
     \ },
-    \ 'shell-history': {'mark': 'shell'},
+    \ 'shell-history': {'mark': '[shell]'},
     \ 'zsh': {
-    \   'mark': 'zsh',
+    \   'mark': '[zsh]',
     \   'isVolatile': v:true,
     \   'minAutoCompleteLength': 1,
     \   'forceCompletionPattern': '\S/\S*'
     \ },
     \ 'rg': {
-    \   'mark': 'rg',
+    \   'mark': '[rg]',
     \   'matchers': ['matcher_head', 'matcher_length'],
     \   'minAutoCompleteLength': 1,
     \ },
     \ 'line': {
-    \   'mark': 'L',
+    \   'mark': '[L]',
     \   'matchers': ['matcher_head', 'matcher_length'],
     \   'minAutoCompleteLength': 1,
     \ },
