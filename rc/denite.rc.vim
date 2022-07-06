@@ -83,12 +83,12 @@ call denite#custom#source('file/old', 'converters', ['converter/relative_word'])
 if executable('rg') " ripgrep
   " https://github.com/BurntSushi/ripgrep
   call denite#custom#var('file/rec',
-        \ 'command', ['rg', '--files', '--hidden', '--glob', '!.git', '--color', 'never']
+        \ 'command', ['rg', '--files', '--hidden', '--glob', '!.git', '--color', 'never', '--smart-case', '-P']
         \ )
   " multilineをいい感じに使うために --vimgrep ではなく --columnと--no-headingを使う
   call denite#custom#var('grep', {
         \ 'command': ['rg', '--threads', '1'],
-        \ 'default_opts': ['--multiline', '--column', '--no-heading', '--smart-case'],
+        \ 'default_opts': ['--multiline', '--column', '--no-heading', '--smart-case', '-P'],
         \ 'recursive_opts': [],
         \ 'final_opts': [],
         \ 'separator': ['--'],
