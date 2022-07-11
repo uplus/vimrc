@@ -25,8 +25,9 @@ endfor
 let g:netrw_nogx = 1
 
 " Enable filetype lua
-let g:did_load_filetypes = 0
-let g:do_filetype_lua = 1
+" 72877bb でfiletype.luaがデフォになったから廃止
+" let g:did_load_filetypes = 0
+" let g:do_filetype_lua = 1
 
 " provider config
 let g:loaded_node_provider = 0
