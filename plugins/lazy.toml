@@ -45,10 +45,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+# TODO: nvim_win_closeで削除されたwindowでvim.scheduleが発動してエラーになるから抑制
+if = 'v:false'
 on_ft = ['qf']
 hook_post_source = '''
 lua << EOF
-  require('bqf.config').setup {
+  require('bqf.config').setup({
     auto_enable = true,
     magic_window = true,
     auto_resize_height = false,
@@ -59,7 +61,7 @@ lua << EOF
         win_vheight = 10,
         wrap = false,
     },
-  }
+  })
 EOF
 '''
 
