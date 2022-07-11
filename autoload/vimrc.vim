@@ -32,24 +32,6 @@ function! vimrc#close_floating_win(filetype_pattern) abort "{{{
   call map(close_windows, 'nvim_win_close(v:val, v:false)')
 endfunction "}}}
 
-function! vimrc#is_noname_win(win_handle) abort "{{{
-  let buf_handle = nvim_win_get_buf(a:win_handle)
-  " bufname()と違ってfullpathが得られる
-  let bufname = nvim_buf_get_name(buf_handle)
-
-  " bufname()と挙動が違う
-  if bufname =~# '\v(\[defx])'
-    return 1
-  end
-
-  return nvim_buf_get_option(buf_handle, 'buftype') ==# '' && bufname ==# ''
-endfunction "}}}
-
-function! vimrc#close_noname_wins() abort "{{{
-  let windows = filter(nvim_list_wins(), 'vimrc#is_noname_win(v:val)')
-  call map(windows, 'nvim_win_close(v:val, v:false)')
-endfunction "}}}
-
 function! vimrc#pwgen() abort "{{{
   return u#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")
 endfunction "}}}
