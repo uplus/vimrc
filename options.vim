@@ -81,7 +81,7 @@ set cinoptions+=#0,J1,j1,g0,N-2
 "}}}
 
 " set sessionoptions
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,winpos
+set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 set viewoptions=folds,options,cursor,curdir
 
 set showfulltag         " Display all the information of the tag by the supplement of the Insert mode.
