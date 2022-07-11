@@ -20,11 +20,12 @@ function vimrc#get_cword() abort "{{{
   endtry
 endfunction "}}}
 
-function! vimrc#is_floating_win(bufnr) abort "{{{
-  return nvim_win_get_config(a:bufnr)['relative'] !=# ''
+function! vimrc#is_floating_win(win_handle) abort "{{{
+  return nvim_win_get_config(a:win_handle)['relative'] !=# ''
 endfunction "}}}
 
 " 指定したファイルタイプのフローティングウィンドウを閉じる
+" TODO: 不要になったらしい？
 function! vimrc#close_floating_win(filetype_pattern) abort "{{{
   let floating_windows = filter(nvim_list_wins(), 'vimrc#is_floating_win(v:val)')
   let close_windows = filter(floating_windows, "getbufvar(nvim_win_get_buf(v:val), '&filetype') =~# a:filetype_pattern")

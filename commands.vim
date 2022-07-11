@@ -50,8 +50,6 @@ command! OpenGitDiffWin call vimrc#open_git_diff('w')
 command! OpenGitDiffTab call vimrc#open_git_diff('t')
 
 command! UndoClear call vimrc#undo_clear()
-command! ActiveOnly call my#buffer#active_only()
-command! DeleteTrashBuffers call my#buffer#delete_trash_buffers()
 command! -nargs=1 -complete=customlist,my#note#file_completion Note call my#note#open(<q-args>)
 
 command! -nargs=+ -complete=command Capture call u#capture(<q-args>)

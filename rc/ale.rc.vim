@@ -38,13 +38,7 @@ let g:ale_list_window_open_type= 'botright'
 
 function! s:set_ale_win_height(percent) abort
   let height = float2nr(&lines * a:percent)
-  if height < 5
-    let g:ale_list_window_size = 5
-  elseif 15 < height
-    let g:ale_list_window_size = 15
-  else
-    let g:ale_list_window_size = height
-  end
+  let g:ale_list_window_size = u#clamp(height, 5, 15)
 endfunction
 
 call s:set_ale_win_height(0.1)

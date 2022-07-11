@@ -18,10 +18,10 @@ function! my#terminal#working_terminal(...) abort "{{{
 
   if bufexists(get(g:, 'my#terminal#working_terminal_nr', -1))
     " 既存
-    call my#terminal#float(g:my#terminal#working_terminal_nr, 0.7, 0.8)
+    call my#terminal#float(g:my#terminal#working_terminal_nr, 0.8, 0.8)
   else
     " 新規
-    call my#terminal#float(bufnr('%'), 0.7, 0.8)
+    call my#terminal#float(bufnr('%'), 0.8, 0.8)
     call my#terminal#new(l:cmd)
 
     let g:my#terminal#working_terminal_nr = bufnr('%')

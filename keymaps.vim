@@ -192,7 +192,7 @@ nnoremap <silent>,dw :wqall<CR>
 "}}}
 
 " #buffer "{{{
-nnoremap <silent>,ba :ActiveOnly<CR>
+nnoremap <silent>,ba <cmd>call my#buffer#active_only()<CR>
 nnoremap <silent>,bo :only<CR>
 nnoremap <silent>,bt :tabonly<CR>
 nnoremap <silent>,bl :ls<CR>
