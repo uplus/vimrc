@@ -116,7 +116,7 @@ function! Sort(k, ...) abort range "{{{
   call setpos('.', pos)
 endfunction "}}}
 
-function! OpenCop() abort
+function! OpenCop() abort "{{{
   let rule = u#delete_chars(expand('<cWORD>'), ':')
   let rule_downcase =  substitute(rule, '.', '\L\0', 'g')
   let group = matchstr(rule_downcase, '^.*\ze/')
@@ -124,9 +124,9 @@ function! OpenCop() abort
 
   " https://docs.rubocop.org/rubocop/cops_layout.html#layoutemptylinebetweendefs
   call openbrowser#open('https://docs.rubocop.org/rubocop/cops_' . group . '.html#' . tag)
-endfunction
+endfunction "}}}
 
-function! JoinText(text) abort
+function! JoinText(text) abort "{{{
   let str = a:text
 
   " remove head comment marker
@@ -162,7 +162,7 @@ function! JoinText(text) abort
   let str = substitute(str, '\v%(\n\d+)@<!\.\s+%(\n)@!', '.\n', 'g')
 
   return str
-endfunction
+endfunction "}}}
 
 " 動作確認用
 " vnoremap <expr>gs_ printf('"%sy', g:working_register) . "<cmd>echo JoinText(getreg(g:working_register))<cr>"

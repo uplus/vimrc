@@ -13,7 +13,7 @@ call submode#enter_with('movefold', 'n', '', 'zj', 'zjzMzvzz')
 call submode#map('movefold', 'n', '', 'k', 'zkzMzv[zzz')
 call submode#map('movefold', 'n', '', 'j', 'zjzMzvzz')
 
-" move between fold but not open and close it
+" move between fold without open and close it
 call submode#enter_with('movefold-not', 'n', '', 'zK', 'zk')
 call submode#enter_with('movefold-not', 'n', '', 'zJ', 'zj')
 call submode#map('movefold-not', 'n', '', 'K', 'zk')
@@ -31,12 +31,6 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
-" time travel
-call submode#enter_with('time-travel', 'n', '', 'g-', 'g-')
-call submode#enter_with('time-travel', 'n', '', 'g+', 'g+')
-call submode#map('time-travel', 'n', '', '-', 'g-')
-call submode#map('time-travel', 'n', '', '+', 'g+')
-
 " continuous x
 nmap <silent><Plug>(continuous-x) <Plug>(u10-undojoin)"_x
 call submode#enter_with('continuous-x', 'n', '', 'x', '"_x')
@@ -45,9 +39,3 @@ call submode#map('continuous-x', 'n', 'r', 'x', '<Plug>(continuous-x)')
 " clurin undojoin
 call submode#enter_with('clurin', 'n', 'r', '!', '<Plug>(clurin-next)')
 call submode#map('clurin', 'n', 'r', '!', '<Plug>(clurin-undojoin)')
-
-" emove
-call submode#enter_with('emove', 'nx', 'r', '[e', '<Plug>(MoveUp)')
-call submode#enter_with('emove', 'nx', 'r', ']e', '<Plug>(MoveDown)')
-call submode#map('emove', 'nx', 'r', '<up>', '<Plug>(MoveUp)')
-call submode#map('emove', 'nx', 'r', '<down>', '<Plug>(MoveDown)')
