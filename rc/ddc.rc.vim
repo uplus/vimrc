@@ -99,13 +99,18 @@ call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'mocword']
 let s:sources_pg = ['neosnippet', 'nvim-lsp', 'around']
-let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'yaml']
+let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'dockerfile']
 
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)
 
 if has('nvim')
   call ddc#custom#patch_filetype(s:lsp_filetypes, 'sources', s:sources_pg)
 endif
+
+call ddc#custom#patch_filetype(['yaml', 'json'],
+  \ 'sources',
+  \ ['neosnippet', 'nvim-lsp', 'around', 'file', 'mocword']
+  \ )
 
 call ddc#custom#patch_filetype(['deol'], {
   \ 'keywordPattern': '[0-9a-zA-Z_./-]',

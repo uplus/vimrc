@@ -49,12 +49,27 @@ local flags = {
 -- :help lspconfig-server-configurations
 -- "marksman"
   -- h1が複数あると警告が出て邪魔
-for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "yamlls", "graphql", }) do
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "graphql", "dockerls" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
     flags = flags,
   }
 end
+
+nvim_lsp["yamlls"].setup {
+  on_attach = on_attach,
+  flags = flags,
+  settings = {
+    yaml = {
+      -- schema pair patterns
+      schemas = {
+        -- special reserved key
+        kubernetes = {"charts/**/*.yaml", "charts/**/*.yml"},
+      }
+    },
+    redhat = { telemetry = { enabled = false } },
+  }
+}
 
 nvim_lsp["solargraph"].setup {
   on_attach = on_attach,
@@ -68,7 +83,7 @@ nvim_lsp["solargraph"].setup {
   }
 }
 
--- npm install -g typescript typescript-language-server pyright yaml-language-server graphql-language-service-cli
+-- npm install -g typescript typescript-language-server pyright yaml-language-server graphql-language-service-cli dockerfile-language-server-nodejs
 -- gem install solargraph
 -- go install golang.org/x/tools/gopls@latest
 -- wget https://github.com/artempyanykh/marksman/releases/download/2022-06-02/marksman-linux -O ~bin/marksman && chmod +x ~bin/marksman
