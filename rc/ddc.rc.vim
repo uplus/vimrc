@@ -34,7 +34,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'mocword': {
     \   'mark': '[mocword]',
     \   'minAutoCompleteLength': 1,
-    \   'maxItems': 10,
+    \   'maxItems': 6,
     \   'isVolatile': v:true,
     \ },
     \ 'nvim-lsp': {
@@ -125,8 +125,9 @@ call ddc#custom#patch_filetype(['zsh', 'bash'],
 " Context:
 " TODO: '_'  で指定したい. 正規表現が使いたい
 
-call ddc#custom#set_context(extend(s:lsp_filetypes, ['yaml', 'vim']), { -> s:context_syntax() })
+call ddc#custom#set_context(extend(s:lsp_filetypes, ['vim']), { -> s:context_syntax() })
 
+" 上書きしたいオプションを返す
 function! s:context_syntax() abort
   if ddc#syntax#in(['TSNone'])
     " Rubyの "#{}" など
