@@ -48,7 +48,7 @@ local flags = {
 -- :help lspconfig-server-configurations
 -- "marksman"
   -- h1が複数あると警告が出て邪魔
-for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "graphql", "dockerls" }) do
+for _, server in ipairs({ "pyright", "rust_analyzer", "tsserver", "gopls", "graphql", "dockerls", "metals" }) do
   nvim_lsp[server].setup {
     on_attach = on_attach,
     flags = flags,
