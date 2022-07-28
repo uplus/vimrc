@@ -237,6 +237,7 @@ hook_add = '''
   map ;F <cmd>HopChar1BC<cr>
 
   " TODO: inclusive_jump消えたらしい. hint_offset?
+  " https://phaazon.net/blog/hop-2022
   " inclusive_jump = true で;fで対象を含める
   omap ;f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, inclusive_jump = true })<cr>
   omap ;F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, inclusive_jump = true })<cr>
