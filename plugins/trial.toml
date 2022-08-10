@@ -53,3 +53,5 @@
   # translate.vim alter
 # null-ls
   # https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
+# https://github.com/lambdalisue/file-protocol.vim
+  # file://...:line:columnを開ける
