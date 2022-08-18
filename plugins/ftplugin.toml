@@ -271,6 +271,10 @@ eruby = '''
   setl nowrap
 '''
 
+sbt = '''
+  set commentstring=//\ %s
+'''
+
 sh = '''
   let b:match_words = '\%(;\s*\|^\s*\)\@<=if\>:\%(;\s*\|^\s*\)\@<=fi\>,' .
     \ '\%(;\s*\|^\s*\)\@<=\%(for\|while\)\>:\%(;\s*\|^\s*\)\@<=done\>' .
