@@ -569,6 +569,17 @@ EOF
 '''
 
 [[plugins]]
+repo = 'j-hui/fidget.nvim'
+hook_post_source = '''
+  highlight FidgetTitle guifg=#8cd6fb
+  highlight FidgetTask guifg=#dcd6eb
+
+lua << EOF
+  require"fidget".setup{}
+EOF
+'''
+
+[[plugins]]
 repo = 'vim-jp/vital.vim'
 
 [[plugins]] # :PP! is same as :echomes

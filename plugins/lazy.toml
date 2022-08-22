@@ -544,6 +544,13 @@ on_map  = '<Plug>(operator-jump'
 ## misc
 ## -----------------------------
 
+[[plugins]] # nvimから消されたLspのVimコマンドインターフェース
+repo = 'ii14/lsp-command'
+on_cmd = 'Lsp'
+hook_add = '''
+  let g:lsp_legacy_commands = v:true
+'''
+
 [[plugins]]
 repo = 'tpope/vim-characterize'
 on_map = '<Plug>(characterize)'

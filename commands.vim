@@ -25,7 +25,7 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 command! FcitxOff call Job('fcitx5-remote', '-c')
 command! TmpCommit Gina tmpc
 
-" CD:
+" Cd:
 command! Cdbuffer cd %:h
 command! Lcdbuffer lcd %:h
 command! Cdgittop execute 'cd' vimrc#git_top()
@@ -54,3 +54,5 @@ command! -nargs=1 -complete=customlist,my#note#file_completion Note call my#note
 
 command! -nargs=+ -complete=command Capture call u#capture(<q-args>)
 command! -nargs=+ -complete=command CaptureWin call u#capture_win(<q-args>)
+
+command! MetalsGenerateBspConfig call vimrc#lsp_execute_command("metals.generate-bsp-config", v:null)

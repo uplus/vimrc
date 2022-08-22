@@ -51,3 +51,5 @@
   # easymotion alter
 # https://github.com/skanehira/denops-translate.vim
   # translate.vim alter
+# null-ls
+  # https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40

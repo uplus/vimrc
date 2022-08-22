@@ -81,3 +81,7 @@ endfunction "}}}
 function! vimrc#git_top() abort "{{{
   return system('git rev-parse --show-toplevel')
 endfunction "}}}
+
+function! vimrc#lsp_execute_command(command, arguments) abort
+  echo luaeval('vim.lsp.buf_request(0, "workspace/executeCommand", { command = _A[1], arguments = _A[2] })', [a:command, a:arguments])
+endfunction

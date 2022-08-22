@@ -13,6 +13,7 @@ function! s:set_common_highlights() abort
   hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#447494 cterm=NONE gui=NONE
   hi VertSplit    guifg=#7C7863 guibg=NONE
 
+  hi ErrorMsg   guifg=#fcfdf8 guibg=#af0f07
   " hi Title      ctermfg=118               guifg=#87ff00
   hi Error      ctermfg=161  ctermbg=NONE guifg=#d7005f guibg=NONE
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=NONE gui=NONE
