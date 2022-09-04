@@ -469,8 +469,6 @@ lua <<EOF
           rust = {
               'impl_item',
           },
-          yaml = { 'block_mapping_pair', },
-          json = { 'pair', },
       },
       exact_patterns = {
           -- Example for a specific filetype with Lua patterns
