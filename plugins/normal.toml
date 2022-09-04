@@ -141,8 +141,9 @@ repo = 'RRethy/vim-illuminate'
 # on_event = ['BufEnter']
 hook_add = '''
   let g:Illuminate_ftblacklist = ['defx', 'denite', 'denite-filter']
-  nmap \toh <cmd>IlluminationToggle<cr>
+  let g:Illuminate_highlightUnderCursor = 0
   " let g:Illuminate_delay = 0
+  nmap \toh <cmd>IlluminateToggle<cr>
 '''
 
 ## -----------------------------
