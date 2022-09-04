@@ -86,7 +86,8 @@ call ddc#custom#patch_global(
 
 " Use pum.vim
 call pum#set_option({
- \ 'border': 'single'
+ \ 'border': 'single',
+ \ 'scrollbar_char': '│',
  \ })
 call ddc#custom#patch_global('autoCompleteEvents', [
   \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
