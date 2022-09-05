@@ -36,7 +36,7 @@ function! s:set_overwrite_highlights()
   hi TSLabel ctermfg=75 guifg=#4fbffe
 
   " vim-illuminate
-  hi! illuminatedWord guibg=#2f3b3f
+  hi! illuminatedWord guibg=#2f3b3f gui=italic
   hi! link IlluminatedWordText illuminatedWord
   hi! link IlluminatedWordRead illuminatedWord
   hi! link IlluminatedWordWrite illuminatedWord

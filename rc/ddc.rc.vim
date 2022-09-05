@@ -100,7 +100,7 @@ call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'mocword']
 let s:sources_pg = ['neosnippet', 'nvim-lsp', 'around']
-let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'dockerfile']
+let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'dockerfile', 'scala', 'lua']
 
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)
 
