@@ -5,7 +5,7 @@ let g:ale_completion_enabled = 0
 let g:ale_echo_cursor = 0
 let g:ale_set_highlights = 0
 let g:ale_set_signs = 1
-let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_cursor = 2
 
 " Lint config
 let g:ale_lint_delay = 10
