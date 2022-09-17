@@ -568,6 +568,9 @@ EOF
 '''
 
 [[plugins]]
+repo = 'lukas-reineke/lsp-format.nvim'
+
+[[plugins]]
 repo = 'j-hui/fidget.nvim'
 hook_post_source = '''
   highlight FidgetTitle guifg=#8cd6fb
