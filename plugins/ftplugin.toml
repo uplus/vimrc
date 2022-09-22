@@ -98,6 +98,7 @@ gitcommit = '''
   setl spell
   setl nofoldenable
   setl textwidth=0
+  set iskeyword+=-
   " after InsertEnter for committia.vim
   au InsertEnter * setl lazyredraw
 
