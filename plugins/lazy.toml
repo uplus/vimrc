@@ -288,7 +288,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'monaqa/dial.nvim'
-on_map = ['<Plug>(dial-increment)']
+on_map = ['<Plug>(dial-increment)', '<Plug>(dial-decrement)']
 hook_add = '''
   nmap  <c-a>  <Plug>(dial-increment)
   nmap  <c-x>  <Plug>(dial-decrement)
