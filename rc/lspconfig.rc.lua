@@ -58,6 +58,7 @@ end
 nvim_lsp["metals"].setup {
   on_attach = on_attach,
   flags = flags,
+  root_dir = util.root_pattern('build.sbt', 'build.sc', 'build.gradle', 'pom.xml', '.bsp/scala-cli.json'),
   filetypes = { "scala", "sbt", "java" },
 }
 
