@@ -156,6 +156,11 @@ let s:config = {
       \   'command': 'cargo',
       \   'exec': '%c run %o',
       \ },
+      \ 'scala': {'type': 'scala/scala-cli'},
+      \ 'scala/scala-cli': {
+      \   'command': 'scala-cli',
+      \   'exec': '%c %o %s',
+      \ },
       \ 'xmodmap': {
       \   'command': 'xmodmap',
       \   'exec': '%c %o %s',
