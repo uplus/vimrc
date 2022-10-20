@@ -30,9 +30,6 @@ function! g:SmartQuickRun() abort "{{{
   echo 'start quickrun'
   if expand('%') =~# '_spec.rb$'
     !rspec %
-  " elseif &filetype ==# 'vim'
-    " 現在の行か選択範囲を実行する
-    " rangeで引数とれる(デフォルトを現在の行にすれば上手く行きそう)
   else
     QuickRun -mode n
   endif
@@ -156,7 +153,11 @@ let s:config = {
       \   'command': 'cargo',
       \   'exec': '%c run %o',
       \ },
-      \ 'scala': {'type': 'scala/scala-cli'},
+      \ 'scala': {'type': (findfile('build.sbt', '.;') ==# '')? 'scala/scala-cli' : 'scala/sbt' },
+      \ 'scala/sbt': {
+      \   'command': 'sbt',
+      \   'exec': '%c run %o',
+      \ },
       \ 'scala/scala-cli': {
       \   'command': 'scala-cli',
       \   'exec': '%c %o %s',
@@ -169,31 +170,6 @@ let s:config = {
 call extend(g:quickrun_config, s:config)
 unlet s:config
 "}}}
-
-" #replace_region {{{
-let s:config = {
-      \ 'replace_region' : {
-      \   'outputter'                  : 'error',
-      \   'outputter/success'          : 'replace_region',
-      \   'outputter/error'            : 'message',
-      \   'outputter/message/log'      : 1,
-      \   'type'                       : 'ruby',
-      \ },
-      \}
-
-call extend(g:quickrun_config, s:config)
-unlet s:config
-
-command! -nargs=* -range -complete=customlist,quickrun#complete
-      \ ReplaceRegion QuickRun
-      \   -mode v
-      \   -outputter error
-      \   -outputter/success replace_region
-      \   -outputter/error message
-      \   -outputter/message/log 1
-      \   -hook/echo/enable 0
-      \   -type ruby
-" }}}
 
 " #hooks
 " lightline_update {{{
