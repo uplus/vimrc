@@ -19,6 +19,8 @@ function! s:set_common_highlights() abort
   hi QFError    ctermfg=198               guifg=#ff0087               cterm=NONE gui=NONE
   hi QFWarning  ctermfg=202               guifg=#ff5f00               cterm=NONE gui=NONE
   hi QuickFixLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
+  hi! link qfFileName SrceryBrightGreen
+  hi! link qfLineNr SrceryBrightBlue
 endfunction
 
 " filetypeでスキーマを切り替えていたときの名残
