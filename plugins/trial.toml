@@ -64,3 +64,22 @@
 # https://github.com/lukas-reineke/lsp-format.nvim
 # https://github.com/yioneko/nvim-yati
 # https://github.com/skanehira/denops-translate.vim
+
+[[plugins]]
+repo = 'mfussenegger/nvim-dap'
+
+[[plugins]]
+repo = 'rcarriga/nvim-dap-ui'
+hook_post_source = '''
+lua <<EOF
+  require("dapui").setup()
+EOF
+'''
+
+# [[plugins]]
+# repo = 'theHamsta/nvim-dap-virtual-text'
+# hook_post_source = '''
+# lua <<EOF
+#   require("nvim-dap-virtual-text").setup()
+# EOF
+# '''
