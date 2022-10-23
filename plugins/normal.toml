@@ -431,7 +431,7 @@ hook_post_update = 'TSUpdate' # We recommend updating the parsers on update
 # これVimEnterじゃなくてhook_addでは
 hook_post_source = '''
   " set syntax=hoge が自動で実行されるのを防ぐ
-  au! syntaxset
+  " au! syntaxset
 
   luafile ~/.vim/rc/nvim-treesitter.rc.lua
 '''

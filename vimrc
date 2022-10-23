@@ -67,7 +67,7 @@ if &g:loadplugins
     source ~/.cache/dein/.cache/init.vim/.dein/after/ftplugin.vim
 
     " treesitterでサポートされてない色に色を付けるためにこのタイミングで必要(はずせる気がする)
-    au FileType * call my#option#set_syntax()
+    " au FileType * call my#option#set_syntax()
     " au VimEnter * call lightline#highlight()
     " au VimEnter * if &l:ft ==# '' | filetype detect | endif
   augroup END
