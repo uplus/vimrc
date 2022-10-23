@@ -521,9 +521,9 @@ hook_post_source = '''
 [[plugins]]
 repo = 'stevearc/aerial.nvim'
 hook_add = '''
-  nnoremap <c-w>o <cmd>AerialOpen<cr>
+  nnoremap <c-w>o <cmd>AerialOpen float<cr>
   nmap <c-w><c-o> <c-w>o
-  nnoremap <c-w>O <cmd>AerialToggle!<cr>
+  nnoremap <c-w>O <cmd>AerialToggle! float<cr>
 '''
 hook_post_source = '''
 lua << EOF
@@ -533,8 +533,9 @@ lua << EOF
       markdown = { "treesitter", "markdown" },
     },
 
-    close_behavior = "global",
     open_automatic = false,
+    close_automatic_events = { 'unfocus' },
+    attach_mode = "window",
 
     -- default_direction = "float",
     default_direction = "right",
@@ -545,11 +546,12 @@ lua << EOF
     min_width = 40,
 
     float = {
+      border = "rounded",
       -- Enum: cursor, editor, win
       --   cursor - Opens float on top of the cursor
       --   editor - Opens float centered in the editor
       --   win    - Opens float centered in the window
-      relative = "win",
+      relative = "editor",
 
       -- These control the height of the floating window.
       -- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
@@ -559,7 +561,7 @@ lua << EOF
       height = nil,
       min_height = { 8, 0.1 },
 
-      override = function(conf)
+      override = function(conf, source_winid)
         return conf
       end,
     }
@@ -577,7 +579,14 @@ hook_post_source = '''
   highlight FidgetTask guifg=#dcd6eb
 
 lua << EOF
-  require"fidget".setup{}
+  require"fidget".setup{
+    window = {
+      relative = "win",         -- where to anchor, either "win" or "editor"
+      blend = 100,              -- &winblend for the window
+      zindex = nil,             -- the zindex value for the window
+      border = "rounded",          -- style of border for the fidget window
+    },
+  }
 EOF
 '''
 

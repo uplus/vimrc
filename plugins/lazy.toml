@@ -304,10 +304,24 @@ require("dial.config").augends:register_group{
   default = {
     augend.integer.alias.decimal,
     augend.integer.alias.hex,
-    augend.date.alias["%Y/%m/%d"],
-    augend.date.alias["%Y-%m-%d"],
-    augend.date.alias["%m/%d"],
-    augend.date.alias["%H:%M"],
+    augend.date.new {
+      pattern = "%Y/%m/%d",
+      default_kind = "day",
+    },
+    augend.date.new {
+      pattern = "%Y-%m-%d",
+      default_kind = "day",
+    },
+    augend.date.new {
+      pattern = "%m/%d",
+      default_kind = "day",
+      only_valid = true,
+    },
+    augend.date.new {
+      pattern = "%H:%M",
+      default_kind = "day",
+      only_valid = true,
+    },
     augend.semver.alias.semver,
     augend.constant.alias.ja_weekday_full,
   },
@@ -427,23 +441,23 @@ hook_add = '''
   endfunction
 '''
 
-[[plugins]]
-repo = 'lambdalisue/vim-gista'
-on_cmd = ['Gista']
-on_func = 'gista#'
-hook_add = '''
-  let g:gista#client#default_username = 'uplus'
-  let g:gista#command#post#default_public = 0
-  let g:gista#command#post#allow_empty_description = 1
-'''
-
-[[plugins]]
-repo = 'mattn/gist-vim'
-depends = 'webapi-vim'
-on_cmd = 'Gist'
-hook_source = '''
-  let g:gist_clip_command = 'xclip -selection clipboard'
-'''
+# [[plugins]]
+# repo = 'lambdalisue/vim-gista'
+# on_cmd = ['Gista']
+# on_func = 'gista#'
+# hook_add = '''
+#   let g:gista#client#default_username = 'uplus'
+#   let g:gista#command#post#default_public = 0
+#   let g:gista#command#post#allow_empty_description = 1
+# '''
+#
+# [[plugins]]
+# repo = 'mattn/gist-vim'
+# depends = 'webapi-vim'
+# on_cmd = 'Gist'
+# hook_source = '''
+#   let g:gist_clip_command = 'xclip -selection clipboard'
+# '''
 
 [[plugins]]
 repo = 'f-person/git-blame.nvim'
