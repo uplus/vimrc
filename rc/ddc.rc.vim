@@ -39,11 +39,11 @@ call ddc#custom#patch_global('sourceOptions', {
     \ },
     \ 'nvim-lsp': {
     \   'mark': '[lsp]',
-    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
+    \   'forceCompletionPattern': '(?:\.|:|->)(?:\w|-|\+)*'
     \ },
     \ 'rtags': {
     \   'mark': '[R]',
-    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
+    \   'forceCompletionPattern': '(?:\.|:|->)(?:\w|-|\+)*'
     \ },
     \ 'file': {
     \   'mark': '[F]',
@@ -84,15 +84,20 @@ call ddc#custom#patch_global(
     \ 'sources', ['neosnippet', 'around', 'buffer', 'file']
     \ )
 
+" keywordPattern: 補完アイテムが記号でも継続できるようにする
+call ddc#custom#patch_global({
+  \ 'autoCompleteEvents': [
+  \   'InsertEnter', 'TextChangedI', 'TextChangedP',
+  \   'CmdlineEnter', 'CmdlineChanged',
+  \ ],
+  \ 'keywordPattern': '[a-zA-Z_+-]\w*'
+  \ })
+
 " Use pum.vim
 call pum#set_option({
  \ 'border': 'single',
  \ 'scrollbar_char': '│',
  \ })
-call ddc#custom#patch_global('autoCompleteEvents', [
-  \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-  \ 'CmdlineEnter', 'CmdlineChanged',
-  \ ])
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 
