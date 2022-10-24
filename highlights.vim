@@ -65,6 +65,10 @@ function! s:set_overwrite_highlights()
   hi StatusLine gui=NONE guibg=#20202f
   hi StatusLineNC gui=NONE guibg=#20202f
 
+  " Fidget:
+  hi! link FidgetTitle SrceryBrightWhite
+  hi! link FidgetTask SrceryBrightWhite
+
   if g:colors_name ==? 'srcery'
     hi Normal guibg=#0c0b09
     hi! link Comment SrceryBrightBlack

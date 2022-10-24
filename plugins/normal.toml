@@ -575,16 +575,12 @@ repo = 'lukas-reineke/lsp-format.nvim'
 [[plugins]]
 repo = 'j-hui/fidget.nvim'
 hook_post_source = '''
-  highlight FidgetTitle guifg=#8cd6fb
-  highlight FidgetTask guifg=#dcd6eb
-
 lua << EOF
   require"fidget".setup{
     window = {
-      relative = "win",         -- where to anchor, either "win" or "editor"
-      blend = 100,              -- &winblend for the window
-      zindex = nil,             -- the zindex value for the window
-      border = "rounded",          -- style of border for the fidget window
+      relative = "win",        -- where to anchor, either "win" or "editor"
+      blend = 10,              -- &winblend for the window
+      border = "rounded",      -- style of border for the fidget window
     },
   }
 EOF
