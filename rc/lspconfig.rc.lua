@@ -58,8 +58,11 @@ end
 nvim_lsp["metals"].setup {
   on_attach = on_attach,
   flags = flags,
-  root_dir = util.root_pattern('build.sbt', 'build.sc', 'build.gradle', 'pom.xml', '.bsp/scala-cli.json'),
+  root_dir = util.root_pattern('build.sbt', 'build.sc', 'build.gradle', 'pom.xml', '.scala-build'),
   filetypes = { "scala", "sbt", "java" },
+  -- init_options = {
+  --   statusBarProvider = 'off',
+  -- },
 }
 
 nvim_lsp["yamlls"].setup {
@@ -92,7 +95,6 @@ nvim_lsp["solargraph"].setup {
 nvim_lsp["sumneko_lua"].setup {
   on_attach = on_attach,
   flags = flags,
-  single_file_support = true,
   init_options = { formatting = true },
   settings = {
     Lua = {
