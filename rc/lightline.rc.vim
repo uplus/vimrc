@@ -130,13 +130,14 @@ function! LLfilename() abort "{{{
     return ''
   endif
 
+
   let l:f = expand('%:t')
   let l:tmp = get(s:e, &filetype, get(s:e, l:f, ''))
   if l:tmp !=# ''
     return eval(l:tmp)
   endif
 
-  let l:filename = bufname('%')
+  let l:filename = fnamemodify(bufname('%'), ':~:.')
   if winwidth(0) < 120
     let l:filename = pathshorten(l:filename)
   endif
