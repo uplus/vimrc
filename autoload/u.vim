@@ -103,3 +103,11 @@ function! u#capture_win(cmd) abort "{{{
   silent put =result
   1,2delete _
 endfunction "}}}
+
+function! u#substitute_lines(pattern, string, flag) abort range "{{{
+  let n = 1
+  for line in getline(a:firstline, a:lastline)
+    call setline(n, substitute(line, a:pattern, a:string, a:flag))
+    let n = n + 1
+  endfor
+endfunction "}}}
