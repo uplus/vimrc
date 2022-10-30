@@ -1,5 +1,7 @@
 " Input Mappings:
 
+" NOTE: shift-enterにただのetnerマッピングするといいのでは?
+
 imap <c-l> <plug>(neosnippet_expand_or_jump)
 smap <c-l> <plug>(neosnippet_jump)
 xmap <c-l> <plug>(neosnippet_jump)
