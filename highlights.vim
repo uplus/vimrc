@@ -95,12 +95,12 @@ function! s:set_overwrite_highlights()
     hi! link mkdCodeEnd       mkdCodeStart       " ```
 
     " vim-markdown: headers
-    hi! link htmlH1 SrceryBrightMagenta
-    hi! link htmlH2 SrceryBrightBlue
-    hi! link htmlH3 SrceryBrightGreen
-    hi! link htmlH4 SrceryYellow
-    hi! link htmlH5 SrceryBrightRed
-    hi! link htmlH6 SrceryBrightCyan
+    hi! link htmlH1 SrceryBrightMagentaBold
+    hi! link htmlH2 SrceryBrightBlueBold
+    hi! link htmlH3 SrceryBrightGreenBold
+    hi! link htmlH4 SrceryYellowBold
+    hi! link htmlH5 SrceryBrightRedBold
+    hi! link htmlH6 SrceryBrightCyanBold
   endif
 endfunction
 
