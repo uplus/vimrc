@@ -1,2 +1,38 @@
+snippet #!
+	#!/usr/bin/env bash
+
 snippet current
 	current="$(cd -- "$(dirname -- "${BASH_SOURCE:-\$0}")" && pwd)"
+
+snippet if
+	if ${1:condition}; then
+		${2}
+	fi
+
+snippet ife
+	if ${1:condition}; then
+		${2}
+	else
+		${3}
+	fi
+
+snippet elif
+	elif ${1:condition} ; then
+		${2}
+
+snippet for
+	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
+		${3}
+	done
+
+snippet if-args-empty
+options head
+	if [[ $# -eq 0 ]]; then
+		${1}
+	else
+		${2}
+	fi
+
+snippet     warn
+options     head
+	echo "${0}" >&2

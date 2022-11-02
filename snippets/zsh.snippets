@@ -1,34 +1,10 @@
+include sh.snippets
+
 snippet #!
 	#!/usr/bin/env zsh
 
 snippet cmdname
 	local cmdname="${0:t:r}"
-
-snippet if
-	if ${1:condition}; then
-		${2}
-	fi
-snippet ife
-	if ${1:condition}; then
-		${2}
-	else
-		${3}
-	fi
-snippet elif
-	elif ${1:condition} ; then
-		${2}
-snippet for
-	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
-		${3}
-	done
-
-snippet if-args-empty
-options head
-	if [[ $# -eq 0 ]]; then
-		${1}
-	else
-		${2}
-	fi
 
 snippet forin
 	for ${1:item} in ${2:list}; do
@@ -102,15 +78,6 @@ snippet tmp
 	trap "rm -f '${$1}'; exit 1" 2       # INT
 	trap "rm -f '${$1}'; exit 1" 1 15    # HUP TERM
 	${0}
-
-snippet     warn
-options     head
-	echo "${0}" >&2
-
-snippet     abort
-options     head
-	echo "${0}" >&2
-	exit 1
 
 snippet while-read
 	while read ${1:line}; do
