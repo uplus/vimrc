@@ -86,7 +86,7 @@ if executable('rg') " ripgrep
         \ )
   " multilineをいい感じに使うために --vimgrep ではなく --columnと--no-headingを使う
   call denite#custom#var('grep', {
-        \ 'command': ['rg', '--threads', '1'],
+        \ 'command': ['rg', '--threads', '0'],
         \ 'default_opts': ['--multiline', '--column', '--no-heading', '--hidden', '--glob=!.git/', '--smart-case', '-P'],
         \ 'recursive_opts': [],
         \ 'final_opts': [],
