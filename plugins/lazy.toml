@@ -23,9 +23,10 @@ hook_add = '''
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
 hook_post_update = 'call mkdp#util#install()'
-on_map = ['MarkdownPreview', 'MarkdownPreviewStop']
+on_cmd = ['MarkdownPreview', 'MarkdownPreviewStop']
+on_func = ['mkdp#util#install']
 hook_add = '''
-  let g:mkdp_browser = 'xdg-open'
+  " let g:mkdp_browser = 'xdg-open'
   let g:mkdp_auto_start = 0
   let g:mkdp_command_for_global = 0
   let g:mkdp_open_to_the_world = 0
