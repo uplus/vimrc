@@ -16,7 +16,7 @@ call denite#custom#option('default', {
   "\ 'highlight_window_background'
 
 function! s:set_denite_win(height_percent, width_percent) abort
-  let denite_win_width = &columns * a:width_percent
+  let denite_win_width = u#clamp(&columns * a:width_percent, v:numbermin, 150)
   let denite_win_col_pos = (&columns - denite_win_width) / 2
   let denite_win_height = u#clamp(&lines * a:height_percent, v:numbermin, 60)
   let denite_win_row_pos = (&lines - denite_win_height) / 2
