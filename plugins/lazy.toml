@@ -123,6 +123,10 @@ on_cmd = 'ColorSwatchGenerate'
 repo = 'uplus/colorsel.vim'
 on_cmd = 'ColorSel'
 
+[[plugins]]
+repo = 'uplus/nvim-syntax-info'
+on_cmd = ['SyntaxInfoEnable', 'SyntaxInfoToggle']
+
 ## -----------------------------
 ## action
 ## -----------------------------

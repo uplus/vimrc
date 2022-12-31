@@ -649,6 +649,10 @@ repo = 'thinca/vim-ref'
 #   let g:vim_game_code_break_item_limit = 4
 # '''
 
+# コードの雪崩れ
+# [[plugins]]
+# repo = 'Eandrju/cellular-automaton.nvim'
+
 # 容量が1GBぐらいある
 # [[plugins]]
 # repo = 'liuchengxu/vim-clap'

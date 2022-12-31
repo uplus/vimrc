@@ -14,14 +14,14 @@
 # repo = 'liuchengxu/vista.vim'
 # on_cmd = ['Vista']
 
-# [[plugins]]
-# repo = 'wadackel/nvim-syntax-info'
-# on_cmd = ['SyntaxInfoToggle']
-# helpのタグが自己重複してエラーが出る
-# Vim(helptags):E154: Duplicate tag "SyntaxInfo" in file ~/.cache/dein/.cache/init.vim/.dein/doc/syntaxinfo.txt
+
+# color schema
+  # https://github.com/EdenEast/nightfox.nvim
+  # https://github.com/sainnhe/edge
+  # https://github.com/glepnir/zephyr-nvim
 
 # https://github.com/EdenEast/nightfox.nvim
-# https://github.com/SmiteshP/nvim-gps
+# https://github.com/SmiteshP/nvim-navic
 # https://github.com/danymat/neogen
 # https://github.com/ggandor/leap.nvim
 # https://github.com/haringsrob/nvim_context_vt
@@ -34,13 +34,12 @@
 # https://github.com/nvim-treesitter/nvim-treesitter-refactor
 # https://github.com/tani/glance-vim
 #   https://zenn.dev/dog/articles/a69d4692c7615d
+#   markdown preview
 # https://github.com/lewis6991/satellite.nvim
 # https://github.com/skanehira/denops-docker.vim
 # https://github.com/b0o/incline.nvim
 # https://github.com/matsui54/ddu-vim-ui-select
 # https://github.com/hrsh7th/nvim-pasta
-# https://github.com/glepnir/zephyr-nvim
-  # color schema
 # https://github.com/kylechui/nvim-surround
   # dot repeatable
 # https://github.com/anuvyklack/hydra.nvim
@@ -63,7 +62,8 @@
   # jplus alter?
 # https://github.com/lukas-reineke/lsp-format.nvim
 # https://github.com/yioneko/nvim-yati
-# https://github.com/skanehira/denops-translate.vim
+# https://machakann.hatenablog.com/entry/2022/12/10/224306
+  # gnを複数ターゲットに適用する
 
 [[plugins]]
 repo = 'mfussenegger/nvim-dap'
