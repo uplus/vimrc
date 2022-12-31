@@ -7,8 +7,8 @@ endif
 AlterCommand rec[ache] Recache
 AlterCommand gi[na] Gina
 AlterCommand ti[g] tabnew\ +Tig
-AlterCommand tigb[lame] tabnew\ +TigBlame
-AlterCommand tb tabnew\ +TigBlame
+AlterCommand tigb[lame] TigBlame
+AlterCommand tb TigBlame
 
 AlterCommand lint ALELint
 AlterCommand fix ALEFix

@@ -319,6 +319,13 @@ depends = 'vim-quickrun'
 
 [[plugins]]
 repo = 'iberianpig/tig-explorer.vim'
+# hook_add = '''
+#   command! MyTig call my#option#set_minimal_window() | Tig
+#   command! MyTigBlame call my#option#set_minimal_window() | TigBlame %
+# '''
+hook_source = '''
+  au myac TermOpen *tig* call my#option#set_minimal_window()
+'''
 
 # VCSのdiffをsigncolumnに表示
 [[plugins]]
