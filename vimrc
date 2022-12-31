@@ -40,24 +40,25 @@ augroup myac
   autocmd!
 augroup END
 
-function! s:source(path) abort
-  let fpath = expand($HOME . '/.vim/' . a:path)
-  if filereadable(fpath)
-    execute 'source' fnameescape(fpath)
-  endif
+function! s:try_source(filepath) abort
+  try
+    execute 'source' a:filepath
+  catch /^Vim\%((\a\+)\)\=:E484/
+    " File not found
+  endtry
 endfunction
 
-call s:source('options.vim')
+source ~/.vim/options.vim
 
 " load dein
 if &g:loadplugins
-  call s:source('dein.vim')
+  source ~/.vim/dein.vim
 
   if has('vim_starting') && !empty(argv())
     " nvimではsyntax enableなどが必要ない
   endif
 
-  call s:source('highlights.vim')
+  source ~/.vim/highlights.vim
 
   augroup myac
     " lazy plugin以外のsourceとpost_sourceを実行する
@@ -73,10 +74,11 @@ if &g:loadplugins
   augroup END
 endif
 
-call s:source('functions.vim')
-call s:source('keymaps.vim')
-call s:source('commands.vim')
-call s:source('autocmds.vim')
-call s:source('local.vim')
+source ~/.vim/functions.vim
+source ~/.vim/keymaps.vim
+source ~/.vim/commands.vim
+source ~/.vim/autocmds.vim
+
+call s:try_source(' ~/.vim/local.vim')
 
 set secure
