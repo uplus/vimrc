@@ -225,7 +225,9 @@ EOF
 '''
 
 [[plugins]]
-repo = 'phaazon/hop.nvim'
+# repo = 'phaazon/hop.nvim'
+repo = 'aznhe21/hop.nvim'
+rev = '2d3085e40154813b034bce1ad034f0d323c0c581'
 hook_add = '''
   map ;w <cmd>HopWordAC<cr>
   map ;b <cmd>HopWordBC<cr>
