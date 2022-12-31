@@ -92,7 +92,7 @@ hook_post_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-around'
+repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -100,13 +100,13 @@ repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-mocword'
+repo = 'Shougo/ddc-source-mocword'
 on_source = 'ddc.vim'
 # cargo install mocword
 # https://github.com/high-moctane/mocword-data/releases/download/eng20200217/mocword.sqlite.gz
 
 [[plugins]]
-repo = 'Shougo/ddc-zsh'
+repo = 'Shougo/ddc-source-zsh'
 on_source = 'ddc.vim'
 depends = 'ddc.vim'
 
@@ -116,34 +116,34 @@ on_ft = ['vim', 'toml', 'markdown']
 depends = 'ddc.vim'
 
 # [[plugins]]
-# repo = 'tani/ddc-path'
+# repo = 'tani/ddc-source-path'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline'
+repo = 'Shougo/ddc-source-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline-history'
+repo = 'Shougo/ddc-source-cmdline-history'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-rg'
+repo = 'Shougo/ddc-source-rg'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-line'
+repo = 'Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
+repo = 'Shougo/ddc-source-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
-repo = 'LumaKernel/ddc-file'
+repo = 'LumaKernel/ddc-source-file'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-rtags'
+repo = 'Shougo/ddc-source-rtags'
 on_ft = ['c', 'cpp']
 
 # matcher, sorter, convert
