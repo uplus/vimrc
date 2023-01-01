@@ -6,7 +6,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'ignoreCase': v:true,
     \   'matchers': ['matcher_head'],
     \   'sorters': ['sorter_rank'],
-    \   'converters': ['converter_remove_overlap'],
+    \   'converters': ['converter_remove_overlap', 'converter_truncate_abbr'],
     \ },
     \ 'around': {
     \   'mark': '[A]',
