@@ -51,6 +51,9 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/pum.vim'
 
+[[plugins]]
+repo = 'Shougo/ddc-ui-pum'
+
 # https://github.com/topics/ddc-vim
 [[plugins]]
 repo = 'Shougo/ddc.vim'

@@ -8,9 +8,10 @@ xmap <c-l> <plug>(neosnippet_jump)
 
 " 候補選択系
 " insert_relative と select_relative がある
+" NOTE: forceCompletionPatternを空にすると0文字補完が効く
 inoremap <silent><expr><tab> <sid>imap_tab()
 inoremap <silent><expr><s-tab> pum#visible() ? "\<cmd>call pum#map#insert_relative(-1)\<cr>" : "\<c-h>"
-inoremap <silent><expr><c-n>   pum#visible() ? "\<cmd>call pum#map#insert_relative(+1)\<cr>" : ddc#manual_complete()
+inoremap <silent><expr><c-n>   pum#visible() ? "\<cmd>call pum#map#insert_relative(+1)\<cr>" : ddc#map#manual_complete()
 inoremap <c-p>                 <cmd>call pum#map#insert_relative(-1)<cr>
 
 " 確定系
@@ -44,7 +45,7 @@ function! s:imap_tab() abort
   if col('.') <= 1 || getline('.')[col('.') - 2] =~# '\s'
     return "\<tab>"
   else
-    return ddc#manual_complete()
+    return ddc#map#manual_complete()
   endif
 endfunction
 

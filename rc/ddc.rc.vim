@@ -29,16 +29,19 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'neosnippet': {
     \   'mark': '[ns]',
     \   'dup': v:true,
+    \   'maxItems': 5,
     \   'minAutoCompleteLength': 1,
     \ },
     \ 'mocword': {
     \   'mark': '[mocword]',
     \   'minAutoCompleteLength': 1,
-    \   'maxItems': 6,
+    \   'maxItems': 5,
     \   'isVolatile': v:true,
     \ },
     \ 'nvim-lsp': {
     \   'mark': '[lsp]',
+    \   'minAutoCompleteLength': 1,
+    \   'maxItems': 10,
     \   'forceCompletionPattern': '(?:\.|:|->)(?:\w|-|\+)*'
     \ },
     \ 'rtags': {
@@ -94,11 +97,12 @@ call ddc#custom#patch_global({
   \ })
 
 " Use pum.vim
+call ddc#custom#patch_global('ui', 'pum')
 call pum#set_option({
  \ 'border': 'single',
  \ 'scrollbar_char': '│',
+ \ 'auto_select': v:false,
  \ })
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 
 " Filetype:
@@ -136,7 +140,7 @@ call ddc#custom#patch_filetype(['zsh', 'bash'],
 " Context:
 " TODO: '_'  で指定したい. 正規表現が使いたい
 
-call ddc#custom#set_context(extend(s:lsp_filetypes, ['vim']), { -> s:context_syntax() })
+call ddc#custom#set_context_filetype(extend(s:lsp_filetypes, ['vim']), { -> s:context_syntax() })
 
 " 上書きしたいオプションを返す
 function! s:context_syntax() abort
