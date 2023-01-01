@@ -144,10 +144,11 @@ call ddc#custom#set_context_filetype(extend(s:lsp_filetypes, ['vim']), { -> s:co
 
 " 上書きしたいオプションを返す
 function! s:context_syntax() abort
-  if ddc#syntax#in(['TSNone'])
+  " treesitter由来は小文字始まり
+  if ddc#syntax#in(['none'])
     " Rubyの "#{}" など
     return {}
-  elseif ddc#syntax#in(['String', 'TSString', 'Comment', 'TSComment', 'zshComment', 'vimComment', 'vimLineComment'])
+  elseif ddc#syntax#in(['String', 'string', 'Comment', 'comment', 'zshComment', 'vimComment', 'vimLineComment'])
     return  { 'sources': ['file', 'around', 'mocword', 'neosnippet'] }
   else
     return {}
