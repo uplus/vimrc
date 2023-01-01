@@ -149,9 +149,10 @@ merged = 'v:false'
 
 # haskell
 
-[[plugins]]
-# neovimhaskell/haskell-vim よりこっちのほうが色つく
-repo = 'dag/vim2hs'
+# [[plugins]]
+# # neovimhaskell/haskell-vim よりこっちのほうが色つく
+# # 無効化が手間なomapがあるから無効化
+# repo = 'dag/vim2hs'
 
 [[plugins]]
 repo = 'itchyny/vim-haskell-indent'
