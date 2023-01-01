@@ -519,52 +519,12 @@ hook_post_source = '''
 [[plugins]]
 repo = 'stevearc/aerial.nvim'
 hook_add = '''
-  nnoremap <c-w>o <cmd>AerialOpen float<cr>
+  nnoremap <c-w>o <cmd>AerialOpen<cr>
   nmap <c-w><c-o> <c-w>o
-  nnoremap <c-w>O <cmd>AerialToggle! float<cr>
+  nnoremap <c-w>O <cmd>AerialToggle!<cr>
 '''
 hook_post_source = '''
-lua << EOF
-  require('aerial').setup({
-    backends = {
-      _ = { "lsp", "treesitter", "markdown" },
-      markdown = { "treesitter", "markdown" },
-    },
-
-    open_automatic = false,
-    close_automatic_events = { 'unfocus' },
-    attach_mode = "window",
-
-    -- default_direction = "float",
-    default_direction = "right",
-    placement_editor_edge = true,
-
-    max_width = { 40, 0.3 },
-    width = nil,
-    min_width = 40,
-
-    float = {
-      border = "rounded",
-      -- Enum: cursor, editor, win
-      --   cursor - Opens float on top of the cursor
-      --   editor - Opens float centered in the editor
-      --   win    - Opens float centered in the window
-      relative = "editor",
-
-      -- These control the height of the floating window.
-      -- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-      -- min_height and max_height can be a list of mixed types.
-      -- min_height = {8, 0.1} means "the greater of 8 rows or 10% of total"
-      max_height = 0.9,
-      height = nil,
-      min_height = { 8, 0.1 },
-
-      override = function(conf, source_winid)
-        return conf
-      end,
-    }
-  })
-EOF
+  luafile ~/.vim/rc/aerial.rc.lua
 '''
 
 [[plugins]]
