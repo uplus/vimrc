@@ -55,7 +55,7 @@ function! s:set_overwrite_highlights()
   hi diffRemoved ctermfg=2               guifg=#ff6666
 
   " インスタンス変数など
-  hi TSLabel ctermfg=75 guifg=#4fbffe
+  hi! link Label SrceryCyan
 
   " vim-illuminate
   hi! illuminatedWord guibg=#2f3b3f gui=italic
