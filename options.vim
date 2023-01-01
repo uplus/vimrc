@@ -178,6 +178,8 @@ set iskeyword+=$,@-@
 
 " #wild menu
 set wildignorecase
+set wildignore+=.git/*,.git\\*,.hg/*,.hg\\*,.svn/*,.svn\\*,node_modules/**
+
 if exists('+pumblend')
   set winblend=0
   set pumblend=0

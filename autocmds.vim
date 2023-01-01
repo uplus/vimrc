@@ -172,6 +172,8 @@ augroup myac
   au BufWritePre * call s:auto_mkdir(expand('%:p:h'))
 
   function! s:auto_mkdir(dir)
+    " ++pで似たようなことができるようになった
+    " https://github.com/neovim/neovim/commit/d337814906b1377e34aa2c2dfd8aa16285328692
     if bufname('%') !~# '\v^.*://' && !isdirectory(a:dir) && !u#is_file(a:dir)
       call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
     endif
