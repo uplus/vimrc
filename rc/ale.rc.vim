@@ -26,7 +26,8 @@ let g:ale_sign_warning = '⚠'
 let g:ale_sign_info = '🛈'
 
 " Virtualtext
-let g:ale_virtualtext_prefix = '    ■ '
+" let g:ale_virtualtext_prefix = '    ■ '
+let g:ale_virtualtext_prefix = '%comment% %type%:'
 " let g:ale_virtualtext_delay = 10
 
 " List
