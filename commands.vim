@@ -24,6 +24,8 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincm
 command! -range=% CountChar <line1>,<line2>s/.//ggn
 command! FcitxOff call Job('fcitx5-remote', '-c')
 command! TmpCommit Gina tmpc
+" treesitterの構文木を表示する
+command! TSMyShowTree lua vim.treesitter.show_tree()
 
 " Cd:
 command! Cdbuffer cd %:h
