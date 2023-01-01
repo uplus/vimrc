@@ -135,7 +135,8 @@ on_cmd = ['SyntaxInfoEnable', 'SyntaxInfoToggle']
 # repo = 'tyru/caw.vim'
 # TODO: 様子見
 repo = 'uplus/caw.vim'
-rev = 'fix-has_syntax-for-highlight-link'
+# rev = 'fix-has_syntax-for-highlight-link'
+rev = 'fix-comment-detection-on-treesitter'
 depends = ['vim-operator-user'] # 'context_filetype.vim'
 on_map = '<Plug>(caw'
 hook_add = '''
