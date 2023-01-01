@@ -467,16 +467,8 @@ lua <<EOF
               'class',
               'function',
               'method',
-              -- 'for', -- These won't appear in the context
-              -- 'while',
-              -- 'if',
-              -- 'switch',
-              -- 'case',
-          },
-          -- Example for a specific filetype.
-          -- If a pattern is missing, *open a PR* so everyone can benefit.
-          rust = {
-              'impl_item',
+              'interface',
+              'struct',
           },
       },
       exact_patterns = {
@@ -486,11 +478,8 @@ lua <<EOF
           -- rust = true,
       },
 
-      -- [!] The options below are exposed but shouldn't require your attention,
-      --     you can safely ignore them.
-
-      zindex = 20, -- The Z-index of the context window
       mode = 'topline',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+      -- separator = '-',
   }
 EOF
 '''

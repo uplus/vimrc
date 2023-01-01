@@ -35,6 +35,14 @@ require'nvim-treesitter.configs'.setup {
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner",
       },
+
+      selection_modes = {
+        -- ['@parameter.outer'] = 'v', -- charwise
+        ['@function.inner'] = 'V', -- linewise
+        ['@class.inner'] = 'V', -- blockwise
+      },
+
+      -- include_surrounding_whitespace = false,
     },
     move = {
       enable = true,
