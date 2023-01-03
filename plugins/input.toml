@@ -111,12 +111,10 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/ddc-source-zsh'
 on_source = 'ddc.vim'
-depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml', 'markdown']
-depends = 'ddc.vim'
 
 # [[plugins]]
 # repo = 'tani/ddc-source-path'
