@@ -341,8 +341,11 @@ nmap <Space>P <Plug>(BlankUp)kP
 "}}}
 
 " # ga Info keymap and release " {{{
-nnoremap gaa ga
-xnoremap gaa ga
+
+" vim-characterize
+" nnoremap gaa ga
+" xnoremap gaa ga
+
 nnoremap ga8 g8
 xnoremap ga8 g8
 nnoremap gah <cmd>call my#syntax#get_syn_name()<cr>

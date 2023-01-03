@@ -378,11 +378,6 @@ hook_add = '''
   let g:partedit#auto_prefix = 0
 '''
 
-[[plugins]]
-repo = 'tyru/visualctrlg.vim'
-on_map = ['<Plug>(visualctrlg-briefly)', '<Plug>(visualctrlg-verbosely)']
-
-
 #c cpp
 [[plugins]]
 repo = 'uplus/vim-clang-rename'
