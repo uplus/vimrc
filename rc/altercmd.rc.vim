@@ -9,6 +9,7 @@ AlterCommand gi[na] Gina
 AlterCommand ti[g] tabnew\ +Tig
 AlterCommand tigb[lame] TigBlame
 AlterCommand tb TigBlame
+AlterCommand maps Maps
 
 AlterCommand lint ALELint
 AlterCommand fix ALEFix

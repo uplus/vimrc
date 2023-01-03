@@ -64,6 +64,13 @@
 # https://github.com/yioneko/nvim-yati
 # https://machakann.hatenablog.com/entry/2022/12/10/224306
   # gnを複数ターゲットに適用する
+# https://github.com/kevinhwang91/nvim-ufo
+  # 現代風のfoldと高いパフォーマンス
+  # フォールドのコードに色ついてる
+# comment
+  # https://github.com/numToStr/Comment.nvim
+  # dot repeat
+  # count, motion, with text-objects
 
 [[plugins]]
 repo = 'mfussenegger/nvim-dap'
