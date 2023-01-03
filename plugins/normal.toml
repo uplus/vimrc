@@ -171,6 +171,7 @@ hook_post_source = 'source ~/.vim/rc/submode.rc.vim'
 # vim-ambicmd
 repo = 'kana/vim-altercmd'
 # repo = 'tyru/vim-altercmd' # 高機能だが読み込みが2ms遅い
+# repo = 'thinca/vim-ambicmd'
 hook_post_source = 'source ~/.vim/rc/altercmd.rc.vim'
 
 [[plugins]]
