@@ -61,7 +61,7 @@ augroup myac
       set foldmethod=marker
     elseif u#is_include(['diff'], &filetype)
       set foldmethod=diff
-    elseif exists('*nvim_treesitter#foldexpr')
+    else
       " dein#is_sourced('nvim-treesitter') だと noplugin で落ちる
       setl foldmethod=expr
       setl foldexpr=nvim_treesitter#foldexpr()
