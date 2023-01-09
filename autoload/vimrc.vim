@@ -32,8 +32,8 @@ function! vimrc#close_floating_win(filetype_pattern) abort "{{{
   call map(close_windows, 'nvim_win_close(v:val, v:false)')
 endfunction "}}}
 
-function! vimrc#pwgen() abort "{{{
-  return u#delete_pat(system('pwgen -1 -B -s -n 20'), "\n$")
+function! vimrc#pwgen(length=20) abort "{{{
+  return u#delete_pat(system(['pwgen', '-1', '-B', '-s', '-n', a:length]), "\n$")
 endfunction "}}}
 
 function! vimrc#open_git_diff(type) abort "{{{
