@@ -51,9 +51,9 @@ function! s:set_highlights() abort
   hi! link SignifySignDeleteFirstLine SignifySignDelete
 
   " ALE:
-  hi ALEVirtualTextError   guifg=#ff5e80 guibg=NONE
-  hi ALEVirtualTextWarning guifg=#f0ff80 guibg=NONE
-  hi ALEVirtualTextInfo    guifg=#80cff0 guibg=NONE
+  hi ALEVirtualTextError   guifg=#df5e80 guibg=NONE
+  hi ALEVirtualTextWarning guifg=#efcb90 guibg=NONE
+  hi ALEVirtualTextInfo    guifg=#80cfd0 guibg=NONE
 
   " Hop:
   hi HopNextKey   guifg=#00dfff gui=bold ctermfg=45 cterm=bold
