@@ -25,8 +25,12 @@ function! s:set_highlights() abort
   hi Normal guibg=#0c0b09
   hi! link Comment SrceryBrightBlack
 
-  " インスタンス変数など
+  " Syntax:
   hi! link Label SrceryCyan
+  hi! link @variable SrceryBrightWhite
+  hi! link @variable.builtin SrceryYellow
+  hi! link @parameter @variable
+  hi! link @include @keyword
 
   " Diff:
   hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#d700af
