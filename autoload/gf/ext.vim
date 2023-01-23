@@ -1,14 +1,14 @@
 " gf create new file
 function! gf#ext#newfile() abort "{{{
-  let path = expand('<cfile>')
+  let path = u#cfile_bash_env()
   if !filereadable(path)
     echo path
-    echo 'Create it?(y/N)'
+    echo 'Create? (y/N) '
     if nr2char(getchar()) !=? 'y'
       return 0
     end
   endif
-  return {'path': expand(path), 'line': 0, 'col': 0,}
+  return {'path': path, 'line': 0, 'col': 0,}
 endfunction "}}}
 
 function! gf#ext#ruby() abort "{{{

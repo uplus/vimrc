@@ -9,17 +9,6 @@ function! vimrc#filename_mixedcase() abort "{{{
   return g:Abolish['mixedcase'](vimrc#filename())
 endfunction "}}}
 
-" filetypeに依存せずiskeyword固定でcwordを取得する
-function vimrc#get_cword() abort "{{{
-  let save_iskeyword = &l:iskeyword
-  setl iskeyword=@
-  try
-    return expand('<cword>')
-  finally
-    let &l:iskeyword = save_iskeyword
-  endtry
-endfunction "}}}
-
 function! vimrc#is_floating_win(win_handle) abort "{{{
   return nvim_win_get_config(a:win_handle)['relative'] !=# ''
 endfunction "}}}

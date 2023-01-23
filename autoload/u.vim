@@ -7,6 +7,12 @@ function u#replace_home_to_tilde(str) abort "{{{
   return substitute(a:str, '^' . expand('~'), '~', '')
 endfunction "}}}
 
+function u#expand_bash_env(str) abort "{{{
+  " ${HOGE:-text} → $HOGE
+  let replaced = substitute(a:str, '\${\([A-Za-z_][A-Za-z0-9_]*\)\(:[-=+?][^}]*\)\?}', '$\1', 'g')
+  return expand(replaced)
+endfunction "}}}
+
 function! u#add_tail_slash(str) abort "{{{
   return substitute(a:str, '/*$', '/', '')
 endfunction "}}}
@@ -110,4 +116,26 @@ function! u#substitute_lines(pattern, string, flag) abort range "{{{
     call setline(n, substitute(line, a:pattern, a:string, a:flag))
     let n = n + 1
   endfor
+endfunction "}}}
+
+" filetypeに依存せずiskeyword固定でcwordを取得する
+function u#cword() abort "{{{
+  let save_iskeyword = &l:iskeyword
+  setl iskeyword=@
+  try
+    return expand('<cword>')
+  finally
+    let &l:iskeyword = save_iskeyword
+  endtry
+endfunction "}}}
+
+" ${HOME:-text} などの環境変数も展開するcfile
+function u#cfile_bash_env() abort "{{{
+  let save_isfname = &l:isfname
+  set isfname& isfname+={,}
+  try
+    return u#expand_bash_env(expand('<cfile>'))
+  finally
+    let &l:isfname = save_isfname
+  endtry
 endfunction "}}}
