@@ -236,23 +236,12 @@ if has('gui_running')
 endif
 
 if has('nvim')
-  " set inccommand=split
-  " let g:python_host_prog  = '/usr/bin/python2'
-  " let g:python3_host_prog = '/usr/bin/python3'
 else
-  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  " let &t_ti .= "\e[?2004h"
-  " let &t_te .= "\e[?2004l"
-  " let &t_ti .= "\e[?1004h"
-  " let &t_te .= "\e[?1004l"
   " let &pastetoggle = "\e[201~"
 endif
 
 " Change cursor shape.
 if &term =~# 'xterm'
-  " let &t_SI = "\e[5 q\e]12;Orange\x7"
-  " let &t_EI = "\e[0 q\e]12;RoyalBlue1\x7"
 endif
 
 if !empty($SUDO_USER) && $USER !=# $SUDO_USER
