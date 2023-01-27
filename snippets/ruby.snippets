@@ -491,10 +491,14 @@ alias unif
 		${0}
 	end
 
+snippet program_name
+alias script_name
+	File.basename($PROGRAM_NAME)
+
 snippet cli-usage
 options head
 	if ARGV.${1}
-		abort "Usage: #{$PROGRAM_NAME} ${2:ARGS_GO_HERE}"${3}
+		abort "Usage: #{File.basename($PROGRAM_NAME)} ${2:ARGS_GO_HERE}"${0}
 	end
 
 snippet fileopen

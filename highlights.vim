@@ -29,6 +29,8 @@ function! s:set_highlights() abort
   hi! link Label SrceryCyan
   hi! link @variable SrceryBrightWhite
   hi! link @variable.builtin SrceryYellow
+  hi! link @variable.global SrceryCyan
+
   hi! link @parameter @variable
   hi! link @include @keyword
 
