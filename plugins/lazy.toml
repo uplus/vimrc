@@ -409,6 +409,7 @@ on_cmd = ['Gina']
 on_func = ['gina#']
 hook_add = '''
   nnoremap <space>gi :Gina<space>
+  nnoremap <space>g<space> :Gina<space>
 
   " diffモードでdorやdolのマッピングが生まれるので無効化
   let g:gina#command#patch#use_default_mappings = v:false
@@ -461,7 +462,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'f-person/git-blame.nvim'
-on_cmd = ['GitBlameToggle', 'GitBlameCopySHA']
+on_cmd = ['GitBlameToggle', 'GitBlameCopySHA', 'GitBlameOpenCommitURL']
 hook_add = '''
   let g:gitblame_enabled  = 0
   let g:gitblame_date_format = '%Y/%m/%d'
@@ -471,6 +472,7 @@ hook_add = '''
 
   nnoremap ,gb <cmd>GitBlameToggle<cr>
   nnoremap ,gy <cmd>GitBlameCopySHA<cr>
+  nnoremap ,go <cmd>GitBlameOpenCommitURL<cr>
 '''
 
 ## -----------------------------
