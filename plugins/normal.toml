@@ -334,8 +334,10 @@ hook_source = '''
 [[plugins]]
 repo = 'mhinz/vim-signify'
 hook_add =  '''
-  nmap [h <plug>(signify-prev-hunk)zMzvzz
-  nmap ]h <plug>(signify-next-hunk)zMzvzz
+  " nmap [h <plug>(signify-prev-hunk)zMzvzz
+  " nmap ]h <plug>(signify-next-hunk)zMzvzz
+  nmap [h <plug>(signify-prev-hunk)
+  nmap ]h <plug>(signify-next-hunk)
   nmap ,gu :SignifyHunkUndo<cr>
   nmap ,gD :SignifyHunkDiff<cr>
 

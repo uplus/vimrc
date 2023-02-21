@@ -35,9 +35,9 @@ function! s:set_highlights() abort
   hi! link @include @keyword
 
   " Diff:
-  hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#d700af
-  hi DiffDelete  ctermfg=200 ctermbg=56  guifg=#ff00d7 guibg=#5f00d7
+  hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#c7008f
   hi DiffChange  ctermfg=252 ctermbg=22  guifg=#d0d0d0 guibg=#005f00
+  hi DiffDelete  ctermfg=200 ctermbg=56  guifg=#3f30c7 guibg=#3f00c7
   hi DiffText    ctermfg=226 ctermbg=29  guifg=#ffff00 guibg=#00875f
   hi diffFile    ctermfg=227             guifg=#fed06e
   hi diffAdded   ctermfg=1               guifg=#c9ea5a
