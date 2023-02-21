@@ -56,7 +56,7 @@ function! vimrc#open_git_diff(type) abort "{{{
     execute 'normal!' s:prev_winnr ."\<C-w>w"
   endfunction
 
-  wincmd p
+  " wincmd p
 endfunction "}}}
 
 function! vimrc#undo_clear() abort "{{{
