@@ -23,7 +23,7 @@ let s:base01  = ['#586e75', 239]
 let s:base00  = ['#657b83', 240]
 let s:base0   = ['#839496', 244]
 let s:base1   = ['#93a1a1', 245]
-let s:base2   = ['#cec8a5', 187]
+let s:base2   = ['#ded8b5', 187]
 let s:base3   = ['#fdf6e3', 230]
 
 let s:tab_active = ['#20202f', 234]
@@ -35,22 +35,22 @@ let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': 
 "   name = [[first_pos], [second_pos], [third_pos], ...]
 
 " each mode colors
-let s:p.normal.left     = [[s:base03, s:mode_n], [s:mode_n, s:gray]]
-let s:p.normal.right    = [[s:base03, s:mode_n], [s:mode_n, s:gray]]
-let s:p.insert.left     = [[s:base03, s:mode_i], [s:mode_i, s:gray]]
-let s:p.insert.right    = [[s:base03, s:mode_i], [s:mode_i, s:gray]]
-let s:p.replace.left    = [[s:base03, s:mode_r], [s:mode_r, s:gray]]
-let s:p.replace.right   = [[s:base03, s:mode_r], [s:mode_r, s:gray]]
-let s:p.visual.left     = [[s:base03, s:mode_v], [s:mode_v, s:gray]]
-let s:p.visual.right    = [[s:base03, s:mode_v], [s:mode_v, s:gray]]
+let s:p.normal.left     = [[s:base03, s:mode_n], [s:base3, s:gray], [s:mode_n, s:gray]]
+let s:p.normal.right    = [[s:base03, s:mode_n], [s:base3, s:gray], [s:mode_n, s:gray]]
+let s:p.insert.left     = [[s:base03, s:mode_i], [s:base3, s:gray], [s:mode_i, s:gray]]
+let s:p.insert.right    = [[s:base03, s:mode_i], [s:base3, s:gray], [s:mode_i, s:gray]]
+let s:p.replace.left    = [[s:base03, s:mode_r], [s:base3, s:gray], [s:mode_r, s:gray]]
+let s:p.replace.right   = [[s:base03, s:mode_r], [s:base3, s:gray], [s:mode_r, s:gray]]
+let s:p.visual.left     = [[s:base03, s:mode_v], [s:base3, s:gray], [s:mode_v, s:gray]]
+let s:p.visual.right    = [[s:base03, s:mode_v], [s:base3, s:gray], [s:mode_v, s:gray]]
 
 " middle
 let s:p.normal.middle   = [[s:base2, s:black]]
 let s:p.inactive.middle = [[s:base2, s:gray]]
 
 " inactive
-let s:p.inactive.left   = [[s:base2, s:gray], [s:base2,  s:gray]]
-let s:p.inactive.right  = [[s:base2, s:gray], [s:base2,  s:gray]]
+let s:p.inactive.left   = [[s:base2, s:gray], [s:base2, s:gray]]
+let s:p.inactive.right  = [[s:base2, s:gray], [s:base2, s:gray]]
 
 " tab
 let s:p.tabline.tabsel  = [[s:base3, s:tab_active]]

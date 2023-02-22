@@ -1,11 +1,11 @@
 ﻿" g:lightline
 let g:lightline = {
       \   'active': {
-      \     'left': [['mode', 'paste'], ['filename', 'cursor', 'filestate']],
+      \     'left': [['mode', 'paste'], ['filename'], ['cursor', 'filestate']],
       \     'right': [[], ['filetype', 'fileencoding'],]
       \   },
       \   'inactive': {
-      \     'left': [['mode', 'paste'], ['filename', 'cursor', 'filestate']],
+      \     'left': [['mode', 'paste'], ['filename'], ['cursor', 'filestate']],
       \     'right': [[], ['filetype', 'fileencoding']]
       \   },
       \   'tabline': {
