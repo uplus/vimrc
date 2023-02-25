@@ -90,7 +90,7 @@ nvim_lsp["solargraph"].setup {
   }
 }
 
-nvim_lsp["sumneko_lua"].setup {
+nvim_lsp["lua_ls"].setup {
   on_attach = on_attach,
   flags = flags,
   init_options = { formatting = true },
@@ -106,7 +106,8 @@ nvim_lsp["sumneko_lua"].setup {
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
+        -- なぜか起動しなくなるのでコメントアウト
+        -- library = vim.api.nvim_get_runtime_file("", true),
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {

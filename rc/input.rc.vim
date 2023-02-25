@@ -23,11 +23,11 @@ inoremap <c-g>   <cmd>call pum#map#confirm()<cr>
 " inoremap <c-e>   <cmd>call pum#map#cancel()<cr>
 
 " TODO: 設定してないソースは反応しない?
-inoremap <silent><expr><c-x><c-f> ddc#map#manual_complete(["file"])
-inoremap <silent><expr><c-x><c-a> ddc#map#manual_complete(["around"])
-inoremap <silent><expr><c-x><c-r> ddc#map#manual_complete(["rg"])
-inoremap <silent><expr><c-x><c-l> ddc#map#manual_complete(["line"])
-inoremap <silent><expr><c-x><c-b> ddc#map#manual_complete(["buffer"])
+inoremap <silent><expr><c-x><c-f> ddc#map#manual_complete({ 'sources': ['file'] })
+inoremap <silent><expr><c-x><c-a> ddc#map#manual_complete({ 'sources': ['around'] })
+inoremap <silent><expr><c-x><c-r> ddc#map#manual_complete({ 'sources': ['rg'] })
+inoremap <silent><expr><c-x><c-l> ddc#map#manual_complete({ 'sources': ['line'] })
+inoremap <silent><expr><c-x><c-b> ddc#map#manual_complete({ 'sources': ['buffer'] })
 
 " inoremap <silent><expr> <c-l>   ddc#map#extend()
 " inoremap <silent><expr> <c-l>   ddc#complete_common_string()

@@ -44,6 +44,10 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'maxItems': 10,
     \   'forceCompletionPattern': '(?:\.|:|->)(?:\w|-|\+)*'
     \ },
+    \ 'nvim-lua': {
+    \   'mark': '[lua]',
+    \   'forceCompletionPattern': '(?:\.|:|->)(?:\w|-|\+)*'
+    \ },
     \ 'rtags': {
     \   'mark': '[R]',
     \   'forceCompletionPattern': '(?:\.|:|->)(?:\w|-|\+)*'
@@ -99,10 +103,13 @@ call ddc#custom#patch_global({
 " Use pum.vim
 call ddc#custom#patch_global('ui', 'pum')
 call pum#set_option({
- \ 'border': 'single',
- \ 'scrollbar_char': '│',
- \ 'auto_select': v:false,
- \ })
+  \ 'border': 'single',
+  \ 'scrollbar_char': '│',
+  \ 'auto_select': v:false,
+  \ 'use_setline': v:true,
+  \ 'use_complete': v:false,
+  \ 'max_width': 80,
+  \ })
 
 
 " Filetype:
@@ -113,9 +120,7 @@ let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'python', 'dockerfile
 
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)
 
-if has('nvim')
-  call ddc#custom#patch_filetype(s:lsp_filetypes, 'sources', s:sources_pg)
-endif
+call ddc#custom#patch_filetype(s:lsp_filetypes, 'sources', s:sources_pg)
 
 call ddc#custom#patch_filetype(['yaml', 'json'],
   \ 'sources',
@@ -131,6 +136,11 @@ call ddc#custom#patch_filetype(['vim'],
   \ 'sources',
   \ ['neosnippet', 'necovim', 'around', 'file']
   \ )
+
+call ddc#custom#patch_filetype(['lua'],
+ \ 'sources',
+ \ ['neosnippet', 'nvim-lua', 'nvim-lsp', 'around', 'file']
+ \ )
 
 call ddc#custom#patch_filetype(['zsh', 'bash'],
   \ 'sources',
