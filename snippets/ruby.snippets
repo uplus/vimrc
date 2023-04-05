@@ -241,6 +241,18 @@ snippet array-nest
 options word
 	Array.new(${1:size}) { Array.new(${2:size}) }
 
+snippet define-enum
+options head
+	module ${1}
+		class << self
+			def ${2} = 1
+
+			def _keys
+				(self.methods - Object.methods).grep(/^[^_]/)
+			end
+		end
+	end
+
 
 ## debug helper
 
@@ -347,9 +359,9 @@ options head
 		${0}
 	end
 
-snippet enum
-options head
-	enum ${1}: { ${0} }, _prefix: true
+# snippet enum
+# options head
+# 	enum ${1}: { ${0} }, _prefix: true
 
 snippet belongs_to
 options head
