@@ -235,11 +235,6 @@ if has('gui_running')
   set guioptions=Mc
 endif
 
-if has('nvim')
-else
-  " let &pastetoggle = "\e[201~"
-endif
-
 " Change cursor shape.
 if &term =~# 'xterm'
 endif
