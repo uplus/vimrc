@@ -8,7 +8,7 @@ if &runtimepath !~# '/dein.vim'
     call system('git clone https://github.com/Shougo/dein.vim ' . s:dein_dir)
   endif
 
-  execute ' set runtimepath^=' . s:dein_dir
+  execute ' set runtimepath^=' .. s:dein_dir
 endif
 
 " config
