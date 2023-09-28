@@ -43,6 +43,9 @@ function! s:set_highlights() abort
   hi diffAdded   ctermfg=1               guifg=#c9ea5a
   hi diffRemoved ctermfg=2               guifg=#ff6666
 
+  " treesitter-context
+  hi TreesitterContextBottom gui=underline guisp=Grey
+
   " vim-illuminate
   hi! illuminatedWord guibg=#2f3b3f gui=italic
   hi! link IlluminatedWordText illuminatedWord

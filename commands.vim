@@ -25,7 +25,7 @@ command! -range=% CountChar <line1>,<line2>s/.//ggn
 command! FcitxOff call Job('fcitx5-remote', '-c')
 command! TmpCommit Gina tmpc
 " treesitterの構文木を表示する
-command! TSMyShowTree lua vim.treesitter.show_tree()
+command! TSMyTree lua vim.treesitter.inspect_tree()
 
 " Cd:
 command! Cdbuffer cd %:h
