@@ -151,19 +151,11 @@ else
   set viminfo=!,'300,<50,s10,h
 endif
 
-" set shortmess=filnxtToO " default
-" Do not display the greetings message at the time of Vim start.
-" Sを消すと検索時に現在のマッチが何番目なのか分かる
-set shortmess=aTI
+set shortmess=aTIcCF
+set shortmess+=oO " TODO: 検討中
+
 " Do not display the completion messages
 set noshowmode
-if has('patch-7.4.314')
-  set shortmess+=c
-endif
-" Do not display the edit messages
-if has('patch-7.4.1570')
-  set shortmess+=F
-endif
 
 " Keymapping timeout.
 " set timeout timeoutlen=3000 ttimeoutlen=100
