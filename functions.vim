@@ -55,6 +55,10 @@ function! Format() abort "{{{
   endif
 endfunction "}}}
 
+function! FormatJS() abort
+  %! js-beautify -
+endfunction
+
 function! ResetHighlights() abort "{{{
   " nohlsearch " 関数内では動作しない
   silent! call clever_f#reset()
