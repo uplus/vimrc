@@ -295,8 +295,8 @@ hook_add = 'source ~/.vim/rc/is.rc.vim'
 repo = 'dense-analysis/ale'
 hook_add = 'source ~/.vim/rc/ale.rc.vim'
 
-[[plugins]]
-repo = 'editorconfig/editorconfig-vim'
+# [[plugins]]
+# repo = 'editorconfig/editorconfig-vim'
 
 
 ## -----------------------------

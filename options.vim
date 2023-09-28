@@ -201,7 +201,7 @@ set listchars=tab:❯\ ,extends:»,precedes:«,nbsp:%, " trail:␣
 " ❯ ❮ ⊳ ▶ ◇ ± ◈ ▷ ➤ ⟫ ⥀ ⥁ ␣ 》
 
 if has('diff')
-  set diffopt=filler,context:2,vertical,foldcolumn:0
+  set diffopt=internal,filler,linematch:60,closeoff,context:2,vertical,foldcolumn:0
 endif
 
 if has('unnamedplus')
