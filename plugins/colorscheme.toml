@@ -11,6 +11,10 @@ repo = 'joshdick/onedark.vim'
 repo = 'srcery-colors/srcery-vim'
 hook_add = '''
   let g:srcery_italic = 1
+
+  let g:srcery_white = '#fce8c3'
+  let g:srcery_bright_white = '#fff8e3'
+
   let g:srcery_bright_black = '#c1b1a5'
   let g:srcery_magenta = '#f02c7d'
   let g:srcery_bright_magenta = '#ff5c9f'
