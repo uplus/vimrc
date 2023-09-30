@@ -41,6 +41,12 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'maxItems': 5,
     \   'isVolatile': v:true,
     \ },
+    \ 'copilot': {
+    \     'mark': '[copilot]',
+    \     'matchers': [],
+    \     'minAutoCompleteLength': 0,
+    \     'isVolatile': v:true,
+    \ },
     \ 'nvim-lsp': {
     \   'mark': '[lsp]',
     \   'minAutoCompleteLength': 1,
@@ -121,7 +127,7 @@ call pum#set_option({
 " Filetype:
 
 let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'mocword']
-let s:sources_pg = ['neosnippet', 'nvim-lsp', 'around']
+let s:sources_pg = ['neosnippet', 'nvim-lsp', 'copilot', 'around']
 let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'javascript', 'python', 'dockerfile', 'scala', 'lua']
 
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)
