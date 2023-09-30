@@ -89,25 +89,30 @@ function! s:set_highlights() abort
   " vim-markdown
   " bgはsrceryで設定できないので直書き
   hi! mkdLineBreak       ctermbg=240 guibg=#585858
-  hi! link mkdBlockquote SrceryBrightGreen
-  hi! link mkdLink       SrceryBrightBlue
-  hi! link mkdInlineURL  mkdLink
-  hi! link mkdURL        SrceryBrightWhite
-  hi! link mkdListItem   markdownListMarker
 
-  " vim-markdown: codes
-  hi! link mkdCode          SrceryBrightYellow " `hoge`
-  hi! link mkdCodeDelimiter mkdCode            " `hoge`
-  hi! link mkdCodeStart     SrceryBrightBlack  " ```hoge
-  hi! link mkdCodeEnd       mkdCodeStart       " ```
+  " hi! link @text.emphasis.markdown_inline SrceryBrightWhiteBold
+  hi! link @text.strong.markdown_inline SrceryBrightWhiteBold
 
-  " vim-markdown: headers
-  hi! link htmlH1 SrceryBrightMagentaBold
-  hi! link htmlH2 SrceryBrightBlueBold
-  hi! link htmlH3 SrceryBrightGreenBold
-  hi! link htmlH4 SrceryYellowBold
-  hi! link htmlH5 SrceryBrightRedBold
-  hi! link htmlH6 SrceryBrightCyanBold
+  hi! link @punctuation.special.markdown SrceryBrightBlue " block quote & list & other keywords
+  hi! link @text.quote.markdown SrceryBrightBlue " block quote
+
+  hi! link @text.uri SrceryBrightBlue " https://example.com hoge
+  hi! link @text.literal.markdown_inline SrceryBrightYellow " `hoge`
+  hi! link @punctuation.delimiter.markdown_inline @text.literal.markdown_inline " `hoge`
+
+  " markdown headers
+  hi! link @text.title.1.marker.markdown SrceryBrightMagentaBold
+  hi! link @text.title.2.marker.markdown SrceryBrightBlueBold
+  hi! link @text.title.3.marker.markdown SrceryBrightGreenBold
+  hi! link @text.title.4.marker.markdown SrceryYellowBold
+  hi! link @text.title.5.marker.markdown SrceryBrightRedBold
+  hi! link @text.title.6.marker.markdown SrceryBrightCyanBold
+  hi! link @text.title.1.markdown SrceryBrightWhite
+  hi! link @text.title.2.markdown SrceryBrightWhite
+  hi! link @text.title.3.markdown SrceryBrightWhite
+  hi! link @text.title.4.markdown SrceryBrightWhite
+  hi! link @text.title.5.markdown SrceryBrightWhite
+  hi! link @text.title.6.markdown SrceryBrightWhite
 endfunction
 
 if &g:loadplugins
