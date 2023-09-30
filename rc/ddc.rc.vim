@@ -73,6 +73,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'mark': '[rg]',
     \   'matchers': ['matcher_head', 'matcher_length'],
     \   'minAutoCompleteLength': 1,
+    \   'maxItems': 5,
     \ },
     \ 'line': {
     \   'mark': '[L]',
