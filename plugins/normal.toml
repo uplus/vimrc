@@ -525,16 +525,23 @@ hook_post_source = '''
 repo = 'lukas-reineke/lsp-format.nvim'
 
 [[plugins]]
+# LSP Progress UI
 repo = 'j-hui/fidget.nvim'
+rev = 'legacy' # 完全に書き直されるらしいので一時的に
+on_event = ['LspAttach']
 hook_post_source = '''
 lua << EOF
-  require"fidget".setup{
-    window = {
-      relative = "win",        -- where to anchor, either "win" or "editor"
-      blend = 10,              -- &winblend for the window
-      border = "rounded",      -- style of border for the fidget window
-    },
-  }
+require"fidget".setup{
+  window = {
+    relative = "win",        -- where to anchor, either "win" or "editor"
+    blend = 10,              -- &winblend for the window
+    border = "rounded",      -- style of border for the fidget window
+  },
+  debug = {
+    logging = false,          -- whether to enable logging, for debugging
+    strict = false,           -- whether to interpret LSP strictly
+  },
+}
 EOF
 '''
 
