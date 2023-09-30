@@ -470,6 +470,9 @@ hook_add = '''
   let g:gitblame_message_template = "\t<date> • <author> • <summary>"
   " let g:gitblame_highlight_group = "Comment"
 
+  " EOLではなくこの列数からメッセージを出力する
+  let g:gitblame_virtual_text_column = 80
+
   nnoremap ,gb <cmd>GitBlameToggle<cr>
   nnoremap ,gy <cmd>GitBlameCopySHA<cr>
   nnoremap ,go <cmd>GitBlameOpenCommitURL<cr>
