@@ -26,13 +26,15 @@ function! s:set_highlights() abort
   hi! link Comment SrceryBrightBlack
 
   " Syntax:
+  " :Inspect で確認できる
   hi! link Label SrceryCyan
-  hi! link @variable SrceryBrightWhite
+  hi! link Identifier SrceryBrightWhite
+  hi! link Structure SrceryBrightBlue
   hi! link @variable.builtin SrceryYellow
   hi! link @variable.global SrceryCyan
-
   hi! link @parameter @variable
   hi! link @include @keyword
+  hi! link @lsp.type.namespace SrceryBrightWhite " Importのパス部分とか
 
   " Diff:
   hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#c7008f
