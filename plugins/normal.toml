@@ -498,6 +498,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'uga-rosa/ddc-nvim-lsp-setup'
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
 # これVimEnterじゃなくてhook_addでは
 hook_post_source = '''
