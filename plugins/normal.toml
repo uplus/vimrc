@@ -513,7 +513,7 @@ hook_post_source = '''
 [[plugins]]
 repo = 'stevearc/aerial.nvim'
 hook_add = '''
-  nnoremap <c-w>o <cmd>AerialOpen<cr>
+  nnoremap <c-w>o <cmd>AerialNavOpen<cr>
   nmap <c-w><c-o> <c-w>o
   nnoremap <c-w>O <cmd>AerialToggle!<cr>
 '''
