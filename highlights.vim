@@ -90,7 +90,7 @@ function! s:set_highlights() abort
   " bgはsrceryで設定できないので直書き
   hi! mkdLineBreak       ctermbg=240 guibg=#585858
 
-  hi! link @text.emphasis.markdown_inline SrceryWhiteItalic 
+  hi! link @text.emphasis.markdown_inline SrceryWhiteItalic
   hi! link @text.strong.markdown_inline SrceryBrightWhiteBold
 
   hi! link @punctuation.special.markdown SrceryBrightBlue " block quote & list & other keywords

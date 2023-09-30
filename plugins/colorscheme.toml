@@ -9,6 +9,7 @@ repo = 'joshdick/onedark.vim'
 
 [[plugins]]
 repo = 'srcery-colors/srcery-vim'
+rev = '3c43e2ac872a72fe067e10a1058056ccde80cc29' # TSの色がafter/pluginでいろいろ上書きされる
 hook_add = '''
   let g:srcery_italic = 1
 

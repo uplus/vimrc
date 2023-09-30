@@ -20,10 +20,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
 
     -- Mappings.
-    local opts = { noremap=true, silent=true }
+    local opts = { buffer=ev.buf, noremap=true, silent=true }
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)

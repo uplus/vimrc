@@ -27,6 +27,7 @@ endfunction "}}}
 function! my#syntax#get_syn_name() abort
   " TODO: ハイライト情報を出力する
   echo ddc#syntax#get()
+  Inspect
 endfunction
 
 function! my#syntax#get_syn_info() abort "{{{
