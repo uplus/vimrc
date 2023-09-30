@@ -2,6 +2,7 @@
 let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0
 
+let g:ale_use_neovim_diagnostics_api = 1
 let g:ale_echo_cursor = 0
 let g:ale_set_highlights = 0
 let g:ale_set_signs = 1
