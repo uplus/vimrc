@@ -9,16 +9,18 @@ xmap <c-l> <plug>(neosnippet_jump)
 " 候補選択系
 " insert_relative と select_relative がある
 " NOTE: forceCompletionPatternを空にすると0文字補完が効く
-inoremap <silent><expr><tab> <sid>imap_tab()
+inoremap <silent><expr><tab> ImapTab()
 inoremap <silent><expr><s-tab> pum#visible() ? "\<cmd>call pum#map#insert_relative(-1)\<cr>" : "\<c-h>"
 inoremap <silent><expr><c-n>   pum#visible() ? "\<cmd>call pum#map#insert_relative(+1)\<cr>" : ddc#map#manual_complete()
 inoremap <c-p>                 <cmd>call pum#map#insert_relative(-1)<cr>
 
 " 確定系
-imap <expr><silent><cr> <sid>imap_cr()
+imap <expr><silent><cr> ImapCR()
 " 補完後に改行ができなくなる
 " imap <expr><c-y> neosnippet#expandable() ? "\<plug>(neosnippet_expand)" : "\<c-y>"
-inoremap <c-y>   <cmd>call pum#map#confirm()<cr>
+
+imap <silent><script><expr><c-y> copilot#Accept(funcref('pum#map#confirm'))
+" inoremap <c-y>   <cmd>call pum#map#confirm()<cr>
 inoremap <c-g>   <cmd>call pum#map#confirm()<cr>
 " inoremap <c-e>   <cmd>call pum#map#cancel()<cr>
 
@@ -37,19 +39,17 @@ function! SnippetExpandable() abort
   return neosnippet#helpers#get_cursor_snippet(neosnippet#helpers#get_snippets('i'), neosnippet#util#get_cur_text()) !=# ''
 endfunction
 
-function! s:imap_tab() abort
+function! ImapTab() abort
   if pum#visible()
     return "\<cmd>call pum#map#insert_relative(+1)\<cr>"
-  endif
-
-  if col('.') <= 1 || getline('.')[col('.') - 2] =~# '\s'
+  elseif col('.') <= 1 || getline('.')[col('.') - 2] =~# '\s'
     return "\<tab>"
   else
     return ddc#map#manual_complete()
   endif
 endfunction
 
-function! s:imap_cr() abort
+function! ImapCR() abort
   " いろいろ試したが、<cr>でスニペット展開が発動するのは微妙に使いづらい
 
   " leximaは<CR>と<cr>を区別する

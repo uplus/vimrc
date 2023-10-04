@@ -127,7 +127,7 @@ call pum#set_option({
 " Filetype:
 
 let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'mocword']
-let s:sources_pg = ['neosnippet', 'nvim-lsp', 'copilot', 'around']
+let s:sources_pg = ['copilot', 'neosnippet', 'nvim-lsp', 'around', 'buffer']
 let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'javascript', 'python', 'dockerfile', 'scala', 'lua']
 
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)

@@ -698,6 +698,7 @@ repo = 'osyo-manga/vim-hideout'
 on_cmd = ['HideoutOn']
 
 [[plugins]]
+if = 'v:false' # c-y がコンフリクトするから一旦無効
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'xhtml', 'css']
 hook_add = '''
