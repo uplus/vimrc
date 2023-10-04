@@ -34,13 +34,13 @@ function! my#ot#text_move(count, is_up, is_visual) abort "{{{
         let line -= 1
       endif
 
-      noautocmd exec delete
+      silent noautocmd exec delete
       silent! exec 'normal!' repeat('k', line)
-      execute 'put!' g:working_register
+      silent execute 'put!' g:working_register
     else
-      noautocmd exec delete
+      silent noautocmd exec delete
       silent! exec 'normal!' repeat('j', a:count-1)
-      execute 'put' g:working_register
+      silent execute 'put' g:working_register
     endif
 
     let pos[1] = line('.')
