@@ -59,6 +59,13 @@ function! FormatJS() abort
   %! js-beautify -
 endfunction
 
+function! FormatSQL() abort
+  %s/,\ze\d/,/e
+  %s/\v(IFNULL|SUM|TRUNCATE|\()\zs\s+\(/(/e
+  %s/\v\(\s+\ze(\w|['`(])/(/e
+  %s/\v(['`)]|\w)\zs\s+\)/)/e
+endfunction
+
 function! ResetHighlights() abort "{{{
   " nohlsearch " 関数内では動作しない
   silent! call clever_f#reset()
