@@ -5,6 +5,10 @@
 local nvim_lsp = require('lspconfig')
 local util = require('lspconfig/util')
 
+-- https://zenn.dev/vim_jp/articles/6a2c9717930e54
+require("ddc_nvim_lsp_setup").setup()
+-- local capabilities = require("ddc_source_lsp").make_client_capabilities()
+
 -- Disable diagnostic callback
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
@@ -19,7 +23,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
     local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    -- local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     -- if client.server_capabilities.completionProvider then
     --   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"

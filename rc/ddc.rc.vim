@@ -2,7 +2,7 @@
 
 " Global:
 "   keywordPattern: 補完アイテムが記号でも継続できるようにする
-" lspのforceCompletionPatternはuga-rosa/ddc-nvim-lsp-setupで設定される
+" nvim-lspのforceCompletionPatternはuga-rosa/ddc-nvim-lsp-setupで設定される
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'ignoreCase': v:true,
