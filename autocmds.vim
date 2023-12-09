@@ -162,8 +162,10 @@ augroup myac
 
   function! s:vimrc_local(loc)
     let l:files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-    for l:i in reverse(filter(l:files, 'filereadable(v:val)'))
-      source `=i`
+    for l:file in reverse(filter(l:files, 'filereadable(v:val)'))
+      echo 'detected local config:' l:file
+      echo 'Please rename to .nvimrc'
+      source `=file`
     endfor
   endfunction
   "}}}

@@ -1,5 +1,7 @@
 set encoding=utf-8 " Removed in Neovim
 
+set exrc
+
 " set undodir=~/.vim/tmp/undo.txt
 set viewdir=~/.vim/tmp/view
 set backupdir-=.
