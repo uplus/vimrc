@@ -17,12 +17,19 @@ local util = require('lspconfig/util')
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
+  callback = function(args)
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    -- if client.server_capabilities.completionProvider then
+    --   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+    -- end
+    -- if client.server_capabilities.definitionProvider then
+    --   vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+    -- end
 
     -- Mappings.
-    local opts = { buffer=ev.buf, noremap=true, silent=true }
+    local opts = { buffer=bufnr, noremap=true, silent=true }
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
