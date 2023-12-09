@@ -58,12 +58,12 @@ function! my#option#set_as_scratch() abort "{{{
 
   let alt_buf = bufnr('#')
   if -1 != alt_buf
-    let &l:filetype = nvim_buf_get_option(alt_buf, 'filetype')
+    let &l:filetype = nvim_get_option_value('filetype', {'buf': alt_buf})
   endif
 endfunction "}}}
 
 function! my#option#set_diff_mode_on_vimenter() abort "{{{
-  let diff_win_nrs = filter(nvim_list_wins(), { idx,win_nr -> nvim_win_get_option(win_nr, 'diff') })
+  let diff_win_nrs = filter(nvim_list_wins(), { idx,win_nr -> nvim_get_option_value('diff', {'win': win_nr}) })
 
   for win_nr in diff_win_nrs
     call my#option#set_diff_mode(win_nr, nvim_win_get_buf(win_nr))
@@ -72,7 +72,7 @@ endfunction "}}}
 
 " diffモード用の設定
 function! my#option#set_diff_mode(win_nr, bufnr) abort "{{{
-  call nvim_win_set_option(a:win_nr, 'signcolumn', 'no')
+  call nvim_set_option_value('signcolumn', 'no', {'win': a:win_nr})
 
   let opts = { 'silent': v:true, 'noremap': v:true, 'nowait': v:true }
   call nvim_buf_set_keymap(a:bufnr, '', 'q', '<cmd>call my#option#close_current_tab_diff_wins()<cr>', opts)
@@ -86,5 +86,5 @@ endfunction "}}}
 
 function! my#option#close_current_tab_diff_wins() abort " {{{
   windo if &diff == v:true | wincmd q | endif
-  " echo nvim_tabpage_list_wins(tabpagenr())->filter({_,v -> nvim_win_get_option(v, 'diff') == v:true })
+  " echo nvim_tabpage_list_wins(tabpagenr())->filter({_,w -> nvim_get_option_value('diff', {'win': w}) == v:true })
 endfunction " }}}
