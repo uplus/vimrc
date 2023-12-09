@@ -5,10 +5,6 @@
 local nvim_lsp = require('lspconfig')
 local util = require('lspconfig/util')
 
--- https://zenn.dev/vim_jp/articles/6a2c9717930e54
-require("ddc_nvim_lsp_setup").setup()
--- local capabilities = require("ddc_source_lsp").make_client_capabilities()
-
 -- Disable diagnostic callback
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
@@ -54,7 +50,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- ddc用にcapabilitiesやforceCompletionPatternを設定する
-require("ddc_nvim_lsp_setup").setup()
+-- https://zenn.dev/vim_jp/articles/6a2c9717930e54
+require("ddc_source_lsp_setup").setup()
+-- local capabilities = require("ddc_source_lsp").make_client_capabilities()
+
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches

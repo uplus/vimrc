@@ -2,7 +2,7 @@
 
 " Global:
 "   keywordPattern: 補完アイテムが記号でも継続できるようにする
-" nvim-lspのforceCompletionPatternはuga-rosa/ddc-nvim-lsp-setupで設定される
+" lspのforceCompletionPatternはuga-rosa/ddc-source-lsp-setupで設定される
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'ignoreCase': v:true,
@@ -47,7 +47,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \     'minAutoCompleteLength': 0,
     \     'isVolatile': v:true,
     \ },
-    \ 'nvim-lsp': {
+    \ 'lsp': {
     \   'mark': '[lsp]',
     \   'minAutoCompleteLength': 1,
     \   'maxItems': 10,
@@ -95,7 +95,7 @@ call ddc#custom#patch_global('sourceParams', {
    \   'fromAltBuf': v:true,
    \   'forceCollect': v:true,
    \ },
-   \ 'nvim-lsp': {
+   \ 'lsp': {
    \    'enableResolveItem': v:true,
    \    'enableAdditionalTextEdit': v:true,
    \ }
@@ -127,7 +127,7 @@ call pum#set_option({
 " Filetype:
 
 let s:sources_text = ['neosnippet', 'around', 'buffer', 'rg', 'mocword']
-let s:sources_pg = ['copilot', 'neosnippet', 'nvim-lsp', 'around', 'buffer']
+let s:sources_pg = ['copilot', 'neosnippet', 'lsp', 'around', 'buffer']
 let s:lsp_filetypes = ['ruby', 'go', 'rust', 'typescript', 'javascript', 'python', 'dockerfile', 'scala', 'lua']
 
 call ddc#custom#patch_filetype(['help', 'markdown', 'gitcommit', 'text'], 'sources', s:sources_text)
@@ -136,7 +136,7 @@ call ddc#custom#patch_filetype(s:lsp_filetypes, 'sources', s:sources_pg)
 
 call ddc#custom#patch_filetype(['yaml', 'json'],
   \ 'sources',
-  \ ['neosnippet', 'nvim-lsp', 'around', 'file', 'mocword']
+  \ ['neosnippet', 'lsp', 'around', 'file', 'mocword']
   \ )
 
 call ddc#custom#patch_filetype(['deol'], {
@@ -151,7 +151,7 @@ call ddc#custom#patch_filetype(['vim'],
 
 call ddc#custom#patch_filetype(['lua'],
  \ 'sources',
- \ ['neosnippet', 'nvim-lua', 'nvim-lsp', 'around', 'file']
+ \ ['neosnippet', 'nvim-lua', 'lsp', 'around', 'file']
  \ )
 
 call ddc#custom#patch_filetype(['zsh', 'bash'],

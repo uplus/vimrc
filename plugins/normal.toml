@@ -498,7 +498,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'uga-rosa/ddc-nvim-lsp-setup'
+repo = 'uga-rosa/ddc-source-lsp-setup'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
