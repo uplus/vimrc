@@ -162,7 +162,9 @@ repo = 'gilligan/textobj-lastpaste'
 depends = 'vim-textobj-user'
 hook_add = '''
   let g:textobj_lastpaste_no_default_key_mappings = 1
-  omap v <Plug>(textobj-lastpaste-i)
+  " v (exclusiv motionを上書きしてしまう)
+  " https://blog.atusy.net/2023/12/18/vim-convert-exclusive-motions-into-inclusive/
+  " omap v <Plug>(textobj-lastpaste-i)
 '''
 
 [[plugins]] # select a range between character
