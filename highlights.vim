@@ -3,9 +3,12 @@ function! s:set_highlights() abort
   hi Pmenu        ctermfg=255  ctermbg=240 guifg=#eeeeee guibg=#3a3a3a cterm=NONE gui=NONE
   hi PmenuSel     ctermfg=255  ctermbg=250 guifg=#eaeaea guibg=#5a5a5a cterm=NONE gui=NONE
   hi! link WildMenu    Pmenu
+
+  hi! link LineNr SrceryWhite
   hi! link SignColumn  LineNr
-  " hi! link FoldColumn  LineNr
-  hi FoldColumn   guifg=#616155 guibg=NONE
+  hi! link FoldColumn  LineNr
+  " hi FoldColumn   guifg=#616155 guibg=NONE
+  hi! link Folded SrceryWhite
 
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#dedede guibg=#1c1b19 cterm=NONE gui=NONE
   hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#404050 cterm=NONE gui=NONE
@@ -23,7 +26,8 @@ function! s:set_highlights() abort
   hi! link qfLineNr SrceryBrightBlue
 
   hi Normal guibg=#0c0b09
-  hi! link Comment SrceryBrightBlack
+  " hi! link Comment SrceryBrightBlack
+  hi! link Comment SrceryBrightCyan
 
   " Syntax:
   " :Inspect で確認できる
