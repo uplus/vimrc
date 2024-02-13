@@ -10,6 +10,8 @@ function! s:set_highlights() abort
   " hi FoldColumn   guifg=#616155 guibg=NONE
   hi! link Folded SrceryWhite
 
+  hi DiagnosticUnderlineError guifg=NONE ctermfg=NONE gui=undercurl
+
   hi NormalFloat  ctermfg=254  ctermbg=0   guifg=#dedede guibg=#1c1b19 cterm=NONE gui=NONE
   hi Search       ctermfg=75   ctermbg=18  guifg=#eeefff guibg=#404050 cterm=NONE gui=NONE
   " hi IncSearch    ctermfg=56   ctermbg=39  guifg=#eeefff guibg=#4080b0 cterm=NONE gui=NONE
