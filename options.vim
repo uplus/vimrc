@@ -60,7 +60,8 @@ au myac FileType * call my#option#set_tab(2)
 "}}}
 
 " Fold: {{{
-set foldtext=FoldCCtext()
+" set foldtext=FoldCCtext()
+set foldtext= " transparent
 set foldcolumn=1
 set foldlevelstart=99     " どのレベルから折りたたむか
 set foldnestmax=10   " indent,syntaxでどの深さまで折りたたむか
