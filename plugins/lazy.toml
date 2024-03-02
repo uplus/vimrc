@@ -470,6 +470,8 @@ hook_add = '''
   let g:gitblame_message_template = "\t<date> • <author> • <summary>"
   " let g:gitblame_highlight_group = "Comment"
 
+  let g:gitblame_use_blame_commit_file_urls = v:true
+
   " EOLではなくこの列数からメッセージを出力する
   let g:gitblame_virtual_text_column = 80
 

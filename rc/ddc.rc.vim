@@ -119,7 +119,6 @@ call pum#set_option({
   \ 'scrollbar_char': '│',
   \ 'auto_select': v:false,
   \ 'use_setline': v:true,
-  \ 'use_complete': v:false,
   \ 'max_width': 80,
   \ })
 
