@@ -109,12 +109,12 @@ function! s:set_highlights() abort
   hi! link @punctuation.delimiter.markdown_inline @text.literal.markdown_inline " `hoge`
 
   " markdown headers
-  hi! link @text.title.1.marker.markdown SrceryBrightMagentaBold
-  hi! link @text.title.2.marker.markdown SrceryBrightBlueBold
-  hi! link @text.title.3.marker.markdown SrceryBrightGreenBold
-  hi! link @text.title.4.marker.markdown SrceryYellowBold
-  hi! link @text.title.5.marker.markdown SrceryBrightRedBold
-  hi! link @text.title.6.marker.markdown SrceryBrightCyanBold
+  hi! link @markup.heading.1.markdown SrceryBrightMagentaBold
+  hi! link @markup.heading.2.markdown SrceryBrightBlueBold
+  hi! link @markup.heading.3.markdown SrceryBrightGreenBold
+  hi! link @markup.heading.4.markdown SrceryYellowBold
+  hi! link @markup.heading.5.markdown SrceryBrightRedBold
+  hi! link @markup.heading.6.markdown SrceryBrightCyanBold
   hi! link @text.title.1.markdown SrceryWhite
   hi! link @text.title.2.markdown SrceryWhite
   hi! link @text.title.3.markdown SrceryWhite
