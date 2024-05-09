@@ -9,4 +9,5 @@ augroup filetypedetect
   au BufRead,BufNewFile .env.*,.envrc,.envrc.* setf sh
   au BufRead,BufNewFile Dockerfile* setf dockerfile
   au BufRead,BufNewFile $HOME/Documents/notes/* ++nested call my#note#config()
+  au BufRead,BufNewFile fluent.conf setf xml " 違うけど
 augroup END
