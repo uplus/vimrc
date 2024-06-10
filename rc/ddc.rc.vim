@@ -69,8 +69,8 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'sorters': [],
     \ },
     \ 'shell-history': {'mark': '[shell]'},
-    \ 'zsh': {
-    \   'mark': '[zsh]',
+    \ 'shell-native': {
+    \   'mark': '[shell]',
     \   'isVolatile': v:true,
     \   'minAutoCompleteLength': 1,
     \   'forceCompletionPattern': '\S/\S*'
@@ -98,7 +98,8 @@ call ddc#custom#patch_global('sourceParams', {
    \ 'lsp': {
    \    'enableResolveItem': v:true,
    \    'enableAdditionalTextEdit': v:true,
-   \ }
+   \ },
+   \ 'shell-native': { 'shell': 'zsh' },
    \ })
 
 call ddc#custom#patch_global(
@@ -140,7 +141,7 @@ call ddc#custom#patch_filetype(['yaml', 'json'],
 
 call ddc#custom#patch_filetype(['deol'], {
   \ 'keywordPattern': '[0-9a-zA-Z_./-]',
-  \ 'sources': ['zsh', 'shell-history', 'around'],
+  \ 'sources': ['shell-native', 'shell-history', 'around'],
   \ })
 
 call ddc#custom#patch_filetype(['vim'],
@@ -155,7 +156,7 @@ call ddc#custom#patch_filetype(['lua'],
 
 call ddc#custom#patch_filetype(['zsh', 'bash'],
   \ 'sources',
-  \ ['neosnippet', 'zsh', 'around', 'file']
+  \ ['neosnippet', 'shell-native', 'around', 'file']
   \ )
 
 " Context:
