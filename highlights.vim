@@ -121,6 +121,8 @@ function! s:set_highlights() abort
   hi! link @text.title.4.markdown SrceryWhite
   hi! link @text.title.5.markdown SrceryWhite
   hi! link @text.title.6.markdown SrceryWhite
+
+  hi! link @markup.raw.block.markdown SrceryWhite
 endfunction
 
 if &g:loadplugins
