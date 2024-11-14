@@ -21,6 +21,10 @@ for key in [';', ',', 's', 'gs']
   execute 'noremap' key '<Nop>'
 endfor
 
+for key in ['gri', 'grr', 'gra', 'grn']
+  execute 'unmap' key
+endfor
+
 " Disable unnecessary keymaps
 let g:netrw_nogx = 1
 
