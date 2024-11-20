@@ -22,7 +22,8 @@ augroup myac
   au OptionSet previewwindow if v:option_new | nnoremap <silent><buffer>q <cmd>quit<cr> | endif
 
   " BufLeaveだとfloatingでも反応してしまうので外した
-  au CursorHold,FocusLost * call DoAutoSave()
+  " au CursorHold,FocusLost * call DoAutoSave()
+  au CursorHold * call DoAutoSave()
 
   " フローティングウィンドウから離れたら自動で閉じる
   au BufEnter * if !vimrc#is_floating_win(0) | call vimrc#close_floating_win('denite') | endif
