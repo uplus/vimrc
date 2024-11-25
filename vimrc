@@ -22,7 +22,7 @@ for key in [';', ',', 's', 'gs']
 endfor
 
 for key in ['gri', 'grr', 'gra', 'grn']
-  execute 'unmap' key
+  execute 'silent! unmap' key
 endfor
 
 " Disable unnecessary keymaps
