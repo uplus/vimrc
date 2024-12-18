@@ -53,7 +53,7 @@ hook_add = '''
 defx = '''
   " 別タブに移動する前に直前のバッファに移動
   au myac TabLeave <buffer> wincmd p
-  " au myac BufEnter,FocusGained <buffer> call defx#redraw()
+  au myac BufEnter,FocusGained <buffer> call defx#redraw()
 
   " 対象ファイル操作系:
   nnoremap <silent><buffer><nowait><expr>c   defx#do_action('copy')
