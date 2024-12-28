@@ -29,6 +29,16 @@ deol = '''
   call my#option#set_minimal_window()
 '''
 
+# [[plugins]]
+# repo = 'MunifTanjim/nui.nvim'
+
+# デフォのコマンドライン上書きを無効にできない
+# [[plugins]]
+# repo = 'folke/noice.nvim'
+# hook_add = '''
+#   luafile ~/.vim/rc/noice.rc.lua
+# '''
+
 [[plugins]] # quickfixの各行を編集、反映できる
 repo = 'thinca/vim-qfreplace'
 hook_add = '''

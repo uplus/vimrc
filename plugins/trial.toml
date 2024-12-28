@@ -2,9 +2,6 @@
 # repo = 'windwp/nvim-autopairs'
 
 # [[plugins]]
-# repo = 'MunifTanjim/nui.nvim'
-
-# [[plugins]]
 # repo = 'MTDL9/vim-log-highlighting'
 
 # [[plugins]]
