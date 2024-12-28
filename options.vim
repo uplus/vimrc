@@ -207,10 +207,10 @@ endif
 set cpoptions-=m
 set cpoptions+=Z
 
-
-if exists('+lazyredraw')
-  set lazyredraw
-endif
+" 一時的に使うようの設定なので常時有効にしておくのは良くないらしい
+" if exists('+lazyredraw')
+"   set lazyredraw
+" endif
 
 if has('conceal')
   " set conceallevel=2 concealcursor=niv
