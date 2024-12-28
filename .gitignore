@@ -1,4 +1,5 @@
 .*
 !.gitkeep
 tmp/
+log/
 local.vim
