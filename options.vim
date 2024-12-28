@@ -132,6 +132,9 @@ set nostartofline " Maintain a current line at the time of movement as much as p
 " 特定の方法でバッファを開いたときの動作
 set switchbuf=usetab
 
+" 画面分割するさいの基準. screenはカーソル位置で画面を半分にするようなイメージ
+set splitkeep=screen
+
 " Complate: {{{
 " set complete+=d,t
 set complete-=t
