@@ -12,6 +12,7 @@ repo = 'junegunn/vim-emoji'
 repo = 'github/copilot.vim'
 hook_add = '''
   let g:copilot_no_maps = v:true
+  let g:copilot_hide_during_completion = 0
 '''
 
 [[plugins]]
@@ -59,6 +60,10 @@ repo = 'Shougo/pum.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-pum'
+
+# 複数行持つ保管結果をある程度動くようにする
+[[plugins]]
+repo = 'Milly/ddc-unprintable'
 
 # https://github.com/topics/ddc-vim
 [[plugins]]
