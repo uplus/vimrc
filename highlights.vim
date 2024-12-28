@@ -41,6 +41,7 @@ function! s:set_highlights() abort
   hi! link @parameter @variable
   hi! link @include @keyword
   hi! link @lsp.type.namespace SrceryWhite " Importのパス部分とか
+  hi LspInlayHint guifg=#a888a8 guibg=NONE
 
   " Diff:
   hi DiffAdd     ctermfg=255 ctermbg=163 guifg=#eeeeee guibg=#c7008f

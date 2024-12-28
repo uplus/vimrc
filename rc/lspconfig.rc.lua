@@ -19,14 +19,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
     local bufnr = args.buf
-    -- local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-    -- if client.server_capabilities.completionProvider then
-    --   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-    -- end
-    -- if client.server_capabilities.definitionProvider then
-    --   vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
-    -- end
+    if client.supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
 
     -- Mappings.
     local opts = { buffer=bufnr, noremap=true, silent=true }
@@ -54,20 +51,31 @@ vim.api.nvim_create_autocmd('LspAttach', {
 require("ddc_source_lsp_setup").setup()
 -- local capabilities = require("ddc_source_lsp").make_client_capabilities()
 
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-
 local flags = {
   debounce_text_changes = 150,
 }
 
+-- InlayHintsの設定はここを参照
+-- https://github.com/MysticalDevil/inlay-hints.nvim?tab=readme-ov-file
 -- :help lspconfig-server-configurations
 -- "marksman"
   -- h1が複数あると警告が出て邪魔
 for _, server in ipairs({ "pyright", "rust_analyzer", "ts_ls", "gopls", "graphql", "dockerls", }) do
   nvim_lsp[server].setup {
     flags = flags,
+    settings = {
+      gopls = {
+        hints = {
+          rangeVariableTypes = true,
+          parameterNames = true,
+          constantValues = true,
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          functionTypeParameters = true,
+        },
+      }
+    },
   }
 end
 
@@ -126,6 +134,9 @@ nvim_lsp["lua_ls"].setup {
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
         enable = false,
+      },
+      hint = {
+        enable = true, -- necessary
       },
     },
   }
