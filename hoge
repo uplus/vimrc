@@ -1,0 +1,98 @@
+{
+      uiOptions: {
+        ff: {
+          actions: {
+            kensaku: async (args: {
+              denops: Denops;
+              options: DduOptions;
+            }) => {
+              await args.denops.dispatcher.updateOptions(
+                args.options.name,
+                {
+                  sourceOptions: {
+                    _: {
+                      matchers: ["matcher_kensaku"],
+                    },
+                  },
+                },
+              );
+              await args.denops.cmd("echomsg 'change to kensaku matcher'");
+
+              return ActionFlags.Persist;
+            },
+          },
+        },
+      },
+      uiParams: {
+        ff: {
+          autoAction: {
+            name: "preview",
+          },
+          inputFunc: "cmdline#input",
+          inputOptsFunc: "cmdline#input_opts",
+          onPreview: async (args: {
+            denops: Denops;
+            previewWinId: number;
+          }) => { await fn.win_execute(args.denops, args.previewWinId, "normal! zt"); },
+        } as Partial<FfParams>,
+        filer: {
+          autoAction: {
+            name: "preview",
+          },
+          previewCol: "&columns / 2 + 1",
+          previewFloating: true,
+          sort: "filename",
+          sortTreesFirst: true,
+          split: "no",
+          //startAutoAction: true,
+          toggle: true,
+        } as Partial<FilerParams>,
+      },
+      sourceOptions: {
+        file_git: {
+          matchers: [
+            "matcher_relative",
+            "matcher_substring",
+          ],
+          sorters: ["sorter_mtime"],
+          converters: ["converter_hl_dir"],
+        },
+      },
+      kindOptions: {
+        file: {
+          defaultAction: "open",
+          actions: {
+            grep: async (args: ActionArguments<Params>) => {
+              const action = args.items[0]?.action as FileAction;
+
+              await args.denops.call("ddu#start", {
+                name: args.options.name,
+                push: true,
+                sources: [
+                  {
+                    name: "rg",
+                    params: {
+                      path: action.path,
+                      input: await fn.input(args.denops, "Pattern: "),
+                    },
+                  },
+                ],
+              });
+
+              return Promise.resolve(ActionFlags.None);
+            },
+          },
+        },
+        url: {
+          defaultAction: "browse",
+        },
+      },
+      kindParams: {},
+      actionOptions: {
+      },
+      actionParams: {
+        tabopen: {
+          command: "tabedit",
+        },
+      },
+}
