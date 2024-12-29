@@ -126,12 +126,12 @@ function s:ddu_ff_filter_my_settings() abort
   set cursorline
 
   call ddu#ui#ff#save_cmaps([
-        \  '<C-f>', '<C-b>',
+        \  '<C-n>', '<C-p>',
         \ ])
 
-  cnoremap <C-f>
+  cnoremap <C-n>
         \ <Cmd>call ddu#ui#do_action('cursorNext', #{ loop: v:true })<CR>
-  cnoremap <C-b>
+  cnoremap <C-p>
         \ <Cmd>call ddu#ui#do_action('cursorPrevious', #{ loop: v:true })<CR>
 endfunction
 autocmd myac User Ddu:ui:ff:closeFilterWindow

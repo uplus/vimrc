@@ -184,8 +184,8 @@ function! DduUrlItems()
 endfunction
 
 " Open filter window automatically
-"autocmd User Ddu:uiDone ++nested
-"      \ call ddu#ui#async_action('openFilterWindow')
+autocmd User Ddu:uiDone ++nested
+     \ call ddu#ui#async_action('openFilterWindow')
 
 " Initialize ddu.vim lazily.
 " if !'g:shougo_s_github_load_state'->exists()
@@ -332,6 +332,9 @@ call ddu#custom#patch_global(#{
       \     },
       \     command: #{
       \       defaultAction: 'edit',
+      \     },
+      \     help: #{
+      \       defaultAction: 'open',
       \     },
       \     jumplist: #{
       \       defaultAction: 'jump',
