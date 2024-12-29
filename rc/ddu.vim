@@ -119,21 +119,22 @@ nnoremap ;: <Cmd>Ddu
 
 nnoremap ;uh <Cmd>Ddu
       \ -name=help help
+      \ <CR>
+
+nnoremap ;uj <Cmd>Ddu
+      \ -name=jump jumplist
       \ -ui-param-ff-autoResize
       \ <CR>
 
-nnoremap ;uh <Cmd>Ddu
-      \ -name=help help
+nnoremap sm <Cmd>Ddu
+      \ -name=jump
+      \ marklist -source-param-marklist-buf=`bufnr()`
+      \ marklist
+      \ -unique
+      \ -sync
       \ -ui-param-ff-autoResize
       \ <CR>
 
-nnoremap ;uh <Cmd>Ddu
-      \ -name=help help
-      \ -ui-param-ff-autoResize
-      \ <CR>
-
-" nnoremap <silent>sm  <cmd>Denite mark -no-empty <cr>
-" nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
 nnoremap <silent>;u <nop>
 
 xnoremap ;g <Cmd>call DduUrlItems()<CR>
@@ -324,6 +325,12 @@ call ddu#custom#patch_global(#{
       \     },
       \     command_history: #{
       \       defaultAction: 'execute',
+      \     },
+      \     jumplist: #{
+      \       defaultAction: 'jump',
+      \     },
+      \     marklist: #{
+      \       defaultAction: 'jump',
       \     },
       \   },
       \   sourceParams: #{
