@@ -111,9 +111,13 @@ xnoremap <expr> ;r
       \ -source-option-ff-defaultAction=insert
       \ -ui-param-ff-autoResize<CR>'
 
-" nnoremap <silent>;uc <cmd>Denite command<cr> " outputで作る？
 nnoremap ;: <Cmd>Ddu
       \ -name=command command_history
+      \ -ui-param-ff-autoResize
+      \ <CR>
+
+nnoremap ;uc <Cmd>Ddu
+      \ -name=command command
       \ -ui-param-ff-autoResize
       \ <CR>
 
@@ -325,6 +329,9 @@ call ddu#custom#patch_global(#{
       \     },
       \     command_history: #{
       \       defaultAction: 'execute',
+      \     },
+      \     command: #{
+      \       defaultAction: 'edit',
       \     },
       \     jumplist: #{
       \       defaultAction: 'jump',
