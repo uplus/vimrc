@@ -221,14 +221,14 @@ call ddu#custom#patch_global(#{
       \   uiParams: #{
       \     ff: #{
       \       split: 'floating',
-      \       floatingBorder: 'none',
+      \       floatingBorder: 'single',
       \       updateTime: 0,
       \       maxHighlightItems: 200,
       \       inputFunc: "cmdline#input",
       \       inputOptsFunc: "cmdline#input_opts",
       \       highlights: #{
       \         floating: 'Normal',
-      \         floatingBorder: 'Special',
+      \         floatingBorder: 'SrceryCyan',
       \         filterText: "Statement",
       \       },
       \       autoAction: #{

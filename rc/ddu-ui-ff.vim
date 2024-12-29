@@ -138,43 +138,31 @@ nnoremap <buffer> >
 " }}}
 
 " hook_source {{{
-autocmd myac User Ddu:ui:ff:openFilterWindow
-      \ call s:ddu_ff_filter_my_settings()
+autocmd myac User Ddu:ui:ff:openFilterWindow call s:ddu_ff_filter_my_settings()
 function s:ddu_ff_filter_my_settings() abort
   set cursorline
 
   call ddu#ui#ff#save_cmaps([
-        \  '<C-n>', '<C-p>',
-        \ ])
+    \  '<C-n>', '<C-p>',
+    \ ])
+
+  " TODO: CR C-V C-S C-T のマッピングを作る
 
   cnoremap <C-n>
-        \ <Cmd>call ddu#ui#do_action('cursorNext', #{ loop: v:true })<CR>
+    \ <Cmd>call ddu#ui#do_action('cursorNext', #{ loop: v:true })<CR>
   cnoremap <C-p>
-        \ <Cmd>call ddu#ui#do_action('cursorPrevious', #{ loop: v:true })<CR>
+    \ <Cmd>call ddu#ui#do_action('cursorPrevious', #{ loop: v:true })<CR>
+
+  " <esc>でフィルタを維持したまま閉じれるようになる必要がある
+  " cnoremap <CR>
+  " \ <ESC><Cmd>call ddu#ui#do_action('itemAction')<CR>
 endfunction
-autocmd myac User Ddu:ui:ff:closeFilterWindow
-      \ call s:ddu_ff_filter_cleanup()
+
+autocmd myac User Ddu:ui:ff:closeFilterWindow call s:ddu_ff_filter_cleanup()
 function s:ddu_ff_filter_cleanup() abort
   set nocursorline
 
   call ddu#ui#ff#restore_cmaps()
 endfunction
-
-" CRでデフォルトアクション
-" 	autocmd User Ddu:ui:ff:openFilterWindow call s:ddu_ff_filter_my_settings()
-" 	function s:ddu_ff_filter_my_settings() abort
-" 	  let s:save_cr = '<CR>'->maparg('c', v:false, v:true)
-" 	  cnoremap <CR>
-"	      \ <ESC><Cmd>call ddu#ui#do_action('itemAction')<CR>
-" 	endfunction
-" 	autocmd User Ddu:ui:ff:closeFilterWindow
-"	      \ call s:ddu_ff_filter_cleanup()
-" 	function s:ddu_ff_filter_cleanup() abort
-" 	  if s:save_cr->empty()
-" 	    cunmap <CR>
-" 	  else
-" 	    call mapset('c', 0, s:save_cr)
-" 	  endif
-" 	endfunction
 
 " }}}
