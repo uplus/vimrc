@@ -14,12 +14,24 @@ nnoremap <buffer> i
       \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 nnoremap <buffer> <C-l>
       \ <Cmd>call ddu#ui#do_action('redraw', #{ method: 'refreshItems' })<CR>
+
+" #### preview ####
 nnoremap <buffer> p
       \ <Cmd>call ddu#ui#do_action('previewPath')<CR>
 nnoremap <buffer> P
       \ <Cmd>call ddu#ui#do_action('togglePreview')<CR>
+nnoremap <buffer> <C-p>
+      \ <Cmd>call ddu#ui#do_action('previewExecute',
+      \ #{ command: 'execute "normal! \<C-y>"' })<CR>
+nnoremap <buffer> <C-n>
+      \ <Cmd>call ddu#ui#do_action('previewExecute',
+      \ #{ command: 'execute "normal! \<C-e>"' })<CR>
+
 nnoremap <buffer> q
       \ <Cmd>call ddu#ui#do_action('quit')<CR>
+nnoremap <buffer> <esc>
+      \ <Cmd>call ddu#ui#do_action('quit')<CR>
+
 nnoremap <buffer> a
       \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 nnoremap <buffer> A
@@ -59,12 +71,7 @@ nnoremap <buffer> K
       \ <Cmd>call ddu#ui#do_action('kensaku')<CR>
 nnoremap <buffer> <C-v>
       \ <Cmd>call ddu#ui#do_action('toggleAutoAction')<CR>
-nnoremap <buffer> <C-p>
-      \ <Cmd>call ddu#ui#do_action('previewExecute',
-      \ #{ command: 'execute "normal! \<C-y>"' })<CR>
-nnoremap <buffer> <C-n>
-      \ <Cmd>call ddu#ui#do_action('previewExecute',
-      \ #{ command: 'execute "normal! \<C-e>"' })<CR>
+
 
 xnoremap <silent><buffer> <Space>
       \ :call ddu#ui#do_action('toggleSelectItem')<CR>

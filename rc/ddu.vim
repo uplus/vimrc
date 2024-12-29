@@ -202,8 +202,6 @@ autocmd User Ddu:uiDone ++nested
 " }}}
 
 " hook_source {{{
-" call ddu#custom#load_config('$BASE_DIR/ddu.ts'->expand())
-
 call ddu#custom#alias("files", "source", "file_rg", "file_external")
 call ddu#custom#alias("files", "source", "file_git", "file_external")
 " matcher_relative を入れると実質カレントディレクトリからの探索になるので分ける
@@ -231,10 +229,12 @@ call ddu#custom#patch_global(#{
       \         floatingBorder: 'Special',
       \         filterText: "Statement",
       \       },
-      \
+      \       autoAction: #{
+      \         name: 'preview',
+      \       },
+      \ 
       \       winHeight: '&lines - 8',
       \       winWidth: '&columns / 2 - 2',
-      \       previewSplit: 'no',
       \       previewFloating: v:true,
       \       previewFloatingBorder: 'single',
       \       previewHeight: '&lines - 8',
@@ -270,12 +270,6 @@ call ddu#custom#patch_global(#{
       \       ],
       \       converters: ['converter_hl_dir'],
       \     },
-      \     file_external: #{
-      \       matchers: [
-      \         'matcher_substring',
-      \       ],
-      \       converters: ['converter_hl_dir'],
-      \     },
       \     file_rec: #{
       \       matchers: [
       \         'matcher_substring', 'matcher_hidden',
@@ -294,6 +288,14 @@ call ddu#custom#patch_global(#{
       \         'matcher_substring', 'matcher_hidden',
       \       ],
       \       sorters: ['sorter_alpha'],
+      \       converters: ['converter_hl_dir'],
+      \     },
+      \     file_git: #{
+      \       matchers: [
+      \         'matcher_relative',
+      \         'matcher_substring',
+      \       ],
+      \       sorters: ['sorter_mtime'],
       \       converters: ['converter_hl_dir'],
       \     },
       \     buffer: #{
@@ -344,7 +346,7 @@ call ddu#custom#patch_global(#{
       \     },
       \   },
       \   sourceParams: #{
-      \     file_external: #{
+      \     file_git: #{
       \       cmd: ['git', 'ls-files', '-co', '--exclude-standard'],
       \     },
       \     rg: #{
@@ -397,6 +399,9 @@ call ddu#custom#patch_global(#{
       \     readme_viewer: #{
       \       defaultAction: 'open',
       \     },
+      \     url: #{
+      \       defaultAction: 'browse',
+      \     },
       \   },
       \   kindParams: #{
       \     action: #{
@@ -409,6 +414,11 @@ call ddu#custom#patch_global(#{
       \     },
       \     tabopen: #{
       \       quit: v:false,
+      \     },
+      \   },
+      \   actionParams: #{
+      \     tabopen: #{
+      \       command: 'tabedit',
       \     },
       \   },
       \ })
