@@ -15,6 +15,9 @@ nnoremap <buffer> i
 nnoremap <buffer> <C-l>
       \ <Cmd>call ddu#ui#do_action('redraw', #{ method: 'refreshItems' })<CR>
 
+    "\ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
+    "\ <Cmd>call ddu#ui#ff#do_action('itemAction', {'params': {'command': 'tabnew'}})<CR>
+
 " #### preview ####
 nnoremap <buffer> p
       \ <Cmd>call ddu#ui#do_action('previewPath')<CR>
@@ -36,6 +39,7 @@ nnoremap <buffer> a
       \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 nnoremap <buffer> A
       \ <Cmd>call ddu#ui#do_action('inputAction')<CR>
+
 nnoremap <buffer> o
       \ <Cmd>call ddu#ui#do_action('expandItem',
       \ #{ mode: 'toggle' })<CR>
@@ -148,5 +152,22 @@ function s:ddu_ff_filter_cleanup() abort
 
   call ddu#ui#ff#restore_cmaps()
 endfunction
-" }}}
 
+" CRでデフォルトアクション
+" 	autocmd User Ddu:ui:ff:openFilterWindow call s:ddu_ff_filter_my_settings()
+" 	function s:ddu_ff_filter_my_settings() abort
+" 	  let s:save_cr = '<CR>'->maparg('c', v:false, v:true)
+" 	  cnoremap <CR>
+"	      \ <ESC><Cmd>call ddu#ui#do_action('itemAction')<CR>
+" 	endfunction
+" 	autocmd User Ddu:ui:ff:closeFilterWindow
+"	      \ call s:ddu_ff_filter_cleanup()
+" 	function s:ddu_ff_filter_cleanup() abort
+" 	  if s:save_cr->empty()
+" 	    cunmap <CR>
+" 	  else
+" 	    call mapset('c', 0, s:save_cr)
+" 	  endif
+" 	endfunction
+
+" }}}

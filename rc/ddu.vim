@@ -208,6 +208,8 @@ call ddu#custom#alias("files", "source", "file_git", "file_external")
 call ddu#custom#alias("files", "source", "file_old_rel", "file_old")
 call ddu#custom#alias("files", "filter", "matcher_ignore_current_buffer", "matcher_ignores")
 call ddu#custom#alias("files", "action", "tabopen", "open")
+call ddu#custom#alias("files", "action", "split", "open")
+call ddu#custom#alias("files", "action", "vsplit", "open")
 
 call ddu#custom#patch_global(#{
       \   ui: 'ff',
@@ -232,7 +234,7 @@ call ddu#custom#patch_global(#{
       \       autoAction: #{
       \         name: 'preview',
       \       },
-      \ 
+      \
       \       winHeight: '&lines - 8',
       \       winWidth: '&columns / 2 - 2',
       \       previewFloating: v:true,
@@ -418,7 +420,13 @@ call ddu#custom#patch_global(#{
       \   },
       \   actionParams: #{
       \     tabopen: #{
-      \       command: 'tabedit',
+      \       command: 'tabswitch',
+      \     },
+      \     split: #{
+      \       command: 'split',
+      \     },
+      \     vsplit: #{
+      \       command: 'vsplit',
       \     },
       \   },
       \ })

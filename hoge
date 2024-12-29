@@ -1,8 +1,5 @@
       uiParams: {
         ff: {
-          autoAction: {
-            name: "preview",
-          },
           onPreview: async (args: { denops: Denops; previewWinId: number; }) =>
                 { await fn.win_execute(args.denops, args.previewWinId, "normal! zt"); },
         } as Partial<FfParams>,
