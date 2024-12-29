@@ -82,31 +82,59 @@ nnoremap g# <Cmd>Ddu
       \ -source-option-rg-path='`'Directory: '->cmdline#input($'{getcwd()}/', 'dir')`'
       \ <CR>
 
-" #### misc ####
+" command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
 
-nnoremap ;r <Cmd>Ddu
-      \ -name=register register
-      \ -source-option-register-defaultAction=
-      \`'.'->col() == 1 ? 'insert' : 'append'`
-      \ -ui-param-ff-autoResize
-      \ <CR>
+" #### output ####
 
-nnoremap ;d <Cmd>Ddu
-      \ -name=outline markdown
-      \ -ui-param-ff-ignoreEmpty
-      \ -ui-param-ff-displayTree
-      \ <CR>
-
-nnoremap [Space]o <Cmd>Ddu
+nnoremap ;O <Cmd>Ddu
       \ -name=output output
       \ -source-param-output-command=
       \'`'Command: '->cmdline#input('', 'command')`'
       \ <CR>
+
+command! Maps Ddu
+      \ -name=output output
+      \ -source-param-output-command='map\|map!\|tmap'
+
+
+" #### misc ####
+
+nnoremap ;r <Cmd>Ddu
+      \ -name=register register
+      \ -source-option-register-defaultAction=`'.'->col() == 1 ? 'insert' : 'append'`
+      \ -ui-param-ff-autoResize
+      \ <CR>
+
 xnoremap <expr> ;r
       \ (mode() ==# 'V' ? '"_R<Esc>' : '"_d')
       \ .. '<Cmd>Ddu -name=register register
       \ -source-option-ff-defaultAction=insert
       \ -ui-param-ff-autoResize<CR>'
+
+" nnoremap <silent>;uc <cmd>Denite command<cr> " outputで作る？
+nnoremap ;: <Cmd>Ddu
+      \ -name=command command_history
+      \ -ui-param-ff-autoResize
+      \ <CR>
+
+nnoremap ;uh <Cmd>Ddu
+      \ -name=help help
+      \ -ui-param-ff-autoResize
+      \ <CR>
+
+nnoremap ;uh <Cmd>Ddu
+      \ -name=help help
+      \ -ui-param-ff-autoResize
+      \ <CR>
+
+nnoremap ;uh <Cmd>Ddu
+      \ -name=help help
+      \ -ui-param-ff-autoResize
+      \ <CR>
+
+" nnoremap <silent>sm  <cmd>Denite mark -no-empty <cr>
+" nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
+nnoremap <silent>;u <nop>
 
 xnoremap ;g <Cmd>call DduUrlItems()<CR>
 
@@ -292,6 +320,9 @@ call ddu#custom#patch_global(#{
       \       ],
       \     },
       \     command_args: #{
+      \       defaultAction: 'execute',
+      \     },
+      \     command_history: #{
       \       defaultAction: 'execute',
       \     },
       \   },

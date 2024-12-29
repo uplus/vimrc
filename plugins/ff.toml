@@ -56,6 +56,10 @@ repo = 'Shougo/ddu-source-command_args'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'matsui54/ddu-source-command_history'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'Shougo/ddu-source-line'
 on_source = 'ddu.vim'
 
@@ -96,6 +100,18 @@ repo = 'shun/ddu-source-buffer'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'matsui54/ddu-source-help'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kamecha/ddu-source-jumplist'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kamecha/ddu-source-marklist'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
 
@@ -126,6 +142,15 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'kuuote/ddu-filter-sorter_mtime'
 on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'uga-rosa/ddu-filter-sorter_length'
+on_source = 'ddu.vim'
+
+# filerでディレクトリを上に表示する用らしい
+# [[plugins]]
+# repo = 'xecua/ddu-filter-sorter_treefirst'
+# on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-filter-converter_display_word'

@@ -9,24 +9,7 @@ hook_add = '''
 
   " misc
   nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
-  " nnoremap <silent>so  <cmd>Denite -auto-resize outline<cr>
-  nnoremap <silent>sm  <cmd>Denite -no-empty mark<cr>
-  nnoremap <silent>;r  <cmd>Denite register<cr>
-  " nnoremap <silent>;uj <cmd>Denite jump -auto-resize<cr>
-  nnoremap <silent>;:  <cmd>Denite command_history<cr>
-  nnoremap <silent>;uc <cmd>Denite command<cr>
-  " nnoremap <silent>;ut <cmd>Denite tag<cr>
-  nnoremap <silent>;uh <cmd>Denite help<cr>
   nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
-  nnoremap <silent>;u <nop>
-
-  command! -nargs=* Maps execute 'Denite output:map\|map!\|tmap -input=' . <q-args>
-  command! -nargs=+ Out execute 'Denite output:' . escape(<q-args>, ' ')
-
-  " command! Todo     Denite -auto-resize -ignorecase -buffer-name=todo grep:%::(todo|fix|xxx)\:
-  " nnoremap <silent> [Window]<Space> <cmd>Denite file/rec:~/.vim/rc<cr>
-  " nnoremap <silent> [Window]s <cmd>Denite file/point file/old -sorters=sorter/rank `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` file file:new<cr>
-  " nnoremap <silent> <C-t> <cmd>Denite -select=`tabpagenr()-1` -mode=normal deol:zsh<cr>
 '''
 [plugins.ftplugin]
 denite = '''
