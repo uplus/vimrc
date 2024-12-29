@@ -9,7 +9,7 @@ nnoremap <space>r <Cmd>Ddu -name=search -resume -refresh <CR>
 " #### file search ####
 nnoremap \f
       \ <Cmd>Ddu -name=files
-      \ file_point 
+      \ file_point
       \ file_old_rel -source-option-file_old_rel-maxItems=5
       \ file_rg
       \ file -source-param-file-new -source-option-file-volatile
@@ -414,13 +414,10 @@ call ddu#custom#patch_global(#{
       \     narrow: #{
       \       quit: v:false,
       \     },
-      \     tabopen: #{
-      \       quit: v:false,
-      \     },
       \   },
       \   actionParams: #{
       \     tabopen: #{
-      \       command: 'tabswitch',
+      \       command: 'tabedit',
       \     },
       \     split: #{
       \       command: 'split',
@@ -430,13 +427,11 @@ call ddu#custom#patch_global(#{
       \     },
       \   },
       \ })
-call ddu#custom#patch_local('files', #{
-      \   uiParams: #{
-      \     ff: #{
-      \       split: 'floating',
-      \     }
-      \   },
-      \ })
+
+" アクション後にタブを閉じないように設定できる
+      "\     tabopen: #{
+      "\       " quit: v:false,
+      "\     },
 
 call ddu#custom#action('kind', 'file', 'grep', { args -> GrepAction(args) })
 function! GrepAction(args)

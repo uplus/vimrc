@@ -6,6 +6,15 @@ nnoremap <buffer> <CR>
       \ : #{ name: 'default' })<CR>
 nnoremap <buffer> <2-LeftMouse>
       \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+
+" TODO: 動かない
+nnoremap <buffer> t
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
+nnoremap <buffer> s
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
+nnoremap <buffer> v
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
+
 nnoremap <buffer> <Space>
       \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> *
@@ -15,8 +24,10 @@ nnoremap <buffer> i
 nnoremap <buffer> <C-l>
       \ <Cmd>call ddu#ui#do_action('redraw', #{ method: 'refreshItems' })<CR>
 
-    "\ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
-    "\ <Cmd>call ddu#ui#ff#do_action('itemAction', {'params': {'command': 'tabnew'}})<CR>
+nnoremap <buffer> q
+      \ <Cmd>call ddu#ui#do_action('quit')<CR>
+nnoremap <buffer> <esc>
+      \ <Cmd>call ddu#ui#do_action('quit')<CR>
 
 " #### preview ####
 nnoremap <buffer> p
@@ -30,10 +41,6 @@ nnoremap <buffer> <C-n>
       \ <Cmd>call ddu#ui#do_action('previewExecute',
       \ #{ command: 'execute "normal! \<C-e>"' })<CR>
 
-nnoremap <buffer> q
-      \ <Cmd>call ddu#ui#do_action('quit')<CR>
-nnoremap <buffer> <esc>
-      \ <Cmd>call ddu#ui#do_action('quit')<CR>
 
 nnoremap <buffer> a
       \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
