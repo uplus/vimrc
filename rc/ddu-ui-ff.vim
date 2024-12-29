@@ -8,11 +8,11 @@ nnoremap <buffer> <2-LeftMouse>
       \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
 
 " TODO: 動かない
-nnoremap <buffer> t
+nnoremap <buffer><nowait> t
       \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
-nnoremap <buffer> s
+nnoremap <buffer><nowait> s
       \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
-nnoremap <buffer> v
+nnoremap <buffer><nowait> v
       \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
 
 nnoremap <buffer> <Space>
