@@ -19,6 +19,7 @@ nnoremap \f
       \ <Cmd>Ddu -name=search
       \ file_point
       \ file_old_rel -source-option-file_old_rel-maxItems=5
+      \ file_hidden -source-option-file_hidden-volatile
       \ file_rg
       \ file -source-param-file-new -source-option-file-volatile
       \ -unique
@@ -32,6 +33,7 @@ nnoremap \f
 nnoremap \F
       \ <Cmd>Ddu -name=search
       \ file_point -source-option-file_point-path=`expand('%:h')`
+      \ file_hidden -source-option-file_hidden-path=`expand('%:h')` -source-option-file_hidden-volatile
       \ file_rg -source-option-file_rg-path=`expand('%:h')`
       \ -unique
       \ -sync
@@ -149,7 +151,8 @@ nnoremap sm <Cmd>Ddu
 
 nnoremap <silent>;un <cmd>Ddu
   \ -name=search
-  \ file_rec -source-option-file_rec-path=`system('note --dir')`
+  \ file_hidden -source-option-file_hidden-path=`system('note --dir')` -source-option-file_hidden-volatile
+  \ file_rg -source-option-file_rg-path=`system('note --dir')`
   \ <CR>
 
 nnoremap <silent>;u <nop>
@@ -217,14 +220,17 @@ autocmd User Ddu:uiDone ++nested
 " hook_source {{{
 
 " ddu(=name)単位でaliasを設定する
+call ddu#custom#alias("search", "source", "file_hidden", "file")
 call ddu#custom#alias("search", "source", "file_rg", "file_external")
 call ddu#custom#alias("search", "source", "file_git", "file_external")
-" matcher_relative を入れると実質カレントディレクトリからの探索になるので分ける
 call ddu#custom#alias("search", "source", "file_old_rel", "file_old")
 call ddu#custom#alias("search", "filter", "matcher_ignore_current_buffer", "matcher_ignores")
 call ddu#custom#alias("search", "action", "tabopen", "open")
 call ddu#custom#alias("search", "action", "split", "open")
 call ddu#custom#alias("search", "action", "vsplit", "open")
+
+" matcher_relative を入れると実質カレントディレクトリからの探索になるので分ける
+" matcher_hidden を入れると '.' をフィルタで入力したときに隠しファイルが表示される(ただし、通常時に表示されなくなるケースがある)
 
 call ddu#custom#patch_global(#{
       \   ui: 'ff',
@@ -287,22 +293,24 @@ call ddu#custom#patch_global(#{
       \       ],
       \       converters: ['converter_hl_dir'],
       \     },
-      \     file_rec: #{
-      \       matchers: [
-      \         'matcher_substring', 'matcher_hidden',
-      \       ],
-      \       converters: ['converter_hl_dir'],
-      \     },
       \     file: #{
       \       matchers: [
-      \         'matcher_substring', 'matcher_hidden',
+      \         'matcher_substring',
+      \       ],
+      \       sorters: ['sorter_alpha'],
+      \       converters: ['converter_hl_dir'],
+      \     },
+      \     file_hidden: #{
+      \       matchers: [
+      \         'matcher_substring',
+      \         'matcher_hidden',
       \       ],
       \       sorters: ['sorter_alpha'],
       \       converters: ['converter_hl_dir'],
       \     },
       \     file_rg: #{
       \       matchers: [
-      \         'matcher_substring', 'matcher_hidden',
+      \         'matcher_substring',
       \       ],
       \       sorters: ['sorter_alpha'],
       \       converters: ['converter_hl_dir'],
