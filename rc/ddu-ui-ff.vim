@@ -7,7 +7,6 @@ nnoremap <buffer> <CR>
 nnoremap <buffer> <2-LeftMouse>
       \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
 
-" TODO: 動かない
 nnoremap <buffer><nowait> t
       \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
 nnoremap <buffer><nowait> s
@@ -143,19 +142,25 @@ function s:ddu_ff_filter_my_settings() abort
   set cursorline
 
   call ddu#ui#ff#save_cmaps([
-    \  '<C-n>', '<C-p>',
+    \  '<C-n>', '<C-p>', '<C-t>', '<C-s>', '<C-v>', '<ESC>', '<CR>',
     \ ])
-
-  " TODO: CR C-V C-S C-T のマッピングを作る
 
   cnoremap <C-n>
     \ <Cmd>call ddu#ui#do_action('cursorNext', #{ loop: v:true })<CR>
   cnoremap <C-p>
     \ <Cmd>call ddu#ui#do_action('cursorPrevious', #{ loop: v:true })<CR>
 
+  cnoremap <C-t>
+    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
+  cnoremap <C-s>
+    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
+  cnoremap <C-v>
+    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
+
   " <esc>でフィルタを維持したまま閉じれるようになる必要がある
-  " cnoremap <CR>
-  " \ <ESC><Cmd>call ddu#ui#do_action('itemAction')<CR>
+  cnoremap <ESC> <CR>
+  cnoremap <CR>
+    \ <Cmd>call ddu#ui#do_action('itemAction')<CR><ESC>
 endfunction
 
 autocmd myac User Ddu:ui:ff:closeFilterWindow call s:ddu_ff_filter_cleanup()
