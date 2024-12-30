@@ -10,16 +10,16 @@ nnoremap <space>r <Cmd>Ddu -name=search -resume -refresh <CR>
 " nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
 " nnoremap <C-n>
 "      \ <Cmd>call ddu#ui#multi_actions(
-"      \   ['cursorNext', 'itemAction'], 'files')<CR>
+"      \   ['cursorNext', 'itemAction'], 'search')<CR>
 " nnoremap <C-p>
 "      \ <Cmd>call ddu#ui#multi_actions(
-"      \   ['cursorPrevious', 'itemAction'], 'files')<CR>
+"      \   ['cursorPrevious', 'itemAction'], 'search')<CR>
 " nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
 " nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
 
 " #### file search ####
 nnoremap \f
-      \ <Cmd>Ddu -name=files
+      \ <Cmd>Ddu -name=search
       \ file_point
       \ file_old_rel -source-option-file_old_rel-maxItems=5
       \ file_rg
@@ -33,7 +33,7 @@ nnoremap \f
       "\ file -source-option-file-volatile
 
 nnoremap \F
-      \ <Cmd>Ddu -name=files
+      \ <Cmd>Ddu -name=search
       \ file_point -source-option-file_point-path=`expand('%:h')`
       \ file_rg -source-option-file_rg-path=`expand('%:h')`
       \ -unique
@@ -42,7 +42,7 @@ nnoremap \F
       \ <CR>
 
 nnoremap \\f
-      \ <Cmd>Ddu -name=files
+      \ <Cmd>Ddu -name=search
       \ file_old
       \ -unique
       \ -sync
@@ -50,7 +50,7 @@ nnoremap \\f
       \ <CR>
 
 nnoremap \b
-      \ <Cmd>Ddu -name=files buffer
+      \ <Cmd>Ddu -name=search buffer
       \ -sync
       \ -ui-param-ff-displaySourceName=short
       \ <CR>
@@ -137,12 +137,12 @@ nnoremap ;uh <Cmd>Ddu
       \ <CR>
 
 nnoremap ;uj <Cmd>Ddu
-      \ -name=jump jumplist
+      \ -name=search jumplist
       \ -ui-param-ff-autoResize
       \ <CR>
 
 nnoremap sm <Cmd>Ddu
-      \ -name=jump
+      \ -name=search
       \ marklist -source-param-marklist-buf=`bufnr()`
       \ marklist
       \ -unique
@@ -202,9 +202,9 @@ autocmd User Ddu:uiDone ++nested
 " if !'g:shougo_s_github_load_state'->exists()
 "   call timer_start(500, { _ -> LazyDdu() })
 "   function LazyDdu()
-"     call ddu#load('files', 'ui', ['ff'])
-"     call ddu#load('files', 'kind', ['file'])
-"     call ddu#load('files', 'source',
+"     call ddu#load('search', 'ui', ['ff'])
+"     call ddu#load('search', 'kind', ['file'])
+"     call ddu#load('search', 'source',
 "          \   ['file_point', 'file_old', 'file_git', 'file']
 "          \ )
 "   endfunction
@@ -213,14 +213,16 @@ autocmd User Ddu:uiDone ++nested
 " }}}
 
 " hook_source {{{
-call ddu#custom#alias("files", "source", "file_rg", "file_external")
-call ddu#custom#alias("files", "source", "file_git", "file_external")
+
+" ddu(=name)単位でaliasを設定する
+call ddu#custom#alias("search", "source", "file_rg", "file_external")
+call ddu#custom#alias("search", "source", "file_git", "file_external")
 " matcher_relative を入れると実質カレントディレクトリからの探索になるので分ける
-call ddu#custom#alias("files", "source", "file_old_rel", "file_old")
-call ddu#custom#alias("files", "filter", "matcher_ignore_current_buffer", "matcher_ignores")
-call ddu#custom#alias("files", "action", "tabopen", "open")
-call ddu#custom#alias("files", "action", "split", "open")
-call ddu#custom#alias("files", "action", "vsplit", "open")
+call ddu#custom#alias("search", "source", "file_old_rel", "file_old")
+call ddu#custom#alias("search", "filter", "matcher_ignore_current_buffer", "matcher_ignores")
+call ddu#custom#alias("search", "action", "tabopen", "open")
+call ddu#custom#alias("search", "action", "split", "open")
+call ddu#custom#alias("search", "action", "vsplit", "open")
 
 call ddu#custom#patch_global(#{
       \   ui: 'ff',
@@ -464,7 +466,7 @@ endfunction
 " Qfreplace
 call ddu#custom#action('kind', 'file', 'qfreplace', { args -> s:action_qfreplace(args) })
 function! s:action_qfreplace(args)
-  call ddu#item_action('file', 'quickfix', a:args.items, {})
+  call ddu#item_action('search', 'quickfix', a:args.items, {})
   Qfreplace
   cclose
 endfunction
