@@ -7,22 +7,17 @@ nnoremap <buffer> <CR>
 nnoremap <buffer> <2-LeftMouse>
       \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
 
-nnoremap <buffer><nowait> t
-      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
-nnoremap <buffer><nowait> s
-      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
-nnoremap <buffer><nowait> v
-      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
-
+" #### core ####
 nnoremap <buffer><nowait> <Space>
       \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>j
+xnoremap <silent><buffer><nowait> <Space>
+      \ :call ddu#ui#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> *
       \ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
 nnoremap <buffer> i
       \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 nnoremap <buffer> <C-l>
       \ <Cmd>call ddu#ui#do_action('redraw', #{ method: 'refreshItems' })<CR>
-
 nnoremap <buffer> q
       \ <Cmd>call ddu#ui#do_action('quit')<CR>
 nnoremap <buffer> <esc>
@@ -40,13 +35,23 @@ nnoremap <buffer> <C-n>
       \ <Cmd>call ddu#ui#do_action('previewExecute',
       \ #{ command: 'execute "normal! \<C-e>"' })<CR>
 
-
+" #### choose actions ####
 nnoremap <buffer> <tab>
       \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+      \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 nnoremap <buffer> a
       \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+      \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 nnoremap <buffer> A
       \ <Cmd>call ddu#ui#do_action('inputAction')<CR>
+
+" #### open actions ####
+nnoremap <buffer><nowait> t
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
+nnoremap <buffer><nowait> s
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
+nnoremap <buffer><nowait> v
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
 
 nnoremap <buffer> o
       \ <Cmd>call ddu#ui#do_action('expandItem',
@@ -84,9 +89,10 @@ nnoremap <buffer> K
 nnoremap <buffer> <C-v>
       \ <Cmd>call ddu#ui#do_action('toggleAutoAction')<CR>
 
-
-xnoremap <silent><buffer> <Space>
-      \ :call ddu#ui#do_action('toggleSelectItem')<CR>
+" TODO
+" " Qfrepace:
+" nnoremap <silent><buffer><nowait><expr>r denite#do_map('do_action', 'qfreplace')
+" nmap <buffer>R *r
 
 " Switch options
 nnoremap <buffer> u
