@@ -74,7 +74,7 @@ function! s:set_highlights() abort
   hi ALEVirtualTextInfo    guifg=#80cfd0 guibg=NONE
 
   " Hop:
-  hi HopNextKey   guifg=#00dfff gui=bold ctermfg=45 cterm=bold
+  hi HopNextKey guifg=#00dfff gui=NONE ctermfg=45 cterm=bold
   hi! link HopNextKey1 HopNextKey
   hi! link HopNextKey2 HopNextKey
   hi HopUnmatched guifg=#666666 ctermfg=242
