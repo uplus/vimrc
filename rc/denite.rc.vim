@@ -33,16 +33,9 @@ au myac VimEnter,VimResized * call s:set_denite_win(0.7, 0.8)
 
 " Custom Actions:
 call denite#custom#action('_', 'show_context', { context -> Debug(context) })
-call denite#custom#action('file', 'qfreplace', { context -> s:action_qfreplace(context)})
 call denite#custom#action('source/neosnippet', 'expand', { context -> s:action_neosnippet_expand(context)})
 " call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
 " call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
-
-function! s:action_qfreplace(context)
-  call denite#do_action(a:context, 'quickfix', a:context['targets'])
-  Qfreplace
-  cclose
-endfunction
 
 function! s:action_neosnippet_expand(context)
   call denite#do_action(a:context, 'append', a:context['targets'])

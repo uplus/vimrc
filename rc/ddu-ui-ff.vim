@@ -91,11 +91,6 @@ nnoremap <buffer> K
 nnoremap <buffer> <C-v>
       \ <Cmd>call ddu#ui#do_action('toggleAutoAction')<CR>
 
-" TODO
-" " Qfrepace:
-" nnoremap <silent><buffer><nowait><expr>r denite#do_map('do_action', 'qfreplace')
-" nmap <buffer>R *r
-
 " Switch options
 nnoremap <buffer> u
       \ <Cmd>call ddu#ui#multi_actions([
