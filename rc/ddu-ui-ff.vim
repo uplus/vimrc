@@ -142,8 +142,6 @@ nnoremap <buffer> >
 " hook_source {{{
 autocmd myac User Ddu:ui:ff:openFilterWindow call s:ddu_ff_filter_my_settings()
 function s:ddu_ff_filter_my_settings() abort
-  set cursorline
-
   call ddu#ui#ff#save_cmaps([
     \  '<C-n>', '<C-p>', '<C-t>', '<C-s>', '<C-v>', '<ESC>', '<CR>', '<Tab>',
     \ ])
@@ -156,11 +154,11 @@ function s:ddu_ff_filter_my_settings() abort
     \ <CR><Cmd>call ddu#ui#do_action('chooseAction')<CR>
 
   cnoremap <C-t>
-    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
+    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR><ESC>
   cnoremap <C-s>
-    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
+    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR><ESC>
   cnoremap <C-v>
-    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
+    \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR><ESC>
   cnoremap <CR>
     \ <Cmd>call ddu#ui#do_action('itemAction')<CR><ESC>
   cnoremap <ESC> <CR>
@@ -168,8 +166,6 @@ endfunction
 
 autocmd myac User Ddu:ui:ff:closeFilterWindow call s:ddu_ff_filter_cleanup()
 function s:ddu_ff_filter_cleanup() abort
-  set nocursorline
-
   call ddu#ui#ff#restore_cmaps()
 endfunction
 
