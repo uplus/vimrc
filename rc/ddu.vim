@@ -1,21 +1,18 @@
 " hook_add {{{
 
 nnoremap <space>d :Ddu<space>
-" TODO: nameを省略したい
-nnoremap <space>r <Cmd>Ddu -name=search -resume -refresh <CR>
+nnoremap <space>r <Cmd>Ddu -name=search -resume -refresh<CR>
+
+" 動かない (↓ これ？)
+" > does not work before |ddu-autocmd-Ddu:uiReady|
+" preview使いやすいから別にいいかも
+" nnoremap [d
+"  \ <Cmd>call ddu#ui#multi_actions([['cursorPrevious'], ['itemAction']], 'search')<CR>
+" nnoremap ]d
+"  \ <Cmd>call ddu#ui#multi_actions([['cursorNext'], ['itemAction']], 'search')<CR>
 
 " TODO
-" Q: ":UniteNext"/":UnitePrevious"/":Denite -resume -cursor-pos=+1 -immediately"
-" nnoremap [d <cmd>Denite -resume -cursor-pos=-1 -immediately<cr>
-" nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
-" nnoremap <C-n>
-"      \ <Cmd>call ddu#ui#multi_actions(
-"      \   ['cursorNext', 'itemAction'], 'search')<CR>
-" nnoremap <C-p>
-"      \ <Cmd>call ddu#ui#multi_actions(
-"      \   ['cursorPrevious', 'itemAction'], 'search')<CR>
 " nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
-" nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
 
 " #### file search ####
 nnoremap \f
@@ -150,6 +147,11 @@ nnoremap sm <Cmd>Ddu
       \ -ui-param-ff-autoResize
       \ <CR>
 
+nnoremap <silent>;un <cmd>Ddu
+  \ -name=search
+  \ file_rec -source-option-file_rec-path=`system('note --dir')`
+  \ <CR>
+
 nnoremap <silent>;u <nop>
 
 xnoremap ;g <Cmd>call DduUrlItems()<CR>
@@ -196,7 +198,7 @@ endfunction
 
 " Open filter window automatically
 autocmd User Ddu:uiDone ++nested
-     \ call ddu#ui#async_action('openFilterWindow')
+  \ call ddu#ui#async_action('openFilterWindow')
 
 " Initialize ddu.vim lazily.
 " if !'g:shougo_s_github_load_state'->exists()
