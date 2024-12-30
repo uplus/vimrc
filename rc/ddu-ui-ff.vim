@@ -76,8 +76,10 @@ nnoremap <buffer> N
       \   b:ddu_ui_name ==# 'file'
       \ ? #{ name: 'newFile' }
       \ : #{ name: 'new' })<CR>
+" nnoremap <buffer> r
+"      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'quickfix' })<CR>
 nnoremap <buffer> r
-      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'quickfix' })<CR>
+      \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'qfreplace' })<CR>
 nnoremap <buffer> yy
       \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'yank' })<CR>
 nnoremap <buffer> gr

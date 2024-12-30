@@ -461,6 +461,13 @@ function! GrepAction(args)
         \ })
 endfunction
 
+call ddu#custom#action('kind', 'file', 'qfreplace', { args -> s:action_qfreplace(args) })
+function! s:action_qfreplace(args)
+  call ddu#item_action('file', 'quickfix', a:args.items, {})
+  Qfreplace
+  cclose
+endfunction
+
 " Define cd action for "ddu-ui-filer"
 call ddu#custom#action('kind', 'file', 'uiCd', { args -> UiCdAction(args) })
 function! UiCdAction(args)
