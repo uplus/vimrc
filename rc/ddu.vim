@@ -4,6 +4,16 @@ nnoremap <space>d :Ddu<space>
 " TODO: nameを省略したい
 nnoremap <space>r <Cmd>Ddu -name=search -resume -refresh <CR>
 
+" Q: ":UniteNext"/":UnitePrevious"/":Denite -resume -cursor-pos=+1 -immediately"
+" nnoremap [d <cmd>Denite -resume -cursor-pos=-1 -immediately<cr>
+" nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
+" nnoremap <C-n>
+"      \ <Cmd>call ddu#ui#multi_actions(
+"      \   ['cursorNext', 'itemAction'], 'files')<CR>
+" nnoremap <C-p>
+"      \ <Cmd>call ddu#ui#multi_actions(
+"      \   ['cursorPrevious', 'itemAction'], 'files')<CR>
+
 " TODO: resumeいれたほうが便利かも
 
 " #### file search ####

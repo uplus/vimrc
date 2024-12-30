@@ -1,37 +1,9 @@
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-hook_source = 'source ~/.vim/rc/denite.rc.vim'
-hook_add = '''
-  " Mappings:
-  nnoremap [d <cmd>Denite -resume -cursor-pos=-1 -immediately<cr>
-  nnoremap ]d <cmd>Denite -resume -cursor-pos=+1 -immediately<cr>
+" misc
+nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
+nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
 
-  " misc
-  nnoremap <silent>;s  <cmd>Denite neosnippet<cr>
-  nnoremap <silent>;un <cmd>Denite file/rec -path=`system('note --dir')`<cr>
-'''
 [plugins.ftplugin]
 denite = '''
-  " 左端にスペースを作る
-  setl signcolumn=yes
-
-  " Select:
-  nnoremap <silent><buffer><nowait><expr><space> denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr>* denite#do_map('toggle_select_all')
-
-  " Action:
-  nnoremap <silent><buffer><expr><tab> denite#do_map('choose_action')
-
-  nnoremap <silent><buffer><nowait><expr>' denite#do_map('quick_move')
-  nnoremap <silent><buffer><nowait><expr>p denite#do_map('do_action', 'echo')
-
-  nnoremap <silent><buffer><expr><m-i> denite#do_map('do_action', 'insert')
-  nnoremap <silent><buffer><expr><m-a> denite#do_map('do_action', 'append')
-
-  " Open:
-  nmap <buffer><c-j> <cr>
-
   " Qfrepace:
   nnoremap <silent><buffer><nowait><expr>r denite#do_map('do_action', 'qfreplace')
   nmap <buffer>R *r
@@ -39,17 +11,6 @@ denite = '''
 denite-filter = '''
   " <esc>が上書きされる
   let b:lexima_disabled = 1
-
-  " Open:
-  inoremap <silent><buffer><expr><cr> denite#do_map('do_action')
-  inoremap <silent><buffer><nowait><expr><c-t> denite#do_map('do_action', 'tabswitch')
-  inoremap <silent><buffer><nowait><expr><c-s> denite#do_map('do_action', 'split')
-  inoremap <silent><buffer><nowait><expr><c-v> denite#do_map('do_action', 'vsplit')
-  imap <buffer><c-j> <cr>
-
-  " Close Filter:
-  imap <buffer><nowait><esc> <Plug>(denite_filter_update)
-  nmap <buffer><nowait><esc> <Plug>(denite_filter_update)
 
   " Pass:
   imap <silent><buffer><tab> <esc><tab>

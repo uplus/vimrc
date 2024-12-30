@@ -14,8 +14,8 @@ nnoremap <buffer><nowait> s
 nnoremap <buffer><nowait> v
       \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
 
-nnoremap <buffer> <Space>
-      \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+nnoremap <buffer><nowait> <Space>
+      \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>j
 nnoremap <buffer> *
       \ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
 nnoremap <buffer> i
@@ -41,6 +41,8 @@ nnoremap <buffer> <C-n>
       \ #{ command: 'execute "normal! \<C-e>"' })<CR>
 
 
+nnoremap <buffer> <tab>
+      \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 nnoremap <buffer> a
       \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 nnoremap <buffer> A
@@ -114,12 +116,7 @@ nnoremap <buffer> ff
       \<Cmd>call ddu#ui#do_action('redraw', #{ method: 'refreshItems' })<CR>
 
 " Cursor move
-nnoremap <C-n>
-      \ <Cmd>call ddu#ui#multi_actions(
-      \   ['cursorNext', 'itemAction'], 'files')<CR>
-nnoremap <C-p>
-      \ <Cmd>call ddu#ui#multi_actions(
-      \   ['cursorPrevious', 'itemAction'], 'files')<CR>
+
 nnoremap <buffer> <C-j>
       \ <Cmd>call ddu#ui#do_action('cursorNext')<CR>
 nnoremap <buffer> <C-k>
@@ -142,13 +139,15 @@ function s:ddu_ff_filter_my_settings() abort
   set cursorline
 
   call ddu#ui#ff#save_cmaps([
-    \  '<C-n>', '<C-p>', '<C-t>', '<C-s>', '<C-v>', '<ESC>', '<CR>',
+    \  '<C-n>', '<C-p>', '<C-t>', '<C-s>', '<C-v>', '<ESC>', '<CR>', '<Tab>',
     \ ])
 
   cnoremap <C-n>
     \ <Cmd>call ddu#ui#do_action('cursorNext', #{ loop: v:true })<CR>
   cnoremap <C-p>
     \ <Cmd>call ddu#ui#do_action('cursorPrevious', #{ loop: v:true })<CR>
+  cnoremap <Tab>
+    \ <CR><Cmd>call ddu#ui#do_action('chooseAction')<CR>
 
   cnoremap <C-t>
     \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
@@ -156,11 +155,9 @@ function s:ddu_ff_filter_my_settings() abort
     \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'split' })<CR>
   cnoremap <C-v>
     \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
-
-  " <esc>でフィルタを維持したまま閉じれるようになる必要がある
-  cnoremap <ESC> <CR>
   cnoremap <CR>
     \ <Cmd>call ddu#ui#do_action('itemAction')<CR><ESC>
+  cnoremap <ESC> <CR>
 endfunction
 
 autocmd myac User Ddu:ui:ff:closeFilterWindow call s:ddu_ff_filter_cleanup()
