@@ -2,18 +2,8 @@
 
 " Set Default Options:
 call denite#custom#option('default', {
-  \ 'start_filter': v:true,
-  \ 'smartcase': v:true,
-  \ 'prompt': '>',
-  \ 'source_names': 'short',
-  \ 'highlight_filter_background': 'CursorLine',
-  \ 'split': 'floating',
-  \ 'floating_border': 'single',
-  \ 'filter_split_direction': 'floating',
   \ 'filter_updatetime': 150,
   \ })
-  "\ 'direction': 'aboveleft',
-  "\ 'highlight_window_background'
 
 function! s:set_denite_win(height_percent, width_percent) abort
   let denite_win_width = u#clamp(&columns * a:width_percent, v:numbermin, 150)
@@ -33,16 +23,7 @@ au myac VimEnter,VimResized * call s:set_denite_win(0.7, 0.8)
 
 " Custom Actions:
 call denite#custom#action('_', 'show_context', { context -> Debug(context) })
-call denite#custom#action('file', 'qfreplace', { context -> s:action_qfreplace(context)})
 call denite#custom#action('source/neosnippet', 'expand', { context -> s:action_neosnippet_expand(context)})
-" call denite#custom#action('file', 'test', { context -> execute('let g:foo = 1') })
-" call denite#custom#action('file', 'test2', { context -> denite#do_action(context, 'open', context['targets']) })
-
-function! s:action_qfreplace(context)
-  call denite#do_action(a:context, 'quickfix', a:context['targets'])
-  Qfreplace
-  cclose
-endfunction
 
 function! s:action_neosnippet_expand(context)
   call denite#do_action(a:context, 'append', a:context['targets'])
