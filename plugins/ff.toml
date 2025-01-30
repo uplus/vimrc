@@ -23,7 +23,8 @@ hooks_file = '~/.vim/rc/ddu-ui-ff.vim'
 repo = 'Shougo/cmdline.vim'
 on_source = ['ddu.vim']
 hook_add = '''
-  cnoremap <CR>  <Cmd>call cmdline#disable()<CR><CR>
+  " なぜかAltercmdのがうまく動かなくなる (AltercmdはCRをマッピングしてない)
+  " cnoremap <CR> <Cmd>call cmdline#disable()<CR><CR>
 '''
 hook_source = '''
   " call cmdline#set_option(#{
