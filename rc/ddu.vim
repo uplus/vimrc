@@ -257,7 +257,7 @@ call ddu#custom#patch_global(#{
       \       },
       \
       \       winHeight: '&lines - 8',
-      \       winWidth: '&columns / 2 - 2',
+      \       winWidth: '&columns * 4 / 5 - 2',
       \       previewFloating: v:true,
       \       previewFloatingBorder: 'single',
       \       previewHeight: '&lines - 8',
