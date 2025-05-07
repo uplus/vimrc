@@ -30,6 +30,7 @@ function! s:set_highlights() abort
   hi Normal guibg=#0c0b09
   " hi! link Comment SrceryBrightBlack
   hi! link Comment SrceryBrightCyan
+  hi! Comment ctermfg=8 gui=NONE guifg=#abd4d0
 
   " Syntax:
   " :Inspect で確認できる
