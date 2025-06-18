@@ -509,7 +509,7 @@ hook_add = '''
     endif
 
     let l:iskeyword_save = &iskeyword
-    setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57
+    setl iskeyword=@,@-@,-,_,:,;,.,#,%,/,48-57,?,=,&
 
     try
       let l:str = expand('<cword>')
