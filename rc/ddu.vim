@@ -386,7 +386,7 @@ call ddu#custom#patch_global(#{
       \         '--glob', '!.git',
       \         '--color', 'never',
       \         '--no-messages'],
-      \       updateItems: 50000,
+      \       updateItems: 1000,
       \     },
       \   },
       \   filterParams: #{
