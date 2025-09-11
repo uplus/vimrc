@@ -65,7 +65,7 @@ let g:ale_linters = {
   \ 'python': ['ruff'],
   \ 'ruby': ['rubocop'],
   \ 'rust': ['rustc', 'rustfmt'],
-  \ 'terraform': ['terraform'],
+  \ 'terraform': [''],
   \ 'typescript': ['eslint'],
   \ }
 
@@ -77,7 +77,7 @@ let g:ale_fixers = {
   \ 'json': ['jq'],
   \ 'python': ['ruff'],
   \ 'ruby': ['rubocop'],
-  \ 'terraform': ['terraform'],
+  \ 'terraform': [''],
   \ 'typescript': ['eslint'],
   \ 'vim': ['vint'],
   \ }
