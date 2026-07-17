@@ -98,6 +98,17 @@ function! Inject(expr) abort "{{{
   endtry
 endfunction "}}}
 
+" 選択範囲を「ファイルパス:行番号」のヘッダー付きでyankする
+function! YankWithPath() abort "{{{
+  let [first, last] = [line("'<"), line("'>")]
+  let header = bufname() . ':' . (first == last ? first : first . '-' . last)
+  let lines = [header] + getline(first, last)
+
+  " setreg('\"')はclipboardオプションを反映しないので'+'にも書く
+  call setreg('"', lines, 'V')
+  call setreg('+', lines, 'V')
+endfunction "}}}
+
 function! Job(...) abort "{{{
   if exists('*jobstart')
     call jobstart(a:000)
