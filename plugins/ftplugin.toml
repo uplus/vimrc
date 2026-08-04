@@ -22,6 +22,10 @@ hook_add = '''
   " let g:xml_syntax_folding = 1
   " let g:php_folding = 1
   " let g:perl_fold = 1
+
+  " Rust
+  " やたらと全FTに対してコマンドが定義されるので無効化
+  let g:loaded_rust_vim_plugin_cargo = 1
 '''
 
 
