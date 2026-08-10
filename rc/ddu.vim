@@ -18,10 +18,10 @@ nnoremap <space>r <Cmd>Ddu -name=search -resume -refresh<CR>
 nnoremap \f
       \ <Cmd>Ddu -name=search
       \ file_point
-      \ file_old_rel -source-option-file_old_rel-maxItems=5
+      \ file_oldrel -source-option-file_oldrel-maxItems=5
       \ file_hidden -source-option-file_hidden-volatile
       \ file_rg
-      \ file -source-param-file-new -source-option-file-volatile
+      \ file_new -source-param-file_new-new -source-option-file_new-volatile
       \ -unique
       \ -sync
       \ -ui-param-ff-displaySourceName=short
@@ -221,9 +221,10 @@ autocmd User Ddu:uiDone ++nested
 
 " ddu(=name)単位でaliasを設定する
 call ddu#custom#alias("search", "source", "file_hidden", "file")
+call ddu#custom#alias("search", "source", "file_new", "file")
 call ddu#custom#alias("search", "source", "file_rg", "file_external")
 call ddu#custom#alias("search", "source", "file_git", "file_external")
-call ddu#custom#alias("search", "source", "file_old_rel", "file_old")
+call ddu#custom#alias("search", "source", "file_oldrel", "file_old")
 call ddu#custom#alias("search", "filter", "matcher_ignore_current_buffer", "matcher_ignores")
 call ddu#custom#alias("search", "action", "tabopen", "open")
 call ddu#custom#alias("search", "action", "split", "open")
@@ -286,7 +287,7 @@ call ddu#custom#patch_global(#{
       \       ],
       \       converters: ['converter_hl_dir'],
       \     },
-      \     file_old_rel: #{
+      \     file_oldrel: #{
       \       matchers: [
       \         'matcher_substring',
       \         'matcher_relative',
@@ -295,6 +296,13 @@ call ddu#custom#patch_global(#{
       \       converters: ['converter_hl_dir'],
       \     },
       \     file: #{
+      \       matchers: [
+      \         'matcher_substring',
+      \       ],
+      \       sorters: ['sorter_alpha'],
+      \       converters: ['converter_hl_dir'],
+      \     },
+      \     file_new: #{
       \       matchers: [
       \         'matcher_substring',
       \       ],
