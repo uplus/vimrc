@@ -137,9 +137,9 @@ nnoremap <buffer> >
 " }}}
 
 " hook_source {{{
-autocmd myac User Ddu:ui:ff:openFilterWindow call s:ddu_ff_filter_my_settings()
+autocmd myac User Ddu:uiOpenFilterWindow call s:ddu_ff_filter_my_settings()
 function s:ddu_ff_filter_my_settings() abort
-  call ddu#ui#ff#save_cmaps([
+  call ddu#ui#save_cmaps([
     \  '<C-n>', '<C-p>', '<C-t>', '<C-s>', '<C-v>', '<ESC>', '<CR>', '<Tab>',
     \ ])
 
@@ -161,9 +161,9 @@ function s:ddu_ff_filter_my_settings() abort
   cnoremap <ESC> <CR>
 endfunction
 
-autocmd myac User Ddu:ui:ff:closeFilterWindow call s:ddu_ff_filter_cleanup()
+autocmd myac User Ddu:uiCloseFilterWindow call s:ddu_ff_filter_cleanup()
 function s:ddu_ff_filter_cleanup() abort
-  call ddu#ui#ff#restore_cmaps()
+  call ddu#ui#restore_cmaps()
 endfunction
 
 " }}}

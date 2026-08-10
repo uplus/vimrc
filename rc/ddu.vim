@@ -235,6 +235,10 @@ call ddu#custom#alias("search", "action", "vsplit", "open")
 call ddu#custom#patch_global(#{
       \   ui: 'ff',
       \   uiOptions: #{
+      \     ff: #{
+      \       filterInputFunc: "cmdline#input",
+      \       filterInputOptsFunc: "cmdline#input_opts",
+      \     },
       \     filer: #{
       \       toggle: v:true,
       \     },
@@ -243,10 +247,7 @@ call ddu#custom#patch_global(#{
       \     ff: #{
       \       split: 'floating',
       \       floatingBorder: 'single',
-      \       updateTime: 0,
       \       maxHighlightItems: 200,
-      \       inputFunc: "cmdline#input",
-      \       inputOptsFunc: "cmdline#input_opts",
       \       highlights: #{
       \         floating: 'Normal',
       \         floatingBorder: 'SrceryCyan',
