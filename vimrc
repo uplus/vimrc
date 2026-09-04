@@ -21,7 +21,7 @@ for key in [';', ',', 's', 'gs']
   execute 'noremap' key '<Nop>'
 endfor
 
-for key in ['gri', 'grr', 'gra', 'grn']
+for key in ['gri', 'grr', 'gra', 'grn', 'grt']
   execute 'silent! unmap' key
 endfor
 
